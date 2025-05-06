@@ -37,7 +37,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         ShowSpotlight = 16,
 
         // Predefined combinations
-        PictureMode = ShowImageSettings | ShowFillingWaySettings | ShowColorSettings,
+        PictureMode = ShowImageSettings | ShowFillingWaySettings,
         PictureMMMode = ShowImageSettings | ShowMonitorSettings | ShowFillingWaySettings,
         SolidColorMode = ShowColorSettings,
         SpotlightMode = ShowSpotlight,
