@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Page.Resources>
         <!--  These are converters for different controls  -->
@@ -18,7 +19,7 @@
 
                 <!--  Conditions  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderConditions}" />
-                <controls:SettingsExpander>
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE7FC;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="GPUMonitoringCheckBox"
@@ -43,25 +44,57 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <controls:SettingsExpander>
+                <!--  ProcessBlockList  -->
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xECAA;}">
                     <controls:SettingsExpander.Header>
-                        <CheckBox x:Name="BlockListCheckBox" Content="{helpers:ResourceString Name=SwitchModesCheckBoxProcessBlockList}" />
+                        <CheckBox
+                            x:Name="BlockListCheckBox"
+                            Content="{helpers:ResourceString Name=SwitchModesCheckBoxProcessBlockList}"
+                            IsChecked="{x:Bind ViewModel.ProcessBlockEnabled, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
+
                     <controls:SettingsExpander.Items>
                         <!--
                             use ViewModel.IsBlockListEnabled to enable/disable the card
                             then, NullableBoolToBoolConverter can be removed
                         -->
-                        <controls:SettingsCard IsEnabled="{x:Bind BlockListCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
-                            <controls:SettingsCard.Header>
-                                <ComboBox />
-                            </controls:SettingsCard.Header>
-                            <Button Content="{helpers:ResourceString Name=SwitchModesButtonAddProcess}" />
+                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind BlockListCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                            <StackPanel Orientation="Vertical">
+                                <controls:TokenizingTextBox
+                                    Width="{x:Bind SettingsCardBorder.Width}"
+                                    Header="{helpers:ResourceString Name=SwitchModesExpanderHeaderBlockedProcesses}"
+                                    ItemsSource="{x:Bind ViewModel.ProcessBlockListItemSource, Mode=TwoWay}"
+                                    PlaceholderText="{helpers:ResourceString Name=SwitchModesButtonAddProcess}"
+                                    QueryIcon="{ui:FontIconSource Glyph=&#xE710;,
+                                                                  FontSize=12}"
+                                    SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
+                                    TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
+                                    TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged">
+                                    <controls:TokenizingTextBox.SuggestedItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" />
+                                        </DataTemplate>
+                                    </controls:TokenizingTextBox.SuggestedItemTemplate>
+
+                                    <controls:TokenizingTextBox.TokenItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" />
+                                        </DataTemplate>
+                                    </controls:TokenizingTextBox.TokenItemTemplate>
+                                </controls:TokenizingTextBox>
+                                <!--
+                                    TODO: Don't remove this border, it is a workaround for the issue with the TokenizingTextBox
+                                    https://github.com/CommunityToolkit/Windows/issues/297
+                                -->
+                                <Border x:Name="SettingsCardBorder" />
+                            </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
+
                 </controls:SettingsExpander>
 
-                <controls:SettingsExpander>
+                <!--  IdleTimer  -->
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="IdleTimerCheckBox"
@@ -78,7 +111,8 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <controls:SettingsExpander>
+                <!--  AutoSwitchNotification  -->
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE8BD;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="AutoSwitchNotifyCheckBox"
@@ -95,13 +129,15 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  BatteryPowered  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderBatteryPowered}" />
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=OneWay}">
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" IsEnabled="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <CheckBox Content="{helpers:ResourceString Name=cbSettingsBatteryDarkMode}" />
                     </controls:SettingsCard.Header>
                 </controls:SettingsCard>
 
+                <!--  Hotkeys  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderHotkeys}" />
                 <controls:SettingsCard Description="{helpers:ResourceString Name=SwitchModesHotkeyEditHint}" Header="{helpers:ResourceString Name=SwitchModesToggleHeaderHotkey}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />

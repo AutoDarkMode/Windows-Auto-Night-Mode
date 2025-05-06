@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
@@ -14,6 +14,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
     private readonly DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
     private readonly DispatcherQueueTimer _debounceTimer;
+    private bool _isInitializing;
 
     [ObservableProperty]
     public partial bool GPUMonitoringEnabled { get; set; }
@@ -23,6 +24,15 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial int GPUMonitoringSamples { get; set; }
+
+    [ObservableProperty]
+    public partial bool ProcessBlockEnabled { get; set; }
+
+    [ObservableProperty]
+    public partial List<string>? ProcessListItemSource { get; set; }
+
+    [ObservableProperty]
+    public partial ObservableCollection<string>? ProcessBlockListItemSource { get; set; }
 
     [ObservableProperty]
     public partial bool IdleCheckerEnabled { get; set; }
@@ -87,7 +97,6 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
         LoadSettings();
 
-        // Delay 500ms
         _debounceTimer = _dispatcherQueue.CreateTimer();
         _debounceTimer.Interval = TimeSpan.FromMilliseconds(500);
         _debounceTimer.Tick += (s, e) =>
@@ -109,9 +118,13 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
+        _isInitializing = true;
+
         GPUMonitoringEnabled = _builder.Config.GPUMonitoring.Enabled;
         GPUMonitoringThreshold = _builder.Config.GPUMonitoring.Threshold;
         GPUMonitoringSamples = _builder.Config.GPUMonitoring.Samples - 1;
+        ProcessBlockEnabled = _builder.Config.ProcessBlockList.Enabled;
+        ProcessBlockListItemSource ??= new ObservableCollection<string>(_builder.Config.ProcessBlockList.ProcessNames);
         IdleCheckerEnabled = _builder.Config.IdleChecker.Enabled;
         IdleCheckerThreshold = _builder.Config.IdleChecker.Threshold;
         AutoSwitchNotifyEnabled = _builder.Config.AutoSwitchNotify.Enabled;
@@ -131,6 +144,8 @@ public partial class SwitchModesViewModel : ObservableRecipient
         {
             BatteryDarkModeEnabled = false;
         }
+
+        _isInitializing = false;
     }
 
     private void RequestDebouncedSave()
@@ -155,6 +170,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnGPUMonitoringEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.GPUMonitoring.Enabled = value;
         try
         {
@@ -168,13 +186,35 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnGPUMonitoringThresholdChanged(int value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.GPUMonitoring.Threshold = value;
         RequestDebouncedSave();
     }
 
     partial void OnGPUMonitoringSamplesChanged(int value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.GPUMonitoring.Samples = value + 1;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
+        }
+    }
+
+    partial void OnProcessBlockEnabledChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.ProcessBlockList.Enabled = value;
         try
         {
             _builder.Save();
@@ -187,6 +227,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnIdleCheckerEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.IdleChecker.Enabled = value;
         try
         {
@@ -200,12 +243,18 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnIdleCheckerThresholdChanged(int value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.IdleChecker.Threshold = value;
         RequestDebouncedSave();
     }
 
     partial void OnAutoSwitchNotifyEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.AutoSwitchNotify.Enabled = value;
         try
         {
@@ -219,12 +268,18 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnAutoSwitchNotifyGracePeriodMinutesChanged(int value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.AutoSwitchNotify.GracePeriodMinutes = value;
         RequestDebouncedSave();
     }
 
     partial void OnBatteryDarkModeEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Events.DarkThemeOnBattery = value;
         try
         {
@@ -238,6 +293,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnHotkeysEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Hotkeys.Enabled = value;
         try
         {
@@ -251,6 +309,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnHotkeyToggleAutomaticThemeNotificationEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Notifications.OnAutoThemeSwitching = value;
         try
         {
@@ -264,6 +325,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     partial void OnHotkeyTogglePostponeNotificationEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Notifications.OnSkipNextSwitch = value;
         try
         {
