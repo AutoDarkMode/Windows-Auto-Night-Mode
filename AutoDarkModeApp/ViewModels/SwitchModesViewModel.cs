@@ -103,7 +103,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
             _debounceTimer.Stop();
         };
 
-        StateUpdateHandler.StartConfigWatcherWithoutEvents();
+        StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
     }
 
@@ -117,7 +117,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
         AutoSwitchNotifyEnabled = _builder.Config.AutoSwitchNotify.Enabled;
         AutoSwitchNotifyGracePeriodMinutes = _builder.Config.AutoSwitchNotify.GracePeriodMinutes;
         HotkeysEnabled = _builder.Config.Hotkeys.Enabled;
-        SettingsCardEnabled = !HotkeysEnabled; // TODO: give this a better name
+        SettingsCardEnabled = !HotkeysEnabled; // TODO: Give this a better name
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
         HotkeyForceLight = _builder.Config.Hotkeys.ForceLight;
         HotkeyForceDark = _builder.Config.Hotkeys.ForceDark;
@@ -144,7 +144,6 @@ public partial class SwitchModesViewModel : ObservableRecipient
 
     private void HandleConfigUpdate()
     {
-        Debug.WriteLine("config changed");
         StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {

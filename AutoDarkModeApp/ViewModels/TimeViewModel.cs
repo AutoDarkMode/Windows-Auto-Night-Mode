@@ -100,10 +100,13 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        LoadPostponeTimer();
+        LoadPostponeTimer(null, new());
 
-        StateUpdateHandler.StartConfigWatcherWithoutEvents();
+        StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+
+        StateUpdateHandler.StartPostponeTimer();
+        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
 
         SaveCoordinatesCommand = new RelayCommand(() =>
         {
@@ -236,7 +239,7 @@ public partial class TimeViewModel : ObservableRecipient
         DividerBorderVisibility = Visibility.Visible;
     }
 
-    private void LoadPostponeTimer()
+    private void LoadPostponeTimer(object? sender, EventArgs e)
     {
         _isInitializing = true;
 
@@ -502,6 +505,6 @@ public partial class TimeViewModel : ObservableRecipient
             MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
         }
 
-        LoadPostponeTimer();
+        LoadPostponeTimer(null, new());
     }
 }
