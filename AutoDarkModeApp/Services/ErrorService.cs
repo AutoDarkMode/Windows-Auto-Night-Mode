@@ -9,116 +9,121 @@ namespace AutoDarkModeApp.Services;
 
 public class ErrorService : IErrorService
 {
+    private static readonly Queue<DialogRequest> _dialogQueue = new();
+    private static bool _isDialogShowing = false;
+
     public async Task ShowErrorMessageFromApi(ApiResponse response, Exception ex, XamlRoot xamlRoot)
     {
         var error =
-            $"{"ErrorMessageBox".GetLocalized()}\n\n" +
-            $"Exception Source: {ex.Source}\n" +
-            $"Exception Message: {ex.Message}\n\n" +
-            $"API Response:\n" +
-            $"Status Code: {response.StatusCode}\n" +
-            $"Message: {response.Message}\n" +
-            $"Details: {response.Details}";
-        ContentDialog dialog = new()
+            $"{"ErrorMessageBox".GetLocalized()}\n\n"
+            + $"Exception Source: {ex.Source}\n"
+            + $"Exception Message: {ex.Message}\n\n"
+            + $"API Response:\n"
+            + $"Status Code: {response.StatusCode}\n"
+            + $"Message: {response.Message}\n"
+            + $"Details: {response.Details}";
+
+        var request = new DialogRequest
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "Yes",
-            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        var result = await dialog.ShowAsync();
 
-        if(result == ContentDialogResult.Primary)
-        {
-            var issueUri = @"https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/issues";
-            Process.Start(new ProcessStartInfo(issueUri)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
-        }
-        return;
+        await EnqueueDialog(request);
     }
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, XamlRoot xamlRoot)
     {
-        var error =
-            $"{"ErrorMessageBox".GetLocalized()}\n\n" +
-            $"API Response:\n" +
-            $"Status Code: {response.StatusCode}\n" +
-            $"Message: {response.Message}\n" +
-            $"Details: {response.Details}";
+        var error = $"{"ErrorMessageBox".GetLocalized()}\n\n" + $"API Response:\n" + $"Status Code: {response.StatusCode}\n" + $"Message: {response.Message}\n" + $"Details: {response.Details}";
 
-        ContentDialog dialog = new()
+        var request = new DialogRequest
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "Yes",
-            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        var result = await dialog.ShowAsync();
 
-        if (result == ContentDialogResult.Primary)
-        {
-            var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
-            Process.Start(new ProcessStartInfo(issueUri)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
-        }
-        return;
+        await EnqueueDialog(request);
     }
 
     public async Task ShowErrorMessage(Exception ex, XamlRoot xamlRoot, string location, string extraInfo = "")
     {
-        var error =
-            "ErrorMessageBox".GetLocalized() + $"\n\nError ocurred in: {location}" +
-            $"\nSource: {ex.Source}" +
-            $"\nMessage: {ex.Message}";
+        var error = "ErrorMessageBox".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
         if (extraInfo.Length > 0)
         {
             error += $"\nExtra Detail: {extraInfo}";
         }
 
-        ContentDialog dialog = new()
+        var request = new DialogRequest
         {
             Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
-            DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "Yes",
-            CloseButtonText = "No",
             XamlRoot = xamlRoot,
         };
-        var result = await dialog.ShowAsync();
 
-        if (result == ContentDialogResult.Primary)
-        {
-            var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
-            Process.Start(new ProcessStartInfo(issueUri)
-            {
-                UseShellExecute = true,
-                Verb = "open"
-            });
-        }
-        return;
+        await EnqueueDialog(request);
     }
+
+    private static async Task EnqueueDialog(DialogRequest request)
+    {
+        _dialogQueue.Enqueue(request);
+
+        if (!_isDialogShowing)
+        {
+            await ProcessDialogQueue();
+        }
+    }
+
+    private static async Task ProcessDialogQueue()
+    {
+        while (_dialogQueue.Count > 0)
+        {
+            _isDialogShowing = true;
+            var request = _dialogQueue.Dequeue();
+
+            ContentDialog dialog = new()
+            {
+                Title = request.Title,
+                Content = request.Content,
+                DefaultButton = ContentDialogButton.Primary,
+                PrimaryButtonText = "Yes",
+                CloseButtonText = "No",
+                XamlRoot = request.XamlRoot,
+            };
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                Process.Start(new ProcessStartInfo(issueUri) { UseShellExecute = true, Verb = "open" });
+            }
+        }
+
+        _isDialogShowing = false;
+    }
+}
+
+public class DialogRequest
+{
+    public required string Title { get; set; }
+    public required string Content { get; set; }
+    public required XamlRoot XamlRoot { get; set; }
 }
 
 public class SwitchThemeException : Exception
 {
     private static readonly string customMessage = "Theme switching is unsuccessful";
 
-    public SwitchThemeException() : base(customMessage)
+    public SwitchThemeException()
+        : base(customMessage)
     {
         Source = "SwitchThemeException";
     }
 
-    public SwitchThemeException(string message, string source) : base($"{customMessage}: {message}")
+    public SwitchThemeException(string message, string source)
+        : base($"{customMessage}: {message}")
     {
         Source = source;
     }
@@ -133,7 +138,8 @@ public class AddAutoStartException : Exception
         Source = "AutoStartException";
     }
 
-    public AddAutoStartException(string message, string source) : base(message)
+    public AddAutoStartException(string message, string source)
+        : base(message)
     {
         Source = source;
     }
@@ -148,7 +154,8 @@ public class AutoStartStatusGetException : Exception
         Source = "AutoStartException";
     }
 
-    public AutoStartStatusGetException(string message, string source) : base(message)
+    public AutoStartStatusGetException(string message, string source)
+        : base(message)
     {
         Source = source;
     }
@@ -163,7 +170,8 @@ public class RemoveAutoStartException : Exception
         Source = "RemoveAutoStartException";
     }
 
-    public RemoveAutoStartException(string message, string source) : base(message)
+    public RemoveAutoStartException(string message, string source)
+        : base(message)
     {
         Source = source;
     }
