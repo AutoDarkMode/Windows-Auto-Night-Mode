@@ -58,36 +58,15 @@
                             use ViewModel.IsBlockListEnabled to enable/disable the card
                             then, NullableBoolToBoolConverter can be removed
                         -->
-                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind BlockListCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
-                            <StackPanel Orientation="Vertical">
-                                <controls:TokenizingTextBox
-                                    Width="{x:Bind SettingsCardBorder.Width}"
-                                    Header="{helpers:ResourceString Name=SwitchModesExpanderHeaderBlockedProcesses}"
-                                    ItemsSource="{x:Bind ViewModel.ProcessBlockListItemSource, Mode=TwoWay}"
-                                    PlaceholderText="{helpers:ResourceString Name=SwitchModesButtonAddProcess}"
-                                    QueryIcon="{ui:FontIconSource Glyph=&#xE710;,
-                                                                  FontSize=12}"
-                                    SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
-                                    TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
-                                    TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged">
-                                    <controls:TokenizingTextBox.SuggestedItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding}" />
-                                        </DataTemplate>
-                                    </controls:TokenizingTextBox.SuggestedItemTemplate>
-
-                                    <controls:TokenizingTextBox.TokenItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding}" />
-                                        </DataTemplate>
-                                    </controls:TokenizingTextBox.TokenItemTemplate>
-                                </controls:TokenizingTextBox>
-                                <!--
-                                    TODO: Don't remove this border, it is a workaround for the issue with the TokenizingTextBox
-                                    https://github.com/CommunityToolkit/Windows/issues/297
-                                -->
-                                <Border x:Name="SettingsCardBorder" />
-                            </StackPanel>
+                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ProcessBlockEnabled, Mode=OneWay}">
+                            <controls:TokenizingTextBox
+                                Header="{helpers:ResourceString Name=SwitchModesExpanderHeaderBlockedProcesses}"
+                                ItemsSource="{x:Bind ViewModel.ProcessBlockListItemSource, Mode=TwoWay}"
+                                PlaceholderText="{helpers:ResourceString Name=SwitchModesButtonAddProcess}"
+                                SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
+                                TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
+                                TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged">
+                            </controls:TokenizingTextBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
 
