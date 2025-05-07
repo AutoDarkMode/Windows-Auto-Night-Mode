@@ -144,14 +144,10 @@
 
                 <!--  old channel - remove when new is finished  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}">
-                    <controls:SettingsCard>
-                        <controls:SettingsCard.Header>
-                            <RadioButtons>
-                                <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelStable}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelStable, Mode=TwoWay}" />
-                                <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelBeta}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelBeta, Mode=TwoWay}" />
-                            </RadioButtons>
-                        </controls:SettingsCard.Header>
-                    </controls:SettingsCard>
+                    <RadioButtons>
+                        <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelStable}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelStable, Mode=TwoWay}" />
+                        <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelBeta}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelBeta, Mode=TwoWay}" />
+                    </RadioButtons>
                 </controls:SettingsCard>
 
 

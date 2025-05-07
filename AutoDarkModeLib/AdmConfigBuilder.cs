@@ -88,10 +88,7 @@ public class AdmConfigBuilder
 
     public static AdmConfigBuilder Instance()
     {
-        if (instance == null)
-        {
-            instance = new AdmConfigBuilder();
-        }
+        instance ??= new AdmConfigBuilder();
         return instance;
     }
 
@@ -256,6 +253,7 @@ public class AdmConfigBuilder
         {
             return false;
         }
+
         try
         {
             stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
@@ -267,8 +265,7 @@ public class AdmConfigBuilder
         }
         finally
         {
-            if (stream != null)
-                stream.Close();
+            stream?.Close();
         }
 
         //file is not locked
