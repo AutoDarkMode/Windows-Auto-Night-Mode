@@ -132,13 +132,12 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
+        LocationBlockText = "msgSearchLoc".GetLocalized();
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
-        LocationBlockText = "msgSearchLoc".GetLocalized();
 
         string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-        bool isSystem12HourFormat = timeFormat.Contains('h');
-        TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
+        TimePickHourClock = timeFormat.Contains('h') ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
