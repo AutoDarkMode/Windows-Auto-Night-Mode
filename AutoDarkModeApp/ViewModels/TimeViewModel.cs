@@ -142,9 +142,6 @@ public partial class TimeViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            await LoadGeolocationData();
-
-            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
             if (SelectedTimeSource == TimeSourceMode.CustomTimes)
             {
                 TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
@@ -152,6 +149,9 @@ public partial class TimeViewModel : ObservableRecipient
             }
             else
             {
+                await LoadGeolocationData();
+
+                LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
                 TimeLightStart = SunriseWithOffset.TimeOfDay;
                 TimeDarkStart = SunsetWithOffset.TimeOfDay;
             }
