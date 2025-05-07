@@ -139,19 +139,23 @@ public partial class TimeViewModel : ObservableRecipient
         string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         bool isSystem12HourFormat = timeFormat.Contains('h');
         TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
-        LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
-        if (SelectedTimeSource == TimeSourceMode.CustomTimes)
-        {
-            TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-            TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-        }
-        else
-        {
-            TimeLightStart = SunriseWithOffset.TimeOfDay;
-            TimeDarkStart = SunsetWithOffset.TimeOfDay;
-        }
 
-        Task.Run(async () => await LoadGeolocationData());
+        _dispatcherQueue.TryEnqueue(async () =>
+        {
+            await LoadGeolocationData();
+
+            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+            if (SelectedTimeSource == TimeSourceMode.CustomTimes)
+            {
+                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+            }
+            else
+            {
+                TimeLightStart = SunriseWithOffset.TimeOfDay;
+                TimeDarkStart = SunsetWithOffset.TimeOfDay;
+            }
+        });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
         LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
@@ -229,6 +233,7 @@ public partial class TimeViewModel : ObservableRecipient
         {
             SelectedTimeSource = TimeSourceMode.CoordinateTimes;
         }
+
         OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
@@ -340,6 +345,8 @@ public partial class TimeViewModel : ObservableRecipient
     {
         if (_isInitializing)
             return;
+
+        HandleAutoTheme(AutoThemeSwitchingEnabled);
 
         switch (value)
         {
