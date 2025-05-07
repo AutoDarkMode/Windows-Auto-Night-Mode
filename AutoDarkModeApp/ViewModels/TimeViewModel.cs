@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -101,7 +100,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        Task.Run(()=> LoadPostponeTimer(null, new()));
+        Task.Run(() => LoadPostponeTimer(null, new()));
 
         StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
@@ -152,7 +151,7 @@ public partial class TimeViewModel : ObservableRecipient
             TimeDarkStart = SunsetWithOffset.TimeOfDay;
         }
 
-        Task.Run(async()=> await LoadGeolocationData());
+        Task.Run(async () => await LoadGeolocationData());
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
         LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
@@ -237,8 +236,6 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
     {
-        _isInitializing = true;
-
         ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
         if (reply.StatusCode != StatusCode.Timeout)
         {
@@ -303,8 +300,6 @@ public partial class TimeViewModel : ObservableRecipient
                 catch { }
             }
         }
-
-        _isInitializing = false;
     }
 
     private void SafeApplyTheme()
