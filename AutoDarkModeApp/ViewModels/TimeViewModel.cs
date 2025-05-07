@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -100,7 +101,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        LoadPostponeTimer(null, new());
+        Task.Run(()=> LoadPostponeTimer(null, new()));
 
         StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
@@ -134,32 +135,27 @@ public partial class TimeViewModel : ObservableRecipient
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
-
         LocationBlockText = "msgSearchLoc".GetLocalized();
-        DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
-        _dispatcherQueue.TryEnqueue(async () =>
+
+        string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+        bool isSystem12HourFormat = timeFormat.Contains('h');
+        TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
+        LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+        if (SelectedTimeSource == TimeSourceMode.CustomTimes)
         {
-            string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-            bool isSystem12HourFormat = timeFormat.Contains('h');
-            TimePickHourClock = isSystem12HourFormat ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
+            TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+            TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+        }
+        else
+        {
+            TimeLightStart = SunriseWithOffset.TimeOfDay;
+            TimeDarkStart = SunsetWithOffset.TimeOfDay;
+        }
 
-            await LoadGeolocationData();
+        Task.Run(async()=> await LoadGeolocationData());
 
-            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
-
-            if (SelectedTimeSource == TimeSourceMode.CustomTimes)
-            {
-                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-            }
-            else
-            {
-                TimeLightStart = SunriseWithOffset.TimeOfDay;
-                TimeDarkStart = SunsetWithOffset.TimeOfDay;
-            }
-
-            LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
-        });
+        DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
+        LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
 
         _isInitializing = false;
     }
