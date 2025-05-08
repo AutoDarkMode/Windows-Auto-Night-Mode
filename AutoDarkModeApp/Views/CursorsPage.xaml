@@ -30,10 +30,9 @@
                         SelectedItem="{x:Bind ViewModel.SelectLightCusor, Mode=TwoWay}"
                         SelectionChanged="LightCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
+                        <controls:SettingsCard ContentAlignment="Left" Padding="16,8">
                             <VariableSizedWrapGrid
                                 x:Name="LightImageStackPanel"
-                                Margin="12"
                                 Orientation="Horizontal" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
@@ -50,10 +49,9 @@
                         SelectedItem="{x:Bind ViewModel.SelectDarkCusor, Mode=TwoWay}"
                         SelectionChanged="DarkCurosComboBox_SelectionChanged" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Margin="-54,0,-40,0" ContentAlignment="Left">
+                        <controls:SettingsCard ContentAlignment="Left" Padding="16,8">
                             <VariableSizedWrapGrid
                                 x:Name="DarkImageStackPanel"
-                                Margin="12"
                                 Orientation="Horizontal" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

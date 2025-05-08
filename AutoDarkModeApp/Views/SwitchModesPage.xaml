@@ -73,7 +73,7 @@
                 </controls:SettingsExpander>
 
                 <!--  IdleTimer  -->
-                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="IdleTimerCheckBox"
@@ -91,7 +91,7 @@
                 </controls:SettingsExpander>
 
                 <!--  AutoSwitchNotification  -->
-                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE8BD;}">
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE7E7;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="AutoSwitchNotifyCheckBox"
