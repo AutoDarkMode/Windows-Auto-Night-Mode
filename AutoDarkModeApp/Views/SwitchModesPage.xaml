@@ -65,8 +65,7 @@
                                 PlaceholderText="{helpers:ResourceString Name=SwitchModesButtonAddProcess}"
                                 SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
                                 TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
-                                TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged">
-                            </controls:TokenizingTextBox>
+                                TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
 
@@ -110,9 +109,9 @@
 
                 <!--  BatteryPowered  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchModesTextBlockHeaderBatteryPowered}" />
-                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" IsEnabled="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=OneWay}">
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" IsEnabled="{x:Bind ViewModel.BatterySettingsCardEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=cbSettingsBatteryDarkMode}" />
+                        <CheckBox Content="{helpers:ResourceString Name=cbSettingsBatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
                     </controls:SettingsCard.Header>
                 </controls:SettingsCard>
 

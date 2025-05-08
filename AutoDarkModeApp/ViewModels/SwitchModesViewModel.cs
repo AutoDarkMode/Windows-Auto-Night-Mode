@@ -4,7 +4,7 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Dispatching;
-using Windows.System.Power;
+using Microsoft.Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -47,6 +47,9 @@ public partial class SwitchModesViewModel : ObservableRecipient
     public partial int AutoSwitchNotifyGracePeriodMinutes { get; set; }
 
     [ObservableProperty]
+    public partial bool BatterySettingsCardEnabled { get; set; }
+
+    [ObservableProperty]
     public partial bool BatteryDarkModeEnabled { get; set; }
 
     [ObservableProperty]
@@ -79,7 +82,6 @@ public partial class SwitchModesViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool HotkeyTogglePostponeNotificationEnabled { get; set; }
 
-    // TODO: The logic part about BatteryDarkMode is not written
     public SwitchModesViewModel(IErrorService errorService)
     {
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
@@ -131,6 +133,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
         AutoSwitchNotifyGracePeriodMinutes = _builder.Config.AutoSwitchNotify.GracePeriodMinutes;
         HotkeysEnabled = _builder.Config.Hotkeys.Enabled;
         SettingsCardEnabled = !HotkeysEnabled; // TODO: Give this a better name
+        BatterySettingsCardEnabled = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
         HotkeyForceLight = _builder.Config.Hotkeys.ForceLight;
         HotkeyForceDark = _builder.Config.Hotkeys.ForceDark;
@@ -140,10 +143,6 @@ public partial class SwitchModesViewModel : ObservableRecipient
         HotkeyToggleAutomaticThemeNotificationEnabled = _builder.Config.Notifications.OnAutoThemeSwitching;
         HotkeyTogglePostpone = _builder.Config.Hotkeys.TogglePostpone;
         HotkeyTogglePostponeNotificationEnabled = _builder.Config.Notifications.OnSkipNextSwitch;
-        if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
-        {
-            BatteryDarkModeEnabled = false;
-        }
 
         _isInitializing = false;
     }
