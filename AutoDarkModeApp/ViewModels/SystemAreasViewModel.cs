@@ -162,6 +162,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
+    // TODO: Different processing methods from TimeViewModel
     private async void RequestThemeSwitch()
     {
         try
