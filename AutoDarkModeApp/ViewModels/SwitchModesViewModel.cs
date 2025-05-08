@@ -114,8 +114,8 @@ public partial class SwitchModesViewModel : ObservableRecipient
             _debounceTimer.Stop();
         };
 
-        StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.StartConfigWatcher();
     }
 
     private void LoadSettings()

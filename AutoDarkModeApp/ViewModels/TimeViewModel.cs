@@ -102,11 +102,11 @@ public partial class TimeViewModel : ObservableRecipient
         LoadSettings();
         Task.Run(() => LoadPostponeTimer(null, new()));
 
-        StateUpdateHandler.StartConfigWatcher();
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.StartConfigWatcher();
 
-        StateUpdateHandler.StartPostponeTimer();
         StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
+        StateUpdateHandler.StartPostponeTimer();
 
         SaveCoordinatesCommand = new RelayCommand(() =>
         {
