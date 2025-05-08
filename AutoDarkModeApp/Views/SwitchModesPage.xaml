@@ -63,6 +63,8 @@
                                 Header="{helpers:ResourceString Name=SwitchModesExpanderHeaderBlockedProcesses}"
                                 ItemsSource="{x:Bind ViewModel.ProcessBlockListItemSource, Mode=TwoWay}"
                                 PlaceholderText="{helpers:ResourceString Name=SwitchModesButtonAddProcess}"
+                                QueryIcon="{ui:FontIconSource Glyph=&#xE710;,
+                                                              FontSize=12}"
                                 SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
                                 TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
                                 TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged" />
