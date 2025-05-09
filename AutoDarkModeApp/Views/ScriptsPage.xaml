@@ -13,22 +13,32 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Script  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" IsExpanded="True" HeaderIcon="{ui:FontIcon Glyph=&#xE943;}">
-                    <ToggleSwitch />
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=PageScriptsToggle}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
+                    IsExpanded="True">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.ScriptSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <HyperlinkButton MinWidth="120" Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <!--  Margin: -12 Maintain visual balance  -->
+                            <HyperlinkButton
+                                MinWidth="120"
+                                Margin="-12,0,0,0"
+                                Click="OpenScriptConfigHyperlinkButton_Click"
+                                Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  More info links  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
-                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="" />
-                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/How-to-add-custom-scripts" />
+                <HyperlinkButton Content="{helpers:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/discussions/categories/custom-scripts" />
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>
