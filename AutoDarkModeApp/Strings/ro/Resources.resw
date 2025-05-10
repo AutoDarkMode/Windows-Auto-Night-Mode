@@ -1,0 +1,1265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="applyButton" xml:space="preserve">
+    <value>Aplică</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Activați schimbarea automată a temei</value>
+  </data>
+  <data name="cmbAlwDark" xml:space="preserve">
+    <value>Mereu întunecat</value>
+  </data>
+  <data name="cmbAlwWhite" xml:space="preserve">
+    <value>Mereu luminos</value>
+  </data>
+  <data name="debugModeCheckBox" xml:space="preserve">
+    <value>Activați funcțiile pentru Windows 1903</value>
+  </data>
+  <data name="lblApps" xml:space="preserve">
+    <value>Aplicații:</value>
+  </data>
+  <data name="lblCustomStart" xml:space="preserve">
+    <value>Ora de pornire personalizată</value>
+  </data>
+  <data name="lblDark" xml:space="preserve">
+    <value>Închis</value>
+  </data>
+  <data name="lblDarkTheme" xml:space="preserve">
+    <value>Tema întunecată</value>
+  </data>
+  <data name="lblEdge" xml:space="preserve">
+    <value>Edge (Versiune veche)</value>
+  </data>
+  <data name="lblLight" xml:space="preserve">
+    <value>Luminos</value>
+  </data>
+  <data name="lblLightTheme" xml:space="preserve">
+    <value>Temă luminoasă</value>
+  </data>
+  <data name="lblSettings" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="lblSwitchTheme" xml:space="preserve">
+    <value>Schimbă tema actuală</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>Sistem:</value>
+  </data>
+  <data name="lblThirdParty" xml:space="preserve">
+    <value>Software terță parte folosit</value>
+  </data>
+  <data name="lblUpdates" xml:space="preserve">
+    <value>Actualizări</value>
+  </data>
+  <data name="locationCheckBox" xml:space="preserve">
+    <value>Utilizați serviciul de localizare</value>
+  </data>
+  <data name="msgChangesSaved" xml:space="preserve">
+    <value>Modificările dvs. au fost salvate!</value>
+  </data>
+  <data name="msgClickApply" xml:space="preserve">
+    <value>Modificările dvs. vor fi salvate automat.</value>
+  </data>
+  <data name="msgDownloadUpd" xml:space="preserve">
+    <value>Descărcați actualizarea</value>
+  </data>
+  <data name="msgErrorOcc" xml:space="preserve">
+    <value>A apărut o eroare :(</value>
+  </data>
+  <data name="msgLocPerm" xml:space="preserve">
+    <value>Această aplicație are nevoie de acces la locația dvs</value>
+  </data>
+  <data name="msgNoUpd" xml:space="preserve">
+    <value>Nu există actualizări noi disponibile.</value>
+  </data>
+  <data name="msgSearchLoc" xml:space="preserve">
+    <value>Se obține locația dvs. …</value>
+  </data>
+  <data name="msgSearchUpd" xml:space="preserve">
+    <value>Căutăm actualizări…</value>
+  </data>
+  <data name="msgThemeError" xml:space="preserve">
+    <value>Avertisment: nu am putut citi tema dvs. actuală.</value>
+  </data>
+  <data name="msgUpdateAvail" xml:space="preserve">
+    <value>O nouă actualizare este disponibilă!</value>
+  </data>
+  <data name="msgUpdaterText" xml:space="preserve">
+    <value>Vă mulțumim că folosiți Auto Dark Mode!
+
+O versiune nouă este disponibilă pe GitHub, cu remedieri și îmbunătățiri.
+Vrei să-l instalezi?
+
+Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
+  <data name="updateButton" xml:space="preserve">
+    <value>Verificați actualizările</value>
+  </data>
+  <data name="updateInfoText" xml:space="preserve">
+    <value>Verificăm actualizări la fiecare pornire a programului.</value>
+  </data>
+  <data name="userFeedback" xml:space="preserve">
+    <value>Bun venit</value>
+  </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Modificați setările aici pentru a modifica comportamentul de schimbare automată a temei.</value>
+  </data>
+  <data name="lblTranslator" xml:space="preserve">
+    <value>Traducător: Emanuel Ciotoi</value>
+  </data>
+  <data name="lblCity" xml:space="preserve">
+    <value>Oraș</value>
+  </data>
+  <data name="lblPosition" xml:space="preserve">
+    <value>Poziție</value>
+  </data>
+  <data name="restartNeeded" xml:space="preserve">
+    <value>Este necesară repornirea aplicației pentru a vedea modificările</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>Limba:</value>
+  </data>
+  <data name="cmbAccentColor" xml:space="preserve">
+    <value>Culoare de accent pentru bara de activități</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Anulați</value>
+  </data>
+  <data name="dbCurrently" xml:space="preserve">
+    <value>În prezent:</value>
+  </data>
+  <data name="dbDark" xml:space="preserve">
+    <value>Imagini de fundal pentru temă întunecată</value>
+  </data>
+  <data name="dbDel" xml:space="preserve">
+    <value>Șterge/Dezactivează</value>
+  </data>
+  <data name="dbFilePicker" xml:space="preserve">
+    <value>Alegeți fișierul</value>
+  </data>
+  <data name="dbLight" xml:space="preserve">
+    <value>Imagini de fundal pentru temă luminoasă</value>
+  </data>
+  <data name="dbMainHeader" xml:space="preserve">
+    <value>Fundal pentru desktop</value>
+  </data>
+  <data name="dbPictures" xml:space="preserve">
+    <value>Poze</value>
+  </data>
+  <data name="dbSaveToolTip" xml:space="preserve">
+    <value>Vă rugăm să selectați două imagini de fundal</value>
+  </data>
+  <data name="dbSelectImage" xml:space="preserve">
+    <value>Vă rugăm să selectați o imagine</value>
+  </data>
+  <data name="dbTitle" xml:space="preserve">
+    <value>Configurați fundalul desktopului</value>
+  </data>
+  <data name="dbUseCurrent" xml:space="preserve">
+    <value>folosește fundalul curent</value>
+  </data>
+  <data name="disabled" xml:space="preserve">
+    <value>Dezactivat</value>
+  </data>
+  <data name="enabled" xml:space="preserve">
+    <value>Activat</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>ori</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Salvați</value>
+  </data>
+  <data name="dbErrorText" xml:space="preserve">
+    <value>Poate că fișierul dvs. de imagine este corupt sau calea nu există.</value>
+  </data>
+  <data name="dbPreviewError" xml:space="preserve">
+    <value>Nu am putut genera o previzualizare a imaginii dvs., ne pare rău!</value>
+  </data>
+  <data name="dbSavedError" xml:space="preserve">
+    <value>Nu am putut salva setările dvs., ne pare rău!</value>
+  </data>
+  <data name="errorOcurredTitle" xml:space="preserve">
+    <value>A aparut o eroare</value>
+  </data>
+  <data name="cbAccentColor" xml:space="preserve">
+    <value>Vizibil doar în modul întunecat.
+Dacă întâmpinați probleme: vă rugăm să măriți întârzierea de schimbare în setări.</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Informații</value>
+  </data>
+  <data name="cb12HourTime" xml:space="preserve">
+    <value>Ceas de 12 ore</value>
+  </data>
+  <data name="msgClose" xml:space="preserve">
+    <value>Închideți</value>
+  </data>
+  <data name="msgNo" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="MsgYes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="cbBackgroundUpdate" xml:space="preserve">
+    <value>Verificare automată pentru actualizări</value>
+  </data>
+  <data name="ErrorMessageBox" xml:space="preserve">
+    <value>A existat o problemă cu interfața de utilizare.
+
+Te rog asigura-te:
+- serviciul rulează
+- fișierul dvs. config.yaml este corect
+
+Doriți să creați o problemă în repository-ul Auto Dark Mode?
+Faceți clic pe „Da” pentru a deschide o nouă fereastră de browser.
+</value>
+  </data>
+  <data name="errorNumberInput" xml:space="preserve">
+    <value>Eroare: intrarea dvs. este nevalidă</value>
+  </data>
+  <data name="cbConnectedStandby" xml:space="preserve">
+    <value>Schimbați după starea de așteptare conectată (nu este recomandat)</value>
+  </data>
+  <data name="cbConnectedStandbyTooltip" xml:space="preserve">
+    <value>Dispozitivele mobile, cum ar fi produsele Microsoft Surface, folosesc un nou tip de mod standby.
+Activarea acestei opțiuni vă asigură că Auto Dark Mode schimbă imediat tema după activarea computerului.
+Dar reduce și durata de viață a bateriei, așa că activați NUMAI dacă este necesar!</value>
+  </data>
+  <data name="msgBatterySaver" xml:space="preserve">
+    <value>Din cauza unei erori Windows, bara de activități nu își schimbă corect culoarea în modul de economisire a bateriei. Vă rugăm să dezactivați economisirea bateriei dacă întâmpinați probleme.</value>
+  </data>
+  <data name="lblOffset" xml:space="preserve">
+    <value>Întârziere</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Stabiliți</value>
+  </data>
+  <data name="ToolTipDisabledDueTheme" xml:space="preserve">
+    <value>Aceste opțiuni sunt dezactivate în timp ce utilizați o temă Windows.
+Le puteți configura individual în Tema Windows.</value>
+  </data>
+  <data name="NavbarApps" xml:space="preserve">
+    <value>Aplicații</value>
+  </data>
+  <data name="NavbarSettings" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="NavbarTime" xml:space="preserve">
+    <value>Ora</value>
+  </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Deschide Folder</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>Tema întunecată</value>
+  </data>
+  <data name="ThemeHeaderCreate" xml:space="preserve">
+    <value>Creați temele dvs</value>
+  </data>
+  <data name="ThemeHeaderPick" xml:space="preserve">
+    <value>Alegeți temele dvs</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>Temă luminoasă</value>
+  </data>
+  <data name="ThemeSelectionTheme" xml:space="preserve">
+    <value>Temă de Windows (mai multe caracteristici)</value>
+  </data>
+  <data name="ThemeSelectionWallaper" xml:space="preserve">
+    <value>Imagini de fundal pentru desktop (recomandat)</value>
+  </data>
+  <data name="ThemeTutorialStep1" xml:space="preserve">
+    <value>Faceți clic aici pentru a deschide setările temei de Windows.</value>
+  </data>
+  <data name="ThemeTutorialStep2" xml:space="preserve">
+    <value>Acum navigați la „Culori” și schimbați culoarea sistemului la „Deschis” pentru tema luminii. Selectați imaginea de fundal, cursorul mouse-ului și culoarea de accent preferate.</value>
+  </data>
+  <data name="ThemeTutorialStep3" xml:space="preserve">
+    <value>Reveniți la setările temei și salvați-vă tema.</value>
+  </data>
+  <data name="ThemeTutorialStep4" xml:space="preserve">
+    <value>Repetați acest proces pentru tema întunecată.</value>
+  </data>
+  <data name="SettingsAccentColorTimeout" xml:space="preserve">
+    <value>Întârziere la schimbarea culorilor barei de activități (ms):</value>
+  </data>
+  <data name="NavbarAbout" xml:space="preserve">
+    <value>Despre</value>
+  </data>
+  <data name="NavbarTitle" xml:space="preserve">
+    <value>Meniu</value>
+  </data>
+  <data name="restart" xml:space="preserve">
+    <value>Reporniți</value>
+  </data>
+  <data name="rbCustomHours" xml:space="preserve">
+    <value>Setați ore personalizate</value>
+  </data>
+  <data name="rbLocation" xml:space="preserve">
+    <value>De la apus către răsărit (serviciul locație)</value>
+  </data>
+  <data name="ThemeTutorialStep" xml:space="preserve">
+    <value>Pas</value>
+  </data>
+  <data name="cbSettingsColourFilter" xml:space="preserve">
+    <value>Filtre culori (trimite Win + Ctrl + C)</value>
+  </data>
+  <data name="cbSettingsLogonTask" xml:space="preserve">
+    <value>Utilizați sarcina la login în loc de la pornire</value>
+  </data>
+  <data name="ThemeSelection" xml:space="preserve">
+    <value>Selectați modul:</value>
+  </data>
+  <data name="ThemeApplyError1" xml:space="preserve">
+    <value>A apărut o eroare la aplicarea temelor selectate, am dezactivat schimbarea temei</value>
+  </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Temă alternativă de luminoasă</value>
+  </data>
+  <data name="buttonDownloadExtension" xml:space="preserve">
+    <value>Descărcați extensia</value>
+  </data>
+  <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
+    <value>Instrumente recomandate</value>
+  </data>
+  <data name="tbDarkReaderDescription" xml:space="preserve">
+    <value>Această extensie de browser face ca site-urile web din Chrome, Firefox și Edge să respecte tema sistemului.</value>
+  </data>
+  <data name="locationCityNotFound" xml:space="preserve">
+    <value>Nu a fost găsit</value>
+  </data>
+  <data name="DonationHeaderReason" xml:space="preserve">
+    <value>De ce ar trebui să donezi?</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Cum să donezi?</value>
+  </data>
+  <data name="DonationPayPalDescription" xml:space="preserve">
+    <value>Îmi poți trimite bani prin PayPal. Este complet voluntar și nu ar trebui să vă așteptați la nicio compensație.</value>
+  </data>
+  <data name="NavbarDonation" xml:space="preserve">
+    <value>Donează</value>
+  </data>
+  <data name="donationDescription" xml:space="preserve">
+    <value>Salut! Vă mulțumim că folosiți Auto Dark Mode! Îți place până acum?
+
+Această aplicație vă face fiecare zi mai plăcută, ajutându-vă să aveți grijă de ochi. În același timp, este complet gratuit, fără reclame, nu colectează date despre utilizatori și este open source.
+Nu generez profit cu acest proiect.
+
+Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantitate mică mă face să sar fericit prin apartamentul meu. Doar donați atât cât apreciezi munca mea.</value>
+  </data>
+  <data name="ThemeApplyError2" xml:space="preserve">
+    <value>A apărut o eroare la aplicarea unui fișier .theme. Poate că tema creată a fost ștearsă sau mutată. Acesta este motivul pentru care am dezactivat schimbarea temei pentru moment. Pentru a-l reactiva, deschideți Auto Dark Mode și configurați Setările {0}.</value>
+  </data>
+  <data name="ErrorApplyRestart" xml:space="preserve">
+    <value>Am întâlnit următoarea problemă:
+{0}
+
+Vom încerca acum să rezolvăm această problemă rulând un algoritm ca administrator. Poate asta va ajuta.
+Auto Dark Mode va reporni ulterior și va trebui să reaplicați setările, îmi pare rău!
+
+Notă secundară: NU rulați NICIODATĂ Auto Dark Mode ca administrator manual!</value>
+  </data>
+  <data name="tbHelp" xml:space="preserve">
+    <value>Ajutor</value>
+  </data>
+  <data name="cbSettingsMultiUserImprovements" xml:space="preserve">
+    <value>Suport multi-utilizator</value>
+  </data>
+  <data name="tbSettingsColourFilterDelay" xml:space="preserve">
+    <value>Întârziere opțională pentru activarea filtrului de culoare în tonuri de gri:</value>
+  </data>
+  <data name="cmbAdjTheme" xml:space="preserve">
+    <value>Adaptați-vă la sistem</value>
+  </data>
+  <data name="lblReset" xml:space="preserve">
+    <value>Resetați</value>
+  </data>
+  <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
+    <value>Schimbați la modul întunecat când dispozitivul dumneavoastră nu se încarcă</value>
+  </data>
+  <data name="SettingsBatterySlider" xml:space="preserve">
+    <value>Valoare implicită ajustor salvare energie</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigation" xml:space="preserve">
+    <value>Reducerea economisirii de energie pentru schimbarea temei</value>
+  </data>
+  <data name="cbSettingsEnergySaverMitigationInfo" xml:space="preserve">
+    <value>Acest lucru funcționează numai dacă nu ați activat manual economisirea bateriei!</value>
+  </data>
+  <data name="NavbarSwitchModes" xml:space="preserve">
+    <value>Schimbarea modurilor</value>
+  </data>
+  <data name="NavbarPersonalization" xml:space="preserve">
+    <value>Personalizare</value>
+  </data>
+  <data name="applyGeoButton" xml:space="preserve">
+    <value>Aplicați coordonatele</value>
+  </data>
+  <data name="cmb1903" xml:space="preserve">
+    <value>Această opțiune este dezactivată, deoarece nu ați instalat actualizarea Windows 10 aprilie 2019 pe computer.</value>
+  </data>
+  <data name="headerGeoCoordinates" xml:space="preserve">
+    <value>Coordonatele geografice</value>
+  </data>
+  <data name="headerLocationData" xml:space="preserve">
+    <value>Date despre locație</value>
+  </data>
+  <data name="rbLocationGeo" xml:space="preserve">
+    <value>De la apus până la răsărit (coordonate geografice)</value>
+  </data>
+  <data name="tbGetCoordinates" xml:space="preserve">
+    <value>Găsiți coordonatele geografice pentru locația dvs</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfig" xml:space="preserve">
+    <value>Deschideți fișierul de configurare</value>
+  </data>
+  <data name="ConfigHyperLinkOpenConfigFolder" xml:space="preserve">
+    <value>Deschideți folderul de configurare</value>
+  </data>
+  <data name="ConfigHyperLinkOpenLog" xml:space="preserve">
+    <value>Deschideți fișierul log</value>
+  </data>
+  <data name="ConfigTextBlockHeader" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office (versiunea veche)</value>
+  </data>
+  <data name="lblPickTheme" xml:space="preserve">
+    <value>Alegeți o temă</value>
+  </data>
+  <data name="lblPickWallpaper" xml:space="preserve">
+    <value>Alegeți un fundal</value>
+  </data>
+  <data name="rbDisabled" xml:space="preserve">
+    <value>Dezactivat</value>
+  </data>
+  <data name="SettingsCheckBoxHideTray" xml:space="preserve">
+    <value>Ascunde pictograma din bara de activități (nu este recomandat)</value>
+  </data>
+  <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
+    <value>Această opțiune este dezactivată atunci când Windows gestionează temele tale.</value>
+  </data>
+  <data name="tbPickTheme" xml:space="preserve">
+    <value>Alege o temă Windows pentru modul întunecat și luminos în mod independent. Permite ajustare totală a temei, dar solicită integrarea fișierelor pe cont propriu.</value>
+  </data>
+  <data name="tbPickWallpaper" xml:space="preserve">
+    <value>Ajustează fundalul ecranului pentru toate monitoarele, pentru fiecare individual, activează o culoare de fundal sau lumină de reflector.</value>
+  </data>
+  <data name="tbUpdates" xml:space="preserve">
+    <value>Verificăm noi versiuni ale Auto Dark Mode în fundal. Când este disponibilă o actualizare, vă vom anunța prin notificare</value>
+  </data>
+  <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
+    <value>Descărcați și instalați automat versiuni noi</value>
+  </data>
+  <data name="UpdatesCheckBoxSilent" xml:space="preserve">
+    <value>Nu afișa notificări</value>
+  </data>
+  <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
+    <value>Selectați canalul de actualizare</value>
+  </data>
+  <data name="UpdatesComboBoxAtStart" xml:space="preserve">
+    <value>Verificați actualizările când pornește Auto Dark Mode</value>
+  </data>
+  <data name="UpdatesComboBoxInterval14" xml:space="preserve">
+    <value>14 zile</value>
+  </data>
+  <data name="UpdatesComboBoxInterval3" xml:space="preserve">
+    <value>3 zile</value>
+  </data>
+  <data name="UpdatesComboBoxInterval7" xml:space="preserve">
+    <value>7 zile</value>
+  </data>
+  <data name="UpdatesTextBlockLastChecked" xml:space="preserve">
+    <value>Ultima verificare</value>
+  </data>
+  <data name="UpdatesTextBlockLastCheckedNever" xml:space="preserve">
+    <value>niciodată</value>
+  </data>
+  <data name="UpdatesTextBlockUpdateInterval" xml:space="preserve">
+    <value>Schimbați frecvența cu care verificăm actualizările</value>
+  </data>
+  <data name="WallpaperComboBoxItemDark" xml:space="preserve">
+    <value>Tema întunecată</value>
+  </data>
+  <data name="WallpaperComboBoxItemLight" xml:space="preserve">
+    <value>Temă luminoasă</value>
+  </data>
+  <data name="WallpaperComboBoxItemPicture" xml:space="preserve">
+    <value>Imagine</value>
+  </data>
+  <data name="WallpaperComboBoxItemPictureMM" xml:space="preserve">
+    <value>Imagine (monitoare multiple)</value>
+  </data>
+  <data name="WallpaperComboBoxItemSolidColor" xml:space="preserve">
+    <value>Culoare solidă</value>
+  </data>
+  <data name="WallpaperComboBoxMode" xml:space="preserve">
+    <value>Modul</value>
+  </data>
+  <data name="WallpaperComboBoxMonitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="WallpaperComboBoxType" xml:space="preserve">
+    <value>Tip</value>
+  </data>
+  <data name="WallpaperHyperLinkRemoveDisconnected" xml:space="preserve">
+    <value>Scoateți monitoarele deconectate</value>
+  </data>
+  <data name="WallpaperTextBlockHeader" xml:space="preserve">
+    <value>Imagine de fundal</value>
+  </data>
+  <data name="WallpaperTextBlockHeaderColor" xml:space="preserve">
+    <value>Culoare</value>
+  </data>
+  <data name="WallpaperTextBoxHeaderHex" xml:space="preserve">
+    <value>Cod hexadecimal</value>
+  </data>
+  <data name="WallpaperToggleSwitch" xml:space="preserve">
+    <value>Activați schimbarea pentru imagine de fundal</value>
+  </data>
+  <data name="SwitchModesCheckBoxGPUMonitoring" xml:space="preserve">
+    <value>Nu schimbați în timp ce jucați jocuri video</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesFast" xml:space="preserve">
+    <value>Rapid (1 mostră)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesMedium" xml:space="preserve">
+    <value>Mediu (2 mostre)</value>
+  </data>
+  <data name="SwitchModesComboBoxItemSamplesSlow" xml:space="preserve">
+    <value>Lent (3 mostre)</value>
+  </data>
+  <data name="SwitchModesTextBlockGPUUsageDetectionSpeed" xml:space="preserve">
+    <value>Viteza de detectare a utilizării GPU</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderBatteryPowered" xml:space="preserve">
+    <value>Dispozitive cu baterie</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderConditions" xml:space="preserve">
+    <value>Condiții</value>
+  </data>
+  <data name="SwitchModesTextBlockMinimumUsage" xml:space="preserve">
+    <value>Utilizarea minimă a GPU-ului (%) pentru a întârzia schimbarea</value>
+  </data>
+  <data name="ThemePickerComboBoxKeepActive" xml:space="preserve">
+    <value>Restabiliți temele când sunt modificate extern</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLat" xml:space="preserve">
+    <value>Latitudine</value>
+  </data>
+  <data name="TimeNumberBoxHeaderLon" xml:space="preserve">
+    <value>Longitudine</value>
+  </data>
+  <data name="StartupLaunchingServiceText" xml:space="preserve">
+    <value>Serviciul nu rulează încă, vă rugăm să așteptați…</value>
+  </data>
+  <data name="StartupLaunchingServiceTitle" xml:space="preserve">
+    <value>Lansare serviciu</value>
+  </data>
+  <data name="StartupServiceUnresponsive" xml:space="preserve">
+    <value>Serviciul nu răspunde. Verificați dacă AutoDarkModeSvc.exe rulează și încercați din nou!</value>
+  </data>
+  <data name="ThemeToggleSwichEnableTheme" xml:space="preserve">
+    <value>Activați schimbarea temelor Windows</value>
+  </data>
+  <data name="ToggleSwitchOff" xml:space="preserve">
+    <value>Oprit</value>
+  </data>
+  <data name="ToggleSwitchOn" xml:space="preserve">
+    <value>Pornit</value>
+  </data>
+  <data name="AboutTextBlockFollowUs" xml:space="preserve">
+    <value>Urmăriți-ne</value>
+  </data>
+  <data name="ThemeTextBlockHeader" xml:space="preserve">
+    <value>Temă</value>
+  </data>
+  <data name="ThemePickerTheme10Flowers" xml:space="preserve">
+    <value>Flori</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows" xml:space="preserve">
+    <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10Windows10" xml:space="preserve">
+    <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
+    <value>Windows (Luminos)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+  </data>
+  <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
+    <value>Mișcare capturată</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Dark" xml:space="preserve">
+    <value>Windows (Întunecat)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Flow" xml:space="preserve">
+    <value>Flux</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Glow" xml:space="preserve">
+    <value>Strălucire</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Light" xml:space="preserve">
+    <value>Windows (Luminos)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
+    <value>Răsărit</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+  </data>
+  <data name="UpdatesComboBoxInterval1" xml:space="preserve">
+    <value>În fiecare zi</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Faceți clic pe Setare pentru a salva modificările.</value>
+  </data>
+  <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Utilizați culoarea accentului din bara de activități în timpul</value>
+  </data>
+  <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
+    <value>Numai accent</value>
+  </data>
+  <data name="AboutTextBlockVersion" xml:space="preserve">
+    <value>Versiune</value>
+  </data>
+  <data name="AboutButtonCopy" xml:space="preserve">
+    <value>Copiați</value>
+  </data>
+  <data name="SettingsPageAutostartDescription" xml:space="preserve">
+    <value>Porniți Auto Dark Mode cu Windows</value>
+  </data>
+  <data name="SettingsPageAutostartHeader" xml:space="preserve">
+    <value>Autostart</value>
+  </data>
+  <data name="SettingsPageAutostartMode" xml:space="preserve">
+    <value>Modul:</value>
+  </data>
+  <data name="SettingsPageAutostartPath" xml:space="preserve">
+    <value>Rută:</value>
+  </data>
+  <data name="SettingsPageAutostartRefreshButton" xml:space="preserve">
+    <value>Reîmprospătați Autostart</value>
+  </data>
+  <data name="SettingsPageLanguageSectionTitle" xml:space="preserve">
+    <value>Limbaj</value>
+  </data>
+  <data name="SettingsPageAutostartModeDisabled" xml:space="preserve">
+    <value>Dezactivat</value>
+  </data>
+  <data name="SettingsPageAutostartModeNone" xml:space="preserve">
+    <value>Nici unul</value>
+  </data>
+  <data name="SettingsPageAutostartModeNotFound" xml:space="preserve">
+    <value>Nu a fost găsit</value>
+  </data>
+  <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
+    <value>Cheie de registru</value>
+  </data>
+  <data name="SettingsPageAutostartModeTask" xml:space="preserve">
+    <value>Sarcină</value>
+  </data>
+  <data name="SettingsPageWindowsAutostartDisabled" xml:space="preserve">
+    <value>Ați dezactivat intrarea de pornire automată prin Windows.</value>
+  </data>
+  <data name="TimePageNextUpdateAt" xml:space="preserve">
+    <value>Următoarea actualizare la</value>
+  </data>
+  <data name="WallpaperColor" xml:space="preserve">
+    <value>Culoare</value>
+  </data>
+  <data name="SwitchModesHotkeyEditHint" xml:space="preserve">
+    <value>Puteți edita tastele rapide numai când sunt dezactivate.</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceDark" xml:space="preserve">
+    <value>Forțați modul întunecat</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderForceLight" xml:space="preserve">
+    <value>Forțați modul luminos</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderHotkeys" xml:space="preserve">
+    <value>Taste rapide</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderNoForce" xml:space="preserve">
+    <value>Nu mai forțați tema</value>
+  </data>
+  <data name="SwitchModesToggleHeaderHotkey" xml:space="preserve">
+    <value>Activați tastele rapide</value>
+  </data>
+  <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
+    <value>Forțați temă întunecată</value>
+  </data>
+  <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
+    <value>Forțați temă întunecată</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
+    <value>Nu este recomandată ascunderea pictogramei.
+Chiar vreți să continuați?</value>
+  </data>
+  <data name="SettingsPageTrayDisableMessageBoxHeader" xml:space="preserve">
+    <value>Ascunde pictograma din bara de activități</value>
+  </data>
+  <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
+    <value>&amp;Deschideți director config</value>
+  </data>
+  <data name="LabelFollowSystemTheme" xml:space="preserve">
+    <value>Lasă aplicația să decidă</value>
+  </data>
+  <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
+    <value>Nu schimbați teme decât dacă sistemul este inactiv</value>
+  </data>
+  <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
+    <value>Minute până când sistemul este considerat inactiv</value>
+  </data>
+  <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
+    <value>Culoarea accent pentru bara de titlu și pentru conturul ferestrelor numai în timpul</value>
+  </data>
+  <data name="AboutVersionInfoCopied" xml:space="preserve">
+    <value>Informațiile despre versiune au fost copiate în clipboard</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Schimbare automată a temei</value>
+  </data>
+  <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
+    <value>Afișează notificarea la schimbare</value>
+  </data>
+  <data name="PostponeButtonDelay" xml:space="preserve">
+    <value>Amânare</value>
+  </data>
+  <data name="PostponeReasonGPUMonitorModule" xml:space="preserve">
+    <value>Modulul de monitorizare GPU</value>
+  </data>
+  <data name="PostponeReasonPauseAutoSwitch" xml:space="preserve">
+    <value>Întrerupeți modulul de schimbare automată</value>
+  </data>
+  <data name="PostponeReasonSystemIdleCheckModule" xml:space="preserve">
+    <value>Verificator de inactivitate a sistemului</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Apăsați pe confirmare pentru a solicita imediat schimbarea temei.</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Reluați</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Anulați această acțiune făcând clic pe butonul de anulare de mai jos.</value>
+  </data>
+  <data name="SwitchModesHotkey" xml:space="preserve">
+    <value>tastă rapidă</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
+    <value>Activați schimbarea automată a temei</value>
+  </data>
+  <data name="ThemeSwitchActionDisable" xml:space="preserve">
+    <value>Dezactivează schimbarea automată</value>
+  </data>
+  <data name="ThemeSwitchActionUndo" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="TrayMenuItemThemeSwitchPause" xml:space="preserve">
+    <value>Întrerupeți schimbarea automată</value>
+  </data>
+  <data name="ThemeSwitchPauseActionDisableQuestion" xml:space="preserve">
+    <value>În schimb, doriți să dezactivați schimbarea automată?</value>
+  </data>
+  <data name="ThemeSwitchPauseActionNotification" xml:space="preserve">
+    <value>Schimbarea automată se va relua și dacă reveniți la tema anterioară..</value>
+  </data>
+  <data name="ThemeSwitchPauseHeader" xml:space="preserve">
+    <value>Schimbarea temei s-a întrerupt până la</value>
+  </data>
+  <data name="TimePagePostponeInfo" xml:space="preserve">
+    <value>Schimbarea automată a temei este momentan întreruptă din cauza următoarelor module:</value>
+  </data>
+  <data name="TimePageResumeInfo" xml:space="preserve">
+    <value>Reluarea va funcționa numai pentru amânări care au un termen de expirare</value>
+  </data>
+  <data name="TimePageTextBlockPostponeInfoHeader" xml:space="preserve">
+    <value>Controlul întârzierilor</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Schimbă tema</value>
+  </data>
+  <data name="TimePagePostponeInfoNominal" xml:space="preserve">
+    <value>Schimbarea automată a temei este activată</value>
+  </data>
+  <data name="TimePageRadioButtonNightLight" xml:space="preserve">
+    <value>Urmăriți lumină de noapte de Windows</value>
+  </data>
+  <data name="TimePageFollowNightLight" xml:space="preserve">
+    <value>Urmăriți lumină de noapte de Windows</value>
+  </data>
+  <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
+    <value>Schimbarea temei este întreruptă o singură dată!</value>
+  </data>
+  <data name="PostponeReasonPostponesUntil" xml:space="preserve">
+    <value>Amânări până la</value>
+  </data>
+  <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
+    <value>Amânări până când condiția dvs. este îndeplinită</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
+    <value>Amânări până la următorul răsărit</value>
+  </data>
+  <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
+    <value>Amânări până la următorul apus</value>
+  </data>
+  <data name="UntilTime" xml:space="preserve">
+    <value>Până când</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunrise" xml:space="preserve">
+    <value>Până la următorul răsărit</value>
+  </data>
+  <data name="ThemeSwitchPauseUntilSunset" xml:space="preserve">
+    <value>Până la următorul apus</value>
+  </data>
+  <data name="SwitchModesTextBlockHeaderTogglePostpone" xml:space="preserve">
+    <value>Întrerupeți schimbarea automată a temei</value>
+  </data>
+  <data name="ThemeSwitchResumeHeader" xml:space="preserve">
+    <value>Schimbarea automată a temei a fost reluată</value>
+  </data>
+  <data name="TimePageOpenNightLight" xml:space="preserve">
+    <value>Deschideți setările luminii de noapte</value>
+  </data>
+  <data name="TimePageNightLightHeader" xml:space="preserve">
+    <value>Lumină de noapte</value>
+  </data>
+  <data name="TimePageHeaderActiveDelays" xml:space="preserve">
+    <value>Întârzieri active</value>
+  </data>
+  <data name="PostponeTimeSkipOnce" xml:space="preserve">
+    <value>Omite schimbarea automată o dată</value>
+  </data>
+  <data name="SwitchModesCheckBoxAutoSwitchNotification" xml:space="preserve">
+    <value>Notificați înainte de a schimba automat temele</value>
+  </data>
+  <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
+    <value>Timpul în care notificarea așteaptă intrarea utilizatorului în minute</value>
+  </data>
+  <data name="SettngsPageDebugMode" xml:space="preserve">
+    <value>Modul de depanare</value>
+  </data>
+  <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
+    <value>Permite schimbarea temei în timpul ecranului de blocare (Win10)</value>
+  </data>
+  <data name="ButtonConfirm" xml:space="preserve">
+    <value>Confirmați</value>
+  </data>
+  <data name="ButtonSwitchNow" xml:space="preserve">
+    <value>Schimbați acum</value>
+  </data>
+  <data name="PostponeReasonDelayAutoSwitch" xml:space="preserve">
+    <value>Modul de întârziere</value>
+  </data>
+  <data name="PostponeReasonSwitchNotification" xml:space="preserve">
+    <value>Schimba notificarea</value>
+  </data>
+  <data name="PostponeTime120" xml:space="preserve">
+    <value>2 ore</value>
+  </data>
+  <data name="PostponeTime15" xml:space="preserve">
+    <value>15 minute</value>
+  </data>
+  <data name="PostponeTime180" xml:space="preserve">
+    <value>3 ore</value>
+  </data>
+  <data name="PostponeTime30" xml:space="preserve">
+    <value>30 minute</value>
+  </data>
+  <data name="PostponeTime360" xml:space="preserve">
+    <value>6 ore</value>
+  </data>
+  <data name="PostponeTime60" xml:space="preserve">
+    <value>1 oră</value>
+  </data>
+  <data name="PostponeTime720" xml:space="preserve">
+    <value>12 ore</value>
+  </data>
+  <data name="ThemeSwitchPending" xml:space="preserve">
+    <value>Schimbarea temei este în așteptare</value>
+  </data>
+  <data name="ThemeSwitchPendingQuestion" xml:space="preserve">
+    <value>Doriți să o schimbați acum sau să o amânați mai mult?</value>
+  </data>
+  <data name="SettngsPageTraceMode" xml:space="preserve">
+    <value>Modul de urmărire</value>
+  </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Mulțumiri speciale</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreBackground" xml:space="preserve">
+    <value>Ignorați fundalul</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreCursor" xml:space="preserve">
+    <value>Ignorați cursorul</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignorați pictogramele de pe desktop</value>
+  </data>
+  <data name="ThemeCheckBoxIgnoreSound" xml:space="preserve">
+    <value>Ignorați sunetul</value>
+  </data>
+  <data name="ThemeHeaderIgnoreFlags" xml:space="preserve">
+    <value>Ignorați setările</value>
+  </data>
+  <data name="ThemeIgnoreDisabledMessage" xml:space="preserve">
+    <value>Această opțiune nu acceptă temele implicite de Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="lblPaused" xml:space="preserve">
+    <value>Încet</value>
+  </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Utilizați numai cu Office 2013-2019 sau dacă aveți probleme cu setarea „utilizați sistemul” din Office</value>
+  </data>
+  <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
+    <value>A apărut o eroare la corecție.</value>
+  </data>
+  <data name="UpdateToastCurrentVersion" xml:space="preserve">
+    <value>Versiunea actuală</value>
+  </data>
+  <data name="UpdateToastDowngradingTo" xml:space="preserve">
+    <value>Revenind la versiunea anterioară</value>
+  </data>
+  <data name="UpdateToastDownloading" xml:space="preserve">
+    <value>Se descarcă…</value>
+  </data>
+  <data name="UpdateToastDownloadInProgress" xml:space="preserve">
+    <value>Descărcare în curs</value>
+  </data>
+  <data name="UpdateToastMessage" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
+    <value>Noua versiune {0} disponibilă</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastPatchingFailed" xml:space="preserve">
+    <value>Patch eșuat</value>
+  </data>
+  <data name="UpdateToastSeeLogs" xml:space="preserve">
+    <value>Vă rugăm să verificați service.log și updater.log pentru mai multe informații</value>
+  </data>
+  <data name="UpdateToastUpgradingTo" xml:space="preserve">
+    <value>Se actualizează la</value>
+  </data>
+  <data name="UpdateToastButtonDowngrade" xml:space="preserve">
+    <value>Reveniți la o versiune anterioară</value>
+  </data>
+  <data name="UpdateToastButtonOpenLogDirectory" xml:space="preserve">
+    <value>Deschideți directorul de jurnal</value>
+  </data>
+  <data name="UpdateToastButtonPostpone" xml:space="preserve">
+    <value>Amânați</value>
+  </data>
+  <data name="UpdateToastButtonUpdate" xml:space="preserve">
+    <value>Actualizați</value>
+  </data>
+  <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
+    <value>Versiunea anterioară {0} disponibilă</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
+    <value>Accesați pagina de descărcare</value>
+  </data>
+  <data name="SettingsPageDowngradeAvailable" xml:space="preserve">
+    <value>Este disponibilă o versiune anterioară</value>
+  </data>
+  <data name="NavbarScripts" xml:space="preserve">
+    <value>Scripturi</value>
+  </data>
+  <data name="PageScriptsButtonOpenConfig" xml:space="preserve">
+    <value>Deschideți configurația scriptului</value>
+  </data>
+  <data name="PageScriptsTextBlockHeader" xml:space="preserve">
+    <value>Scripturi</value>
+  </data>
+  <data name="PageScriptsToggle" xml:space="preserve">
+    <value>Activați scripturile personalizate</value>
+  </data>
+  <data name="WallpaperTextBlockChooseWallpaper" xml:space="preserve">
+    <value>Alegeți imaginea de fundal</value>
+  </data>
+  <data name="WallpaperTextBlockImagePath" xml:space="preserve">
+    <value>Calea imaginii</value>
+  </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>Închideți</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>Schimbare automată a temei</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>Schimbă tema</value>
+  </data>
+  <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
+    <value>Lumină reflector</value>
+  </data>
+  <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
+    <value>Lumină reflector Windows</value>
+  </data>
+  <data name="ColorizationTextBlockHeader" xml:space="preserve">
+    <value>Nuanță culoare</value>
+  </data>
+  <data name="ColorizationPick" xml:space="preserve">
+    <value>Alege o nuanță</value>
+  </data>
+  <data name="ColorizationTextBlockDescription" xml:space="preserve">
+    <value>Ajustează schema de culori Windows după propriul gust.</value>
+  </data>
+  <data name="ColorizationTextBlockUpdate" xml:space="preserve">
+    <value>Actualizează colorare</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>Această opțiune este dezactivată atunci când modul automat întunecat gestionează tema ta.</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Linkuri</value>
+  </data>
+  <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
+    <value>Documentare pentru cod specific</value>
+  </data>
+  <data name="PageScriptsCardUserRepositoryTextBlock" xml:space="preserve">
+    <value>Colecție cod utilizator speciale</value>
+  </data>
+  <data name="WallpaperComboBoxItemFill" xml:space="preserve">
+    <value>Completează</value>
+  </data>
+  <data name="WallpaperComboBoxItemFit" xml:space="preserve">
+    <value>Potrivește</value>
+  </data>
+  <data name="WallpaperComboBoxItemStretch" xml:space="preserve">
+    <value>Întinde</value>
+  </data>
+  <data name="WallpaperTextBlockPosition" xml:space="preserve">
+    <value>Alege ceva potrivit pentru imagina de fundal</value>
+  </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Deconectat</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwm" xml:space="preserve">
+    <value>Întotdeauna reîmprospătează DWM la schimbarea temei</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
+    <value>Se încearcă reducerea ajustării greșite a culorii interfeței în explorator, bara cu evenimente sau meniul de start. Dacă pățești asta des sau te deranjează, activează această setare.
+
+Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul schimbării temei, asemănător cu situația din Windows 10. 
+În câteva ocazii rare sistemul poate emite sunete scurte atunci când este mișcat cursorul în timpul împrospătării DWM.</value>
+  </data>
+  <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
+    <value>Forțează reîmprospătare DWM?</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="CursorsPageEnable" xml:space="preserve">
+    <value>Activează schimbare cursor mouse</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
+    <value>Deschide setări cursor Windows</value>
+  </data>
+  <data name="CursorsPageSelectDark" xml:space="preserve">
+    <value>Alege cursor întunecat</value>
+  </data>
+  <data name="CursorsPageSelectLight" xml:space="preserve">
+    <value>Alege cursor luminos</value>
+  </data>
+  <data name="CursorsPageTitle" xml:space="preserve">
+    <value>Cursoare</value>
+  </data>
+  <data name="PersonalizationPageCursorDescription" xml:space="preserve">
+    <value>Configurează cursoare de mouse diferite pentru modurile întunecat și luminos.</value>
+  </data>
+  <data name="PersonalizationPageCursorTitle" xml:space="preserve">
+    <value>Alege cursor mouse</value>
+  </data>
+  <data name="PersonalizationPageManagedMode" xml:space="preserve">
+    <value>Permite modului automat întunecat să gestioneze tema mea</value>
+  </data>
+  <data name="PersonalizationPageUnmanagedMode" xml:space="preserve">
+    <value>Permite Windows să gestioneze tema mea</value>
+  </data>
+  <data name="CursorsPageOpenPointerSettingsDescription" xml:space="preserve">
+    <value>Poți defini noi scheme pentru cursor în setările Windows și apoi să le selectezi mai încolo.</value>
+  </data>
+  <data name="AboutHyperLinkOpenShell" xml:space="preserve">
+    <value>Deschide baza</value>
+  </data>
+  <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
+    <value>Deschide jurnal actualizări</value>
+  </data>
+  <data name="ColorizationEnableSwitch" xml:space="preserve">
+    <value>Activează schimbarea culori pentru accentuare</value>
+  </data>
+  <data name="AppsLabelTouchKeyboard" xml:space="preserve">
+    <value>Schimbă tastatură touch și modul de introducere date</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automat</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="SwitchModesButtonAddProcess" xml:space="preserve">
+    <value>Adaugă</value>
+  </data>
+  <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
+    <value>Elimină</value>
+  </data>
+  <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
+    <value>Procese ce blochează</value>
+  </data>
+  <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
+    <value>Nu schimb în timp ce rulează anumite procese</value>
+  </data>
+  <data name="RecommendedAppsButton" xml:space="preserve">
+    <value>Cercetează aplicații ce susțin modul automat întunecat</value>
+  </data>
+  <data name="RecommendedAppsDescription" xml:space="preserve">
+    <value>Nu toate terțele părți susțin modul automat întunecat implicit. Pe pagina noastră de wiki actualizăm o listă cu toate aplicațiile compatibile.</value>
+  </data>
+  <data name="RecommendedAppsTitle" xml:space="preserve">
+    <value>Aplicații recomandate</value>
+  </data>
+  <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
+    <value>Poți dona prin intermediul sponsorilor GitHub, ceea ce presupune donații lunare actualizate.</value>
+  </data>
+  <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
+    <value>Încearcă să repari tema</value>
+  </data>
+</root>

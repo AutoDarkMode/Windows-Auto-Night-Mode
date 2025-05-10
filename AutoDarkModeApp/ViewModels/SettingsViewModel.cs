@@ -3,6 +3,7 @@ using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
+using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
@@ -116,6 +117,16 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
+            _builder.Config.Tunable.UICulture = Localization.LanguageTranscoding(Language!);
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+            }
+
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
             App.Current.Exit();
@@ -323,18 +334,19 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
     }
 
-    partial void OnLanguageChanged(string? oldValue, string? newValue)
+    partial void OnLanguageChanged(string? value)
     {
         if (_isInitializing)
             return;
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            if (newValue != oldValue)
+            var oldValue = await _localSettingsService.ReadSettingAsync<string>("Language");
+            if (value != oldValue)
             {
-                await _localSettingsService.SaveSettingAsync("Language", newValue);
-                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
                 IsLanguageChangedInfoBarOpen = true;
+                await _localSettingsService.SaveSettingAsync("Language", value);
+                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
             }
             else
             {
