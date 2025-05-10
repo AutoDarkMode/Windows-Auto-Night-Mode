@@ -79,12 +79,8 @@
                     </TeachingTip.IconSource>
                 </TeachingTip>
 
-                <!--  TODO: fill in Click or NavigateUri  -->
                 <!--  Log and Shell  -->
-                <controls:SettingsExpander
-                    Header="Log and Shell"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="Log and Shell" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <!--  Margin: -12 Maintain visual balance  -->
@@ -101,85 +97,94 @@
                 </controls:SettingsExpander>
 
                 <!--  SpecialThanks  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
-                <controls:SettingsCard ContentAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Spacing="8">
-                        <HyperlinkButton
-                            Content="namazso"
-                            NavigateUri="https://github.com/namazso"
-                            ToolTipService.ToolTip="https://github.com/namazso" />
-                        <HyperlinkButton
-                            Content="Jay-o-Way"
-                            NavigateUri="https://github.com/Jay-o-Way"
-                            ToolTipService.ToolTip="https://github.com/Jay-o-Way" />
-                        <HyperlinkButton
-                            Content="ChenYiLins"
-                            NavigateUri="https://github.com/ChenYiLins"
-                            ToolTipService.ToolTip="https://github.com/ChenYiLins" />
-                    </StackPanel>
-                </controls:SettingsCard>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SpecialThanks}" HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <HyperlinkButton
+                                    Content="namazso"
+                                    NavigateUri="https://github.com/namazso"
+                                    ToolTipService.ToolTip="https://github.com/namazso" />
+                                <HyperlinkButton
+                                    Content="Jay-o-Way"
+                                    NavigateUri="https://github.com/Jay-o-Way"
+                                    ToolTipService.ToolTip="https://github.com/Jay-o-Way" />
+                                <HyperlinkButton
+                                    Content="ChenYiLins"
+                                    NavigateUri="https://github.com/ChenYiLins"
+                                    ToolTipService.ToolTip="https://github.com/ChenYiLins" />
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
                 <!--  Follow us  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AboutTextBlockFollowUs}" />
-                <controls:SettingsCard ContentAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Spacing="16">
-                        <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon
-                                    FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                                    FontSize="24"
-                                    Glyph="&#xE902;" />
-                                <TextBlock VerticalAlignment="Center" Text="GitHub" />
-                            </StackPanel>
-                        </HyperlinkButton>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=AboutTextBlockFollowUs}" HeaderIcon="{ui:FontIcon Glyph=&#xED15;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" Spacing="16">
+                                <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon
+                                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                                            FontSize="24"
+                                            Glyph="&#xE902;" />
+                                        <TextBlock VerticalAlignment="Center" Text="GitHub" />
+                                    </StackPanel>
+                                </HyperlinkButton>
 
-                        <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <FontIcon
-                                    FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                                    FontSize="24"
-                                    Foreground="#26A5E4"
-                                    Glyph="&#xE901;" />
-                                <TextBlock VerticalAlignment="Center" Text="Telegram" />
+                                <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon
+                                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
+                                            FontSize="24"
+                                            Foreground="#26A5E4"
+                                            Glyph="&#xE901;" />
+                                        <TextBlock VerticalAlignment="Center" Text="Telegram" />
+                                    </StackPanel>
+                                </HyperlinkButton>
                             </StackPanel>
-                        </HyperlinkButton>
-                    </StackPanel>
-                </controls:SettingsCard>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
                 <!--  Third Party  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblThirdParty}" />
-                <controls:SettingsCard ContentAlignment="Left">
-                    <StackPanel>
-                        <HyperlinkButton
-                            Content="WinUI"
-                            NavigateUri="https://github.com/microsoft/WindowsAppSDK"
-                            ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
-                        <HyperlinkButton
-                            Content=".NET Community Toolkit"
-                            NavigateUri="https://github.com/CommunityToolkit/dotnet"
-                            ToolTipService.ToolTip="https://github.com/CommunityToolkit/dotnet" />
-                        <HyperlinkButton
-                            Content="InputSimulator"
-                            NavigateUri="https://archive.codeplex.com/?p=inputsimulator"
-                            ToolTipService.ToolTip="https://archive.codeplex.com/?p=inputsimulator" />
-                        <HyperlinkButton
-                            Content="NLog"
-                            NavigateUri="https://nlog-project.org/"
-                            ToolTipService.ToolTip="https://nlog-project.org/" />
-                        <HyperlinkButton
-                            Content="Sharprompt"
-                            NavigateUri="https://github.com/shibayan/Sharprompt"
-                            ToolTipService.ToolTip="https://github.com/shibayan/Sharprompt" />
-                        <HyperlinkButton
-                            Content="TaskScheduler"
-                            NavigateUri="https://github.com/dahall/taskscheduler"
-                            ToolTipService.ToolTip="https://github.com/dahall/taskscheduler" />
-                        <HyperlinkButton
-                            Content="YamlDotNet"
-                            NavigateUri="https://github.com/aaubry/YamlDotNet"
-                            ToolTipService.ToolTip="https://github.com/aaubry/YamlDotNet" />
-                    </StackPanel>
-                </controls:SettingsCard>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblThirdParty}" HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}">
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <StackPanel>
+                                <HyperlinkButton
+                                    Content="WinUI"
+                                    NavigateUri="https://github.com/microsoft/WindowsAppSDK"
+                                    ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
+                                <HyperlinkButton
+                                    Content=".NET Community Toolkit"
+                                    NavigateUri="https://github.com/CommunityToolkit/dotnet"
+                                    ToolTipService.ToolTip="https://github.com/CommunityToolkit/dotnet" />
+                                <HyperlinkButton
+                                    Content="InputSimulator"
+                                    NavigateUri="https://archive.codeplex.com/?p=inputsimulator"
+                                    ToolTipService.ToolTip="https://archive.codeplex.com/?p=inputsimulator" />
+                                <HyperlinkButton
+                                    Content="NLog"
+                                    NavigateUri="https://nlog-project.org/"
+                                    ToolTipService.ToolTip="https://nlog-project.org/" />
+                                <HyperlinkButton
+                                    Content="Sharprompt"
+                                    NavigateUri="https://github.com/shibayan/Sharprompt"
+                                    ToolTipService.ToolTip="https://github.com/shibayan/Sharprompt" />
+                                <HyperlinkButton
+                                    Content="TaskScheduler"
+                                    NavigateUri="https://github.com/dahall/taskscheduler"
+                                    ToolTipService.ToolTip="https://github.com/dahall/taskscheduler" />
+                                <HyperlinkButton
+                                    Content="YamlDotNet"
+                                    NavigateUri="https://github.com/aaubry/YamlDotNet"
+                                    ToolTipService.ToolTip="https://github.com/aaubry/YamlDotNet" />
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
 
             </StackPanel>
         </Grid>

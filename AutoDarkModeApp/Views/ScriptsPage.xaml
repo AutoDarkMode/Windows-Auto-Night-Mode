@@ -15,10 +15,7 @@
 
                 <!--  Script  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblScripts}" />
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=PageScriptsToggle}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ScriptSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
