@@ -14,11 +14,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Description  -->
-                <!--  Margin: 4 Maintain visual balance  -->
-                <TextBlock
-                    Margin="4,0,0,0"
-                    Text="{helpers:ResourceString Name=donationDescription}"
-                    TextWrapping="Wrap" />
+                <TextBlock Text="{helpers:ResourceString Name=donationDescription}" TextWrapping="Wrap" />
 
                 <!--  How to donate  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />

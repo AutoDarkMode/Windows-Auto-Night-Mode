@@ -57,7 +57,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial string? Language { get; set; }
 
     [ObservableProperty]
-    public partial bool LanguagChangedInfoBarEnabled { get; set; }
+    public partial bool IsLanguageChangedInfoBarOpen { get; set; }
 
     [ObservableProperty]
     public partial DaysBetweenUpdateCheck SelectedDaysBetweenUpdateCheck { get; set; }
@@ -332,9 +332,13 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             if (newValue != oldValue)
             {
-                LanguagChangedInfoBarEnabled = true;
                 await _localSettingsService.SaveSettingAsync("Language", newValue);
                 await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
+                IsLanguageChangedInfoBarOpen = true;
+            }
+            else
+            {
+                IsLanguageChangedInfoBarOpen = false;
             }
         });
     }

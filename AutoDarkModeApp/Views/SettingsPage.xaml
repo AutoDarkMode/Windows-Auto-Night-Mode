@@ -45,7 +45,7 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageLanguage}" />
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=lblTranslator}"
-                    Header="{helpers:ResourceString Name=lblLanguage}"
+                    Header="{helpers:ResourceString Name=SettingsPageLanguage}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                     <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
                         <x:String>English (English)</x:String>
@@ -56,7 +56,7 @@
                 </controls:SettingsCard>
                 <InfoBar
                     IsClosable="False"
-                    IsOpen="{x:Bind ViewModel.LanguagChangedInfoBarEnabled, Mode=OneWay}"
+                    IsOpen="{x:Bind ViewModel.IsLanguageChangedInfoBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=restartNeeded}"
                     Severity="Informational">
                     <InfoBar.ActionButton>

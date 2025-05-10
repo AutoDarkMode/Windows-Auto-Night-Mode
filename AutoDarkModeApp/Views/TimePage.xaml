@@ -27,14 +27,6 @@
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <!--
-                    IDEA:
-                    * always show the TimePicker controls for light and dark (but invert bool on `IsWindowsNightLight`),
-                    * fill in data in controls, matching every setting, bind wih TimePickHourClock
-                    * set IsEnabled to true or false (bool true for Custom time)
-                    [Jay, @Jay-o-Way, 28-3-2025]
-                -->
-
                 <controls:SettingsCard Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
@@ -67,6 +59,7 @@
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                     </Style>
                                 </Grid.Resources>
+                                <!-- Light -->
                                 <FontIcon
                                     Grid.Column="0"
                                     FontSize="16"
@@ -79,6 +72,7 @@
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
                                     IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
+                                <!-- Dark -->
                                 <FontIcon
                                     Grid.Row="1"
                                     Grid.Column="0"
