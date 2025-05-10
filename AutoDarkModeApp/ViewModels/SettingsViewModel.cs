@@ -162,11 +162,7 @@ public partial class SettingsViewModel : ObservableRecipient
         IsUpdateSilent = _builder.Config.Updater.Silent;
         IsLoginWithTask = _builder.Config.Tunable.UseLogonTask;
 
-        if (string.IsNullOrEmpty(_builder.Config.Updater.VersionQueryUrl))
-        {
-            SelectedUpdateChannel = UpdateChannel.Stable;
-        }
-        else if (_builder.Config.Updater.VersionQueryUrl.Equals(@"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml"))
+        if (_builder.Config.Updater.VersionQueryUrl.Equals(@"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml"))
         {
             SelectedUpdateChannel = UpdateChannel.Beta;
         }
