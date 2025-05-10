@@ -57,7 +57,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial string? Language { get; set; }
 
     [ObservableProperty]
-    public partial bool LanguagChangedInfoBarEnabled { get; set; }
+    public partial bool IsLanguageChangedInfoBarOpen { get; set; }
 
     [ObservableProperty]
     public partial DaysBetweenUpdateCheck SelectedDaysBetweenUpdateCheck { get; set; }
@@ -162,11 +162,7 @@ public partial class SettingsViewModel : ObservableRecipient
         IsUpdateSilent = _builder.Config.Updater.Silent;
         IsLoginWithTask = _builder.Config.Tunable.UseLogonTask;
 
-        if (string.IsNullOrEmpty(_builder.Config.Updater.VersionQueryUrl))
-        {
-            SelectedUpdateChannel = UpdateChannel.Stable;
-        }
-        else if (_builder.Config.Updater.VersionQueryUrl.Equals(@"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml"))
+        if (_builder.Config.Updater.VersionQueryUrl.Equals(@"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml"))
         {
             SelectedUpdateChannel = UpdateChannel.Beta;
         }
@@ -332,9 +328,13 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             if (newValue != oldValue)
             {
-                LanguagChangedInfoBarEnabled = true;
                 await _localSettingsService.SaveSettingAsync("Language", newValue);
                 await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
+                IsLanguageChangedInfoBarOpen = true;
+            }
+            else
+            {
+                IsLanguageChangedInfoBarOpen = false;
             }
         });
     }

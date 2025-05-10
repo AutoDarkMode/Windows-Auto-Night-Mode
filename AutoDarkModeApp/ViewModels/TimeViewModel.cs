@@ -352,6 +352,7 @@ public partial class TimeViewModel : ObservableRecipient
             case TimeSourceMode.CustomTimes:
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = false;
+                _builder.Config.Location.UseGeolocatorService = false;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
 
@@ -373,6 +374,7 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Governor = Governor.NightLight;
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
+                _builder.Config.Location.UseGeolocatorService = false;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
         }
