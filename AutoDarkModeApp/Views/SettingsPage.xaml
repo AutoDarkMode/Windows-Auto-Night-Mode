@@ -12,28 +12,20 @@
     <Page.Resources>
         <!--  These are converters for different controls  -->
         <helpers:NullableBoolToBoolConverter x:Key="NullableBoolToBoolConverter" />
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
     </Page.Resources>
 
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Some settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblSettings}" />
-                <controls:SettingsCard>
-                    <!--  TODO: convert to drop-down control [12/24]  -->
-                    <controls:SettingsCard.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=cb12HourTime}" IsChecked="{x:Bind ViewModel.Is12HourClock, Mode=TwoWay}" />
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=SettingsCheckBoxHideTray}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=SettingsCheckBoxHideTray}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
-                    </controls:SettingsCard.Header>
-                </controls:SettingsCard>
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=SettingsPageCheckBoxAlwaysRefreshDwm}" IsChecked="{x:Bind ViewModel.IsAlwaysFullDwmRefresh, Mode=TwoWay}" />
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=SettingsPageCheckBoxAlwaysRefreshDwm}" IsChecked="{x:Bind ViewModel.IsAlwaysFullDwmRefresh, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsExpander>
                     <controls:SettingsExpander.Header>
@@ -43,17 +35,15 @@
                             IsChecked="{x:Bind ViewModel.IsTunableDebug, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard IsEnabled="{x:Bind DebugModeCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
-                            <controls:SettingsCard.Header>
-                                <CheckBox Content="{helpers:ResourceString Name=SettngsPageTraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind DebugModeCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                            <CheckBox Content="{helpers:ResourceString Name=SettngsPageTraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  language  -->
+                <!--  Language  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageLanguage}" />
-                <controls:SettingsExpander
+                <controls:SettingsCard
                     Description="{helpers:ResourceString Name=lblTranslator}"
                     Header="{helpers:ResourceString Name=lblLanguage}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
@@ -63,35 +53,25 @@
                         <x:String>日本語 (Japanese)</x:String>
                         <x:String>简体中文 (Simplified Chinese)</x:String>
                     </ComboBox>
-                    <!--
-                        TODO:
-                        * don't use an expander to hide this,
-                        * use background logic to show an InfoBar with this Button when setting changed
-                    -->
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=restartNeeded}">
-                            <Button
-                                MinWidth="120"
-                                Command="{x:Bind ViewModel.RestartCommand}"
-                                Content="{helpers:ResourceString Name=restart}" />
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
+                </controls:SettingsCard>
+                <InfoBar
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.LanguagChangedInfoBarEnabled, Mode=OneWay}"
+                    Message="{helpers:ResourceString Name=restartNeeded}"
+                    Severity="Informational">
+                    <InfoBar.ActionButton>
+                        <Button
+                            MinWidth="120"
+                            HorizontalAlignment="Right"
+                            Command="{x:Bind ViewModel.RestartCommand}"
+                            Content="{helpers:ResourceString Name=restart}" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
 
-                <!--  updates  -->
+                <!--  Updates  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblUpdates}" />
-                <!--  check now  -->
-                <controls:SettingsCard>
-                    <controls:SettingsCard.Header>
-                        <StackPanel>
-                            <!--  TODO: fill in actual version  -->
-                            <TextBlock Text="{helpers:ResourceString Name=AboutTextBlockVersion}" />
-                            <TextBlock
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}" />
-                        </StackPanel>
-                    </controls:SettingsCard.Header>
+                <!--  Check now  -->
+                <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
                     <Button
                         MinWidth="120"
                         Command="{x:Bind ViewModel.CheckUpdateCommand}"
@@ -101,9 +81,9 @@
 
                 <!--  Auto check  -->
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=cbBackgroundUpdate}">
-
                     <ToggleSwitch x:Name="EnableUpdaterToggleSwitch" IsOn="{x:Bind ViewModel.IsUpdaterEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
+                        <!--  Update settings  -->
                         <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
                             <controls:SettingsCard.Header>
                                 <StackPanel Spacing="{StaticResource RadioButtonsRowSpacing}">
@@ -119,10 +99,11 @@
                                 </StackPanel>
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
-                        <!--  frequency  -->
+
+                        <!--  Frequency  -->
                         <!--  TODO: update values (I suggest day/week/month)  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=UpdatesTextBlockUpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
-                            <ComboBox SelectedIndex="{x:Bind ViewModel.SelectIndexDaysBetweenUpdateCheck, Mode=TwoWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedDaysBetweenUpdateCheck, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval1}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval3}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesComboBoxInterval7}" />
@@ -132,26 +113,15 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  new: UpdateChannel  -->
-                <!--  TODO: finish and check this! Convert SelectedIndex/SelectedItem to Enum!  -->
+                <!--  New: UpdateChannel  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}">
-                    <ComboBox>
-                        <!--<ComboBox SelectedValue="{x:Bind ViewModel.UpdateChannel, Mode=TwoWay}">-->
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelStable}" IsSelected="{x:Bind ViewModel.IsUpdatesChannelStable, Mode=TwoWay}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelBeta}" IsSelected="{x:Bind ViewModel.IsUpdatesChannelBeta, Mode=TwoWay}" />
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedUpdateChannel, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelStable}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=UpdatesChannelBeta}" />
                     </ComboBox>
                 </controls:SettingsCard>
 
-                <!--  old channel - remove when new is finished  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=UpdatesCheckBoxUpdateChannel}">
-                    <RadioButtons>
-                        <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelStable}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelStable, Mode=TwoWay}" />
-                        <RadioButton Content="{helpers:ResourceString Name=UpdatesChannelBeta}" IsChecked="{x:Bind ViewModel.IsUpdatesChannelBeta, Mode=TwoWay}" />
-                    </RadioButtons>
-                </controls:SettingsCard>
-
-
-                <!--  auto start  -->
+                <!--  Auto start  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SettingsPageAutostartHeader}" />
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=SettingsPageAutostartDescription}">
                     <ToggleSwitch x:Name="AutostartToggleSwitch" IsOn="{x:Bind ViewModel.IsAutostart, Mode=TwoWay}" />
@@ -184,6 +154,7 @@
                     </controls:SettingsCard.Content>
                 </controls:SettingsCard>
 
+                <!--  Config  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ConfigTextBlockHeader}" />
                 <!--
                     TODO:
@@ -200,7 +171,9 @@
                     Click="OpenConfigFolderSettingsCard_Click"
                     Header="{helpers:ResourceString Name=ConfigHyperLinkOpenConfigFolder}"
                     IsClickEnabled="True" />
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>
