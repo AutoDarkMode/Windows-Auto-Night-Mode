@@ -101,11 +101,6 @@
                         <!--  Color  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=WallpaperColor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Border
-                                    Width="32"
-                                    Height="32"
-                                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
-                                    CornerRadius="{StaticResource ControlCornerRadius}" />
                                 <!--  TODO: Replace Content to Resource  -->
                                 <Button
                                     MinWidth="120"
@@ -133,7 +128,9 @@
                         <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>
                 </ContentDialog>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>

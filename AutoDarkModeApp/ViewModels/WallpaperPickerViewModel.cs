@@ -191,6 +191,10 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 GlobalWallpaperSource = null;
             }
         }
+        else if(currentType == WallpaperType.SolidColor)
+        {
+            GlobalWallpaperSource = null;
+        }
         else
         {
             GlobalWallpaperPath =
