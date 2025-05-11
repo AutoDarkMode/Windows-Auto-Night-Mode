@@ -18,7 +18,7 @@ using AutoDarkModeComms;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 
-class MessageHandler
+internal class MessageHandler
 {
     public static IMessageClient Client { get; } = new PipeClient();
 }

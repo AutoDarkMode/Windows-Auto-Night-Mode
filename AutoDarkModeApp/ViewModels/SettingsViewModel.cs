@@ -3,14 +3,13 @@ using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
+using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
-using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -21,60 +20,72 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly Updater _updater;
     private readonly IErrorService _errorService;
     private readonly ILocalSettingsService _localSettingsService;
+    private bool _isInitializing;
+
+    public enum DaysBetweenUpdateCheck
+    {
+        OneDay,
+        ThreeDay,
+        OneWeek,
+        TwoWeeks,
+    }
+
+    public enum UpdateChannel
+    {
+        Stable,
+        Beta,
+    }
 
     [ObservableProperty]
-    private bool _is12HourClock;
+    public partial bool IsHideTray { get; set; }
 
     [ObservableProperty]
-    private bool _isHideTray;
+    public partial bool IsAlwaysFullDwmRefresh { get; set; }
 
     [ObservableProperty]
-    private bool _isAlwaysFullDwmRefresh;
+    public partial bool IsTunableDebug { get; set; }
 
     [ObservableProperty]
-    private bool _isTunableDebug;
+    public partial bool IsTunableTrace { get; set; }
 
     [ObservableProperty]
-    private bool _isTunableTrace;
+    public partial bool IsUpdaterEnabled { get; set; }
 
     [ObservableProperty]
-    private bool _isUpdaterEnabled;
+    public partial string? UpdatesDate { get; set; }
 
     [ObservableProperty]
-    private string? _updatesDate;
+    public partial string? Language { get; set; }
 
     [ObservableProperty]
-    private string? _language;
+    public partial bool IsLanguageChangedInfoBarOpen { get; set; }
 
     [ObservableProperty]
-    private int _selectIndexDaysBetweenUpdateCheck;
+    public partial DaysBetweenUpdateCheck SelectedDaysBetweenUpdateCheck { get; set; }
 
     [ObservableProperty]
-    private bool _isCheckOnStart;
+    public partial bool IsCheckOnStart { get; set; }
 
     [ObservableProperty]
-    private bool _isAutoInstall;
+    public partial bool IsAutoInstall { get; set; }
 
     [ObservableProperty]
-    private bool _isUpdateSilent;
+    public partial bool IsUpdateSilent { get; set; }
 
     [ObservableProperty]
-    private bool _isUpdatesChannelStable;
+    public partial UpdateChannel SelectedUpdateChannel { get; set; }
 
     [ObservableProperty]
-    private bool _isUpdatesChannelBeta;
+    public partial bool IsAutostart { get; set; }
 
     [ObservableProperty]
-    private bool _isAutostart;
+    public partial bool IsLoginWithTask { get; set; }
 
     [ObservableProperty]
-    private bool _isLoginWithTask;
+    public partial string? AutostartMode { get; set; }
 
     [ObservableProperty]
-    private string? _autostartMode;
-
-    [ObservableProperty]
-    private string? _autostartPath;
+    public partial string? AutostartPath { get; set; }
 
     public ICommand RestartCommand { get; }
 
@@ -96,8 +107,9 @@ public partial class SettingsViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimePage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
+
         LoadSettings();
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
@@ -105,6 +117,16 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
+            _builder.Config.Tunable.UICulture = Localization.LanguageTranscoding(Language!);
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+            }
+
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
             App.Current.Exit();
@@ -113,15 +135,14 @@ public partial class SettingsViewModel : ObservableRecipient
         CheckUpdateCommand = new RelayCommand(() =>
         {
             UpdatesDate = "msgSearchUpd".GetLocalized();
-            _updater.CheckNewVersion();
-            if (_updater.UpdateAvailable())
+            Task.Run(() =>
             {
-                UpdatesDate = "msgUpdateAvail".GetLocalized();
-            }
-            else
-            {
-                UpdatesDate = "msgNoUpd".GetLocalized();
-            }
+                _updater.CheckNewVersion();
+                _dispatcherQueue.TryEnqueue(() =>
+                {
+                    UpdatesDate = _updater.UpdateAvailable() ? "msgUpdateAvail".GetLocalized() : "msgNoUpd".GetLocalized();
+                });
+            });
         });
 
         AutostartRefreshCommand = new RelayCommand(async () =>
@@ -132,18 +153,20 @@ public partial class SettingsViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
+        _isInitializing = true;
+
         IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
         IsAlwaysFullDwmRefresh = _builder.Config.Tunable.AlwaysFullDwmRefresh;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;
-        SelectIndexDaysBetweenUpdateCheck = _builder.Config.Updater.DaysBetweenUpdateCheck switch
+        SelectedDaysBetweenUpdateCheck = _builder.Config.Updater.DaysBetweenUpdateCheck switch
         {
-            1 => 0,
-            3 => 1,
-            7 => 2,
-            14 => 3,
-            _ => 0,
+            1 => DaysBetweenUpdateCheck.OneDay,
+            3 => DaysBetweenUpdateCheck.ThreeDay,
+            7 => DaysBetweenUpdateCheck.OneWeek,
+            14 => DaysBetweenUpdateCheck.TwoWeeks,
+            _ => DaysBetweenUpdateCheck.OneDay,
         };
         IsCheckOnStart = _builder.Config.Updater.CheckOnStart;
         IsAutoInstall = _builder.Config.Updater.AutoInstall;
@@ -152,17 +175,17 @@ public partial class SettingsViewModel : ObservableRecipient
 
         if (string.IsNullOrEmpty(_builder.Config.Updater.VersionQueryUrl))
         {
-            IsUpdatesChannelStable = true;
+            SelectedUpdateChannel = UpdateChannel.Stable;
         }
         else if (_builder.Config.Updater.VersionQueryUrl.Equals(@"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml"))
         {
-            IsUpdatesChannelBeta = true;
+            SelectedUpdateChannel = UpdateChannel.Beta;
         }
         else
         {
-            IsUpdatesChannelStable = false;
-            IsUpdatesChannelBeta = false;
+            SelectedUpdateChannel = UpdateChannel.Stable;
         }
+
         if (_builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
         {
             UpdatesDate = "UpdatesTextBlockLastChecked".GetLocalized() + " " + "UpdatesTextBlockLastCheckedNever".GetLocalized();
@@ -174,15 +197,8 @@ public partial class SettingsViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            var twelveHourClock = await _localSettingsService.ReadSettingAsync<bool>("TwelveHourClock");
-            if (!twelveHourClock)
-            {
-                Is12HourClock = false;
-            }
-            else
-            {
-                Is12HourClock = true;
-            }
+            _isInitializing = true;
+
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
             if (languageText != null)
             {
@@ -193,9 +209,12 @@ public partial class SettingsViewModel : ObservableRecipient
                 Language = "English (English)";
                 await _localSettingsService.SaveSettingAsync("Language", "English (English)");
             }
-
             await GetAutostartInfo();
+
+            _isInitializing = false;
         });
+
+        _isInitializing = false;
     }
 
     private async Task GetAutostartInfo()
@@ -242,38 +261,32 @@ public partial class SettingsViewModel : ObservableRecipient
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
+        StateUpdateHandler.StopConfigWatcher();
+        _builder.Load();
+        _builder.LoadUpdaterData();
         _dispatcherQueue.TryEnqueue(() =>
         {
-            StateUpdateHandler.StopConfigWatcher();
-
-            _builder.Load();
-            _builder.LoadUpdaterData();
             LoadSettings();
-
-            StateUpdateHandler.StartConfigWatcher();
         });
-    }
-
-    partial void OnIs12HourClockChanged(bool value)
-    {
-        if (value)
-        {
-            Task.Run(() => _localSettingsService.SaveSettingAsync("TwelveHourClock", true));
-        }
-        else
-        {
-            Task.Run(() => _localSettingsService.SaveSettingAsync("TwelveHourClock", false));
-        }
+        StateUpdateHandler.StartConfigWatcher();
     }
 
     partial void OnIsHideTrayChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Tunable.ShowTrayIcon = !value;
-        _builder.Save();
+
+        SafeSaveBuilder();
+        Task.Run(()=> MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
 
-    partial void OnIsAlwaysFullDwmRefreshChanging(bool value)
+    partial void OnIsAlwaysFullDwmRefreshChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         if (value)
         {
             ContentDialog contentDialog = new()
@@ -297,126 +310,163 @@ public partial class SettingsViewModel : ObservableRecipient
                 }
             });
             _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
-            _builder.Save();
         }
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsTunableDebugChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Tunable.Debug = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsTunableTraceChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Tunable.Trace = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnLanguageChanged(string? value)
     {
-        Task.Run(async () =>
+        if (_isInitializing)
+            return;
+
+        _dispatcherQueue.TryEnqueue(async () =>
         {
-            if (value != null)
+            var oldValue = await _localSettingsService.ReadSettingAsync<string>("Language");
+            if (value != oldValue)
             {
+                IsLanguageChangedInfoBarOpen = true;
                 await _localSettingsService.SaveSettingAsync("Language", value);
                 await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
             }
             else
             {
-                await _localSettingsService.SaveSettingAsync("Language", "English (English)");
-                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
+                IsLanguageChangedInfoBarOpen = false;
             }
         });
     }
 
     partial void OnIsUpdaterEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Updater.Enabled = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
-    partial void OnSelectIndexDaysBetweenUpdateCheckChanged(int value)
+    partial void OnSelectedDaysBetweenUpdateCheckChanged(DaysBetweenUpdateCheck value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Updater.DaysBetweenUpdateCheck = value switch
         {
-            0 => 1,
-            1 => 3,
-            2 => 7,
-            3 => 14,
+            DaysBetweenUpdateCheck.OneDay => 1,
+            DaysBetweenUpdateCheck.ThreeDay => 3,
+            DaysBetweenUpdateCheck.OneWeek => 7,
+            DaysBetweenUpdateCheck.TwoWeeks => 14,
             _ => 1,
         };
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsCheckOnStartChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Updater.CheckOnStart = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsAutoInstallChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         if (!value)
         {
             IsUpdateSilent = false;
         }
         _builder.Config.Updater.AutoInstall = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsUpdateSilentChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.Updater.Silent = value;
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
-    partial void OnIsUpdatesChannelStableChanged(bool value)
+    partial void OnSelectedUpdateChannelChanged(UpdateChannel value)
     {
-        bool offerDowngrade = false;
-        if (value)
+        if (_isInitializing)
+            return;
+
+        if (value == UpdateChannel.Stable)
         {
+            bool offerDowngrade = false;
             if (_builder.Config.Updater.VersionQueryUrl != null)
             {
                 offerDowngrade = true;
             }
             _builder.Config.Updater.VersionQueryUrl = null;
-        }
-        _builder.Save();
-        if (offerDowngrade)
-        {
-            Task.Run(async () =>
+            if (offerDowngrade)
             {
-                _ = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
-                ApiResponse response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
-                if (response.StatusCode == StatusCode.Downgrade)
+                Task.Run(async () =>
                 {
-                    UpdatesDate = "SettingsPageDowngradeAvailable".GetLocalized();
-                }
-            });
+                    _ = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForUpdate));
+                    ApiResponse response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
+                    if (response.StatusCode == StatusCode.Downgrade)
+                    {
+                        UpdatesDate = "SettingsPageDowngradeAvailable".GetLocalized();
+                    }
+                });
+            }
         }
-    }
-
-    partial void OnIsUpdatesChannelBetaChanged(bool value)
-    {
-        if (value)
+        else
         {
             _builder.Config.Updater.VersionQueryUrl = @"https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version-beta.yaml";
             _builder.Config.Updater.CheckOnStart = true;
             IsTunableDebug = true;
         }
-        _builder.Save();
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsAutostartChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         ApiResponse result = new() { StatusCode = StatusCode.Err, Message = "error setting autostart entry" };
         if (value)
         {
             try
             {
                 _builder.Config.Autostart.Validate = true;
-                _builder.Save();
+
+                SafeSaveBuilder();
+
                 Task.Run(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
@@ -438,7 +488,9 @@ public partial class SettingsViewModel : ObservableRecipient
             try
             {
                 _builder.Config.Autostart.Validate = false;
-                _builder.Save();
+
+                SafeSaveBuilder();
+
                 Task.Run(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
@@ -459,11 +511,15 @@ public partial class SettingsViewModel : ObservableRecipient
 
     partial void OnIsLoginWithTaskChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         ApiResponse result = new() { StatusCode = StatusCode.Err };
         try
         {
             _builder.Config.Tunable.UseLogonTask = value;
-            _builder.Save();
+
+            SafeSaveBuilder();
 
             if (_builder.Config.AutoThemeSwitchingEnabled)
             {
@@ -473,7 +529,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         _builder.Config.Tunable.UseLogonTask = value;
-                        _builder.Save();
+                        SafeSaveBuilder();
                         throw new AddAutoStartException($"error while processing CheckBoxLogonTask", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
                     await Task.Delay(800);
@@ -486,9 +542,15 @@ public partial class SettingsViewModel : ObservableRecipient
         }
     }
 
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
+    private void SafeSaveBuilder()
     {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+        }
     }
 }

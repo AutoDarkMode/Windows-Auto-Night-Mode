@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Data;
 
 namespace AutoDarkModeApp.Helpers;
 
-public class FlagsToVisibilityConverter : IValueConverter
+public partial class FlagsToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

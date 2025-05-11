@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
 using Microsoft.UI.Xaml.Controls;
@@ -42,6 +43,7 @@ public class NavigationService : INavigationService
 
         if (_frame != null)
         {
+            _frame.Navigating += OnNavigating;
             _frame.Navigated += OnNavigated;
         }
     }
@@ -166,6 +168,11 @@ public class NavigationService : INavigationService
             _navigationView.SelectedItem = selectedItem;
             _navigationView.Header = selectedItem.Content;
         }
+    }
+
+    private void OnNavigating(object sender, NavigatingCancelEventArgs e)
+    {
+        StateUpdateHandler.ClearAllEvents();
     }
 
     public NavigationViewItem? GetSelectedItem(Type pageType)

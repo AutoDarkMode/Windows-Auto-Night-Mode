@@ -2,6 +2,7 @@
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
+using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +36,7 @@ public partial class App : Application
 
     public static void CheckAppMutex()
     {
-        if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false))
+        if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false) && !Debugger.IsAttached)
         {
             List<Process> processes = [.. Process.GetProcessesByName("AutoDarkModeApp")];
             if (processes.Count > 0)
@@ -50,8 +51,8 @@ public partial class App : Application
 
     public App()
     {
-
         CheckAppMutex();
+
         InitializeComponent();
 
         Host = Microsoft
@@ -128,21 +129,7 @@ public partial class App : Application
         if (language != null)
         {
             language = language.Replace("\"", "");
-            switch (language)
-            {
-                case "English (English)":
-                    Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-us";
-                    break;
-                case "Français (French)":
-                    Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "fr";
-                    break;
-                case "日本語 (Japanese)":
-                    Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "ja";
-                    break;
-                case "简体中文 (Simplified Chinese)":
-                    Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "zh-hans";
-                    break;
-            }
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = Localization.LanguageTranscoding(language);
         }
     }
 }
