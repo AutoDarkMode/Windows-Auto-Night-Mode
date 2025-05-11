@@ -2,7 +2,7 @@
 
 namespace AutoDarkModeApp.Helpers;
 
-public class EnumToIndexConverter : IValueConverter
+public partial class EnumToIndexConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
