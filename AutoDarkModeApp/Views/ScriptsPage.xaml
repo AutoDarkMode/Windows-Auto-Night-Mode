@@ -18,14 +18,11 @@
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=PageScriptsToggle}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ScriptSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <!--  Margin: -12 Maintain visual balance  -->
-                            <HyperlinkButton
-                                MinWidth="120"
-                                Margin="-12,0,0,0"
-                                Click="OpenScriptConfigHyperlinkButton_Click"
-                                Content="{helpers:ResourceString Name=PageScriptsButtonOpenConfig}" />
-                        </controls:SettingsCard>
+                        <controls:SettingsCard
+                            ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
+                            Click="OpenScriptConfigSettingsCard_Click"
+                            Header="{helpers:ResourceString Name=ConfigHyperLinkOpenConfig}"
+                            IsClickEnabled="True" />
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 

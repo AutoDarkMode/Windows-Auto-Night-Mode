@@ -14,7 +14,7 @@ public sealed partial class ScriptsPage : Page
         InitializeComponent();
     }
 
-    private void OpenScriptConfigHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OpenScriptConfigSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "scripts.yaml");
         new Process
