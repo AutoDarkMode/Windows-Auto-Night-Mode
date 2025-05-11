@@ -260,7 +260,7 @@ public partial class TimeViewModel : ObservableRecipient
                                 if (i.IsUserClearable)
                                     canResume = true;
 
-                                i.SetCulture(CultureInfo.CurrentCulture);
+                                i.SetCulture(new CultureInfo(Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
                                 // Retrieve the value of the specified key
                                 i.TranslatedReason = ("PostponeReason" + i.Reason).GetLocalized() ?? i.Reason;
