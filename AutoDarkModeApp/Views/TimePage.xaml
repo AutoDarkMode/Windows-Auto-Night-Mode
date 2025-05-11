@@ -59,7 +59,7 @@
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                     </Style>
                                 </Grid.Resources>
-                                <!-- Light -->
+                                <!--  Light  -->
                                 <FontIcon
                                     Grid.Column="0"
                                     FontSize="16"
@@ -72,7 +72,7 @@
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
                                     IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
-                                <!-- Dark -->
+                                <!--  Dark  -->
                                 <FontIcon
                                     Grid.Row="1"
                                     Grid.Column="0"
@@ -173,7 +173,7 @@
                 <!--  Offset time  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=lblOffset}" />
-                    <controls:SettingsCard Description="Positive values are later, negative values are earlier" Header="Delay the switching with a number of minutes">
+                    <controls:SettingsCard Description="Positive values are later, negative values are earlier" Header="Delay switching by a number minutes">
                         <StackPanel Orientation="Horizontal" Spacing="24">
                             <NumberBox
                                 MinWidth="120"
