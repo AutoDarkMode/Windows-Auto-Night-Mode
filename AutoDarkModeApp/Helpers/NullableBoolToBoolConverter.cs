@@ -2,7 +2,7 @@
 
 namespace AutoDarkModeApp.Helpers;
 
-public class NullableBoolToBoolConverter : IValueConverter
+public partial class NullableBoolToBoolConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

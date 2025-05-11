@@ -13,19 +13,26 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Donation Description  -->
                 <TextBlock Text="{helpers:ResourceString Name=donationDescription}" TextWrapping="Wrap" />
 
+                <!--  How to donate  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
-
-                <controls:SettingsCard Description="{helpers:ResourceString Name=DonationPayPalDescription}" Header="Paypal">
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=DonationPayPalDescription}"
+                    Header="Paypal"
+                    HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon,
+                                             Glyph=&#xE903;}">
                     <Button
                         MinWidth="120"
+                        Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=NavbarDonation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="GitHub Sponsors">
+                <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon, Glyph=&#xE902;}">
                     <Button
                         MinWidth="120"
+                        Click="GithubSponsorsButton_Click"
                         Content="{helpers:ResourceString Name=NavbarDonation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>

@@ -2,7 +2,7 @@
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Navigation;
+
 using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -12,6 +12,8 @@ public partial class ThemePickerViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+
+    private bool _isInitializing;
 
     [ObservableProperty]
     public partial bool ThemeSwitchEnabled { get; set; }
@@ -59,6 +61,8 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
+        _isInitializing = true;
+
         ThemeSwitchEnabled = _builder.Config.WindowsThemeMode.Enabled;
         ThemeKeepActiveEnabled = _builder.Config.WindowsThemeMode.MonitorActiveTheme;
 
@@ -68,11 +72,16 @@ public partial class ThemePickerViewModel : ObservableRecipient
         IgnoreCursorEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreCursor);
         IgnoreDesktopIconsEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreDesktopIcons);
         IgnoreSoundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreSound);
+
+        _isInitializing = false;
     }
 
     private void WriteSettings()
     {
-        List<ThemeApplyFlags> flags = new();
+        if (_isInitializing)
+            return;
+
+        List<ThemeApplyFlags> flags = [];
         if (IgnoreBackgroundEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreBackground);
         if (IgnoreCursorEnabled == true)
@@ -107,6 +116,9 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     partial void OnThemeSwitchEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.WindowsThemeMode.Enabled = value;
         try
         {
@@ -120,6 +132,9 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     partial void OnThemeKeepActiveEnabledChanged(bool value)
     {
+        if (_isInitializing)
+            return;
+
         _builder.Config.WindowsThemeMode.MonitorActiveTheme = value;
         try
         {
@@ -133,6 +148,9 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     partial void OnSelectedLightThemeChanged(object? value)
     {
+        if (_isInitializing)
+            return;
+
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
         IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
         try
@@ -167,6 +185,9 @@ public partial class ThemePickerViewModel : ObservableRecipient
 
     partial void OnSelectedDarkThemeChanged(object? value)
     {
+        if (_isInitializing)
+            return;
+
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
         IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
         try
@@ -219,9 +240,4 @@ public partial class ThemePickerViewModel : ObservableRecipient
         WriteSettings();
     }
 
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
-    }
 }

@@ -13,7 +13,7 @@ public partial class CursorsViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
 
     [ObservableProperty]
-    public partial bool IsCursorsEnabled { get; set; }
+    public partial bool CursorsEnabled { get; set; }
 
     [ObservableProperty]
     public partial object? SelectLightCursor { get; set; }
@@ -61,7 +61,7 @@ public partial class CursorsViewModel : ObservableRecipient
         });
     }
 
-    partial void OnIsCursorsEnabledChanged(bool value)
+    partial void OnCursorsEnabledChanged(bool value)
     {
         _builder.Config.CursorSwitch.Enabled = value;
         try

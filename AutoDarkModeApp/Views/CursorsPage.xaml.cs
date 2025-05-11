@@ -2,6 +2,7 @@
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -60,6 +61,7 @@ public sealed partial class CursorsPage : Page
                     {
                         Source = bitmapImage,
                         MaxHeight = 32,
+                        Margin = new Thickness(2, 0, 0, 0),
                         Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform,
                     };
 
@@ -91,6 +93,7 @@ public sealed partial class CursorsPage : Page
                     {
                         Source = bitmapImage,
                         MaxHeight = 32,
+                        Margin = new Thickness(2, 0, 0, 0),
                         Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform,
                     };
 

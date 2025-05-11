@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <!--  These are converters for different controls  -->
-        <helpers:NullableBoolToBoolConverter x:Key="NullableBoolToBoolConverter" />
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
     </Page.Resources>
 
     <ScrollViewer>
@@ -18,7 +18,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <controls:SettingsCard Header="{helpers:ResourceString Name=lblApps}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Mode=TwoWay}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />
@@ -27,7 +27,7 @@
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=lblSystem}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Mode=TwoWay}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAdjTheme}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwWhite}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=cmbAlwDark}" />

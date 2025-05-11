@@ -34,9 +34,7 @@ public sealed partial class MainWindow : Window
         // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
-#if DEBUG
-        TitleBar.Subtitle = "Debug";
-#endif
+        TitleBar.Subtitle = Debugger.IsAttached ? "Debug" : "";
 
         Closed += MainWindow_Closed;
     }
