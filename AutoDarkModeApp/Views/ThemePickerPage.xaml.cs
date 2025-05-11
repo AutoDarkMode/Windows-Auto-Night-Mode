@@ -1,12 +1,9 @@
 ﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Text;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -52,7 +49,7 @@ public sealed partial class ThemePickerPage : Page
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
     }
 
-    private void OpenThemeFolderHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OpenThemeFolderSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var themeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
         try
@@ -65,6 +62,4 @@ public sealed partial class ThemePickerPage : Page
             Process.Start(new ProcessStartInfo(themeFolderPath) { UseShellExecute = true, Verb = "open" });
         }
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }

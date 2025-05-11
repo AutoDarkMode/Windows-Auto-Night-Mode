@@ -63,9 +63,11 @@
                         MinWidth="120"
                         SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard ContentAlignment="Left">
-                    <HyperlinkButton Click="OpenThemeFolderHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenPath}" />
-                </controls:SettingsCard>
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
+                    Click="OpenThemeFolderSettingsCard_Click"
+                    Header="{helpers:ResourceString Name=OpenPath}"
+                    IsClickEnabled="True" />
 
                 <!--  Ignore  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeHeaderIgnoreFlags}" />
