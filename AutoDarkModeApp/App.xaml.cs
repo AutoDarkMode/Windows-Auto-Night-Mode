@@ -55,51 +55,52 @@ public partial class App : Application
 
         InitializeComponent();
 
-        Host = Microsoft
-            .Extensions.Hosting.Host.CreateDefaultBuilder()
-            .UseContentRoot(AppContext.BaseDirectory)
-            .ConfigureServices(
-                (context, services) =>
-                {
-                    // Services
-                    services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-                    services.AddSingleton<IFileService, FileService>();
+        Host = Microsoft.Extensions.Hosting.Host.
+        CreateDefaultBuilder().
+        UseContentRoot(AppContext.BaseDirectory).
+        ConfigureServices((context, services) =>
+        {
+            // Services
+            services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+            services.AddSingleton<IFileService, FileService>();
 
-                    services.AddSingleton<IActivationService, ActivationService>();
-                    services.AddSingleton<IPageService, PageService>();
-                    services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IActivationService, ActivationService>();
+            services.AddSingleton<IPageService, PageService>();
+            services.AddSingleton<INavigationService, NavigationService>();
 
-                    services.AddSingleton<IErrorService, ErrorService>();
+            services.AddSingleton<IErrorService, ErrorService>();
 
-                    // Views and ViewModels
-                    services.AddTransient<CursorsViewModel>();
-                    services.AddTransient<CursorsPage>();
-                    services.AddTransient<ColorizationViewModel>();
-                    services.AddTransient<ColorizationPage>();
-                    services.AddTransient<SettingsViewModel>();
-                    services.AddTransient<SettingsPage>();
-                    services.AddTransient<AboutViewModel>();
-                    services.AddTransient<AboutPage>();
-                    services.AddTransient<DonationViewModel>();
-                    services.AddTransient<DonationPage>();
-                    services.AddTransient<ScriptsViewModel>();
-                    services.AddTransient<ScriptsPage>();
-                    services.AddTransient<PersonalizationViewModel>();
-                    services.AddTransient<PersonalizationPage>();
-                    services.AddTransient<SystemAreasViewModel>();
-                    services.AddTransient<SystemAreasPage>();
-                    services.AddTransient<SwitchModesViewModel>();
-                    services.AddTransient<SwitchModesPage>();
-                    services.AddTransient<WallpaperPickerViewModel>();
-                    services.AddTransient<WallpaperPickerPage>();
-                    services.AddTransient<TimeViewModel>();
-                    services.AddTransient<TimePage>();
+            // Views and ViewModels
+            services.AddTransient<ThemePickerViewModel>();
+            services.AddTransient<ThemePickerPage>();
+            services.AddTransient<CursorsViewModel>();
+            services.AddTransient<CursorsPage>();
+            services.AddTransient<ColorizationViewModel>();
+            services.AddTransient<ColorizationPage>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<SettingsPage>();
+            services.AddTransient<AboutViewModel>();
+            services.AddTransient<AboutPage>();
+            services.AddTransient<DonationViewModel>();
+            services.AddTransient<DonationPage>();
+            services.AddTransient<ScriptsViewModel>();
+            services.AddTransient<ScriptsPage>();
+            services.AddTransient<PersonalizationViewModel>();
+            services.AddTransient<PersonalizationPage>();
+            services.AddTransient<AppsViewModel>();
+            services.AddTransient<AppsPage>();
+            services.AddTransient<SwitchModesViewModel>();
+            services.AddTransient<SwitchModesPage>();
+            services.AddTransient<WallpaperPickerViewModel>();
+            services.AddTransient<WallpaperPickerPage>();
+            services.AddTransient<TimeViewModel>();
+            services.AddTransient<TimePage>();
+            services.AddTransient<MainViewModel>();
 
-                    // Configuration
-                    services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-                }
-            )
-            .Build();
+            // Configuration
+            services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+        }).
+        Build();
 
         UnhandledException += App_UnhandledException;
     }

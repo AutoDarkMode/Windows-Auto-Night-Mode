@@ -1,6 +1,7 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -40,4 +41,15 @@ public sealed partial class PersonalizationPage : Page
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
         }
     }
+
+    private void ThemePickerSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        var navigation = App.GetService<INavigationService>();
+        if (navigation?.Frame != null)
+        {
+            navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
+        }
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }
