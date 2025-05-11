@@ -22,7 +22,7 @@ using Microsoft.UI.Xaml;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 
-public static class AutostartHandler
+internal static class AutostartHandler
 {
     private static readonly IErrorService _errorService = App.GetService<IErrorService>();
 

@@ -1,13 +1,15 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
+using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeLib;
 using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 
-public static class LocationHandler
+internal static class LocationHandler
 {
+    private static readonly IErrorService _errorService = App.GetService<IErrorService>();
+
     public static async Task<string?> GetCityName()
     {
         var configBuilder = AdmConfigBuilder.Instance();
@@ -34,18 +36,11 @@ public static class LocationHandler
         }
         catch (SEHException ex)
         {
-            Debug.WriteLine(ex.Message);
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "LocationHandler.GetCityName");
             return string.Format("(~{0,00}, ~{1,00})", geopoint.Position.Latitude, geopoint.Position.Longitude);
         }
     }
 
-    /// <summary>
-    /// Calculate sundates based on a user configurable offset found in AutoDarkModeConfig.
-    /// Call this method to generate the final sunrise and sunset times if location based switching is enabled
-    /// </summary>
-    /// <param name="config">AutoDarkMoeConfig object</param>
-    /// <param name="sunrise_out"></param>
-    /// <param name="sunset_out"></param>
     public static void GetSunTimesWithOffset(AdmConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
     {
         //Add offset to sunrise and sunset hours using Settings

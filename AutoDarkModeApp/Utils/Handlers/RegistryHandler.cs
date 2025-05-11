@@ -1,59 +1,53 @@
 ﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// Copyright (C) 2025 Auto Dark Mode
+// This program is free software under GNU GPL v3.0
 #endregion
+
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AutoDarkModeApp.Handlers
+namespace AutoDarkModeApp.Utils.Handlers;
+
+internal static class RegistryHandler
 {
-    static class RegistryHandler
+    private const string WindowsNtCurrentVersionPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+    private const string DwmPath = @"Software\Microsoft\Windows\DWM";
+
+    // Cache registry values to avoid repeated access
+    private static readonly Lazy<string> _osVersion = new(() => GetRegistryValue(WindowsNtCurrentVersionPath, "ReleaseId", "") ?? "");
+
+    private static readonly Lazy<string> _ubr = new(() => GetRegistryValue(WindowsNtCurrentVersionPath, "UBR", "0") ?? "0");
+
+    // Get windows version number, like 1607 or 1903
+    public static string GetOSversion() => _osVersion.Value;
+
+    public static string GetUbr() => _ubr.Value;
+
+    public static bool IsDWMPrevalence()
     {
-        //get windows version number, like 1607 or 1903
-        public static string GetOSversion()
+        try
         {
-            var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
-            return osVersion;
-        }
-
-        public static string GetUbr()
-        {
-            var ubr = Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion", "UBR", null);
-            return ubr != null ? ubr.ToString() : "0";
-        }
-
-        public static bool IsDWMPrevalence()
-        {
-            try
-            {
-                using RegistryKey key = GetDWMKey();
-                var enabled = key.GetValue("ColorPrevalence").Equals(1);
-                return enabled;
-            }
-            catch
-            {
+            using var key = Registry.CurrentUser.OpenSubKey(DwmPath);
+            if (key == null)
                 return true;
-            }           
-        }
 
-        private static RegistryKey GetDWMKey()
+            object? value = key.GetValue("ColorPrevalence");
+            return value is int i && i == 1;
+        }
+        catch
         {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
-            return registryKey;
+            return true;
+        }
+    }
+
+    private static string GetRegistryValue(string path, string name, string defaultValue)
+    {
+        try
+        {
+            return Registry.GetValue(path, name, defaultValue)?.ToString() ?? defaultValue;
+        }
+        catch
+        {
+            return defaultValue;
         }
     }
 }

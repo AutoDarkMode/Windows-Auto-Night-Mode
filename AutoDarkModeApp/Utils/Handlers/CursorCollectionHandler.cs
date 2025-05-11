@@ -1,88 +1,120 @@
 ﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// TODO: Should we reduced copyright header? Made it more concise while keeping all important info
+// Copyright (C) 2025 Auto Dark Mode
+// This program is free software under GNU GPL v3.0
 #endregion
+using AutoDarkModeApp.Contracts.Services;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 
-public static class CursorCollectionHandler
+internal static class CursorCollectionHandler
 {
+    private const string UserCursorsSchemeKeyPath = @"Control Panel\Cursors\Schemes";
+    private const string SystemCursorsSchemeKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes";
+    private const string CurrentCursorKeyPath = @"Control Panel\Cursors";
+
+    private static readonly IErrorService _errorService = App.GetService<IErrorService>();
+
     public static List<string> GetCursors()
     {
-        using var cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
-        using var cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
-        List<string> cursors = new();
+        var cursors = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-        var userCursors = cursorsKeyUser?.GetValueNames();
-        if (userCursors != null)
+        try
         {
-            cursors.AddRange(userCursors.ToArray().ToList());
+            using var cursorsKeyUser = Registry.CurrentUser.OpenSubKey(UserCursorsSchemeKeyPath);
+            if (cursorsKeyUser != null)
+            {
+                var userCursors = cursorsKeyUser.GetValueNames();
+                if (userCursors.Length > 0)
+                {
+                    foreach (var cursor in userCursors)
+                    {
+                        cursors.Add(cursor);
+                    }
+                }
+            }
         }
-        var systemCursors = cursorsKeySystem?.GetValueNames();
-        if (systemCursors != null) cursors.AddRange(systemCursors);
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex,App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.GetCursors");
+        }
 
-        return cursors;
+        try
+        {
+            using var cursorsKeySystem = Registry.LocalMachine.OpenSubKey(SystemCursorsSchemeKeyPath);
+            if (cursorsKeySystem != null)
+            {
+                var systemCursors = cursorsKeySystem.GetValueNames();
+                if (systemCursors.Length > 0)
+                {
+                    foreach (var cursor in systemCursors)
+                    {
+                        cursors.Add(cursor);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.GetCursors");
+        }
+
+        return cursors.ToList();
     }
 
-    public static string GetCurrentCursorScheme()
+    public static string? GetCurrentCursorScheme()
     {
-        using var cursorsKey = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors");
-        return (string)cursorsKey.GetValue("");
+        try
+        {
+            using var cursorsKey = Registry.CurrentUser.OpenSubKey(CurrentCursorKeyPath);
+            return cursorsKey?.GetValue("") as string;
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.GetCurrentCursorScheme");
+            return null;
+        }
     }
 
     public static string[] GetCursorScheme(string name)
     {
-
-        using var cursorsKeyUser = Registry.CurrentUser.OpenSubKey(@"Control Panel\Cursors\Schemes");
-        using var cursorsKeySystem = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Cursors\Schemes");
-
-        List<string> cursorsUser = new();
-        List<string> cursorsSystem = new();
-
-        var cursorsUserRaw = cursorsKeyUser?.GetValueNames();
-        if (cursorsUserRaw != null)
+        if (string.IsNullOrEmpty(name))
         {
-            cursorsUser = cursorsUserRaw.ToArray().ToList();
+            return [];
         }
 
-        var cursorsSystemRaw = cursorsKeySystem?.GetValueNames();
-        if (cursorsSystemRaw != null)
-        {
-            cursorsSystem = cursorsSystemRaw.ToArray().ToList();
-        }
+        // Try user registry first
+        string[] cursorsList = TryGetCursorSchemeFromRegistry(Registry.CurrentUser, UserCursorsSchemeKeyPath, name);
 
-        var userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
-        var systemTheme = cursorsSystem.Where(x => x == name).FirstOrDefault();
-        string[] cursorsList = { };
-
-        if (userTheme != null)
+        // If not found in user registry, try system registry
+        if (cursorsList.Length == 0)
         {
-            cursorsList = ((string)cursorsKeyUser.GetValue(userTheme)).Split(",");
-        }
-        else if (systemTheme != null)
-        {
-            cursorsList = ((string)cursorsKeySystem.GetValue(systemTheme)).Split(",");
+            cursorsList = TryGetCursorSchemeFromRegistry(Registry.LocalMachine, SystemCursorsSchemeKeyPath, name);
         }
 
         return cursorsList;
+    }
+
+    private static string[] TryGetCursorSchemeFromRegistry(RegistryKey rootKey, string keyPath, string schemeName)
+    {
+        try
+        {
+            using var cursorsKey = rootKey.OpenSubKey(keyPath);
+            if (cursorsKey != null)
+            {
+                string? schemeValue = cursorsKey.GetValue(schemeName) as string;
+                if (!string.IsNullOrEmpty(schemeValue))
+                {
+                    return schemeValue.Split(',');
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.TryGetCursorSchemeFromRegistry");
+        }
+
+        return [];
     }
 }

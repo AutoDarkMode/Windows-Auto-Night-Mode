@@ -1,6 +1,6 @@
 ﻿namespace AutoDarkModeApp.Utils;
 
-public class Localization
+internal class Localization
 {
     public static string LanguageTranscoding(string language)
     {
