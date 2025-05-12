@@ -8,7 +8,6 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
@@ -25,7 +24,7 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
 
-        DispatcherQueue.TryEnqueue(() => LoadMonitors());
+        DispatcherQueue.TryEnqueue(LoadMonitors);
     }
 
     private void LoadMonitors()
@@ -57,15 +56,6 @@ public sealed partial class WallpaperPickerPage : Page
 
         MonitorsComboBox.ItemsSource = monitors;
         ViewModel.SelectMonitor = monitors.FirstOrDefault();
-    }
-
-    private void GlobalWallpaperPathHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        if (ViewModel.GlobalWallpaperPath != null)
-        {
-            WallpaperPreviewImage.Source = new BitmapImage(new Uri(ViewModel.GlobalWallpaperPath)); ;
-        }
-        WallpaperPreviewTeachingTip.IsOpen = true;
     }
 
     private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

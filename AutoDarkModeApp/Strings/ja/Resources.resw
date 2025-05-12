@@ -233,9 +233,6 @@
   <data name="userFeedback" xml:space="preserve">
     <value>こんにちは</value>
   </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>ここで設定を変更すると、テーマ自動切り替えの動作を変更します。</value>
-  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>翻訳者: maboroshin, zhixuan2333</value>
   </data>
@@ -366,9 +363,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>補正</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>適用</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Windows テーマの使用中は、これらのオプションは無効です。
@@ -741,9 +735,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>毎日</value>
-  </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>変更を保存するには「適用」をクリックします。</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>使用するタスクバーのアクセントカラー</value>

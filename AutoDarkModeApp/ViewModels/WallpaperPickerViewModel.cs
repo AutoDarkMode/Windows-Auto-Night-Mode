@@ -1,13 +1,16 @@
 ﻿using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -23,7 +26,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         Picture,
         PictureMM,
         SolidColor,
-        Spotlight
+        Spotlight,
     }
 
     public enum WallpaperDisplayFlags
@@ -36,17 +39,18 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         ShowSpotlight = 16,
 
         // Predefined combinations
-        PictureMode = ShowImageSettings,
+        PictureMode = ShowImageSettings | ShowFillingWaySettings,
         PictureMMMode = ShowImageSettings | ShowMonitorSettings | ShowFillingWaySettings,
         SolidColorMode = ShowColorSettings,
-        SpotlightMode = ShowSpotlight
+        SpotlightMode = ShowSpotlight,
     }
 
     public enum WallpaperFillingMode
     {
-        Fill,
+        Center,
+        Stretch,
         Fit,
-        Stretch
+        Fill,
     }
 
     [ObservableProperty]
@@ -60,6 +64,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial WallpaperDisplayFlags CurrentDisplayFlags { get; set; }
+
+    [ObservableProperty]
+    public partial ImageSource? GlobalWallpaperSource { get; set; }
 
     [ObservableProperty]
     public partial string? GlobalWallpaperPath { get; set; }
@@ -102,7 +109,31 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             {
                 ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
                 SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary,
-                FileTypeFilter = { ".jpg", ".jpeg", ".bmp", ".dib", ".png", ".jff", ".jpe", ".gif", ".tif", ".tiff", ".wdp", ".heic", ".heif", ".heics", ".heifs", ".hif", ".avci", ".avcs", ".avif", ".avifs", ".jxr", ".jxl" }
+                FileTypeFilter =
+                {
+                    ".jpg",
+                    ".jpeg",
+                    ".bmp",
+                    ".dib",
+                    ".png",
+                    ".jff",
+                    ".jpe",
+                    ".gif",
+                    ".tif",
+                    ".tiff",
+                    ".wdp",
+                    ".heic",
+                    ".heif",
+                    ".heics",
+                    ".heifs",
+                    ".hif",
+                    ".avci",
+                    ".avcs",
+                    ".avif",
+                    ".avifs",
+                    ".jxr",
+                    ".jxl",
+                },
             };
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
             WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
@@ -123,14 +154,13 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperPosition.Fill => WallpaperFillingMode.Fill,
             WallpaperPosition.Fit => WallpaperFillingMode.Fit,
             WallpaperPosition.Stretch => WallpaperFillingMode.Stretch,
-            _ => WallpaperFillingMode.Fill
+            WallpaperPosition.Center => WallpaperFillingMode.Center,
+            _ => WallpaperFillingMode.Fill,
         };
 
         CurrentDisplayFlags = WallpaperDisplayFlags.None;
 
-        var currentType = SelectWallpaperThemeMode == ApplicationTheme.Light
-            ? _builder.Config.WallpaperSwitch.Component.TypeLight
-            : _builder.Config.WallpaperSwitch.Component.TypeDark;
+        var currentType = SelectWallpaperThemeMode == ApplicationTheme.Light ? _builder.Config.WallpaperSwitch.Component.TypeLight : _builder.Config.WallpaperSwitch.Component.TypeDark;
 
         CurrentDisplayMode = currentType switch
         {
@@ -138,7 +168,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperType.Individual => WallpaperDisplayMode.PictureMM,
             WallpaperType.SolidColor => WallpaperDisplayMode.SolidColor,
             WallpaperType.Spotlight => WallpaperDisplayMode.Spotlight,
-            _ => WallpaperDisplayMode.Picture
+            _ => WallpaperDisplayMode.Picture,
         };
 
         CurrentDisplayFlags = currentType switch
@@ -147,45 +177,77 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperType.Individual => WallpaperDisplayFlags.PictureMMMode,
             WallpaperType.SolidColor => WallpaperDisplayFlags.SolidColorMode,
             WallpaperType.Spotlight => WallpaperDisplayFlags.SpotlightMode,
-            _ => WallpaperDisplayFlags.None
+            _ => WallpaperDisplayFlags.None,
         };
 
         if (currentType == WallpaperType.Global)
         {
-            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light
-                ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
-                : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
+            GlobalWallpaperPath =
+                SelectWallpaperThemeMode == ApplicationTheme.Light ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
+            if (GlobalWallpaperPath != null)
+            {
+                GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+            }
+            else
+            {
+                GlobalWallpaperSource = null;
+            }
         }
         else if (currentType == WallpaperType.Individual && SelectMonitor != null)
         {
             MonitorSettings monitorSettings = (MonitorSettings)SelectMonitor;
-            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light
-                ? monitorSettings.LightThemeWallpaper
-                : monitorSettings.DarkThemeWallpaper;
+            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
+            if (GlobalWallpaperPath != null)
+            {
+                GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+            }
+            else
+            {
+                GlobalWallpaperSource = null;
+            }
         }
-        else
+        else if (currentType == WallpaperType.SolidColor)
         {
-            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light
-                ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
-                : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
+            GlobalWallpaperSource = null;
+        }
+        else if (currentType == WallpaperType.Spotlight)
+        {
+            //TODO: Need a better method
+            //GlobalWallpaperSource = new BitmapImage(new Uri(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Microsoft\Windows\Themes\TranscodedWallpaper"));
+            GlobalWallpaperSource = null;
         }
 
-        ColorPreviewBorderBackground = SelectWallpaperThemeMode == ApplicationTheme.Light
-            ? new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor())
-            : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
+        ColorPreviewBorderBackground =
+            SelectWallpaperThemeMode == ApplicationTheme.Light
+                ? new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor())
+                : new SolidColorBrush(_builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor());
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
+        StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {
-            StateUpdateHandler.StopConfigWatcher();
-
             _builder.Load();
             LoadSettings();
-
-            StateUpdateHandler.StartConfigWatcher();
         });
+        StateUpdateHandler.StartConfigWatcher();
+    }
+
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "PageApps");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AppsPage");
+        }
     }
 
     partial void OnIsWallpaperSwitchEnabledChanged(bool value)
@@ -216,7 +278,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 WallpaperDisplayMode.PictureMM => WallpaperType.Individual,
                 WallpaperDisplayMode.SolidColor => WallpaperType.SolidColor,
                 WallpaperDisplayMode.Spotlight => WallpaperType.Spotlight,
-                _ => WallpaperType.Unknown
+                _ => WallpaperType.Unknown,
             };
         }
         else
@@ -227,7 +289,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 WallpaperDisplayMode.PictureMM => WallpaperType.Individual,
                 WallpaperDisplayMode.SolidColor => WallpaperType.SolidColor,
                 WallpaperDisplayMode.Spotlight => WallpaperType.Spotlight,
-                _ => WallpaperType.Unknown
+                _ => WallpaperType.Unknown,
             };
         }
         try
@@ -238,6 +300,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnGlobalWallpaperPathChanged(string? value)
@@ -305,7 +368,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperFillingMode.Fill => WallpaperPosition.Fill,
             WallpaperFillingMode.Fit => WallpaperPosition.Fit,
             WallpaperFillingMode.Stretch => WallpaperPosition.Stretch,
-            _ => WallpaperPosition.Fill
+            WallpaperFillingMode.Center => WallpaperPosition.Center,
+            _ => WallpaperPosition.Fill,
         };
         try
         {

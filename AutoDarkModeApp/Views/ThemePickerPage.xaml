@@ -63,6 +63,7 @@
                         MinWidth="120"
                         SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
+
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
                     Click="OpenThemeFolderSettingsCard_Click"

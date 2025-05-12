@@ -23,7 +23,10 @@
                 </controls:SettingsCard>
 
                 <!--  Light  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblLightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=lblLightTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -49,7 +52,10 @@
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=lblDarkTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -74,6 +80,7 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!--  TODO: follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
