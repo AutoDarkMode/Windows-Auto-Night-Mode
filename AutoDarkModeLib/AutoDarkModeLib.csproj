@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
   </ItemGroup>
 
   <ItemGroup>

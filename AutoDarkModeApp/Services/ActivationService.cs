@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
+using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml.Controls;
@@ -12,7 +12,7 @@ using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.Services;
 
-public class ActivationService(ILocalSettingsService localSettingsService,INavigationService navigationService) : IActivationService
+public class ActivationService(ILocalSettingsService localSettingsService, INavigationService navigationService) : IActivationService
 {
     public async Task ActivateAsync(object activationArgs)
     {

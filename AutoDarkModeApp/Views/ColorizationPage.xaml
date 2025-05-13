@@ -5,6 +5,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -17,19 +18,19 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Colorization  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationTextBlockHeader}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationEnableSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=ColorizationTextBlockHeader}" />
+                <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationEnableSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--  Light  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblLightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                <controls:SettingsExpander Header="{lib:ResourceString Name=lblLightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                        <ComboBoxItem Content="{lib:ResourceString Name=Automatic}" />
+                        <ComboBoxItem Content="{lib:ResourceString Name=Manual}" />
                     </ComboBox>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsLightThemeSettingsCardEnabled, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsLightThemeSettingsCardEnabled, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <Border
                                     Width="30"
@@ -49,13 +50,13 @@
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander Header="{lib:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                        <ComboBoxItem Content="{lib:ResourceString Name=Automatic}" />
+                        <ComboBoxItem Content="{lib:ResourceString Name=Manual}" />
                     </ComboBox>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsDarkThemeSettingsCardEnabled, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsDarkThemeSettingsCardEnabled, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <Border
                                     Width="30"
@@ -77,9 +78,9 @@
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
-                    CloseButtonText="{helpers:ResourceString Name=cancel}"
+                    CloseButtonText="{lib:ResourceString Name=cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{helpers:ResourceString Name=lblSet}">
+                    PrimaryButtonText="{lib:ResourceString Name=lblSet}">
                     <StackPanel>
                         <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>

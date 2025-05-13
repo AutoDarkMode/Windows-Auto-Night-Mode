@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -279,7 +279,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _builder.Config.Tunable.ShowTrayIcon = !value;
 
         SafeSaveBuilder();
-        Task.Run(()=> MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
+        Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
 
     partial void OnIsAlwaysFullDwmRefreshChanged(bool value)
