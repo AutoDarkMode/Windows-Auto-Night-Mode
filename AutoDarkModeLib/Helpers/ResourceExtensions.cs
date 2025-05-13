@@ -1,4 +1,6 @@
-﻿using Microsoft.Windows.ApplicationModel.Resources;
+﻿using System;
+using System.Runtime.InteropServices;
+using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace AutoDarkModeLib.Helpers;
 
@@ -8,18 +10,27 @@ public static class ResourceExtensions
     private static ResourceContext _resourceContext = _resourceManager.CreateResourceContext();
 
     private static readonly ResourceMap _resourceMap =
-        _resourceManager.MainResourceMap.TryGetSubtree("AutoDarkModeLib/Resources") ??
-        _resourceManager.MainResourceMap.TryGetSubtree("Resources");
+        _resourceManager.MainResourceMap.TryGetSubtree("AutoDarkModeLib/Resources")
+        ?? _resourceManager.MainResourceMap.TryGetSubtree("Resources")
+        ?? throw new InvalidOperationException("Can't find resources");
 
     public static string GetLocalized(this string resourceKey)
     {
+        if (_resourceMap == null)
+            return $"#MISSING_MAP:{resourceKey}";
+
         try
         {
-            return _resourceMap?.GetValue(resourceKey, _resourceContext)?.ValueAsString ?? $"#{resourceKey}";
+            var resourceCandidate = _resourceMap.GetValue(resourceKey, _resourceContext);
+            return resourceCandidate?.ValueAsString ?? $"#MISSING:{resourceKey}";
         }
-        catch
+        catch (COMException ex)
         {
-            return $"#{resourceKey}";
+            return $"#NOT_FOUND:{resourceKey}({ex.Message})";
+        }
+        catch (Exception ex)
+        {
+            return $"#ERROR:{resourceKey}({ex.Message})";
         }
     }
 

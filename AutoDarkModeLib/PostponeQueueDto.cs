@@ -18,9 +18,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using AutoDarkModeLib.Helpers;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-using Resources = AutoDarkModeLib.Properties.Resources;
 
 namespace AutoDarkModeLib;
 
@@ -82,23 +82,22 @@ public class PostponeItemDto
             TranslatedReason = string.Join(" ", split);
         }
 
-        string postponeReasonPostponesUntil = Resources.ResourceManager.GetString("PostponeReasonPostponesUntil", Culture);
-        string postponeReasonPostponesUntilNextSwitch = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilNextSwitch", Culture);
-        string postponeReasonPostponesUntilCondition = Resources.ResourceManager.GetString("PostponeReasonPostponesUntilCondition", Culture);
+        string postponeReasonPostponesUntil = "PostponeReasonPostponesUntil".GetLocalized();
+        string postponeReasonPostponesUntilCondition = "PostponeReasonPostponesUntilCondition".GetLocalized();
 
         if (Reason == Helper.PostponeItemPauseAutoSwitch && !Expires)
         {
-            string pausedUntilNextSunrise = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunset", Culture);
-            string pausedUntilNextSunset = Resources.ResourceManager.GetString("PostponeReasonUntilNextSunrise", Culture);
+            string pausedUntilNextSunrise = "PostponeReasonUntilNextSunset".GetLocalized();
+            string pausedUntilNextSunset = "PostponeReasonUntilNextSunrise".GetLocalized();
 
             if (SkipType == SkipType.UntilSunset)
             {
 
-                postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunrise}";
+                postponeReasonPostponesUntil = $"{pausedUntilNextSunrise}";
             }
             else if (SkipType == SkipType.UntilSunrise)
             {
-                postponeReasonPostponesUntilNextSwitch = $"{pausedUntilNextSunset}";
+                postponeReasonPostponesUntil = $"{pausedUntilNextSunset}";
             }
         }
 
@@ -107,7 +106,7 @@ public class PostponeItemDto
             if (Expiry.HasValue && Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry.Value.ToString("dddd HH:mm", Culture)}";
             else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
         }
-        else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntilNextSwitch}";
+        else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntil}";
         return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
     }
 }
