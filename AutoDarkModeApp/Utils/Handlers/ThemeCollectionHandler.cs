@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 // TODO: Should we reduced copyright header? Made it more concise while keeping all important info
 // Copyright (C) 2025 Auto Dark Mode
 // This program is free software under GNU GPL v3.0

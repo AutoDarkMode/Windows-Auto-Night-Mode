@@ -233,9 +233,6 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="userFeedback" xml:space="preserve">
     <value>Bienvenue</value>
   </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>Activez l'option pour activer le changement de thème automatique.</value>
-  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traducteurs : Nathan Bonnemains &amp; Damien Trouillet &amp; Maxence CHAIX</value>
   </data>
@@ -366,9 +363,6 @@ Mais elle réduit également l'autonomie de la batterie, alors ne l'activez que 
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Décalage</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>Définir</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Ces options sont désactivées lorsque vous utilisez un thème Windows.
@@ -741,9 +735,6 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Chaque jour</value>
-  </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>Cliquez sur Définir pour enregistrer les modifications.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Utiliser la couleur d'accentuation de la barre des tâches</value>

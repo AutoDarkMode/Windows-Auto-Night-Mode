@@ -19,17 +19,17 @@ public sealed partial class CursorsPage : Page
         ViewModel = App.GetService<CursorsViewModel>();
         InitializeComponent();
 
-        DispatcherQueue.TryEnqueue(() => LoadCurosSource());
-        DispatcherQueue.TryEnqueue(() => LoadCurosPreview());
+        DispatcherQueue.TryEnqueue(() => LoadCursorSources());
+        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
     }
 
-    private void LoadCurosSource()
+    private void LoadCursorSources()
     {
         try
         {
             List<string> cursors = CursorCollectionHandler.GetCursors();
-            LightCurosComboBox.ItemsSource = cursors;
-            DarkCurosComboBox.ItemsSource = cursors;
+            LightCursorComboBox.ItemsSource = cursors;
+            DarkCursorComboBox.ItemsSource = cursors;
         }
         catch (Exception ex)
         {
@@ -37,12 +37,12 @@ public sealed partial class CursorsPage : Page
         }
     }
 
-    private void LoadCurosPreview()
+    private void LoadCursorPreview()
     {
-        if (ViewModel.SelectLightCusor != null)
+        if (ViewModel.SelectLightCursor != null)
         {
             LightImageStackPanel.Children.Clear();
-            string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectLightCusor.ToString()!);
+            string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectLightCursor.ToString()!);
             foreach (string cursor in cursors)
             {
                 try
@@ -71,10 +71,10 @@ public sealed partial class CursorsPage : Page
             }
         }
 
-        if (ViewModel.SelectDarkCusor != null)
+        if (ViewModel.SelectDarkCursor != null)
         {
             DarkImageStackPanel.Children.Clear();
-            string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectDarkCusor.ToString()!);
+            string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectDarkCursor.ToString()!);
             foreach (string cursor in cursors)
             {
                 try
@@ -104,14 +104,14 @@ public sealed partial class CursorsPage : Page
         }
     }
 
-    private void LightCurosComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void LightCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCurosPreview());
+        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
     }
 
-    private void DarkCurosComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void DarkCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCurosPreview());
+        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
     }
 
     protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);

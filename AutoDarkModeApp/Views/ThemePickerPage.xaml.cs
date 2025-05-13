@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
@@ -49,6 +49,7 @@ public sealed partial class ThemePickerPage : Page
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
     }
 
+
     private void OpenThemeFolderSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var themeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
@@ -62,4 +63,5 @@ public sealed partial class ThemePickerPage : Page
             Process.Start(new ProcessStartInfo(themeFolderPath) { UseShellExecute = true, Verb = "open" });
         }
     }
+
 }

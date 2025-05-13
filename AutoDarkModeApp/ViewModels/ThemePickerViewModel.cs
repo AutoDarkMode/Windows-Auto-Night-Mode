@@ -2,6 +2,7 @@
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -11,6 +12,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+
     private bool _isInitializing;
 
     [ObservableProperty]
@@ -237,4 +239,5 @@ public partial class ThemePickerViewModel : ObservableRecipient
     {
         WriteSettings();
     }
+
 }

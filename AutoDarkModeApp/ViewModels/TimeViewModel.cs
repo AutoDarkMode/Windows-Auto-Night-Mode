@@ -8,6 +8,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -102,16 +103,8 @@ public partial class TimeViewModel : ObservableRecipient
         LoadSettings();
         Task.Run(() => LoadPostponeTimer(null, new()));
 
-        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
-        StateUpdateHandler.StartConfigWatcher();
-
-        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
-        StateUpdateHandler.StartPostponeTimer();
-
-        SaveCoordinatesCommand = new RelayCommand(() =>
-        {
-            UpdateCoordinates();
-        });
+        StateUpdateHandler.StartConfigWatcherWithoutEvents();
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
 
         SaveOffsetCommand = new RelayCommand(() =>
         {
@@ -475,35 +468,6 @@ public partial class TimeViewModel : ObservableRecipient
         if (_isInitializing)
             return;
 
-        var postponeMinutes = (SelectedPostponeIndex) switch
-        {
-            0 => 15,
-            1 => 30,
-            2 => 60,
-            3 => 120,
-            4 => 180,
-            5 => 360,
-            6 => 720,
-            7 => 0,
-            _ => 0,
-        };
+    partial void OnLonValueChanged(double value) => UpdateCoordinates();
 
-        if (postponeMinutes != 0 && value)
-        {
-            MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {postponeMinutes}");
-        }
-        else if (postponeMinutes == 0 && value)
-        {
-            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
-            if (!value)
-                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
-        }
-        else
-        {
-            MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
-            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
-        }
-
-        LoadPostponeTimer(null, new());
-    }
 }

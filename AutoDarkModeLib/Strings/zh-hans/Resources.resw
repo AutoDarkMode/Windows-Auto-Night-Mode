@@ -233,9 +233,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="userFeedback" xml:space="preserve">
     <value>欢迎</value>
   </data>
-  <data name="welcomeText" xml:space="preserve">
-    <value>更改此处的设置以修改自动切换主题的行为。</value>
-  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee</value>
   </data>
@@ -366,9 +363,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>调整</value>
-  </data>
-  <data name="offsetButton" xml:space="preserve">
-    <value>设置</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>使用 Windows 主题模式时无法调整这些选项。
@@ -742,9 +736,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>每天</value>
-  </data>
-  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
-    <value>单击“设置”保存更改。</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>使用任务栏主题色</value>
