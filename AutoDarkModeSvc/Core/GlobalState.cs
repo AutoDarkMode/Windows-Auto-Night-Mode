@@ -22,11 +22,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
+using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
-using AdmProperties = AutoDarkModeLib.Properties;
-
 
 namespace AutoDarkModeSvc.Core;
 
@@ -208,11 +207,11 @@ public class GlobalState
         {
             if (InternalTheme == Theme.Light)
             {
-                themeState = AdmProperties.Resources.lblLight;
+                themeState = "lblLight".GetLocalized();
             }
             else
             {
-                themeState = AdmProperties.Resources.lblDark;
+                themeState = "lblDark".GetLocalized();
             }
         }
 
@@ -221,18 +220,18 @@ public class GlobalState
             if (PostponeManager.IsUserDelayed || PostponeManager.IsSkipNextSwitch || PostponeManager.IsGracePeriod)
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.lblPaused}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"lblPaused".GetLocalized()}";
             }
             else
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.enabled}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"enabled".GetLocalized()}";
             }
         }
         else
         {
             NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
-            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.disabled}";
+            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"disabled".GetLocalized()}";
             else NotifyIcon.Text = $"Auto Dark Mode\nDisabled";
         }
     }
