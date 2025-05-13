@@ -53,7 +53,7 @@
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander Header="{lib:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{lib:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{lib:ResourceString Name=Manual}" />
