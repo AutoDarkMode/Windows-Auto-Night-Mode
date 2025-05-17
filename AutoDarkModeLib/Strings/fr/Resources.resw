@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>AutoDarkMode</value>
-  </data>
-  <data name="AppDescription" xml:space="preserve">
-    <value>AutoDarkMode</value>
-  </data>
-  <data name="lblSwitch" xml:space="preserve">
-    <value>Conversion</value>
-  </data>
-  <data name="autoCheckBox" xml:space="preserve">
-    <value>Activer le changement de thème automatique</value>
-  </data>
   <data name="About" xml:space="preserve">
     <value>Paramètres</value>
   </data>
   <data name="applyButton" xml:space="preserve">
     <value>Appliquer</value>
+  </data>
+  <data name="autoCheckBox" xml:space="preserve">
+    <value>Activer le changement de thème automatique</value>
   </data>
   <data name="cmbAlwDark" xml:space="preserve">
     <value>Toujours sombre</value>
@@ -233,6 +224,9 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="userFeedback" xml:space="preserve">
     <value>Bienvenue</value>
   </data>
+  <data name="welcomeText" xml:space="preserve">
+    <value>Activez l'option pour activer le changement de thème automatique.</value>
+  </data>
   <data name="lblTranslator" xml:space="preserve">
     <value>Traducteurs : Nathan Bonnemains &amp; Damien Trouillet &amp; Maxence CHAIX</value>
   </data>
@@ -324,9 +318,6 @@ Si vous rencontrez des problèmes : augmentez le délai de transition dans les p
   <data name="msgClose" xml:space="preserve">
     <value>Fermer</value>
   </data>
-  <data name="TrayMenuItemClose" xml:space="preserve">
-    <value>&amp;Fermer</value>
-  </data>
   <data name="msgNo" xml:space="preserve">
     <value>Non</value>
   </data>
@@ -363,6 +354,9 @@ Mais elle réduit également l'autonomie de la batterie, alors ne l'activez que 
   </data>
   <data name="lblOffset" xml:space="preserve">
     <value>Décalage</value>
+  </data>
+  <data name="offsetButton" xml:space="preserve">
+    <value>Définir</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>Ces options sont désactivées lorsque vous utilisez un thème Windows.
@@ -443,6 +437,9 @@ Vous pouvez les configurer individuellement dans votre thème Windows.</value>
   <data name="ThemeApplyError1" xml:space="preserve">
     <value>Une erreur s'est produite lors de l'application des thèmes sélectionnés. Nous avons désactivé le changement de thème</value>
   </data>
+  <data name="cbOfficeWhiteTheme" xml:space="preserve">
+    <value>Thème clair alternatif</value>
+  </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
     <value>Télécharger l'extension</value>
   </data>
@@ -503,7 +500,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Réinitialiser</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Passer en mode sombre lorsque l'appareil est débranché</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Valeur par défaut du curseur d'économie d'énergie</value>
@@ -550,6 +547,9 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   <data name="ConfigTextBlockHeader" xml:space="preserve">
     <value>Configuration</value>
   </data>
+  <data name="lblOffice" xml:space="preserve">
+    <value>Microsoft Office (ancienne version)</value>
+  </data>
   <data name="lblPickTheme" xml:space="preserve">
     <value>Sélectionner un thème</value>
   </data>
@@ -564,9 +564,6 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   </data>
   <data name="tbFeatureDisabledWhileThemeMode" xml:space="preserve">
     <value>Cette fonctionnalité est désactivée quand Windows gère votre thème.</value>
-  </data>
-  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
-    <value>Cette fonctionnalité est désactivée quand Auto Dark Mode gère votre thème.</value>
   </data>
   <data name="tbPickTheme" xml:space="preserve">
     <value>Sélectionnez un thème Windows différents pour les modes sombre et clair. Permet une personnalisation complète du thème, mais nécessite la création de fichiers «.theme».</value>
@@ -705,36 +702,49 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
   </data>
   <data name="ThemePickerTheme10Flowers" xml:space="preserve">
     <value>Fleurs</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
     <value>Windows</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
     <value>Windows 10</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
     <value>Windows (Clair)</value>
+    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
     <value>Mouvement capturé</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
     <value>Windows (Sombre)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
     <value>Débit</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
     <value>Éclat</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
     <value>Windows (Clair)</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
     <value>Lever du soleil</value>
+    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
     <value>Chaque jour</value>
+  </data>
+  <data name="TimeTextBlockClickOnSetMessage" xml:space="preserve">
+    <value>Cliquez sur Définir pour enregistrer les modifications.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
     <value>Utiliser la couleur d'accentuation de la barre des tâches</value>
@@ -842,9 +852,6 @@ Voulez-vous vraiment continuer ?</value>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Basculement automatique du thème</value>
   </data>
-  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Basculement automatique du thème</value>
-  </data>
   <data name="HotkeyCheckboxToggleAutomaticThemeSwitchNotification" xml:space="preserve">
     <value>Afficher la notification lors de la bascule</value>
   </data>
@@ -905,9 +912,6 @@ Voulez-vous vraiment continuer ?</value>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Basculer de thème</value>
   </data>
-  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
-    <value>&amp;Basculer de thème</value>
-  </data>
   <data name="TimePagePostponeInfoNominal" xml:space="preserve">
     <value>Le changement de thème automatique est activé</value>
   </data>
@@ -965,7 +969,7 @@ Voulez-vous vraiment continuer ?</value>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
     <value>Temps d'attente de la notification pour la saisie par l'utilisateur en minutes</value>
   </data>
-  <data name="SettingsPageDebugMode" xml:space="preserve">
+  <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Mode de débogage</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
@@ -1040,6 +1044,9 @@ Voulez-vous vraiment continuer ?</value>
   <data name="lblPaused" xml:space="preserve">
     <value>Suspendu</value>
   </data>
+  <data name="ToolTipOfficeDisclaimer" xml:space="preserve">
+    <value>Utiliser uniquement avec Office 2013-2019 ou si vous rencontrez des problèmes avec le paramètre « système d'utilisation » d'Office</value>
+  </data>
   <data name="UpdateToastAnErrorOccuredPatching" xml:space="preserve">
     <value>Une erreur est survenue lors de la mise à jour.</value>
   </data>
@@ -1060,6 +1067,7 @@ Voulez-vous vraiment continuer ?</value>
   </data>
   <data name="UpdateToastNewVersionAvailable" xml:space="preserve">
     <value>Nouvelle version {0} disponible</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastPatchingFailed" xml:space="preserve">
     <value>L'installation du correctif a échouée</value>
@@ -1084,6 +1092,7 @@ Voulez-vous vraiment continuer ?</value>
   </data>
   <data name="UpdateToastDowngradeAvailable" xml:space="preserve">
     <value>Version antérieure {0} disponible</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToastGoToDownloadPage" xml:space="preserve">
     <value>Allez à la page des téléchargements</value>
@@ -1109,6 +1118,15 @@ Voulez-vous vraiment continuer ?</value>
   <data name="WallpaperTextBlockImagePath" xml:space="preserve">
     <value>Emplacement de l'image</value>
   </data>
+  <data name="TrayMenuItemClose" xml:space="preserve">
+    <value>&amp;Fermer</value>
+  </data>
+  <data name="TrayMenuItemAutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Basculement automatique du thème</value>
+  </data>
+  <data name="TrayMenuItemToggleTheme" xml:space="preserve">
+    <value>&amp;Basculer de thème</value>
+  </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
@@ -1126,6 +1144,9 @@ Voulez-vous vraiment continuer ?</value>
   </data>
   <data name="ColorizationTextBlockUpdate" xml:space="preserve">
     <value>Mettre à jour la couleur</value>
+  </data>
+  <data name="tbFeatureDisabledWhileManagedMode" xml:space="preserve">
+    <value>Cette fonctionnalité est désactivée quand Auto Dark Mode gère votre thème.</value>
   </data>
   <data name="Links" xml:space="preserve">
     <value>Liens</value>
@@ -1240,26 +1261,5 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
     <value>Essayer de corriger le thème</value>
-  </data>
-  <data name="lblSet" xml:space="preserve">
-    <value>Paramètres</value>
-  </data>
-  <data name="lblScripts" xml:space="preserve">
-    <value>Scripts</value>
-  </data>
-  <data name="SettingsPageLanguage" xml:space="preserve">
-    <value>Langue</value>
-  </data>
-  <data name="UpdatesChannelStable" xml:space="preserve">
-    <value>Stable</value>
-  </data>
-  <data name="UpdatesChannelBeta" xml:space="preserve">
-    <value>Beta</value>
-  </data>
-  <data name="EnterToApply" xml:space="preserve">
-    <value>Appuyez sur la touche Retour</value>
-  </data>
-  <data name="PostponeButtonUnDelay" xml:space="preserve">
-    <value>Annuler le retard</value>
   </data>
 </root>

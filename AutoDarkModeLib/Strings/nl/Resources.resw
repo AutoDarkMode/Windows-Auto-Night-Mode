@@ -160,7 +160,7 @@
     <value>Instellingen</value>
   </data>
   <data name="lblSwitchTheme" xml:space="preserve">
-    <value>Van thema wisselen</value>
+    <value>Wissel van thema</value>
   </data>
   <data name="lblSystem" xml:space="preserve">
     <value>Systeem</value>
@@ -172,7 +172,7 @@
     <value>Updates</value>
   </data>
   <data name="locationCheckBox" xml:space="preserve">
-    <value>Locatiedienst gebruiken</value>
+    <value>Locatieservice gebruiken</value>
   </data>
   <data name="msgChangesSaved" xml:space="preserve">
     <value>Uw wijzigingen zijn opgeslagen!</value>
@@ -181,7 +181,7 @@
     <value>Uw wijzigingen worden automatisch opgeslagen.</value>
   </data>
   <data name="msgDownloadUpd" xml:space="preserve">
-    <value>Update installeren</value>
+    <value>Update downloaden</value>
   </data>
   <data name="msgErrorOcc" xml:space="preserve">
     <value>fout opgetreden :(</value>
@@ -213,7 +213,7 @@ Wilt u deze installeren?
 Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Automatische nachtmodus</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="updateButton" xml:space="preserve">
     <value>Op updates controleren</value>
@@ -426,7 +426,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Stap</value>
   </data>
   <data name="cbSettingsColourFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Kleurfilter (stuurt Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
     <value>Taak bij inloggen gebruiken in plaats van Autostart</value>
@@ -441,7 +441,7 @@ U kunt dit individueel instellen in uw Windows-thema.</value>
     <value>Alternatief wit thema</value>
   </data>
   <data name="buttonDownloadExtension" xml:space="preserve">
-    <value>Extensie installeren</value>
+    <value>Extensie downloaden</value>
   </data>
   <data name="tbAppsTitleRecommendedTools" xml:space="preserve">
     <value>Aanbevolen tools</value>
@@ -476,11 +476,10 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
     <value>Fout bij het toepassen van een .theme-bestand. Misschien is uw thema verwijderd of verplaatst. Hierom is momenteel het wisselen van thema uitgeschakeld. Open Auto Dark Mode en configureer {0} Instellingen.</value>
   </data>
   <data name="ErrorApplyRestart" xml:space="preserve">
-    <value>Het volgende probleem trad op: 
+    <value>Het volgende probleem is opgetreden:
 {0}
 
-Er wordt geprobeerd dit probleem op te lossen door een algoritme uit te voeren als administrator. Dit kan helpen. 
-Auto Dark Mode zal daarna opnieuw opstarten. U zult alles opnieuw moeten instellen, sorry!
+Er wordt geprobeerd dit probleem op te lossen door een algoritme uit te voeren als administrator. Dit kan helpen. Auto Dark Mode zal daarna opnieuw opstarten. U zult alles opnieuw moeten instellen, sorry!
 
 N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
   </data>
@@ -500,7 +499,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Herstellen</value>
   </data>
   <data name="cbSettingsBatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Wissel naar donkere modus wanneer het apparaat niet aangesloten is</value>
   </data>
   <data name="SettingsBatterySlider" xml:space="preserve">
     <value>Standaardwaarde voor energiebesparingsmodus</value>
@@ -530,7 +529,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Locatiegegevens</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Van zonsonder- tot -opgang (geografische coördinaten)</value>
+    <value>Van zonsondergang tot -opgang (geografische coördinaten)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Geografische coördinaten voor uw locatie</value>
@@ -581,7 +580,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Geen meldingen weergeven</value>
   </data>
   <data name="UpdatesCheckBoxUpdateChannel" xml:space="preserve">
-    <value>Updatekanaal selecteren</value>
+    <value>Selecteer updatekanaal</value>
   </data>
   <data name="UpdatesComboBoxAtStart" xml:space="preserve">
     <value>Op updates controleren wanneer Auto Dark Mode wordt gestart</value>
@@ -717,7 +716,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Gevangen beweging</value>
+    <value>Vastgelegde beweging</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
@@ -877,13 +876,13 @@ Wilt u alsnog doorgaan?</value>
     <value>Herstel deze actie door te klikken op de knop 'Ongedaan maken'.</value>
   </data>
   <data name="SwitchModesHotkey" xml:space="preserve">
-    <value> </value>
+    <value>sneltoets</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
     <value>Automatische themawisseling in-/uitschakelen</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
-    <value>Automatisch schakelen uitschakelen</value>
+    <value>Automatisch wisselen uitschakelen</value>
   </data>
   <data name="ThemeSwitchActionUndo" xml:space="preserve">
     <value>Ongedaan maken</value>
@@ -925,16 +924,16 @@ Wilt u alsnog doorgaan?</value>
     <value>Themawisseling is eenmalig gepauzeerd!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
-    <value>uitstellen tot</value>
+    <value>stelt uit tot</value>
   </data>
   <data name="PostponeReasonPostponesUntilCondition" xml:space="preserve">
-    <value>uitstellen tot er aan de voorwaarde wordt voldaan</value>
+    <value>stelt uit tot er aan de voorwaarde wordt voldaan</value>
   </data>
   <data name="PostponeReasonUntilNextSunrise" xml:space="preserve">
-    <value>uitstellen tot de volgende zonsopgang</value>
+    <value>stelt uit tot de volgende zonsopgang</value>
   </data>
   <data name="PostponeReasonUntilNextSunset" xml:space="preserve">
-    <value>uitstellen tot volgende zonsondergang</value>
+    <value>stelt uit tot volgende zonsondergang</value>
   </data>
   <data name="UntilTime" xml:space="preserve">
     <value>tot</value>
@@ -967,7 +966,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Notificatie voor automatische themawisseling</value>
   </data>
   <data name="SwitchModesTextBlockAutoSwitchGracePeriod" xml:space="preserve">
-    <value>Minuten wachten op terugkoppeling gebruiker</value>
+    <value>Minuten wachten op invoer gebruiker</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
     <value>Foutopsporingsmodus</value>
@@ -1137,7 +1136,7 @@ Wilt u alsnog doorgaan?</value>
     <value>Accentkleur</value>
   </data>
   <data name="ColorizationPick" xml:space="preserve">
-    <value>Accentkleur selecteren</value>
+    <value>Selecteer accentkleur</value>
   </data>
   <data name="ColorizationTextBlockDescription" xml:space="preserve">
     <value>Pas het kleurenthema van Windows aan naar uw voorkeuren.</value>
@@ -1178,8 +1177,8 @@ Wilt u alsnog doorgaan?</value>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmExplanation" xml:space="preserve">
     <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
 
-Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10. 
-Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
+Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10.
+Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
   </data>
   <data name="SettingsPageCheckBoxAlwaysRefreshDwmHeader" xml:space="preserve">
     <value>DWM-vernieuwing forceren?</value>
@@ -1188,16 +1187,16 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>OK</value>
   </data>
   <data name="CursorsPageEnable" xml:space="preserve">
-    <value>Dynamische muisaanwijzer</value>
+    <value>Wisselen van muisaanwijzer inschakelen</value>
   </data>
   <data name="CursorsPageOpenPointerSettings" xml:space="preserve">
     <value>Windows-muisinstellingen openen</value>
   </data>
   <data name="CursorsPageSelectDark" xml:space="preserve">
-    <value>Aanwijzer donker thema</value>
+    <value>Selecteer donkere muisaanwijzers</value>
   </data>
   <data name="CursorsPageSelectLight" xml:space="preserve">
-    <value>Aanwijzer licht thema</value>
+    <value>Selecteer lichte muisaanwijzers</value>
   </data>
   <data name="CursorsPageTitle" xml:space="preserve">
     <value>Muisaanwijzers</value>
@@ -1206,7 +1205,7 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>Kies verschillende muisaanwijzers voor het lichte en het donkere thema.</value>
   </data>
   <data name="PersonalizationPageCursorTitle" xml:space="preserve">
-    <value>Muisaanwijzers selecteren</value>
+    <value>Selecteer muisaanwijzers</value>
   </data>
   <data name="PersonalizationPageManagedMode" xml:space="preserve">
     <value>Laat Auto Dark Mode mijn thema beheren</value>
@@ -1245,7 +1244,7 @@ Zelden kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens
     <value>Blokkerende processen</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Niet van thema wisselen als bepaalde processen worden uitgevoerd</value>
+    <value>Niet van thema wisselen wanneer bepaalde processen worden uitgevoerd</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
     <value>Zoek naar apps met Auto Dark Mode ondersteuning</value>
