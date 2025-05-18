@@ -1008,4 +1008,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>無効中にのみ使用するホットキーを変更できます。</value>
+  </data>
 </root>

@@ -1005,4 +1005,7 @@ W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zo
   <data name="Set" xml:space="preserve">
     <value>Zastosuj</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Możesz edytować skróty klawiszowe tylko wtedy, gdy są wyłączone.</value>
+  </data>
 </root>

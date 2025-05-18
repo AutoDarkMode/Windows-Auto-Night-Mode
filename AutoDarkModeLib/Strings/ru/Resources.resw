@@ -1005,4 +1005,7 @@
   <data name="Set" xml:space="preserve">
     <value>Задать</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Вы можете редактировать горячие клавиши, только когда они отключены.</value>
+  </data>
 </root>

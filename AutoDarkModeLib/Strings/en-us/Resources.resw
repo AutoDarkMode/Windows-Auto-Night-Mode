@@ -1015,4 +1015,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled.</value>
+  </data>
 </root>

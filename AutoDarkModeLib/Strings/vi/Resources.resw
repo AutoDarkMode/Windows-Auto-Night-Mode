@@ -1005,4 +1005,7 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
   <data name="Set" xml:space="preserve">
     <value>Đặt</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
+  </data>
 </root>

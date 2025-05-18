@@ -1005,4 +1005,7 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
   <data name="Set" xml:space="preserve">
     <value>Definir</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Só pode editar as teclas de atalho enquanto elas estiverem desativadas.</value>
+  </data>
 </root>

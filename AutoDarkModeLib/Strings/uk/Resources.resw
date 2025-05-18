@@ -1005,4 +1005,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="Set" xml:space="preserve">
     <value>Встановити</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
+  </data>
 </root>

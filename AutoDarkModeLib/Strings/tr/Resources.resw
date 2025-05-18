@@ -1005,4 +1005,7 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   <data name="Set" xml:space="preserve">
     <value>Ayarla</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Kısayol tuşlarını sadece devre dışı bırakılmışken düzenleyebilirsiniz.</value>
+  </data>
 </root>

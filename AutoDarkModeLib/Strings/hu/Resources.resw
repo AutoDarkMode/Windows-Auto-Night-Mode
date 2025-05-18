@@ -1005,4 +1005,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
   <data name="Set" xml:space="preserve">
     <value>Beállít</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>A gyorsbillentyűket csak akkor szerkesztheti, ha le vannak tiltva.</value>
+  </data>
 </root>

@@ -1005,4 +1005,7 @@ Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijd
   <data name="Set" xml:space="preserve">
     <value>Opslaan</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
+  </data>
 </root>

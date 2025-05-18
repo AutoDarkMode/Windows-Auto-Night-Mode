@@ -1005,4 +1005,7 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
   <data name="Set" xml:space="preserve">
     <value>Atur</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan.</value>
+  </data>
 </root>

@@ -1005,4 +1005,7 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
   <data name="Set" xml:space="preserve">
     <value>Imposta</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Puoi modificare le scorciatoie solo mentre sono disabilitate.</value>
+  </data>
 </root>

@@ -1005,4 +1005,7 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
   <data name="Set" xml:space="preserve">
     <value>Establecer</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Solo puedes editar los atajos de teclado mientras estén desactivados.</value>
+  </data>
 </root>

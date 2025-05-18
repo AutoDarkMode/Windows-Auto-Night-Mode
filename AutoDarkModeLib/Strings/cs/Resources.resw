@@ -1005,4 +1005,7 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
   <data name="Set" xml:space="preserve">
     <value>Nastavit</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Klávesové zkratky lze upravovat pouze v případě, že jsou vypnuté.</value>
+  </data>
 </root>

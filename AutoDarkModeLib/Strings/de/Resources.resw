@@ -1005,4 +1005,7 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="Set" xml:space="preserve">
     <value>Anwenden</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Du kannst die Hotkeys nur bearbeiten, wenn sie deaktiviert sind.</value>
+  </data>
 </root>

@@ -1004,4 +1004,7 @@
   <data name="Set" xml:space="preserve">
     <value>설정</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>핫키가 비활성화된 상태에서만 편집할 수 있습니다.</value>
+  </data>
 </root>

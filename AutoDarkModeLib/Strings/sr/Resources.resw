@@ -1005,4 +1005,7 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   <data name="Set" xml:space="preserve">
     <value>Podesi</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Možete da menjate prečice samo dok su onemogućene.</value>
+  </data>
 </root>

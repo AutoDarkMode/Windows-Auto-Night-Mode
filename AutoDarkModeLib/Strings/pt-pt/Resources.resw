@@ -1005,4 +1005,7 @@ Em raras ocasiões, o Windows pode emitir um sinal sonoro quando o rato é movid
   <data name="Set" xml:space="preserve">
     <value>Definir</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Só pode editar as teclas de atalho enquanto elas estiverem desactivadas.</value>
+  </data>
 </root>

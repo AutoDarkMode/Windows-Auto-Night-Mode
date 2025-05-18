@@ -1005,4 +1005,7 @@ Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul s
   <data name="Set" xml:space="preserve">
     <value>Stabiliți</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Puteți edita tastele rapide numai când sunt dezactivate.</value>
+  </data>
 </root>

@@ -1005,4 +1005,7 @@
   <data name="Set" xml:space="preserve">
     <value>設定</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>您只能在停用快速鍵的情況下進行編輯。</value>
+  </data>
 </root>

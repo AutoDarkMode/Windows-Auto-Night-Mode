@@ -1005,4 +1005,7 @@
   <data name="Set" xml:space="preserve">
     <value>Ορισμός</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Μπορείτε να επεξεργαστείτε τα πλήκτρα συντόμευσης μόνο όταν είναι απενεργοποιημένα.</value>
+  </data>
 </root>

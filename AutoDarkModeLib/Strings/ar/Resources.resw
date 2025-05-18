@@ -1002,4 +1002,7 @@
   <data name="Set" xml:space="preserve">
     <value>تعيين</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
+  </data>
 </root>
