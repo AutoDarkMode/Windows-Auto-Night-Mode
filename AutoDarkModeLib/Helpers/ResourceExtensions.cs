@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Microsoft.Windows.ApplicationModel.DynamicDependency;
 using Microsoft.Windows.ApplicationModel.Resources;
 
 namespace AutoDarkModeLib.Helpers;
@@ -36,6 +37,7 @@ public static class ResourceExtensions
 
     public static void SetLanguage(string languageCode)
     {
+        Bootstrap.Initialize(0x00010007);
         _resourceContext = _resourceManager.CreateResourceContext();
         _resourceContext.QualifierValues["Language"] = languageCode;
     }
