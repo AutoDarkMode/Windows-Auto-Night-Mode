@@ -132,7 +132,7 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
-        LocationBlockText = "msgSearchLoc".GetLocalized();
+        LocationBlockText = "Msg_SearchLoc".GetLocalized();
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
@@ -157,7 +157,7 @@ public partial class TimeViewModel : ObservableRecipient
         });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
-        LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
+        LocationNextUpdateDateDescription = "NextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
 
         _isInitializing = false;
     }
@@ -181,18 +181,18 @@ public partial class TimeViewModel : ObservableRecipient
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
             if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
-                LocationBlockText = "lblCity".GetLocalized() + ": " + await LocationHandler.GetCityName();
+                LocationBlockText = "City".GetLocalized() + ": " + await LocationHandler.GetCityName();
             }
             else if (!_builder.Config.Location.UseGeolocatorService)
             {
                 LocationBlockText =
-                    "lblPosition".GetLocalized()
+                    "Position".GetLocalized()
                     + ": "
-                    + "TimeNumberBoxHeaderLat".GetLocalized()
+                    + "Latitude".GetLocalized()
                     + " "
                     + Math.Round(_builder.LocationData.Lat, 3)
                     + " / "
-                    + "TimeNumberBoxHeaderLon".GetLocalized()
+                    + "Longitude".GetLocalized()
                     + " "
                     + Math.Round(_builder.LocationData.Lon, 3);
             }
@@ -263,7 +263,7 @@ public partial class TimeViewModel : ObservableRecipient
                                 i.SetCulture(new CultureInfo(Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
                                 // Retrieve the value of the specified key
-                                i.TranslatedReason = ("PostponeReason" + i.Reason).GetLocalized() ?? i.Reason;
+                                i.TranslatedReason = ("PostponeReason_" + i.Reason).GetLocalized() ?? i.Reason;
 
                                 return i.ToString();
                             })
@@ -288,7 +288,7 @@ public partial class TimeViewModel : ObservableRecipient
                                 IsPostponed = false;
                             }
 
-                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + string.Join('\n', itemsStringList);
+                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + string.Join('\n', itemsStringList);
                         });
                     }
                     else
@@ -296,7 +296,7 @@ public partial class TimeViewModel : ObservableRecipient
                         _dispatcherQueue.TryEnqueue(() =>
                         {
                             IsPostponed = false;
-                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + "TimePagePostponeInfoNominal".GetLocalized();
+                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + "Msg_AutoSwitchEnabled".GetLocalized();
                             ResumeInfoBarEnabled = false;
                         });
                     }
