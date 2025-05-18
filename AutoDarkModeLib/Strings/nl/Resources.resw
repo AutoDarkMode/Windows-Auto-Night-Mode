@@ -658,13 +658,13 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="Delay" xml:space="preserve">
     <value>Uitstellen</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU-meetmodule</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Automatische schakelmodule pauzeren</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Wachten tot systeem inactief is</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="SwitchNow" xml:space="preserve">
     <value>Nu wisselen</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Uitstelmodule</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Wisselnotificatie</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

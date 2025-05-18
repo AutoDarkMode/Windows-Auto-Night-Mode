@@ -658,13 +658,13 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="Delay" xml:space="preserve">
     <value>Trì hoãn</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Chức năng theo dõi GPU</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Tạm dừng chức năng tự động chuyển</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Kiểm tra hệ thống đang nghỉ</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="SwitchNow" xml:space="preserve">
     <value>Chuyển ngay</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Chức năng trì hoãn</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Thông báo chuyển</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

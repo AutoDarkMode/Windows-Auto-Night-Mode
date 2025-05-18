@@ -657,13 +657,13 @@
   <data name="Delay" xml:space="preserve">
     <value>지연</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU 모니터 모듈</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>자동 전환 모듈 일시 중지</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>시스템 유휴 검사기</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -753,10 +753,10 @@
   <data name="SwitchNow" xml:space="preserve">
     <value>지금 전환</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>지연 모듈</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>전환 알림</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

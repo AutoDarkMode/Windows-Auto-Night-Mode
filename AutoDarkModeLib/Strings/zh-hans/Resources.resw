@@ -648,13 +648,13 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Delay" xml:space="preserve">
     <value>推迟</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU 监视模块</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>暂停自动切换模块</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>系统闲置检查</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -747,10 +747,10 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="SwitchNow" xml:space="preserve">
     <value>立即切换</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>推迟模块</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>切换的通知</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

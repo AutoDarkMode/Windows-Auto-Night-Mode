@@ -658,13 +658,13 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="Delay" xml:space="preserve">
     <value>Geciktir</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU izleme modülü</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Otomatik değişimi duraklatma modülü</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Sistem boşta denetleyicisi</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="SwitchNow" xml:space="preserve">
     <value>Şimdi değiştir</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Geciktirme modülü</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Değişim bildirimi</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

@@ -658,13 +658,13 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="Delay" xml:space="preserve">
     <value>Затримка</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Модуль моніторину ГП</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Призупинити модуль автоперемикання</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Перевіряч режиму очікування системи</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="SwitchNow" xml:space="preserve">
     <value>Перемкнути зараз</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Модуль затримки</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Перемикнути сповіщення</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

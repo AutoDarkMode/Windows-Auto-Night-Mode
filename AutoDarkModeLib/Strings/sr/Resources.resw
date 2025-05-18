@@ -658,13 +658,13 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="Delay" xml:space="preserve">
     <value>Kašnjenje</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Modul monitoringa GPU-a</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Modul pauziranja automatske promene</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Provera neaktivnosti sistema</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="SwitchNow" xml:space="preserve">
     <value>Promeni sad</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Modul koji odlaže</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Notifikacija promene</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

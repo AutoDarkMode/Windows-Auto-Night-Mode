@@ -658,13 +658,13 @@ Por esta razão, você pode me apoiar com uma doação voluntária. Até uma peq
   <data name="Delay" xml:space="preserve">
     <value>Atraso</value>
   </data>
-  <data name="GpuMonitorModule" xml:space="preserve">
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Módulo de monitorização da GPU</value>
   </data>
-  <data name="PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
     <value>Pausar módulo de mudança automática</value>
   </data>
-  <data name="SystemIdleCheckModule" xml:space="preserve">
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
     <value>Verificador de ociosidade do sistema</value>
   </data>
   <data name="Resume" xml:space="preserve">
@@ -754,10 +754,10 @@ Por esta razão, você pode me apoiar com uma doação voluntária. Até uma peq
   <data name="SwitchNow" xml:space="preserve">
     <value>Mudar agora</value>
   </data>
-  <data name="DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayModule" xml:space="preserve">
     <value>Atrasar módulo</value>
   </data>
-  <data name="SwitchNotification" xml:space="preserve">
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
     <value>Mudar notificação</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">

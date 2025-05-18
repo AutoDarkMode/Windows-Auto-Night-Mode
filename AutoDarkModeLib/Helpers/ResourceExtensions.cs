@@ -22,6 +22,7 @@ public static class ResourceExtensions
 
         try
         {
+            System.Diagnostics.Debug.WriteLine(resourceKey);
             var resourceCandidate = _resourceMap.GetValue(resourceKey, _resourceContext);
             return resourceCandidate?.ValueAsString ?? $"#MISSING:{resourceKey}";
         }
