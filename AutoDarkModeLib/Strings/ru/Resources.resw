@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Автоматическое переключение темы</value>
   </data>
@@ -209,9 +212,6 @@
 
 Сейчас установлена версия: {0}, новая: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Проверить обновления</value>
   </data>
@@ -274,6 +274,9 @@
   <data name="Time" xml:space="preserve">
     <value>Время</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Открыть папку</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Создайте свои темы</value>
   </data>
@@ -291,6 +294,9 @@
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Повторите процесс для тёмной темы.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>О программе</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Меню</value>
@@ -312,6 +318,9 @@
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Использовать задачу входа вместо записи в автозапуске</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Как пожертвовать?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Вы можете отправить мне деньги через PayPal. Это полностью добровольно, вам не следует ожидать за это какой-либо компенсации.</value>
@@ -658,6 +667,12 @@
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Проверка бездействия системы</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Возобновить</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Переключить автопереключение темы</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Отключить автопереключение</value>
   </data>
@@ -675,6 +690,9 @@
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Контроль отсрочки</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Переключить тему</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>&amp;Переключить тему</value>
@@ -772,6 +790,9 @@
   <data name="TraceMode" xml:space="preserve">
     <value>Режим трассировки</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Особая благодарность</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Игнорировать задний фон</value>
   </data>
@@ -789,6 +810,9 @@
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Эта опция не поддерживает стандартные темы Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>минут(ы)</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Приостановлено</value>
@@ -879,6 +903,9 @@
   <data name="UpdateColorization" xml:space="preserve">
     <value>Обновить раскраску</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Ссылки по теме</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Документация для пользовательских скриптов</value>
   </data>
@@ -953,6 +980,12 @@
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Переключение сенсорной клавиатуры и ввода</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Автоматически</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Вручную</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Добавить</value>

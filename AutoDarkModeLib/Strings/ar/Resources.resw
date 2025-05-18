@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>وضع الداكن التلقائي</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>تمكين التبديل التلقائي للنسق</value>
   </data>
@@ -207,9 +210,6 @@
  هل تريد تثبيته؟ 
 الإصدار المثبت حالياً: {0}، الإصدار الجديد: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>وضع الداكن التلقائي</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>تحقق من وجود تحديثات</value>
   </data>
@@ -272,6 +272,9 @@
   <data name="Time" xml:space="preserve">
     <value>الوقت</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>فتح المجلد</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>إنشاء السمات الخاصة بك</value>
   </data>
@@ -289,6 +292,9 @@
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>كرر هذه العملية للنسق الداكن.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>نبذة عن</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>القائمة</value>
@@ -310,6 +316,9 @@
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>استخدام مهمة تسجيل الدخول بدلاً من إدخال بدء التشغيل</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>كيف تتبرع؟</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>يمكنك إرسال الأموال عبر PayPal. إنه أمر تطوعي تماماً ولا يجب أن تتوقع أي تعويض.</value>
@@ -656,6 +665,12 @@
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>أداة التحقق من خمول النظام</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>استئناف</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>تبديل مفتاح السمة التلقائية</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>تعطيل التبديل التلقائي</value>
   </data>
@@ -673,6 +688,9 @@
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>تأجيل التحكم المؤجل</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>تبديل النسق</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>&amp;تبديل النسق</value>
@@ -770,6 +788,9 @@
   <data name="TraceMode" xml:space="preserve">
     <value>وضع التتبع</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>شكر خاص</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>تجاهل الخلفية</value>
   </data>
@@ -787,6 +808,9 @@
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>لا يدعم هذا الخيار نسق Windows الافتراضية</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>الدقائق</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>متوقف مؤقتاً</value>
@@ -877,6 +901,9 @@
   <data name="UpdateColorization" xml:space="preserve">
     <value>تحديث التلوين</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>الروابط</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>توثيق النصوص البرمجية المخصصة</value>
   </data>
@@ -950,6 +977,12 @@
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>تبديل لوحة المفاتيح والإدخال باللمس</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>تلقائي</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>يدوي</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>إضافة</value>

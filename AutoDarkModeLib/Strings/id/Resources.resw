@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Nyalakan pergantian tema otomatis</value>
   </data>
@@ -209,9 +212,6 @@ Apakah Anda mau memasang?
 
 Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Mencari Pembaruan</value>
   </data>
@@ -274,6 +274,9 @@ Klik "Ya" untuk membuka jendela peramban baru.
   <data name="Time" xml:space="preserve">
     <value>Waktu</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Buka Folder</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Buatlah tema Anda</value>
   </data>
@@ -291,6 +294,9 @@ Klik "Ya" untuk membuka jendela peramban baru.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Ulangi proses untuk tema gelap.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Tentang</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
@@ -312,6 +318,9 @@ Klik "Ya" untuk membuka jendela peramban baru.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Bagaimana cara mendonasi?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Anda dapat mendonasikan uang kepada kami menggunakan Paypal. Ini sepenuhnya secara sukarela dan Anda tidak berhak kompensasi apapun.</value>
@@ -658,6 +667,12 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Pemeriksa sistem saat diam</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Alihkan pergantian tema otomatis</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Matikan pergantian otomatis</value>
   </data>
@@ -675,6 +690,9 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Kontrol penundaan</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Beralih tema</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>&amp;Beralih tema</value>
@@ -772,6 +790,9 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="TraceMode" xml:space="preserve">
     <value>Mode jejak</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Terima kasih spesial</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Abaikan latar belakang</value>
   </data>
@@ -789,6 +810,9 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Opsi ini tidak mendukung tema Windows bawaan</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>menit</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Jeda</value>
@@ -879,6 +903,9 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="UpdateColorization" xml:space="preserve">
     <value>Perbarui pewarnaan</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Tautan</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Dokumentasi untuk skrip kustom</value>
   </data>
@@ -953,6 +980,12 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Beralih ke papan ketik sentuh dan masukan</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Otomatis</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Tambah</value>

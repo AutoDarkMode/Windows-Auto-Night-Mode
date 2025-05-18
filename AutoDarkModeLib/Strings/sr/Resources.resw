@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Omogući automatsku promenu tema</value>
   </data>
@@ -209,9 +212,6 @@ Nova verzija je dostupna na GitHub-u sa ispravkama i poboljšanjima.
 
 Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Proveri ažuriranja</value>
   </data>
@@ -274,6 +274,9 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   <data name="Time" xml:space="preserve">
     <value>Vreme</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Otvori fasciklu</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Napravite svoje teme</value>
   </data>
@@ -291,6 +294,9 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Ponovite ovaj proces za tamnu temu.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>O aplikaciji</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Meni</value>
@@ -312,6 +318,9 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Koristi zadatak pri prijavljivanju (logon task) umesto unosa za automatsko pokretanje</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Kako donirati?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Možete mi poslati novac preko PayPal-a. To je potpuno neobavezno, ne očekujte nikakvu kompenzaciju.</value>
@@ -658,6 +667,12 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Provera neaktivnosti sistema</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Nastavi</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Uklj/Isklj automatsku promenu teme</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Onemogući automatsku promenu</value>
   </data>
@@ -675,6 +690,9 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Kontrola odlaganja</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Promeni temu</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>Pro&amp;meni temu</value>
@@ -772,6 +790,9 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="TraceMode" xml:space="preserve">
     <value>Trace režim</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Posebna zahvalnost</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Ignoriši pozadinu</value>
   </data>
@@ -789,6 +810,9 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Ova opcija ne podržava podrazumevane Windows teme</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minuta</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Pauzirano</value>
@@ -879,6 +903,9 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="UpdateColorization" xml:space="preserve">
     <value>Ažuriraj kolorizaciju</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Veze</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Dokumentacija za sopstvene skripte</value>
   </data>
@@ -953,6 +980,12 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Promeni tastaturu na ekranu na dodir i unos</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatski</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Ručno</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Dodaj</value>

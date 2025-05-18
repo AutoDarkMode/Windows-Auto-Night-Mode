@@ -274,6 +274,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Time" xml:space="preserve">
     <value>时间</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>创建您的主题</value>
   </data>
@@ -291,6 +294,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>设置深色主题时重复上述步骤。</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>菜单</value>
@@ -312,6 +318,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>使用登录任务而非启动项</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>如何捐赠？</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>您可以通过 PayPal 自愿且无偿地向我汇款。</value>
@@ -648,6 +657,12 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>系统闲置检查</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>启用自动主题切换</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>关闭自动切换</value>
   </data>
@@ -665,6 +680,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>推迟控制</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>启用主题</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>切换主题(&amp;T)</value>
@@ -765,6 +783,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="TraceMode" xml:space="preserve">
     <value>追踪模式</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>特别感谢</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>忽略背景</value>
   </data>
@@ -782,6 +803,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>此选项不支持默认 Windows 主题</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分钟</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>已暂停</value>
@@ -870,6 +894,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="UpdateColorization" xml:space="preserve">
     <value>更新颜色</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>链接</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>自定义脚本的文档</value>
   </data>
@@ -945,6 +972,12 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>切换触摸键盘和输入</value>
   </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>自动</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>手动</value>
+  </data>
   <data name="AddApps" xml:space="preserve">
     <value>添加</value>
   </data>
@@ -968,6 +1001,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>按Enter应用坐标</value>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>未推迟</value>

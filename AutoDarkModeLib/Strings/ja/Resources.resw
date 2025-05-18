@@ -274,6 +274,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Time" xml:space="preserve">
     <value>時間</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>自分のテーマを作成</value>
   </data>
@@ -291,6 +294,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>情報</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>メニュー</value>
@@ -312,6 +318,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>スタートアップには登録せずログイン時のタスクとして実行</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>寄付するには？</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>PayPal 経由で送金できます。寄付は自発的なもので、あなたへの見返りを期待しないでください。</value>
@@ -648,6 +657,12 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>システムアイドルチェッカー</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替をオン/オフ</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>自動切替を無効にする</value>
   </data>
@@ -665,6 +680,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>延期の管理</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>テーマを切り替える</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>テーマを切り替える(&amp;T)</value>
@@ -765,6 +783,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="TraceMode" xml:space="preserve">
     <value>追跡モード</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>謝辞</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>背景を除外</value>
   </data>
@@ -782,6 +803,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>このオプションは標準のWindowsテーマには対応していません</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>停止中</value>
@@ -870,6 +894,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="UpdateColorization" xml:space="preserve">
     <value>今すぐ色を反映</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>リンク</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>カスタムスクリプトの解説文書</value>
   </data>
@@ -945,6 +972,12 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>入力、タッチキーボードでも切替</value>
   </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>手動</value>
+  </data>
   <data name="AddApps" xml:space="preserve">
     <value>追加</value>
   </data>
@@ -968,6 +1001,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>Enterキーを押して座標を適用する</value>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>

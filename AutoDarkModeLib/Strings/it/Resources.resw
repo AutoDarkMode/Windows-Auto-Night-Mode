@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Abilita cambio automatico del tema</value>
   </data>
@@ -209,9 +212,6 @@ Vuoi installarla?
 
 Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Controlla aggiornamenti</value>
   </data>
@@ -274,6 +274,9 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   <data name="Time" xml:space="preserve">
     <value>Pianifica</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Apri cartella</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Crea i tuoi temi</value>
   </data>
@@ -291,6 +294,9 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Ripeti la procedura per il tema scuro.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Info</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
@@ -312,6 +318,9 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Usa una attività di accesso invece di una voce di avvio</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Come donare?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Puoi inviarmi denaro tramite PayPal. La donazione è volontaria, e non comporta alcun bonus.</value>
@@ -658,6 +667,12 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Controllo dell'inattività del sistema</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Riprendi</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Gestisci il cambio automatico del tema</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Disabilita cambio automatico</value>
   </data>
@@ -675,6 +690,9 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Posticipa controllo</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Gestisci tema</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>Cambia &amp;tema</value>
@@ -772,6 +790,9 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   <data name="TraceMode" xml:space="preserve">
     <value>Modalità tracciamento</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Ringraziamenti speciali</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Ignora lo sfondo</value>
   </data>
@@ -789,6 +810,9 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Questa opzione non supporta i temi predefiniti di Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minuti</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>In pausa</value>
@@ -879,6 +903,9 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   <data name="UpdateColorization" xml:space="preserve">
     <value>Aggiorna colorazione</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Collegamenti</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Documentazione per script personalizzati</value>
   </data>
@@ -953,6 +980,12 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Cambia tastiera virtuale e inserimento</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatico</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuale</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Aggiungi</value>

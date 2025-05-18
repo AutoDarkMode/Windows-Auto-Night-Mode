@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Bật tính năng thay đổi chủ đề</value>
   </data>
@@ -209,9 +212,6 @@ Bạn có muốn cài đặt?
 
 Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Kiểm tra cập nhật</value>
   </data>
@@ -274,6 +274,9 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   <data name="Time" xml:space="preserve">
     <value>Thời điểm chuyển đổi</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Mở thư mục</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Tạo chủ đề của bạn</value>
   </data>
@@ -291,6 +294,9 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Lặp lại những bước trên cho chủ đề tối.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Thông tin</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Danh mục</value>
@@ -312,6 +318,9 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Sử dụng logon task thay vì startup entry</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Làm cách nào để đóng góp tự nguyện?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Bạn có thể gửi tiền cho tôi qua PayPal. Nó hoàn toàn tự nguyện và không thể bồi hoàn.</value>
@@ -658,6 +667,12 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Kiểm tra hệ thống đang nghỉ</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Bật tắt tự động chuyển chủ đề</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Tắt tự động chuyển</value>
   </data>
@@ -675,6 +690,9 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Thiết lập trì hoãn</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Bật tắt chủ đề</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>Bật tắt chủ đề</value>
@@ -772,6 +790,9 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="TraceMode" xml:space="preserve">
     <value>Chế độ trace</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Trân trọng cảm ơn</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Bỏ qua hình nền</value>
   </data>
@@ -789,6 +810,9 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Cài đặt này không hỗ trợ chủ đề mặc định của Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Tạm ngưng</value>
@@ -879,6 +903,9 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="UpdateColorization" xml:space="preserve">
     <value>Cập nhật màu sắc</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Liên kết</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Tài liệu cho tập lệnh tùy chỉnh</value>
   </data>
@@ -953,6 +980,12 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Chuyển đổi bàn phím cảm ứng và đầu vào</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Thủ công</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Thêm</value>

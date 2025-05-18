@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Otomatik tema değişikliğini etkinleştir</value>
   </data>
@@ -209,9 +212,6 @@ Bunu indirmek istiyor musunuz?
 
 Şu anda yüklü sürüm: {0}, yeni sürüm: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Güncellemeleri kontrol et</value>
   </data>
@@ -274,6 +274,9 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
   <data name="Time" xml:space="preserve">
     <value>Zamanlama</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Klasörü Aç</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Temalarınızı oluşturun</value>
   </data>
@@ -291,6 +294,9 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Koyu mod için bu işlemleri tekrarlayın.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menü</value>
@@ -312,6 +318,9 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Başlangıç girdisi yerine oturum açma görevi kullan</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Nasıl bağış yapabilirim?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Bana PayPal ile para gönderebilirsiniz. Tamamen isteğe bağlıdır ve herhangi bir karşılık beklememelisiniz.</value>
@@ -658,6 +667,12 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Sistem boşta denetleyicisi</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Devam et</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimini aç/kapat</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Otomatik değişimi devre dışı bırak</value>
   </data>
@@ -675,6 +690,9 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Erteleme kontrolü</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Temayı değiştir</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>&amp;Temayı değiştir</value>
@@ -772,6 +790,9 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="TraceMode" xml:space="preserve">
     <value>İzleme modu</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Özel teşekkürler</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Arka planı yoksay</value>
   </data>
@@ -789,6 +810,9 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Bu seçenek varsayılan Windows temalarını desteklemez</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>dakika</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Duraklatıldı</value>
@@ -879,6 +903,9 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="UpdateColorization" xml:space="preserve">
     <value>Renklendirmeyi güncelle</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Bağlantılar</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Özel komut dosyaları için dokümantasyon</value>
   </data>
@@ -953,6 +980,12 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Dokunmatik klavyeyi ve girişi değiştir</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Otomatik</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuel</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Ekle</value>

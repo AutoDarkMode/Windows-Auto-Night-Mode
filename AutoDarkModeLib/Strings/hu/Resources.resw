@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Automatikus téma változtatás engedélyezése</value>
   </data>
@@ -209,9 +212,6 @@ Szeretné letölteni?
 
 Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Frissítések keresése</value>
   </data>
@@ -274,6 +274,9 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   <data name="Time" xml:space="preserve">
     <value>Idő</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Mappa megnyitása</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Saját témák készítése</value>
   </data>
@@ -291,6 +294,9 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Ismételje meg ezt a folyamatot a sötét témához.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Rólunk</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menü</value>
@@ -312,6 +318,9 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Használjon bejelentkezési feladatot indítási bejegyzés helyett</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Hogyan lehet adományozni?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Pénzt küldhet nekem PayPal-on keresztül. Ez teljesen önkéntes, és nem szabad semmilyen kompenzációra számítani.</value>
@@ -658,6 +667,12 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Rendszer tétlenségi ellenőrző</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Folytatás</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Az automatikus témaváltás kapcsolása</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Az automatikus váltás letiltása</value>
   </data>
@@ -675,6 +690,9 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Elhalasztás beállítása</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Téma váltása</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>Téma váltása</value>
@@ -772,6 +790,9 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   <data name="TraceMode" xml:space="preserve">
     <value>Nyomkövetési mód</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Külön köszönet</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Háttér figyelmen kívül hagyása</value>
   </data>
@@ -789,6 +810,9 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Ez a beállítás nem támogatja az alapértelmezett Windows-témákat</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Szüneteltetve</value>
@@ -879,6 +903,9 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   <data name="UpdateColorization" xml:space="preserve">
     <value>Színezés frissítése</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Linkek</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Egyéni szkriptek dokumentációja</value>
   </data>
@@ -953,6 +980,12 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Az érintőbillentyűzet és a bevitel közötti váltás</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatikus</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Kézi</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Hozzáad</value>

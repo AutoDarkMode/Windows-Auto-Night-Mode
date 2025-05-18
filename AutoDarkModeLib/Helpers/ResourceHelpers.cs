@@ -21,6 +21,7 @@ public sealed partial class ResourceString : MarkupExtension
 
         try
         {
+            System.Diagnostics.Debug.WriteLine(Name);
             return _resourceMap?.GetValue(Name, _resourceContext)?.ValueAsString ?? $"#MISSING:{Name}";
         }
         catch (COMException ex)

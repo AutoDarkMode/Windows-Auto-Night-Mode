@@ -116,6 +116,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>테마 자동 전환 활성화</value>
   </data>
@@ -208,9 +211,6 @@
 
 현재 설치된 버전: {0}, 새 버전: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>업데이트 확인</value>
   </data>
@@ -273,6 +273,9 @@
   <data name="Time" xml:space="preserve">
     <value>시간</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>폴더 열기</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>테마 만들기</value>
   </data>
@@ -290,6 +293,9 @@
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>어두운 테마에 대해 이 과정을 반복합니다.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>정보</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>메뉴</value>
@@ -311,6 +317,9 @@
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>시작 항목 대신 로그온 작업 사용</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>기부는 어떻게 하나요?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>PayPal로 송금하시면 됩니다. 이건 전적으로 자발적인 것이므로 어떤 보상도 기대해서는 안 됩니다.</value>
@@ -657,6 +666,12 @@
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>시스템 유휴 검사기</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>재개</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>자동 테마 스위치 전환</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>자동 스위치 사용 안 함</value>
   </data>
@@ -674,6 +689,9 @@
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>제어 연기</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>테마 전환</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>테마 전환(&amp;T)</value>
@@ -771,6 +789,9 @@
   <data name="TraceMode" xml:space="preserve">
     <value>추적 모드</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>특별히 감사합니다</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>배경 무시</value>
   </data>
@@ -788,6 +809,9 @@
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>이 옵션은 기본 Windows 테마를 지원하지 않습니다</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>분</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>일시 중지됨</value>
@@ -878,6 +902,9 @@
   <data name="UpdateColorization" xml:space="preserve">
     <value>컬러화 업데이트</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>링크</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>사용자 지정 스크립트 설명서</value>
   </data>
@@ -952,6 +979,12 @@
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>터치 키보드 및 입력 전환</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>수동</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>추가</value>

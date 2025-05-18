@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Automatisch wisselen van thema</value>
   </data>
@@ -209,9 +212,6 @@ Wilt u deze installeren?
 
 Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Op updates controleren</value>
   </data>
@@ -274,6 +274,9 @@ Klik op "Ja" om een nieuw browservenster te openen.
   <data name="Time" xml:space="preserve">
     <value>Tijd</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Map openen</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Creëer uw thema's</value>
   </data>
@@ -291,6 +294,9 @@ Klik op "Ja" om een nieuw browservenster te openen.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Herhaal dit proces voor het donkere thema.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Over</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menu</value>
@@ -312,6 +318,9 @@ Klik op "Ja" om een nieuw browservenster te openen.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Taak bij inloggen gebruiken in plaats van Autostart</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Hoe doneren?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>U kunt geld sturen via PayPal. Het is volledig vrijwillig en u hoeft geen compensatie te verwachten.</value>
@@ -658,6 +667,12 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>Wachten tot systeem inactief is</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Hervatten</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatische themawisseling in-/uitschakelen</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Automatisch wisselen uitschakelen</value>
   </data>
@@ -675,6 +690,9 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Uitstel</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Van thema wisselen</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>Van &amp;thema wisselen</value>
@@ -772,6 +790,9 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="TraceMode" xml:space="preserve">
     <value>Traceermodus</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Speciale dank</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Achtergrond negeren</value>
   </data>
@@ -789,6 +810,9 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Deze optie ondersteunt geen standaardthema's van Windows</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minuten</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Gepauzeerd</value>
@@ -879,6 +903,9 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="UpdateColorization" xml:space="preserve">
     <value>Kleuren updaten</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Koppelingen</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Documentatie voor aangepaste scripts</value>
   </data>
@@ -953,6 +980,12 @@ Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijd
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Aanraaktoetsenbord en invoer</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Handmatig</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Toevoegen</value>

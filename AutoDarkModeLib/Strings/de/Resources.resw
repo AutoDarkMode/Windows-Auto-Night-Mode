@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Auto Dark Mode</value>
+  </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>Automatischen Designwechsel aktivieren</value>
   </data>
@@ -209,9 +212,6 @@ Möchtest du sie herunterladen?
 
 Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Auto Dark Mode</value>
-  </data>
   <data name="CheckUpdate" xml:space="preserve">
     <value>Updates suchen</value>
   </data>
@@ -274,6 +274,9 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
   <data name="Time" xml:space="preserve">
     <value>Uhrzeit</value>
   </data>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Ordner öffnen</value>
+  </data>
   <data name="CreateTheme" xml:space="preserve">
     <value>Erstelle deine Designs</value>
   </data>
@@ -291,6 +294,9 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
   </data>
   <data name="ThemeTutorialStep4_Content" xml:space="preserve">
     <value>Wiederhole den Vorgang für das dunkle Design.</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>Über</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Menü</value>
@@ -312,6 +318,9 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>Login-Task statt Autostart-Eintrag</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Wie spenden?</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
     <value>Akzeptiert werden Spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
@@ -658,6 +667,12 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="SystemIdleCheckModule" xml:space="preserve">
     <value>System Inaktivitätschecker</value>
   </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Fortsetzen</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Auto-Wechsel an/ausschalten</value>
+  </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>Auto-Wechsel ausschalten</value>
   </data>
@@ -675,6 +690,9 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Designwechsel Pause</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Design umschalten</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
     <value>&amp;Design umschalten</value>
@@ -772,6 +790,9 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="TraceMode" xml:space="preserve">
     <value>Trace Modus</value>
   </data>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Besonderer Dank gebührt</value>
+  </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Hintergrundbild ignorieren</value>
   </data>
@@ -789,6 +810,9 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Diese Option wird von Standard Windows Designs nicht unterstützt</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minuten</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Pausiert</value>
@@ -879,6 +903,9 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="UpdateColorization" xml:space="preserve">
     <value>Farbwahl aktualisieren</value>
   </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Dokumentation für benutzerdefinierte Skripte</value>
   </data>
@@ -953,6 +980,12 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
     <value>Bildschirmtastatur und Eingabe</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatisch</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuell</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Hinzufügen</value>
