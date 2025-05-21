@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>您的更改会被自动保存。</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>下载更新</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>此应用需要使用您的位置信息</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>暂无更新。</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>正在定位…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>正在获取更新…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>警告：无法读取您当前的主题。</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>有新版本可用！</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -378,7 +378,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="GetCoordinates" xml:space="preserve">
     <value>了解所处位置的坐标</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>打开配置文件</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
@@ -738,9 +738,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="AutoSwitchGracePeriod" xml:space="preserve">
     <value>通知等待用户输入的时间（分钟）</value>
   </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>调试模式</value>
-  </data>
   <data name="Confirm" xml:space="preserve">
     <value>确认</value>
   </data>
@@ -993,6 +990,12 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
     <value>尝试修复主题</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>调试模式</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>语言</value>
   </data>
@@ -1007,8 +1010,5 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>未推迟</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
   </data>
 </root>

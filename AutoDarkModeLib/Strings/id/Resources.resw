@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis.</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Unduh pembaruan</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Aplikasi ini membutuhkan izin untuk menemukan lokasi</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Pembaruan tidak tersedia.</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Mencari lokasi Anda…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Mencari Pembaruan…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Peringatan: Kami tidak dapat membaca tema Anda saat ini.</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>Pembaruan tersedia!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -378,7 +378,7 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="GetCoordinates" xml:space="preserve">
     <value>Cari koordinat geografis Anda</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>Buka file konfigurasi</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">

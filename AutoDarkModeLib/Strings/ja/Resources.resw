@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>変更内容は自動で保存されます。</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>最新版をダウンロード</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>位置情報の使用許可が必要</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>最新版はありません。</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>位置情報を取得中…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>最新版の確認中…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>警告: システムの現在のテーマを読み込めませんでした。</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>最新版があります！</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -378,7 +378,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="GetCoordinates" xml:space="preserve">
     <value>地理座標を検索</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>設定ファイルを開く</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
@@ -738,9 +738,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="AutoSwitchGracePeriod" xml:space="preserve">
     <value>通知がユーザーの入力を待つ分数</value>
   </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>デバッグモード</value>
-  </data>
   <data name="Confirm" xml:space="preserve">
     <value>確認</value>
   </data>
@@ -993,6 +990,12 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
     <value>テーマ適用を再試行</value>
   </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>無効中にのみ使用するホットキーを変更できます。</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>デバッグモード</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>言語</value>
   </data>
@@ -1007,8 +1010,5 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>無効中にのみ使用するホットキーを変更できます。</value>
   </data>
 </root>

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Vaše promene će biti automatski sačuvane.</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Preuzmi ažuriranje</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Ova aplikacija traži pristup vašoj lokaciji</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Nema novih ažuriranja.</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Nalaženje vaše lokacije…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Provera ažuriranja…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Upozorenje: nismo uspeli da učitamo vašu trenutnu temu.</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>Novo ažuriranje je dostupno!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -378,7 +378,7 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="GetCoordinates" xml:space="preserve">
     <value>Nađite geografske koordinate vašeg mesta</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>Otvori konfiguracionu datoteku</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">

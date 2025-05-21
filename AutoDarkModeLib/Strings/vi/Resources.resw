@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Bấm Áp dụng để lưu thiết lập.</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Tải bản cập nhật</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Ứng dụng cần lấy vị trí của bạn</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Không có cập nhật mới nào.</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Đang lấy vị trí của bạn…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Đang kiểm tra cập nhật…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Cảnh báo: Ứng dụng không đọc được chủ đề hiện tại của bạn.</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>Có một bản cập nhật mới!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -378,7 +378,7 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="GetCoordinates" xml:space="preserve">
     <value>Kiểm tra toạ độ địa lý cho địa điểm của bạn</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>Mở tập tin cấu hình</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">

@@ -180,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Your changes will be saved automatically.</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Download update</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -189,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>ADM needs access to your location</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>No new update found</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Getting your location…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Searching for updates…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Warning: We couldn't read your current theme.</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>An update is available!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -375,7 +375,7 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="GetCoordinates" xml:space="preserve">
     <value>Find geo coordinates for your location</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>Open configuration file</value>
     <comment>Don't use unnessecary abbreviations</comment>
   </data>
@@ -618,7 +618,7 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Force &amp;Light Theme</value>
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
-    <value>Hide tray icon</value>
+    <value>Hide tray icon (not recommended)</value>
   </data>
   <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
     <value>&amp;Open Config Directory</value>
@@ -737,9 +737,6 @@ For this reason you could support me with a voluntary donation. Even a small amo
   </data>
   <data name="AutoSwitchGracePeriod" xml:space="preserve">
     <value>Dismiss time (in minutes) for notification</value>
-  </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -994,6 +991,15 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
     <value>Try to fix the theme</value>
   </data>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled.</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
@@ -1009,13 +1015,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="UnDelay" xml:space="preserve">
     <value>UnDelay</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Set</value>
-  </data>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled.</value>
   </data>
 </root>

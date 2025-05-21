@@ -53,12 +53,13 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -111,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
     <value>Auto Dark Mode</value>
@@ -179,7 +180,7 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>적용을 클릭하여 변경 내용을 저장합니다.</value>
   </data>
-  <data name="Msg_DownloadUpd" xml:space="preserve">
+  <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>업데이트 다운로드</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
@@ -188,19 +189,19 @@
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>이 앱은 사용자 위치에 액세스해야 합니다</value>
   </data>
-  <data name="Msg_NoUpd" xml:space="preserve">
+  <data name="Msg_NoUpdate" xml:space="preserve">
     <value>사용할 수 있는 새 업데이트가 없습니다.</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>위치를 검색하는 중…</value>
   </data>
-  <data name="Msg_SearchUpd" xml:space="preserve">
+  <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>업데이트를 찾는 중…</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>경고: 현재 테마를 읽을 수 없습니다.</value>
   </data>
-  <data name="Msg_UpdateAvail" xml:space="preserve">
+  <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>새 업데이트를 사용할 수 있습니다!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
@@ -377,7 +378,7 @@
   <data name="GetCoordinates" xml:space="preserve">
     <value>사용자 위치에 대한 지리적 좌표</value>
   </data>
-  <data name="OpenConfig" xml:space="preserve">
+  <data name="OpenConfigFile" xml:space="preserve">
     <value>구성 파일 열기</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
