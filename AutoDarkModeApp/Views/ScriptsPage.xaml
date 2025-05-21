@@ -15,22 +15,22 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Script  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=lblScripts}" />
-                <controls:SettingsExpander Header="{lib:ResourceString Name=PageScriptsToggle}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Scripts}" />
+                <controls:SettingsExpander Header="{lib:ResourceString Name=EnableCustomScripts}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ScriptSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard
                             ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
                             Click="OpenScriptConfigSettingsCard_Click"
-                            Header="{lib:ResourceString Name=ConfigHyperLinkOpenConfig}"
+                            Header="{lib:ResourceString Name=OpenConfigFile}"
                             IsClickEnabled="True" />
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  More info links  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Links}" />
-                <HyperlinkButton Content="{lib:ResourceString Name=PageScriptsCardDocumentationTextBlock}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/How-to-add-custom-scripts" />
-                <HyperlinkButton Content="{lib:ResourceString Name=PageScriptsCardUserRepositoryTextBlock}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/discussions/categories/custom-scripts" />
+                <HyperlinkButton Content="{lib:ResourceString Name=DocumentationForCustomScripts}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/How-to-add-custom-scripts" />
+                <HyperlinkButton Content="{lib:ResourceString Name=CustomScriptUserRepository}" NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/discussions/categories/custom-scripts" />
 
             </StackPanel>
         </Grid>
