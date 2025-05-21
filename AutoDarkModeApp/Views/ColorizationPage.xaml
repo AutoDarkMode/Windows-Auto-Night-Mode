@@ -18,14 +18,15 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Colorization  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=ColorizationTextBlockHeader}" />
-                <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationEnableSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=ColorizationPick_Description
+}" />
+                <controls:SettingsCard Header="{lib:ResourceString Name=EnableAccentColorSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--  Light  -->
                 <controls:SettingsExpander
-                    Header="{lib:ResourceString Name=lblLightTheme}"
+                    Header="{lib:ResourceString Name=LightTheme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
                     IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
@@ -33,14 +34,12 @@
                         <ComboBoxItem Content="{lib:ResourceString Name=Manual}" />
                     </ComboBox>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsLightThemeSettingsCardEnabled, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.IsLightThemeSettingsCardEnabled, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <Border
                                     Width="30"
                                     Height="28"
                                     Background="{x:Bind ViewModel.LightModeColorPreviewBorderBackground, Mode=OneWay}"
-                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
-                                    BorderThickness="1"
                                     CornerRadius="{StaticResource ControlCornerRadius}" />
                                 <!--  TODO: Replace Content to Res  -->
                                 <Button
@@ -53,20 +52,18 @@
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{lib:ResourceString Name=lblDarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander Header="{lib:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{lib:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{lib:ResourceString Name=Manual}" />
                     </ComboBox>
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{lib:ResourceString Name=ColorizationPick}" IsEnabled="{x:Bind ViewModel.IsDarkThemeSettingsCardEnabled, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.IsDarkThemeSettingsCardEnabled, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <Border
                                     Width="30"
                                     Height="28"
                                     Background="{x:Bind ViewModel.DarkModeColorPreviewBorderBackground, Mode=OneWay}"
-                                    BorderBrush="{StaticResource ControlElevationBorderBrush}"
-                                    BorderThickness="1"
                                     CornerRadius="{StaticResource ControlCornerRadius}" />
                                 <!--  TODO: Replace Content to Res  -->
                                 <Button
