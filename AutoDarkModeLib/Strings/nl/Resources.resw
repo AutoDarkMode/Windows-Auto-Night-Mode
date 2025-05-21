@@ -233,7 +233,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Annuleren</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Bestand kiezen</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows-spotlight</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijd
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

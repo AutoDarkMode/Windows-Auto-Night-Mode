@@ -233,7 +233,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Escolher arquivo</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Por esta razão, você pode me apoiar com uma doação voluntária. Até uma peq
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Destaque</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Destaque do Windows</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Só pode editar as teclas de atalho enquanto elas estiverem desativadas.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

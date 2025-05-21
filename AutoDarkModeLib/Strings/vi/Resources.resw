@@ -233,7 +233,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Huỷ</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Chọn tập tin</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Điểm sáng</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Đèn chiếu cửa sổ</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng 
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

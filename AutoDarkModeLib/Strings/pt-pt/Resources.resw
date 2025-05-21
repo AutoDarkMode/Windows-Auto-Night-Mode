@@ -233,7 +233,7 @@ Versão instalada: {0}, Versão nova: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Escolher ficheiro</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Por esta razão pode suportar-me com uma doação voluntária. Até uma pequena 
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows spotlight</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Em raras ocasiões, o Windows pode emitir um sinal sonoro quando o rato é movid
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Só pode editar as teclas de atalho enquanto elas estiverem desactivadas.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

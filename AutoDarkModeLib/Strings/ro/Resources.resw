@@ -233,7 +233,7 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Anulați</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Alegeți fișierul</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantit
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Lumină reflector</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Lumină reflector Windows</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul s
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Puteți edita tastele rapide numai când sunt dezactivate.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

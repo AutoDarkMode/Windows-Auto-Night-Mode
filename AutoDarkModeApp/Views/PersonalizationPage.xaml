@@ -14,48 +14,49 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=PersonalizationPageManagedMode}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=ManagedMode}" />
                 <InfoBar
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}"
-                    Message="{lib:ResourceString Name=tbFeatureDisabledWhileThemeMode}"
+                    Message="{lib:ResourceString Name=FeatureDisabled_WhileThemeMode}"
                     Severity="Informational">
                     <InfoBar.ActionButton>
+                        <!-- TODO: resource string -->
                         <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="Disable Windows manages your theme" />
                     </InfoBar.ActionButton>
                 </InfoBar>
                 <controls:SettingsCard
                     Click="PickWallpaperSettingsCard_Click"
-                    Description="{lib:ResourceString Name=tbPickWallpaper}"
-                    Header="{lib:ResourceString Name=lblPickWallpaper}"
+                    Description="{lib:ResourceString Name=PickWallpaper_Description}"
+                    Header="{lib:ResourceString Name=PickWallpaper}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}"
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
                 <controls:SettingsCard
                     Click="ColorizationPickSettingsCard_Click"
-                    Description="{lib:ResourceString Name=ColorizationTextBlockDescription}"
-                    Header="{lib:ResourceString Name=ColorizationPick}"
+                    Description="{lib:ResourceString Name=ColorizationPick_Description}"
+                    Header="{lib:ResourceString Name=PickAccentColor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
                 <controls:SettingsCard
                     Click="CursorsSettingsCard_Click"
-                    Description="{lib:ResourceString Name=PersonalizationPageCursorDescription}"
-                    Header="{lib:ResourceString Name=PersonalizationPageCursorTitle}"
+                    Description="{lib:ResourceString Name=PickCursor_Description}"
+                    Header="{lib:ResourceString Name=PickCursor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8B0;}"
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=PersonalizationPageUnmanagedMode}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=UnmanagedMode}" />
                 <InfoBar
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.ThemeSwitchDisabled, Mode=OneWay}"
-                    Message="{lib:ResourceString Name=tbFeatureDisabledWhileManagedMode}"
+                    Message="{lib:ResourceString Name=FeatureDisabled_WhileManagedMode}"
                     Severity="Informational" />
                 <controls:SettingsCard
                     Click="ThemePickerSettingsCard_Click"
-                    Description="{lib:ResourceString Name=tbPickTheme}"
-                    Header="{lib:ResourceString Name=lblPickTheme}"
+                    Header="{lib:ResourceString Name=PickTheme}"
+                    Description="{lib:ResourceString Name=PickTheme_Description}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.UnmanagedModeSettingsCardEnabled, Mode=OneWay}" />

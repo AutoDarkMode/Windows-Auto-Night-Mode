@@ -231,7 +231,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>إلغاء</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>اختر الملف</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -886,7 +886,7 @@
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>ويندوز spotlight</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1004,5 +1004,8 @@
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

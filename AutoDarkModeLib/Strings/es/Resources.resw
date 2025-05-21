@@ -233,7 +233,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Seleccionar archivo</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Por este motivo puedes apoyarme con una donación voluntaria. Incluso una peque�
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Destacar</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Contenido destacado de Windows</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Solo puedes editar los atajos de teclado mientras estén desactivados.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

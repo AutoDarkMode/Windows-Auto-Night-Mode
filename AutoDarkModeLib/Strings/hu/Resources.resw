@@ -233,7 +233,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Mégse</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Fájl kiválasztása</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Reflektorfény</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows reflektorfény</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>A gyorsbillentyűket csak akkor szerkesztheti, ha le vannak tiltva.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

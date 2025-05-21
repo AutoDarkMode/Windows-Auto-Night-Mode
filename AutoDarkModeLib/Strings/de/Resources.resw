@@ -233,7 +233,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Wähle Datei</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Blickpunkt</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows-Blickpunkt</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Du kannst die Hotkeys nur bearbeiten, wenn sie deaktiviert sind.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

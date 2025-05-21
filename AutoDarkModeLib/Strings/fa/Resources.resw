@@ -233,7 +233,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>لغو</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>انتخاب پرونده</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows spotlight</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>شما فقط در زمانی که کلیدهای میانبر غیر فعال هستند می‌توانید آن‌ها را ویرایش کنید.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

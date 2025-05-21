@@ -233,7 +233,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>選擇檔案</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>焦點</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows 焦點</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>您只能在停用快速鍵的情況下進行編輯。</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

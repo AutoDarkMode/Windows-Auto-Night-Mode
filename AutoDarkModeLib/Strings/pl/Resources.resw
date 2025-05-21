@@ -233,7 +233,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Wybierz plik</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows spotlight</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zo
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Możesz edytować skróty klawiszowe tylko wtedy, gdy są wyłączone.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

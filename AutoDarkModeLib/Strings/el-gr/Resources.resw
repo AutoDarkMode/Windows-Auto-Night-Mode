@@ -233,7 +233,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>Ακυρο</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Επιλογή αρχείου</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Προβολέας</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Προβολέας των Windows</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Μπορείτε να επεξεργαστείτε τα πλήκτρα συντόμευσης μόνο όταν είναι απενεργοποιημένα.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

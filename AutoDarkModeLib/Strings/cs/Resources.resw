@@ -233,7 +233,7 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Zrušit</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Vybrat soubor</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit.
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Světelný bod</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Pozadí zamykací obrazovky</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Klávesové zkratky lze upravovat pouze v případě, že jsou vypnuté.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

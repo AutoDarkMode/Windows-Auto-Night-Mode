@@ -233,7 +233,7 @@ Bunu indirmek istiyor musunuz?
   <data name="Cancel" xml:space="preserve">
     <value>İptal</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Dosya seç</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spot ışığı</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows spot ışığı</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Kısayol tuşlarını sadece devre dışı bırakılmışken düzenleyebilirsiniz.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

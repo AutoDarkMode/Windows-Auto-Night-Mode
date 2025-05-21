@@ -233,7 +233,7 @@
   <data name="Cancel" xml:space="preserve">
     <value>취소</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>파일 선택</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>스포트라이트</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows 스포트라이트</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>핫키가 비활성화된 상태에서만 편집할 수 있습니다.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>

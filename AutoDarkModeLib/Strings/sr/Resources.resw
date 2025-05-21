@@ -233,7 +233,7 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="Cancel" xml:space="preserve">
     <value>Otkaži</value>
   </data>
-  <data name="FilePicker" xml:space="preserve">
+  <data name="BrowsePhotos" xml:space="preserve">
     <value>Izbor datoteke</value>
   </data>
   <data name="Disabled" xml:space="preserve">
@@ -888,7 +888,7 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Interesovanja</value>
   </data>
-  <data name="WallpaeprMode_Spotlight" xml:space="preserve">
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows interesovanja</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
@@ -1007,5 +1007,8 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Možete da menjate prečice samo dok su onemogućene.</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value />
   </data>
 </root>
