@@ -15,14 +15,14 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Cursors  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=CursorsPageTitle}" />
-                <controls:SettingsCard Header="{lib:ResourceString Name=CursorsPageEnable}" HeaderIcon="{ui:FontIcon Glyph=&#xE962;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Cursors}" />
+                <controls:SettingsCard Header="{lib:ResourceString Name=EnableCursorSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE962;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.CursorsEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <!--  Light Cursors  -->
                 <controls:SettingsExpander
-                    Header="{lib:ResourceString Name=CursorsPageSelectLight}"
+                    Header="{lib:ResourceString Name=SelectLightCursor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
                     IsExpanded="True"
                     Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
@@ -39,7 +39,7 @@
 
                 <!--  Dark Cursors  -->
                 <controls:SettingsExpander
-                    Header="{lib:ResourceString Name=CursorsPageSelectDark}"
+                    Header="{lib:ResourceString Name=SelectDarkCursor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
                     IsExpanded="True"
                     Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">

@@ -18,8 +18,8 @@ public sealed partial class CursorsPage : Page
         ViewModel = App.GetService<CursorsViewModel>();
         InitializeComponent();
 
-        DispatcherQueue.TryEnqueue(() => LoadCursorsSource());
-        DispatcherQueue.TryEnqueue(() => LoadCursorsPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsSource);
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
 
     private void LoadCursorsSource()
@@ -105,11 +105,11 @@ public sealed partial class CursorsPage : Page
 
     private void LightCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCursorsPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
 
     private void DarkCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCursorsPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
 }
