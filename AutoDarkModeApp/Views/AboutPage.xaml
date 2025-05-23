@@ -73,7 +73,7 @@
                 <TeachingTip
                     x:Name="CopyButtonTeachingTip"
                     Title="{lib:ResourceString Name=Copy}"
-                    Subtitle="{lib:ResourceString Name=VersionInfoCopied}"
+                    Subtitle="{lib:ResourceString Name=Msg_VersionInfoCopied}"
                     Target="{x:Bind CopyVersionInfoButton}">
                     <TeachingTip.IconSource>
                         <FontIconSource Glyph="&#xE930;" />
