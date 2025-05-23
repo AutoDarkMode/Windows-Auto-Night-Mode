@@ -136,7 +136,7 @@
     <value>Always light</value>
   </data>
   <data name="SystemAreas" xml:space="preserve">
-    <value>SystemAreas</value>
+    <value>System areas</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>Custom start time</value>
