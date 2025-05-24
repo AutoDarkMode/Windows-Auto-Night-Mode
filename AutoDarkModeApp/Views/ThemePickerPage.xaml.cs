@@ -18,9 +18,9 @@ public sealed partial class ThemePickerPage : Page
         ViewModel = App.GetService<ThemePickerViewModel>();
         InitializeComponent();
 
-        ThemeTutorialFirstStepInfoBar.Title = "ThemeTutorialStep".GetLocalized() + " 1";
-        ThemeTutorialSecondStepInfoBar.Title = "ThemeTutorialStep".GetLocalized() + " 2";
-        ThemeTutorialThirdStepInfoBar.Title = "ThemeTutorialStep".GetLocalized() + " 3";
+        ThemeTutorialFirstStepInfoBar.Title = "Step".GetLocalized() + " 1";
+        ThemeTutorialSecondStepInfoBar.Title = "Step".GetLocalized() + " 2";
+        ThemeTutorialThirdStepInfoBar.Title = "Step".GetLocalized() + " 3";
 
         DispatcherQueue.TryEnqueue(() => LoadThemes());
     }
