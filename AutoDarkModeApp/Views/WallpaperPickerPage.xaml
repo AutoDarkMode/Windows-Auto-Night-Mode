@@ -89,9 +89,9 @@
                         </controls:SettingsCard>
 
                         <!--  Monitor  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=WallpaperComboBoxMonitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{lib:ResourceString Name=WallpaperHyperLinkRemoveDisconnected}" />
+                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{lib:ResourceString Name=RemoveDisconnected}" />
                                 <ComboBox
                                     x:Name="MonitorsComboBox"
                                     HorizontalAlignment="Right"
@@ -100,7 +100,7 @@
                         </controls:SettingsCard>
 
                         <!--  Color  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=WallpaperColor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{lib:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <!--  TODO: Replace Content to Resource  -->
                                 <Button
@@ -124,7 +124,7 @@
                     x:Name="ColorPickerContentDialog"
                     CloseButtonText="{lib:ResourceString Name=Cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{lib:ResourceString Name=lblSet}">
+                    PrimaryButtonText="{lib:ResourceString Name=Set}">
                     <StackPanel>
                         <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>
