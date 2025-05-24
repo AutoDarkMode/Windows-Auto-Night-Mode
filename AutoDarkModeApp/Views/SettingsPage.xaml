@@ -162,7 +162,7 @@
                                 <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
                             </TextBlock>
                             <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
-                                <Run Text="{lib:ResourceString Name=AutostartPath}" />
+                                <Run Text="{lib:ResourceString Name=PathAt}" />
                                 <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
                             </TextBlock>
                         </StackPanel>

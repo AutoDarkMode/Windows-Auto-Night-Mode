@@ -231,7 +231,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 if (autostartResponse.Message == "Enabled")
                 {
                     IsAutostart = true;
-                    AutostartMode = "AutostartModeRegistry".GetLocalized();
+                    AutostartMode = "RegistryKey".GetLocalized();
                     AutostartPath = autostartResponse.Details;
                 }
                 else
@@ -242,20 +242,20 @@ public partial class SettingsViewModel : ObservableRecipient
             else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
             {
                 IsAutostart = true;
-                AutostartMode = "AutostartModeTask".GetLocalized();
+                AutostartMode = "Task".GetLocalized();
                 AutostartPath = autostartResponse.Details;
             }
             else if (autostartResponse.StatusCode == StatusCode.Disabled)
             {
                 IsAutostart = false;
                 AutostartMode = "Disabled".GetLocalized();
-                AutostartPath = "AutostartModeNone".GetLocalized();
+                AutostartPath = "None".GetLocalized();
             }
         }
         catch (Exception)
         {
             AutostartMode = "Disabled".GetLocalized();
-            AutostartPath = "AutostartModeNone".GetLocalized();
+            AutostartPath = "None".GetLocalized();
         }
     }
 
