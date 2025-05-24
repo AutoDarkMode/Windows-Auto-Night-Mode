@@ -79,9 +79,9 @@
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
-                    CloseButtonText="{lib:ResourceString Name=cancel}"
+                    CloseButtonText="{lib:ResourceString Name=Cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{lib:ResourceString Name=lblSet}">
+                    PrimaryButtonText="{lib:ResourceString Name=Set}">
                     <StackPanel>
                         <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>
