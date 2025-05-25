@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Schließen</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Erzwinge &amp;dunkles Design</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Erzwinge &amp;helles Design</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>Konfigurationsordner öffnen</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Automatischer Designwechsel</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Auto-Wechsel pausieren</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Design umschalten</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Versuche, das Design zu reparieren</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>bis nächsten Abend</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Pausiert</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Ausstehender Designwechsel</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Soll der Designwechsel jetzt erfolgen oder später?</value>
+  </data>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 Stunden</value>
+  </data>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 Minuten</value>
+  </data>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 Stunden</value>
+  </data>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 Minuten</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 Stunden</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 Stunde</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 Stunden</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Verzögern</value>
+  </data>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Jetzt wechseln</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Möchtest du stattdessen den Auto-Wechsel deaktivieren?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Der Auto-Wechsel wird auch wieder aktiviert, wenn du zu deinem vorherigen Design zurückkehrst.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Designwechsel pausiert bis</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Mache die Änderung rückgängig, indem du die Schaltfläche unten selektierst.</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Automatischer Designwechsel</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Bestätigen</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Bestätige, um sofort das Design zu wechseln.</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Rückgängig</value>
+  </data>
+  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
+    <value>Ein Fehler ist aufgetreten.</value>
+  </data>
+  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
+    <value>Aktuelle Version</value>
+  </data>
+  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
+    <value>Zurückstufen auf</value>
+  </data>
+  <data name="UpdateToast_Downloading" xml:space="preserve">
+    <value>Lädt herunter…</value>
+  </data>
+  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
+    <value>Fortschritt</value>
+  </data>
+  <data name="UpdateToast_Message" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
+    <value>Neue Version {0} verfügbar</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
+    <value>Update Anwenden fehlgeschlagen</value>
+  </data>
+  <data name="UpdateToast_SeeLogs" xml:space="preserve">
+    <value>Weitere Informationen findest du im service.log und updater.log</value>
+  </data>
+  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
+    <value>Aktualisieren auf</value>
+  </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Vorherige Version</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Log-Verzeichnis öffnen</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Vorherige Version {0} verfügbar</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Gehe zur Downloadseite</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Auto-Wechsel ausschalten</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>bis nächsten Morgen</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Auto-Wechsel ist einmalig pausiert!</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Automatischer Wechsel fortgesetzt</value>
+  </data>
+</root>

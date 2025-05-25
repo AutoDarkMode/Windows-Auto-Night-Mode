@@ -22,7 +22,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
-using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
@@ -207,11 +206,11 @@ public class GlobalState
         {
             if (InternalTheme == Theme.Light)
             {
-                themeState = "lblLight".GetLocalized();
+                themeState = Strings.Resources.Light;
             }
             else
             {
-                themeState = "lblDark".GetLocalized();
+                themeState = Strings.Resources.Dark;
             }
         }
 
@@ -220,18 +219,18 @@ public class GlobalState
             if (PostponeManager.IsUserDelayed || PostponeManager.IsSkipNextSwitch || PostponeManager.IsGracePeriod)
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"lblPaused".GetLocalized()}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Paused}";
             }
             else
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"enabled".GetLocalized()}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Enabled}";
             }
         }
         else
         {
             NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
-            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {"disabled".GetLocalized()}";
+            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Disabled}";
             else NotifyIcon.Text = $"Auto Dark Mode\nDisabled";
         }
     }

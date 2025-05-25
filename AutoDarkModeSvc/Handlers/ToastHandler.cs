@@ -20,7 +20,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
-using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Core;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.Foundation.Collections;
@@ -59,27 +58,27 @@ public static class ToastHandler
 
             // retrieve data on whether to show sunrise/sunset in the postpone combobox.
             (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-            string until = skipType == SkipType.UntilSunset ? "ThemeSwitchPauseUntilSunset".GetLocalized() : "ThemeSwitchPauseUntilSunrise".GetLocalized();
+            string until = skipType == SkipType.UntilSunset ? Strings.Resources.UntilSunset : Strings.Resources.UntilSunrise;
 
             Program.ActionQueue.Add(() =>
             {
                 new ToastContentBuilder()
-                .AddText("ThemeSwitchPending".GetLocalized())
-                .AddText("ThemeSwitchPendingQuestion".GetLocalized())
+                .AddText(Strings.Resources.Msg_SwitchPending)
+                .AddText(Strings.Resources.Msg_PendingQuestion)
                 .AddToastInput(new ToastSelectionBox("time")
                 {
                     DefaultSelectionBoxItemId = "15",
                     Items =
                     {
-                    new ToastSelectionBoxItem("15", "PostponeTime15".GetLocalized()),
-                    new ToastSelectionBoxItem("30", "PostponeTime30".GetLocalized()),
-                    new ToastSelectionBoxItem("60", "PostponeTime60".GetLocalized()),
-                    new ToastSelectionBoxItem("180", "PostponeTime180".GetLocalized()),
+                    new ToastSelectionBoxItem("15", Strings.Resources.PostponeTime_15),
+                    new ToastSelectionBoxItem("30", Strings.Resources.PostponeTime_30),
+                    new ToastSelectionBoxItem("60", Strings.Resources.PostponeTime_60),
+                    new ToastSelectionBoxItem("180", Strings.Resources.PostponeTime_180),
                     new ToastSelectionBoxItem("next", until)
                     }
                 })
-                .AddButton(new ToastButton("ButtonSwitchNow".GetLocalized(), "switch-now"))
-                .AddButton(new ToastButton("PostponeButtonDelay".GetLocalized(), "delay"))
+                .AddButton(new ToastButton(Strings.Resources.SwitchNow, "switch-now"))
+                .AddButton(new ToastButton(Strings.Resources.Delay, "delay"))
                 .AddArgument("delay")
                 .Show(toast =>
                 {
@@ -106,18 +105,18 @@ public static class ToastHandler
                 if (item.Expires)
                 {
                     DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                    if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{"ThemeSwitchPauseHeader".GetLocalized()} {time:dddd HH:mm}");
-                    else tcb.AddText($"{"ThemeSwitchPauseHeader".GetLocalized()} {time:HH:mm}");
+                    if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{Strings.Resources.Msg_PauseHeader} {time:dddd HH:mm}");
+                    else tcb.AddText($"{Strings.Resources.Msg_PauseHeader} {time:HH:mm}");
                 }
                 else
                 {
                     (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-                    string until = skipType == SkipType.UntilSunset ? "ThemeSwitchPauseUntilSunset".GetLocalized() :" ThemeSwitchPauseUntilSunrise".GetLocalized();
+                    string until = skipType == SkipType.UntilSunset ? Strings.Resources.UntilSunset : Strings.Resources.UntilSunrise;
 
-                    tcb.AddText($"{"ThemeSwitchPauseHeaderNoExpiry".GetLocalized()}\n({until})");
+                    tcb.AddText($"{Strings.Resources.Msg_PauseOnce}\n({until})");
                 }
-                tcb.AddText($"{"ThemeSwitchPauseActionNotification".GetLocalized()} {"ThemeSwitchPauseActionDisableQuestion".GetLocalized()}")
-                   .AddButton(new ToastButton().SetContent("ThemeSwitchActionDisable".GetLocalized())
+                tcb.AddText($"{Strings.Resources.Msg_PauseActionNotification} {Strings.Resources.Msg_PauseActionDisableQuestion}")
+                   .AddButton(new ToastButton().SetContent(Strings.Resources.DisableAutomaticSwitch)
                    .AddArgument("action-toggle-auto-theme-switch", "enabled")
                    .AddArgument("action", "remove-skip-next")).Show(toast =>
                 {
@@ -138,24 +137,24 @@ public static class ToastHandler
         {
             Program.ActionQueue.Add(() =>
             {
-                string currentAutoThemeSwitchState = builder.Config.AutoThemeSwitchingEnabled ? "enabled".GetLocalized().ToLower() : "disabled".GetLocalized().ToLower();
+                string currentAutoThemeSwitchState = builder.Config.AutoThemeSwitchingEnabled ? Strings.Resources.Enabled.ToLower() : Strings.Resources.Disabled.ToLower();
                 string autoThemeSwitchStateArgument = builder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
-                string toastText = $"{"RevertAction".GetLocalized()}";
+                string toastText = $"{Strings.Resources.RevertAction}";
 
                 ToastContentBuilder tcb = new ToastContentBuilder()
-                    .AddText($"{"AutomaticThemeSwitch".GetLocalized()} {currentAutoThemeSwitchState}");
+                    .AddText($"{Strings.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}");
 
                 if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    tcb.AddText(toastText += $" {"RequestSwitchAction".GetLocalized()}");
-                    tcb.AddButton(new ToastButton().SetContent("ButtonConfirm".GetLocalized()).AddArgument("action", "request-switch"));
+                    tcb.AddText(toastText += $" {Strings.Resources.RequestSwitchAction}");
+                    tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Confirm).AddArgument("action", "request-switch"));
                 }
                 else
                 {
                     tcb.AddText(toastText);
                 }
 
-                tcb.AddButton(new ToastButton().SetContent("ThemeSwitchActionUndo".GetLocalized()).AddArgument("action-toggle-auto-theme-switch", autoThemeSwitchStateArgument));
+                tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Undo).AddArgument("action-toggle-auto-theme-switch", autoThemeSwitchStateArgument));
                 tcb.Show(toast =>
                 {
                     toast.Tag = "adm-auto-switch-disabled-notif";
@@ -180,25 +179,25 @@ public static class ToastHandler
                 if (item.Expires)
                 {
                     DateTime time = state.PostponeManager.GetSkipNextSwitchItem().Expiry ?? DateTime.Now;
-                    if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{"ThemeSwitchPauseHeader".GetLocalized()} {time:dddd HH:mm}");
-                    else tcb.AddText($"{"ThemeSwitchPauseHeader".GetLocalized()} {time:HH:mm}");
+                    if (item.Expiry.Value.Day > DateTime.Now.Day) tcb.AddText($"{Strings.Resources.Msg_PauseHeader} {time:dddd HH:mm}");
+                    else tcb.AddText($"{Strings.Resources.Msg_PauseHeader} {time:HH:mm}");
                 }
                 else
                 {
                     (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
-                    string until = skipType == SkipType.UntilSunset ? "ThemeSwitchPauseUntilSunset".GetLocalized() : " ThemeSwitchPauseUntilSunrise".GetLocalized();
-                    tcb.AddText($"{"ThemeSwitchPauseHeaderNoExpiry".GetLocalized()}\n({until})");
+                    string until = skipType == SkipType.UntilSunset ? Strings.Resources.UntilSunset : Strings.Resources.UntilSunrise;
+                    tcb.AddText($"{Strings.Resources.Msg_PauseOnce}\n({until})");
                 }
-                string toastText = $"{"RevertAction".GetLocalized()}";
+                string toastText = $"{Strings.Resources.RevertAction}";
                 tcb.AddText(toastText);
             }
             else
             {
-                tcb.AddText($"{"ThemeSwitchResumeHeader".GetLocalized()}");
-                tcb.AddText($"{"RevertAction".GetLocalized()}");
+                tcb.AddText($"{Strings.Resources.Msg_ResumeHeader}");
+                tcb.AddText($"{Strings.Resources.RevertAction}");
             }
 
-            tcb.AddButton(new ToastButton().SetContent("ThemeSwitchActionUndo".GetLocalized()).AddArgument("action-toggle-pause-theme-switch", state.PostponeManager.IsSkipNextSwitch));
+            tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Undo).AddArgument("action-toggle-pause-theme-switch", state.PostponeManager.IsSkipNextSwitch));
 
             tcb.Show(toast =>
             {
@@ -215,11 +214,11 @@ public static class ToastHandler
         {
             string configPath = AdmConfigBuilder.ConfigDir;
             new ToastContentBuilder()
-                .AddText($"{"UpdateToastPatchingFailed".GetLocalized()}")
-                .AddText($"{"UpdateToastAnErrorOccuredPatching".GetLocalized()}")
-                .AddText($"{"UpdateToastSeeLogs".GetLocalized()}")
+                .AddText($"{Strings.Resources.UpdateToast_PatchingFailed}")
+                .AddText($"{Strings.Resources.UpdateToast_AnErrorOccuredPatching}")
+                .AddText($"{Strings.Resources.UpdateToast_SeeLogs}")
                  .AddButton(new ToastButton()
-                 .SetContent("UpdateToastButtonOpenLogDirectory".GetLocalized())
+                 .SetContent(Strings.Resources.UpdateToast_ButtonOpenLogDirectory)
                  .SetProtocolActivation(new Uri(configPath)))
                 .SetProtocolActivation(new Uri(configPath))
                 .Show(toast =>
@@ -231,7 +230,7 @@ public static class ToastHandler
 
     public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
     {
-        string typeVerb = downgrade ? "UpdateToastDowngradingTo".GetLocalized() : "UpdateToastUpgradingTo".GetLocalized();
+        string typeVerb = downgrade ? Strings.Resources.UpdateToast_DowngradingTo : Strings.Resources.UpdateToast_UpgradingTo;
         Program.ActionQueue.Add(() =>
         {
             // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
@@ -243,7 +242,7 @@ public static class ToastHandler
                 .AddText($"{typeVerb} {version}")
                 .AddVisualChild(new AdaptiveProgressBar()
                 {
-                    Title = $"{"UpdateToastDownloadInProgress".GetLocalized()}",
+                    Title = $"{Strings.Resources.UpdateToast_DownloadInProgress}",
                     Value = new BindableProgressBarValue("progressValue"),
                     ValueStringOverride = new BindableString("progressValueString"),
                     Status = new BindableString("progressStatus")
@@ -262,7 +261,7 @@ public static class ToastHandler
             toast.Data = new NotificationData();
             toast.Data.Values["progressValue"] = "0.0";
             toast.Data.Values["progressValueString"] = "0 MB";
-            toast.Data.Values["progressStatus"] = "UpdateToastDownloading".GetLocalized();
+            toast.Data.Values["progressStatus"] = Strings.Resources.UpdateToast_Downloading;
 
             // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
             toast.Data.SequenceNumber = 0;
@@ -303,9 +302,9 @@ public static class ToastHandler
             versionTag += " (ARM64)";
         }
 
-        string updateString = downgrade ? string.Format("UpdateToastDowngradeAvailable".GetLocalized(), versionTag) : string.Format("UpdateToastNewVersionAvailable".GetLocalized(), versionTag);
+        string updateString = downgrade ? string.Format(Strings.Resources.UpdateToast_DowngradeAvailable, versionTag) : string.Format(Strings.Resources.UpdateToast_NewVersionAvailable, versionTag);
         string updateAction = downgrade ? "downgrade" : "update";
-        string updateButton = downgrade ? "UpdateToastButtonDowngrade".GetLocalized() : "UpdateToastButtonUpdate".GetLocalized();
+        string updateButton = downgrade ? Strings.Resources.UpdateToast_ButtonDowngrade : Strings.Resources.UpdateToast_ButtonUpdate;
 
         Program.ActionQueue.Add(() =>
         {
@@ -314,13 +313,13 @@ public static class ToastHandler
             {
                 new ToastContentBuilder()
                .AddText(updateString)
-               .AddText($"{"UpdateToastCurrentVersion".GetLocalized()}: {Assembly.GetExecutingAssembly().GetName().Version}")
-               .AddText($"{"UpdateToastMessage".GetLocalized()}: {UpdateHandler.UpstreamVersion.Message}")
+               .AddText($"{Strings.Resources.UpdateToast_CurrentVersion}: {Assembly.GetExecutingAssembly().GetName().Version}")
+               .AddText($"{Strings.Resources.UpdateToast_Message}: {UpdateHandler.UpstreamVersion.Message}")
                .AddButton(new ToastButton()
                .SetContent(updateButton)
                .AddArgument("action", updateAction))
                .AddButton(new ToastButton()
-               .SetContent("UpdateToastButtonPostpone".GetLocalized())
+               .SetContent(Strings.Resources.UpdateToast_ButtonPostpone)
                .AddArgument("action", "postpone"))
                //.SetBackgroundActivation()
                //.SetProtocolActivation(new Uri(UpdateInfo.changelogUrl))
@@ -334,10 +333,10 @@ public static class ToastHandler
             {
                 new ToastContentBuilder()
                .AddText($"{updateString}")
-               .AddText($"{"UpdateToastCurrentVersion".GetLocalized()}: {Assembly.GetExecutingAssembly().GetName().Version}")
-               .AddText($"{"UpdateToastMessage".GetLocalized()}: {UpdateHandler.UpstreamVersion.Message}")
+               .AddText($"{Strings.Resources.UpdateToast_CurrentVersion}: {Assembly.GetExecutingAssembly().GetName().Version}")
+               .AddText($"{Strings.Resources.UpdateToast_Message}: {UpdateHandler.UpstreamVersion.Message}")
                .AddButton(new ToastButton()
-                 .SetContent("UpdateToastGoToDownloadPage".GetLocalized())
+                 .SetContent(Strings.Resources.UpdateToast_GoToDownloadPage)
                  .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl)))
                .SetProtocolActivation(new Uri(UpdateHandler.UpstreamVersion.ChangelogUrl))
                .Show(toast =>

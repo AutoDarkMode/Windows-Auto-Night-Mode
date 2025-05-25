@@ -25,7 +25,6 @@ using System.Threading;
 using System.Windows.Forms;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
-using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
@@ -67,7 +66,6 @@ class Service : Form
     public Service(int timerMillis)
     {
         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Builder.Config.Tunable.UICulture);
-        ResourceExtensions.SetLanguage(Builder.Config.Tunable.UICulture);
         // Tray Icon Initialization
         forceDarkMenuItem.Name = "forceDark";
         forceLightMenuItem.Name = "forceLight";
@@ -75,11 +73,11 @@ class Service : Form
         toggleThemeItem.Name = "toggleTheme";
         pauseThemeSwitchItem.Name = "pauseThemeSwitch";
         tryFixTheme.Name = "tryFixTheme";
-        forceDarkMenuItem.Text = "TrayMenuItemForceDarkTheme".GetLocalized();
-        forceLightMenuItem.Text = "TrayMenuItemForceLightTheme".GetLocalized();
-        autoThemeSwitchingItem.Text = "TrayMenuItemAutomaticThemeSwitch".GetLocalized();
-        toggleThemeItem.Text = "TrayMenuItemToggleTheme".GetLocalized();
-        tryFixTheme.Text = "TrayMenuItemTryFixTheme".GetLocalized();
+        forceDarkMenuItem.Text = Strings.Resources.TrayMenuItem_ForceDarkTheme;
+        forceLightMenuItem.Text = Strings.Resources.TrayMenuItem_ForceLightTheme;
+        autoThemeSwitchingItem.Text = Strings.Resources.TrayMenuItem_AutomaticThemeSwitch;
+        toggleThemeItem.Text = Strings.Resources.TrayMenuItem_ToggleTheme;
+        tryFixTheme.Text = Strings.Resources.TrayMenuItem_TryFixTheme;
 
         NotifyIcon = new NotifyIcon();
         state.SetNotifyIcon(NotifyIcon);
@@ -149,8 +147,8 @@ class Service : Form
 
     private void InitTray()
     {
-        ToolStripMenuItem exitMenuItem = new("TrayMenuItemClose".GetLocalized());
-        ToolStripMenuItem openConfigDirItem = new("TrayMenuItemOpenConfigDir".GetLocalized());
+        ToolStripMenuItem exitMenuItem = new(Strings.Resources.TrayMenuItem_Close);
+        ToolStripMenuItem openConfigDirItem = new(Strings.Resources.TrayMenuItem_OpenConfigDir);
 
         exitMenuItem.Click += new EventHandler(RequestExit);
         openConfigDirItem.Click += new EventHandler(OpenConfigDir);
@@ -226,8 +224,8 @@ class Service : Form
         {
             DateTime expiry = tempDelay.Expiry ?? new();
             pauseThemeSwitchItem.Checked = true;
-            if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()} ({"UntilTime".GetLocalized()} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-            else pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()} ({"UntilTime".GetLocalized()} {expiry:HH:mm})";
+            if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+            else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
         }
         else
         {
@@ -235,22 +233,22 @@ class Service : Form
             (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
             if (expiry.Year != 1)
             {
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()} ({"UntilTime".GetLocalized()} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()}  ( {"UntilTime".GetLocalized()} {expiry:HH:mm})";
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
                 if (skipType == SkipType.UntilSunset)
                 {
-                    pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()} ({"ThemeSwitchPauseUntilSunset".GetLocalized()})";
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
                 }
                 else if (skipType == SkipType.UntilSunrise)
                 {
-                    pauseThemeSwitchItem.Text = $"{"TrayMenuItemThemeSwitchPause".GetLocalized()}  ( {"ThemeSwitchPauseUntilSunset".GetLocalized()})";
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
                 }
                 else
                 {
-                    pauseThemeSwitchItem.Text = "TrayMenuItemThemeSwitchPause".GetLocalized();
+                    pauseThemeSwitchItem.Text = Strings.Resources.TrayMenuItem_ThemeSwitchPause;
                 }
             }
         }
