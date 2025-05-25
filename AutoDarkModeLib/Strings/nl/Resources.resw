@@ -661,7 +661,7 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU-meetmodule</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Automatische schakelmodule pauzeren</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   <data name="SwitchNow" xml:space="preserve">
     <value>Nu wisselen</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Uitstelmodule</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

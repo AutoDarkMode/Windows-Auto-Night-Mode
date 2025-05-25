@@ -661,7 +661,7 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Module de surveillance GPU</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Mettre en pause le module de basculement automatique</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
   <data name="SwitchNow" xml:space="preserve">
     <value>Basculer maintenant</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Module de délai</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

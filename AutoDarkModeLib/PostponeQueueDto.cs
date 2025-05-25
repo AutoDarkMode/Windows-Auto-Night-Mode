@@ -18,7 +18,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using AutoDarkModeLib.Helpers;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -26,25 +25,25 @@ namespace AutoDarkModeLib;
 
 public class PostponeQueueDto
 {
-    public List<PostponeItemDto> Items { get; set; } = new();
+    public List<PostponeItemDto> Items { get; set; } = [];
 
     public PostponeQueueDto() { }
 
     public PostponeQueueDto(List<PostponeItemDto> items)
     {
-        this.Items = items;
+        Items = items;
     }
 
     public static PostponeQueueDto Deserialize(string data)
     {
-        var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+        var yamlDeserializer = new DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
         PostponeQueueDto deserialized = yamlDeserializer.Deserialize<PostponeQueueDto>(data);
         return deserialized;
     }
 
     public string Serialize()
     {
-        YamlDotNet.Serialization.ISerializer yamlSerializer = new YamlDotNet.Serialization.SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
+        ISerializer yamlSerializer = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
         return yamlSerializer.Serialize(this);
     }
 }
@@ -52,6 +51,7 @@ public class PostponeQueueDto
 public class PostponeItemDto
 {
     public string Reason { get; set; }
+
     [YamlIgnore]
     public string TranslatedReason { get; set; }
     public DateTime? Expiry { get; set; }
@@ -59,7 +59,9 @@ public class PostponeItemDto
     public SkipType SkipType { get; set; }
     private CultureInfo Culture { get; set; }
     public bool IsUserClearable { get; set; }
+
     public PostponeItemDto() { }
+
     public PostponeItemDto(string reason, DateTime? expiry = null, bool expires = false, SkipType skipType = SkipType.Unspecified, bool isUserClearable = false)
     {
         Reason = reason;
@@ -74,39 +76,50 @@ public class PostponeItemDto
         Culture = info;
     }
 
-    public override string ToString()
+    public LocalizedPostponeData GetLocalizationData()
     {
-        if (TranslatedReason != null && (TranslatedReason.Length == 0 || TranslatedReason == Reason))
+        var data = new LocalizedPostponeData
+        {
+            MainReasonKey = $"PostponeReason_{Reason}",
+            PostponesUntilKey = "PostponeReason_PostponesUntil",
+            PostponesUntilConditionKey = "PostponeReason_PostponesUntilCondition",
+            UntilNextSunriseKey = "PostponeReason_UntilNextSunrise",
+            UntilNextSunsetKey = "PostponeReason_UntilNextSunset",
+            OriginalReason = Reason,
+            SkipType = SkipType,
+            Expires = Expires,
+            Expiry = Expiry,
+            Culture = Culture,
+        };
+
+        if (TranslatedReason == null || TranslatedReason == Reason)
         {
             string[] split = Regex.Split(Reason, @"(?<!^)(?=[A-Z])");
-            TranslatedReason = string.Join(" ", split);
+            data.DefaultReasonText = string.Join(" ", split);
         }
-
-        string postponeReasonPostponesUntil = "PostponeReasonPostponesUntil".GetLocalized();
-        string postponeReasonPostponesUntilCondition = "PostponeReasonPostponesUntilCondition".GetLocalized();
-
-        if (Reason == Helper.PostponeItemPauseAutoSwitch && !Expires)
+        else
         {
-            string pausedUntilNextSunrise = "PostponeReasonUntilNextSunset".GetLocalized();
-            string pausedUntilNextSunset = "PostponeReasonUntilNextSunrise".GetLocalized();
-
-            if (SkipType == SkipType.UntilSunset)
-            {
-
-                postponeReasonPostponesUntil = $"{pausedUntilNextSunrise}";
-            }
-            else if (SkipType == SkipType.UntilSunrise)
-            {
-                postponeReasonPostponesUntil = $"{pausedUntilNextSunset}";
-            }
+            data.DefaultReasonText = TranslatedReason;
         }
 
-        if (Expires)
-        {
-            if (Expiry.HasValue && Expiry.Value.Day > DateTime.Now.Day) return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry.Value.ToString("dddd HH:mm", Culture)}";
-            else return $"{TranslatedReason} {postponeReasonPostponesUntil} {Expiry:HH:mm}";
-        }
-        else if (Reason == Helper.PostponeItemPauseAutoSwitch) return $"{TranslatedReason} {postponeReasonPostponesUntil}";
-        return $"{TranslatedReason} {postponeReasonPostponesUntilCondition}";
+        return data;
     }
+}
+
+public class LocalizedPostponeData
+{
+    public string MainReasonKey { get; set; }
+    public string PostponesUntilKey { get; set; }
+    public string PostponesUntilConditionKey { get; set; }
+    public string UntilNextSunriseKey { get; set; }
+    public string UntilNextSunsetKey { get; set; }
+
+    public string OriginalReason { get; set; }
+    public string DefaultReasonText { get; set; }
+    public SkipType SkipType { get; set; }
+    public bool Expires { get; set; }
+    public DateTime? Expiry { get; set; }
+    public CultureInfo Culture { get; set; }
+
+    public bool IsPauseAutoSwitchWithoutExpiry => OriginalReason == Helper.PostponeItemPauseAutoSwitch && !Expires;
 }

@@ -661,7 +661,7 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Moduł monitora GPU</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Wstrzymaj moduł automatycznego przełączania</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
   <data name="SwitchNow" xml:space="preserve">
     <value>Przełącz teraz</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Moduł opóźnienia</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

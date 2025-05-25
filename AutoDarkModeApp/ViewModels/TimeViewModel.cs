@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeLib.Helpers;
@@ -240,6 +241,8 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
     {
+        _isInitializing = true;
+
         ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
         if (reply.StatusCode != StatusCode.Timeout)
         {
@@ -252,7 +255,7 @@ public partial class TimeViewModel : ObservableRecipient
                         bool anyNoExpiry = false;
                         bool canResume = false;
                         PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
-                        List<string> itemsStringList = dto
+                        List<string> localizedItems = dto
                             .Items.Select(i =>
                             {
                                 if (i.Expiry == null)
@@ -262,33 +265,19 @@ public partial class TimeViewModel : ObservableRecipient
 
                                 i.SetCulture(new CultureInfo(Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
-                                // Retrieve the value of the specified key
-                                i.TranslatedReason = ("PostponeReason_" + i.Reason).GetLocalized() ?? i.Reason;
-
-                                return i.ToString();
+                                return i.GetLocalizationData().BuildLocalizedString();
                             })
                             .ToList();
+
                         _dispatcherQueue.TryEnqueue(() =>
                         {
-                            if (anyNoExpiry && !canResume)
-                            {
-                                ResumeInfoBarEnabled = true;
-                            }
-                            else
-                            {
-                                ResumeInfoBarEnabled = false;
-                            }
+                            _isInitializing = true;
 
-                            if (canResume)
-                            {
-                                IsPostponed = true;
-                            }
-                            else
-                            {
-                                IsPostponed = false;
-                            }
+                            ResumeInfoBarEnabled = anyNoExpiry && !canResume;
+                            IsPostponed = canResume;
+                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + string.Join('\n', localizedItems);
 
-                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + string.Join('\n', itemsStringList);
+                            _isInitializing = false;
                         });
                     }
                     else
@@ -304,6 +293,8 @@ public partial class TimeViewModel : ObservableRecipient
                 catch { }
             }
         }
+
+        _isInitializing = false;
     }
 
     private void SafeApplyTheme()

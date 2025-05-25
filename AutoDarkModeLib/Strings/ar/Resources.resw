@@ -659,7 +659,7 @@
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>وحدة مراقبة وحدة معالجة الرسومات</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>وحدة الإيقاف المؤقت للتبديل التلقائي</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -752,7 +752,7 @@
   <data name="SwitchNow" xml:space="preserve">
     <value>قم بالتبديل الآن</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>وحدة التأخير</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

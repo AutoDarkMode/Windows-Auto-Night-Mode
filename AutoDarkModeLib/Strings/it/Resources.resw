@@ -661,7 +661,7 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Modulo per monitoraggio GPU</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Metti in pausa il modulo del cambio automatico</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ Per questo motivo, ti chiederei di supportarmi con una donazione volontaria, anc
   <data name="SwitchNow" xml:space="preserve">
     <value>Cambia ora</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Modulo del ritardo</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

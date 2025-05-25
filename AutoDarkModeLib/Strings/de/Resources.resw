@@ -661,7 +661,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU Überwachungsmodul</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Auto-Pause Modul</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   <data name="SwitchNow" xml:space="preserve">
     <value>Jetzt wechseln</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Verzögerungsmodul</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

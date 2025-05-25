@@ -661,7 +661,7 @@ Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantit
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>Modulul de monitorizare GPU</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Întrerupeți modulul de schimbare automată</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantit
   <data name="SwitchNow" xml:space="preserve">
     <value>Schimbați acum</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Modul de întârziere</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

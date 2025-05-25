@@ -661,7 +661,7 @@
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU 모니터 모듈</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>자동 전환 모듈 일시 중지</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@
   <data name="SwitchNow" xml:space="preserve">
     <value>지금 전환</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>지연 모듈</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

@@ -661,7 +661,7 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPU-monitormodul</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Pause auto switch module</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -754,7 +754,7 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="SwitchNow" xml:space="preserve">
     <value>Bytt nå</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Forsink modul</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">

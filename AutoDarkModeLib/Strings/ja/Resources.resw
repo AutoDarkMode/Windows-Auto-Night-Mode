@@ -651,7 +651,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
     <value>GPUモニターモジュール</value>
   </data>
-  <data name="PostponeReason_PauseAutoSwitchModule" xml:space="preserve">
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>自動切替モジュールを停止</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
@@ -744,7 +744,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SwitchNow" xml:space="preserve">
     <value>今すぐ切り替える</value>
   </data>
-  <data name="PostponeReason_DelayModule" xml:space="preserve">
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>遅延モジュール</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">
