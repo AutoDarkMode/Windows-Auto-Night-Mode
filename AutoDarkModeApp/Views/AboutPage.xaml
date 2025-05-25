@@ -5,7 +5,6 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -31,15 +30,15 @@
                 </StackPanel>
 
                 <!--  Version information  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=About}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=About}" />
                 <controls:SettingsExpander
-                    Header="{lib:ResourceString Name=Version}"
+                    Header="{helpers:ResourceString Name=Version}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xe946;}"
                     IsExpanded="True">
                     <Button
                         x:Name="CopyVersionInfoButton"
                         Click="CopyVersionInfoButoon_Click"
-                        Content="{lib:ResourceString Name=Copy}" />
+                        Content="{helpers:ResourceString Name=Copy}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel
@@ -72,8 +71,8 @@
                 <!--  CopyVersionInfoButton TeachingTip  -->
                 <TeachingTip
                     x:Name="CopyButtonTeachingTip"
-                    Title="{lib:ResourceString Name=Copy}"
-                    Subtitle="{lib:ResourceString Name=Msg_VersionInfoCopied}"
+                    Title="{helpers:ResourceString Name=Copy}"
+                    Subtitle="{helpers:ResourceString Name=Msg_VersionInfoCopied}"
                     Target="{x:Bind CopyVersionInfoButton}">
                     <TeachingTip.IconSource>
                         <FontIconSource Glyph="&#xE930;" />
@@ -89,16 +88,16 @@
                                 Margin="-12,0,0,0"
                                 Orientation="Horizontal"
                                 Spacing="8">
-                                <HyperlinkButton Click="OpenLogHyperlinkButton_Click" Content="{lib:ResourceString Name=OpenLog}" />
-                                <HyperlinkButton Click="OpenUpdaterLogHyperlinkButton_Click" Content="{lib:ResourceString Name=OpenUpdaterLog}" />
-                                <HyperlinkButton Click="OpenShellHyperlinkButton_Click" Content="{lib:ResourceString Name=OpenShell}" />
+                                <HyperlinkButton Click="OpenLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenLog}" />
+                                <HyperlinkButton Click="OpenUpdaterLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenUpdaterLog}" />
+                                <HyperlinkButton Click="OpenShellHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenShell}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  SpecialThanks  -->
-                <controls:SettingsExpander Header="{lib:ResourceString Name=SpecialThanks}" HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SpecialThanks}" HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel
@@ -123,7 +122,7 @@
                 </controls:SettingsExpander>
 
                 <!--  Follow us  -->
-                <controls:SettingsExpander Header="{lib:ResourceString Name=FollowUs}" HeaderIcon="{ui:FontIcon Glyph=&#xED15;}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=FollowUs}" HeaderIcon="{ui:FontIcon Glyph=&#xED15;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel
@@ -156,7 +155,7 @@
                 </controls:SettingsExpander>
 
                 <!--  Third Party  -->
-                <controls:SettingsExpander Header="{lib:ResourceString Name=ThirdParty}" HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=ThirdParty}" HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel Margin="-12,0,0,0">

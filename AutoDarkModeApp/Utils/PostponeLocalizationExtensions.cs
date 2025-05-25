@@ -1,5 +1,5 @@
-﻿using AutoDarkModeLib;
-using AutoDarkModeLib.Helpers;
+﻿using AutoDarkModeApp.Helpers;
+using AutoDarkModeLib;
 
 namespace AutoDarkModeApp.Utils;
 

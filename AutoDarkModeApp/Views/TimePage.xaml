@@ -6,7 +6,6 @@
     xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -23,8 +22,8 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  AutoThemeSwitching  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Switch}" />
-                <controls:SettingsCard Header="{lib:ResourceString Name=EnableAutoThemeSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Switch}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
@@ -32,10 +31,10 @@
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <RadioButton x:Name="RadioButtonCustomTimes" Content="{lib:ResourceString Name=CustomHours}" />
-                                <RadioButton x:Name="RadioButtonLocationTimes" Content="{lib:ResourceString Name=LocationService}" />
-                                <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{lib:ResourceString Name=LocationGeoService}" />
-                                <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{lib:ResourceString Name=FollowWindowsNightLight}" />
+                                <RadioButton x:Name="RadioButtonCustomTimes" Content="{helpers:ResourceString Name=CustomHours}" />
+                                <RadioButton x:Name="RadioButtonLocationTimes" Content="{helpers:ResourceString Name=LocationService}" />
+                                <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{helpers:ResourceString Name=LocationGeoService}" />
+                                <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
                             </RadioButtons>
 
                             <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
@@ -66,7 +65,7 @@
                                     FontSize="16"
                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                     Glyph="&#xE706;" />
-                                <TextBlock Grid.Column="1" Text="{lib:ResourceString Name=Light}" />
+                                <TextBlock Grid.Column="1" Text="{helpers:ResourceString Name=Light}" />
                                 <TimePicker
                                     Grid.Column="2"
                                     Margin="16,0,0,0"
@@ -83,7 +82,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Text="{lib:ResourceString Name=Dark}" />
+                                    Text="{helpers:ResourceString Name=Dark}" />
                                 <TimePicker
                                     Grid.Row="1"
                                     Grid.Column="2"
@@ -142,20 +141,20 @@
                                     <TextBox
                                         MinWidth="120"
                                         BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                        Header="{lib:ResourceString Name=Latitude}"
+                                        Header="{helpers:ResourceString Name=Latitude}"
                                         InputScope="Number"
                                         Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
                                     <TextBox
                                         MinWidth="120"
                                         BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                        Header="{lib:ResourceString Name=Longitude}"
+                                        Header="{helpers:ResourceString Name=Longitude}"
                                         InputScope="Number"
                                         Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
                                     <Button
                                         Height="Auto"
                                         Margin="0,28,0,0"
                                         Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
-                                        Content="{lib:ResourceString Name=ApplyGeo}" />
+                                        Content="{helpers:ResourceString Name=ApplyGeo}" />
                                 </StackPanel>
 
                                 <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
@@ -164,7 +163,7 @@
                             <!--  Follow Windows Night Light  -->
                             <HyperlinkButton
                                 Click="WindowsNightLightHyperlinkButton_Click"
-                                Content="{lib:ResourceString Name=OpenWindowsNightLight}"
+                                Content="{helpers:ResourceString Name=OpenWindowsNightLight}"
                                 Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
 
                         </StackPanel>
@@ -173,19 +172,19 @@
 
                 <!--  Offset time  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Offset}" />
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Offset}" />
                     <controls:SettingsCard Description="Positive values are later, negative values are earlier" Header="Delay switching by a number minutes">
                         <StackPanel Orientation="Horizontal" Spacing="24">
                             <NumberBox
                                 MinWidth="120"
-                                Header="{lib:ResourceString Name=Light}"
+                                Header="{helpers:ResourceString Name=Light}"
                                 LargeChange="10"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
                             <NumberBox
                                 MinWidth="120"
-                                Header="{lib:ResourceString Name=Dark}"
+                                Header="{helpers:ResourceString Name=Dark}"
                                 LargeChange="10"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
@@ -196,7 +195,7 @@
 
                 <!--  Postpone  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=PostponeControl}" />
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
                     <controls:SettingsCard>
                         <controls:SettingsCard.Description>
                             <Grid ColumnSpacing="8" RowSpacing="16">
@@ -215,22 +214,22 @@
                                     MinWidth="120"
                                     IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
                                     SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_15}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_30}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_60}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_120}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_180}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_360}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_720}" />
-                                    <ComboBoxItem Content="{lib:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
                                 </ComboBox>
                                 <ToggleSwitch
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="0,0,-24,0"
                                     IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                    OffContent="{lib:ResourceString Name=UnDelay}"
-                                    OnContent="{lib:ResourceString Name=Delay}" />
+                                    OffContent="{helpers:ResourceString Name=UnDelay}"
+                                    OnContent="{helpers:ResourceString Name=Delay}" />
 
                                 <Border
                                     Grid.Row="1"
@@ -253,7 +252,7 @@
                         </controls:SettingsCard.Description>
                     </controls:SettingsCard>
                     <InfoBar
-                        Content="{lib:ResourceString Name=ResumeInfo_Content}"
+                        Content="{helpers:ResourceString Name=ResumeInfo_Content}"
                         IsClosable="False"
                         IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
                 </StackPanel>

@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
-using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml.Controls;

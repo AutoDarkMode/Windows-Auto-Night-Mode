@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
@@ -50,34 +49,34 @@
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=Time}"
+                    Content="{helpers:ResourceString Name=Time}"
                     Icon="{ui:FontIcon Glyph=&#xE823;}"
                     Tag="Time" />
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=SwitchModes}"
+                    Content="{helpers:ResourceString Name=SwitchModes}"
                     Icon="{ui:FontIcon Glyph=&#xE945;}"
                     Tag="SwitchModes" />
                 <!--  TODO: Update item content in resource  -->
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=SystemAreas}"
+                    Content="{helpers:ResourceString Name=SystemAreas}"
                     Icon="{ui:FontIcon Glyph=&#xEC4E;}"
                     Tag="SystemAreas" />
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=Personalization}"
+                    Content="{helpers:ResourceString Name=Personalization}"
                     Icon="{ui:FontIcon Glyph=&#xE771;}"
                     Tag="Personalization" />
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=Scripts}"
+                    Content="{helpers:ResourceString Name=Scripts}"
                     Icon="{ui:FontIcon Glyph=&#xF000;}"
                     Tag="Scripts" />
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=Donation}"
+                    Content="{helpers:ResourceString Name=Donation}"
                     Icon="{ui:FontIcon Glyph=&#xEB51;}"
                     Tag="Donation" />
                 <NavigationViewItem
-                    Content="{lib:ResourceString Name=About}"
+                    Content="{helpers:ResourceString Name=About}"
                     Icon="{ui:FontIcon Glyph=&#xE946;}"
                     Tag="About" />
             </NavigationView.FooterMenuItems>

@@ -5,7 +5,6 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -15,26 +14,26 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Description  -->
-                <TextBlock Text="{lib:ResourceString Name=Donation_Description}" TextWrapping="Wrap" />
+                <TextBlock Text="{helpers:ResourceString Name=Donation_Description}" TextWrapping="Wrap" />
 
                 <!--  How to donate  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=DonationHowTo}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
                 <controls:SettingsCard
-                    Description="{lib:ResourceString Name=DonationPayPal_Description}"
+                    Description="{helpers:ResourceString Name=DonationPayPal_Description}"
                     Header="Paypal"
                     HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon,
                                              Glyph=&#xE903;}">
                     <Button
                         MinWidth="120"
                         Click="DonationPayPalButton_Click"
-                        Content="{lib:ResourceString Name=Donation}"
+                        Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon, Glyph=&#xE902;}">
                     <Button
                         MinWidth="120"
                         Click="GithubSponsorsButton_Click"
-                        Content="{lib:ResourceString Name=Donation}"
+                        Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
 

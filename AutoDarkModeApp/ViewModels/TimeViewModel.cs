@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
-using AutoDarkModeLib.Helpers;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;

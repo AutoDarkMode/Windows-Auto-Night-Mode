@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeLib.Helpers;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

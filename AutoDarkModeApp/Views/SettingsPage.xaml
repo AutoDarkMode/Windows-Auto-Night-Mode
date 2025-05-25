@@ -5,7 +5,6 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     xmlns:xaml="using:Microsoft.UI.Xaml"
@@ -21,32 +20,32 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Some settings  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Settings}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{lib:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
+                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{lib:ResourceString Name=AlwaysRefreshDwm}" IsChecked="{x:Bind ViewModel.IsAlwaysFullDwmRefresh, Mode=TwoWay}" />
+                    <CheckBox Content="{helpers:ResourceString Name=AlwaysRefreshDwm}" IsChecked="{x:Bind ViewModel.IsAlwaysFullDwmRefresh, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsExpander>
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="DebugModeCheckBox"
-                            Content="{lib:ResourceString Name=DebugMode}"
+                            Content="{helpers:ResourceString Name=DebugMode}"
                             IsChecked="{x:Bind ViewModel.IsTunableDebug, Mode=TwoWay}" />
                     </controls:SettingsExpander.Header>
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind DebugModeCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
-                            <CheckBox Content="{lib:ResourceString Name=TraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
+                            <CheckBox Content="{helpers:ResourceString Name=TraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  Language  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Language}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Language}" />
                 <controls:SettingsCard
-                    Description="{lib:ResourceString Name=Translator}"
-                    Header="{lib:ResourceString Name=Language}"
+                    Description="{helpers:ResourceString Name=Translator}"
+                    Header="{helpers:ResourceString Name=Language}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                     <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
                         <x:String>Česky (Czech)</x:String>
@@ -78,43 +77,43 @@
                 <InfoBar
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.IsLanguageChangedInfoBarOpen, Mode=OneWay}"
-                    Message="{lib:ResourceString Name=RestartNeeded}"
+                    Message="{helpers:ResourceString Name=RestartNeeded}"
                     Severity="Informational">
                     <InfoBar.ActionButton>
                         <Button
                             MinWidth="120"
                             HorizontalAlignment="Right"
                             Command="{x:Bind ViewModel.RestartCommand}"
-                            Content="{lib:ResourceString Name=Restart}" />
+                            Content="{helpers:ResourceString Name=Restart}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
 
                 <!--  Updates  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Updates}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Updates}" />
                 <!--  Check now  -->
                 <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
                     <Button
                         MinWidth="120"
                         Command="{x:Bind ViewModel.CheckUpdateCommand}"
-                        Content="{lib:ResourceString Name=CheckUpdate}"
+                        Content="{helpers:ResourceString Name=CheckUpdate}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
 
                 <!--  Auto check  -->
-                <controls:SettingsExpander Header="{lib:ResourceString Name=BackgroundUpdate}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=BackgroundUpdate}">
                     <ToggleSwitch x:Name="EnableUpdaterToggleSwitch" IsOn="{x:Bind ViewModel.IsUpdaterEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <!--  Update settings  -->
                         <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
                             <controls:SettingsCard.Header>
                                 <StackPanel Spacing="{StaticResource RadioButtonsRowSpacing}">
-                                    <CheckBox Content="{lib:ResourceString Name=UpdateAtStart}" IsChecked="{x:Bind ViewModel.IsCheckOnStart, Mode=TwoWay}" />
+                                    <CheckBox Content="{helpers:ResourceString Name=UpdateAtStart}" IsChecked="{x:Bind ViewModel.IsCheckOnStart, Mode=TwoWay}" />
                                     <CheckBox
                                         x:Name="AutoInstallCheckBox"
-                                        Content="{lib:ResourceString Name=AutoInstall}"
+                                        Content="{helpers:ResourceString Name=AutoInstall}"
                                         IsChecked="{x:Bind ViewModel.IsAutoInstall, Mode=TwoWay}" />
                                     <CheckBox
-                                        Content="{lib:ResourceString Name=InstallSilent}"
+                                        Content="{helpers:ResourceString Name=InstallSilent}"
                                         IsChecked="{x:Bind ViewModel.IsUpdateSilent, Mode=TwoWay}"
                                         IsEnabled="{x:Bind AutoInstallCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}" />
                                 </StackPanel>
@@ -123,33 +122,33 @@
 
                         <!--  Frequency  -->
                         <!--  TODO: update values (I suggest day/week/month)  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=UpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=UpdateInterval}" IsEnabled="{x:Bind ViewModel.IsUpdaterEnabled, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedDaysBetweenUpdateCheck, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <ComboBoxItem Content="{lib:ResourceString Name=Interval1}" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=Interval3}" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=Interval7}" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=Interval14}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=Interval1}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=Interval3}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=Interval7}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=Interval14}" />
                             </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  New: UpdateChannel  -->
-                <controls:SettingsCard Header="{lib:ResourceString Name=UpdateChannel}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=UpdateChannel}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedUpdateChannel, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                        <ComboBoxItem Content="{lib:ResourceString Name=Stable}" />
-                        <ComboBoxItem Content="{lib:ResourceString Name=Beta}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Stable}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Beta}" />
                     </ComboBox>
                 </controls:SettingsCard>
 
                 <!--  Auto start  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Autostart}" />
-                <controls:SettingsExpander Header="{lib:ResourceString Name=StartWithWindows}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Autostart}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=StartWithWindows}">
                     <ToggleSwitch x:Name="AutostartToggleSwitch" IsOn="{x:Bind ViewModel.IsAutostart, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard IsEnabled="{x:Bind ViewModel.IsAutostart, Mode=OneWay}">
                             <controls:SettingsCard.Header>
-                                <CheckBox Content="{lib:ResourceString Name=LogonTask}" IsChecked="{x:Bind ViewModel.IsLoginWithTask, Mode=TwoWay}" />
+                                <CheckBox Content="{helpers:ResourceString Name=LogonTask}" IsChecked="{x:Bind ViewModel.IsLoginWithTask, Mode=TwoWay}" />
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
@@ -158,11 +157,11 @@
                     <controls:SettingsCard.Header>
                         <StackPanel Orientation="Vertical" Spacing="16">
                             <TextBlock>
-                                <Run Text="{lib:ResourceString Name=Mode}" />
+                                <Run Text="{helpers:ResourceString Name=Mode}" />
                                 <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
                             </TextBlock>
                             <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
-                                <Run Text="{lib:ResourceString Name=PathAt}" />
+                                <Run Text="{helpers:ResourceString Name=PathAt}" />
                                 <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
                             </TextBlock>
                         </StackPanel>
@@ -171,12 +170,12 @@
                         <Button
                             MinWidth="120"
                             Command="{x:Bind ViewModel.AutostartRefreshCommand}"
-                            Content="{lib:ResourceString Name=RefreshAutostart}" />
+                            Content="{helpers:ResourceString Name=RefreshAutostart}" />
                     </controls:SettingsCard.Content>
                 </controls:SettingsCard>
 
                 <!--  Config  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{lib:ResourceString Name=Configuration}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Configuration}" />
                 <!--
                     TODO:
                     * remove redundancy for these "links", with other pages
@@ -185,12 +184,12 @@
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE932;}"
                     Click="OpenConfigSettingsCard_Click"
-                    Header="{lib:ResourceString Name=OpenConfigFile}"
+                    Header="{helpers:ResourceString Name=OpenConfigFile}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
                     Click="OpenConfigFolderSettingsCard_Click"
-                    Header="{lib:ResourceString Name=OpenConfigFolder}"
+                    Header="{helpers:ResourceString Name=OpenConfigFolder}"
                     IsClickEnabled="True" />
 
             </StackPanel>

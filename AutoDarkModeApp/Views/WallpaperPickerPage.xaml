@@ -5,7 +5,6 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:lib="using:AutoDarkModeLib.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -42,56 +41,56 @@
                 </Border>
 
                 <!--  Desktop background  -->
-                <controls:SettingsCard Header="{lib:ResourceString Name=EnableWallpaperSwitch}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableWallpaperSwitch}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander
-                    Header="{lib:ResourceString Name=PickTheme}"
+                    Header="{helpers:ResourceString Name=PickTheme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                     IsExpanded="True"
                     Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
 
                     <!--  Wallpaper Switch Theme  -->
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                        <ComboBoxItem Content="{lib:ResourceString Name=LightTheme}" />
-                        <ComboBoxItem Content="{lib:ResourceString Name=DarkTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
                         <!--  Background Type  -->
                         <controls:SettingsCard ContentAlignment="Left">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <RadioButton Content="{lib:ResourceString Name=WallpaperMode_Picture}" />
-                                <RadioButton Content="{lib:ResourceString Name=WallpaperMode_PictureMM}" />
-                                <RadioButton Content="{lib:ResourceString Name=WallpaperMode_SolidColor}" />
-                                <RadioButton Content="{lib:ResourceString Name=WallpaperMode_Spotlight}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" />
                             </RadioButtons>
                         </controls:SettingsCard>
 
                         <!--  Picture  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                             <Button
                                 MinWidth="120"
                                 HorizontalAlignment="Right"
                                 Command="{x:Bind ViewModel.PickFileCommand}"
-                                Content="{lib:ResourceString Name=BrowsePhotos}" />
+                                Content="{helpers:ResourceString Name=BrowsePhotos}" />
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=Position}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Position}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <ComboBoxItem Content="Center" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=FitMode_Stretch}" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=FitMode_Fit}" />
-                                <ComboBoxItem Content="{lib:ResourceString Name=FitMode_Fill}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Stretch}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fit}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fill}" />
                             </ComboBox>
                         </controls:SettingsCard>
 
                         <!--  Monitor  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{lib:ResourceString Name=RemoveDisconnected}" />
+                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=RemoveDisconnected}" />
                                 <ComboBox
                                     x:Name="MonitorsComboBox"
                                     HorizontalAlignment="Right"
@@ -100,7 +99,7 @@
                         </controls:SettingsCard>
 
                         <!--  Color  -->
-                        <controls:SettingsCard Header="{lib:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <!--  TODO: Replace Content to Resource  -->
                                 <Button
@@ -112,7 +111,7 @@
 
                         <!--  Windows Spotlight  -->
                         <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
-                            <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{lib:ResourceString Name=OpenWindowsSpotlight}" />
+                            <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenWindowsSpotlight}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
@@ -122,9 +121,9 @@
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
-                    CloseButtonText="{lib:ResourceString Name=Cancel}"
+                    CloseButtonText="{helpers:ResourceString Name=Cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{lib:ResourceString Name=Set}">
+                    PrimaryButtonText="{helpers:ResourceString Name=Set}">
                     <StackPanel>
                         <ColorPicker x:Name="CheckColorColorPicker" />
                     </StackPanel>
