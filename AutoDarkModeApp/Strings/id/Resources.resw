@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Nyalakan pergantian tema otomatis</value>
+  <data name="About" xml:space="preserve">
+    <value>Tentang</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Setelan</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Aksen warna</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>Terapkan</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>Aksen warna untuk bilah tugas</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>Dengan aksen</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>Penundaan aktif</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Gunakan aksen bilah tugas saat</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>Menyesuaikan dengan sistem</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Tambah</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Selalu gelap</value>
@@ -135,8 +150,113 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Selalu terang</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>Aplikasi</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>Selalu segarkan DWM ketika pergantian tema</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>Berupaya untuk mengurangi terjadinya warna UI yang salah di penjelajah, bilah tugas, dan menu mulai. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
+
+Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10. 
+Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>Paksa penyegaran DWM?</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Terapkan</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>Terapkan Koordinat</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Unduh otomatis dan pasang versi terbaru</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Otomatis</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Alihkan pergantian tema otomatis</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Mulai Otomatis</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>Waktu notifikasi menunggu input pengguna dalam hitungan menit</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>Ingatkan sebelum berganti tema otomatis</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>Pergantian tema otomatis dilanjutkan</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>Mencari update di latar belakang</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>Switch to dark mode when device is unplugged</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>Perangkat dengan tenaga baterai</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>Nilai bawaan untuk slider penghemat energi</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>Proses Yang Memblokir</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>Pilih berkas</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batalkan</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Mencari Pembaruan</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>Pilih mode untuk latar belakang Anda</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>Pilih wallpaper</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Kota</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Tutup</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>Color filter (sends Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Kondisi</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Konfigurasi</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Konfirmasi</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Salin</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>Buatlah tema Anda</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>Kursor</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>Atur waktu kustom</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>Repo pengguna untuk skrip kustom</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>Waktu mulai kustom</value>
@@ -147,8 +267,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>Tema gelap</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Tunda</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Dinonaktifkan</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Terputus</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>Dokumentasi untuk skrip kustom</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Donasi</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode Apakah Anda menyukainya?
+
+Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source.
+Kami tidak mengambil keuntungan apa pun dari proyek ini.
+
+Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Bagaimana cara mendonasi?</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>Anda dapat mendonasikan uang kepada kami menggunakan Paypal. Ini sepenuhnya secara sukarela dan Anda tidak berhak kompensasi apapun.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>Jangan berganti ketika bermain video game</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>Jangan beralih tema kecuali sistem menganggur</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>Aksen warna untuk bilah judul dan batas jendela hanya dalam</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (versi lama)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>Nyalakan pergantian aksen warna</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>Nyalakan pergantian tema otomatis</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>Nyalakan pergantian kursor tetikus</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>Aktifkan skrip kustom</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Diaktifkan</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>Nyalakan hotkey secara menyeluruh</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>Aktifkan perubahan layar</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>Mitigasi penghemat energi untuk pergantian tema</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>Ada masalah dengan UI.
+
+Pastikan:
+- layanan berjalan
+- berkas config.yaml anda sudah benar
+
+Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
+Klik "Ya" untuk membuka jendela peramban baru.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>Masalah terjadi</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>Fitur ini dinonaktifkan ketika Auto Dark Mode mengelola tema Anda.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>Fitur ini dinonaktifkan ketika Windows mengelola tema Anda.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>Isikan</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>Paskan</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>Rentangkan</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>Biarkan aplikasi memilih</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Ikuti Kami</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Ikuti cahaya malam Windows</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>Paksa mode gelap</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>Paksa mode terang</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Setelan</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>Koordinat geografis</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>Cari koordinat geografis Anda</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>Kecepatan deteksi penggunaan GPU</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Bantuan</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>Kode Hex</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>Sembunyikan Ikon Tray</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>Hotkey</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>Jumlah menit hingga sistem dianggap menganggur</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>Abaikan latar belakang</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>Abaikan kursor</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>Abaikan ikon desktop</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>Abaikan pengaturan</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>Abaikan notifikasi suara</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Alamat gambar</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Informasi</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>Jangan perlihatkan notifikasi</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>Setiap hari</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 hari</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 hari</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 hari</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>tidak pernah</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>Terakhir diperiksa</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Garis lintang</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>Meluncurkan Layanan</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Terang</value>
@@ -156,23 +460,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Tema terang</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>Setelan</value>
+  <data name="Links" xml:space="preserve">
+    <value>Tautan</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>Ganti tema saat ini</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>Data lokasi</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>Sistem</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>Dari terbenam hingga terbit (koordinat geografis)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Aplikasi pihak ketiga yang terpakai</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>Dari terbenam hingga terbit (layanan lokasi)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>Pembaruan</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>Memakai layanan lokasi</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Garis bujur</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>Batas minimum penggunaan GPU untuk menunda pergantian mode</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>menit</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>Layar</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>Pergantian tema otomatis diaktifkan</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>Perubahan Anda telah tersimpan!</value>
@@ -180,23 +511,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Atur waktu pergantian dan pengaturan disimpan otomatis.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>Versi sebelumnya tersedia</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Unduh pembaruan</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>masalah terjadi :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>Opsi ini tidak mendukung tema Windows bawaan</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Aplikasi ini membutuhkan izin untuk menemukan lokasi</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>Layanan sedang memulai, harap tunggu…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Pembaruan tidak tersedia.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Pergantian tema tertunda sekali!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Apakah anda mau untuk berganti sekarang? Atau tunda lebih lanjut?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Mencari lokasi Anda…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Mencari Pembaruan…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>Layanan tidak merespon, Periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Pergantian tema tertunda</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Peringatan: Kami tidak dapat membaca tema Anda saat ini.</value>
@@ -212,171 +564,23 @@ Apakah Anda mau memasang?
 
 Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>Mencari Pembaruan</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>Info versi disalin ke papan klip</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>Translator: pc-v2</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>Pembaruan selanjutnya pada</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>Kota</value>
+  <data name="None" xml:space="preserve">
+    <value>Tidak ada</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Posisi</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Aksen warna untuk bilah tugas</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Batalkan</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>Pilih berkas</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>Dinonaktifkan</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>Diaktifkan</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>Masalah terjadi</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Informasi</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Tutup</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;Tutup</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>Mencari update di latar belakang</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Ada masalah dengan UI.
-
-Pastikan:
-- layanan berjalan
-- berkas config.yaml anda sudah benar
-
-Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
-Klik "Ya" untuk membuka jendela peramban baru.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>Tidak Ditemukan</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>Offset</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>Waktu</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Buka Folder</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>Buatlah tema Anda</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>Pilih tema</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Tekan ini untuk membuka setelan tema Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Kemudian arahkan ke 'Warna' dan ganti warna sistem ke 'Terang' untuk tema terang. Pilih latar belakang, kursor tetikus dan aksen warna.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Ulangi proses untuk tema gelap.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>Tentang</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>Mulai Ulang</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>Atur waktu kustom</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>Dari terbenam hingga terbit (layanan lokasi)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>Langkah</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>Memakai jadwal saat masuk daripada entri mulai otomatis</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>Bagaimana cara mendonasi?</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>Anda dapat mendonasikan uang kepada kami menggunakan Paypal. Ini sepenuhnya secara sukarela dan Anda tidak berhak kompensasi apapun.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>Donasi</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode Apakah Anda menyukainya?
-
-Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source.
-Kami tidak mengambil keuntungan apa pun dari proyek ini.
-
-Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Bantuan</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>Menyesuaikan dengan sistem</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Atur Ulang</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Nilai bawaan untuk slider penghemat energi</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Mitigasi penghemat energi untuk pergantian tema</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Beralih Mode</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>Personalisasi</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>Terapkan Koordinat</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>Opsi ini tidak tersedia, karena Anda belum memasang pembaruan Windows 10 April 2019 di komputer Anda.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>Koordinat geografis</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>Data lokasi</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>Dari terbenam hingga terbit (koordinat geografis)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>Cari koordinat geografis Anda</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>Buka file konfigurasi</value>
@@ -387,89 +591,146 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="OpenLog" xml:space="preserve">
     <value>Buka file log</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Konfigurasi</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Buka Folder</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>Pilih latar belakang</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Buka setelan penunjuk Windows</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Fitur ini dinonaktifkan ketika Windows mengelola tema Anda.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>Buka pengaturan skrip</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Fitur ini dinonaktifkan ketika Auto Dark Mode mengelola tema Anda.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>Buka shell</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>Buka log pembaruan</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>Buka setelan cahaya malam</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>Alamat mulai otomatis:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>Alihkan jeda pergantian tema otomatis</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personalisasi</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>Pilih aksen warna</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>Pilih kursor tetikus</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>Konfigurasikan kursor tetikus yang berbeda untuk mode gelap dan terang.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>Pilih tema</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>PIlih tema Windows yang berbeda untuk masing-masing mode gelap dan terang. memungkinkan kustomisasi tema secara penuh, tapi membutuhkan Anda untuk menyetel file .theme Anda sendiri.</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>Pilih latar belakang</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>Atur latar belakang desktop anda untuk semua monitor, beberapa monitor secara individu, atur warna latar belakang, atau nyalakan Windows Spotlight.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>Unduh otomatis dan pasang versi terbaru</value>
+  <data name="Position" xml:space="preserve">
+    <value>Posisi</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>Jangan perlihatkan notifikasi</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>Kontrol penundaan</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>Pilih saluran pembaruan</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>Saat ini pergantian tema otomatis ditunda dikarenakan modul berikut:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>Modul tunda</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 hari</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>Modul monitor GPU</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 hari</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>Tunda modul pergantian otomatis</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 hari</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>tunda hingga</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>Terakhir diperiksa</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>tunda hingga kondisi dipenuhi</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>tidak pernah</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>Notifikasi Pergantian</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>Ubah seberapa sering kami memeriksa pembaruan</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>Pemeriksa sistem saat diam</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>Gambar</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>tunda hingga matahari terbit berikutnya</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>Gambar (beberapa layar)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>tunda hingga matahari terbenam berikutnya</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>Warna solid</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 jam</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>Mode</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 menit</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>Layar</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 jam</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Tipe</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 menit</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 jam</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 jam</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 jam</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>Lewati pergantian otomatis sekali</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>Jangan beralih ketika proses tertentu berjalan</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>Segarkan Mulai Otomatis</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>Kunci Registry</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>Hapus</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>Hapus layar yang terputus</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>Latar Belakang</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Atur Ulang</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>Warna</value>
+  <data name="Restart" xml:space="preserve">
+    <value>Mulai Ulang</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>Kode Hex</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>Memulai ulang aplikasi dibutuhkan untuk melihat perubahan</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>Aktifkan perubahan layar</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>Kembalikan tema ketika diganti secara eksternal</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Jangan berganti ketika bermain video game</value>
+  <data name="Resume" xml:space="preserve">
+    <value>Lanjutkan</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>Melanjutkan hanya akan berfungsi untuk penundaan yang memiliki waktu kedaluwarsa</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>Cepat (1 sampel)</value>
@@ -480,41 +741,56 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   <data name="SamplesSlow" xml:space="preserve">
     <value>Lambat (3 sampel)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>Kecepatan deteksi penggunaan GPU</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>Skrip</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>Perangkat dengan tenaga baterai</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>PIlih kursor gelap</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>Kondisi</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>Pilih kursor terang</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>Batas minimum penggunaan GPU untuk menunda pergantian mode</value>
+  <data name="Set" xml:space="preserve">
+    <value>Atur</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>Kembalikan tema ketika diganti secara eksternal</value>
+  <data name="Settings" xml:space="preserve">
+    <value>Setelan</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Garis lintang</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>Tampilkan notifikasi saat beralih</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Garis bujur</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Terima kasih spesial</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>Layanan sedang memulai, harap tunggu…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>Mulai Auto Dark Mode Saat Masuk</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>Meluncurkan Layanan</value>
+  <data name="Step" xml:space="preserve">
+    <value>Langkah</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>Layanan tidak merespon, Periksa jika AutoDarkModeSvc.exe berjalan, dan coba lagi!</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>Cegah memaksa tema</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Nyalakan pergantian tema Windows</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>Ikuti Kami</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>Beralih Mode</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>Ganti tema saat ini</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>Beralih ke papan ketik sentuh dan masukan</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sistem</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>Aplikasi</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Tugas</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>Tema</value>
@@ -555,460 +831,86 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
     <value>Windows (Terang)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Matahari Terbit</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>Setiap hari</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>Tekan ini untuk membuka setelan tema Windows.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Gunakan aksen bilah tugas saat</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>Kemudian arahkan ke 'Warna' dan ganti warna sistem ke 'Terang' untuk tema terang. Pilih latar belakang, kursor tetikus dan aksen warna.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>Dengan aksen</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Versi</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>Ulangi proses untuk tema gelap.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>Salin</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>Aplikasi pihak ketiga yang terpakai</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>Mulai Auto Dark Mode Saat Masuk</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>Mulai Otomatis</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>Mode:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>Alamat mulai otomatis:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>Segarkan Mulai Otomatis</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>Tidak ada</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>Tidak Ditemukan</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>Kunci Registry</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>Tugas</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>Pembaruan selanjutnya pada</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>Paksa mode gelap</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>Paksa mode terang</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>Hotkey</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>Cegah memaksa tema</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>Nyalakan hotkey secara menyeluruh</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Paksa Mode Gelap</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Paksa Mode Terang</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Sembunyikan Ikon Tray</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Buka Direktori Pengaturan</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>Biarkan aplikasi memilih</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Jangan beralih tema kecuali sistem menganggur</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>Jumlah menit hingga sistem dianggap menganggur</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Aksen warna untuk bilah judul dan batas jendela hanya dalam</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Info versi disalin ke papan klip</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Pergantian tema otomatis</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Tampilkan notifikasi saat beralih</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Tunda</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>Modul monitor GPU</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Tunda modul pergantian otomatis</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>Pemeriksa sistem saat diam</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Lanjutkan</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Alihkan pergantian tema otomatis</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Matikan pergantian otomatis</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>Batalkan</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Tunda pergantian otomatis</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Saat ini pergantian tema otomatis ditunda dikarenakan modul berikut:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>Melanjutkan hanya akan berfungsi untuk penundaan yang memiliki waktu kedaluwarsa</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>Kontrol penundaan</value>
+  <data name="Time" xml:space="preserve">
+    <value>Waktu</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Beralih tema</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Beralih tema</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Pergantian tema otomatis diaktifkan</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Ikuti cahaya malam Windows</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Pergantian tema tertunda sekali!</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>tunda hingga</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>tunda hingga kondisi dipenuhi</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>tunda hingga matahari terbit berikutnya</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>tunda hingga matahari terbenam berikutnya</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>hingga</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>hingga matahari terbit berikutnya</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>hingga matahari terbenam berikutnya</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Alihkan jeda pergantian tema otomatis</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Pergantian tema otomatis dilanjutkan</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Buka setelan cahaya malam</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Penundaan aktif</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Lewati pergantian otomatis sekali</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Ingatkan sebelum berganti tema otomatis</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Waktu notifikasi menunggu input pengguna dalam hitungan menit</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Konfirmasi</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Ganti sekarang</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Modul tunda</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Notifikasi Pergantian</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 jam</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 menit</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 jam</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 menit</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 jam</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 jam</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 jam</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Pergantian tema tertunda</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Apakah anda mau untuk berganti sekarang? Atau tunda lebih lanjut?</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>Mode jejak</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>Terima kasih spesial</value>
+  <data name="Translator" xml:space="preserve">
+    <value>Translator: pc-v2</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>Abaikan latar belakang</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>Abaikan kursor</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Abaikan ikon desktop</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>Abaikan notifikasi suara</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>Abaikan pengaturan</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Opsi ini tidak mendukung tema Windows bawaan</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>menit</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Jeda</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>Terjadi kesalahan saat menambal.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Versi Terkini</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Menurunkan versi ke</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Mengunduh…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Unduhan sedang berlangsung</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Pesan</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>Versi baru {0} tersedia</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Gagal menambal</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Silakan periksa service.log dan updater.log untuk info</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Memperbarui ke</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Penurunan</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Catatan Sejarah Direktori</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Tunda</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Perbarui</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Versi lama {0} tersedia</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Buka halaman unduhan</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>Versi sebelumnya tersedia</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>Skrip</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Buka pengaturan skrip</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Aktifkan skrip kustom</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Pilih wallpaper</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>Alamat gambar</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>Aksen warna</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>Pilih aksen warna</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>Perbarui pewarnaan</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>Tautan</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Dokumentasi untuk skrip kustom</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Repo pengguna untuk skrip kustom</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>Isikan</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>Paskan</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Rentangkan</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Pilih mode untuk latar belakang Anda</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>Terputus</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Selalu segarkan DWM ketika pergantian tema</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>Berupaya untuk mengurangi terjadinya warna UI yang salah di penjelajah, bilah tugas, dan menu mulai. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
-
-Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10. 
-Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Paksa penyegaran DWM?</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Nyalakan pergantian kursor tetikus</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Buka setelan penunjuk Windows</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>PIlih kursor gelap</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>Pilih kursor terang</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>Kursor</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>Konfigurasikan kursor tetikus yang berbeda untuk mode gelap dan terang.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>Pilih kursor tetikus</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
+  <data name="Type" xml:space="preserve">
+    <value>Tipe</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Biarkan Windows yang mengatur tema saya</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>Buka shell</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Buka log pembaruan</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>Pilih saluran pembaruan</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Nyalakan pergantian aksen warna</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>Perbarui pewarnaan</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Beralih ke papan ketik sentuh dan masukan</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>Ubah seberapa sering kami memeriksa pembaruan</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>Otomatis</value>
+  <data name="Updates" xml:space="preserve">
+    <value>Pembaruan</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>Memakai layanan lokasi</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Tambah</value>
+  <data name="Version" xml:space="preserve">
+    <value>Versi</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>Hapus</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>Latar Belakang</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>Proses Yang Memblokir</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>Gambar</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>Jangan beralih ketika proses tertentu berjalan</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>Gambar (beberapa layar)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Cobalah untuk memperbaiki tema</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>Warna solid</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Atur</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>Opsi ini tidak tersedia, karena Anda belum memasang pembaruan Windows 10 April 2019 di komputer Anda.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
   </data>
 </root>

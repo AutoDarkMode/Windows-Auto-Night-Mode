@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Închideți</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Forțați temă întunecată</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Forțați temă întunecată</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Deschideți director config</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Schimbare automată a temei</value>
   </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Întrerupeți schimbarea automată</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Schimbă tema</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Încearcă să repari tema</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>Până când</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>Până la următorul apus</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Luminos</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmați</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Închis</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Încet</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Amânare</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Dezactivează schimbarea automată</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Dezactivat</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Activat</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Schimbarea temei este în așteptare</value>
+  <data name="Light" xml:space="preserve">
+    <value>Luminos</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>În schimb, doriți să dezactivați schimbarea automată?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Schimbarea automată se va relua și dacă reveniți la tema anterioară..</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Schimbarea temei s-a întrerupt până la</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Schimbarea temei este întreruptă o singură dată!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Doriți să o schimbați acum sau să o amânați mai mult?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Schimbarea automată a temei a fost reluată</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Schimbarea temei este în așteptare</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Încet</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 ore</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 ore</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Amânare</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Schimbați acum</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>În schimb, doriți să dezactivați schimbarea automată?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Schimbarea automată se va relua și dacă reveniți la tema anterioară..</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Schimbarea temei s-a întrerupt până la</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Apăsați pe confirmare pentru a solicita imediat schimbarea temei.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Anulați această acțiune făcând clic pe butonul de anulare de mai jos.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Schimbați acum</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
     <value>Schimbare automată a temei</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmați</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>Închideți</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Apăsați pe confirmare pentru a solicita imediat schimbarea temei.</value>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Forțați temă întunecată</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Forțați temă întunecată</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Deschideți director config</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>Întrerupeți schimbarea automată</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>Schimbă tema</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Încearcă să repari tema</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Anulează</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>Până când</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>Până la următorul răsărit</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>Până la următorul apus</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>A apărut o eroare la corecție.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Reveniți la o versiune anterioară</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Deschideți directorul de jurnal</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Amânați</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Actualizați</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Versiunea actuală</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Versiunea anterioară {0} disponibilă</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Revenind la versiunea anterioară</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Descărcare în curs</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Accesați pagina de descărcare</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Mesaj</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Se actualizează la</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Reveniți la o versiune anterioară</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Deschideți directorul de jurnal</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Amânați</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Actualizați</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Versiunea anterioară {0} disponibilă</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Accesați pagina de descărcare</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Dezactivează schimbarea automată</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>Până la următorul răsărit</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Schimbarea temei este întreruptă o singură dată!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Schimbarea automată a temei a fost reluată</value>
   </data>
 </root>

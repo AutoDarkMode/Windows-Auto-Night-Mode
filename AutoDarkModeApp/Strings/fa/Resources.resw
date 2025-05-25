@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>حالت تاریک خوکار</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>فعال کردن تغییر خودکار نمایه</value>
+  <data name="About" xml:space="preserve">
+    <value>درباره</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>تنظیمات</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accent color</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>اعمال کردن</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>رنگ تأکیدی برای نوار وظیفه</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>Accent only</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>Active delays</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Use Taskbar Accent Color during</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>سازگاری با سیستم</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Add</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>همیشه تاریک</value>
@@ -135,8 +150,113 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>همیشه روشن</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>برنامه ها</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>Always refresh DWM on theme switch</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+
+This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>Force DWM refresh?</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>اعمال کردن</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>اعمال مختصات</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>بار گیری و نصب خودکار ویرایش‌های جدید</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Toggle automatic theme switch</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>اجرای خودکار</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>Time the notification waits for user input in minutes</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>Notify before automatically switching themes</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>Auto theme switching resumed</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>بررسی خودکار بروزرسانی</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>تغییر به حالت تاریک برای وقتی که دستگاه در حالت شارژ نیست</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>دستگاه‌های مجهز به باتری</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>مقدار دلخواه برای نوار لغزنده‌ی ذخیره‌ی انرژی</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>Blocking Processes</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>انتخاب پرونده</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>لغو</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>بررسی بروزرسانی‌ها</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>Choose a fit for your desktop image</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>شهر</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>بستن</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>رنگ</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>فیلتر رنگی (ارسال با Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>شرایط</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>پیکربندی</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>رونوشت</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>نمایه‌ی خود را بسازید.</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>Cursors</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>تنظیم ساعت سفارشی</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>Custom script user repository</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>زمان شروع سفارشی</value>
@@ -147,8 +267,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>نمایه تاریک</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>غیرفعال شده</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>Documentation for custom scripts</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>اعانه دادن</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>سلام، سپاس برای استفاده شما از Auto Dark Mode! آیا تا کنون آن‌را دوست داشته اید؟ 
+
+این برنامه با کمک به مراقبت از چشمانتان روز لذت بخش‌تری را برایتان به ارمغان می‌آورد .
+من با این پروژه هیچ سودی بدست نمی آورم.
+
+به همین دلیل می‌توانید با یک کمک مالی داوطلبانه از من حمایت کنید. حتی مقدار کمی می‌تواند باعث خوشحالی من بشود. فقط به‌ اندازه‌ای که برای کار من ارزش قائلید کمک کنید.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>چگونه اعانه بدهیم؟</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>شما می‌توانید از طریق PayPal پول واریز کنید. این یک کمک بلاعوض و اختیاری است.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>عدم تغییر حالت در هنگام پخش ویدئو</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>Don't switch themes unless the system is idle</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>Accent Color for title bars and window borders only during</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>گوشه (قدیمی)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>Enable Accent color switch</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>فعال کردن تغییر خودکار نمایه</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>Enable mouse cursor switch</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>Enable custom scripts</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>فعال شده</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>فعالسازی میانبرها</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>فعالسازی تغییر پس‌زمینه</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>تعدیل صرفه‌جوی انرژی برای تغییر نمایه</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>مشکلی در رابط کاربری بود.
+
+لطفا اطمینان حاصل کنید:
+- سرویس برنامه در حال اجرا است
+- فایل config.yaml شما سالم است
+
+آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟
+برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>یک خطا رخ داده است.</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>هنگامی که Auto Dark Mode نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>هنگامی که ویندوز نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>Fit</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>Let the app decide</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>ما را دنبال کنید</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>حالت تاریک اجباری</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>حالت روشن اجباری</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>مختصات جغرافیایی</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>یافتن مختصات جغرافیایی برای مکان شما</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>سرعت تشخیص مصرف پردازنده گرافیک</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>کمک</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>کد hex</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>پنهان کردن آیکون tray</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>شما فقط در زمانی که کلیدهای میانبر غیر فعال هستند می‌توانید آن‌ها را ویرایش کنید.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>میانبرها</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>Minutes until the system is considered idle</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>Ignore background</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>Ignore cursor</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignore desktop icons</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>Ignore settings</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>Ignore sound</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Image path</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>اطلاعات</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>عدم نمایش اعلانات</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>هر روز</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>۱۴ روز</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>۳ روز</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>۷ روز</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>هیچ‌وقت</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>آخرین بررسی</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>عرض جغرافیایی</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>در حال اجرای سرویس برنامه</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>روشن</value>
@@ -156,23 +460,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>نمایه روشن</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>تنظیمات</value>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>تغییر نمایه فعلی</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>داده‌های مکانی</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>سامانه</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>از طلوع تا غروب (مختصات جغرافیایی)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>از برنامه واسط استفاده شده</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>از طلوع تا غروب (سرویس مکان‌یاب)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>بروزرسانی ها</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>استفاده از Logon Task به جای Startup entry</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>استفاده از خدمت مکان یابی</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>طول جغرافیایی</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Let Auto Dark Mode manage my theme</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>منو</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>حداقل درصد مصرف پردازنده گرافیکی برای تأخیر تغییر حالت</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>حالت</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>حالت:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>صفحه نمایش</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>Auto theme switching is enabled</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>تغییرات شما ذخیره شده است!</value>
@@ -180,23 +511,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>تغییرات شما خودکار ذخیره خواهد شد.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>A downgrade is available</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>بارگیری بروزرسانی</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>خطایی رخ داد :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>This option does not support default Windows themes</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>این برنامه نیاز به دسترسی مکان شما دارد</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>سرویس برنامه هنوز اجرا نشده است، لطفا صبر کنید…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>هیچ بروزرسانی جدیدی در دسترس نیست.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Theme switching is paused once!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Would you like to switch now or delay further?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>در حال دریافت مکان شما…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>در حال جستجوی بروزرسانی…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>سرویس برنامه پاسخگو نیست! لطفا بررسی کنید آیا AutoDarkModeSvc.exe در حال اجراست، و دوباره تلاش کنید!</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Theme switch pending</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>هشدار: ما نمی توانیم نمایه فعلی شما را بخوانیم.</value>
@@ -212,171 +564,23 @@
 
 در حال نصب نسخه:{0}، نسخه جدید:{1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>بررسی بروزرسانی‌ها</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>Version info copied to clipboard</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>Translator: Hamed Rezaei(himon7)</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>بروزرسانی بعدی در</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>شهر</value>
+  <data name="None" xml:space="preserve">
+    <value>هیچ</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>موقعیت</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است.</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>رنگ تأکیدی برای نوار وظیفه</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>لغو</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>انتخاب پرونده</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>غیرفعال شده</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>فعال شده</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>یک خطا رخ داده است.</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>اطلاعات</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>بستن</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>و بستن</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>بررسی خودکار بروزرسانی</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>مشکلی در رابط کاربری بود.
-
-لطفا اطمینان حاصل کنید:
-- سرویس برنامه در حال اجرا است
-- فایل config.yaml شما سالم است
-
-آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟
-برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>پیدا نشد</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>جابجایی</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>زمان</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>بازکردن پوشه</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>نمایه‌ی خود را بسازید.</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>یک نمایه انتخاب کنید</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>برای باز کردن تنظیمات Windows Themes کلیک کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>اکنون به "Colors"‌بروید و رنگ سیستم را به "Light"‌ برای نمایه‌ی روشن تغییر دهید. پس‌زمینه، مکان‌نما‌ی موشواره، و رنگ تأکیدی موردپسند خود را انتخاب کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>به تنظیمات نمایه برگردید و نمایه‌ی خود را ذخیره کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>همین مراحل را برای نمایه‌ی تاریک انجام دهید.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>درباره</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>منو</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>اجرای دوباره</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>تنظیم ساعت سفارشی</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>از طلوع تا غروب (سرویس مکان‌یاب)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>مرحله</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>فیلتر رنگی (ارسال با Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>استفاده از Logon Task به جای Startup entry</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>چگونه اعانه بدهیم؟</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>شما می‌توانید از طریق PayPal پول واریز کنید. این یک کمک بلاعوض و اختیاری است.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>اعانه دادن</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>سلام، سپاس برای استفاده شما از Auto Dark Mode! آیا تا کنون آن‌را دوست داشته اید؟ 
-
-این برنامه با کمک به مراقبت از چشمانتان روز لذت بخش‌تری را برایتان به ارمغان می‌آورد .
-من با این پروژه هیچ سودی بدست نمی آورم.
-
-به همین دلیل می‌توانید با یک کمک مالی داوطلبانه از من حمایت کنید. حتی مقدار کمی می‌تواند باعث خوشحالی من بشود. فقط به‌ اندازه‌ای که برای کار من ارزش قائلید کمک کنید.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>کمک</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>سازگاری با سیستم</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>بازنشانی</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>تغییر به حالت تاریک برای وقتی که دستگاه در حالت شارژ نیست</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>مقدار دلخواه برای نوار لغزنده‌ی ذخیره‌ی انرژی</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>تعدیل صرفه‌جوی انرژی برای تغییر نمایه</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تغیر حالت‌ها</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>شخصی سازی</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>اعمال مختصات</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>این گزینه غیر فعال است؛ زیرا شما بروزرسانی  Windows 10 April 2019 را نصب نکرده اید.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>مختصات جغرافیایی</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>داده‌های مکانی</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>از طلوع تا غروب (مختصات جغرافیایی)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>یافتن مختصات جغرافیایی برای مکان شما</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>باز کردن پرونده‌ی پیکربندی</value>
@@ -387,89 +591,146 @@
   <data name="OpenLog" xml:space="preserve">
     <value>باز کردن پرونده‌ی گزارش</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>پیکربندی</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>بازکردن پوشه</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>یک پس‌زمینه انتخاب کنید</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Open Windows pointer settings</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>هنگامی که ویندوز نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>Open script config</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>هنگامی که Auto Dark Mode نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>Open shell</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>Open updater log</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>Open night light settings</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>مسیر:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>Toggle pause auto theme switch</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>شخصی سازی</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>Pick mouse cursors</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>Configure different mouse cursors for dark and light modes.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>یک نمایه انتخاب کنید</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>انتخاب یک نمایه‌‌ي ویندوز دیگر برای حالت تاریک و روشن. امکان سفارشی سازی کامل، اما نیاز به تنظیم پرونده‌های .themes توسط شما دارد.</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>یک پس‌زمینه انتخاب کنید</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>پس‌زمینه‌ی میزکارتان را برای همه‌ی صفحه‌نمایش‌ها یا به صورت جداگانه برای هرکدام و رنگ پس‌زمینه یا حالت spotlight را سفارشی کنید.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>بار گیری و نصب خودکار ویرایش‌های جدید</value>
+  <data name="Position" xml:space="preserve">
+    <value>موقعیت</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>عدم نمایش اعلانات</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>Postpone control</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>انتخاب کانال بروزرسانی</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>Auto theme switching is currently paused due to the following modules:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>بررسی بروزرسانی همزمان با اجرای Auto Dark Mode</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>Delay module</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>۱۴ روز</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>GPU monitor module</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>۳ روز</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>Pause auto switch module</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>۷ روز</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>postpones until</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>آخرین بررسی</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>postpones until its condition is met</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>هیچ‌وقت</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>Switch notification</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>تغییر بررسی برورز رسانی هر چند وقت یک بار</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>System idle checker</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>تصویر</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>postpones until next sunrise</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>تصویر (چند صفحه‌نمایش)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>postpones until next sunset</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>رنگ یک‌پارچه</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 hours</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>حالت</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 minutes</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>صفحه نمایش</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 hours</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>نوع</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 hours</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>Skip auto switch once</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>Don't switch while certain processes are running</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>تازه‌سازی جرای خودکار</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>Registry Key</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>حدف صفحه‌نمایش‌های قطع شده</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>پس‌زمینه</value>
+  <data name="Reset" xml:space="preserve">
+    <value>بازنشانی</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>رنگ</value>
+  <data name="Restart" xml:space="preserve">
+    <value>اجرای دوباره</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>کد hex</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است.</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>فعالسازی تغییر پس‌زمینه</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>بازگردانی نمایه‌ها هنگامی که به صورت خارجی تغییر کرده‌اند</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>عدم تغییر حالت در هنگام پخش ویدئو</value>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>Resuming will only work for postpones that have an expiry time</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>سریع (یک نمونه)</value>
@@ -480,41 +741,56 @@
   <data name="SamplesSlow" xml:space="preserve">
     <value>آهسته (سه نمونه)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>سرعت تشخیص مصرف پردازنده گرافیک</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>دستگاه‌های مجهز به باتری</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>Select dark cursor</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>شرایط</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>Select light cursor</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>حداقل درصد مصرف پردازنده گرافیکی برای تأخیر تغییر حالت</value>
+  <data name="Set" xml:space="preserve">
+    <value>تنظیم کردن</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>بازگردانی نمایه‌ها هنگامی که به صورت خارجی تغییر کرده‌اند</value>
+  <data name="Settings" xml:space="preserve">
+    <value>تنظیمات</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>عرض جغرافیایی</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>Show notification on toggle</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>طول جغرافیایی</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Special thanks</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>سرویس برنامه هنوز اجرا نشده است، لطفا صبر کنید…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>اجرای Auto Dark Mode به همراه ویندوز</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>در حال اجرای سرویس برنامه</value>
+  <data name="Step" xml:space="preserve">
+    <value>مرحله</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>سرویس برنامه پاسخگو نیست! لطفا بررسی کنید آیا AutoDarkModeSvc.exe در حال اجراست، و دوباره تلاش کنید!</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>توقف نمایه‌ی اجباری</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>فعالسازی تغییر نمایه‌ی ویندوز</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>ما را دنبال کنید</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>تغیر حالت‌ها</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>تغییر نمایه فعلی</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>Switch touch keyboard and input</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>سامانه</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>برنامه ها</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>فعالیت</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>نمایه</value>
@@ -555,460 +831,86 @@
     <value>Windows (Light)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>هر روز</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>برای باز کردن تنظیمات Windows Themes کلیک کنید.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>اکنون به "Colors"‌بروید و رنگ سیستم را به "Light"‌ برای نمایه‌ی روشن تغییر دهید. پس‌زمینه، مکان‌نما‌ی موشواره، و رنگ تأکیدی موردپسند خود را انتخاب کنید.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>به تنظیمات نمایه برگردید و نمایه‌ی خود را ذخیره کنید.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>نگارش</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>همین مراحل را برای نمایه‌ی تاریک انجام دهید.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>رونوشت</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>از برنامه واسط استفاده شده</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>اجرای Auto Dark Mode به همراه ویندوز</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>اجرای خودکار</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>حالت:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>مسیر:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>تازه‌سازی جرای خودکار</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>هیچ</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>پیدا نشد</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>Registry Key</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>فعالیت</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>بروزرسانی بعدی در</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>حالت تاریک اجباری</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>حالت روشن اجباری</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>میانبرها</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>توقف نمایه‌ی اجباری</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>فعالسازی میانبرها</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Force &amp;Dark Theme</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Force &amp;Light Theme</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>پنهان کردن آیکون tray</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>Let the app decide</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Automatic theme switch</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Pause auto switch</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>Postpone control</value>
+  <data name="Time" xml:space="preserve">
+    <value>زمان</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Toggle theme</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>until</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Switch now</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 hours</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 hours</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 hours</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 hour</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 hours</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>Trace mode</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+  <data name="Translator" xml:space="preserve">
+    <value>Translator: Hamed Rezaei(himon7)</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ignore settings</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Paused</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Downloading…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>Scripts</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Open script config</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Enable custom scripts</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>Image path</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>Accent color</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>Update colorization</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>Links</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Custom script user repository</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>Fill</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>Fit</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Stretch</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>Disconnected</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
-
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Force DWM refresh?</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>Select dark cursor</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>Select light cursor</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>Cursors</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>Configure different mouse cursors for dark and light modes.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>Pick mouse cursors</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+  <data name="Type" xml:space="preserve">
+    <value>نوع</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Let Windows manage my theme</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>Open shell</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>بررسی بروزرسانی همزمان با اجرای Auto Dark Mode</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>انتخاب کانال بروزرسانی</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>Update colorization</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>تغییر بررسی برورز رسانی هر چند وقت یک بار</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+  <data name="Updates" xml:space="preserve">
+    <value>بروزرسانی ها</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>استفاده از خدمت مکان یابی</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Add</value>
+  <data name="Version" xml:space="preserve">
+    <value>نگارش</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>Remove</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>پس‌زمینه</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>تصویر</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>تصویر (چند صفحه‌نمایش)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>رنگ یک‌پارچه</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>تنظیم کردن</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>شما فقط در زمانی که کلیدهای میانبر غیر فعال هستند می‌توانید آن‌ها را ویرایش کنید.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>این گزینه غیر فعال است؛ زیرا شما بروزرسانی  Windows 10 April 2019 را نصب نکرده اید.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
   </data>
 </root>

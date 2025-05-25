@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Bật tính năng thay đổi chủ đề</value>
+  <data name="About" xml:space="preserve">
+    <value>Thông tin</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Cài đặt</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Màu nhấn</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>Áp dụng</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>Màu nhấn cho Thanh tác vụ</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>Chỉ màu nhấn</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>Chủ động hoãn</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Dùng màu nhấn của Thanh tác vụ khi</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>Đồng bộ với hệ thống</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Thêm</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Luôn là chủ đề tối</value>
@@ -135,8 +150,113 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Luôn là chủ đề sáng</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>Các ứng dụng</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>Luôn làm mới DWM khi chuyển đổi chủ đề</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>Nỗ lực giảm sự xuất hiện sai màu của giao diện người dùng trong trình khám phá, thanh tác vụ và menu bắt đầu. Nếu bạn gặp vấn đề này thường xuyên hoặc bị làm phiền bởi nó, hãy thử bật cài đặt này.
+
+Điều này có thể gây ra độ trễ nhẹ đến trung bình trên một số hệ thống trong quá trình chuyển đổi chủ đề tương tự như đã xảy ra trong Windows 10. 
+Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng bíp khi di chuyển chuột trong quá trình làm mới DWM.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>Buộc làm mới DWM?</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>Áp dụng toạ độ</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Tự động tải và cài đặt cập nhật mới</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Tự động</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Bật tắt tự động chuyển chủ đề</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Tự khởi động</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>Số phút chờ tác động của người dùng của thông báo</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>Thông báo trước khi tự động chuyển chủ đề</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>Tự động chuyển chủ đề được tiếp tục</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>Kiểm tra cập nhật tự động</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>Chuyển sang chủ đề tối khi thiết bị rút sạc</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>Thiết bị di động</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>Giá trị mặc định cho thanh trượt trình tiết kiệm năng lượng</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>Quy trình chặn</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>Chọn tập tin</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Huỷ</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Kiểm tra cập nhật</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>Chọn một sự phù hợp cho hình ảnh máy tính để bàn của bạn</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>Chọn màn hình nền</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Thành phố</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Màu</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>Bộ lọc màu (tổ hợp phím Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Điều kiện</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Cấu hình</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Sao chép</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>Tạo chủ đề của bạn</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>Con trỏ</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>Đặt giờ tuỳ chọn</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>Kho lưu trữ tập lệnh người dùng tùy chỉnh</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>Tuỳ chọn thời điểm chuyển đổi</value>
@@ -147,8 +267,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>Chủ đề tối</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Trì hoãn</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Tắt</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Ngắt kết nối</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>Tài liệu cho tập lệnh tùy chỉnh</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Đóng góp</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
+
+Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
+Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
+
+Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Làm cách nào để đóng góp tự nguyện?</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>Bạn có thể gửi tiền cho tôi qua PayPal. Nó hoàn toàn tự nguyện và không thể bồi hoàn.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>Không chuyển chủ đề khi đang chơi game</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>Không chuyển chủ đề trừ khi hệ thống đang nghỉ</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ chỉ trong khi</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Phiên bản cũ)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>Bật công tắc màu nhấn</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>Bật tính năng thay đổi chủ đề</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>Kích hoạt chuyển đổi con trỏ chuột</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>Bật tệp lệnh tuỳ chọn</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Bật</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>Bật phím nóng</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>Bật tính năng chuyển đổi ảnh nền</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>Giảm mức sử dụng năng lượng cho việc chuyển đổi chủ đề</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>Đã xảy ra sự cố với giao diện người dùng.
+
+Hãy chắc chắn rằng:
+- dịch vụ đang chạy
+- tệp config.yaml của bạn là chính xác
+
+Bạn có muốn tạo sự cố trên kho lưu trữ Chế độ tối tự động không?
+Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>Có lỗi đã xảy ra</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>Tính năng này bị tắt trong khi Chế độ tối tự động quản lý chủ đề của bạn.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>Tính năng này bị tắt trong khi Windows quản lý chủ đề của bạn.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>Lấp đầy</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>Phù hợp</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>Kéo dài</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>Để ứng dụng quyết định</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Theo dõi chúng tôi trên</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Xét theo chế độ đêm của Windows</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>Cưỡng ép chủ đề tối</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>Cưỡng ép chủ đề sáng</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>Toạ độ địa lý</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>Kiểm tra toạ độ địa lý cho địa điểm của bạn</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>Tần suất kiểm tra mức sử dụng GPU</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Bạn cần giúp đỡ khum</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>Mã hex</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>Ẩn biểu tượng ở khay hệ thống</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>Phím tắt</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>Số phút chờ hệ thống rảnh</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>Bỏ qua hình nền</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>Bỏ qua con trỏ chuột</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>Bỏ qua biểu tượng</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>Bỏ qua các thiết lập</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>Bỏ qua âm thanh</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Đường dẫn hình ảnh</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>Không hiển thị thông báo</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>Hằng ngày</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 ngày</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 ngày</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 ngày</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>chưa kiểm tra</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>Kiểm tra lần cuối</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>Đang khởi động Service</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Sáng</value>
@@ -156,23 +460,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Chủ đề sáng</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>Cài đặt</value>
+  <data name="Links" xml:space="preserve">
+    <value>Liên kết</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>Chuyển chủ đề hiện tại</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>Dữ liệu vị trí</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>Hệ thống</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc (theo toạ độ địa lý)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Các thành phần của bên thứ ba</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>Từ hoàng hôn đến bình minh (dịch vụ định vị)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>Cập nhật</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>Sử dụng logon task thay vì startup entry</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>Sử dụng Location Service</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Để Chế độ tối tự động quản lý chủ đề của tôi</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Thủ công</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Danh mục</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>Mức sử dụng GPU tối thiểu để chuyển đổi chủ đề</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Chế độ</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>Chế độ:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>Màn hình</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>Tự động chuyển chủ đề được bật</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>Các thiết lập của bạn đã được lưu!</value>
@@ -180,23 +511,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Bấm Áp dụng để lưu thiết lập.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>Một bản hạ cấp được khả dụng</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Tải bản cập nhật</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>có lỗi xảy ra :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>Cài đặt này không hỗ trợ chủ đề mặc định của Windows</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Ứng dụng cần lấy vị trí của bạn</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>Service chưa được chạy, vui lòng đợi…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Không có cập nhật mới nào.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Tự động chuyển đã được hoãn một lần!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Bạn muốn chuyển ngay hay chờ thêm?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Đang lấy vị trí của bạn…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Đang kiểm tra cập nhật…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>Service không phản hồi. Vui lòng kiểm tra AutoDarkModeSvc.exe có đang chạy hay không, và thử lại!</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Đợi chuyển chủ đề</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Cảnh báo: Ứng dụng không đọc được chủ đề hiện tại của bạn.</value>
@@ -212,171 +564,23 @@ Bạn có muốn cài đặt?
 
 Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>Kiểm tra cập nhật</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>Dịch thuật: KhoiCanDev</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>Cập nhật tiếp theo vào</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>Thành phố</value>
+  <data name="None" xml:space="preserve">
+    <value>Chưa cấu hình</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Vị trí</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>Cần khởi động lại chương trình để áp dụng thay đổi</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Màu nhấn cho Thanh tác vụ</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Huỷ</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>Chọn tập tin</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>Tắt</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>Bật</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>Có lỗi đã xảy ra</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Thông tin</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Tắt</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Tắt</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>Kiểm tra cập nhật tự động</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Đã xảy ra sự cố với giao diện người dùng.
-
-Hãy chắc chắn rằng:
-- dịch vụ đang chạy
-- tệp config.yaml của bạn là chính xác
-
-Bạn có muốn tạo sự cố trên kho lưu trữ Chế độ tối tự động không?
-Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>Không tìm thấy</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>Độ lệch giờ</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>Thời điểm chuyển đổi</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Mở thư mục</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>Tạo chủ đề của bạn</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>Chế độ đổi chủ đề</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Bấm vào đây để mở thiết lập cho chủ đề Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Bây giờ đến phần 'Colors' và thay đổi màu hệ thống thành 'Light' cho chủ đề sáng. Chọn Wallpaper, Mouse Cursor và Accent color yêu thích của bạn.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Quay về thiết lập chủ đề Windows và lưu chủ đề của bạn.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Lặp lại những bước trên cho chủ đề tối.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>Thông tin</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Danh mục</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>Khởi động lại</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>Đặt giờ tuỳ chọn</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>Từ hoàng hôn đến bình minh (dịch vụ định vị)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>Các bước thiết lập</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>Bộ lọc màu (tổ hợp phím Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>Sử dụng logon task thay vì startup entry</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>Làm cách nào để đóng góp tự nguyện?</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>Bạn có thể gửi tiền cho tôi qua PayPal. Nó hoàn toàn tự nguyện và không thể bồi hoàn.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>Đóng góp</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
-
-Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
-Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
-
-Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Bạn cần giúp đỡ khum</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>Đồng bộ với hệ thống</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Đặt lại</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Chuyển sang chủ đề tối khi thiết bị rút sạc</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Giá trị mặc định cho thanh trượt trình tiết kiệm năng lượng</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Giảm mức sử dụng năng lượng cho việc chuyển đổi chủ đề</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Chuyển chủ đề</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>Cá nhân hoá</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>Áp dụng toạ độ</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>Cài đặt này bị tắt, vì bạn chưa cài bản cập nhật Windows 10 April 2019.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>Toạ độ địa lý</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>Dữ liệu vị trí</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>Từ lúc mặt trời lặn tới lúc mặt trời mọc (theo toạ độ địa lý)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>Kiểm tra toạ độ địa lý cho địa điểm của bạn</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Được</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>Mở tập tin cấu hình</value>
@@ -387,89 +591,146 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="OpenLog" xml:space="preserve">
     <value>Mở tập tin cấu hình</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Cấu hình</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Mở thư mục</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>Chế độ đổi hình nền</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Mở cài đặt con trỏ Windows</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Tính năng này bị tắt trong khi Windows quản lý chủ đề của bạn.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>Mở cấu hình tập lệnh</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Tính năng này bị tắt trong khi Chế độ tối tự động quản lý chủ đề của bạn.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>Mở shell</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>Mở nhật ký cập nhật</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>Mở thiết lập chế độ đêm</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>Đường dẫn:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>Bật tắt hoãn tự động chuyển chủ đề</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Cá nhân hoá</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>Chọn một màu nhấn</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>Chọn con trỏ chuột</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>Định cấu hình các con trỏ chuột khác nhau cho chế độ tối và sáng.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>Chế độ đổi chủ đề</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>Chọn một chủ đề Windows khác cho chế độ tối và sáng tương ứng. Cho phép tùy chỉnh toàn bộ chủ đề nhưng yêu cầu bạn phải tự thiết lập các tệp .theme.</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>Chế độ đổi hình nền</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>Tùy chỉnh hình nền máy tính của bạn cho tất cả các màn hình, từng màn hình, đặt màu nền hoặc bật đèn chiếu.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>Tự động tải và cài đặt cập nhật mới</value>
+  <data name="Position" xml:space="preserve">
+    <value>Vị trí</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>Không hiển thị thông báo</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>Thiết lập trì hoãn</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>Chọn kênh cập nhật</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>Tự động chuyển chủ đề đang được tạm dừng bởi chức năng:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>Kiểm tra cập nhật khi Auto Dark Mode khởi động</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>Chức năng trì hoãn</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 ngày</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>Chức năng theo dõi GPU</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 ngày</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>Tạm dừng chức năng tự động chuyển</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 ngày</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>hoãn tới khi</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>Kiểm tra lần cuối</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>hoãn tới khi điều kiện được đáp ứng</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>chưa kiểm tra</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>Thông báo chuyển</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>Tần suất kiểm tra cập nhật</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>Kiểm tra hệ thống đang nghỉ</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>Hình ảnh</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>hoãn tới khi mặt trời mọc</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>Hình ảnh (đa màn hình)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>hoãn tới khi mặt trời lặn</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>Màu đơn</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 tiếng</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>Chế độ</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 phút</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>Màn hình</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 tiếng</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Loại</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 phút</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 tiếng</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 tiếng</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 tiếng</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>Bỏ qua tự động chuyển lần tiếp theo</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>Làm mới Tự khởi động</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>Khóa Registry</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>Loại bỏ</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>Loại bỏ các màn hình đã bị ngắt kết nối</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>Ảnh nền</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Đặt lại</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>Màu</value>
+  <data name="Restart" xml:space="preserve">
+    <value>Khởi động lại</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>Mã hex</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>Cần khởi động lại chương trình để áp dụng thay đổi</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>Bật tính năng chuyển đổi ảnh nền</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>Phục hồi lại chủ đề khi bị thay đổi bên ngoài</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Không chuyển chủ đề khi đang chơi game</value>
+  <data name="Resume" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>Chỉ có thể tiếp tục với những trì hoãn có thời gian kết thúc</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>Nhanh (1 mẫu)</value>
@@ -480,41 +741,56 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   <data name="SamplesSlow" xml:space="preserve">
     <value>Chậm (3 mẫu)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>Tần suất kiểm tra mức sử dụng GPU</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>Thiết bị di động</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>Chọn con trỏ tối</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>Điều kiện</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>Chọn con trỏ sáng</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>Mức sử dụng GPU tối thiểu để chuyển đổi chủ đề</value>
+  <data name="Set" xml:space="preserve">
+    <value>Đặt</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>Phục hồi lại chủ đề khi bị thay đổi bên ngoài</value>
+  <data name="Settings" xml:space="preserve">
+    <value>Cài đặt</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>Hiển thị thông báo khi thay đổi</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Trân trọng cảm ơn</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>Service chưa được chạy, vui lòng đợi…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>Khởi động Auto Dark Mode cùng Windows</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>Đang khởi động Service</value>
+  <data name="Step" xml:space="preserve">
+    <value>Các bước thiết lập</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>Service không phản hồi. Vui lòng kiểm tra AutoDarkModeSvc.exe có đang chạy hay không, và thử lại!</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>Dừng cưỡng ép chủ đề</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Bật tính năng thay đổi chủ đề Windows</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>Theo dõi chúng tôi trên</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>Chuyển chủ đề</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>Chuyển chủ đề hiện tại</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>Chuyển đổi bàn phím cảm ứng và đầu vào</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Hệ thống</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>Các ứng dụng</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Tiến trình</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>Chủ đề</value>
@@ -555,460 +831,86 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
     <value>Windows (Nhẹ)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Điểm sáng</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Bình minh</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>Hằng ngày</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>Bấm vào đây để mở thiết lập cho chủ đề Windows.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Dùng màu nhấn của Thanh tác vụ khi</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>Bây giờ đến phần 'Colors' và thay đổi màu hệ thống thành 'Light' cho chủ đề sáng. Chọn Wallpaper, Mouse Cursor và Accent color yêu thích của bạn.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>Chỉ màu nhấn</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>Quay về thiết lập chủ đề Windows và lưu chủ đề của bạn.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Phiên bản</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>Lặp lại những bước trên cho chủ đề tối.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>Sao chép</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>Các thành phần của bên thứ ba</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>Khởi động Auto Dark Mode cùng Windows</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>Tự khởi động</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>Chế độ:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>Đường dẫn:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>Làm mới Tự khởi động</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>Chưa cấu hình</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>Không tìm thấy</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>Khóa Registry</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>Tiến trình</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>Cập nhật tiếp theo vào</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>Cưỡng ép chủ đề tối</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>Cưỡng ép chủ đề sáng</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>Phím tắt</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>Dừng cưỡng ép chủ đề</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>Bật phím nóng</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Cưỡng ép chủ đề tối</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Cưỡng ép chủ đề sáng</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Ẩn biểu tượng ở khay hệ thống</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Mở Thư mục Cấu hình Config</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>Để ứng dụng quyết định</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Không chuyển chủ đề trừ khi hệ thống đang nghỉ</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>Số phút chờ hệ thống rảnh</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ chỉ trong khi</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>Tự động chuyển chủ đề</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Hiển thị thông báo khi thay đổi</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Trì hoãn</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>Chức năng theo dõi GPU</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Tạm dừng chức năng tự động chuyển</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>Kiểm tra hệ thống đang nghỉ</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Tiếp tục</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Bật tắt tự động chuyển chủ đề</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Tắt tự động chuyển</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>Đảo ngược</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Tạm dừng tự động chuyển</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Tự động chuyển chủ đề đang được tạm dừng bởi chức năng:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>Chỉ có thể tiếp tục với những trì hoãn có thời gian kết thúc</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>Thiết lập trì hoãn</value>
+  <data name="Time" xml:space="preserve">
+    <value>Thời điểm chuyển đổi</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Bật tắt chủ đề</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Bật tắt chủ đề</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Tự động chuyển chủ đề được bật</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Xét theo chế độ đêm của Windows</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Tự động chuyển đã được hoãn một lần!</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>hoãn tới khi</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>hoãn tới khi điều kiện được đáp ứng</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>hoãn tới khi mặt trời mọc</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>hoãn tới khi mặt trời lặn</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>tới khi</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>đến khi mặt trời mọc</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>đến khi mặt trời lặn</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Bật tắt hoãn tự động chuyển chủ đề</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Tự động chuyển chủ đề được tiếp tục</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Mở thiết lập chế độ đêm</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Chủ động hoãn</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Bỏ qua tự động chuyển lần tiếp theo</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Thông báo trước khi tự động chuyển chủ đề</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Số phút chờ tác động của người dùng của thông báo</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Xác nhận</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Chuyển ngay</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Chức năng trì hoãn</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Thông báo chuyển</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 tiếng</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 phút</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 tiếng</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 phút</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 tiếng</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 tiếng</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 tiếng</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Đợi chuyển chủ đề</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Bạn muốn chuyển ngay hay chờ thêm?</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>Chế độ trace</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>Trân trọng cảm ơn</value>
+  <data name="Translator" xml:space="preserve">
+    <value>Dịch thuật: KhoiCanDev</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>Bỏ qua hình nền</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>Bỏ qua con trỏ chuột</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Bỏ qua biểu tượng</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>Bỏ qua âm thanh</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>Bỏ qua các thiết lập</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Cài đặt này không hỗ trợ chủ đề mặc định của Windows</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Tạm ngưng</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>Một sự cố đã xảy ra trong khi patch.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Phiên bản hiện tại</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Hạ cấp xuống</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Đang tải…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>Phiên bản mới {0} khả dụng</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Patch đã thất bại</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Xin hãy kiểm tra tệp service.log và tệp updater.log để được thông tin</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Đang nâng cấp lên</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Hạ cấp</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Tạm hoãn</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Hạ cấp {0} khả dụng</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>Một bản hạ cấp được khả dụng</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>Scripts</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Mở cấu hình tập lệnh</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Bật tệp lệnh tuỳ chọn</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Chọn màn hình nền</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>Đường dẫn hình ảnh</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Điểm sáng</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Đèn chiếu cửa sổ</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>Màu nhấn</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>Chọn một màu nhấn</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>Cập nhật màu sắc</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>Liên kết</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Tài liệu cho tập lệnh tùy chỉnh</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Kho lưu trữ tập lệnh người dùng tùy chỉnh</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>Lấp đầy</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>Phù hợp</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Kéo dài</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Chọn một sự phù hợp cho hình ảnh máy tính để bàn của bạn</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>Ngắt kết nối</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Luôn làm mới DWM khi chuyển đổi chủ đề</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>Nỗ lực giảm sự xuất hiện sai màu của giao diện người dùng trong trình khám phá, thanh tác vụ và menu bắt đầu. Nếu bạn gặp vấn đề này thường xuyên hoặc bị làm phiền bởi nó, hãy thử bật cài đặt này.
-
-Điều này có thể gây ra độ trễ nhẹ đến trung bình trên một số hệ thống trong quá trình chuyển đổi chủ đề tương tự như đã xảy ra trong Windows 10. 
-Trong một số trường hợp hiếm hoi, Windows có thể phát ra tiếng bíp khi di chuyển chuột trong quá trình làm mới DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Buộc làm mới DWM?</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Được</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Kích hoạt chuyển đổi con trỏ chuột</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Mở cài đặt con trỏ Windows</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>Chọn con trỏ tối</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>Chọn con trỏ sáng</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>Con trỏ</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>Định cấu hình các con trỏ chuột khác nhau cho chế độ tối và sáng.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>Chọn con trỏ chuột</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Để Chế độ tối tự động quản lý chủ đề của tôi</value>
+  <data name="Type" xml:space="preserve">
+    <value>Loại</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Để Windows quản lý chủ đề của tôi</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>Mở shell</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>Kiểm tra cập nhật khi Auto Dark Mode khởi động</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Mở nhật ký cập nhật</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>Chọn kênh cập nhật</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Bật công tắc màu nhấn</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>Cập nhật màu sắc</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Chuyển đổi bàn phím cảm ứng và đầu vào</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>Tần suất kiểm tra cập nhật</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>Tự động</value>
+  <data name="Updates" xml:space="preserve">
+    <value>Cập nhật</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Thủ công</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>Sử dụng Location Service</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Thêm</value>
+  <data name="Version" xml:space="preserve">
+    <value>Phiên bản</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>Loại bỏ</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>Ảnh nền</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>Quy trình chặn</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>Hình ảnh</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>Hình ảnh (đa màn hình)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Cố gắng sửa chủ đề</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>Màu đơn</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Đặt</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Đèn chiếu cửa sổ</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>Cài đặt này bị tắt, vì bạn chưa cài bản cập nhật Windows 10 April 2019.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
   </data>
 </root>

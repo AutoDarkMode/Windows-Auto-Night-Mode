@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Aktivera automatiskt temabyte</value>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Inställningar</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Accent color</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>Tillämpa</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>Accentfärg för Aktivitetsfältet</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>Accent only</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>Active delays</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Use Taskbar Accent Color during</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>Adapt to system</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Lägg till</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Alltid mörk</value>
@@ -135,8 +150,113 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Alltid ljust</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>Appar</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>Always refresh DWM on theme switch</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+
+This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>Force DWM refresh?</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Tillämpa</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>Apply Coordinates</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Automatically download and install new versions</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatisk</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Toggle automatic theme switch</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Autostart</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>Time the notification waits for user input in minutes</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>Notify before automatically switching themes</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>Auto theme switching resumed</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>Kontrollera uppdateringar automatiskt</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>Switch to dark mode when device is unplugged</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>Battery powered devices</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>Default value for energy saver slider</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>Blocking Processes</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>Välj fil</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Kolla efter uppdateringar</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>Choose a fit for your desktop image</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>Choose your wallpaper</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Stad</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>Color filter (sends Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Customize the Windows system color scheme to your liking.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>Create your themes</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>Muspekare</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>Set custom hours</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>Custom script user repository</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>Anpassad starttid</value>
@@ -147,8 +267,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>Mörkt tema</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>Documentation for custom scripts</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
+
+This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
+I don't generate any profit with this project.
+
+For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>How to donate?</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>Don't switch while playing video games</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>Don't switch themes unless the system is idle</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>Accent Color for title bars and window borders only during</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Legacy)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>Aktivera accentfärgomkopplare</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>Aktivera automatiskt temabyte</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>Enable mouse cursor switch</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>Enable custom scripts</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktiverad</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>Enable system-wide hotkeys</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>Enable wallpaper switch</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>Energy saver mitigation for theme switch</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>Ett problem har uppstått med användargränssnittet.
+
+Vänligen tillse att:
+- tjänsten körs
+- din config.yaml är korrekt
+
+Vill du skapa ett issue på Auto Dark Mode's repository?
+Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>Ett fel har inträffat</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>This feature is disabled while Windows manages your theme.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>Fit</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>Let the app decide</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Follow us</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Follow Windows night light</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>Force dark mode</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>Force light mode</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Inställningar</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>Geographic coordinates</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>Find geo coordinates for your location</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU usage detection speed</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>Hex code</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>Hide Tray Icon</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>You can only edit hotkeys while they are disabled.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>Hotkeys</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>Minutes until the system is considered idle</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>Ignore background</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>Ignore cursor</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignore desktop icons</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>Ignore settings</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>Ignore sound</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Image path</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>Don't show notifications</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>Every day</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 days</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 days</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 days</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>never</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>Last checked</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>Launching Service</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Ljust</value>
@@ -156,23 +460,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Ljust tema</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>Inställningar</value>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>Byt aktuellt tema</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>Location data</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>Systemet</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>From sunset to sunrise (geographic coordinates)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Använd programvara från tredje part</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>From sunset to sunrise (location service)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>Uppdateringar</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>Use logon task instead of startup entry</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>Använd platstjänst</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Låt Auto Dark Mode hantera mitt tema</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuell</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>Minimum GPU usage % to delay switching</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>Mode:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>Monitor</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>Auto theme switching is enabled</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>Dina ändringar har sparats!</value>
@@ -180,23 +511,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Dina ändringar kommer att sparas automatiskt.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>A downgrade is available</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Ladda ner uppdatering</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>ett fel inträffade :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>This option does not support default Windows themes</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Den här appen behöver åtkomst till din plats</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>Service not running yet, please wait…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Inga nya uppdateringar är tillgängliga.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Theme switching is paused once!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Would you like to switch now or delay further?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Hämtar din plats…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Letar efter uppdateringar…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Theme switch pending</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Varning: Vi kunde inte läsa ditt aktuella tema.</value>
@@ -212,171 +564,23 @@ Vill du installera den?
 
 Installerad version: {0}, ny version: {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>Kolla efter uppdateringar</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>Version info copied to clipboard</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>Översättare: Armin Osaj &amp; Samuel Schiegg</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>Next update at</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>Stad</value>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Plats</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>Omstart av appen krävs för att se ändringar</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Accentfärg för Aktivitetsfältet</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Avbryt</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>Välj fil</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>Disabled</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>Aktiverad</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>Ett fel har inträffat</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Stäng</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Stäng</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>Kontrollera uppdateringar automatiskt</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Ett problem har uppstått med användargränssnittet.
-
-Vänligen tillse att:
-- tjänsten körs
-- din config.yaml är korrekt
-
-Vill du skapa ett issue på Auto Dark Mode's repository?
-Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>Not found</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>Offset</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>Tid</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Open Folder</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>Create your themes</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>Pick a theme</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>Restart</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>Set custom hours</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>From sunset to sunrise (location service)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>Step</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>Use logon task instead of startup entry</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>How to donate?</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>You can send me money via PayPal. It's completely voluntary and you shouldn't expect any compensation.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>Donate</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>Hello! Thank you for using Auto Dark Mode! Do you like it so far?
-
-This app makes your everyday more pleasant, by helping you take care of your eyes. At the same time it's completely free, ad-free, doesn't collect user data and it's open source.
-I don't generate any profit with this project.
-
-For this reason you could support me with a voluntary donation. Even a small amount makes me jumping happy through my apartment. Just donate as much as you value my work.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>Adapt to system</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Default value for energy saver slider</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>Personalization</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>Apply Coordinates</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>Geographic coordinates</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>Location data</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>From sunset to sunrise (geographic coordinates)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>Find geo coordinates for your location</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>Open config file</value>
@@ -387,89 +591,146 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="OpenLog" xml:space="preserve">
     <value>Open log file</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Config</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Open Folder</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>Pick a wallpaper</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Open Windows pointer settings</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>This feature is disabled while Windows manages your theme.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>Open script config</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>Öppna kommandoprompt</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>Öppna uppdateringsloggen</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>Open night light settings</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>Path:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>Toggle pause auto theme switch</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>Pick an accent color</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>Välj muspekare</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>Konfigurera olika muspekare för mörkt och ljust läge.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>Pick a theme</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files on your own.</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>Pick a wallpaper</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>Customize your desktop wallpaper for all monitors, individual monitors, set a background color or enable spotlight.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>Automatically download and install new versions</value>
+  <data name="Position" xml:space="preserve">
+    <value>Plats</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>Postpone control</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>Select update channel</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>Auto theme switching is currently paused due to the following modules:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>Delay module</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 days</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>GPU monitor module</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 days</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>Pause auto switch module</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 days</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>postpones until</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>Last checked</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>postpones until its condition is met</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>never</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>Switch notification</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>Change how often we check for updates</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>System idle checker</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>Picture</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>postpones until next sunrise</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>Picture (multiple monitors)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>postpones until next sunset</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>Solid color</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 hours</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>Mode</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 minutes</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>Monitor</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 hours</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 hours</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>Skip auto switch once</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>Don't switch while certain processes are running</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>Refresh Autostart</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>Registry Key</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>Ta bort</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>Remove disconnected monitors</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>Wallpaper</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>Color</value>
+  <data name="Restart" xml:space="preserve">
+    <value>Restart</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>Hex code</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>Omstart av appen krävs för att se ändringar</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>Enable wallpaper switch</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>Restore themes when changed externally</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Don't switch while playing video games</value>
+  <data name="Resume" xml:space="preserve">
+    <value>Resume</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>Resuming will only work for postpones that have an expiry time</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>Fast (1 sample)</value>
@@ -480,41 +741,56 @@ For this reason you could support me with a voluntary donation. Even a small amo
   <data name="SamplesSlow" xml:space="preserve">
     <value>Slow (3 samples)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU usage detection speed</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>Battery powered devices</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>Select dark cursor</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>Conditions</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>Select light cursor</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>Minimum GPU usage % to delay switching</value>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>Restore themes when changed externally</value>
+  <data name="Settings" xml:space="preserve">
+    <value>Inställningar</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>Show notification on toggle</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Special thanks</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>Service not running yet, please wait…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>Start Auto Dark Mode with Windows</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>Launching Service</value>
+  <data name="Step" xml:space="preserve">
+    <value>Step</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>Stop forcing theme</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>Follow us</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>Switch Modes</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>Byt aktuellt tema</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>Byt pektangentbord och inmatning</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Systemet</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>Appar</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>Theme</value>
@@ -555,460 +831,86 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Windows (Light)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>Every day</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>Click here to open Windows Theme settings.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>Go back to theme settings and save your theme.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>Repeat this process for the dark theme.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>Copy</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>Använd programvara från tredje part</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>Autostart</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>Mode:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>Path:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>Refresh Autostart</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>Not found</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>Registry Key</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>Task</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>You have disabled the auto start entry via Windows.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>Force dark mode</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>Force light mode</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>Hotkeys</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>Stop forcing theme</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>Enable system-wide hotkeys</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Force Dark Theme</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Force Light Theme</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Hide Tray Icon</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>Let the app decide</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Version info copied to clipboard</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>GPU monitor module</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Pause auto switch module</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>System idle checker</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Resume</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Toggle automatic theme switch</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>Undo</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Auto theme switching is currently paused due to the following modules:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>Resuming will only work for postpones that have an expiry time</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>Postpone control</value>
+  <data name="Time" xml:space="preserve">
+    <value>Tid</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Auto theme switching is enabled</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>postpones until</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>postpones until its condition is met</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>until</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Open night light settings</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Time the notification waits for user input in minutes</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Switch now</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Delay module</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Switch notification</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 hours</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 hours</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 hours</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 hour</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 hours</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>Trace mode</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>Special thanks</value>
+  <data name="Translator" xml:space="preserve">
+    <value>Översättare: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ignore settings</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Paused</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Downloading…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>A downgrade is available</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>Scripts</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Open script config</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Enable custom scripts</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>Image path</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>Accent color</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>Update colorization</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>Links</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Documentation for custom scripts</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Custom script user repository</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>Fill</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>Fit</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Stretch</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Choose a fit for your desktop image</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>Disconnected</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Always refresh DWM on theme switch</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
-
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10. 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Force DWM refresh?</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>Select dark cursor</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>Select light cursor</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>Muspekare</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>Konfigurera olika muspekare för mörkt och ljust läge.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>Välj muspekare</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Låt Auto Dark Mode hantera mitt tema</value>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Låt Windows hantera mitt tema</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>Öppna kommandoprompt</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>Check for updates when Auto Dark Mode starts</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Öppna uppdateringsloggen</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>Select update channel</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Aktivera accentfärgomkopplare</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>Update colorization</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Byt pektangentbord och inmatning</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>Change how often we check for updates</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>Automatisk</value>
+  <data name="Updates" xml:space="preserve">
+    <value>Uppdateringar</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Manuell</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>Använd platstjänst</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Lägg till</value>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>Ta bort</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>Wallpaper</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>Picture</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>Picture (multiple monitors)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>Solid color</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Set</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>This option is disabled, because you haven't installed the Windows 10 April 2019 Update on your machine.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>You have disabled the auto start entry via Windows.</value>
   </data>
 </root>

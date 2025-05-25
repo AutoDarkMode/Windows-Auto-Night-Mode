@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>閉じる(&amp;X)</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>ダークテーマに変更(&amp;D)</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>ライトテーマに変更(&amp;L)</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>設定用フォルダを開く(&amp;O)</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切替(&amp;A)</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>自動切替を停止(&amp;P)</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>テーマを切り替える(&amp;T)</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>テーマ適用を再試行</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>再開時間</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>日の入りまで</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>ライト</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>ダーク</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>停止中</value>
+  <data name="Delay" xml:space="preserve">
+    <value>遅延させる</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>自動切替を無効にする</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>無効</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>有効化中</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>テーマ切り替え待機中</value>
+  <data name="Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>代わりに自動切替を無効にしますか？</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>テーマ切り替えをこの時間まで停止</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>テーマの切り替えは一回停止されています！</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>今すぐ切り替えますか？それとも遅延させますか？</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>テーマの自動切り替えを再開しました</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>テーマ切り替え待機中</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>停止中</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 時間</value>
@@ -189,41 +186,71 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 時間</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>遅延させる</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>今すぐ切り替える</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>代わりに自動切替を無効にしますか？</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>以前のテーマに戻した場合、自動切替も再開されます。</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>テーマ切り替えをこの時間まで停止</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>ボタンを押すと、ただちにテーマ切替を試行します。</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>この操作を戻すには下のボタンをクリック。</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切替</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>今すぐ切り替える</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>確認</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替(&amp;A)</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>ボタンを押すと、ただちにテーマ切替を試行します。</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>閉じる(&amp;X)</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>ダークテーマに変更(&amp;D)</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>ライトテーマに変更(&amp;L)</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>設定用フォルダを開く(&amp;O)</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>自動切替を停止(&amp;P)</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>テーマを切り替える(&amp;T)</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>テーマ適用を再試行</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>元に戻す</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>再開時間</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>日の出まで</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>日の入りまで</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>更新プログラム適用中にエラーが発生しました。</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>ダウングレード</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>ログのフォルダーを開く</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>延期</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>更新</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>現在のバージョン</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>ダウングレード Ver {0} が利用可能</value>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>ダウングレード後のバージョン:</value>
@@ -233,6 +260,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>ダウンロード進行状況</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>ダウンロードページを開く</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>お知らせ</value>
@@ -248,35 +278,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>アップデート後のバージョン:</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>ダウングレード</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>ログのフォルダーを開く</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>延期</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>更新</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>ダウングレード Ver {0} が利用可能</value>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>ダウンロードページを開く</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>自動切替を無効にする</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>日の出まで</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>テーマの切り替えは一回停止されています！</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>テーマの自動切り替えを再開しました</value>
   </data>
 </root>

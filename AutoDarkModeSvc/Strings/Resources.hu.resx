@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Bezárás</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Sötét téma kényszerítése</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Világos téma kényszerítése</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Konfigurációs mappa megnyitása</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatikus témaváltás</value>
   </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Az automatikus váltás szüneteltetése</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Téma váltása</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Próbáld meg kijavítani a témát</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>amíg</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>a következő napnyugtáig</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Világos</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Megerősít</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Sötét</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Szüneteltetve</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Késleltetés</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Az automatikus váltás letiltása</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Tiltva</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Engedélyezve</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Témaváltás függőben</value>
+  <data name="Light" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Szeretné inkább letiltani az automatikus váltást?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Az automatikus váltás akkor is folytatódik, ha visszatér az előző témához.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>A témaváltás szüneteltetve eddig</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>A témaváltás egyszer szünetel!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Szeretne most váltani vagy tovább késleltetni?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Az automatikus témaváltás folytatva</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Témaváltás függőben</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Szüneteltetve</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 óra</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 óra</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Késleltetés</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Váltás most</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Szeretné inkább letiltani az automatikus váltást?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Az automatikus váltás akkor is folytatódik, ha visszatér az előző témához.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>A témaváltás szüneteltetve eddig</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Nyomja meg a Megerősítés gombot azonnali témaváltáshoz.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>A művelet visszaállításához kattintson az alábbi visszavonás gombra.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Váltás most</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatikus témaváltás</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Megerősít</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>Bezárás</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Nyomja meg a Megerősítés gombot azonnali témaváltáshoz.</value>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Sötét téma kényszerítése</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Világos téma kényszerítése</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Konfigurációs mappa megnyitása</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>Az automatikus váltás szüneteltetése</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>Téma váltása</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Próbáld meg kijavítani a témát</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Visszavonás</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>amíg</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>a következő napfelkeltéig</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>a következő napnyugtáig</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Hiba történt a javítás során.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Verziócsökkentés</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Elhalaszt</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Jelenlegi verzió</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Verziócsökkentés {0} elérhető</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Verziócsökkentés ide</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Message</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Frissítés a következőre</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Verziócsökkentés</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Elhalaszt</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Verziócsökkentés {0} elérhető</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Az automatikus váltás letiltása</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>a következő napfelkeltéig</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>A témaváltás egyszer szünetel!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Az automatikus témaváltás folytatva</value>
   </data>
 </root>

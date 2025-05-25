@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>Thème sombre automatique</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Activer le changement de thème automatique</value>
+  <data name="About" xml:space="preserve">
+    <value>À propos</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Paramètres</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Couleur d'accentuation</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>Appliquer</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>Couleur d'accentuation pour la barre des tâches</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>Couleur d'accentuation uniquement</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>Délais actifs</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>Utiliser la couleur d'accentuation de la barre des tâches</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>Adapter au système</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Ajouter</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Toujours sombre</value>
@@ -135,8 +150,113 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Toujours clair</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>Applications</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>Toujours rafraichir DWM pendant le changement de thème</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>Cette option vise à réduire l'apparition de mauvaises couleurs dans l'explorateur de fichiers, la barre de tâches et le menu Démarrer. Si vous constatez régulièrement ce problème ou si cela vous dérange, essayez d'activer cette option.
+
+Sur certains systèmes, cela peut entraîner un décalage plus ou moins important lors du changement de thème, comme c'est le cas sur Windows 10. 
+Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est déplacée pendant le rafraîchissement de DWM.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>Forcer le rechargement de DWM ?</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Appliquer</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>Appliquer les coordonnées</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>Télécharger et installer automatiquement les nouvelles versions</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>Automatique</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Activer/désactiver le changement automatique de thème</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Démarrage automatique</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>Temps d'attente de la notification pour la saisie par l'utilisateur en minutes</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>Notifier avant de changer de thème automatiquement</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>Reprise du changement de thème automatique</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>Vérification automatique des mises à jour</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>Passer en mode sombre lorsque l'appareil est débranché</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>Appareils alimentés par batterie</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>Valeur par défaut du curseur d'économie d'énergie</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>Processus bloqués</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>Sélectionner un fichier</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>Vérifier les mises à jour</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>Choisissez une image adaptée pour votre bureau</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>Choisir votre fond d'écran</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>Filtre de couleur (envoie Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Choisissez le thème de couleur pour Windows en fonction de vos goûts.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Conditions</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmer</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copier</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>Créez vos thèmes</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>Curseurs</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>Définir des horaires personnalisés</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>Dépôt de scripts personnalisés par les utilisateurs</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>Heure de début personnalisée</value>
@@ -147,8 +267,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>Thème sombre</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Délai</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>Déconnecté</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>Documentation pour les scripts personnalisés</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>Faire un don</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
+
+Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source.
+Je ne génère aucun profit avec ce projet.
+
+C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant me fait sauter de joie dans mon appartement. Faites un don dans la mesure où vous appréciez mon travail.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>Comment donner ?</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>Vous pouvez m'envoyer de l'argent via PayPal. C'est totalement volontaire et vous ne devez pas vous attendre à une quelconque compensation.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>Ne pas changer pendant les jeux vidéos</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>Ne pas changer de thème à moins que le système ne soit inactif</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>Couleur d'accentuation de la barre de titre et des contours de la fenêtre seulement pendant</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (ancienne version)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>Activer le changer de couleur d'accentuation</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>Activer le changement de thème automatique</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>Activer le changement de la souris</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>Activer les scripts personnalisés</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Activé</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>Activer les raccourcis du système</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>Activer le changement de fond d'écran</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>Réduction de la consommation d'énergie pour le changement de thème</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>Il y a eu un problème avec l'interface utilisateur.
+
+Veuillez vous assurer :
+- le service est en exécution ;
+- le fichier config.yaml est correct.
+
+Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
+Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>Une erreur est survenue</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>Cette fonctionnalité est désactivée quand Auto Dark Mode gère votre thème.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>Cette fonctionnalité est désactivée quand Windows gère votre thème.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>Remplir</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>Adapter</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>Étirer</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>Laisser l'application décider</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>Nous suivre</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Suivre l'éclairage nocturne de Windows</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>Forcer le thème sombre</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>Forcer le thème clair</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>Coordonnées géographiques</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>Trouver les coordonnées géographiques de votre emplacement</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>Vitesse de détection de l'utilisation de la carte graphique</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>Code hexadécimal</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>Masquer l'icône de la barre des tâches</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Vous ne pouvez modifier les touches de raccourci que lorsqu'elles sont désactivées.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>Raccourcis</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>Minutes jusqu'à ce que le système soit considéré comme inactif</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>Ignorer l'arrière-plan</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>Ignorer le curseur</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>Ignorer les icônes du bureau</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>Ignorer les paramètres</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>Ignorer le son</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>Emplacement de l'image</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>Ne pas afficher de notifications</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>Chaque jour</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 jours</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 jours</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 jours</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>jamais</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>Dernière vérification</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>Démarrage du service</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Clair</value>
@@ -156,23 +460,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>Thème clair</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>Paramètres</value>
+  <data name="Links" xml:space="preserve">
+    <value>Liens</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>Changer le thème actuel</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>Données de localisation</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>Système</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>Du coucher au lever du soleil (coordonnées géographiques)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Logiciels tiers utilisés</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>Du coucher au lever du soleil (service de localisation)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>Mises à jour</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>Utiliser une tâche planifiée à la connexion plutôt qu'une entrée au démarrage</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>Utiliser le service de localisation</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Laisser Auto Dark Mode gérer mon thème</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manuel</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>Utilisation minimale de la carte graphique en % pour décaler le changement</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Thème</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>Mode :</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>Écran</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>Le changement de thème automatique est activé</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>Vos modifications ont été enregistrées !</value>
@@ -180,23 +511,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>Vos changements seront enregistrés automatiquement.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>Une version antérieure est disponible</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Télécharger la mise à jour</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>une erreur est survenue :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>Cette option ne prend pas en charge les thèmes Windows par défaut</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Cette application a besoin d'accéder à votre localisation</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>Le service n'est pas encore démarré, veuillez patienter…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>Aucune nouvelle mise à jour disponible.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Le changement de thème est mis en pause une fois !</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Voulez-vous changer maintenant ou retarder davantage ?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Récupération de votre emplacement…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>Recherche de mises à jour…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez !</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Basculement du thème en attente</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>Avertissement : Impossible de détecter votre thème actuel.</value>
@@ -212,171 +564,23 @@ Souhaitez-vous l'installer ?
 
 Version installée : {0}, nouvelle version : {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>Vérifier les mises à jour</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>Information de version copiée dans le presse-papier</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>Traducteurs : Nathan Bonnemains &amp; Damien Trouillet &amp; Maxence CHAIX</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>Prochaine mise à jour le</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>Ville</value>
+  <data name="None" xml:space="preserve">
+    <value>Aucun</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>Emplacement</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>Redémarrez l'application pour appliquer les modifications</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Couleur d'accentuation pour la barre des tâches</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>Sélectionner un fichier</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>Désactivé</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>Activé</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>Une erreur est survenue</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Informations</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Fermer</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;Fermer</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>Vérification automatique des mises à jour</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Il y a eu un problème avec l'interface utilisateur.
-
-Veuillez vous assurer :
-- le service est en exécution ;
-- le fichier config.yaml est correct.
-
-Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
-Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>Non trouvé</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>Décalage</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>Heure</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>Ouvrir le dossier</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>Créez vos thèmes</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>Sélectionner un thème</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Cliquez ici pour ouvrir les paramètres de thème de Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Maintenant, naviguez jusqu'à « Couleurs » et changez la couleur du système en « Clair » pour le thème clair. Sélectionnez votre fond d'écran préféré, le curseur de la souris et la couleur d'accentuation.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Revenez aux paramètres du thème et enregistrez-le.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Répétez ce processus pour le thème sombre.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>À propos</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>Redémarrer</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>Définir des horaires personnalisés</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>Du coucher au lever du soleil (service de localisation)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>Étape</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>Filtre de couleur (envoie Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>Utiliser une tâche planifiée à la connexion plutôt qu'une entrée au démarrage</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>Comment donner ?</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>Vous pouvez m'envoyer de l'argent via PayPal. C'est totalement volontaire et vous ne devez pas vous attendre à une quelconque compensation.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>Faire un don</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
-
-Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source.
-Je ne génère aucun profit avec ce projet.
-
-C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant me fait sauter de joie dans mon appartement. Faites un don dans la mesure où vous appréciez mon travail.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Aide</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>Adapter au système</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Réinitialiser</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Passer en mode sombre lorsque l'appareil est débranché</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Valeur par défaut du curseur d'économie d'énergie</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Réduction de la consommation d'énergie pour le changement de thème</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modes de transition</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>Personnalisation</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>Appliquer les coordonnées</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>Cette option est désactivée, car vous n'avez pas installé la mise à jour d'avril 2019 de Windows 10 sur votre machine.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>Coordonnées géographiques</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>Données de localisation</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>Du coucher au lever du soleil (coordonnées géographiques)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>Trouver les coordonnées géographiques de votre emplacement</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>Ouvrir le fichier de configuration</value>
@@ -387,89 +591,146 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
   <data name="OpenLog" xml:space="preserve">
     <value>Ouvrir le fichier du journal</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>Configuration</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>Ouvrir le dossier</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>Sélectionner un fond d'écran</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Ouvrir les paramètres de la souris</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Cette fonctionnalité est désactivée quand Windows gère votre thème.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>Ouvrir la configuration du script</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Cette fonctionnalité est désactivée quand Auto Dark Mode gère votre thème.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>Ouvrir le terminal shell</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>Ouvrir les logs de MàJ (updater.log)</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>Ouvrir les paramètres d’éclairage nocturne</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>Chemin :</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>Activer/désactiver le changement de thème automatique</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personnalisation</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>Sélectionner une couleur d'accentuation</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>Choisir un curseur de souris</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>Configurer différents curseurs de souris pour les thèmes sombre et claire.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>Sélectionner un thème</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>Sélectionnez un thème Windows différents pour les modes sombre et clair. Permet une personnalisation complète du thème, mais nécessite la création de fichiers «.theme».</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>Sélectionner un fond d'écran</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>Personnalisez votre fond d'écran pour tous les moniteurs. Pour des moniteurs individuels, définissez une couleur d'arrière-plan ou activez Sportlight.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>Télécharger et installer automatiquement les nouvelles versions</value>
+  <data name="Position" xml:space="preserve">
+    <value>Emplacement</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>Ne pas afficher de notifications</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>Reporter le contrôle</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>Sélectionner le canal de mise à jour</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>Le changement de thème automatique est actuellement en pause en raison des modules suivants :</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>Vérifier les mises à jour au démarrage d'Auto Dark Mode</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>Module de délai</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 jours</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>Module de surveillance GPU</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 jours</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>Mettre en pause le module de basculement automatique</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 jours</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>reporter jusqu'à</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>Dernière vérification</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>reporte jusqu'à ce que sa condition soit remplie</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>jamais</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>Changer de notification</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>Fréquence de mise à jour</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>Vérificateur de système inactif</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>Image</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>reporte jusqu'au prochain lever du soleil</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>Image (plusieurs écrans)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>reporte jusqu'au prochain lever du soleil</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>Couleur unie</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 heures</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>Thème</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 minutes</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>Écran</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 heures</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 heures</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 heure</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 heures</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>Ignorer le changement automatique une fois</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>Ne pas changer de thème quand certains processus sont en cours</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>Actualiser le démarrage automatique</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>Clé du registre</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>Retirer</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>Supprimer les écrans non connectés</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>Fond d'écran</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>Couleur</value>
+  <data name="Restart" xml:space="preserve">
+    <value>Redémarrer</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>Code hexadécimal</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>Redémarrez l'application pour appliquer les modifications</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>Activer le changement de fond d'écran</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>Restaurer les thèmes en cas de modification externe</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Ne pas changer pendant les jeux vidéos</value>
+  <data name="Resume" xml:space="preserve">
+    <value>Reprendre</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>La reprise ne fonctionnera que pour les ajournements ayant un temps d'expiration</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>Rapide (1 échantillon)</value>
@@ -480,41 +741,56 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
   <data name="SamplesSlow" xml:space="preserve">
     <value>Lent (3 échantillons)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>Vitesse de détection de l'utilisation de la carte graphique</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>Appareils alimentés par batterie</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>Sélectionner un curseur sombre</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>Conditions</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>Sélectionner un curseur clair</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>Utilisation minimale de la carte graphique en % pour décaler le changement</value>
+  <data name="Set" xml:space="preserve">
+    <value>Définir</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>Restaurer les thèmes en cas de modification externe</value>
+  <data name="Settings" xml:space="preserve">
+    <value>Paramètres</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>Afficher la notification lors de la bascule</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>Remerciements particuliers</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>Le service n'est pas encore démarré, veuillez patienter…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>Démarrer Auto Dark Mode avec Windows</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>Démarrage du service</value>
+  <data name="Step" xml:space="preserve">
+    <value>Étape</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>Le service ne répond pas. Veuillez vérifier si AutoDarkModeSvc.exe est en cours d'exécution, puis réessayez !</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>Arrêter de forcer le thème</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Activer le changement de thème de Windows</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>Nous suivre</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>Modes de transition</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>Changer le thème actuel</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>Basculer le clavier virtuel et la saisie</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Système</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>Applications</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Tâche</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>Thème</value>
@@ -555,460 +831,86 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
     <value>Windows (Clair)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Lever du soleil</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>Chaque jour</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>Cliquez ici pour ouvrir les paramètres de thème de Windows.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Utiliser la couleur d'accentuation de la barre des tâches</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>Maintenant, naviguez jusqu'à « Couleurs » et changez la couleur du système en « Clair » pour le thème clair. Sélectionnez votre fond d'écran préféré, le curseur de la souris et la couleur d'accentuation.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>Couleur d'accentuation uniquement</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>Revenez aux paramètres du thème et enregistrez-le.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>Version</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>Répétez ce processus pour le thème sombre.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>Copier</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>Logiciels tiers utilisés</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>Démarrer Auto Dark Mode avec Windows</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>Démarrage automatique</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>Mode :</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>Chemin :</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>Actualiser le démarrage automatique</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>Aucun</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>Non trouvé</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>Clé du registre</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>Tâche</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>Vous avez désactivé l'entrée du démarrage automatique dans Windows.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>Prochaine mise à jour le</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>Forcer le thème sombre</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>Forcer le thème clair</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>Raccourcis</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>Arrêter de forcer le thème</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>Activer les raccourcis du système</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Forcer le thème sombre</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Forcer le thème clair</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Masquer l'icône de la barre des tâches</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Ouvrir le dossier de configuration</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>Laisser l'application décider</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Ne pas changer de thème à moins que le système ne soit inactif</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>Minutes jusqu'à ce que le système soit considéré comme inactif</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Couleur d'accentuation de la barre de titre et des contours de la fenêtre seulement pendant</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Information de version copiée dans le presse-papier</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Basculement automatique du thème</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Afficher la notification lors de la bascule</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Délai</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>Module de surveillance GPU</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Mettre en pause le module de basculement automatique</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>Vérificateur de système inactif</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>Reprendre</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Activer/désactiver le changement automatique de thème</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Désactiver le changement automatique</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>Annuler</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Suspendre le changement automatique</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Le changement de thème automatique est actuellement en pause en raison des modules suivants :</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>La reprise ne fonctionnera que pour les ajournements ayant un temps d'expiration</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>Reporter le contrôle</value>
+  <data name="Time" xml:space="preserve">
+    <value>Heure</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Basculer de thème</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Basculer de thème</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Le changement de thème automatique est activé</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Suivre l'éclairage nocturne de Windows</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Le changement de thème est mis en pause une fois !</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>reporter jusqu'à</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>reporte jusqu'à ce que sa condition soit remplie</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>reporte jusqu'au prochain lever du soleil</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>reporte jusqu'au prochain lever du soleil</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>jusqu'à</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>jusqu'au prochain lever du soleil</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>jusqu'au prochain coucher du soleil</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Activer/désactiver le changement de thème automatique</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Reprise du changement de thème automatique</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Ouvrir les paramètres d’éclairage nocturne</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Délais actifs</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Ignorer le changement automatique une fois</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Notifier avant de changer de thème automatiquement</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Temps d'attente de la notification pour la saisie par l'utilisateur en minutes</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirmer</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Basculer maintenant</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Module de délai</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Changer de notification</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 heures</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 heures</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 heures</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 heure</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 heures</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Basculement du thème en attente</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Voulez-vous changer maintenant ou retarder davantage ?</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>Mode Trace</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>Remerciements particuliers</value>
+  <data name="Translator" xml:space="preserve">
+    <value>Traducteurs : Nathan Bonnemains &amp; Damien Trouillet &amp; Maxence CHAIX</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>Ignorer l'arrière-plan</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>Ignorer le curseur</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignorer les icônes du bureau</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignorer le son</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ignorer les paramètres</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Cette option ne prend pas en charge les thèmes Windows par défaut</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Suspendu</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>Une erreur est survenue lors de la mise à jour.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Version Actuelle</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Retourner à la version antérieure</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Téléchargement en cours…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Téléchargement en cours</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>Nouvelle version {0} disponible</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>L'installation du correctif a échouée</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Veuillez consulter service.log et updater.log pour plus d'informations</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Mise à jour vers</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Retourner à une version antérieure</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Ouvrir le fichier log (service.log)</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Reporter</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Mise à jour</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Version antérieure {0} disponible</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Allez à la page des téléchargements</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>Une version antérieure est disponible</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>Scripts</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Ouvrir la configuration du script</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Activer les scripts personnalisés</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Choisir votre fond d'écran</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>Emplacement de l'image</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows à la une</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>Couleur d'accentuation</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>Sélectionner une couleur d'accentuation</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Choisissez le thème de couleur pour Windows en fonction de vos goûts.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>Mettre à jour la couleur</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>Liens</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Documentation pour les scripts personnalisés</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Dépôt de scripts personnalisés par les utilisateurs</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>Remplir</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>Adapter</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Étirer</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Choisissez une image adaptée pour votre bureau</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>Déconnecté</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Toujours rafraichir DWM pendant le changement de thème</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>Cette option vise à réduire l'apparition de mauvaises couleurs dans l'explorateur de fichiers, la barre de tâches et le menu Démarrer. Si vous constatez régulièrement ce problème ou si cela vous dérange, essayez d'activer cette option.
-
-Sur certains systèmes, cela peut entraîner un décalage plus ou moins important lors du changement de thème, comme c'est le cas sur Windows 10. 
-Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est déplacée pendant le rafraîchissement de DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Forcer le rechargement de DWM ?</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Activer le changement de la souris</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Ouvrir les paramètres de la souris</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>Sélectionner un curseur sombre</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>Sélectionner un curseur clair</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>Curseurs</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>Configurer différents curseurs de souris pour les thèmes sombre et claire.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>Choisir un curseur de souris</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Laisser Auto Dark Mode gérer mon thème</value>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Laisser Windows gérer mon thème</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>Ouvrir le terminal shell</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>Vérifier les mises à jour au démarrage d'Auto Dark Mode</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Ouvrir les logs de MàJ (updater.log)</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>Sélectionner le canal de mise à jour</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Activer le changer de couleur d'accentuation</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>Mettre à jour la couleur</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Basculer le clavier virtuel et la saisie</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>Fréquence de mise à jour</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>Automatique</value>
+  <data name="Updates" xml:space="preserve">
+    <value>Mises à jour</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>Manuel</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>Utiliser le service de localisation</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Ajouter</value>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>Retirer</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>Fond d'écran</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>Processus bloqués</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>Image</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>Ne pas changer de thème quand certains processus sont en cours</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>Image (plusieurs écrans)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Essayer de corriger le thème</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>Couleur unie</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Définir</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Windows à la une</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Vous ne pouvez modifier les touches de raccourci que lorsqu'elles sont désactivées.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>Cette option est désactivée, car vous n'avez pas installé la mise à jour d'avril 2019 de Windows 10 sur votre machine.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>Vous avez désactivé l'entrée du démarrage automatique dans Windows.</value>
   </data>
 </root>

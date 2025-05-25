@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;Κλείσιμο</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Αυτόματη εναλλαγή θεματος</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Επιβολή &amp;Σκοτεινής Λειτουργίας</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Επιβολή &amp;Φωτεινής Λειτουργίας</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Ανοιγμα καταλόγου αρχείου ρυθμίσεων (config)</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Αυτόματη εναλλαγή θέματος</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Παύση αυτόματης εναλλαγής</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Ενεργοποίηση/απενεργοποίηση θέματος</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Προσπάθεια επιδιόρθωσης θέματος</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>μέχρι</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>μέχρι την επόμενη δύση του ηλίου</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Φωτεινό</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Επιβεβαίωση</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Σκοτεινό</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Σε παύση</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Καθυστέρηση</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Απενεργοποίηση αυτόματης εναλλαγής</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Ανενεργό</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Ενεργοποιημένο</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Εναλλαγή θέματος σε εκκρεμότητα</value>
+  <data name="Light" xml:space="preserve">
+    <value>Φωτεινό</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Θα θέλατε αντί για αυτό να απενεργοποιήσετε την αυτόματη εναλλαγή;</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θα συνεχιστεί επίσης εάν επιστρέψετε στο προηγούμενο θέμα σας.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Η εναλλαγή θεμάτων είναι σε πάυση μέχρι</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Η εναλλαγή θέματος τέθηκε σε παύση για μία φορά!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Θέλετε να κάνετε εναλλαγή τώρα ή επιπλέον καθυστέρηση;</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Η αυτόματη εναλλαγή θέματος ενεργοποιήθηκε ξανά</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Εναλλαγή θέματος σε εκκρεμότητα</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Σε παύση</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 ώρες</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 ώρες</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Καθυστέρηση</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Εναλλαγή τώρα</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Θα θέλατε αντί για αυτό να απενεργοποιήσετε την αυτόματη εναλλαγή;</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Η αυτόματη εναλλαγή θα συνεχιστεί επίσης εάν επιστρέψετε στο προηγούμενο θέμα σας.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Η εναλλαγή θεμάτων είναι σε πάυση μέχρι</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Πατήστε επιβεβαίωση για να γίνει εναλλαγή θέματος τώρα.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Ακυρώστε αυτήν την ενέργεια κάνοντας κλικ στο κουμπί αναίρεσης παρακάτω.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Αυτόματη εναλλαγή θεματος</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Εναλλαγή τώρα</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Επιβεβαίωση</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Αυτόματη εναλλαγή θέματος</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Πατήστε επιβεβαίωση για να γίνει εναλλαγή θέματος τώρα.</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Κλείσιμο</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Επιβολή &amp;Σκοτεινής Λειτουργίας</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Επιβολή &amp;Φωτεινής Λειτουργίας</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Ανοιγμα καταλόγου αρχείου ρυθμίσεων (config)</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Παύση αυτόματης εναλλαγής</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Ενεργοποίηση/απενεργοποίηση θέματος</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Προσπάθεια επιδιόρθωσης θέματος</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Αναίρεση</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>μέχρι</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>μέχρι την επόμενη ανατολή του ηλίου</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>μέχρι την επόμενη δύση του ηλίου</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Παρουσιάστηκε σφάλμα κατά την αναβάθμιση.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Υποβάθμιση</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Ανοιγμα καταλόγου αρχείου καταγραφής (log)</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Αναβολή</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Ενημέρωση</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Τρέχουσα Εκδοση</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Παλαιότερη έκδοση διαθέσιμη {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Υποβάθμιση σε</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Λήψη σε εξέλιξη</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Μετάβαση στη σελίδα λήψης</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Μήνυμα</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Ενημέρωση σε</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Υποβάθμιση</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Ανοιγμα καταλόγου αρχείου καταγραφής (log)</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Αναβολή</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Ενημέρωση</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Παλαιότερη έκδοση διαθέσιμη {0}</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Μετάβαση στη σελίδα λήψης</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Απενεργοποίηση αυτόματης εναλλαγής</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>μέχρι την επόμενη ανατολή του ηλίου</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Η εναλλαγή θέματος τέθηκε σε παύση για μία φορά!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Η αυτόματη εναλλαγή θέματος ενεργοποιήθηκε ξανά</value>
   </data>
 </root>

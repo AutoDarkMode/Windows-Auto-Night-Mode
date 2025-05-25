@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Tắt</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Cưỡng ép chủ đề tối</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Cưỡng ép chủ đề sáng</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Mở Thư mục Cấu hình Config</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Tự động chuyển chủ đề</value>
   </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Tạm dừng tự động chuyển</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Bật tắt chủ đề</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Cố gắng sửa chủ đề</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>tới khi</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>đến khi mặt trời lặn</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Sáng</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Xác nhận</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Tối</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Tạm ngưng</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Trì hoãn</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Tắt tự động chuyển</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Tắt</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Bật</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Đợi chuyển chủ đề</value>
+  <data name="Light" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Bạn có muốn tắt tự động chuyển?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Tự động chuyển sẽ được khởi động lại nếu bạn chuyển về chủ đề trước đó.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Tự động chuyển được tạm dừng tới khi</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Tự động chuyển đã được hoãn một lần!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Bạn muốn chuyển ngay hay chờ thêm?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Tự động chuyển chủ đề được tiếp tục</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Đợi chuyển chủ đề</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Tạm ngưng</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 tiếng</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 tiếng</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Trì hoãn</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Chuyển ngay</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Bạn có muốn tắt tự động chuyển?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Tự động chuyển sẽ được khởi động lại nếu bạn chuyển về chủ đề trước đó.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Tự động chuyển được tạm dừng tới khi</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Bấm xác nhận để yêu cầu chuyển chủ đề ngay.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Đảo ngược hành động này bằng cách bấm nút Đảo ngược bên dưới.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Chuyển ngay</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
     <value>Tự động chuyển chủ đề</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Xác nhận</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>Tắt</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Bấm xác nhận để yêu cầu chuyển chủ đề ngay.</value>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Cưỡng ép chủ đề tối</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Cưỡng ép chủ đề sáng</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Mở Thư mục Cấu hình Config</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>Tạm dừng tự động chuyển</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>Bật tắt chủ đề</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Cố gắng sửa chủ đề</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Đảo ngược</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>tới khi</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>đến khi mặt trời mọc</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>đến khi mặt trời lặn</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Một sự cố đã xảy ra trong khi patch.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Hạ cấp</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Open log directory</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Tạm hoãn</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Phiên bản hiện tại</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Hạ cấp {0} khả dụng</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Hạ cấp xuống</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Go to download page</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Message</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Đang nâng cấp lên</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Hạ cấp</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Tạm hoãn</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Hạ cấp {0} khả dụng</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Tắt tự động chuyển</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>đến khi mặt trời mọc</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Tự động chuyển đã được hoãn một lần!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Tự động chuyển chủ đề được tiếp tục</value>
   </data>
 </root>

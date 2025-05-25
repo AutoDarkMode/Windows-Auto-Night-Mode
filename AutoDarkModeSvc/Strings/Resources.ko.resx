@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;닫기</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>자동 테마 전환</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>강제 어두운 테마(&amp;D)</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>강제 밝은 테마( &amp;L)</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>구성 디렉터리 열기(&amp;O)</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>자동 테마 전환(&amp;A)</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>자동 전환 일시정지(&amp;P)</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>테마 전환(&amp;T)</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>테마를 수정해 보세요</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>기간</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>다음 일몰까지</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>라이트</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>확인</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>다크</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>일시 중지됨</value>
+  <data name="Delay" xml:space="preserve">
+    <value>지연</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>자동 스위치 사용 안 함</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>비활성화</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>활성화</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>테마 전환 보류 중</value>
+  <data name="Light" xml:space="preserve">
+    <value>라이트</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>대신 자동 전환을 비활성화하시겠습니까?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>이전 테마로 돌아가면 자동 전환도 재개됩니다.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>테마 전환이 다음까지 일시 중지되었습니다</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>테마 전환이 한 번 일시 중지됩니다!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>지금 전환하시겠습니까, 아니면 더 지연하시겠습니까?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>자동 테마 전환이 재개되었습니다</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>테마 전환 보류 중</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>일시 중지됨</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 시간</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 시간</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>지연</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>지금 전환</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>대신 자동 전환을 비활성화하시겠습니까?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>이전 테마로 돌아가면 자동 전환도 재개됩니다.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>테마 전환이 다음까지 일시 중지되었습니다</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>확인을 눌러 테마 전환을 즉시 요청합니다.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>아래 실행 취소 버튼을 클릭하여 이 동작을 되돌립니다.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>자동 테마 전환</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>지금 전환</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>확인</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>자동 테마 전환(&amp;A)</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>확인을 눌러 테마 전환을 즉시 요청합니다.</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;닫기</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>강제 어두운 테마(&amp;D)</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>강제 밝은 테마( &amp;L)</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>구성 디렉터리 열기(&amp;O)</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>자동 전환 일시정지(&amp;P)</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>테마 전환(&amp;T)</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>테마를 수정해 보세요</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>실행 취소</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>기간</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>다음 일출까지</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>다음 일몰까지</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>패치를 적용하는 동안 오류가 발생했습니다.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>다운그레이드</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>로그 디렉터리 열기</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>연기</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>현재 버전</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>{0} 다운그레이드 사용 가능</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>다운그레이드</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>다운로드 진행 중</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>다운로드 페이지로 이동</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>메시지</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>업데이트</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>다운그레이드</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>로그 디렉터리 열기</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>연기</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>업데이트</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>{0} 다운그레이드 사용 가능</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>다운로드 페이지로 이동</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>자동 스위치 사용 안 함</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>다음 일출까지</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>테마 전환이 한 번 일시 중지됩니다!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>자동 테마 전환이 재개되었습니다</value>
   </data>
 </root>

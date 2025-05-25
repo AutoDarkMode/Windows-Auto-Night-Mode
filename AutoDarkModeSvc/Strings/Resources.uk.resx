@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;Закрити</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Автоматичне перемикання тем</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Увімкнути &amp;темну тему</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Увімкнути &amp;світлу тему</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Відкрити каталог конфігурацій</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Автоматичне перемикання тем</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Призупинити автоперемикання</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Перемкнути тему</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Спробувати виправити тему</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>до наступного смеркання</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Світла</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Підтвердити</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Темна</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Призупинено</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Затримка</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Вимкнути автоперемикання</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Вимкнено</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Увімкнено</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Очікування зміни теми</value>
+  <data name="Light" xml:space="preserve">
+    <value>Світла</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Бажаєте натомість вимкнути автоперемикання?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Автоперемикання також поновиться, якщо ви повернетесь до попередньої теми.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Зміна тем призупинена до</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Зміна тем призупинена одноразово!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Перемикнутися зараз чи відкласти?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Автозміна тем поновлена</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Очікування зміни теми</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Призупинено</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 години</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 годин</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Затримка</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Перемкнути зараз</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Бажаєте натомість вимкнути автоперемикання?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Автоперемикання також поновиться, якщо ви повернетесь до попередньої теми.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Зміна тем призупинена до</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Натисність затвердити для негайного перемикання тем.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Відкотіть цю дію, натиснувши кнопку скасування нижче.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Автоматичне перемикання тем</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Перемкнути зараз</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Підтвердити</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Автоматичне перемикання тем</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Натисність затвердити для негайного перемикання тем.</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Закрити</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Увімкнути &amp;темну тему</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Увімкнути &amp;світлу тему</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Відкрити каталог конфігурацій</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Призупинити автоперемикання</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Перемкнути тему</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Спробувати виправити тему</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Скасувати</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>до наступного світанку</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>до наступного смеркання</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Під час виправлення сталася помилка.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Понизити версію</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Відкрити теку log</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Відкласти</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Оновити</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Поточна версія</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Доступне пониження версії до {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Пониження до</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Виконується завантаження</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Перейти на сторінку завантаження</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Повідомлення</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Оновлюється до</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Понизити версію</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Відкрити теку log</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Відкласти</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Оновити</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Доступне пониження версії до {0}</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Перейти на сторінку завантаження</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Вимкнути автоперемикання</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>до наступного світанку</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Зміна тем призупинена одноразово!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Автозміна тем поновлена</value>
   </data>
 </root>

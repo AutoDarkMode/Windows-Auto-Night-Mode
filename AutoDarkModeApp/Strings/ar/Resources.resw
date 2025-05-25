@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>وضع الداكن التلقائي</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>تمكين التبديل التلقائي للنسق</value>
+  <data name="About" xml:space="preserve">
+    <value>نبذة عن</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>إعدادات</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>لون مميز</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>طبق</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>لون التمييز لشريط المهام</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>فقط التمييز</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>التأخيرات النشطة</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>استخدم لون التمييز لشريط المهام أثناء</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>التكيف مع النظام</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>إضافة</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>داكن دائماً</value>
@@ -135,8 +150,112 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>دائماً فاتح</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>تطبيقات</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>تحديث DWM دائمًا عند تبديل النسق</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>محاولات لتقليل حدوث ألوان واجهة المستخدم غير الصحيحة في مستكشف الملفات، شريط المهام، وقائمة ابدأ. إذا كنت تواجه هذه المشكلة بشكل متكرر أو تجدها مزعجة، حاول تمكين هذا الإعداد.
+
+قد يؤدي ذلك إلى تأخير طفيف إلى متوسط في بعض الأنظمة أثناء تغيير السمات، مشابه لما حدث في Windows 10. في حالات نادرة، قد يصدر Windows صوت تنبيه عند تحريك الماوس أثناء تحديثات DWM.</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>فرض تحديث DWM بالقوة؟</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>طبق</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>تطبيق الإحداثيات</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>تنزيل الإصدارات الجديدة وتثبيتها تلقائياً</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>تلقائي</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>تبديل مفتاح السمة التلقائية</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>التشغيل التلقائي</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>الوقت الذي ينتظر فيه الإشعار إدخال المستخدم بالدقائق</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>الإخطار قبل التبديل التلقائي للنسق</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>استئناف التبديل التلقائي للنسق</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>التحقق من التحديث التلقائي</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>قم بالتبديل إلى الوضع الداكن عند فصل الجهاز</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>الأجهزة التي تعمل بالبطارية</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>القيمة الافتراضية لشريط تمرير توفير الطاقة</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>حظر العمليات</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>اختر الملف</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>تحقق من وجود تحديثات</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>اختر ما يناسب صورة سطح المكتب</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>اختر الخلفية الخاصة بك</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>اللون</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>فلتر الألوان (يرسل Win + Ctrl + C)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>قم بتخصيص نظام ألوان نظام Windows حسب رغبتك.</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>الشروط</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>التكوين</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>نسخ</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>إنشاء السمات الخاصة بك</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>المؤشرات</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>تعيين ساعات مخصصة</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>مستودع مستخدم البرنامج النصي المخصص</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>وقت البدء المخصّص</value>
@@ -147,8 +266,192 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>نسق داكنة</value>
   </data>
+  <data name="Delay" xml:space="preserve">
+    <value>التأخير</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>معطل</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>غير متصل</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>توثيق النصوص البرمجية المخصصة</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>تبرع</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>مرحبًا! شكرًا لك على استخدام الوضع الداكن التلقائي! هل أعجبك حتى الآن؟
+
+ هذا التطبيق يجعل حياتك اليومية أكثر متعة، من خلال مساعدتك في العناية بعينيك. في نفس الوقت هو مجاني تمامًا وخالٍ من الإعلانات ولا يجمع بيانات المستخدم وهو مفتوح المصدر.
+ أنا لا أحقق أي ربح من هذا المشروع.
+
+ لهذا السبب يمكنك دعمي بتبرع طوعي. حتى لو كان مبلغًا صغيرًا يجعلني أقفز سعيدًا من خلال شقتي. فقط تبرع بقدر ما تقدر عملي.</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>كيف تتبرع؟</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>يمكنك إرسال الأموال عبر PayPal. إنه أمر تطوعي تماماً ولا يجب أن تتوقع أي تعويض.</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>لا تقم بالتبديل أثناء لعب ألعاب الفيديو</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>لا تقم بتبديل النسق إلا إذا كان النظام خاملاً</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>لون مميز لأشرطة العناوين وحدود النوافذ فقط أثناء</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>إيدج (الإصدار القديم)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>تمكين مفتاح تبديل لون التمييز</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>تمكين التبديل التلقائي للنسق</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>تمكين تبديل مؤشر الماوس</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>تمكين البرامج النصية المخصصة</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>ممكّن</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>تمكين مفاتيح الاختصار</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>تمكين مفتاح تبديل الخلفية</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>تخفيف توفير الطاقة لمفتاح تبديل النسق</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>كانت هناك مشكلة في واجهة المستخدم.
+
+ يُرجى التأكد من:
+ - الخدمة قيد التشغيل 
+- ملف config.yaml الخاص بك صحيح 
+
+هل ترغب في إنشاء مشكلة في مستودع الوضع الداكن التلقائي؟
+ انقر فوق "نعم" لفتح نافذة متصفح جديدة.
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>حدث خطأ</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>يتم تعطيل هذه الميزة أثناء إدارة الوضع الداكن التلقائي للنسق الخاص بك.</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>يتم تعطيل هذه الميزة أثناء إدارة Windows للنسق الخاص بك.</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>تعبئة</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>تناسب</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>التمدد</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>دع التطبيق يقرر</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>تابعنا</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>اتبع الضوء الليلي لويندوز</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>فرض الوضع الداكن</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>فرض وضع الفاتح</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>الإحداثيات الجغرافية</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>ابحث عن الإحداثيات الجغرافية لموقعك</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>سرعة اكتشاف استخدام وحدة معالجة الرسومات</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>المساعدة</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>رمز سداسي عشري</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>إخفاء أيقونة الدرج</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>مفاتيح التشغيل السريع</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>الدقائق حتى يعتبر النظام خاملاً</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>تجاهل الخلفية</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>تجاهل المؤشر</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>تجاهل أيقونات سطح المكتب</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>تجاهل الإعدادات</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>تجاهل الصوت</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>مسار الصورة</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>المعلومات</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>عدم إظهار الإشعارات</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>كل يوم</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 يوماً</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 أيام</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 أيام</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>أبداً</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>آخر فحص</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>خط العرض</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>إطلاق الخدمة</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>فاتح</value>
@@ -156,23 +459,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>نسق فاتح</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>الإعدادات</value>
+  <data name="Links" xml:space="preserve">
+    <value>الروابط</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>تبديل النسق الحالي</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>بيانات الموقع</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>النظام</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>من غروب الشمس إلى شروقها (الإحداثيات الجغرافية)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>برامج الطرف الثالث المستخدمة</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>من غروب الشمس إلى شروقها (خدمة الموقع)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>التحديثات</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>استخدام مهمة تسجيل الدخول بدلاً من إدخال بدء التشغيل</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>استخدام خدمة الموقع</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>خط الطول</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>دع الوضع الداكن التلقائي يدير نسقي</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>يدوي</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>القائمة</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>الحد الأدنى لاستخدام وحدة معالجة الرسومات % لتأخير التبديل</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>الدقائق</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>الوضع</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>الوضع:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>الشاشة</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>تم تمكين التبديل التلقائي للنسق</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>تم حفظ تغييراتك!</value>
@@ -180,23 +510,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>سيتم حفظ تغييراتك تلقائياً.</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>يتوفر ترقية إلى درجة أقل</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>تنزيل التحديث</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>حدث خطأ :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>لا يدعم هذا الخيار نسق Windows الافتراضية</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>يحتاج هذا التطبيق إلى الوصول إلى موقعك</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>الخدمة لم تعمل بعد، الرجاء الانتظار…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>لا تتوفر تحديثات جديدة.</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>يتم إيقاف تبديل النسق مؤقتاً مرة واحدة!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>هل ترغب في التبديل الآن أم التأخير أكثر من ذلك؟</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>الحصول على موقعك…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>البحث عن تحديثات…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>الخدمة لا تستجيب. يُرجى التحقق مما إذا كان AutoDarkModeSvc.exe.exe قيد التشغيل، ثم حاول مرة أخرى!</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>تبديل النسق في انتظار</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>تحذير: لم نتمكن من قراءة نسقك الحالي.</value>
@@ -210,171 +561,23 @@
  هل تريد تثبيته؟ 
 الإصدار المثبت حالياً: {0}، الإصدار الجديد: {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>تحقق من وجود تحديثات</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>معلومات الإصدار المنسوخة إلى الحافظة</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>مترجم: أرمين أوساج وصموئيل شيغ</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>التحديث التالي في</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>المدينة</value>
+  <data name="None" xml:space="preserve">
+    <value>لا يوجد</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>الموقع الجغرافي</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>يلزم إعادة تشغيل التطبيق لرؤية التغييرات</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>لون التمييز لشريط المهام</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>إلغاء</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>اختر الملف</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>معطل</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>ممكّن</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>حدث خطأ</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>المعلومات</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>إغلاق</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;amp;إغلاق</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>التحقق من التحديث التلقائي</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>كانت هناك مشكلة في واجهة المستخدم.
-
- يُرجى التأكد من:
- - الخدمة قيد التشغيل 
-- ملف config.yaml الخاص بك صحيح 
-
-هل ترغب في إنشاء مشكلة في مستودع الوضع الداكن التلقائي؟
- انقر فوق "نعم" لفتح نافذة متصفح جديدة.
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>غير موجود</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>تَكَافَأَ</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>الوقت</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>فتح المجلد</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>إنشاء السمات الخاصة بك</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>اختر نسق</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>انقر هنا لفتح إعدادات نسق ويندوز.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>انتقل الآن إلى "الألوان" وغيّر لون النظام إلى "فاتح" لنسق الألوان الفاتح. اختر خلفية الشاشة المفضلة لديك، ومؤشر الماوس، ولون التمييز.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>ارجع إلى إعدادات النسق واحفظ النسق الخاص بك.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>كرر هذه العملية للنسق الداكن.</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>نبذة عن</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>القائمة</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>إعادة التشغيل</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>تعيين ساعات مخصصة</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>من غروب الشمس إلى شروقها (خدمة الموقع)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>خطوة</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>فلتر الألوان (يرسل Win + Ctrl + C)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>استخدام مهمة تسجيل الدخول بدلاً من إدخال بدء التشغيل</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>كيف تتبرع؟</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>يمكنك إرسال الأموال عبر PayPal. إنه أمر تطوعي تماماً ولا يجب أن تتوقع أي تعويض.</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>تبرع</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>مرحبًا! شكرًا لك على استخدام الوضع الداكن التلقائي! هل أعجبك حتى الآن؟
-
- هذا التطبيق يجعل حياتك اليومية أكثر متعة، من خلال مساعدتك في العناية بعينيك. في نفس الوقت هو مجاني تمامًا وخالٍ من الإعلانات ولا يجمع بيانات المستخدم وهو مفتوح المصدر.
- أنا لا أحقق أي ربح من هذا المشروع.
-
- لهذا السبب يمكنك دعمي بتبرع طوعي. حتى لو كان مبلغًا صغيرًا يجعلني أقفز سعيدًا من خلال شقتي. فقط تبرع بقدر ما تقدر عملي.</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>المساعدة</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>التكيف مع النظام</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>إعادة تعيين</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>قم بالتبديل إلى الوضع الداكن عند فصل الجهاز</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>القيمة الافتراضية لشريط تمرير توفير الطاقة</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>تخفيف توفير الطاقة لمفتاح تبديل النسق</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تبديل الأوضاع</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>التخصيص</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>تطبيق الإحداثيات</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>تم تعطيل هذا الخيار، لأنك لم تقم بتثبيت تحديث Windows 10 April 2019 على جهازك.</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>الإحداثيات الجغرافية</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>بيانات الموقع</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>من غروب الشمس إلى شروقها (الإحداثيات الجغرافية)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>ابحث عن الإحداثيات الجغرافية لموقعك</value>
+  <data name="Ok" xml:space="preserve">
+    <value>حسناً</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>فتح ملف التكوين المفتوح</value>
@@ -385,89 +588,146 @@
   <data name="OpenLog" xml:space="preserve">
     <value>فتح ملف السجل المفتوح</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>التكوين</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>فتح المجلد</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>اختر خلفية</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>فتح إعدادات مؤشر ويندوز</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>يتم تعطيل هذه الميزة أثناء إدارة Windows للنسق الخاص بك.</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>فتح تكوين البرنامج النصي</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>يتم تعطيل هذه الميزة أثناء إدارة الوضع الداكن التلقائي للنسق الخاص بك.</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>فتح واجهة المستخدم</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>فتح سجل المحدثين</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>فتح إعدادات الإضاءة الليلية</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>المسار:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>تبديل مفتاح تبديل النسق التلقائي للإيقاف المؤقت</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>التخصيص</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>اختر لون التمييز</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>اختيار مؤشرات الفأرة</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>تكوين مؤشرات ماوس مختلفة لأوضاع الفاتحة والداكنة.</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>اختر نسق</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>حدد نسق ويندوز مختلفة للوضع المظلم والفاتح على التوالي. يتيح التخصيص الكامل للنسق، لكنه يتطلب منك إعداد ملفات .theme بنفسك.</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>اختر خلفية</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>قم بتخصيص خلفية سطح المكتب لجميع الشاشات، أو الشاشات الفردية، أو قم بتعيين لون الخلفية أو قم بتمكين تسليط الضوء.</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>تنزيل الإصدارات الجديدة وتثبيتها تلقائياً</value>
+  <data name="Position" xml:space="preserve">
+    <value>الموقع الجغرافي</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>عدم إظهار الإشعارات</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>تأجيل التحكم المؤجل</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>تحديد قناة التحديث</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>يتم إيقاف التبديل التلقائي للنسق مؤقتًا حاليًا بسبب الوحدات التالية:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>تحقق من وجود تحديثات عند بدء تشغيل وضع الداكن التلقائي</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>وحدة التأخير</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 يوماً</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>وحدة مراقبة وحدة معالجة الرسومات</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 أيام</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>وحدة الإيقاف المؤقت للتبديل التلقائي</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 أيام</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>يؤجل حتى</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>آخر فحص</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>يؤجل حتى يتحقق شرطه</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>أبداً</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>إشعار التبديل</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>تغيير عدد مرات التحقق من التحديثات</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>أداة التحقق من خمول النظام</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>صورة</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>يؤجل حتى شروق الشمس التالي</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>صورة (شاشات متعددة)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>يؤجل حتى غروب الشمس القادم</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>لون خالص</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 ساعة</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>الوضع</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 دقيقة</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>الشاشة</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 ساعات</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>النوع</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 دقيقة</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 ساعات</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 ساعة</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 ساعة</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>تخطي التبديل التلقائي مرة واحدة</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>لا تقم بالتبديل أثناء تشغيل عمليات معينة</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>تحديث التشغيل التلقائي</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>مفتاح السجل</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>إزالة</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>إزالة الشاشات المفصولة</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>الخلفية</value>
+  <data name="Reset" xml:space="preserve">
+    <value>إعادة تعيين</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>اللون</value>
+  <data name="Restart" xml:space="preserve">
+    <value>إعادة التشغيل</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>رمز سداسي عشري</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>يلزم إعادة تشغيل التطبيق لرؤية التغييرات</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>تمكين مفتاح تبديل الخلفية</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>استعادة النسق عند تغييرها خارجيًا</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>لا تقم بالتبديل أثناء لعب ألعاب الفيديو</value>
+  <data name="Resume" xml:space="preserve">
+    <value>استئناف</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>الاستئناف سيعمل فقط مع التأجيلات التي لها وقت انتهاء صلاحية</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>سريع (1 عينة)</value>
@@ -478,41 +738,56 @@
   <data name="SamplesSlow" xml:space="preserve">
     <value>بطيء (3 عينات)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>سرعة اكتشاف استخدام وحدة معالجة الرسومات</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>البرامج النصية</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>الأجهزة التي تعمل بالبطارية</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>حدد المؤشر الداكن</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>الشروط</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>تحديد المؤشر الفاتح</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>الحد الأدنى لاستخدام وحدة معالجة الرسومات % لتأخير التبديل</value>
+  <data name="Set" xml:space="preserve">
+    <value>تعيين</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>استعادة النسق عند تغييرها خارجيًا</value>
+  <data name="Settings" xml:space="preserve">
+    <value>إعدادات</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>خط العرض</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>إظهار الإشعار عند التبديل</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>خط الطول</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>شكر خاص</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>الخدمة لم تعمل بعد، الرجاء الانتظار…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>بدء تشغيل الوضع الداكن التلقائي مع Windows</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>إطلاق الخدمة</value>
+  <data name="Step" xml:space="preserve">
+    <value>خطوة</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>الخدمة لا تستجيب. يُرجى التحقق مما إذا كان AutoDarkModeSvc.exe.exe قيد التشغيل، ثم حاول مرة أخرى!</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>التوقف عن إجبار النسق</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>تمكين تبديل نسق Windows</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>تابعنا</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>تبديل الأوضاع</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>تبديل النسق الحالي</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>تبديل لوحة المفاتيح والإدخال باللمس</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>النظام</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>تطبيقات</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>المهمة</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>النسق</value>
@@ -553,459 +828,86 @@
     <value>ويندوز (فاتحة)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>شروق الشمس</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>كل يوم</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>انقر هنا لفتح إعدادات نسق ويندوز.</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>استخدم لون التمييز لشريط المهام أثناء</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>انتقل الآن إلى "الألوان" وغيّر لون النظام إلى "فاتح" لنسق الألوان الفاتح. اختر خلفية الشاشة المفضلة لديك، ومؤشر الماوس، ولون التمييز.</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>فقط التمييز</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>ارجع إلى إعدادات النسق واحفظ النسق الخاص بك.</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>الإصدار</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>كرر هذه العملية للنسق الداكن.</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>نسخ</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>برامج الطرف الثالث المستخدمة</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>بدء تشغيل الوضع الداكن التلقائي مع Windows</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>التشغيل التلقائي</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>الوضع:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>المسار:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>تحديث التشغيل التلقائي</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>لا يوجد</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>غير موجود</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>مفتاح السجل</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>المهمة</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>لقد قمت بتعطيل إدخال بدء التشغيل التلقائي عبر Windows.</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>التحديث التالي في</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>فرض الوضع الداكن</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>فرض وضع الفاتح</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>مفاتيح التشغيل السريع</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>التوقف عن إجبار النسق</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>تمكين مفاتيح الاختصار</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>فرض&amp; نسق الداكن</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>فرض &amp;النسق الفاتح</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>إخفاء أيقونة الدرج</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;amp;دليل التكوين المفتوح</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>دع التطبيق يقرر</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>لا تقم بتبديل النسق إلا إذا كان النظام خاملاً</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>الدقائق حتى يعتبر النظام خاملاً</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>لون مميز لأشرطة العناوين وحدود النوافذ فقط أثناء</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>معلومات الإصدار المنسوخة إلى الحافظة</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;amp;التبديل التلقائي للنسق</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>إظهار الإشعار عند التبديل</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>التأخير</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>وحدة مراقبة وحدة معالجة الرسومات</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>وحدة الإيقاف المؤقت للتبديل التلقائي</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>أداة التحقق من خمول النظام</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>استئناف</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>تبديل مفتاح السمة التلقائية</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>تعطيل التبديل التلقائي</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>التراجع</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;amp;التبديل التلقائي للإيقاف المؤقت</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>يتم إيقاف التبديل التلقائي للنسق مؤقتًا حاليًا بسبب الوحدات التالية:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>الاستئناف سيعمل فقط مع التأجيلات التي لها وقت انتهاء صلاحية</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>تأجيل التحكم المؤجل</value>
+  <data name="Time" xml:space="preserve">
+    <value>الوقت</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>تبديل النسق</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;تبديل النسق</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>تم تمكين التبديل التلقائي للنسق</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>اتبع الضوء الليلي لويندوز</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>يتم إيقاف تبديل النسق مؤقتاً مرة واحدة!</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>يؤجل حتى</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>يؤجل حتى يتحقق شرطه</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>يؤجل حتى شروق الشمس التالي</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>يؤجل حتى غروب الشمس القادم</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>حتى</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>حتى شروق الشمس القادم</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>حتى غروب الشمس التالي</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>تبديل مفتاح تبديل النسق التلقائي للإيقاف المؤقت</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>استئناف التبديل التلقائي للنسق</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>فتح إعدادات الإضاءة الليلية</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>التأخيرات النشطة</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>تخطي التبديل التلقائي مرة واحدة</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>الإخطار قبل التبديل التلقائي للنسق</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>الوقت الذي ينتظر فيه الإشعار إدخال المستخدم بالدقائق</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>تأكيد</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>قم بالتبديل الآن</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>وحدة التأخير</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>إشعار التبديل</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 ساعة</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 دقيقة</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 ساعات</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 دقيقة</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 ساعات</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 ساعة</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 ساعة</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>تبديل النسق في انتظار</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>هل ترغب في التبديل الآن أم التأخير أكثر من ذلك؟</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>وضع التتبع</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>شكر خاص</value>
+  <data name="Translator" xml:space="preserve">
+    <value>مترجم: أرمين أوساج وصموئيل شيغ</value>
   </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>تجاهل الخلفية</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>تجاهل المؤشر</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>تجاهل أيقونات سطح المكتب</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>تجاهل الصوت</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>تجاهل الإعدادات</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>لا يدعم هذا الخيار نسق Windows الافتراضية</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>الدقائق</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>متوقف مؤقتاً</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>حدث خطأ أثناء التصحيح.</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>الإصدار الحالي</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>تخفيض الرتبة إلى</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>تنزيل…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>التنزيل قيد التنفيذ</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>الرسالة</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>الإصدار الجديد {0} متوفر</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>فشل الترقيع</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>يُرجى التحقق من service.log و updater.log للحصول على المعلومات</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>التحديث إلى</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>تخفيض التصنيف</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>فتح دليل السجل المفتوح</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>التأجيل</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>تحديث</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>تخفيض {0} متوفر {0} متاح</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>انتقل إلى صفحة التنزيل</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>يتوفر ترقية إلى درجة أقل</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>البرامج النصية</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>فتح تكوين البرنامج النصي</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>تمكين البرامج النصية المخصصة</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>اختر الخلفية الخاصة بك</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>مسار الصورة</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>ويندوز spotlight</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>لون مميز</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>اختر لون التمييز</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>قم بتخصيص نظام ألوان نظام Windows حسب رغبتك.</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>تحديث التلوين</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>الروابط</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>توثيق النصوص البرمجية المخصصة</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>مستودع مستخدم البرنامج النصي المخصص</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>تعبئة</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>تناسب</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>التمدد</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>اختر ما يناسب صورة سطح المكتب</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>غير متصل</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>تحديث DWM دائمًا عند تبديل النسق</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>محاولات لتقليل حدوث ألوان واجهة المستخدم غير الصحيحة في مستكشف الملفات، شريط المهام، وقائمة ابدأ. إذا كنت تواجه هذه المشكلة بشكل متكرر أو تجدها مزعجة، حاول تمكين هذا الإعداد.
-
-قد يؤدي ذلك إلى تأخير طفيف إلى متوسط في بعض الأنظمة أثناء تغيير السمات، مشابه لما حدث في Windows 10. في حالات نادرة، قد يصدر Windows صوت تنبيه عند تحريك الماوس أثناء تحديثات DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>فرض تحديث DWM بالقوة؟</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>حسناً</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>تمكين تبديل مؤشر الماوس</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>فتح إعدادات مؤشر ويندوز</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>حدد المؤشر الداكن</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>تحديد المؤشر الفاتح</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>المؤشرات</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>تكوين مؤشرات ماوس مختلفة لأوضاع الفاتحة والداكنة.</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>اختيار مؤشرات الفأرة</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>دع الوضع الداكن التلقائي يدير نسقي</value>
+  <data name="Type" xml:space="preserve">
+    <value>النوع</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>السماح لـ Windows بإدارة نسقي</value>
   </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>فتح واجهة المستخدم</value>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>تحقق من وجود تحديثات عند بدء تشغيل وضع الداكن التلقائي</value>
   </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>فتح سجل المحدثين</value>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>تحديد قناة التحديث</value>
   </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>تمكين مفتاح تبديل لون التمييز</value>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>تحديث التلوين</value>
   </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>تبديل لوحة المفاتيح والإدخال باللمس</value>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>تغيير عدد مرات التحقق من التحديثات</value>
   </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>تلقائي</value>
+  <data name="Updates" xml:space="preserve">
+    <value>التحديثات</value>
   </data>
-  <data name="Manual" xml:space="preserve">
-    <value>يدوي</value>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>استخدام خدمة الموقع</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>إضافة</value>
+  <data name="Version" xml:space="preserve">
+    <value>الإصدار</value>
   </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>إزالة</value>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>الخلفية</value>
   </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>حظر العمليات</value>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>صورة</value>
   </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>لا تقم بالتبديل أثناء تشغيل عمليات معينة</value>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>صورة (شاشات متعددة)</value>
   </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>حاول إصلاح النسق</value>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>لون خالص</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>تعيين</value>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>ويندوز spotlight</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
+  <data name="Warning1903" xml:space="preserve">
+    <value>تم تعطيل هذا الخيار، لأنك لم تقم بتثبيت تحديث Windows 10 April 2019 على جهازك.</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>لقد قمت بتعطيل إدخال بدء التشغيل التلقائي عبر Windows.</value>
   </data>
 </root>

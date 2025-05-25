@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;Çıkış</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Otomatik tema değişimi</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>&amp;Koyu temayı zorla</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>&amp;Açık temayı zorla</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Yapılandırma klasörünü aç</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Otomatik tema değişimi</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Otomatik değişimi &amp;duraklat</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Temayı değiştir</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Temayı düzeltmeye çalış</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>şu saate kadar:</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>sonraki gün batımına kadar</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Açık</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Onayla</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Koyu</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Duraklatıldı</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Geciktir</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Otomatik değişimi devre dışı bırak</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Devre dışı</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Etkin</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Tema değişimi beklemede</value>
+  <data name="Light" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Bunun yerine otomatik değişimi devre dışı bırakmak ister misiniz?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Önceki temanıza dönerseniz otomatik değişim de devam eder.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Tema değişimi şu saate kadar duraklatıldı:</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Tema değiştirme bir kez duraklatıldı!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Şimdi değişim yapmak mı ya da daha fazla geciktirmek mi istiyorsunuz?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Otomatik tema değiştirme devam ettirildi</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Tema değişimi beklemede</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Duraklatıldı</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 saat</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 saat</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Geciktir</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Şimdi değiştir</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Bunun yerine otomatik değişimi devre dışı bırakmak ister misiniz?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Önceki temanıza dönerseniz otomatik değişim de devam eder.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Tema değişimi şu saate kadar duraklatıldı:</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Hemen bir tema değişikliği istemek için Onayla'ya basın.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Aşağıdaki Geri al düğmesine tıklayarak bu işlemi geri alabilirsiniz.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Otomatik tema değişimi</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Şimdi değiştir</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Onayla</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Otomatik tema değişimi</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hemen bir tema değişikliği istemek için Onayla'ya basın.</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Çıkış</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>&amp;Koyu temayı zorla</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>&amp;Açık temayı zorla</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Yapılandırma klasörünü aç</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>Otomatik değişimi &amp;duraklat</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Temayı değiştir</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Temayı düzeltmeye çalış</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Geri al</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>şu saate kadar:</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>sonraki gün doğumuna kadar</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>sonraki gün batımına kadar</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Dosyalar yüklenirken bir hata oluştu.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Sürümü düşür</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Günlük klasörünü aç</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Ertele</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Şu anki Sürüm</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Düşük sürüm mevcut: {0}</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Sürüm düşürülüyor:</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>İndirme durumu</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>İndirme sayfasına git</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Mesaj</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Güncelleniyor:</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Sürümü düşür</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Günlük klasörünü aç</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Ertele</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Güncelle</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Düşük sürüm mevcut: {0}</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>İndirme sayfasına git</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Otomatik değişimi devre dışı bırak</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>sonraki gün doğumuna kadar</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Tema değiştirme bir kez duraklatıldı!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Otomatik tema değiştirme devam ettirildi</value>
   </data>
 </root>

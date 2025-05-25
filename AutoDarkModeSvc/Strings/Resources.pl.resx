@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>Zamknij</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Wymuś ciemny motyw</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Wymuś jasny motyw</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>Otwórz katalog konfiguracji</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatyczne przełączanie motywu</value>
   </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Wstrzymaj automatyczne przełączanie</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Przełącz mo&amp;tyw</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Spróbuj naprawić motyw</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>do</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>do następnego zachodu słońca</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>Jasny</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>Potwierdź</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Ciemny</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>Wstrzymano</value>
+  <data name="Delay" xml:space="preserve">
+    <value>Opóźnij</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Wyłącz automatyczne przełączanie</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Wyłączono</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>Włączono</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Oczekiwanie na przełączenie motywu</value>
+  <data name="Light" xml:space="preserve">
+    <value>Jasny</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Czy chcesz zamiast tego wyłączyć automatyczne przełączanie?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Automatyczne przełączanie zostanie wznowione jeśli wrócisz do poprzedniego motywu.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Przełączanie motywu wstrzymane do</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Przełączanie motywu zostało jednorazowo wstrzymane!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Czy chcesz przełączyć się teraz czy później?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Automatyczne przełączanie motywu zostało wznowione</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Oczekiwanie na przełączenie motywu</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Wstrzymano</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 godziny</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 godzin</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Opóźnij</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>Przełącz teraz</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Czy chcesz zamiast tego wyłączyć automatyczne przełączanie?</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Automatyczne przełączanie zostanie wznowione jeśli wrócisz do poprzedniego motywu.</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Przełączanie motywu wstrzymane do</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Naciśnij Potwierdź, aby natychmiast poprosić o zmianę motywu.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>Cofnij tę akcję klikając przycisk Cofnij poniżej.</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Przełącz teraz</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
     <value>Automatyczne przełączanie motywu</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Potwierdź</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>Zamknij</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Naciśnij Potwierdź, aby natychmiast poprosić o zmianę motywu.</value>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Wymuś ciemny motyw</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Wymuś jasny motyw</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>Otwórz katalog konfiguracji</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>Wstrzymaj automatyczne przełączanie</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>Przełącz mo&amp;tyw</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Spróbuj naprawić motyw</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>Cofnij</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>do</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>do następnego wschodu słońca</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>do następnego zachodu słońca</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>Wystąpił błąd podczas aktualizacji.</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Obniż wersję</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Otwórz dziennik zdarzeń</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Później</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Aktualizuj</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Aktualna wersja</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Starsza wersja {0} dostępna</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>Obniżanie wersji do</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Pobieranie w toku</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Przejdź do strony pobierania</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>Wiadomość</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Aktualizacja do</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Obniż wersję</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Otwórz dziennik zdarzeń</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Później</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Aktualizuj</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Starsza wersja {0} dostępna</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Przejdź do strony pobierania</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Wyłącz automatyczne przełączanie</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>do następnego wschodu słońca</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Przełączanie motywu zostało jednorazowo wstrzymane!</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Automatyczne przełączanie motywu zostało wznowione</value>
   </data>
 </root>

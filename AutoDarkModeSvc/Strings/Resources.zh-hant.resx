@@ -117,44 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>關閉 (&amp;C)</value>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>自動切換主題</value>
   </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>強制使用深色模式 (&amp;D)</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>強制使用淺色模式 (&amp;L)</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>開啟設定檔資料夾 (&amp;O)</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>自動切換主題 (&amp;A)</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>暫停自動切換 (&amp;P)</value>
-  </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>切換主題 (&amp;T)</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>嘗試修正此主題</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>至</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>至下一個日落</value>
-  </data>
-  <data name="Light" xml:space="preserve">
-    <value>淺色</value>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>深色</value>
   </data>
-  <data name="Paused" xml:space="preserve">
-    <value>已暫停</value>
+  <data name="Delay" xml:space="preserve">
+    <value>延遲</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>停用自動切換</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>已停用</value>
@@ -162,11 +138,32 @@
   <data name="Enabled" xml:space="preserve">
     <value>已啟用</value>
   </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>正在等待主題切換</value>
+  <data name="Light" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>您想要停用自動切換嗎？</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>如果您切換到之前的主題，自動切換也將恢復。</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>主題切換已暫停至</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>主題切換已暫停一次！</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>您想立即切換還是繼續延遲？</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>自動主題切換已恢復</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>正在等待主題切換</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>已暫停</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 小時</value>
@@ -189,41 +186,72 @@
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 小時</value>
   </data>
-  <data name="Delay" xml:space="preserve">
-    <value>延遲</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>立即切換</value>
-  </data>
-  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>您想要停用自動切換嗎？</value>
-  </data>
-  <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>如果您切換到之前的主題，自動切換也將恢復。</value>
-  </data>
-  <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>主題切換已暫停至</value>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>點按確認以立即切換主題。</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
     <value>點按下方的 [復原] 按鈕來恢復此動作。</value>
   </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>自動切換主題</value>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>立即切換</value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>確認</value>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>自動切換主題 (&amp;A)</value>
   </data>
-  <data name="RequestSwitchAction" xml:space="preserve">
-    <value>點按確認以立即切換主題。</value>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>關閉 (&amp;C)</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>強制使用深色模式 (&amp;D)</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>強制使用淺色模式 (&amp;L)</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>開啟設定檔資料夾 (&amp;O)</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>暫停自動切換 (&amp;P)</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>切換主題 (&amp;T)</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>嘗試修正此主題</value>
   </data>
   <data name="Undo" xml:space="preserve">
     <value>復原</value>
   </data>
+  <data name="Until" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>至下一個日出</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>至下一個日落</value>
+  </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
     <value>修補時發生錯誤。</value>
   </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>降級</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>開啟記錄資料夾</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>延遲</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>更新</value>
+  </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>目前版本</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>降級 {0} 可用</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
     <value>正在降級至</value>
@@ -233,6 +261,9 @@
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>下載進行中</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>前往下載頁面</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
     <value>訊息</value>
@@ -249,36 +280,5 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>正在更新至</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>降級</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>開啟記錄資料夾</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>延遲</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>更新</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>降級 {0} 可用</value>
-    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>前往下載頁面</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>停用自動切換</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>至下一個日出</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>主題切換已暫停一次！</value>
-  </data>
-  <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>自動主題切換已恢復</value>
   </data>
 </root>

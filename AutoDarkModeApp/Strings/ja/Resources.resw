@@ -120,14 +120,29 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>Auto Dark Mode</value>
   </data>
-  <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>テーマを自動で切り替える</value>
+  <data name="About" xml:space="preserve">
+    <value>情報</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>設定</value>
+  <data name="AccentColor" xml:space="preserve">
+    <value>アクセントカラー</value>
   </data>
-  <data name="Apply" xml:space="preserve">
-    <value>適用</value>
+  <data name="AccentColorForTaskbar" xml:space="preserve">
+    <value>タスクバーのアクセントカラー</value>
+  </data>
+  <data name="AccentOnly" xml:space="preserve">
+    <value>アクセントカラーのみ</value>
+  </data>
+  <data name="ActiveDelays" xml:space="preserve">
+    <value>遅延の状態</value>
+  </data>
+  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
+    <value>使用するタスクバーのアクセントカラー</value>
+  </data>
+  <data name="AdaptToSystem" xml:space="preserve">
+    <value>システムの設定に従う</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>追加</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>常にダーク</value>
@@ -135,8 +150,116 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>常にライト</value>
   </data>
-  <data name="SystemAreas" xml:space="preserve">
-    <value>アプリケーション:</value>
+  <data name="AlwaysRefreshDwm" xml:space="preserve">
+    <value>テーマ切替時に常に DWM を再描画</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+    <value>エクスプローラー、タスクバー、スタートメニュー内の間違ったUIの色の発生を抑えようと試みます。この現象がよく起きたり気になるなら、有効にしてみてください。
+
+設定により Windows 10 で起きていたのと同様に、一部のシステムでのテーマ切り替え時に、極小から中等度の遅延が起こることがあります。
+まれに、DWM の再描画中にマウスを動かすと、Windows からビープ音が鳴ることがあります。</value>
+  </data>
+  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
+    <value>強制的に DWM を再描画しますか？</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="ApplyGeo" xml:space="preserve">
+    <value>座標を適用</value>
+  </data>
+  <data name="AutoInstall" xml:space="preserve">
+    <value>自動で最新版をダウンロードしインストール</value>
+  </data>
+  <data name="Automatic" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>テーマの自動切替をオン/オフ</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>自動起動</value>
+  </data>
+  <data name="AutoSwitchGracePeriod" xml:space="preserve">
+    <value>通知がユーザーの入力を待つ分数</value>
+  </data>
+  <data name="AutoSwitchNotification" xml:space="preserve">
+    <value>テーマを自動で切り替える前に通知</value>
+  </data>
+  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
+    <value>テーマの自動切り替えを再開しました</value>
+  </data>
+  <data name="BackgroundUpdate" xml:space="preserve">
+    <value>自動で最新版を確認</value>
+  </data>
+  <data name="BatteryDarkMode" xml:space="preserve">
+    <value>端末の電源プラグを抜いたらダークモードに切り替える</value>
+  </data>
+  <data name="BatteryPowered" xml:space="preserve">
+    <value>バッテリー駆動の端末</value>
+  </data>
+  <data name="BatterySlider" xml:space="preserve">
+    <value>バッテリー節約機能のスライダーの初期値</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>ベータ版</value>
+  </data>
+  <data name="BlockedProcesses" xml:space="preserve">
+    <value>阻止するプロセス</value>
+  </data>
+  <data name="BrowsePhotos" xml:space="preserve">
+    <value>ファイルを選ぶ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="CheckUpdate" xml:space="preserve">
+    <value>最新版の確認</value>
+  </data>
+  <data name="ChooseAFitForImage" xml:space="preserve">
+    <value>デスクトップ画像に合うものを選択</value>
+  </data>
+  <data name="ChooseWallpaper" xml:space="preserve">
+    <value>壁紙を選択</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>都市</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="ColorFilter" xml:space="preserve">
+    <value>カラーフィルター (Win + Ctrl + C を送信)</value>
+  </data>
+  <data name="ColorizationPick_Description" xml:space="preserve">
+    <value>Windows の色の設定を好みに変更します。</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>条件</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="CreateTheme" xml:space="preserve">
+    <value>自分のテーマを作成</value>
+  </data>
+  <data name="Cursors" xml:space="preserve">
+    <value>カーソル</value>
+  </data>
+  <data name="CustomHours" xml:space="preserve">
+    <value>時間を指定</value>
+  </data>
+  <data name="CustomScriptUserRepository" xml:space="preserve">
+    <value>様々なカスタムスクリプトの倉庫</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
     <value>開始時間の指定</value>
@@ -147,8 +270,201 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>ダークテーマ</value>
   </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>デバッグモード</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>遅延させる</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="Disconnected" xml:space="preserve">
+    <value>切断済み</value>
+  </data>
+  <data name="DocumentationForCustomScripts" xml:space="preserve">
+    <value>カスタムスクリプトの解説文書</value>
+  </data>
+  <data name="Donation" xml:space="preserve">
+    <value>寄付</value>
+  </data>
+  <data name="Donation_Description" xml:space="preserve">
+    <value>Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
+
+このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
+私はこのプロジェクトから利益を生み出していません。
+
+こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
+  </data>
+  <data name="DonationHowTo" xml:space="preserve">
+    <value>寄付するには？</value>
+  </data>
+  <data name="DonationPayPal_Description" xml:space="preserve">
+    <value>PayPal 経由で送金できます。寄付は自発的なもので、あなたへの見返りを期待しないでください。</value>
+  </data>
+  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
+    <value>ビデオゲーム中は切り替えない</value>
+  </data>
+  <data name="DonotSwitchIdleTimer" xml:space="preserve">
+    <value>システムがアイドル状態でないならテーマを切り替えない</value>
+  </data>
+  <data name="DWMPrevalence" xml:space="preserve">
+    <value>タイトルバーとウィンドウの境界線のアクセントカラー</value>
+  </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (旧バージョン用)</value>
+  </data>
+  <data name="EnableAccentColorSwitch" xml:space="preserve">
+    <value>アクセントカラーの切替を有効化</value>
+  </data>
+  <data name="EnableAutoThemeSwitch" xml:space="preserve">
+    <value>テーマを自動で切り替える</value>
+  </data>
+  <data name="EnableCursorSwitch" xml:space="preserve">
+    <value>マウスカーソルの切替を有効化</value>
+  </data>
+  <data name="EnableCustomScripts" xml:space="preserve">
+    <value>カスタムスクリプトの有効化</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>有効化中</value>
+  </data>
+  <data name="EnableHotkeys" xml:space="preserve">
+    <value>ホットキーを使用</value>
+  </data>
+  <data name="EnableWallpaperSwitch" xml:space="preserve">
+    <value>壁紙の有効化</value>
+  </data>
+  <data name="EnergySaverMitigation" xml:space="preserve">
+    <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>Enterキーを押して座標を適用する</value>
+  </data>
+  <data name="ErrorMessageBox_Content" xml:space="preserve">
+    <value>UI の問題が発生しました。
+
+以下を確認してください:
+- Auto Dark Mode のサービスが実行中になっている
+- config.yaml が正しいものである
+
+Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
+「はい」のクリックで、ブラウザのウィンドウを表示します。
+</value>
+  </data>
+  <data name="ErrorOcurred_Title" xml:space="preserve">
+    <value>エラーが発生しました</value>
+  </data>
+  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
+    <value>Auto Dark Mode がテーマを管理している間、この機能は無効です。</value>
+  </data>
+  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
+    <value>Windows がテーマを管理している間、この機能は無効です。</value>
+  </data>
+  <data name="FitMode_Fill" xml:space="preserve">
+    <value>維持して拡大</value>
+  </data>
+  <data name="FitMode_Fit" xml:space="preserve">
+    <value>維持して満たす</value>
+  </data>
+  <data name="FitMode_Stretch" xml:space="preserve">
+    <value>自由に伸ばす</value>
+  </data>
+  <data name="FollowApp" xml:space="preserve">
+    <value>アプリが判断</value>
+  </data>
+  <data name="FollowUs" xml:space="preserve">
+    <value>フォローしてね</value>
+  </data>
+  <data name="FollowWindowsNightLight" xml:space="preserve">
+    <value>Windows の夜間モードに従う</value>
+  </data>
+  <data name="ForceDark" xml:space="preserve">
+    <value>ダークモードに変更する</value>
+  </data>
+  <data name="ForceLight" xml:space="preserve">
+    <value>ライトモードに変更する</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="GeoCoordinates" xml:space="preserve">
+    <value>地理座標</value>
+  </data>
+  <data name="GetCoordinates" xml:space="preserve">
+    <value>地理座標を検索</value>
+  </data>
+  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
+    <value>GPU 使用状態の検出速度</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>ヘルプ(英語)</value>
+  </data>
+  <data name="Hex code" xml:space="preserve">
+    <value>16進の色コード</value>
+  </data>
+  <data name="HideTrayIcon" xml:space="preserve">
+    <value>トレイアイコンの非表示</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>無効中にのみ使用するホットキーを変更できます。</value>
+  </data>
+  <data name="Hotkeys" xml:space="preserve">
+    <value>ホットキー</value>
+  </data>
+  <data name="IdleTime" xml:space="preserve">
+    <value>システムがアイドル状態だと判定されるまでの分数</value>
+  </data>
+  <data name="IgnoreBackground" xml:space="preserve">
+    <value>背景を除外</value>
+  </data>
+  <data name="IgnoreCursor" xml:space="preserve">
+    <value>カーソルを除外</value>
+  </data>
+  <data name="IgnoreDesktopIcons" xml:space="preserve">
+    <value>デスクトップアイコンを除外</value>
+  </data>
+  <data name="IgnoreSettings" xml:space="preserve">
+    <value>除外の設定</value>
+  </data>
+  <data name="IgnoreSound" xml:space="preserve">
+    <value>サウンドを除外</value>
+  </data>
+  <data name="ImagePath" xml:space="preserve">
+    <value>画像のパス</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="InstallSilent" xml:space="preserve">
+    <value>通知を表示しない</value>
+  </data>
+  <data name="Interval1" xml:space="preserve">
+    <value>毎日</value>
+  </data>
+  <data name="Interval14" xml:space="preserve">
+    <value>14 日</value>
+  </data>
+  <data name="Interval3" xml:space="preserve">
+    <value>3 日</value>
+  </data>
+  <data name="Interval7" xml:space="preserve">
+    <value>7 日</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="LastCheckedNever" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="LastCheckedTime" xml:space="preserve">
+    <value>最終確認日時</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>緯度 (Latitude)</value>
+  </data>
+  <data name="LaunchingService" xml:space="preserve">
+    <value>サービスの起動中</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>ライト</value>
@@ -156,23 +472,50 @@
   <data name="LightTheme" xml:space="preserve">
     <value>ライトテーマ</value>
   </data>
-  <data name="General" xml:space="preserve">
-    <value>設定</value>
+  <data name="Links" xml:space="preserve">
+    <value>リンク</value>
   </data>
-  <data name="SwitchTheme" xml:space="preserve">
-    <value>現在のテーマを切り替え</value>
+  <data name="LocationData" xml:space="preserve">
+    <value>位置情報</value>
   </data>
-  <data name="System" xml:space="preserve">
-    <value>システム:</value>
+  <data name="LocationGeoService" xml:space="preserve">
+    <value>日の出から日没まで (地理座標)</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>使用しているサードパーティーのソフトウェア</value>
+  <data name="LocationService" xml:space="preserve">
+    <value>日の出から日没まで (位置情報)</value>
   </data>
-  <data name="Updates" xml:space="preserve">
-    <value>アップデート</value>
+  <data name="LogonTask" xml:space="preserve">
+    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
   </data>
-  <data name="UseLocationService" xml:space="preserve">
-    <value>位置情報の使用</value>
+  <data name="Longitude" xml:space="preserve">
+    <value>経度 (Longitude)</value>
+  </data>
+  <data name="ManagedMode" xml:space="preserve">
+    <value>Auto Dark Mode がテーマを管理</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>手動</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>メニュー</value>
+  </data>
+  <data name="MinimumUsage" xml:space="preserve">
+    <value>切り替えを遅延させる GPU 使用率 % の最低値</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="ModeAt" xml:space="preserve">
+    <value>種類:</value>
+  </data>
+  <data name="Monitor" xml:space="preserve">
+    <value>モニター</value>
+  </data>
+  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
+    <value>テーマの自動切替が有効です</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>変更は保存されました！</value>
@@ -180,23 +523,44 @@
   <data name="Msg_ClickApply" xml:space="preserve">
     <value>変更内容は自動で保存されます。</value>
   </data>
+  <data name="Msg_DowngradeAvailable" xml:space="preserve">
+    <value>ダウングレードが可能です</value>
+  </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>最新版をダウンロード</value>
   </data>
   <data name="Msg_ErrorOcc" xml:space="preserve">
     <value>エラーが発生しました :(</value>
   </data>
+  <data name="Msg_IgnoreDisabled" xml:space="preserve">
+    <value>このオプションは標準のWindowsテーマには対応していません</value>
+  </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>位置情報の使用許可が必要</value>
   </data>
+  <data name="Msg_NoService" xml:space="preserve">
+    <value>サービスはまだ実行されていません。お待ちください…</value>
+  </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
     <value>最新版はありません。</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>テーマの切り替えは一回停止されています！</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>今すぐ切り替えますか？それとも遅延させますか？</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>位置情報を取得中…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
     <value>最新版の確認中…</value>
+  </data>
+  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
+    <value>サービスは応答していません。AutoDarkModeSvc.exe が実行中か確認し、再起動をお試しください !</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>テーマ切り替え待機中</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
     <value>警告: システムの現在のテーマを読み込めませんでした。</value>
@@ -212,171 +576,23 @@
 
 お使いのバージョン: {0}, 新しいバージョン: {1}</value>
   </data>
-  <data name="CheckUpdate" xml:space="preserve">
-    <value>最新版の確認</value>
+  <data name="Msg_VersionInfoCopied" xml:space="preserve">
+    <value>バージョン情報をクリップボードにコピーしました</value>
   </data>
-  <data name="Translator" xml:space="preserve">
-    <value>翻訳者: maboroshin, zhixuan2333</value>
+  <data name="NextUpdateAt" xml:space="preserve">
+    <value>次回更新は</value>
   </data>
-  <data name="City" xml:space="preserve">
-    <value>都市</value>
+  <data name="None" xml:space="preserve">
+    <value>なし</value>
   </data>
-  <data name="Position" xml:space="preserve">
-    <value>位置</value>
-  </data>
-  <data name="RestartNeeded" xml:space="preserve">
-    <value>変更の反映にはプログラムの再起動が必要です</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>タスクバーのアクセントカラー</value>
-  </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>キャンセル</value>
-  </data>
-  <data name="BrowsePhotos" xml:space="preserve">
-    <value>ファイルを選ぶ</value>
-  </data>
-  <data name="Disabled" xml:space="preserve">
-    <value>無効</value>
-  </data>
-  <data name="Enabled" xml:space="preserve">
-    <value>有効化中</value>
-  </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
-    <value>エラーが発生しました</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>情報</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>閉じる</value>
-  </data>
-  <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>閉じる(&amp;X)</value>
-  </data>
-  <data name="BackgroundUpdate" xml:space="preserve">
-    <value>自動で最新版を確認</value>
-  </data>
-  <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>UI の問題が発生しました。
-
-以下を確認してください:
-- Auto Dark Mode のサービスが実行中になっている
-- config.yaml が正しいものである
-
-Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
-「はい」のクリックで、ブラウザのウィンドウを表示します。
-</value>
+  <data name="NotFound" xml:space="preserve">
+    <value>見つかりません</value>
   </data>
   <data name="Offset" xml:space="preserve">
     <value>補正</value>
   </data>
-  <data name="Time" xml:space="preserve">
-    <value>時間</value>
-  </data>
-  <data name="OpenPath" xml:space="preserve">
-    <value>フォルダを開く</value>
-  </data>
-  <data name="CreateTheme" xml:space="preserve">
-    <value>自分のテーマを作成</value>
-  </data>
-  <data name="PickTheme" xml:space="preserve">
-    <value>テーマの選択</value>
-  </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>ここから Windows のテーマの設定を開く。</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>設定の「色」を開き、「白」を選択しライトテーマを適用します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>テーマの設定に戻り、テーマを保存します。</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>情報</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>メニュー</value>
-  </data>
-  <data name="Restart" xml:space="preserve">
-    <value>再起動</value>
-  </data>
-  <data name="CustomHours" xml:space="preserve">
-    <value>時間を指定</value>
-  </data>
-  <data name="LocationService" xml:space="preserve">
-    <value>日の出から日没まで (位置情報)</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>ステップ</value>
-  </data>
-  <data name="ColorFilter" xml:space="preserve">
-    <value>カラーフィルター (Win + Ctrl + C を送信)</value>
-  </data>
-  <data name="LogonTask" xml:space="preserve">
-    <value>スタートアップには登録せずログイン時のタスクとして実行</value>
-  </data>
-  <data name="DonationHowTo" xml:space="preserve">
-    <value>寄付するには？</value>
-  </data>
-  <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>PayPal 経由で送金できます。寄付は自発的なもので、あなたへの見返りを期待しないでください。</value>
-  </data>
-  <data name="Donation" xml:space="preserve">
-    <value>寄付</value>
-  </data>
-  <data name="Donation_Description" xml:space="preserve">
-    <value>Auto Dark Mode のご利用ありがとうございます。気に入っていただけているでしょうか？
-
-このアプリがあなたの目を気遣うことで、あなたの毎日をより快適にするでしょう。それでいて完全に無料で広告もなく、個人情報も収集せず、オープンソースです。
-私はこのプロジェクトから利益を生み出していません。
-
-こういった理由から、私の活動支援のための任意の寄付を募っています。どんなに少額でも、私はアパートから飛び出るほど嬉しいのです。私の取り組みに感じた価値をぜひ寄付してください。</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>ヘルプ(英語)</value>
-  </data>
-  <data name="AdaptToSystem" xml:space="preserve">
-    <value>システムの設定に従う</value>
-  </data>
-  <data name="Reset" xml:space="preserve">
-    <value>初期化</value>
-  </data>
-  <data name="BatteryDarkMode" xml:space="preserve">
-    <value>端末の電源プラグを抜いたらダークモードに切り替える</value>
-  </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>バッテリー節約機能のスライダーの初期値</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>モードの切り替え</value>
-  </data>
-  <data name="Personalization" xml:space="preserve">
-    <value>個人設定</value>
-  </data>
-  <data name="ApplyGeo" xml:space="preserve">
-    <value>座標を適用</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
-  </data>
-  <data name="GeoCoordinates" xml:space="preserve">
-    <value>地理座標</value>
-  </data>
-  <data name="LocationData" xml:space="preserve">
-    <value>位置情報</value>
-  </data>
-  <data name="LocationGeoService" xml:space="preserve">
-    <value>日の出から日没まで (地理座標)</value>
-  </data>
-  <data name="GetCoordinates" xml:space="preserve">
-    <value>地理座標を検索</value>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>設定ファイルを開く</value>
@@ -387,89 +603,146 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="OpenLog" xml:space="preserve">
     <value>ログを開く</value>
   </data>
-  <data name="Configuration" xml:space="preserve">
-    <value>設定</value>
+  <data name="OpenPath" xml:space="preserve">
+    <value>フォルダを開く</value>
   </data>
-  <data name="PickWallpaper" xml:space="preserve">
-    <value>壁紙を選択</value>
+  <data name="OpenPointerSettings" xml:space="preserve">
+    <value>Windows のポインターの設定を開く</value>
   </data>
-  <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Windows がテーマを管理している間、この機能は無効です。</value>
+  <data name="OpenScriptConfig" xml:space="preserve">
+    <value>スクリプトの設定を開く</value>
   </data>
-  <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode がテーマを管理している間、この機能は無効です。</value>
+  <data name="OpenShell" xml:space="preserve">
+    <value>シェルを開く</value>
+  </data>
+  <data name="OpenUpdaterLog" xml:space="preserve">
+    <value>更新ツールの履歴を開く</value>
+  </data>
+  <data name="OpenWindowsNightLight" xml:space="preserve">
+    <value>夜間モードの設定を開く</value>
+  </data>
+  <data name="PathAt" xml:space="preserve">
+    <value>パス:</value>
+  </data>
+  <data name="PauseAutoThemeSwitching" xml:space="preserve">
+    <value>テーマの自動切替を一時停止/再開</value>
+  </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>個人設定</value>
+  </data>
+  <data name="PickAccentColor" xml:space="preserve">
+    <value>アクセントカラーを選択</value>
+  </data>
+  <data name="PickCursor" xml:space="preserve">
+    <value>マウスカーソルを選択</value>
+  </data>
+  <data name="PickCursor_Description" xml:space="preserve">
+    <value>ダークおよびライトモード用に異なるマウスカーソルを選択します。</value>
+  </data>
+  <data name="PickTheme" xml:space="preserve">
+    <value>テーマの選択</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
     <value>ダークおよびライトモード用に異なる Windows テーマを選択します。テーマを完全にカスタマイズできますが .theme ファイルを自分で設定する必要があります。</value>
   </data>
+  <data name="PickWallpaper" xml:space="preserve">
+    <value>壁紙を選択</value>
+  </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
     <value>モニターすべてまたは個別に、デスクトップの壁紙、背景色、スポットライトを設定します。</value>
   </data>
-  <data name="AutoInstall" xml:space="preserve">
-    <value>自動で最新版をダウンロードしインストール</value>
+  <data name="Position" xml:space="preserve">
+    <value>位置</value>
   </data>
-  <data name="InstallSilent" xml:space="preserve">
-    <value>通知を表示しない</value>
+  <data name="PostponeControl" xml:space="preserve">
+    <value>延期の管理</value>
   </data>
-  <data name="UpdateChannel" xml:space="preserve">
-    <value>確認する開発状態を選択</value>
+  <data name="PostponeInfoAt" xml:space="preserve">
+    <value>テーマの自動切替は現在、次のモジュールが原因で停止されています:</value>
   </data>
-  <data name="UpdateAtStart" xml:space="preserve">
-    <value>Auto Dark Mode 開始時に最新版を確認</value>
+  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
+    <value>遅延モジュール</value>
   </data>
-  <data name="Interval14" xml:space="preserve">
-    <value>14 日</value>
+  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
+    <value>GPUモニターモジュール</value>
   </data>
-  <data name="Interval3" xml:space="preserve">
-    <value>3 日</value>
+  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
+    <value>自動切替モジュールを停止</value>
   </data>
-  <data name="Interval7" xml:space="preserve">
-    <value>7 日</value>
+  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
+    <value>この時間まで延期</value>
   </data>
-  <data name="LastCheckedTime" xml:space="preserve">
-    <value>最終確認日時</value>
+  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
+    <value>条件に合うまで延期</value>
   </data>
-  <data name="LastCheckedNever" xml:space="preserve">
-    <value>なし</value>
+  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
+    <value>切り替えの通知</value>
   </data>
-  <data name="UpdateInterval" xml:space="preserve">
-    <value>最新版の確認頻度</value>
+  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
+    <value>システムアイドルチェッカー</value>
   </data>
-  <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>画像</value>
+  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
+    <value>日の出まで延期</value>
   </data>
-  <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>画像 (複数モニター)</value>
+  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
+    <value>日の入りまで延期</value>
   </data>
-  <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>無地の色</value>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 時間</value>
   </data>
-  <data name="Mode" xml:space="preserve">
-    <value>モード</value>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 分</value>
   </data>
-  <data name="Monitor" xml:space="preserve">
-    <value>モニター</value>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 時間</value>
   </data>
-  <data name="Type" xml:space="preserve">
-    <value>種類</value>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 分</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 時間</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 時間</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 時間</value>
+  </data>
+  <data name="PostponeTime_SkipOnce" xml:space="preserve">
+    <value>一回自動切替しない</value>
+  </data>
+  <data name="ProcessBlockList" xml:space="preserve">
+    <value>指定のプロセスの実行中は切り替えない</value>
+  </data>
+  <data name="RefreshAutostart" xml:space="preserve">
+    <value>自動起動の情報を更新</value>
+  </data>
+  <data name="RegistryKey" xml:space="preserve">
+    <value>レジストリキー</value>
+  </data>
+  <data name="RemoveApps" xml:space="preserve">
+    <value>除去</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
     <value>切断済みのモニターを除去</value>
   </data>
-  <data name="Wallpaper" xml:space="preserve">
-    <value>壁紙</value>
+  <data name="Reset" xml:space="preserve">
+    <value>初期化</value>
   </data>
-  <data name="Color" xml:space="preserve">
-    <value>色</value>
+  <data name="Restart" xml:space="preserve">
+    <value>再起動</value>
   </data>
-  <data name="Hex code" xml:space="preserve">
-    <value>16進の色コード</value>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>変更の反映にはプログラムの再起動が必要です</value>
   </data>
-  <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>壁紙の有効化</value>
+  <data name="RestoreThemeChanged" xml:space="preserve">
+    <value>外部で変更されたテーマの復元</value>
   </data>
-  <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>ビデオゲーム中は切り替えない</value>
+  <data name="Resume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="ResumeInfo_Content" xml:space="preserve">
+    <value>再開は、期限付きの延期でのみ可能です</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
     <value>早い (1 サンプル)</value>
@@ -480,41 +753,56 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SamplesSlow" xml:space="preserve">
     <value>遅い (3 サンプル)</value>
   </data>
-  <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>GPU 使用状態の検出速度</value>
+  <data name="Scripts" xml:space="preserve">
+    <value>スクリプト</value>
   </data>
-  <data name="BatteryPowered" xml:space="preserve">
-    <value>バッテリー駆動の端末</value>
+  <data name="SelectDarkCursor" xml:space="preserve">
+    <value>ダーク用のカーソルを選択</value>
   </data>
-  <data name="Conditions" xml:space="preserve">
-    <value>条件</value>
+  <data name="SelectLightCursor" xml:space="preserve">
+    <value>ライト用のカーソルを選択</value>
   </data>
-  <data name="MinimumUsage" xml:space="preserve">
-    <value>切り替えを遅延させる GPU 使用率 % の最低値</value>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
   </data>
-  <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>外部で変更されたテーマの復元</value>
+  <data name="ShowNotificationToggled" xml:space="preserve">
+    <value>切り替え時に通知を表示</value>
   </data>
-  <data name="Latitude" xml:space="preserve">
-    <value>緯度 (Latitude)</value>
+  <data name="SpecialThanks" xml:space="preserve">
+    <value>謝辞</value>
   </data>
-  <data name="Longitude" xml:space="preserve">
-    <value>経度 (Longitude)</value>
+  <data name="Stable" xml:space="preserve">
+    <value>安定版</value>
   </data>
-  <data name="Msg_NoService" xml:space="preserve">
-    <value>サービスはまだ実行されていません。お待ちください…</value>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>Windowsの開始時にAuto Dark Modeを実行</value>
   </data>
-  <data name="LaunchingService" xml:space="preserve">
-    <value>サービスの起動中</value>
+  <data name="Step" xml:space="preserve">
+    <value>ステップ</value>
   </data>
-  <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>サービスは応答していません。AutoDarkModeSvc.exe が実行中か確認し、再起動をお試しください !</value>
+  <data name="StopForcing" xml:space="preserve">
+    <value>テーマの変更を中止する</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows テーマの有効を切り替え</value>
   </data>
-  <data name="FollowUs" xml:space="preserve">
-    <value>フォローしてね</value>
+  <data name="SwitchModes" xml:space="preserve">
+    <value>モードの切り替え</value>
+  </data>
+  <data name="SwitchTheme" xml:space="preserve">
+    <value>現在のテーマを切り替え</value>
+  </data>
+  <data name="SwitchTouchKeyboard" xml:space="preserve">
+    <value>入力、タッチキーボードでも切替</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>システム:</value>
+  </data>
+  <data name="SystemAreas" xml:space="preserve">
+    <value>アプリケーション:</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>タスク</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>テーマ</value>
@@ -546,472 +834,88 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Theme11_Light" xml:space="preserve">
     <value>Windows (ライト)</value>
   </data>
+  <data name="Theme11_Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>日の出</value>
   </data>
-  <data name="Interval1" xml:space="preserve">
-    <value>毎日</value>
+  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
+    <value>ここから Windows のテーマの設定を開く。</value>
   </data>
-  <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>使用するタスクバーのアクセントカラー</value>
+  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
+    <value>設定の「色」を開き、「白」を選択しライトテーマを適用します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
   </data>
-  <data name="AccentOnly" xml:space="preserve">
-    <value>アクセントカラーのみ</value>
+  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
+    <value>テーマの設定に戻り、テーマを保存します。</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>バージョン</value>
+  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+    <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>コピー</value>
+  <data name="ThirdParty" xml:space="preserve">
+    <value>使用しているサードパーティーのソフトウェア</value>
   </data>
-  <data name="StartWithWindows" xml:space="preserve">
-    <value>Windowsの開始時にAuto Dark Modeを実行</value>
-  </data>
-  <data name="AutoStart" xml:space="preserve">
-    <value>自動起動</value>
-  </data>
-  <data name="ModeAt" xml:space="preserve">
-    <value>種類:</value>
-  </data>
-  <data name="PathAt" xml:space="preserve">
-    <value>パス:</value>
-  </data>
-  <data name="RefreshAutostart" xml:space="preserve">
-    <value>自動起動の情報を更新</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>なし</value>
-  </data>
-  <data name="NotFound" xml:space="preserve">
-    <value>見つかりません</value>
-  </data>
-  <data name="RegistryKey" xml:space="preserve">
-    <value>レジストリキー</value>
-  </data>
-  <data name="Task" xml:space="preserve">
-    <value>タスク</value>
-  </data>
-  <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>Windowsから自動起動を無効にしているようです。</value>
-  </data>
-  <data name="NextUpdateAt" xml:space="preserve">
-    <value>次回更新は</value>
-  </data>
-  <data name="ForceDark" xml:space="preserve">
-    <value>ダークモードに変更する</value>
-  </data>
-  <data name="ForceLight" xml:space="preserve">
-    <value>ライトモードに変更する</value>
-  </data>
-  <data name="Hotkeys" xml:space="preserve">
-    <value>ホットキー</value>
-  </data>
-  <data name="StopForcing" xml:space="preserve">
-    <value>テーマの変更を中止する</value>
-  </data>
-  <data name="EnableHotkeys" xml:space="preserve">
-    <value>ホットキーを使用</value>
-  </data>
-  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>ダークテーマに変更(&amp;D)</value>
-  </data>
-  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>ライトテーマに変更(&amp;L)</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>トレイアイコンの非表示</value>
-  </data>
-  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>設定用フォルダを開く(&amp;O)</value>
-  </data>
-  <data name="FollowApp" xml:space="preserve">
-    <value>アプリが判断</value>
-  </data>
-  <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>システムがアイドル状態でないならテーマを切り替えない</value>
-  </data>
-  <data name="IdleTime" xml:space="preserve">
-    <value>システムがアイドル状態だと判定されるまでの分数</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>タイトルバーとウィンドウの境界線のアクセントカラー</value>
-  </data>
-  <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>バージョン情報をクリップボードにコピーしました</value>
-  </data>
-  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切替(&amp;A)</value>
-  </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>切り替え時に通知を表示</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>遅延させる</value>
-  </data>
-  <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>GPUモニターモジュール</value>
-  </data>
-  <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>自動切替モジュールを停止</value>
-  </data>
-  <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>システムアイドルチェッカー</value>
-  </data>
-  <data name="Resume" xml:space="preserve">
-    <value>再開</value>
-  </data>
-  <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>テーマの自動切替をオン/オフ</value>
-  </data>
-  <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>自動切替を無効にする</value>
-  </data>
-  <data name="Undo" xml:space="preserve">
-    <value>元に戻す</value>
-  </data>
-  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>自動切替を停止(&amp;P)</value>
-  </data>
-  <data name="PostponeInfoAt" xml:space="preserve">
-    <value>テーマの自動切替は現在、次のモジュールが原因で停止されています:</value>
-  </data>
-  <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>再開は、期限付きの延期でのみ可能です</value>
-  </data>
-  <data name="PostponeControl" xml:space="preserve">
-    <value>延期の管理</value>
+  <data name="Time" xml:space="preserve">
+    <value>時間</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>テーマを切り替える</value>
   </data>
-  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>テーマを切り替える(&amp;T)</value>
-  </data>
-  <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>テーマの自動切替が有効です</value>
-  </data>
-  <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Windows の夜間モードに従う</value>
-  </data>
-  <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>テーマの切り替えは一回停止されています！</value>
-  </data>
-  <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>この時間まで延期</value>
-  </data>
-  <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>条件に合うまで延期</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>日の出まで延期</value>
-  </data>
-  <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>日の入りまで延期</value>
-  </data>
-  <data name="Until" xml:space="preserve">
-    <value>再開時間</value>
-  </data>
-  <data name="UntilSunrise" xml:space="preserve">
-    <value>日の出まで</value>
-  </data>
-  <data name="UntilSunset" xml:space="preserve">
-    <value>日の入りまで</value>
-  </data>
-  <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>テーマの自動切替を一時停止/再開</value>
-  </data>
-  <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>テーマの自動切り替えを再開しました</value>
-  </data>
-  <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>夜間モードの設定を開く</value>
-  </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>遅延の状態</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>一回自動切替しない</value>
-  </data>
-  <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>テーマを自動で切り替える前に通知</value>
-  </data>
-  <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>通知がユーザーの入力を待つ分数</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>確認</value>
-  </data>
-  <data name="SwitchNow" xml:space="preserve">
-    <value>今すぐ切り替える</value>
-  </data>
-  <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>遅延モジュール</value>
-  </data>
-  <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>切り替えの通知</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 時間</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 分</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 時間</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 分</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 時間</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 時間</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 時間</value>
-  </data>
-  <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>テーマ切り替え待機中</value>
-  </data>
-  <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>今すぐ切り替えますか？それとも遅延させますか？</value>
-  </data>
   <data name="TraceMode" xml:space="preserve">
     <value>追跡モード</value>
   </data>
-  <data name="SpecialThanks" xml:space="preserve">
-    <value>謝辞</value>
-  </data>
-  <data name="IgnoreBackground" xml:space="preserve">
-    <value>背景を除外</value>
-  </data>
-  <data name="IgnoreCursor" xml:space="preserve">
-    <value>カーソルを除外</value>
-  </data>
-  <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>デスクトップアイコンを除外</value>
-  </data>
-  <data name="IgnoreSound" xml:space="preserve">
-    <value>サウンドを除外</value>
-  </data>
-  <data name="IgnoreSettings" xml:space="preserve">
-    <value>除外の設定</value>
-  </data>
-  <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>このオプションは標準のWindowsテーマには対応していません</value>
-  </data>
-  <data name="Minutes" xml:space="preserve">
-    <value>分</value>
-  </data>
-  <data name="Paused" xml:space="preserve">
-    <value>停止中</value>
-  </data>
-  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>更新プログラム適用中にエラーが発生しました。</value>
-  </data>
-  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>現在のバージョン</value>
-  </data>
-  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>ダウングレード後のバージョン:</value>
-  </data>
-  <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>ダウンロード中…</value>
-  </data>
-  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>ダウンロード進行状況</value>
-  </data>
-  <data name="UpdateToast_Message" xml:space="preserve">
-    <value>お知らせ</value>
-  </data>
-  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>最新バージョン {0} があります</value>
-  </data>
-  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>更新プログラム適用に失敗</value>
-  </data>
-  <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>service.log と updater.log で詳細情報をご覧ください</value>
-  </data>
-  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>アップデート後のバージョン:</value>
-  </data>
-  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>ダウングレード</value>
-  </data>
-  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>ログのフォルダーを開く</value>
-  </data>
-  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>延期</value>
-  </data>
-  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>更新</value>
-  </data>
-  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>ダウングレード Ver {0} が利用可能</value>
-  </data>
-  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>ダウンロードページを開く</value>
-  </data>
-  <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>ダウングレードが可能です</value>
-  </data>
-  <data name="Scripts" xml:space="preserve">
-    <value>スクリプト</value>
-  </data>
-  <data name="OpenScriptConfig" xml:space="preserve">
-    <value>スクリプトの設定を開く</value>
-  </data>
-  <data name="EnableCustomScripts" xml:space="preserve">
-    <value>カスタムスクリプトの有効化</value>
-  </data>
-  <data name="ChooseWallpaper" xml:space="preserve">
-    <value>壁紙を選択</value>
-  </data>
-  <data name="ImagePath" xml:space="preserve">
-    <value>画像のパス</value>
-  </data>
-  <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
-  </data>
-  <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
-  </data>
-  <data name="AccentColor" xml:space="preserve">
-    <value>アクセントカラー</value>
-  </data>
-  <data name="PickAccentColor" xml:space="preserve">
-    <value>アクセントカラーを選択</value>
-  </data>
-  <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Windows の色の設定を好みに変更します。</value>
-  </data>
-  <data name="UpdateColorization" xml:space="preserve">
-    <value>今すぐ色を反映</value>
-  </data>
-  <data name="Links" xml:space="preserve">
-    <value>リンク</value>
-  </data>
-  <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>カスタムスクリプトの解説文書</value>
-  </data>
-  <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>様々なカスタムスクリプトの倉庫</value>
-  </data>
-  <data name="FitMode_Fill" xml:space="preserve">
-    <value>維持して拡大</value>
-  </data>
-  <data name="FitMode_Fit" xml:space="preserve">
-    <value>維持して満たす</value>
-  </data>
-  <data name="FitMode_Stretch" xml:space="preserve">
-    <value>自由に伸ばす</value>
-  </data>
-  <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>デスクトップ画像に合うものを選択</value>
-  </data>
-  <data name="Disconnected" xml:space="preserve">
-    <value>切断済み</value>
-  </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>テーマ切替時に常に DWM を再描画</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
-    <value>エクスプローラー、タスクバー、スタートメニュー内の間違ったUIの色の発生を抑えようと試みます。この現象がよく起きたり気になるなら、有効にしてみてください。
-
-設定により Windows 10 で起きていたのと同様に、一部のシステムでのテーマ切り替え時に、極小から中等度の遅延が起こることがあります。
-まれに、DWM の再描画中にマウスを動かすと、Windows からビープ音が鳴ることがあります。</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>強制的に DWM を再描画しますか？</value>
-  </data>
-  <data name="Ok" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>マウスカーソルの切替を有効化</value>
-  </data>
-  <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Windows のポインターの設定を開く</value>
-  </data>
-  <data name="SelectDarkCursor" xml:space="preserve">
-    <value>ダーク用のカーソルを選択</value>
-  </data>
-  <data name="SelectLightCursor" xml:space="preserve">
-    <value>ライト用のカーソルを選択</value>
-  </data>
-  <data name="Cursors" xml:space="preserve">
-    <value>カーソル</value>
-  </data>
-  <data name="PickCursor_Description" xml:space="preserve">
-    <value>ダークおよびライトモード用に異なるマウスカーソルを選択します。</value>
-  </data>
-  <data name="PickCursor" xml:space="preserve">
-    <value>マウスカーソルを選択</value>
-  </data>
-  <data name="ManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode がテーマを管理</value>
-  </data>
-  <data name="UnManagedMode" xml:space="preserve">
-    <value>Windows がテーマを管理</value>
-  </data>
-  <data name="OpenShell" xml:space="preserve">
-    <value>シェルを開く</value>
-  </data>
-  <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>更新ツールの履歴を開く</value>
-  </data>
-  <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>アクセントカラーの切替を有効化</value>
-  </data>
-  <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>入力、タッチキーボードでも切替</value>
-  </data>
-  <data name="Automatic" xml:space="preserve">
-    <value>自動</value>
-  </data>
-  <data name="Manual" xml:space="preserve">
-    <value>手動</value>
-  </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>追加</value>
-  </data>
-  <data name="RemoveApps" xml:space="preserve">
-    <value>除去</value>
-  </data>
-  <data name="BlockedProcesses" xml:space="preserve">
-    <value>阻止するプロセス</value>
-  </data>
-  <data name="ProcessBlockList" xml:space="preserve">
-    <value>指定のプロセスの実行中は切り替えない</value>
-  </data>
-  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>テーマ適用を再試行</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>無効中にのみ使用するホットキーを変更できます。</value>
-  </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>デバッグモード</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>言語</value>
-  </data>
-  <data name="Stable" xml:space="preserve">
-    <value>安定版</value>
-  </data>
-  <data name="Beta" xml:space="preserve">
-    <value>ベータ版</value>
-  </data>
-  <data name="EnterToApply" xml:space="preserve">
-    <value>Enterキーを押して座標を適用する</value>
+  <data name="Translator" xml:space="preserve">
+    <value>翻訳者: maboroshin, zhixuan2333</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>種類</value>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value />
+  <data name="UnManagedMode" xml:space="preserve">
+    <value>Windows がテーマを管理</value>
+  </data>
+  <data name="UpdateAtStart" xml:space="preserve">
+    <value>Auto Dark Mode 開始時に最新版を確認</value>
+  </data>
+  <data name="UpdateChannel" xml:space="preserve">
+    <value>確認する開発状態を選択</value>
+  </data>
+  <data name="UpdateColorization" xml:space="preserve">
+    <value>今すぐ色を反映</value>
+  </data>
+  <data name="UpdateInterval" xml:space="preserve">
+    <value>最新版の確認頻度</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>アップデート</value>
+  </data>
+  <data name="UseLocationService" xml:space="preserve">
+    <value>位置情報の使用</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="Wallpaper" xml:space="preserve">
+    <value>壁紙</value>
+  </data>
+  <data name="WallpaperMode_Picture" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="WallpaperMode_PictureMM" xml:space="preserve">
+    <value>画像 (複数モニター)</value>
+  </data>
+  <data name="WallpaperMode_SolidColor" xml:space="preserve">
+    <value>無地の色</value>
+  </data>
+  <data name="WallpaperMode_Spotlight" xml:space="preserve">
+    <value>Windows spotlight</value>
+  </data>
+  <data name="Warning1903" xml:space="preserve">
+    <value>このオプションは無効です。Windows 10 April 2019 アップデートがインストールされていないためです。</value>
+  </data>
+  <data name="WindowsAutostartDisabled" xml:space="preserve">
+    <value>Windowsから自動起動を無効にしているようです。</value>
   </data>
 </root>
