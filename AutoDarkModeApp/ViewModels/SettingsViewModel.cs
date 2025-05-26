@@ -134,13 +134,13 @@ public partial class SettingsViewModel : ObservableRecipient
 
         CheckUpdateCommand = new RelayCommand(() =>
         {
-            UpdatesDate = "msgSearchUpd".GetLocalized();
+            UpdatesDate = "Msg_SearchUpdate".GetLocalized();
             Task.Run(() =>
             {
                 _updater.CheckNewVersion();
                 _dispatcherQueue.TryEnqueue(() =>
                 {
-                    UpdatesDate = _updater.UpdateAvailable() ? "msgUpdateAvail".GetLocalized() : "msgNoUpd".GetLocalized();
+                    UpdatesDate = _updater.UpdateAvailable() ? "Msg_UpdateAvailable".GetLocalized() : "Msg_NoUpdate".GetLocalized();
                 });
             });
         });
@@ -188,11 +188,11 @@ public partial class SettingsViewModel : ObservableRecipient
 
         if (_builder.UpdaterData.LastCheck.Year.ToString().Equals("1"))
         {
-            UpdatesDate = "UpdatesTextBlockLastChecked".GetLocalized() + " " + "UpdatesTextBlockLastCheckedNever".GetLocalized();
+            UpdatesDate = "LastCheckedTime".GetLocalized() + " " + "LastCheckedNever".GetLocalized();
         }
         else
         {
-            UpdatesDate = "UpdatesTextBlockLastChecked".GetLocalized() + " " + _builder.UpdaterData.LastCheck;
+            UpdatesDate = "LastCheckedTime".GetLocalized() + " " + _builder.UpdaterData.LastCheck;
         }
 
         _dispatcherQueue.TryEnqueue(async () =>
@@ -231,7 +231,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 if (autostartResponse.Message == "Enabled")
                 {
                     IsAutostart = true;
-                    AutostartMode = "SettingsPageAutostartModeRegistry".GetLocalized();
+                    AutostartMode = "RegistryKey".GetLocalized();
                     AutostartPath = autostartResponse.Details;
                 }
                 else
@@ -242,20 +242,20 @@ public partial class SettingsViewModel : ObservableRecipient
             else if (autostartResponse.StatusCode == StatusCode.AutostartTask)
             {
                 IsAutostart = true;
-                AutostartMode = "SettingsPageAutostartModeTask".GetLocalized();
+                AutostartMode = "Task".GetLocalized();
                 AutostartPath = autostartResponse.Details;
             }
             else if (autostartResponse.StatusCode == StatusCode.Disabled)
             {
                 IsAutostart = false;
-                AutostartMode = "disabled".GetLocalized();
-                AutostartPath = "SettingsPageAutostartModeNone".GetLocalized();
+                AutostartMode = "Disabled".GetLocalized();
+                AutostartPath = "None".GetLocalized();
             }
         }
         catch (Exception)
         {
-            AutostartMode = "disabled".GetLocalized();
-            AutostartPath = "SettingsPageAutostartModeNone".GetLocalized();
+            AutostartMode = "Disabled".GetLocalized();
+            AutostartPath = "None".GetLocalized();
         }
     }
 
@@ -279,7 +279,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _builder.Config.Tunable.ShowTrayIcon = !value;
 
         SafeSaveBuilder();
-        Task.Run(()=> MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
+        Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
 
     partial void OnIsAlwaysFullDwmRefreshChanged(bool value)
@@ -291,11 +291,11 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             ContentDialog contentDialog = new()
             {
-                Title = "SettingsPageCheckBoxAlwaysRefreshDwmHeader".GetLocalized(),
-                Content = "SettingsPageCheckBoxAlwaysRefreshDwmExplanation".GetLocalized(),
+                Title = "AlwaysRefreshDwm".GetLocalized(),
+                Content = "AlwaysRefreshDwm_Content".GetLocalized(),
                 XamlRoot = App.MainWindow.Content.XamlRoot,
-                CloseButtonText = "cancel".GetLocalized(),
-                PrimaryButtonText = "ButtonConfirm".GetLocalized(),
+                CloseButtonText = "Cancel".GetLocalized(),
+                PrimaryButtonText = "Confirm".GetLocalized(),
             };
             _dispatcherQueue.TryEnqueue(async () =>
             {
@@ -438,7 +438,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     ApiResponse response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.CheckForDowngradeNotify));
                     if (response.StatusCode == StatusCode.Downgrade)
                     {
-                        UpdatesDate = "SettingsPageDowngradeAvailable".GetLocalized();
+                        UpdatesDate = "DowngradeAvailable".GetLocalized();
                     }
                 });
             }

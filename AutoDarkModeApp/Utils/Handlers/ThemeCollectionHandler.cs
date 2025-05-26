@@ -62,13 +62,13 @@ public static class ThemeCollectionHandler
     {
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
         {
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "ThemePickerTheme11Light".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\dark.theme"), "ThemePickerTheme11Dark".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeA.theme"), "ThemePickerTheme11Glow".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeB.theme"), "ThemePickerTheme11CapturedMotion".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeC.theme"), "ThemePickerTheme11Sunrise".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeD.theme"), "ThemePickerTheme11Flow".GetLocalized()));
-            ThemeFile spotlight = new(Path.Combine(WindowsPath, @"Resources\Themes\spotlight.theme"), "ThemePickerTheme11Spotlight".GetLocalized());
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "Theme11_Light".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\dark.theme"), "Theme11_Dark".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeA.theme"), "Theme11_Glow".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeB.theme"), "Theme11_CapturedMotion".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeC.theme"), "Theme11_Sunrise".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeD.theme"), "Theme11_Flow".GetLocalized()));
+            ThemeFile spotlight = new(Path.Combine(WindowsPath, @"Resources\Themes\spotlight.theme"), "Theme11_Spotlight".GetLocalized());
             if (File.Exists(spotlight.Path))
             {
                 themeFiles.Add(spotlight);
@@ -76,10 +76,10 @@ public static class ThemeCollectionHandler
         }
         else
         {
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "ThemePickerTheme10Windows".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\Light.theme"), "ThemePickerTheme10WindowsLight".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme1.theme"), "ThemePickerTheme10Windows10".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme2.theme"), "ThemePickerTheme10Flowers".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "Theme10_Windows".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\Light.theme"), "Theme10_WindowsLight".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme1.theme"), "Theme10_Windows10".GetLocalized()));
+            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme2.theme"), "Theme10_Flowers".GetLocalized()));
         }
     }
 }

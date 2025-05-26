@@ -14,29 +14,31 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Description  -->
-                <TextBlock Text="{helpers:ResourceString Name=donationDescription}" TextWrapping="Wrap" />
+                <TextBlock Text="{helpers:ResourceString Name=Donation_Description}" TextWrapping="Wrap" />
 
                 <!--  How to donate  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
                 <controls:SettingsCard
-                    Description="{helpers:ResourceString Name=DonationPayPalDescription}"
+                    Description="{helpers:ResourceString Name=DonationPayPal_Description}"
                     Header="Paypal"
                     HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon,
                                              Glyph=&#xE903;}">
                     <Button
                         MinWidth="120"
                         Click="DonationPayPalButton_Click"
-                        Content="{helpers:ResourceString Name=NavbarDonation}"
+                        Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon, Glyph=&#xE902;}">
                     <Button
                         MinWidth="120"
                         Click="GithubSponsorsButton_Click"
-                        Content="{helpers:ResourceString Name=NavbarDonation}"
+                        Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
+
             </StackPanel>
         </Grid>
     </ScrollViewer>
+
 </Page>

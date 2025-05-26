@@ -2,13 +2,13 @@
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -103,8 +103,16 @@ public partial class TimeViewModel : ObservableRecipient
         LoadSettings();
         Task.Run(() => LoadPostponeTimer(null, new()));
 
-        StateUpdateHandler.StartConfigWatcherWithoutEvents();
-        StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.StartConfigWatcher();
+
+        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
+        StateUpdateHandler.StartPostponeTimer();
+
+        SaveCoordinatesCommand = new RelayCommand(() =>
+        {
+            UpdateCoordinates();
+        });
 
         SaveOffsetCommand = new RelayCommand(() =>
         {
@@ -125,7 +133,7 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
-        LocationBlockText = "msgSearchLoc".GetLocalized();
+        LocationBlockText = "Msg_SearchLoc".GetLocalized();
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
@@ -150,7 +158,7 @@ public partial class TimeViewModel : ObservableRecipient
         });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
-        LocationNextUpdateDateDescription = "TimePageNextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
+        LocationNextUpdateDateDescription = "NextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
 
         _isInitializing = false;
     }
@@ -174,18 +182,18 @@ public partial class TimeViewModel : ObservableRecipient
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
             if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
-                LocationBlockText = "lblCity".GetLocalized() + ": " + await LocationHandler.GetCityName();
+                LocationBlockText = "City".GetLocalized() + ": " + await LocationHandler.GetCityName();
             }
             else if (!_builder.Config.Location.UseGeolocatorService)
             {
                 LocationBlockText =
-                    "lblPosition".GetLocalized()
+                    "Position".GetLocalized()
                     + ": "
-                    + "TimeNumberBoxHeaderLat".GetLocalized()
+                    + "Latitude".GetLocalized()
                     + " "
                     + Math.Round(_builder.LocationData.Lat, 3)
                     + " / "
-                    + "TimeNumberBoxHeaderLon".GetLocalized()
+                    + "Longitude".GetLocalized()
                     + " "
                     + Math.Round(_builder.LocationData.Lon, 3);
             }
@@ -233,6 +241,8 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
     {
+        _isInitializing = true;
+
         ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
         if (reply.StatusCode != StatusCode.Timeout)
         {
@@ -245,7 +255,7 @@ public partial class TimeViewModel : ObservableRecipient
                         bool anyNoExpiry = false;
                         bool canResume = false;
                         PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
-                        List<string> itemsStringList = dto
+                        List<string> localizedItems = dto
                             .Items.Select(i =>
                             {
                                 if (i.Expiry == null)
@@ -255,33 +265,19 @@ public partial class TimeViewModel : ObservableRecipient
 
                                 i.SetCulture(new CultureInfo(Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
-                                // Retrieve the value of the specified key
-                                i.TranslatedReason = ("PostponeReason" + i.Reason).GetLocalized() ?? i.Reason;
-
-                                return i.ToString();
+                                return i.GetLocalizationData().BuildLocalizedString();
                             })
                             .ToList();
+
                         _dispatcherQueue.TryEnqueue(() =>
                         {
-                            if (anyNoExpiry && !canResume)
-                            {
-                                ResumeInfoBarEnabled = true;
-                            }
-                            else
-                            {
-                                ResumeInfoBarEnabled = false;
-                            }
+                            _isInitializing = true;
 
-                            if (canResume)
-                            {
-                                IsPostponed = true;
-                            }
-                            else
-                            {
-                                IsPostponed = false;
-                            }
+                            ResumeInfoBarEnabled = anyNoExpiry && !canResume;
+                            IsPostponed = canResume;
+                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + string.Join('\n', localizedItems);
 
-                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + string.Join('\n', itemsStringList);
+                            _isInitializing = false;
                         });
                     }
                     else
@@ -289,7 +285,7 @@ public partial class TimeViewModel : ObservableRecipient
                         _dispatcherQueue.TryEnqueue(() =>
                         {
                             IsPostponed = false;
-                            PostponeInfoText = "TimePageHeaderActiveDelays".GetLocalized() + ": " + "TimePagePostponeInfoNominal".GetLocalized();
+                            PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + "Msg_AutoSwitchEnabled".GetLocalized();
                             ResumeInfoBarEnabled = false;
                         });
                     }
@@ -297,6 +293,8 @@ public partial class TimeViewModel : ObservableRecipient
                 catch { }
             }
         }
+
+        _isInitializing = false;
     }
 
     private void SafeApplyTheme()
@@ -468,6 +466,35 @@ public partial class TimeViewModel : ObservableRecipient
         if (_isInitializing)
             return;
 
-    partial void OnLonValueChanged(double value) => UpdateCoordinates();
+        var postponeMinutes = (SelectedPostponeIndex) switch
+        {
+            0 => 15,
+            1 => 30,
+            2 => 60,
+            3 => 120,
+            4 => 180,
+            5 => 360,
+            6 => 720,
+            7 => 0,
+            _ => 0,
+        };
 
+        if (postponeMinutes != 0 && value)
+        {
+            MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {postponeMinutes}");
+        }
+        else if (postponeMinutes == 0 && value)
+        {
+            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+            if (!value)
+                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+        }
+        else
+        {
+            MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
+        }
+
+        LoadPostponeTimer(null, new());
+    }
 }

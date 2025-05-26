@@ -4,7 +4,6 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -19,11 +18,11 @@ public sealed partial class CursorsPage : Page
         ViewModel = App.GetService<CursorsViewModel>();
         InitializeComponent();
 
-        DispatcherQueue.TryEnqueue(() => LoadCursorSources());
-        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsSource);
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
 
-    private void LoadCursorSources()
+    private void LoadCursorsSource()
     {
         try
         {
@@ -37,11 +36,11 @@ public sealed partial class CursorsPage : Page
         }
     }
 
-    private void LoadCursorPreview()
+    private void LoadCursorsPreview()
     {
         if (ViewModel.SelectLightCursor != null)
         {
-            LightImageStackPanel.Children.Clear();
+            LightVariableSizedWrapGrid.Children.Clear();
             string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectLightCursor.ToString()!);
             foreach (string cursor in cursors)
             {
@@ -65,7 +64,7 @@ public sealed partial class CursorsPage : Page
                         Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform,
                     };
 
-                    LightImageStackPanel.Children.Add(im);
+                    LightVariableSizedWrapGrid.Children.Add(im);
                 }
                 catch { }
             }
@@ -73,7 +72,7 @@ public sealed partial class CursorsPage : Page
 
         if (ViewModel.SelectDarkCursor != null)
         {
-            DarkImageStackPanel.Children.Clear();
+            DarkVariableSizedWrapGrid.Children.Clear();
             string[] cursors = CursorCollectionHandler.GetCursorScheme(ViewModel.SelectDarkCursor.ToString()!);
             foreach (string cursor in cursors)
             {
@@ -97,7 +96,7 @@ public sealed partial class CursorsPage : Page
                         Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform,
                     };
 
-                    DarkImageStackPanel.Children.Add(im);
+                    DarkVariableSizedWrapGrid.Children.Add(im);
                 }
                 catch { }
             }
@@ -106,13 +105,11 @@ public sealed partial class CursorsPage : Page
 
     private void LightCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
 
     private void DarkCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        DispatcherQueue.TryEnqueue(() => LoadCursorPreview());
+        DispatcherQueue.TryEnqueue(LoadCursorsPreview);
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }

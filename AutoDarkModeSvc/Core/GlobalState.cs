@@ -25,8 +25,6 @@ using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Modules;
-using AdmProperties = AutoDarkModeLib.Properties;
-
 
 namespace AutoDarkModeSvc.Core;
 
@@ -208,11 +206,11 @@ public class GlobalState
         {
             if (InternalTheme == Theme.Light)
             {
-                themeState = AdmProperties.Resources.lblLight;
+                themeState = Strings.Resources.Light;
             }
             else
             {
-                themeState = AdmProperties.Resources.lblDark;
+                themeState = Strings.Resources.Dark;
             }
         }
 
@@ -221,18 +219,18 @@ public class GlobalState
             if (PostponeManager.IsUserDelayed || PostponeManager.IsSkipNextSwitch || PostponeManager.IsGracePeriod)
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconPausedTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.lblPaused}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Paused}";
             }
             else
             {
                 NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconTray;
-                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.enabled}";
+                NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Enabled}";
             }
         }
         else
         {
             NotifyIcon.Icon = Properties.Resources.AutoDarkModeIconDisabledTray;
-            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {AdmProperties.Resources.disabled}";
+            if (themeState.Length > 0) NotifyIcon.Text = $"Auto Dark Mode\n{themeState} - {Strings.Resources.Disabled}";
             else NotifyIcon.Text = $"Auto Dark Mode\nDisabled";
         }
     }

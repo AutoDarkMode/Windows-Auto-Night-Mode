@@ -24,7 +24,7 @@ public sealed partial class AboutPage : Page
     private void CopyVersionInfoButoon_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         // most likely use case is to paste in an issue, so
-        // we create a markddown string that will look nice
+        // we create a markdown string that will look nice
         // in that context
         var versionInfo = new VersionInfo();
         var versionText = new StringBuilder()

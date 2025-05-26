@@ -49,34 +49,34 @@
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarTime}"
+                    Content="{helpers:ResourceString Name=Time}"
                     Icon="{ui:FontIcon Glyph=&#xE823;}"
                     Tag="Time" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarSwitchModes}"
+                    Content="{helpers:ResourceString Name=SwitchModes}"
                     Icon="{ui:FontIcon Glyph=&#xE945;}"
                     Tag="SwitchModes" />
                 <!--  TODO: Update item content in resource  -->
                 <NavigationViewItem
-                    Content="System Areas"
+                    Content="{helpers:ResourceString Name=SystemAreas}"
                     Icon="{ui:FontIcon Glyph=&#xEC4E;}"
                     Tag="SystemAreas" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarPersonalization}"
+                    Content="{helpers:ResourceString Name=Personalization}"
                     Icon="{ui:FontIcon Glyph=&#xE771;}"
                     Tag="Personalization" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarScripts}"
+                    Content="{helpers:ResourceString Name=Scripts}"
                     Icon="{ui:FontIcon Glyph=&#xF000;}"
                     Tag="Scripts" />
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarDonation}"
+                    Content="{helpers:ResourceString Name=Donation}"
                     Icon="{ui:FontIcon Glyph=&#xEB51;}"
                     Tag="Donation" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=NavbarAbout}"
+                    Content="{helpers:ResourceString Name=About}"
                     Icon="{ui:FontIcon Glyph=&#xE946;}"
                     Tag="About" />
             </NavigationView.FooterMenuItems>

@@ -87,15 +87,14 @@ public partial class App : Application
             services.AddTransient<ScriptsPage>();
             services.AddTransient<PersonalizationViewModel>();
             services.AddTransient<PersonalizationPage>();
-            services.AddTransient<AppsViewModel>();
-            services.AddTransient<AppsPage>();
+            services.AddTransient<SystemAreasViewModel>();
+            services.AddTransient<SystemAreasPage>();
             services.AddTransient<SwitchModesViewModel>();
             services.AddTransient<SwitchModesPage>();
             services.AddTransient<WallpaperPickerViewModel>();
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();
             services.AddTransient<TimePage>();
-            services.AddTransient<MainViewModel>();
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));

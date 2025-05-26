@@ -12,7 +12,7 @@ using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.Services;
 
-public class ActivationService(ILocalSettingsService localSettingsService,INavigationService navigationService) : IActivationService
+public class ActivationService(ILocalSettingsService localSettingsService, INavigationService navigationService) : IActivationService
 {
     public async Task ActivateAsync(object activationArgs)
     {
@@ -35,14 +35,14 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
 
             loadingDialog = new ContentDialog
             {
-                Title = "StartupLaunchingServiceTitle".GetLocalized(),
+                Title = "LaunchingService".GetLocalized(),
                 Content = new StackPanel
                 {
                     Orientation = Orientation.Vertical,
                     Spacing = 32,
                     Children =
                     {
-                        new TextBlock { Text = "StartupLaunchingServiceText".GetLocalized() },
+                        new TextBlock { Text = "Msg_NoService".GetLocalized() },
                         new ProgressBar { IsIndeterminate = true },
                     },
                 },
@@ -65,11 +65,11 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
                 {
                     new InfoBar
                     {
-                        Title = "errorOcurredTitle".GetLocalized(),
+                        Title = "ErrorOcurred_Title".GetLocalized(),
                         Severity = InfoBarSeverity.Error,
                         IsOpen = true,
                         IsClosable = false,
-                        Message = "StartupServiceUnresponsive".GetLocalized(),
+                        Message = "Msg_ServiceUnresponsive".GetLocalized(),
                     },
                 },
             };
@@ -202,14 +202,14 @@ public class ActivationService(ILocalSettingsService localSettingsService,INavig
 
             jumpList.Items.Clear();
 
-            var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "lblDarkTheme".GetLocalized());
-            darkJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+            var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "DarkTheme".GetLocalized());
+            darkJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
-            var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "lblLightTheme".GetLocalized());
-            lightJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+            var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "LightTheme".GetLocalized());
+            lightJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
-            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "lblReset".GetLocalized());
-            resetJumpTask.GroupName = "lblSwitchTheme".GetLocalized();
+            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "Reset".GetLocalized());
+            resetJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
             jumpList.Items.Add(darkJumpTask);
             jumpList.Items.Add(lightJumpTask);
