@@ -782,9 +782,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Start Auto Dark Mode with Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Step</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Stop forcing theme</value>
   </data>
@@ -848,16 +845,19 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Go to Windows Theme settings</value>
+  <data name="ThemeTutorial_GoColors" xml:space="preserve">
+    <value>Go to Windows settings > Personalization > Colors</value>
   </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Go to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse pointers and accent color.</value>
+  <data name="ThemeTutorial_SetLight">
+      <value>Change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse pointers and accent color.</value>
   </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Go to theme settings and save your theme.</value>
+  <data name="ThemeTutorial_GoTheme" xml:space="preserve">
+    <value>Go to Windows settings > Personalization > Themes</value>
   </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
+  <data name="ThemeTutorial_SaveTheme" xml:space="preserve">
+    <value>Save your theme.</value>
+  </data>
+  <data name="ThemeTutorial_RepeatForDark" xml:space="preserve">
     <value>Repeat this process for the dark theme.</value>
   </data>
   <data name="ThirdParty" xml:space="preserve">

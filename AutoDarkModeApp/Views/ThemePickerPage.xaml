@@ -27,28 +27,35 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  Theme Tutorial Step  -->
+                <!--  Theme Tutorial Steps  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CreateTheme}" />
-                <InfoBar
-                    x:Name="ThemeTutorialFirstStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep2_Content}">
-                    <InfoBar.ActionButton>
-                        <HyperlinkButton Click="OpenWindowsThemePageHyperlinkButton_Click" Content="{helpers:ResourceString Name=ThemeTutorialStep1_Content}" />
-                    </InfoBar.ActionButton>
-                </InfoBar>
-                <InfoBar
-                    x:Name="ThemeTutorialSecondStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep3_Content}" />
-                <InfoBar
-                    x:Name="ThemeTutorialThirdStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep4_Content}" />
 
+                <RichTextBlock>
+                    <Paragraph>
+                        <Run FontWeight="SemiBold">•</Run>
+                        <Hyperlink NavigateUri="ms-settings:colors">
+                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoColors}"/>
+                        </Hyperlink>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run FontWeight="SemiBold">•</Run>
+                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_SetLight}"/>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run FontWeight="SemiBold">•</Run>
+                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoTheme}"/>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run FontWeight="SemiBold">•</Run>
+                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_SaveTheme}"/>
+                    </Paragraph>
+                    <Paragraph>
+                        <Run FontWeight="SemiBold">•</Run>
+                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_RepeatForDark}"/>
+                    </Paragraph>
+                </RichTextBlock>
+                                
+                
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
