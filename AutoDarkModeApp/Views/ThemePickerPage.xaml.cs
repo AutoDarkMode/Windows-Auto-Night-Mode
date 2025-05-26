@@ -28,7 +28,7 @@ public sealed partial class ThemePickerPage : Page
     private void LoadThemes()
     {
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
-        IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
+        IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString()).ToList();
         LightThemeComboBox.ItemsSource = themeNames;
         DarkThemeComboBox.ItemsSource = themeNames;
         ThemeFile? lightSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.LightThemePath);
@@ -49,7 +49,6 @@ public sealed partial class ThemePickerPage : Page
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
     }
 
-
     private void OpenThemeFolderSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var themeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
@@ -63,5 +62,4 @@ public sealed partial class ThemePickerPage : Page
             Process.Start(new ProcessStartInfo(themeFolderPath) { UseShellExecute = true, Verb = "open" });
         }
     }
-
 }
