@@ -29,6 +29,7 @@
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="{helpers:ResourceString Name=MinimumUsage}" IsEnabled="{x:Bind ViewModel.GPUMonitoringEnabled, Mode=OneWay}">
                             <NumberBox
+                                Maximum="100"
                                 Minimum="0"
                                 SmallChange="5"
                                 SpinButtonPlacementMode="Inline"
