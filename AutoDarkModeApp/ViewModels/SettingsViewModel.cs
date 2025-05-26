@@ -10,6 +10,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -47,6 +48,15 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial bool IsTunableTrace { get; set; }
+
+    [ObservableProperty]
+    public partial bool EnergySaverSettingsCardVisiblity { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsDisableEnergySaverOnThemeSwitch { get; set; }
+
+    [ObservableProperty]
+    public partial int BatterySliderValue { get; set; }
 
     [ObservableProperty]
     public partial bool IsUpdaterEnabled { get; set; }
@@ -159,6 +169,9 @@ public partial class SettingsViewModel : ObservableRecipient
         IsAlwaysFullDwmRefresh = _builder.Config.Tunable.AlwaysFullDwmRefresh;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
+        EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures);
+        IsDisableEnergySaverOnThemeSwitch = _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch;
+        BatterySliderValue = _builder.Config.Tunable.BatterySliderDefaultValue;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;
         SelectedDaysBetweenUpdateCheck = _builder.Config.Updater.DaysBetweenUpdateCheck switch
         {
@@ -331,6 +344,26 @@ public partial class SettingsViewModel : ObservableRecipient
             return;
 
         _builder.Config.Tunable.Trace = value;
+
+        SafeSaveBuilder();
+    }
+
+    partial void OnIsDisableEnergySaverOnThemeSwitchChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = value;
+
+        SafeSaveBuilder();
+    }
+
+    partial void OnBatterySliderValueChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Tunable.BatterySliderDefaultValue = value;
 
         SafeSaveBuilder();
     }
