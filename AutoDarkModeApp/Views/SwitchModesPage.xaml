@@ -111,8 +111,11 @@
                 </controls:SettingsExpander>
 
                 <!--  BatteryPowered  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=BatteryPowered}" />
-                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" IsEnabled="{x:Bind ViewModel.BatterySettingsCardEnabled, Mode=OneWay}">
+                <TextBlock
+                    Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                    Text="{helpers:ResourceString Name=BatteryPowered}"
+                    Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}" />
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}">
                     <controls:SettingsCard.Header>
                         <CheckBox Content="{helpers:ResourceString Name=BatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
                     </controls:SettingsCard.Header>

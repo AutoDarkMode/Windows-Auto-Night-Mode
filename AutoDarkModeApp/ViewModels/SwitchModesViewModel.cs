@@ -47,7 +47,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
     public partial int AutoSwitchNotifyGracePeriodMinutes { get; set; }
 
     [ObservableProperty]
-    public partial bool BatterySettingsCardEnabled { get; set; }
+    public partial bool BatterySettingsCardVisibility { get; set; }
 
     [ObservableProperty]
     public partial bool BatteryDarkModeEnabled { get; set; }
@@ -133,7 +133,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
         AutoSwitchNotifyGracePeriodMinutes = _builder.Config.AutoSwitchNotify.GracePeriodMinutes;
         HotkeysEnabled = _builder.Config.Hotkeys.Enabled;
         SettingsCardEnabled = !HotkeysEnabled; // TODO: Give this a better name
-        BatterySettingsCardEnabled = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
+        BatterySettingsCardVisibility = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
         HotkeyForceLight = _builder.Config.Hotkeys.ForceLight;
         HotkeyForceDark = _builder.Config.Hotkeys.ForceDark;
