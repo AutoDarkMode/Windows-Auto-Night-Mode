@@ -126,65 +126,35 @@
                 <controls:SettingsCard Description="{helpers:ResourceString Name=HotkeyEditHint}" Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=ForceLight}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ForceLight}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyForceLightTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyForceLight, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=ForceDark}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ForceDark}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyForceDarkTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyForceDark, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=StopForcing}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=StopForcing}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderNoForceTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyNoForce, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=ToggleTheme}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsCard.Header>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ToggleTheme}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderToggleThemeTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyToggleTheme, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
                 </controls:SettingsCard>
-                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsExpander.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=AutomaticThemeSwitch}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsExpander.Header>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=AutomaticThemeSwitch}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderToggleAutomaticThemeTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
@@ -198,13 +168,7 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                <controls:SettingsExpander IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
-                    <controls:SettingsExpander.Header>
-                        <TextBlock>
-                            <Run Text="{helpers:ResourceString Name=PauseAutoThemeSwitching}" />
-                            <Run Text="{helpers:ResourceString Name=Hotkeys}" />
-                        </TextBlock>
-                    </controls:SettingsExpander.Header>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=PauseAutoThemeSwitching}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderTogglePostponeTextBox"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
