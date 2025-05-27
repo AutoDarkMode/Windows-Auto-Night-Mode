@@ -313,15 +313,13 @@ public partial class SettingsViewModel : ObservableRecipient
             _dispatcherQueue.TryEnqueue(async () =>
             {
                 var result = await contentDialog.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    IsAlwaysFullDwmRefresh = true;
-                }
-                else
-                {
+                if (result != ContentDialogResult.Primary)
                     IsAlwaysFullDwmRefresh = false;
-                }
             });
+            _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
+        }
+        else
+        {
             _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
         }
 
