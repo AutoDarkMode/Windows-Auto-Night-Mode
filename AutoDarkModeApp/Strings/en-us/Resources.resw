@@ -437,7 +437,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Info</value>
   </data>
   <data name="InstallSilent" xml:space="preserve">
-    <value>Don't show notifications</value>
+    <value>Install without further notifications</value>
   </data>
   <data name="Interval1" xml:space="preserve">
     <value>Every day</value>
