@@ -15,10 +15,7 @@
 
                 <!--  Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Theme}" />
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=SwichWindowsTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SwichWindowsTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
@@ -29,32 +26,34 @@
 
                 <!--  Theme Tutorial Steps  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CreateTheme}" />
-
-                <RichTextBlock>
-                    <Paragraph>
-                        <Run FontWeight="SemiBold">•</Run>
-                        <Hyperlink NavigateUri="ms-settings:colors">
-                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoColors}" />
-                        </Hyperlink>
-                    </Paragraph>
-                    <Paragraph>
-                        <Run FontWeight="SemiBold">•</Run>
-                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_SetLight}" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run FontWeight="SemiBold">•</Run>
-                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoTheme}" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run FontWeight="SemiBold">•</Run>
-                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_SaveTheme}" />
-                    </Paragraph>
-                    <Paragraph>
-                        <Run FontWeight="SemiBold">•</Run>
-                        <Run Text="{helpers:ResourceString Name=ThemeTutorial_RepeatForDark}" />
-                    </Paragraph>
-                </RichTextBlock>
-
+                <controls:SettingsCard>
+                    <RichTextBlock LineHeight="24">
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">•</Run>
+                            <Hyperlink Click="SettingsColorsHyperlink_Click">
+                                <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoColors}" />
+                            </Hyperlink>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">•</Run>
+                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_SetLight}" />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">•</Run>
+                            <Hyperlink Click="SettingsThemesHyperlink_Click">
+                                <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoTheme}" />
+                            </Hyperlink>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">•</Run>
+                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_SaveTheme}" />
+                        </Paragraph>
+                        <Paragraph>
+                            <Run FontWeight="SemiBold">•</Run>
+                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_RepeatForDark}" />
+                        </Paragraph>
+                    </RichTextBlock>
+                </controls:SettingsCard>
 
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
@@ -70,7 +69,6 @@
                         MinWidth="120"
                         SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
-
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
                     Click="OpenThemeFolderSettingsCard_Click"
@@ -79,7 +77,6 @@
 
                 <!--  Ignore  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
-
                 <StackPanel
                     Margin="0,0,0,8"
                     Orientation="Horizontal"

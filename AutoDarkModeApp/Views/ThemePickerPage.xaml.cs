@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
@@ -40,7 +39,12 @@ public sealed partial class ThemePickerPage : Page
         }
     }
 
-    private async void OpenWindowsThemePageHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void SettingsColorsHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
+    }
+
+    private async void SettingsThemesHyperlink_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
     }
