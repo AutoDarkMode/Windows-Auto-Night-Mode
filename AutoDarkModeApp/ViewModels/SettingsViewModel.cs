@@ -121,6 +121,7 @@ public partial class SettingsViewModel : ObservableRecipient
         }
 
         LoadSettings();
+        _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
@@ -222,7 +223,6 @@ public partial class SettingsViewModel : ObservableRecipient
                 Language = "English (English)";
                 await _localSettingsService.SaveSettingAsync("Language", "English (English)");
             }
-            await GetAutostartInfo();
 
             _isInitializing = false;
         });
@@ -498,9 +498,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
                 SafeSaveBuilder();
 
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -522,9 +523,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
                 SafeSaveBuilder();
 
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -554,9 +556,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
             if (_builder.Config.AutoThemeSwitchingEnabled)
             {
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         _builder.Config.Tunable.UseLogonTask = value;
