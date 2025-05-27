@@ -765,9 +765,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="StartWithWindows" xml:space="preserve">
     <value>اجرای Auto Dark Mode به همراه ویندوز</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>مرحله</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>توقف نمایه‌ی اجباری</value>
   </data>
@@ -838,18 +835,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Sunrise</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>برای باز کردن تنظیمات Windows Themes کلیک کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>اکنون به "Colors"‌بروید و رنگ سیستم را به "Light"‌ برای نمایه‌ی روشن تغییر دهید. پس‌زمینه، مکان‌نما‌ی موشواره، و رنگ تأکیدی موردپسند خود را انتخاب کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>به تنظیمات نمایه برگردید و نمایه‌ی خود را ذخیره کنید.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>همین مراحل را برای نمایه‌ی تاریک انجام دهید.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>از برنامه واسط استفاده شده</value>
   </data>
@@ -912,5 +897,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

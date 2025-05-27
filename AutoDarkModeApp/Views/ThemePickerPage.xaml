@@ -25,35 +25,7 @@
                 </controls:SettingsExpander>
 
                 <!--  Theme Tutorial Steps  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CreateTheme}" />
-                <controls:SettingsCard>
-                    <RichTextBlock LineHeight="24">
-                        <Paragraph>
-                            <Run FontWeight="SemiBold">•</Run>
-                            <Hyperlink Click="SettingsColorsHyperlink_Click">
-                                <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoColors}" />
-                            </Hyperlink>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run FontWeight="SemiBold">•</Run>
-                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_SetLight}" />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run FontWeight="SemiBold">•</Run>
-                            <Hyperlink Click="SettingsThemesHyperlink_Click">
-                                <Run Text="{helpers:ResourceString Name=ThemeTutorial_GoTheme}" />
-                            </Hyperlink>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run FontWeight="SemiBold">•</Run>
-                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_SaveTheme}" />
-                        </Paragraph>
-                        <Paragraph>
-                            <Run FontWeight="SemiBold">•</Run>
-                            <Run Text="{helpers:ResourceString Name=ThemeTutorial_RepeatForDark}" />
-                        </Paragraph>
-                    </RichTextBlock>
-                </controls:SettingsCard>
+                <controls:SettingsCard Description="{helpers:ResourceString Name=ThemeTutorialDescription}" Header="{helpers:ResourceString Name=CreateTheme}" />
 
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />

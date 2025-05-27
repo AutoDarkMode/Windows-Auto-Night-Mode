@@ -765,9 +765,6 @@
   <data name="StartWithWindows" xml:space="preserve">
     <value>Windows에서 자동 어두운 모드 시작</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>단계</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>테마 강제 적용 중지</value>
   </data>
@@ -838,18 +835,6 @@
     <value>일출</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>여기를 클릭하여 Windows 테마 설정을 엽니다.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>이제 '색상'으로 이동하고 조명 테마에 대한 시스템 색상을 '밝은'으로 변경합니다. 좋아하는 배경화면, 마우스 커서 및 강조 색상을 선택합니다.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>테마 설정으로 돌아가서 테마를 저장합니다.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>어두운 테마에 대해 이 과정을 반복합니다.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>타사 소프트웨어 사용</value>
   </data>
@@ -912,5 +897,8 @@
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Windows를 통해 자동 시작 항목을 비활성화했습니다.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

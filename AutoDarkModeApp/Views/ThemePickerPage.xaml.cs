@@ -39,16 +39,6 @@ public sealed partial class ThemePickerPage : Page
         }
     }
 
-    private async void SettingsColorsHyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
-    {
-        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
-    }
-
-    private async void SettingsThemesHyperlink_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:themes"));
-    }
-
     private void OpenThemeFolderSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var themeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";

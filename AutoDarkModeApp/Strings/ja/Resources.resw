@@ -201,9 +201,6 @@
   <data name="BatterySlider" xml:space="preserve">
     <value>バッテリー節約機能のスライダーの初期値</value>
   </data>
-  <data name="Beta" xml:space="preserve">
-    <value>ベータ版</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>阻止するプロセス</value>
   </data>
@@ -270,9 +267,6 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>ダークテーマ</value>
   </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>デバッグモード</value>
-  </data>
   <data name="Delay" xml:space="preserve">
     <value>遅延させる</value>
   </data>
@@ -337,9 +331,6 @@
   </data>
   <data name="EnergySaverMitigation" xml:space="preserve">
     <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
-  </data>
-  <data name="EnterToApply" xml:space="preserve">
-    <value>Enterキーを押して座標を適用する</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>UI の問題が発生しました。
@@ -450,9 +441,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="Interval7" xml:space="preserve">
     <value>7 日</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>言語</value>
   </data>
   <data name="LastCheckedNever" xml:space="preserve">
     <value>なし</value>
@@ -771,14 +759,8 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SpecialThanks" xml:space="preserve">
     <value>謝辞</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>安定版</value>
-  </data>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Windowsの開始時にAuto Dark Modeを実行</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>ステップ</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
     <value>テーマの変更を中止する</value>
@@ -840,18 +822,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>日の出</value>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>ここから Windows のテーマの設定を開く。</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>設定の「色」を開き、「白」を選択しライトテーマを適用します。好きな壁紙、マウスカーソル、アクセントカラーを選びます。</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>テーマの設定に戻り、テーマを保存します。</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>同様に「黒」を選択しダークテーマ用に作成します。</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>使用しているサードパーティーのソフトウェア</value>
   </data>
@@ -869,9 +839,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="Type" xml:space="preserve">
     <value>種類</value>
-  </data>
-  <data name="UnDelay" xml:space="preserve">
-    <value>延期していない</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Windows がテーマを管理</value>
@@ -917,5 +884,26 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Windowsから自動起動を無効にしているようです。</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>ベータ版</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>デバッグモード</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>Enterキーを押して座標を適用する</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>安定版</value>
+  </data>
+  <data name="UnDelay" xml:space="preserve">
+    <value>延期していない</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

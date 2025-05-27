@@ -765,9 +765,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Start Auto Dark Mode med Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Steg</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Stans tematvang</value>
   </data>
@@ -838,18 +835,6 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Sunrise</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Click here to open Windows Theme settings.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Now navigate to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite Wallpaper, Mouse Cursor and Accent Color.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Go back to theme settings and save your theme.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Gjenta denne prosessen for det mørke temaet.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Tredjeparts programvare som er brukt</value>
   </data>
@@ -912,5 +897,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>
