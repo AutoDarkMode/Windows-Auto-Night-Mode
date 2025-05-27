@@ -24,9 +24,11 @@
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=AlwaysRefreshDwm}" IsChecked="{x:Bind ViewModel.IsAlwaysFullDwmRefresh, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                
                 <controls:SettingsExpander>
                     <controls:SettingsExpander.Header>
                         <CheckBox
@@ -40,6 +42,7 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+                
                 <controls:SettingsExpander Visibility="{x:Bind ViewModel.EnergySaverSettingsCardVisiblity, Mode=OneWay}">
                     <controls:SettingsExpander.Header>
                         <CheckBox Content="{helpers:ResourceString Name=EnergySaverMitigation}" IsChecked="{x:Bind ViewModel.IsDisableEnergySaverOnThemeSwitch, Mode=TwoWay}" />
@@ -168,11 +171,12 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
-                        <StackPanel Orientation="Vertical" Spacing="16">
+                        <StackPanel Orientation="Vertical">
                             <TextBlock>
-                                <Run Text="{helpers:ResourceString Name=Mode}" />
+                                <Run Text="{helpers:ResourceString Name=ModeAt}" />
                                 <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
                             </TextBlock>
                             <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
@@ -181,12 +185,10 @@
                             </TextBlock>
                         </StackPanel>
                     </controls:SettingsCard.Header>
-                    <controls:SettingsCard.Content>
-                        <Button
-                            MinWidth="120"
-                            Command="{x:Bind ViewModel.AutostartRefreshCommand}"
-                            Content="{helpers:ResourceString Name=RefreshAutostart}" />
-                    </controls:SettingsCard.Content>
+                    <Button
+                        MinWidth="120"
+                        Command="{x:Bind ViewModel.AutostartRefreshCommand}"
+                        Content="{helpers:ResourceString Name=RefreshAutostart}" />
                 </controls:SettingsCard>
 
                 <!--  Config  -->
