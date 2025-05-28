@@ -889,6 +889,14 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+2. Change the system color to 'Light' for the light theme.
+3. Go to Windows Settings &gt; Personalization &gt; Themes.
+4. Select your favorite wallpaper, mouse pointers and accent color.
+5. Save your theme.
+6. Repeat this process for the dark theme.</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -912,12 +920,5 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>UnDelay</value>
-  </data>
-  <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>• Go to Windows settings &gt; Personalization &gt; Colors.
-• Change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse pointers and accent color.
-• Go to Windows settings &gt; Personalization &gt; Themes.
-• Save your theme.
-• Repeat this process for the dark theme.</value>
   </data>
 </root>
