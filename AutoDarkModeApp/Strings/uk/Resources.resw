@@ -765,9 +765,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="StartWithWindows" xml:space="preserve">
     <value>Автоматично запускати Auto Dark Mode з Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Крок</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Примусову тему вимкнути</value>
   </data>
@@ -838,18 +835,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Схід сонця</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Натисніть тут для відкриття налаштувань теми Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Тепер перейдіть до «Кольори» і змініть колір системи на «Світлий» для світлої теми. Виберіть улюблений фон, курсор миші та основний колір.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Поверніться до налаштувань теми та збережіть свою тему.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Повторіть процес для темної теми.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Використане стороннє програмне забезпечення</value>
   </data>
@@ -912,5 +897,8 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Ви вимкнули автозапуск застосунку засобами Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

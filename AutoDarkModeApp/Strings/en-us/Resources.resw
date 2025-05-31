@@ -201,9 +201,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="BatterySlider" xml:space="preserve">
     <value>Default value for energy saver slider</value>
   </data>
-  <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Start typing to add apps</value>
   </data>
@@ -271,9 +268,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="DarkTheme" xml:space="preserve">
     <value>Dark theme</value>
   </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
-  </data>
   <data name="Delay" xml:space="preserve">
     <value>Delay</value>
   </data>
@@ -338,9 +332,6 @@ For this reason you could support me with a voluntary donation. Even a small amo
   </data>
   <data name="EnergySaverMitigation" xml:space="preserve">
     <value>Energy saver mitigation for theme switch</value>
-  </data>
-  <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>There was an issue with the UI.
@@ -450,9 +441,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   </data>
   <data name="Interval7" xml:space="preserve">
     <value>7 days</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>Language</value>
   </data>
   <data name="LastCheckedNever" xml:space="preserve">
     <value>never</value>
@@ -620,9 +608,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="OpenWindowsNightLight" xml:space="preserve">
     <value>Go to Night light settings</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
-  </data>
   <data name="PathAt" xml:space="preserve">
     <value>Path:</value>
   </data>
@@ -776,23 +761,14 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
-  </data>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Start Auto Dark Mode with Windows</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>Step</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Stop forcing theme</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
-  </data>
-  <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
   </data>
   <data name="SwitchModes" xml:space="preserve">
     <value>Switch modes</value>
@@ -848,18 +824,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Go to Windows Theme settings</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Go to 'Colors' and change the system color to 'Light' for the light theme. Select your favorite wallpaper, mouse pointers and accent color.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Go to theme settings and save your theme.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Repeat this process for the dark theme.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Used software</value>
   </data>
@@ -877,9 +841,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
-  </data>
-  <data name="UnDelay" xml:space="preserve">
-    <value>UnDelay</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>Let Windows manage my theme</value>
@@ -927,5 +888,37 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+2. Change the system color to 'Light' for the light theme.
+3. Go to Windows Settings &gt; Personalization &gt; Themes.
+4. Select your favorite wallpaper, mouse pointers and accent color.
+5. Save your theme.
+6. Repeat this process for the dark theme.</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>Select Enter to apply</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value>Go to Windows Spotlight settings</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Switch" xml:space="preserve">
+    <value>Switch</value>
+  </data>
+  <data name="UnDelay" xml:space="preserve">
+    <value>UnDelay</value>
   </data>
 </root>

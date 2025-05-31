@@ -765,9 +765,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Mulai Auto Dark Mode Saat Masuk</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Langkah</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Cegah memaksa tema</value>
   </data>
@@ -838,18 +835,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Matahari Terbit</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Tekan ini untuk membuka setelan tema Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Kemudian arahkan ke 'Warna' dan ganti warna sistem ke 'Terang' untuk tema terang. Pilih latar belakang, kursor tetikus dan aksen warna.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Lalu kembali ke setelan tema dan simpan tema yang terbentuk</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Ulangi proses untuk tema gelap.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Aplikasi pihak ketiga yang terpakai</value>
   </data>
@@ -912,5 +897,8 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

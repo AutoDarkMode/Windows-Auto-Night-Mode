@@ -15,10 +15,7 @@
 
                 <!--  Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Theme}" />
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=SwichWindowsTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SwichWindowsTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
@@ -27,27 +24,8 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  Theme Tutorial Step  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=CreateTheme}" />
-                <InfoBar
-                    x:Name="ThemeTutorialFirstStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep2_Content}">
-                    <InfoBar.ActionButton>
-                        <HyperlinkButton Click="OpenWindowsThemePageHyperlinkButton_Click" Content="{helpers:ResourceString Name=ThemeTutorialStep1_Content}" />
-                    </InfoBar.ActionButton>
-                </InfoBar>
-                <InfoBar
-                    x:Name="ThemeTutorialSecondStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep3_Content}" />
-                <InfoBar
-                    x:Name="ThemeTutorialThirdStepInfoBar"
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=ThemeTutorialStep4_Content}" />
+                <!--  Theme Tutorial Steps  -->
+                <controls:SettingsCard Description="{helpers:ResourceString Name=ThemeTutorialDescription}" Header="{helpers:ResourceString Name=CreateTheme}" />
 
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
@@ -63,7 +41,6 @@
                         MinWidth="120"
                         SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
-
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
                     Click="OpenThemeFolderSettingsCard_Click"
@@ -72,11 +49,17 @@
 
                 <!--  Ignore  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
-                <InfoBar
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=Msg_IgnoreDisabled}"
-                    Severity="Warning" />
+                <StackPanel
+                    Margin="0,0,0,8"
+                    Orientation="Horizontal"
+                    Spacing="8">
+                    <FontIcon
+                        FontSize="16"
+                        Foreground="{ThemeResource SystemFillColorCautionBrush}"
+                        Glyph="&#xF167;" />
+                    <TextBlock Text="{helpers:ResourceString Name=Msg_IgnoreDisabled}" />
+                </StackPanel>
+
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreBackground}" IsChecked="{x:Bind ViewModel.IgnoreBackgroundEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
