@@ -19,21 +19,21 @@ public sealed partial class TimePage : Page
         var decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
         char decimalSeparatorChar = decimalSeparator[0];
 
-        // Check for invalid characters
+        // Check for invalid characters  
         bool hasInvalidChars = !args.NewText.All(c => char.IsDigit(c) || c == decimalSeparatorChar || c == '.' || c == '-');
 
-        // Check for multiple special characters
+        // Check for multiple special characters  
         bool hasMultipleDots = args.NewText.Count(c => c == '.') > 1;
         bool hasMultipleSeparators = args.NewText.Count(c => c == decimalSeparatorChar) > 1;
         bool hasMultipleMinuses = args.NewText.Count(c => c == '-') > 1;
 
-        // Check for valid minus sign position (only first character)
+        // Check for valid minus sign position (only first character)  
         bool hasInvalidMinus = args.NewText.Contains('-') && !args.NewText.StartsWith('-');
 
-        // Check for valid decimal separator position (not first character)
-        bool hasInvalidSeparatorStart = (args.NewText.StartsWith(decimalSeparator) || args.NewText.StartsWith(".")) && args.NewText.Length > 1;
+        // Check for valid decimal separator position (not first character)  
+        bool hasInvalidSeparatorStart = (args.NewText.StartsWith(decimalSeparatorChar) || args.NewText.StartsWith('.')) && args.NewText.Length > 1;
 
-        // Check decimal precision
+        // Check decimal precision  
         bool exceedsPrecision = false;
         string[] dotParts = args.NewText.Split('.');
         string[] separatorParts = args.NewText.Split(decimalSeparatorChar);
@@ -44,7 +44,7 @@ public sealed partial class TimePage : Page
         if (separatorParts.Length >= 2 && separatorParts[1].Length > 6)
             exceedsPrecision = true;
 
-        // Combine all checks
+        // Combine all checks  
         args.Cancel = hasInvalidChars || hasMultipleDots || hasMultipleSeparators || hasMultipleMinuses || hasInvalidMinus || hasInvalidSeparatorStart || exceedsPrecision;
     }
 

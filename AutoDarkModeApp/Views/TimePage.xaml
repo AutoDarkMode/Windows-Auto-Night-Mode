@@ -55,10 +55,11 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid.Resources>
-                                    <Style BasedOn="{StaticResource BaseTextBlockStyle}" TargetType="TextBlock">
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
                                         <Setter Property="VerticalAlignment" Value="Center" />
                                     </Style>
                                 </Grid.Resources>
+
                                 <!--  Light  -->
                                 <FontIcon
                                     Grid.Column="0"
@@ -98,42 +99,68 @@
                                 Visibility="{x:Bind ViewModel.DividerBorderVisibility, Mode=OneWay}" />
 
                             <!--  Location  -->
-                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
-                                <!--  TODO: Improve this XAML  -->
-                                <StackPanel Orientation="Horizontal" Spacing="8">
-                                    <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE707;" />
-                                    <TextBlock Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
-                                    <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE895;" />
-                                    <TextBlock
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
-                                </StackPanel>
-                            </StackPanel>
+                            <Grid
+                                ColumnSpacing="8"
+                                RowSpacing="16"
+                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
+                                    <Style TargetType="FontIcon">
+                                        <Setter Property="FontSize" Value="16" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE895;" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+                            </Grid>
+
 
                             <!--  Geo Coordinates  -->
                             <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
-                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Grid ColumnSpacing="8" RowSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.Resources>
+                                        <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
+                                        <Style TargetType="FontIcon">
+                                            <Setter Property="FontSize" Value="16" />
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
                                     <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE707;" />
-                                    <TextBlock Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
-                                    <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
+                                        Grid.Row="1"
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xE895;" />
                                     <TextBlock
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
                                         Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
-                                </StackPanel>
+                                </Grid>
+
 
                                 <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
 
@@ -151,8 +178,7 @@
                                         InputScope="Number"
                                         Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
                                     <Button
-                                        Height="Auto"
-                                        Margin="0,28,0,0"
+                                        VerticalAlignment="Bottom"
                                         Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
                                         Content="{helpers:ResourceString Name=ApplyGeo}" />
                                 </StackPanel>
