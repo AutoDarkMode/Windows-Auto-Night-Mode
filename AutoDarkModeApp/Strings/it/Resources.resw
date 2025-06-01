@@ -397,9 +397,6 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Nascondi icona dell'area di notifica</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Puoi modificare le scorciatoie solo mentre sono disabilitate.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Scorciatoie</value>
   </data>

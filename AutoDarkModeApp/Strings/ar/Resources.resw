@@ -396,9 +396,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>إخفاء أيقونة الدرج</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>مفاتيح التشغيل السريع</value>
   </data>

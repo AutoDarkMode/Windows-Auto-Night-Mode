@@ -397,9 +397,6 @@ Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Masquer l'icône de la barre des tâches</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Vous ne pouvez modifier les touches de raccourci que lorsqu'elles sont désactivées.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Raccourcis</value>
   </data>

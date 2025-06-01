@@ -397,9 +397,6 @@ Pulse "Sí" para abrir una nueva ventana del navegador.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Esconder icono de la bandeja del sistema</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Solo puedes editar los atajos de teclado mientras estén desactivados.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Atajos de teclado</value>
   </data>

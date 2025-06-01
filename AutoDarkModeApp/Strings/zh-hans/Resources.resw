@@ -406,9 +406,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>隐藏托盘图标</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>快捷键</value>
   </data>

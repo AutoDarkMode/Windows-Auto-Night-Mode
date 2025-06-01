@@ -397,9 +397,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>트레이 아이콘 숨기기</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>핫키가 비활성화된 상태에서만 편집할 수 있습니다.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>핫키</value>
   </data>

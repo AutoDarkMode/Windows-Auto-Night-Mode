@@ -397,9 +397,6 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ẩn biểu tượng ở khay hệ thống</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Phím tắt</value>
   </data>

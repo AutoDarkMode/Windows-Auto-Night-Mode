@@ -406,9 +406,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="HideTrayIcon" xml:space="preserve">
     <value>トレイアイコンの非表示</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>無効中にのみ使用するホットキーを変更できます。</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>ホットキー</value>
   </data>

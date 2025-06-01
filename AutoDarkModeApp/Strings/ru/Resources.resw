@@ -397,9 +397,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Скрыть значок в трее</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Вы можете редактировать горячие клавиши, только когда они отключены.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Горячие клавиши</value>
   </data>

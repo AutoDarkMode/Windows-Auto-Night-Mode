@@ -397,9 +397,6 @@ Klikk "Ja" for å åpne et nytt nettleservindu.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Skjul verktøylinjeikon.</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hurtigtaster</value>
   </data>

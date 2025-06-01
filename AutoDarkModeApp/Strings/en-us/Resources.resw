@@ -406,9 +406,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Hide tray icon (not recommended)</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
@@ -927,5 +924,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
+  </data>
+  <data name="HotkeyEditHint" xml:space="preserve">
+    <value>Hotkeys can be deleted by Esc, Backspace and Delete keys</value>
   </data>
 </root>

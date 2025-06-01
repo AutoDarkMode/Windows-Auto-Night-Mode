@@ -397,9 +397,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>隱藏系統匣圖示</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>您只能在停用快速鍵的情況下進行編輯。</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>快速鍵</value>
   </data>

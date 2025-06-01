@@ -397,9 +397,6 @@ Clique em "Sim" para abrir uma nova janela no navegador.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Esconder o Ícone do Tabuleiro do Sistema</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Só pode editar as teclas de atalho enquanto elas estiverem desativadas.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Teclas de atalho</value>
   </data>

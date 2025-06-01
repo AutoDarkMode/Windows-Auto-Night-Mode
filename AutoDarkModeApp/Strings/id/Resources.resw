@@ -397,9 +397,6 @@ Klik "Ya" untuk membuka jendela peramban baru.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Sembunyikan Ikon Tray</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkey</value>
   </data>

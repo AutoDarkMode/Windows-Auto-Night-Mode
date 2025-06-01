@@ -397,9 +397,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Приховати значок в треї</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Гарячі клавіші</value>
   </data>

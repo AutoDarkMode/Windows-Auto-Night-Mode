@@ -397,9 +397,6 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Bildirim Alanı Simgesi Gizleme</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Kısayol tuşlarını sadece devre dışı bırakılmışken düzenleyebilirsiniz.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Kısayol tuşları</value>
   </data>

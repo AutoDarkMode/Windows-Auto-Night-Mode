@@ -397,9 +397,6 @@ Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Hide Tray Icon</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>

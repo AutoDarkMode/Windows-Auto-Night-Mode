@@ -397,9 +397,6 @@ Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Skrytí ikony na panelu</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Klávesové zkratky lze upravovat pouze v případě, že jsou vypnuté.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Klávesové zkratky</value>
   </data>

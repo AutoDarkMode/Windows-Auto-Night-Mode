@@ -397,9 +397,6 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Systemtray-Icon verstecken</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Du kannst die Hotkeys nur bearbeiten, wenn sie deaktiviert sind.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Tastenkürzel</value>
   </data>

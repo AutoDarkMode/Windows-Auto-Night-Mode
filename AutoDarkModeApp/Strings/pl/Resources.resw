@@ -397,9 +397,6 @@ Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ukryj ikonę paska zadań</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Możesz edytować skróty klawiszowe tylko wtedy, gdy są wyłączone.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Skróty klawiszowe</value>
   </data>

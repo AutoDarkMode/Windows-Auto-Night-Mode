@@ -397,9 +397,6 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Tálca ikon elrejtése</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>A gyorsbillentyűket csak akkor szerkesztheti, ha le vannak tiltva.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Gyorsbillentyűk</value>
   </data>

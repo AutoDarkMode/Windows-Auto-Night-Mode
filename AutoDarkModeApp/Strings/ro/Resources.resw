@@ -397,9 +397,6 @@ Faceți clic pe „Da” pentru a deschide o nouă fereastră de browser.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ascunde pictograma din bara de activități</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Puteți edita tastele rapide numai când sunt dezactivate.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Taste rapide</value>
   </data>

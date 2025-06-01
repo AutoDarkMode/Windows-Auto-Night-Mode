@@ -64,7 +64,8 @@
                                 Header="{helpers:ResourceString Name=BlockedProcesses}"
                                 ItemsSource="{x:Bind ViewModel.ProcessBlockListItemSource, Mode=TwoWay}"
                                 PlaceholderText="{helpers:ResourceString Name=AddApps}"
-                                QueryIcon="{ui:FontIconSource Glyph=&#xE710;, FontSize=12}"
+                                QueryIcon="{ui:FontIconSource Glyph=&#xE710;,
+                                                              FontSize=12}"
                                 SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
                                 TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
                                 TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged" />
@@ -114,7 +115,10 @@
                     Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
                     Text="{helpers:ResourceString Name=BatteryPowered}"
                     Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}" />
-                <controls:SettingsCard ContentAlignment="Left" HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}">
+                <controls:SettingsCard
+                    ContentAlignment="Left"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE858;}"
+                    Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=BatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
@@ -126,6 +130,7 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ForceLight}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyForceLightTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyForceLight, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
@@ -133,6 +138,7 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ForceDark}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyForceDarkTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyForceDark, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
@@ -140,6 +146,7 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=StopForcing}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderNoForceTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyNoForce, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
@@ -147,6 +154,7 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ToggleTheme}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderToggleThemeTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyToggleTheme, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
@@ -154,6 +162,7 @@
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=AutomaticThemeSwitch}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderToggleAutomaticThemeTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyToggleAutomaticTheme, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />
@@ -166,6 +175,7 @@
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=PauseAutoThemeSwitching}" IsEnabled="{x:Bind ViewModel.SettingsCardEnabled, Mode=OneWay}">
                     <TextBox
                         x:Name="HotkeyHeaderTogglePostponeTextBox"
+                        IsReadOnly="True"
                         PreviewKeyDown="HotkeyTextBox_KeyDown"
                         Text="{x:Bind ViewModel.HotkeyTogglePostpone, Mode=OneTime}"
                         TextChanged="HotkeyTextBox_TextChanged" />

@@ -134,6 +134,7 @@ public sealed partial class SwitchModesPage : Page
         var isShift = IsKeyDown(VirtualKey.Shift);
         var isAlt = IsKeyDown(VirtualKey.Menu);
         var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
+        var clearTextBox = IsKeyDown(VirtualKey.Escape) || IsKeyDown(VirtualKey.Back) || IsKeyDown(VirtualKey.Delete);
 
         var hotkey = "";
         hotkey += isCtrl ? "Ctrl + " : "";
@@ -146,7 +147,10 @@ public sealed partial class SwitchModesPage : Page
         {
             if (sender is TextBox textBox)
             {
-                textBox.Text = hotkey;
+                if (clearTextBox)
+                    textBox.Text = "";
+                else
+                    textBox.Text = hotkey;
             }
         }
 

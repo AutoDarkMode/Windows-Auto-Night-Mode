@@ -397,9 +397,6 @@ Klik op "Ja" om een nieuw browservenster te openen.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Systeemvakicoon verbergen</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Sneltoetsen</value>
   </data>

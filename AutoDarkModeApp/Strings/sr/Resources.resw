@@ -397,9 +397,6 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Sakrij ikonicu u sistemskoj paleti</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Možete da menjate prečice samo dok su onemogućene.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Tasterske prečice</value>
   </data>

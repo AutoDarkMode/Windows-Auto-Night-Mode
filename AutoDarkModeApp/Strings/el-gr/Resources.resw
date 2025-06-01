@@ -397,9 +397,6 @@
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Μπορείτε να επεξεργαστείτε τα πλήκτρα συντόμευσης μόνο όταν είναι απενεργοποιημένα.</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Πλήκτρα συντόμευσης</value>
   </data>
