@@ -888,6 +888,7 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
     <value>Hotkeys can be deleted by Esc, Backspace and Delete keys</value>
+  </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
 2. Change the system color to 'Light' for the light theme.
