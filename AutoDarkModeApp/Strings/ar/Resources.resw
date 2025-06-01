@@ -759,9 +759,6 @@
   <data name="StartWithWindows" xml:space="preserve">
     <value>بدء تشغيل الوضع الداكن التلقائي مع Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>خطوة</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>التوقف عن إجبار النسق</value>
   </data>
@@ -832,18 +829,6 @@
     <value>شروق الشمس</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>انقر هنا لفتح إعدادات نسق ويندوز.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>انتقل الآن إلى "الألوان" وغيّر لون النظام إلى "فاتح" لنسق الألوان الفاتح. اختر خلفية الشاشة المفضلة لديك، ومؤشر الماوس، ولون التمييز.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>ارجع إلى إعدادات النسق واحفظ النسق الخاص بك.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>كرر هذه العملية للنسق الداكن.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>برامج الطرف الثالث المستخدمة</value>
   </data>
@@ -906,5 +891,8 @@
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>لقد قمت بتعطيل إدخال بدء التشغيل التلقائي عبر Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

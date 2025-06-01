@@ -762,9 +762,6 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Porniți Auto Dark Mode cu Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Pas</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Nu mai forțați tema</value>
   </data>
@@ -835,18 +832,6 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
     <value>Răsărit</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Faceți clic aici pentru a deschide setările temei de Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Acum navigați la „Culori” și schimbați culoarea sistemului la „Deschis” pentru tema luminii. Selectați imaginea de fundal, cursorul mouse-ului și culoarea de accent preferate.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Reveniți la setările temei și salvați-vă tema.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Repetați acest proces pentru tema întunecată.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Software terță parte folosit</value>
   </data>
@@ -909,5 +894,8 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Ați dezactivat intrarea de pornire automată prin Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

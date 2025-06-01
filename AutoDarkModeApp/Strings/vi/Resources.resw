@@ -762,9 +762,6 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Khởi động Auto Dark Mode cùng Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Các bước thiết lập</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Dừng cưỡng ép chủ đề</value>
   </data>
@@ -835,18 +832,6 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Bình minh</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Bấm vào đây để mở thiết lập cho chủ đề Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Bây giờ đến phần 'Colors' và thay đổi màu hệ thống thành 'Light' cho chủ đề sáng. Chọn Wallpaper, Mouse Cursor và Accent color yêu thích của bạn.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Quay về thiết lập chủ đề Windows và lưu chủ đề của bạn.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Lặp lại những bước trên cho chủ đề tối.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Các thành phần của bên thứ ba</value>
   </data>
@@ -909,5 +894,8 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

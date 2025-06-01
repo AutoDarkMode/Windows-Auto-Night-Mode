@@ -762,9 +762,6 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Iniciar Auto Dark Mode con Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Paso</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Dejar de forzar tema</value>
   </data>
@@ -835,18 +832,6 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Amanecer</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Pulsa aquí para abrir los ajustes del tema de Windows.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Ahora ve a 'Colores' y cambia el color del sistema a 'Claro' para el tema claro. Selecciona tu fondo de pantalla, cursor y color de acento favoritos.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Vuelve a los ajustes del tema y guarda tu tema.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Repite este proceso para el tema oscuro.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Software de terceros utilizado</value>
   </data>
@@ -909,5 +894,8 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Has desactivado el inicio automático mediante Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

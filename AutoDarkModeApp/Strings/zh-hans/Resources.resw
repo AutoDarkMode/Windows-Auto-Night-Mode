@@ -201,9 +201,6 @@
   <data name="BatterySlider" xml:space="preserve">
     <value>节电模式滑动条的默认值</value>
   </data>
-  <data name="Beta" xml:space="preserve">
-    <value>测试版</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>阻塞进程</value>
   </data>
@@ -270,9 +267,6 @@
   <data name="DarkTheme" xml:space="preserve">
     <value>深色主题</value>
   </data>
-  <data name="DebugMode" xml:space="preserve">
-    <value>调试模式</value>
-  </data>
   <data name="Delay" xml:space="preserve">
     <value>推迟</value>
   </data>
@@ -337,9 +331,6 @@
   </data>
   <data name="EnergySaverMitigation" xml:space="preserve">
     <value>节电模式下暂停切换主题</value>
-  </data>
-  <data name="EnterToApply" xml:space="preserve">
-    <value>按Enter应用坐标</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>用户界面出现了问题。
@@ -447,9 +438,6 @@
   </data>
   <data name="Interval7" xml:space="preserve">
     <value>7 天</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>语言</value>
   </data>
   <data name="LastCheckedNever" xml:space="preserve">
     <value>尚未检查过更新</value>
@@ -768,14 +756,8 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="SpecialThanks" xml:space="preserve">
     <value>特别感谢</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>稳定版</value>
-  </data>
   <data name="StartWithWindows" xml:space="preserve">
     <value>开机启动 Auto Dark Mode</value>
-  </data>
-  <data name="Step" xml:space="preserve">
-    <value>步骤</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
     <value>停止强制使用主题</value>
@@ -837,18 +819,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>日出</value>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>点击此处打开 Windows 壁纸设置。</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>现在，切换至“颜色”选项卡，将系统颜色改为“浅色”。再选择您喜欢的壁纸、鼠标光标和主题色。</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>返回主题设置并保存主题。</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>设置深色主题时重复上述步骤。</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>本程序所使用的第三方软件</value>
   </data>
@@ -866,9 +836,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="Type" xml:space="preserve">
     <value>类型</value>
-  </data>
-  <data name="UnDelay" xml:space="preserve">
-    <value>未推迟</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
     <value>让 Windows 管理我的主题</value>
@@ -914,5 +881,26 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>您在 Windows 中禁用了启动项。</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>测试版</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>调试模式</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>按Enter应用坐标</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>稳定版</value>
+  </data>
+  <data name="UnDelay" xml:space="preserve">
+    <value>未推迟</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

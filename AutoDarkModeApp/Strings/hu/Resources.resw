@@ -762,9 +762,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Start Auto Dark Mode with Windows</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Lépés</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>A téma kényszerítésének leállítása</value>
   </data>
@@ -835,18 +832,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Napkelte</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Kattintson ide a Windows téma beállításainak megnyitásához.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>Most keresse meg a „Színek” elemet, és változtassa meg a rendszer színét „Világos” -ra a világos témához. Válaszd ki a kedvenc háttérképedet, egérkurzorodat és a téma színét.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Térjen vissza a téma beállításaihoz, és mentse el a témát.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Ismételje meg ezt a folyamatot a sötét témához.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Használt harmadik féltől származó szoftver</value>
   </data>
@@ -909,5 +894,8 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Letiltotta az automatikus indítási bejegyzést a Windows-on keresztül.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>

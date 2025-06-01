@@ -762,9 +762,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="StartWithWindows" xml:space="preserve">
     <value>Uruchamiaj Auto Dark Mode wraz z Windowsem</value>
   </data>
-  <data name="Step" xml:space="preserve">
-    <value>Krok</value>
-  </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Przestań wymuszać motyw</value>
   </data>
@@ -835,18 +832,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Wschód słońca</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThemeTutorialStep1_Content" xml:space="preserve">
-    <value>Kliknij tutaj, aby otworzyć ustawienia personalizacji.</value>
-  </data>
-  <data name="ThemeTutorialStep2_Content" xml:space="preserve">
-    <value>W sekcji 'Kolory' przy 'Wybierz kolor' zaznacz 'Jasny' dla jasnego motywu. Wybierz ulubione tło, wskaźniki i kolory wiodące.</value>
-  </data>
-  <data name="ThemeTutorialStep3_Content" xml:space="preserve">
-    <value>Wróć do sekcji 'Kompozycje' i zapisz kompozycję.</value>
-  </data>
-  <data name="ThemeTutorialStep4_Content" xml:space="preserve">
-    <value>Powtórz ten proces z ciemnym motywem.</value>
-  </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Zawiera oprogramowanie osób trzecich</value>
   </data>
@@ -909,5 +894,8 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Autostart został wyłączony w ustawieniach systemu Windows.</value>
+  </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
   </data>
 </root>
