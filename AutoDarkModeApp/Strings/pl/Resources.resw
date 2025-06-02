@@ -768,9 +768,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Włącz zmianę motywu Windowsa</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Tryby przełączania</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Zmień obecny motyw</value>
   </data>

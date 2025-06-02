@@ -11,16 +11,16 @@ using Windows.UI.Core;
 
 namespace AutoDarkModeApp.Views;
 
-public sealed partial class SwitchModesPage : Page
+public sealed partial class ConditionsPage : Page
 {
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
-    public SwitchModesViewModel ViewModel { get; }
+    public ConditionsViewModel ViewModel { get; }
 
-    public SwitchModesPage()
+    public ConditionsPage()
     {
-        ViewModel = App.GetService<SwitchModesViewModel>();
+        ViewModel = App.GetService<ConditionsViewModel>();
         InitializeComponent();
 
         _ = BuildProcessListAsync();

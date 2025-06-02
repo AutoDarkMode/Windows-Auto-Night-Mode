@@ -768,9 +768,6 @@
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Ενεργοποίηση εναλλαγής θέματος των Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Λειτουργίες Εναλλαγής</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Εναλλαγή τρέχοντος θέματος</value>
   </data>

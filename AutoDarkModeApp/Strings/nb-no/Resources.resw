@@ -768,9 +768,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Slå på Windowstema-bytte</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Bytt modus</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Bytt nåværende tema</value>
   </data>

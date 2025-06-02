@@ -765,9 +765,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>切换 Windows 主题</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>场景切换</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>切换当前主题</value>
   </data>

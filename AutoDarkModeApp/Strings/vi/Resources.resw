@@ -768,9 +768,6 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Bật tính năng thay đổi chủ đề Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Chuyển chủ đề</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Chuyển chủ đề hiện tại</value>
   </data>

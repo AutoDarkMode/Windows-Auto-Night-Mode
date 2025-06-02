@@ -768,9 +768,6 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows-Designwechsel aktivieren</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Wechselmodi</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Aktuelles Design wechseln</value>
   </data>

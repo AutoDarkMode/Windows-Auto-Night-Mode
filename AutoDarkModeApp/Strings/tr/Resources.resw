@@ -768,9 +768,6 @@ Bunu indirmek istiyor musunuz?
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows tema değişimini etkinleştir</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modları Değiştirme</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Geçerli temayı değiştir</value>
   </data>

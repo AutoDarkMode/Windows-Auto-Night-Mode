@@ -53,9 +53,9 @@
                     Icon="{ui:FontIcon Glyph=&#xE823;}"
                     Tag="Time" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=SwitchModes}"
+                    Content="{helpers:ResourceString Name=Conditions}"
                     Icon="{ui:FontIcon Glyph=&#xE945;}"
-                    Tag="SwitchModes" />
+                    Tag="Conditions" />
                 <!--  TODO: Update item content in resource  -->
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=SystemAreas}"

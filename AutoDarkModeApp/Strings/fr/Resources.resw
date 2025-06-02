@@ -768,9 +768,6 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Activer le changement de thème de Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modes de transition</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Changer le thème actuel</value>
   </data>

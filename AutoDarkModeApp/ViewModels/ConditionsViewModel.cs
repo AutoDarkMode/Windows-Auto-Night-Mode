@@ -8,7 +8,7 @@ using Microsoft.Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
 
-public partial class SwitchModesViewModel : ObservableRecipient
+public partial class ConditionsViewModel : ObservableRecipient
 {
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly DispatcherQueue _dispatcherQueue;
@@ -82,7 +82,7 @@ public partial class SwitchModesViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool HotkeyTogglePostponeNotificationEnabled { get; set; }
 
-    public SwitchModesViewModel(IErrorService errorService)
+    public ConditionsViewModel(IErrorService errorService)
     {
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;

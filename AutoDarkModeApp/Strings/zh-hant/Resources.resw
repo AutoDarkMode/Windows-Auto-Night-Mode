@@ -768,9 +768,6 @@
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>啟用 Windows 佈景主題切換</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>切換模式</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>切換目前主題</value>
   </data>

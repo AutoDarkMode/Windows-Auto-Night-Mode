@@ -768,9 +768,6 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Povolit přepnutí motivu Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Přepnout motivy</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Změnit současný motiv</value>
   </data>

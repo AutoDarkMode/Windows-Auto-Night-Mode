@@ -768,9 +768,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows-téma váltás engedélyezése</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Módváltás</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Jelenlegi téma váltása</value>
   </data>

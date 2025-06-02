@@ -765,9 +765,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows テーマの有効を切り替え</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>モードの切り替え</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>現在のテーマを切り替え</value>
   </data>

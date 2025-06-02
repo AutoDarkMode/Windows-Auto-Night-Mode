@@ -765,9 +765,6 @@
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>تمكين تبديل نسق Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تبديل الأوضاع</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>تبديل النسق الحالي</value>
   </data>

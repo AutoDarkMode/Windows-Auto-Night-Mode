@@ -768,9 +768,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>فعالسازی تغییر نمایه‌ی ویندوز</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تغیر حالت‌ها</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>تغییر نمایه فعلی</value>
   </data>

@@ -13,7 +13,7 @@ public class PageService : IPageService
     public PageService()
     {
         Configure<TimeViewModel, TimePage>();
-        Configure<SwitchModesViewModel, SwitchModesPage>();
+        Configure<ConditionsViewModel, ConditionsPage>();
         Configure<SystemAreasViewModel, SystemAreasPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<ScriptsViewModel, ScriptsPage>();

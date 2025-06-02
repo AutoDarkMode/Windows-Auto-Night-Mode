@@ -768,9 +768,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Nyalakan pergantian tema Windows</value>
   </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Beralih Mode</value>
-  </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Ganti tema saat ini</value>
   </data>
