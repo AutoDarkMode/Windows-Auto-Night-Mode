@@ -56,9 +56,6 @@ public partial class ConditionsViewModel : ObservableRecipient
     public partial bool HotkeysEnabled { get; set; }
 
     [ObservableProperty]
-    public partial bool SettingsCardEnabled { get; set; }
-
-    [ObservableProperty]
     public partial string? HotkeyForceLight { get; set; }
 
     [ObservableProperty]
@@ -132,7 +129,6 @@ public partial class ConditionsViewModel : ObservableRecipient
         AutoSwitchNotifyEnabled = _builder.Config.AutoSwitchNotify.Enabled;
         AutoSwitchNotifyGracePeriodMinutes = _builder.Config.AutoSwitchNotify.GracePeriodMinutes;
         HotkeysEnabled = _builder.Config.Hotkeys.Enabled;
-        SettingsCardEnabled = !HotkeysEnabled; // TODO: Give this a better name
         BatterySettingsCardVisibility = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
         HotkeyForceLight = _builder.Config.Hotkeys.ForceLight;

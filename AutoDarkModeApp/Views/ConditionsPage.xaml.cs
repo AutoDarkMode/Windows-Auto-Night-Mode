@@ -137,17 +137,25 @@ public sealed partial class ConditionsPage : Page
         hotkey += isCtrl ? "Ctrl + " : "";
         hotkey += isShift ? "Shift + " : "";
         hotkey += isAlt ? "Alt + " : "";
-        hotkey += isWin ? "Win + " : "";
+        hotkey += isWin ? "LWin + " : "";
         hotkey += GetKeyString(key);
 
-        if (!string.IsNullOrEmpty(hotkey))
+        if (string.IsNullOrEmpty(GetKeyString(key)) || (!isCtrl && !isShift && !isAlt && !isWin) && !clearTextBox)
         {
-            if (sender is TextBox textBox)
+            e.Handled = true;
+            return;
+        }
+
+        if (sender is TextBox textBox)
+        {
+            if (clearTextBox)
             {
-                if (clearTextBox)
-                    textBox.Text = "";
-                else
-                    textBox.Text = hotkey;
+                textBox.Text = null;
+                hotkey = null;
+            }
+            else
+            {
+                textBox.Text = hotkey;
             }
         }
 
@@ -178,40 +186,5 @@ public sealed partial class ConditionsPage : Page
         _builder.Save();
 
         e.Handled = true;
-    }
-
-    private void HotkeyTextBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        if (sender is TextBox textBox)
-        {
-            if (textBox.Text == "")
-            {
-                if ((TextBox)sender == HotkeyForceLightTextBox)
-                {
-                    _builder.Config.Hotkeys.ForceLight = "";
-                }
-                else if ((TextBox)sender == HotkeyForceDarkTextBox)
-                {
-                    _builder.Config.Hotkeys.ForceDark = "";
-                }
-                else if ((TextBox)sender == HotkeyHeaderNoForceTextBox)
-                {
-                    _builder.Config.Hotkeys.NoForce = "";
-                }
-                else if ((TextBox)sender == HotkeyHeaderToggleThemeTextBox)
-                {
-                    _builder.Config.Hotkeys.ToggleTheme = "";
-                }
-                else if ((TextBox)sender == HotkeyHeaderToggleAutomaticThemeTextBox)
-                {
-                    _builder.Config.Hotkeys.ToggleAutoThemeSwitch = "";
-                }
-                else if ((TextBox)sender == HotkeyHeaderTogglePostponeTextBox)
-                {
-                    _builder.Config.Hotkeys.TogglePostpone = "";
-                }
-            }
-        }
-        _builder.Save();
     }
 }
