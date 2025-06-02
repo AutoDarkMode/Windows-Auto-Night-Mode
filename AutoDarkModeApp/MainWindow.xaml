@@ -54,7 +54,7 @@
                     Tag="Time" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=Conditions}"
-                    Icon="{ui:FontIcon Glyph=&#xE945;}"
+                    Icon="{ui:FontIcon Glyph=&#xE835;}"
                     Tag="Conditions" />
                 <!--  TODO: Update item content in resource  -->
                 <NavigationViewItem
