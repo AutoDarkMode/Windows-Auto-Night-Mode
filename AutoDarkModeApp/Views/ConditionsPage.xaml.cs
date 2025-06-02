@@ -88,19 +88,16 @@ public sealed partial class ConditionsPage : Page
     private static string GetKeyString(VirtualKey key)
     {
         if (key >= VirtualKey.A && key <= VirtualKey.Z)
-        {
             return key.ToString().ToUpper();
-        }
 
         if (key >= VirtualKey.Number0 && key <= VirtualKey.Number9)
-        {
             return ((int)(key - VirtualKey.Number0)).ToString();
-        }
 
         if (key >= VirtualKey.F1 && key <= VirtualKey.F24)
-        {
             return key.ToString();
-        }
+
+        if (key == VirtualKey.Control || key == VirtualKey.Shift || key == VirtualKey.Menu || key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
+            return "";
 
         return key switch
         {
