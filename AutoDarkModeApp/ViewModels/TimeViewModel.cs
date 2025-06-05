@@ -67,6 +67,9 @@ public partial class TimeViewModel : ObservableRecipient
     public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
+    public partial int OffsetTimesMinimum { get; set; }
+
+    [ObservableProperty]
     public partial int OffsetLight { get; set; }
 
     [ObservableProperty]
@@ -222,7 +225,8 @@ public partial class TimeViewModel : ObservableRecipient
             SelectedTimeSource = TimeSourceMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
-            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            OffsetTimesMinimum = 0;
             return;
         }
 
@@ -244,6 +248,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+        OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
     }
@@ -361,6 +366,7 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Location.UseGeolocatorService = true;
                 _builder.Config.Governor = Governor.Default;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = -720;
                 break;
 
             case TimeSourceMode.CoordinateTimes:
@@ -368,6 +374,7 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = -720;
                 break;
 
             case TimeSourceMode.WindowsNightLight:
@@ -375,7 +382,8 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = 0;
                 break;
         }
 

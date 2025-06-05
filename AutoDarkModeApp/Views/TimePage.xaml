@@ -205,7 +205,8 @@
                                 MinWidth="120"
                                 Header="{helpers:ResourceString Name=Light}"
                                 LargeChange="10"
-                                Maximum="999"
+                                Maximum="720"
+                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
@@ -213,7 +214,8 @@
                                 MinWidth="120"
                                 Header="{helpers:ResourceString Name=Dark}"
                                 LargeChange="10"
-                                Maximum="999"
+                                Maximum="720"
+                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
                                 SmallChange="1"
                                 SpinButtonPlacementMode="Inline"
                                 Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
