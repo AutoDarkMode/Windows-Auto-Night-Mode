@@ -107,18 +107,17 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             VirtualKey.PageDown => "PgDn",
             VirtualKey.CapitalLock => "CapsLock",
 
-            (VirtualKey)188 => "OemComma",      // ,
-            (VirtualKey)190 => "OemPeriod",     // .
-            (VirtualKey)191 => "OemQuestion",   // /
-            (VirtualKey)187 => "OemPlus",       // =
-            (VirtualKey)189 => "OemMinus",     // -
-            (VirtualKey)219 => "OemOpenBrackets",  // [
+            (VirtualKey)188 => "OemComma", // ,
+            (VirtualKey)190 => "OemPeriod", // .
+            (VirtualKey)191 => "OemQuestion", // /
+            (VirtualKey)187 => "OemPlus", // =
+            (VirtualKey)189 => "OemMinus", // -
+            (VirtualKey)219 => "OemOpenBrackets", // [
             (VirtualKey)221 => "OemCloseBrackets", // ]
-            (VirtualKey)220 => "OemPipe",       // \
-            (VirtualKey)186 => "OemSemicolon",  // ;
-            (VirtualKey)222 => "OemQuotes",     // '
-            (VirtualKey)192 => "OemTilde",      // `
-
+            (VirtualKey)220 => "OemPipe", // \
+            (VirtualKey)186 => "OemSemicolon", // ;
+            (VirtualKey)222 => "OemQuotes", // '
+            (VirtualKey)192 => "OemTilde", // `
             _ => key.ToString(),
         };
     }
