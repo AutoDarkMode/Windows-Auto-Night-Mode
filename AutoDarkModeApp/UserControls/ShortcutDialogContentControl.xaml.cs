@@ -65,6 +65,7 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         if (clearTextBox)
         {
             hotkey = null;
+            Keys = [];
         }
         else
         {
