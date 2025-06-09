@@ -91,6 +91,8 @@ public partial class App : Application
             services.AddTransient<SystemAreasPage>();
             services.AddTransient<ConditionsViewModel>();
             services.AddTransient<ConditionsPage>();
+            services.AddTransient<HotkeysViewModel>();
+            services.AddTransient<HotkeysPage>();
             services.AddTransient<WallpaperPickerViewModel>();
             services.AddTransient<WallpaperPickerPage>();
             services.AddTransient<TimeViewModel>();

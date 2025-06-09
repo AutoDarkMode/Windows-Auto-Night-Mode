@@ -14,6 +14,7 @@ public class PageService : IPageService
     {
         Configure<TimeViewModel, TimePage>();
         Configure<ConditionsViewModel, ConditionsPage>();
+        Configure<HotkeysViewModel, HotkeysPage>();
         Configure<SystemAreasViewModel, SystemAreasPage>();
         Configure<PersonalizationViewModel, PersonalizationPage>();
         Configure<ScriptsViewModel, ScriptsPage>();

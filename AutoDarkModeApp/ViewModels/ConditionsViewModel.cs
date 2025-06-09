@@ -52,33 +52,6 @@ public partial class ConditionsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool BatteryDarkModeEnabled { get; set; }
 
-    [ObservableProperty]
-    public partial bool HotkeysEnabled { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyForceLight { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyForceDark { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyNoForce { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyToggleTheme { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyToggleAutomaticTheme { get; set; }
-
-    [ObservableProperty]
-    public partial bool HotkeyToggleAutomaticThemeNotificationEnabled { get; set; }
-
-    [ObservableProperty]
-    public partial string? HotkeyTogglePostpone { get; set; }
-
-    [ObservableProperty]
-    public partial bool HotkeyTogglePostponeNotificationEnabled { get; set; }
-
     public ConditionsViewModel(IErrorService errorService)
     {
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
@@ -128,17 +101,8 @@ public partial class ConditionsViewModel : ObservableRecipient
         IdleCheckerThreshold = _builder.Config.IdleChecker.Threshold;
         AutoSwitchNotifyEnabled = _builder.Config.AutoSwitchNotify.Enabled;
         AutoSwitchNotifyGracePeriodMinutes = _builder.Config.AutoSwitchNotify.GracePeriodMinutes;
-        HotkeysEnabled = _builder.Config.Hotkeys.Enabled;
         BatterySettingsCardVisibility = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
-        HotkeyForceLight = _builder.Config.Hotkeys.ForceLight;
-        HotkeyForceDark = _builder.Config.Hotkeys.ForceDark;
-        HotkeyNoForce = _builder.Config.Hotkeys.NoForce;
-        HotkeyToggleTheme = _builder.Config.Hotkeys.ToggleTheme;
-        HotkeyToggleAutomaticTheme = _builder.Config.Hotkeys.ToggleAutoThemeSwitch;
-        HotkeyToggleAutomaticThemeNotificationEnabled = _builder.Config.Notifications.OnAutoThemeSwitching;
-        HotkeyTogglePostpone = _builder.Config.Hotkeys.TogglePostpone;
-        HotkeyTogglePostponeNotificationEnabled = _builder.Config.Notifications.OnSkipNextSwitch;
 
         _isInitializing = false;
     }
@@ -276,54 +240,6 @@ public partial class ConditionsViewModel : ObservableRecipient
             return;
 
         _builder.Config.Events.DarkThemeOnBattery = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
-        }
-    }
-
-    partial void OnHotkeysEnabledChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        _builder.Config.Hotkeys.Enabled = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
-        }
-    }
-
-    partial void OnHotkeyToggleAutomaticThemeNotificationEnabledChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        _builder.Config.Notifications.OnAutoThemeSwitching = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
-        }
-    }
-
-    partial void OnHotkeyTogglePostponeNotificationEnabledChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        _builder.Config.Notifications.OnSkipNextSwitch = value;
         try
         {
             _builder.Save();

@@ -122,64 +122,6 @@
                     <CheckBox Content="{helpers:ResourceString Name=BatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <!--  Hotkeys  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Hotkeys}" />
-                <controls:SettingsCard Description="{helpers:ResourceString Name=HotkeyEditHint}" Header="{helpers:ResourceString Name=EnableHotkeys}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ForceLight}">
-                    <TextBox
-                        x:Name="HotkeyForceLightTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyForceLight, Mode=OneTime}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ForceDark}">
-                    <TextBox
-                        x:Name="HotkeyForceDarkTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyForceDark, Mode=OneTime}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=StopForcing}">
-                    <TextBox
-                        x:Name="HotkeyHeaderNoForceTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyNoForce, Mode=OneTime}" />
-                </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ToggleTheme}">
-                    <TextBox
-                        x:Name="HotkeyHeaderToggleThemeTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyToggleTheme, Mode=OneTime}" />
-                </controls:SettingsCard>
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=AutomaticThemeSwitch}">
-                    <TextBox
-                        x:Name="HotkeyHeaderToggleAutomaticThemeTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyToggleAutomaticTheme, Mode=OneTime}" />
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=PauseAutoThemeSwitching}">
-                    <TextBox
-                        x:Name="HotkeyHeaderTogglePostponeTextBox"
-                        IsReadOnly="True"
-                        PreviewKeyDown="HotkeyTextBox_KeyDown"
-                        Text="{x:Bind ViewModel.HotkeyTogglePostpone, Mode=OneTime}" />
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-
             </StackPanel>
         </Grid>
     </ScrollViewer>
