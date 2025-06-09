@@ -111,10 +111,6 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             VirtualKey.Delete => "Del",
             VirtualKey.PageUp => "PgUp",
             VirtualKey.PageDown => "PgDn",
-            VirtualKey.Left => "¡û",
-            VirtualKey.Right => "¡ú",
-            VirtualKey.Up => "¡ü",
-            VirtualKey.Down => "¡ý",
             VirtualKey.CapitalLock => "CapsLock",
             _ => key.ToString(),
         };
