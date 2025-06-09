@@ -43,6 +43,12 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     {
         var key = e.Key;
 
+        if(IsKeyDown(VirtualKey.Tab))
+        {
+            e.Handled = false;
+            return;
+        }
+
         var isCtrl = IsKeyDown(VirtualKey.Control);
         var isShift = IsKeyDown(VirtualKey.Shift);
         var isAlt = IsKeyDown(VirtualKey.Menu);
@@ -107,7 +113,6 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             VirtualKey.Enter => "Enter",
             VirtualKey.Escape => "Esc",
             VirtualKey.Space => "Space",
-            VirtualKey.Tab => "Tab",
             VirtualKey.Back => "Backspace",
             VirtualKey.Delete => "Del",
             VirtualKey.PageUp => "PgUp",
