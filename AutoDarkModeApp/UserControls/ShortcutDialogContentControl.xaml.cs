@@ -47,16 +47,22 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         var isShift = IsKeyDown(VirtualKey.Shift);
         var isAlt = IsKeyDown(VirtualKey.Menu);
         var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
-        var clearTextBox = IsKeyDown(VirtualKey.Escape) || IsKeyDown(VirtualKey.Back) || IsKeyDown(VirtualKey.Delete);
+        var clearTextBox = IsKeyDown(VirtualKey.Escape) || IsKeyDown(VirtualKey.Back) || IsKeyDown(VirtualKey.Delete); // NOTE: this doesn't work anymore  
 
-        var hotkey = "";
-        hotkey += isCtrl ? "Ctrl + " : "";
-        hotkey += isShift ? "Shift + " : "";
-        hotkey += isAlt ? "Alt + " : "";
-        hotkey += isWin ? "LWin + " : "";
-        hotkey += GetKeyString(key);
+        // Build an array of modifier strings, then join with " + " as delimiter  
+        var modifiers = new List<string>();
+        if (isCtrl) modifiers.Add("Ctrl");
+        if (isShift) modifiers.Add("Shift");
+        if (isAlt) modifiers.Add("Alt");
+        if (isWin) modifiers.Add("LWin");
 
-        if (string.IsNullOrEmpty(GetKeyString(key)) || (!isCtrl && !isShift && !isAlt && !isWin) && !clearTextBox)
+        var keyString = GetKeyString(key);
+        if (!string.IsNullOrEmpty(keyString))
+            modifiers.Add(keyString);
+
+        var hotkeyString = string.Join(" + ", modifiers); // Renamed variable to 'hotkeyString' to avoid conflict  
+
+        if (string.IsNullOrEmpty(GetKeyString(key)) || !isCtrl && !isShift && !isAlt && !isWin && !clearTextBox)
         {
             e.Handled = true;
             return;
@@ -64,15 +70,15 @@ public sealed partial class ShortcutDialogContentControl : UserControl
 
         if (clearTextBox)
         {
-            hotkey = null;
+            hotkeyString = null;
             Keys = [];
         }
         else
         {
-            Keys = hotkey.Split('+').Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
+            Keys = hotkeyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
         }
 
-        CapturedHotkeys = hotkey;
+        CapturedHotkeys = hotkeyString;
 
         e.Handled = true;
     }
@@ -85,16 +91,16 @@ public sealed partial class ShortcutDialogContentControl : UserControl
 
     private static string GetKeyString(VirtualKey key)
     {
-        if (key >= VirtualKey.A && key <= VirtualKey.Z)
+        if (key is >= VirtualKey.A and <= VirtualKey.Z)
             return key.ToString().ToUpper();
 
-        if (key >= VirtualKey.Number0 && key <= VirtualKey.Number9)
-            return ((int)(key - VirtualKey.Number0)).ToString();
+        if (key is >= VirtualKey.Number0 and <= VirtualKey.Number9)
+            return (key - VirtualKey.Number0).ToString();
 
-        if (key >= VirtualKey.F1 && key <= VirtualKey.F24)
+        if (key is >= VirtualKey.F1 and <= VirtualKey.F24)
             return key.ToString();
 
-        if (key == VirtualKey.Control || key == VirtualKey.Shift || key == VirtualKey.Menu || key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
+        if (key is VirtualKey.Control or VirtualKey.Shift or VirtualKey.Menu or VirtualKey.LeftWindows or VirtualKey.RightWindows)
             return "";
 
         return key switch

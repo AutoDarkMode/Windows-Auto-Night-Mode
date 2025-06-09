@@ -92,6 +92,7 @@ public sealed partial class HotkeysPage : Page
         };
 
         var dialogContent = new ShortcutDialogContentControl();
+
         if (keyString != null)
         {
             dialogContent.Keys = keyString.Split('+').Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
@@ -119,6 +120,7 @@ public sealed partial class HotkeysPage : Page
         {
             return;
         }
+
         switch (hotkeyData.Tag)
         {
             case "ForceLight":
@@ -140,6 +142,7 @@ public sealed partial class HotkeysPage : Page
                 _builder.Config.Hotkeys.TogglePostpone = dialogContent.CapturedHotkeys;
                 break;
         }
+
         try
         {
             _builder.Save();
