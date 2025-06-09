@@ -11,7 +11,7 @@
         Orientation="Vertical"
         PreviewKeyDown="StackPanel_PreviewKeyDown"
         Spacing="16">
-        <TextBlock Text="Press the key combination to change this shortcut key" />
+        <TextBlock Text="Select the key combination" />
         <ItemsControl
             Height="56"
             Margin="0,24,0,24"
@@ -26,15 +26,18 @@
                 <DataTemplate x:DataType="local:SingleHotkeyDataObject">
                     <Grid>
                         <Border
-                            Width="56"
+                            MinWidth="48"
                             Height="48"
-                            Background="{StaticResource AccentFillColorDefaultBrush}"
+                            Background="{ThemeResource AccentFillColorDefaultBrush}"
                             CornerRadius="{StaticResource ControlCornerRadius}">
                             <ContentPresenter
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
+                                Padding="4"
                                 Content="{x:Bind Key}"
-                                Foreground="{StaticResource TextOnAccentFillColorPrimaryBrush}" />
+                                FontWeight="SemiBold"
+                                FontSize="18"
+                                Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}" />
                         </Border>
                     </Grid>
                 </DataTemplate>

@@ -14,16 +14,18 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Hotkeys  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Hotkeys}" />
-                <controls:SettingsCard Description="{helpers:ResourceString Name=HotkeyEditHint}" Header="{helpers:ResourceString Name=EnableHotkeys}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                
                 <ListView
                     x:Name="HotkeysItemView"
                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
@@ -36,7 +38,7 @@
                             <controls:SettingsCard Header="{x:Bind Name}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
-                                        Width="144"
+                                        MinWidth="160"
                                         IsReadOnly="True"
                                         Text="{x:Bind Keys, Mode=OneWay}" />
                                     <Button
@@ -45,7 +47,7 @@
                                         Padding="0"
                                         Click="EditHotkeysButton_Click">
                                         <Button.Content>
-                                            <FontIcon FontSize="14" Glyph="&#xE70F;" />
+                                            <FontIcon FontSize="16" Glyph="&#xE70F;" />
                                         </Button.Content>
                                     </Button>
                                 </StackPanel>
@@ -55,10 +57,8 @@
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
-                            <Setter Property="Margin" Value="0,2" />
+                            <Setter Property="Margin" Value="0,0,0,4" />
                             <Setter Property="Padding" Value="0" />
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="HorizontalAlignment" Value="Stretch" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </ListView.ItemContainerStyle>
