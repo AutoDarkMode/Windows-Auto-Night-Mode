@@ -55,12 +55,22 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
         var clearTextBox = IsKeyDown(VirtualKey.Escape) || IsKeyDown(VirtualKey.Back) || IsKeyDown(VirtualKey.Delete);
 
-        var hotkey = "";
-        hotkey += isCtrl ? "Ctrl + " : "";
-        hotkey += isShift ? "Shift + " : "";
-        hotkey += isAlt ? "Alt + " : "";
-        hotkey += isWin ? "LWin + " : "";
-        hotkey += GetKeyString(key);
+        // Build an array of modifier strings, then join with " + " as delimiter
+        var modifiers = new List<string>();
+        if (isCtrl)
+            modifiers.Add("Ctrl");
+        if (isShift)
+            modifiers.Add("Shift");
+        if (isAlt)
+            modifiers.Add("Alt");
+        if (isWin)
+            modifiers.Add("LWin");
+
+        var keyString = GetKeyString(key);
+        if (!string.IsNullOrEmpty(keyString))
+            modifiers.Add(keyString);
+
+        var hotkeyString = string.Join(" + ", modifiers); // Renamed variable to 'hotkeyString' to avoid conflict
 
         if (string.IsNullOrEmpty(GetKeyString(key)) || (!isCtrl && !isShift && !isAlt && !isWin) && !clearTextBox)
         {
@@ -70,15 +80,15 @@ public sealed partial class ShortcutDialogContentControl : UserControl
 
         if (clearTextBox)
         {
-            hotkey = null;
+            hotkeyString = null;
             Keys = [];
         }
         else
         {
-            Keys = hotkey.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
+            Keys = hotkeyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
         }
 
-        CapturedHotkeys = hotkey;
+        CapturedHotkeys = hotkeyString;
 
         e.Handled = true;
     }
@@ -91,7 +101,7 @@ public sealed partial class ShortcutDialogContentControl : UserControl
 
     private static string GetKeyString(VirtualKey key)
     {
-        if (key == VirtualKey.Control || key == VirtualKey.Shift || key == VirtualKey.Menu || key == VirtualKey.LeftWindows || key == VirtualKey.RightWindows)
+        if (key is VirtualKey.Control or VirtualKey.Shift or VirtualKey.Menu or VirtualKey.LeftWindows or VirtualKey.RightWindows)
             return "";
 
         return key switch
