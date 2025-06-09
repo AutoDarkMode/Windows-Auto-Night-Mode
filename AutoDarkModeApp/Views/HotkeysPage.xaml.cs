@@ -95,7 +95,7 @@ public sealed partial class HotkeysPage : Page
 
         if (keyString != null)
         {
-            dialogContent.Keys = keyString.Split('+').Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
+            dialogContent.Keys = keyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
         }
 
         var shortcutDialog = new ContentDialog()

@@ -42,7 +42,6 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     private void StackPanel_PreviewKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
     {
         var key = e.Key;
-        System.Diagnostics.Debug.WriteLine($"Key pressed: {key}");
 
         if (IsKeyDown(VirtualKey.Tab))
         {
