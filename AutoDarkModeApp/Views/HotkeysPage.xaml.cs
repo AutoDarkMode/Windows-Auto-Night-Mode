@@ -1,4 +1,6 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.UserControls;
@@ -121,26 +123,26 @@ public sealed partial class HotkeysPage : Page
             return;
         }
 
-        switch (hotkeyData.Tag)
+        var collection = (ObservableCollection<HotkeysDataObject>)HotkeysItemView.ItemsSource;
+        var tag = hotkeyData.Tag;
+
+        var propertyMap = new Dictionary<string, (Action<string> Setter, string Tag)>
         {
-            case "ForceLight":
-                _builder.Config.Hotkeys.ForceLight = dialogContent.CapturedHotkeys;
-                break;
-            case "ForceDark":
-                _builder.Config.Hotkeys.ForceDark = dialogContent.CapturedHotkeys;
-                break;
-            case "StopForcing":
-                _builder.Config.Hotkeys.NoForce = dialogContent.CapturedHotkeys;
-                break;
-            case "ToggleTheme":
-                _builder.Config.Hotkeys.ToggleTheme = dialogContent.CapturedHotkeys;
-                break;
-            case "AutomaticThemeSwitch":
-                _builder.Config.Hotkeys.ToggleAutoThemeSwitch = dialogContent.CapturedHotkeys;
-                break;
-            case "PauseAutoThemeSwitching":
-                _builder.Config.Hotkeys.TogglePostpone = dialogContent.CapturedHotkeys;
-                break;
+            ["ForceLight"] = (v => _builder.Config.Hotkeys.ForceLight = v, "ForceLight"),
+            ["ForceDark"] = (v => _builder.Config.Hotkeys.ForceDark = v, "ForceDark"),
+            ["StopForcing"] = (v => _builder.Config.Hotkeys.NoForce = v, "StopForcing"),
+            ["ToggleTheme"] = (v => _builder.Config.Hotkeys.ToggleTheme = v, "ToggleTheme"),
+            ["AutomaticThemeSwitch"] = (v => _builder.Config.Hotkeys.ToggleAutoThemeSwitch = v, "AutomaticThemeSwitch"),
+            ["PauseAutoThemeSwitching"] = (v => _builder.Config.Hotkeys.TogglePostpone = v, "PauseAutoThemeSwitching")
+        };
+
+        if (propertyMap.TryGetValue(tag!, out var config))
+        {
+            config.Setter(dialogContent.CapturedHotkeys!);
+            if (collection.FirstOrDefault(h => h.Tag == config.Tag) is { } itemToUpdate)
+            {
+                itemToUpdate.Keys = dialogContent.CapturedHotkeys;
+            }
         }
 
         try
@@ -151,13 +153,49 @@ public sealed partial class HotkeysPage : Page
         {
             await _errorService.ShowErrorMessage(ex, this.XamlRoot, "HotkeysPage");
         }
-        LoadSettings();
     }
 }
 
-public class HotkeysDataObject
+public partial class HotkeysDataObject : INotifyPropertyChanged
 {
-    public string? Name { get; set; }
-    public string? Keys { get; set; }
-    public string? Tag { get; set; }
+    private string? _name { get; set; }
+    private string? _keys { get; set; }
+    private string? _tag { get; set; }
+
+    public string? Name
+    {
+        get => _name;
+        set
+        {
+            _name = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? Keys
+    {
+        get => _keys;
+        set
+        {
+            _keys = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string? Tag
+    {
+        get => _tag;
+        set
+        {
+            _tag = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }
