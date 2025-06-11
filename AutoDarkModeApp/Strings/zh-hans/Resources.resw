@@ -750,9 +750,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>在启用时显示通知</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>特别感谢</value>
   </data>

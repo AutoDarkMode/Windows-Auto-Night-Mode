@@ -753,9 +753,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Settings" xml:space="preserve">
     <value>تنظیمات</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>

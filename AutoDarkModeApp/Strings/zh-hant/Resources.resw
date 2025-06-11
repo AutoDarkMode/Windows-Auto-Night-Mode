@@ -753,9 +753,6 @@
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>切換主題時顯示通知</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>特別感謝</value>
   </data>

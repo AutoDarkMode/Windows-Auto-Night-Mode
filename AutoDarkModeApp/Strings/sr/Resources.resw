@@ -753,9 +753,6 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Postavke</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Prikaži obaveštenje kad se pritisne</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Posebna zahvalnost</value>
   </data>

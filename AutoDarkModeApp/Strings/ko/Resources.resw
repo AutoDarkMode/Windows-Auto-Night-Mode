@@ -753,9 +753,6 @@
   <data name="Settings" xml:space="preserve">
     <value>설정</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>전환에 알림 표시</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>특별히 감사합니다</value>
   </data>

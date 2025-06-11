@@ -753,9 +753,6 @@ Installerad version: {0}, ny version: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Inställningar</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>

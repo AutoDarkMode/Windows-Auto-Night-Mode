@@ -753,9 +753,6 @@
   <data name="Settings" xml:space="preserve">
     <value>Ρυθμίσεις</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Θερμές ευχαριστίες</value>
   </data>

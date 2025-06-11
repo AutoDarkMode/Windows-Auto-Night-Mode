@@ -752,9 +752,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>
@@ -917,5 +914,11 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>UnDelay</value>
+  </data>
+  <data name="ShowNotificationPostponeToggled" xml:space="preserve">
+    <value>Show notification when the automatic theme switch is paused</value>
+  </data>
+  <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
+    <value>Show notification when toggling the automatic theme switch</value>
   </data>
 </root>

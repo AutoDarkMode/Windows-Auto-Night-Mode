@@ -753,9 +753,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Setelan</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Tampilkan notifikasi saat beralih</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Terima kasih spesial</value>
   </data>

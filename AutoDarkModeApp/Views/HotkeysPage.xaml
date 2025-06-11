@@ -17,15 +17,15 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                
-                <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
+
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                
-                <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=ShowNotificationToggled}" IsChecked="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
+
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                
+
                 <ListView
                     x:Name="HotkeysItemView"
                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"

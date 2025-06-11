@@ -753,9 +753,6 @@ Versão instalada: {0}, Versão nova: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Definições</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Mostrar notificação na mudança</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Obrigado especial</value>
   </data>

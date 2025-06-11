@@ -753,9 +753,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Beállítások</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Értesítés megjelenítése váltáskor</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Külön köszönet</value>
   </data>

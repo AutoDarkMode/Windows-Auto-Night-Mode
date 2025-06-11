@@ -753,9 +753,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Innstillinger</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Vis varsling på bryter</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>En spesiell takk</value>
   </data>

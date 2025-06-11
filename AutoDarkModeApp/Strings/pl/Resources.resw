@@ -753,9 +753,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Pokazuj powiadomienia przy przełączaniu</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Specjalne podziękowania</value>
   </data>

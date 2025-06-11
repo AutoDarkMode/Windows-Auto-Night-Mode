@@ -750,9 +750,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>切り替え時に通知を表示</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>謝辞</value>
   </data>

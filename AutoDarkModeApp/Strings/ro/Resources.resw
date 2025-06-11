@@ -753,9 +753,6 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Setări</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Afișează notificarea la schimbare</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Mulțumiri speciale</value>
   </data>

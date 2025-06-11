@@ -753,9 +753,6 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Zobrazit oznámení při přepnutí</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Zvláštní poděkování</value>
   </data>

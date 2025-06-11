@@ -753,9 +753,6 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Paramètres</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Afficher la notification lors de la bascule</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Remerciements particuliers</value>
   </data>

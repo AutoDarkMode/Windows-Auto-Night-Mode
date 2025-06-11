@@ -750,9 +750,6 @@
   <data name="Settings" xml:space="preserve">
     <value>إعدادات</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>إظهار الإشعار عند التبديل</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>شكر خاص</value>
   </data>

@@ -753,9 +753,6 @@
   <data name="Settings" xml:space="preserve">
     <value>Параметры</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Показать уведомление при переключении</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Особая благодарность</value>
   </data>

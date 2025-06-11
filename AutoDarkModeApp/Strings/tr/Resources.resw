@@ -753,9 +753,6 @@ Bunu indirmek istiyor musunuz?
   <data name="Settings" xml:space="preserve">
     <value>Ayarlar</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Değişimlerde bildirim göster</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Özel teşekkürler</value>
   </data>

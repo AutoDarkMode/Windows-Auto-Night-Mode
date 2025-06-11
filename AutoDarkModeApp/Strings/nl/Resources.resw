@@ -753,9 +753,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Instellingen</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Melding weergeven bij schakelen</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Speciale dank</value>
   </data>

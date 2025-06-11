@@ -753,9 +753,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="Settings" xml:space="preserve">
     <value>Налаштування</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Показувати сповіщення за перемикання</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Особлива подяка</value>
   </data>
