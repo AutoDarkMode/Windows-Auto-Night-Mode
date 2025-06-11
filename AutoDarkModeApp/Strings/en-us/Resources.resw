@@ -881,7 +881,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Hotkeys can be deleted by Esc, Backspace and Delete keys</value>
+    <value>Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
@@ -920,5 +920,14 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
     <value>Show notification when toggling the automatic theme switch</value>
+  </data>
+  <data name="SelectTheKeyCombination" xml:space="preserve">
+    <value>Press a combination of keys to change this shortcut</value>
+  </data>
+  <data name="ActivationShortcut" xml:space="preserve">
+    <value>Activation shortcut</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

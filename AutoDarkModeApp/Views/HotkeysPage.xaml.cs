@@ -104,11 +104,11 @@ public sealed partial class HotkeysPage : Page
         {
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "Activate shortcut key",
-            CloseButtonText = "Cancel",
+            Title = "ActivationShortcut".GetLocalized(),
+            CloseButtonText = "Cancel".GetLocalized(),
             DefaultButton = ContentDialogButton.Primary,
-            PrimaryButtonText = "Save",
-            SecondaryButtonText = "Reset",
+            PrimaryButtonText = "Save".GetLocalized(),
+            SecondaryButtonText = "Reset".GetLocalized(),
             Content = dialogContent,
         };
 
@@ -133,7 +133,7 @@ public sealed partial class HotkeysPage : Page
             ["StopForcing"] = (v => _builder.Config.Hotkeys.NoForce = v, "StopForcing"),
             ["ToggleTheme"] = (v => _builder.Config.Hotkeys.ToggleTheme = v, "ToggleTheme"),
             ["AutomaticThemeSwitch"] = (v => _builder.Config.Hotkeys.ToggleAutoThemeSwitch = v, "AutomaticThemeSwitch"),
-            ["PauseAutoThemeSwitching"] = (v => _builder.Config.Hotkeys.TogglePostpone = v, "PauseAutoThemeSwitching")
+            ["PauseAutoThemeSwitching"] = (v => _builder.Config.Hotkeys.TogglePostpone = v, "PauseAutoThemeSwitching"),
         };
 
         if (propertyMap.TryGetValue(tag!, out var config))
