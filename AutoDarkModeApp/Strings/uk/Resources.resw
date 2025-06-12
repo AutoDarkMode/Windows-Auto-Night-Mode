@@ -892,4 +892,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
+  </data>
 </root>

@@ -892,4 +892,7 @@ Bunu indirmek istiyor musunuz?
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
+  </data>
 </root>

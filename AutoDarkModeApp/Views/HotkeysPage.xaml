@@ -21,7 +21,7 @@
                         Content="{helpers:ResourceString Name=SaveSettings}"
                         ToolTipService.ToolTip="{helpers:ResourceString Name=Msg_HotkeyProblem}" />
                 </Grid>
-                
+
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
@@ -34,16 +34,10 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <ListView
-                    x:Name="HotkeysItemView"
-                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                    ScrollViewer.HorizontalScrollMode="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                    ScrollViewer.VerticalScrollMode="Disabled"
-                    SelectionMode="None">
-                    <ListView.ItemTemplate>
+                <ItemsRepeater x:Name="HotkeysItemView">
+                    <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:HotkeysDataObject">
-                            <controls:SettingsCard Header="{x:Bind DisplayName}">
+                            <controls:SettingsCard Margin="0,0,0,4" Header="{x:Bind DisplayName}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
                                         MinWidth="160"
@@ -53,6 +47,7 @@
                                         Width="32"
                                         Height="32"
                                         Padding="0"
+                                        AutomationProperties.Name="{helpers:ResourceString Name=EditHotkey}"
                                         Click="EditHotkeysButton_Click">
                                         <Button.Content>
                                             <FontIcon FontSize="16" Glyph="&#xE70F;" />
@@ -61,16 +56,8 @@
                                 </StackPanel>
                             </controls:SettingsCard>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="Margin" Value="0,0,0,4" />
-                            <Setter Property="Padding" Value="0" />
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
 
             </StackPanel>
         </Grid>

@@ -892,4 +892,7 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
+  </data>
 </root>
