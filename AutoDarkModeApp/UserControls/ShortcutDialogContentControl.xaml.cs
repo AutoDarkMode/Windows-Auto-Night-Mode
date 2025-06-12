@@ -47,8 +47,8 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             return;
         }
 
-        var key = e.Key;
-        var keyString = GetKeyString(key);
+        VirtualKey key = e.Key;
+        string keyString = GetKeyString(key);
 
         var isCtrl = IsKeyDown(VirtualKey.Control);
         var isShift = IsKeyDown(VirtualKey.Shift);
@@ -62,19 +62,18 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         }
 
         // Updated code to handle null values explicitly and avoid CS8604
-        var modifiers = new List<string>
+        List<string> modifiers = new List<string>
         {
             isCtrl ? "Ctrl" : string.Empty,
             isShift ? "Shift" : string.Empty,
             isAlt ? "Alt" : string.Empty,
-            isWin ? "LWin" : string.Empty,
+            isWin ? "Win" : string.Empty,
             keyString
-        }.Where(modifier => !string.IsNullOrEmpty(modifier)).ToList();
-
-        var hotkeyString = string.Join(" + ", modifiers);
+        }.Where(modifier => !string.IsNullOrEmpty(modifier))
+        .ToList();
 
         Keys = modifiers.Select(mod => new SingleHotkeyDataObject { Key = mod }).ToList();
-        CapturedHotkeys = hotkeyString;
+        CapturedHotkeys = string.Join(" + ", modifiers);
 
         e.Handled = true;
     }

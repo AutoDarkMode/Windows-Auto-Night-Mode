@@ -6,6 +6,7 @@ using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.UserControls;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -37,48 +38,38 @@ public sealed partial class HotkeysPage : Page
 
     private void LoadSettings()
     {
-        HotkeysItemView.ItemsSource = new ObservableCollection<HotkeysDataObject>
+        var hotkeyConfigs = new[]
         {
-            new()
-            {
-                Name = "ForceLight".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.ForceLight,
-                Tag = "ForceLight",
-            },
-            new()
-            {
-                Name = "ForceDark".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.ForceDark,
-                Tag = "ForceDark",
-            },
-            new()
-            {
-                Name = "StopForcing".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.NoForce,
-                Tag = "StopForcing",
-            },
-            new()
-            {
-                Name = "ToggleTheme".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.ToggleTheme,
-                Tag = "ToggleTheme",
-            },
-            new()
-            {
-                Name = "AutomaticThemeSwitch".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.ToggleAutoThemeSwitch,
-                Tag = "AutomaticThemeSwitch",
-            },
-            new()
-            {
-                Name = "PauseAutoThemeSwitching".GetLocalized(),
-                Keys = _builder.Config.Hotkeys.TogglePostpone,
-                Tag = "PauseAutoThemeSwitching",
-            },
+            new { NameKey = "ForceLight", ConfigKey = nameof(Hotkeys.ForceLight) },
+            new { NameKey = "ForceDark", ConfigKey = nameof(Hotkeys.ForceDark) },
+            new { NameKey = "StopForcing", ConfigKey = nameof(Hotkeys.NoForce) },
+            new { NameKey = "ToggleTheme", ConfigKey = nameof(Hotkeys.ToggleTheme) },
+            new { NameKey = "AutomaticThemeSwitch", ConfigKey = nameof(Hotkeys.ToggleAutoThemeSwitch) },
+            new { NameKey = "PauseAutoThemeSwitching", ConfigKey = nameof(Hotkeys.TogglePostpone) },
         };
+
+        var hotkeysCollection = new ObservableCollection<HotkeysDataObject>(
+            hotkeyConfigs.Select(cfg =>
+            {
+                var propertyInfo = typeof(Hotkeys).GetProperty(cfg.ConfigKey);
+                if (propertyInfo == null)
+                {
+                    throw new InvalidOperationException($"Property '{cfg.ConfigKey}' not found on type 'Hotkeys'.");
+                }
+
+                return new HotkeysDataObject
+                {
+                    DisplayName = cfg.NameKey.GetLocalized(),
+                    Keys = (string?)propertyInfo.GetValue(_builder.Config.Hotkeys),
+                    Tag = cfg.NameKey,
+                };
+            })
+        );
+
+        HotkeysItemView.ItemsSource = hotkeysCollection;
     }
 
-    private async void EditHotkeysButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void EditHotkeysButton_Click(object sender, RoutedEventArgs e)
     {
         if (sender is not Button button || button.DataContext is not HotkeysDataObject hotkeyData)
             return;
@@ -183,7 +174,7 @@ public partial class HotkeysDataObject : INotifyPropertyChanged
     private string? _keys { get; set; }
     private string? _tag { get; set; }
 
-    public string? Name
+    public string? DisplayName
     {
         get => _name;
         set
