@@ -154,6 +154,27 @@ public sealed partial class HotkeysPage : Page
             await _errorService.ShowErrorMessage(ex, this.XamlRoot, "HotkeysPage");
         }
     }
+
+    private void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
+    {
+        var collection = (ObservableCollection<HotkeysDataObject>)HotkeysItemView.ItemsSource;
+
+        _builder.Config.Hotkeys.ForceLight = collection.FirstOrDefault(h => h.Tag == "ForceLight")?.Keys;
+        _builder.Config.Hotkeys.ForceDark = collection.FirstOrDefault(h => h.Tag == "ForceDark")?.Keys;
+        _builder.Config.Hotkeys.NoForce = collection.FirstOrDefault(h => h.Tag == "StopForcing")?.Keys;
+        _builder.Config.Hotkeys.ToggleTheme = collection.FirstOrDefault(h => h.Tag == "ToggleTheme")?.Keys;
+        _builder.Config.Hotkeys.ToggleAutoThemeSwitch = collection.FirstOrDefault(h => h.Tag == "AutomaticThemeSwitch")?.Keys;
+        _builder.Config.Hotkeys.TogglePostpone = collection.FirstOrDefault(h => h.Tag == "PauseAutoThemeSwitching")?.Keys;
+
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, this.XamlRoot, "HotkeysPage");
+        }
+    }
 }
 
 public partial class HotkeysDataObject : INotifyPropertyChanged

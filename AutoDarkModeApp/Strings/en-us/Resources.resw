@@ -930,4 +930,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Save settings</value>
+  </data>
+  <data name="Msg_HotkeyProblem" xml:space="preserve">
+    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+  </data>
 </root>
