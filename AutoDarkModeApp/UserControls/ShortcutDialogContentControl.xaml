@@ -12,7 +12,8 @@
         Orientation="Vertical"
         PreviewKeyDown="StackPanel_PreviewKeyDown"
         Spacing="16">
-        <TextBlock Text="{helpers:ResourceString Name=SelectTheKeyCombination}" />
+        <TextBlock Text="{helpers:ResourceString Name=SelectTheKeyCombination}" TextWrapping="Wrap" />
+
         <ItemsControl
             Height="56"
             Margin="0,24,0,24"
@@ -44,7 +45,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="{helpers:ResourceString Name=HotkeyEditHint}" />
     </StackPanel>
 
 </UserControl>

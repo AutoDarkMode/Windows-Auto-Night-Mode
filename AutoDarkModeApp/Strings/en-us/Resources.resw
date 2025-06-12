@@ -880,9 +880,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid</value>
-  </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
 2. Change the system color to 'Light' for the light theme.
@@ -922,7 +919,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Show notification when toggling the automatic theme switch</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Press a combination of keys to change this shortcut</value>
+    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
     <value>Activation shortcut</value>

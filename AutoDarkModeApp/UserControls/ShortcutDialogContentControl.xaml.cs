@@ -41,53 +41,39 @@ public sealed partial class ShortcutDialogContentControl : UserControl
 
     private void StackPanel_PreviewKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
     {
-        var key = e.Key;
-
         if (IsKeyDown(VirtualKey.Tab))
         {
             e.Handled = false;
             return;
         }
 
+        var key = e.Key;
+        var keyString = GetKeyString(key);
+
         var isCtrl = IsKeyDown(VirtualKey.Control);
         var isShift = IsKeyDown(VirtualKey.Shift);
         var isAlt = IsKeyDown(VirtualKey.Menu);
         var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
-        var clearTextBox = IsKeyDown(VirtualKey.Escape) || IsKeyDown(VirtualKey.Back) || IsKeyDown(VirtualKey.Delete);
 
-        // Build an array of modifier strings, then join with " + " as delimiter
-        var modifiers = new List<string>();
-        if (isCtrl)
-            modifiers.Add("Ctrl");
-        if (isShift)
-            modifiers.Add("Shift");
-        if (isAlt)
-            modifiers.Add("Alt");
-        if (isWin)
-            modifiers.Add("LWin");
-
-        var keyString = GetKeyString(key);
-        if (!string.IsNullOrEmpty(keyString))
-            modifiers.Add(keyString);
-
-        var hotkeyString = string.Join(" + ", modifiers); // Renamed variable to 'hotkeyString' to avoid conflict
-
-        if (string.IsNullOrEmpty(GetKeyString(key)) || (!isCtrl && !isShift && !isAlt && !isWin) && !clearTextBox)
+        if (string.IsNullOrEmpty(keyString) || !(isCtrl || isShift || isAlt || isWin))
         {
             e.Handled = true;
             return;
         }
 
-        if (clearTextBox)
+        // Updated code to handle null values explicitly and avoid CS8604
+        var modifiers = new List<string>
         {
-            hotkeyString = null;
-            Keys = [];
-        }
-        else
-        {
-            Keys = hotkeyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
-        }
+            isCtrl ? "Ctrl" : string.Empty,
+            isShift ? "Shift" : string.Empty,
+            isAlt ? "Alt" : string.Empty,
+            isWin ? "LWin" : string.Empty,
+            keyString
+        }.Where(modifier => !string.IsNullOrEmpty(modifier)).ToList();
 
+        var hotkeyString = string.Join(" + ", modifiers);
+
+        Keys = modifiers.Select(mod => new SingleHotkeyDataObject { Key = mod }).ToList();
         CapturedHotkeys = hotkeyString;
 
         e.Handled = true;

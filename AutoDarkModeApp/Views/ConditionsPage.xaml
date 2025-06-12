@@ -18,7 +18,6 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Conditions  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Conditions}" />
                 <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE7FC;}">
                     <controls:SettingsExpander.Header>
                         <CheckBox

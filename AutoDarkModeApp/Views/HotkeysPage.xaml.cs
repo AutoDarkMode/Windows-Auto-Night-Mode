@@ -104,11 +104,11 @@ public sealed partial class HotkeysPage : Page
         {
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ActivationShortcut".GetLocalized(),
+            Title = "ActivationShortcut".GetLocalized() + " - " + hotkeyData.Tag,
             CloseButtonText = "Cancel".GetLocalized(),
-            DefaultButton = ContentDialogButton.Primary,
             PrimaryButtonText = "Save".GetLocalized(),
             SecondaryButtonText = "Reset".GetLocalized(),
+            DefaultButton = ContentDialogButton.Primary,
             Content = dialogContent,
         };
 
