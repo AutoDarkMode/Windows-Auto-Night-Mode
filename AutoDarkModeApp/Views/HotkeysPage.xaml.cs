@@ -51,12 +51,7 @@ public sealed partial class HotkeysPage : Page
         var hotkeysCollection = new ObservableCollection<HotkeysDataObject>(
             hotkeyConfigs.Select(cfg =>
             {
-                var propertyInfo = typeof(Hotkeys).GetProperty(cfg.ConfigKey);
-                if (propertyInfo == null)
-                {
-                    throw new InvalidOperationException($"Property '{cfg.ConfigKey}' not found on type 'Hotkeys'.");
-                }
-
+                var propertyInfo = typeof(Hotkeys).GetProperty(cfg.ConfigKey) ?? throw new InvalidOperationException($"Property '{cfg.ConfigKey}' not found on type 'Hotkeys'.");
                 return new HotkeysDataObject
                 {
                     DisplayName = cfg.NameKey.GetLocalized(),
@@ -71,7 +66,7 @@ public sealed partial class HotkeysPage : Page
 
     private async void EditHotkeysButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is not Button button || button.DataContext is not HotkeysDataObject hotkeyData)
+        if (sender is not Button button || button.CommandParameter is not HotkeysDataObject hotkeyData)
             return;
 
         var keyString = hotkeyData.Tag switch
@@ -88,7 +83,7 @@ public sealed partial class HotkeysPage : Page
 
         if (keyString != null)
         {
-            dialogContent.Keys = keyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
+            dialogContent.HotkeyCombination = keyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
         }
 
         var shortcutDialog = new ContentDialog()
@@ -106,7 +101,7 @@ public sealed partial class HotkeysPage : Page
         var result = await shortcutDialog.ShowAsync();
         if (result == ContentDialogResult.Secondary)
         {
-            dialogContent.Keys?.Clear();
+            dialogContent.HotkeyCombination?.Clear();
             dialogContent.CapturedHotkeys = null;
         }
         else if (result != ContentDialogResult.Primary)
@@ -170,16 +165,16 @@ public sealed partial class HotkeysPage : Page
 
 public partial class HotkeysDataObject : INotifyPropertyChanged
 {
-    private string? _name { get; set; }
+    private string? _displayName { get; set; }
     private string? _keys { get; set; }
     private string? _tag { get; set; }
 
     public string? DisplayName
     {
-        get => _name;
+        get => _displayName;
         set
         {
-            _name = value;
+            _displayName = value;
             OnPropertyChanged();
         }
     }
