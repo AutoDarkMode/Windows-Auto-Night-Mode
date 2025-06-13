@@ -18,7 +18,7 @@
             Height="56"
             Margin="0,24,0,24"
             HorizontalAlignment="Center"
-            ItemsSource="{x:Bind Keys, Mode=OneWay}">
+            ItemsSource="{x:Bind HotkeyCombination, Mode=OneWay}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" Spacing="4" />

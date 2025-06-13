@@ -8,14 +8,14 @@ namespace AutoDarkModeApp.UserControls;
 
 public sealed partial class ShortcutDialogContentControl : UserControl
 {
-    public List<SingleHotkeyDataObject> Keys
+    public List<SingleHotkeyDataObject> HotkeyCombination
     {
-        get => (List<SingleHotkeyDataObject>)GetValue(KeysProperty);
-        set => SetValue(KeysProperty, value);
+        get => (List<SingleHotkeyDataObject>)GetValue(HotkeyCombinationProperty);
+        set => SetValue(HotkeyCombinationProperty, value);
     }
 
-    public static readonly DependencyProperty KeysProperty = DependencyProperty.Register(
-        "Keys",
+    public static readonly DependencyProperty HotkeyCombinationProperty = DependencyProperty.Register(
+        "HotkeyCombination",
         typeof(List<SingleHotkeyDataObject>),
         typeof(ShortcutDialogContentControl),
         new PropertyMetadata(default(string))
@@ -72,7 +72,7 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         }.Where(modifier => !string.IsNullOrEmpty(modifier))
         .ToList();
 
-        Keys = modifiers.Select(mod => new SingleHotkeyDataObject { Key = mod }).ToList();
+        HotkeyCombination = modifiers.Select(mod => new SingleHotkeyDataObject { Key = mod }).ToList();
         CapturedHotkeys = string.Join(" + ", modifiers);
 
         e.Handled = true;
