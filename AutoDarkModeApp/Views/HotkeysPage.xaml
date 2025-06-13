@@ -54,6 +54,7 @@
                                         Width="32"
                                         Height="32"
                                         Padding="0"
+                                        AutomationProperties.Name="{helpers:ResourceString Name=EditHotkey}"
                                         Click="EditHotkeysButton_Click"
                                         CommandParameter="{x:Bind}">
                                         <Button.Content>
