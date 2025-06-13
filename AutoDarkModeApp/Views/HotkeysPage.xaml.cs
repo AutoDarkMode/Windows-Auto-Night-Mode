@@ -141,24 +141,47 @@ public sealed partial class HotkeysPage : Page
         }
     }
 
-    private void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
+    private async void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
     {
-        var collection = (ObservableCollection<HotkeysDataObject>)HotkeysItemView.ItemsSource;
+        if (sender is not Button button) return;
 
-        _builder.Config.Hotkeys.ForceLight = collection.FirstOrDefault(h => h.Tag == "ForceLight")?.Keys;
-        _builder.Config.Hotkeys.ForceDark = collection.FirstOrDefault(h => h.Tag == "ForceDark")?.Keys;
-        _builder.Config.Hotkeys.NoForce = collection.FirstOrDefault(h => h.Tag == "StopForcing")?.Keys;
-        _builder.Config.Hotkeys.ToggleTheme = collection.FirstOrDefault(h => h.Tag == "ToggleTheme")?.Keys;
-        _builder.Config.Hotkeys.ToggleAutoThemeSwitch = collection.FirstOrDefault(h => h.Tag == "AutomaticThemeSwitch")?.Keys;
-        _builder.Config.Hotkeys.TogglePostpone = collection.FirstOrDefault(h => h.Tag == "PauseAutoThemeSwitching")?.Keys;
+        var originalContent = button.Content;
+        var originalMinWidth = button.MinWidth;
+        var originalMinHeight = button.MinHeight;
+
+        button.MinWidth = button.ActualWidth;
+        button.MinHeight = button.ActualHeight;
+        button.Content = new ProgressRing() { Width = 18, Height = 18 };
+        button.IsEnabled = false;
 
         try
         {
-            _builder.Save();
+            var collection = (ObservableCollection<HotkeysDataObject>)HotkeysItemView.ItemsSource;
+            _builder.Config.Hotkeys.ForceLight = collection.FirstOrDefault(h => h.Tag == "ForceLight")?.Keys;
+            _builder.Config.Hotkeys.ForceDark = collection.FirstOrDefault(h => h.Tag == "ForceDark")?.Keys;
+            _builder.Config.Hotkeys.NoForce = collection.FirstOrDefault(h => h.Tag == "StopForcing")?.Keys;
+            _builder.Config.Hotkeys.ToggleTheme = collection.FirstOrDefault(h => h.Tag == "ToggleTheme")?.Keys;
+            _builder.Config.Hotkeys.ToggleAutoThemeSwitch = collection.FirstOrDefault(h => h.Tag == "AutomaticThemeSwitch")?.Keys;
+            _builder.Config.Hotkeys.TogglePostpone = collection.FirstOrDefault(h => h.Tag == "PauseAutoThemeSwitching")?.Keys;
+
+            var saveTask = Task.Run(() => _builder.Save());
+            var delayTask = Task.Delay(1000);
+            await Task.WhenAll(saveTask, delayTask);
+
+            button.Content = "SaveSuccessfully".GetLocalized();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, this.XamlRoot, "HotkeysPage");
+            await _errorService.ShowErrorMessage(ex, this.XamlRoot, "HotkeysPage");
+            button.Content = "SaveFailed".GetLocalized();
+        }
+        finally
+        {
+            await Task.Delay(2000);
+            button.MinWidth = originalMinWidth;
+            button.MinHeight = originalMinHeight;
+            button.Content = originalContent is string ? "ForceSaveSettings".GetLocalized() : originalContent;
+            button.IsEnabled = true;
         }
     }
 }
