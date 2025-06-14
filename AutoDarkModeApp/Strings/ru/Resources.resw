@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Зависит от текущей</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Всегда тёмная</value>
   </data>

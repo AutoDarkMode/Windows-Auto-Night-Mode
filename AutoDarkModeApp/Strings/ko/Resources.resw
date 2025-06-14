@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>시스템 적응</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>추가</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>항상 어둡게</value>
   </data>

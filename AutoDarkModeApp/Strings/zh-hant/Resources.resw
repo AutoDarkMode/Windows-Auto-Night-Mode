@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>跟隨系統</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>新增</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>總是深色</value>
   </data>

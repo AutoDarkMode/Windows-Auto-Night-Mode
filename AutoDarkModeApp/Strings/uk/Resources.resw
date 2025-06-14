@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Як в поточній темі</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Додати</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Завжди темна</value>
   </data>

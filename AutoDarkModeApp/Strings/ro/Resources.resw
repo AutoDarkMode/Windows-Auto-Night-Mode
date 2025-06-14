@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adaptați-vă la sistem</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Adaugă</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Mereu întunecat</value>
   </data>

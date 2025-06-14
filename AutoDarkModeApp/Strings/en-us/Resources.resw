@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adapt to system</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Add apps</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Always dark</value>
   </data>
@@ -941,5 +938,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
     <value>Save failed</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Start typing to add any apps</value>
   </data>
 </root>

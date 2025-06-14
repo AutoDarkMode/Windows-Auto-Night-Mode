@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>システムの設定に従う</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>追加</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>常にダーク</value>
   </data>

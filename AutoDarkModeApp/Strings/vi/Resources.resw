@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Đồng bộ với hệ thống</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Thêm</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Luôn là chủ đề tối</value>
   </data>

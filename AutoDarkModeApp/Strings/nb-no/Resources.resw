@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Tilpass til system</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Legg til</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Always dark</value>
   </data>

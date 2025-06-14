@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>سازگاری با سیستم</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>همیشه تاریک</value>
   </data>

@@ -3,11 +3,7 @@ using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
-using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
-using Windows.System;
-using Windows.UI.Core;
 
 namespace AutoDarkModeApp.Views;
 

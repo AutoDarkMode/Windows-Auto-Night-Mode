@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Aan systeem aanpassen</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Toevoegen</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Altijd donker</value>
   </data>

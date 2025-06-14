@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Sistem ayarını kullan</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Ekle</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Her zaman koyu</value>
   </data>

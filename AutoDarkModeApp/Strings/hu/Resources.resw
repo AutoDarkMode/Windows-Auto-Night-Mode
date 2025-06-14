@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Hozzáad</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Mindig sötét</value>
   </data>

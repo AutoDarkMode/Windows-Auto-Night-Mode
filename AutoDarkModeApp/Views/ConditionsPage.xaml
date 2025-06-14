@@ -66,6 +66,7 @@
                                 QueryIcon="{ui:FontIconSource Glyph=&#xE710;,
                                                               FontSize=12}"
                                 SuggestedItemsSource="{x:Bind ViewModel.ProcessListItemSource, Mode=OneWay}"
+                                TokenDelimiter=","
                                 TokenItemAdded="ProcessTokenizingTextBox_TokenItemChanged"
                                 TokenItemRemoved="ProcessTokenizingTextBox_TokenItemChanged" />
                         </controls:SettingsCard>
