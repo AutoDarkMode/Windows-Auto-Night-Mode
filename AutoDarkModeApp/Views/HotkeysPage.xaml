@@ -15,6 +15,7 @@
 
                 <!--  Hotkeys  -->
                 <Grid>
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Hotkeys}" />
                     <Button
                         x:Name="SaveSettingsButton"
                         HorizontalAlignment="Right"
