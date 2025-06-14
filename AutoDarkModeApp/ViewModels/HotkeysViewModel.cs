@@ -59,7 +59,7 @@ public partial class HotkeysViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "HotkeysViewModel");
         }
     }
 
@@ -75,7 +75,7 @@ public partial class HotkeysViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "HotkeysViewModel");
         }
     }
 
@@ -91,7 +91,7 @@ public partial class HotkeysViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "HotkeysViewModel");
         }
     }
 }
