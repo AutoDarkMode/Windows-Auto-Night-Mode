@@ -14,32 +14,27 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Hotkeys  -->
-                <Grid>
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Hotkeys}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}">
                     <Button
                         x:Name="SaveSettingsButton"
                         HorizontalAlignment="Right"
                         Click="SaveSettingsButton_Click"
-                        Content="{helpers:ResourceString Name=ForceSaveSettings}"
-                        ToolTipService.ToolTip="{helpers:ResourceString Name=Msg_HotkeyProblem}">
+                        Content="{helpers:ResourceString Name=ForceSaveSettings}">
                         <Button.ContentTransitions>
                             <TransitionCollection>
                                 <ContentThemeTransition />
                             </TransitionCollection>
                         </Button.ContentTransitions>
                     </Button>
-                </Grid>
-
-                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
-                </controls:SettingsCard>
-
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
-                </controls:SettingsCard>
-
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <ItemsRepeater x:Name="HotkeysItemView">
