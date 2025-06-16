@@ -17,6 +17,7 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
     private bool _isInitializing;
 
     public enum TimeSourceMode
@@ -66,12 +67,13 @@ public partial class TimeViewModel : ObservableRecipient
     public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
+    public partial int OffsetTimesMinimum { get; set; }
+
+    [ObservableProperty]
     public partial int OffsetLight { get; set; }
 
     [ObservableProperty]
     public partial int OffsetDark { get; set; }
-
-    public ICommand SaveOffsetCommand { get; }
 
     [ObservableProperty]
     public partial bool IsPostponed { get; set; }
@@ -114,12 +116,22 @@ public partial class TimeViewModel : ObservableRecipient
             UpdateCoordinates();
         });
 
-        SaveOffsetCommand = new RelayCommand(() =>
+        _debounceTimer = _dispatcherQueue.CreateTimer();
+        _debounceTimer.Interval = TimeSpan.FromMilliseconds(500);
+        _debounceTimer.Tick += (s, e) =>
         {
             _builder.Config.Location.SunriseOffsetMin = OffsetLight;
             _builder.Config.Location.SunsetOffsetMin = OffsetDark;
-            _builder.Save();
-        });
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+            _debounceTimer.Stop();
+        };
     }
 
     private void LoadSettings()
@@ -213,7 +225,8 @@ public partial class TimeViewModel : ObservableRecipient
             SelectedTimeSource = TimeSourceMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
-            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            OffsetTimesMinimum = 0;
             return;
         }
 
@@ -235,6 +248,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+        OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
     }
@@ -352,6 +366,7 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Location.UseGeolocatorService = true;
                 _builder.Config.Governor = Governor.Default;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = -720;
                 break;
 
             case TimeSourceMode.CoordinateTimes:
@@ -359,6 +374,7 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = -720;
                 break;
 
             case TimeSourceMode.WindowsNightLight:
@@ -366,7 +382,8 @@ public partial class TimeViewModel : ObservableRecipient
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                OffsetTimeSettingsCardVisibility = Visibility.Visible;
+                OffsetTimesMinimum = 0;
                 break;
         }
 
@@ -459,6 +476,30 @@ public partial class TimeViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
         SafeApplyTheme();
+    }
+
+    partial void OnOffsetLightChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (_debounceTimer != null)
+        {
+            _debounceTimer.Stop();
+            _debounceTimer.Start();
+        }
+    }
+
+    partial void OnOffsetDarkChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (_debounceTimer != null)
+        {
+            _debounceTimer.Stop();
+            _debounceTimer.Start();
+        }
     }
 
     partial void OnIsPostponedChanged(bool value)
