@@ -925,7 +925,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Save</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Forced preservation</value>
+    <value>Forced save</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
     <value>The hotkey didn't work? Don't worry, let's save it again</value>
