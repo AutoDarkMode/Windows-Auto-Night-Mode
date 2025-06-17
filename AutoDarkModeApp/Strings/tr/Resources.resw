@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Sistem ayarını kullan</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Ekle</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Her zaman koyu</value>
   </data>
@@ -396,9 +393,6 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Bildirim Alanı Simgesi Gizleme</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Kısayol tuşlarını sadece devre dışı bırakılmışken düzenleyebilirsiniz.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Kısayol tuşları</value>
@@ -756,9 +750,6 @@ Bunu indirmek istiyor musunuz?
   <data name="Settings" xml:space="preserve">
     <value>Ayarlar</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Değişimlerde bildirim göster</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Özel teşekkürler</value>
   </data>
@@ -770,9 +761,6 @@ Bunu indirmek istiyor musunuz?
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows tema değişimini etkinleştir</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modları Değiştirme</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Geçerli temayı değiştir</value>
@@ -899,6 +887,9 @@ Bunu indirmek istiyor musunuz?
     <value>Windows aracılığıyla otomatik başlatma girişini devre dışı bıraktınız.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

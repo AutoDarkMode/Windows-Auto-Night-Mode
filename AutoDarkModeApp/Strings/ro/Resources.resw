@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adaptați-vă la sistem</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Adaugă</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Mereu întunecat</value>
   </data>
@@ -396,9 +393,6 @@ Faceți clic pe „Da” pentru a deschide o nouă fereastră de browser.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ascunde pictograma din bara de activități</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Puteți edita tastele rapide numai când sunt dezactivate.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Taste rapide</value>
@@ -756,9 +750,6 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Setări</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Afișează notificarea la schimbare</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Mulțumiri speciale</value>
   </data>
@@ -770,9 +761,6 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Activați schimbarea temelor Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Schimbarea modurilor</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Schimbă tema actuală</value>
@@ -899,6 +887,9 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
     <value>Ați dezactivat intrarea de pornire automată prin Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

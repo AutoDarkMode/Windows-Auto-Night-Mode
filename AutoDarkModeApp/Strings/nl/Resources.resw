@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Aan systeem aanpassen</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Toevoegen</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Altijd donker</value>
   </data>
@@ -396,9 +393,6 @@ Klik op "Ja" om een nieuw browservenster te openen.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Systeemvakicoon verbergen</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>U kunt sneltoetsen alleen bewerken als ze zijn uitgeschakeld.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Sneltoetsen</value>
@@ -756,9 +750,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Instellingen</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Melding weergeven bij schakelen</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Speciale dank</value>
   </data>
@@ -770,9 +761,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Wisselen van Windows-thema inschakelen</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Wisselopties</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Wissel van thema</value>
@@ -899,6 +887,9 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>U heeft de invoer voor automatisch starten uitgeschakeld via Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

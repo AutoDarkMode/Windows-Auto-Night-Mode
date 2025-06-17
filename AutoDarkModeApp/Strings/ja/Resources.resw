@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>システムの設定に従う</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>追加</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>常にダーク</value>
   </data>
@@ -396,9 +393,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>トレイアイコンの非表示</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>無効中にのみ使用するホットキーを変更できます。</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>ホットキー</value>
@@ -753,9 +747,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>切り替え時に通知を表示</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>謝辞</value>
   </data>
@@ -767,9 +758,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows テーマの有効を切り替え</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>モードの切り替え</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>現在のテーマを切り替え</value>
@@ -885,6 +873,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>Windowsから自動起動を無効にしているようです。</value>
   </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
   </data>
@@ -903,7 +894,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
   </data>
-  <data name="ThemeTutorialDescription" xml:space="preserve">
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

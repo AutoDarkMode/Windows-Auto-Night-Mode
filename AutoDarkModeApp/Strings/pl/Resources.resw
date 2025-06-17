@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Dostosuj do motywu</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Dodaj</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Zawsze ciemny</value>
   </data>
@@ -396,9 +393,6 @@ Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ukryj ikonę paska zadań</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Możesz edytować skróty klawiszowe tylko wtedy, gdy są wyłączone.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Skróty klawiszowe</value>
@@ -756,9 +750,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Pokazuj powiadomienia przy przełączaniu</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Specjalne podziękowania</value>
   </data>
@@ -770,9 +761,6 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Włącz zmianę motywu Windowsa</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Tryby przełączania</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Zmień obecny motyw</value>
@@ -899,6 +887,9 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Autostart został wyłączony w ustawieniach systemu Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

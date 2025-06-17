@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Přizpůsobit motivu</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Přidat</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Vždy tmavý</value>
   </data>
@@ -396,9 +393,6 @@ Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Skrytí ikony na panelu</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Klávesové zkratky lze upravovat pouze v případě, že jsou vypnuté.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Klávesové zkratky</value>
@@ -756,9 +750,6 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Nastavení</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Zobrazit oznámení při přepnutí</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Zvláštní poděkování</value>
   </data>
@@ -770,9 +761,6 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Povolit přepnutí motivu Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Přepnout motivy</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Změnit současný motiv</value>
@@ -899,6 +887,9 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
     <value>Zakázali jste záznam automatického spuštění pomocí Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

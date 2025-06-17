@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adapt to system</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>همیشه تاریک</value>
   </data>
@@ -396,9 +393,6 @@ Click "Yes" to open a new browser window.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Hide Tray Icon</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
@@ -756,9 +750,6 @@ Click "Yes" to open a new browser window.
   <data name="Settings" xml:space="preserve">
     <value>تنظیمات</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>
@@ -770,9 +761,6 @@ Click "Yes" to open a new browser window.
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>تغییر نمایه فعلی</value>
@@ -899,6 +887,9 @@ Click "Yes" to open a new browser window.
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

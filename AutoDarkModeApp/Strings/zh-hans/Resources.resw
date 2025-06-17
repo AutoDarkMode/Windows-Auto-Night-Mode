@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>跟随系统</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>添加</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>总是深色</value>
   </data>
@@ -396,9 +393,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>隐藏托盘图标</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>您只能在快捷键已禁用的情况下进行编辑。</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>快捷键</value>
@@ -753,9 +747,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>在启用时显示通知</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>特别感谢</value>
   </data>
@@ -767,9 +758,6 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>切换 Windows 主题</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>场景切换</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>切换当前主题</value>
@@ -885,6 +873,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>您在 Windows 中禁用了启动项。</value>
   </data>
+  <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
   </data>
@@ -903,7 +894,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="UnDelay" xml:space="preserve">
     <value>未推迟</value>
   </data>
-  <data name="ThemeTutorialDescription" xml:space="preserve">
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

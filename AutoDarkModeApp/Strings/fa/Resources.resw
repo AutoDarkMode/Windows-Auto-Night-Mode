@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>سازگاری با سیستم</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>همیشه تاریک</value>
   </data>
@@ -396,9 +393,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>پنهان کردن آیکون tray</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>شما فقط در زمانی که کلیدهای میانبر غیر فعال هستند می‌توانید آن‌ها را ویرایش کنید.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>میانبرها</value>
@@ -756,9 +750,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Settings" xml:space="preserve">
     <value>تنظیمات</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>
@@ -770,9 +761,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>فعالسازی تغییر نمایه‌ی ویندوز</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تغیر حالت‌ها</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>تغییر نمایه فعلی</value>
@@ -899,6 +887,9 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

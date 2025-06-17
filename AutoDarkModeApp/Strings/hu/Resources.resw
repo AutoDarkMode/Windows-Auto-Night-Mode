@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Hozzáad</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Mindig sötét</value>
   </data>
@@ -396,9 +393,6 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Tálca ikon elrejtése</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>A gyorsbillentyűket csak akkor szerkesztheti, ha le vannak tiltva.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Gyorsbillentyűk</value>
@@ -756,9 +750,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Beállítások</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Értesítés megjelenítése váltáskor</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Külön köszönet</value>
   </data>
@@ -770,9 +761,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows-téma váltás engedélyezése</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Módváltás</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Jelenlegi téma váltása</value>
@@ -899,6 +887,9 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Letiltotta az automatikus indítási bejegyzést a Windows-on keresztül.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

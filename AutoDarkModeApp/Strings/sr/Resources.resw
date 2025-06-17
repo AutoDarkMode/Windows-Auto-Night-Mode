@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Prilagodi prema sistemu</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Dodaj</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Uvek tamna</value>
   </data>
@@ -396,9 +393,6 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Sakrij ikonicu u sistemskoj paleti</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Možete da menjate prečice samo dok su onemogućene.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Tasterske prečice</value>
@@ -756,9 +750,6 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Postavke</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Prikaži obaveštenje kad se pritisne</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Posebna zahvalnost</value>
   </data>
@@ -770,9 +761,6 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Omogući promenu Windows tema</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Promena režima</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Promeni trenutnu temu</value>
@@ -899,6 +887,9 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
     <value>Onemogućili ste unos za automatsko pokretanje iz Windows-a.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

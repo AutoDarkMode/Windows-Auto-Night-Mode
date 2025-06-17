@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adatta al sistema</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Aggiungi</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Sempre scuro</value>
   </data>
@@ -396,9 +393,6 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Nascondi icona dell'area di notifica</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Puoi modificare le scorciatoie solo mentre sono disabilitate.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Scorciatoie</value>
@@ -756,9 +750,6 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Impostazioni</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Mostra notifica al cambio</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Ringraziamenti speciali</value>
   </data>
@@ -770,9 +761,6 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Abilita il cambio di tema di Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modalità di cambio</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Cambia il tema attuale</value>
@@ -899,6 +887,9 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
     <value>Hai disabilitato l'avvio automatico attraverso Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

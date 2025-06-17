@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Menyesuaikan dengan sistem</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Tambah</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Selalu gelap</value>
   </data>
@@ -396,9 +393,6 @@ Klik "Ya" untuk membuka jendela peramban baru.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Sembunyikan Ikon Tray</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Anda hanya bisa mengubah hotkey ketika dinonaktifkan.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkey</value>
@@ -756,9 +750,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Setelan</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Tampilkan notifikasi saat beralih</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Terima kasih spesial</value>
   </data>
@@ -770,9 +761,6 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Nyalakan pergantian tema Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Beralih Mode</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Ganti tema saat ini</value>
@@ -899,6 +887,9 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Đồng bộ với hệ thống</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Thêm</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Luôn là chủ đề tối</value>
   </data>
@@ -396,9 +393,6 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Ẩn biểu tượng ở khay hệ thống</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Bạn chỉ có thể sửa phím tắt khi chúng đã được tắt.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Phím tắt</value>
@@ -756,9 +750,6 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Cài đặt</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Hiển thị thông báo khi thay đổi</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Trân trọng cảm ơn</value>
   </data>
@@ -770,9 +761,6 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Bật tính năng thay đổi chủ đề Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Chuyển chủ đề</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Chuyển chủ đề hiện tại</value>
@@ -899,6 +887,9 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

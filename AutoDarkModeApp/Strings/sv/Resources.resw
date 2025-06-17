@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adapt to system</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Lägg till</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Alltid mörk</value>
   </data>
@@ -396,9 +393,6 @@ Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Hide Tray Icon</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
@@ -756,9 +750,6 @@ Installerad version: {0}, ny version: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Inställningar</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Show notification on toggle</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Special thanks</value>
   </data>
@@ -770,9 +761,6 @@ Installerad version: {0}, ny version: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Switch Modes</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Byt aktuellt tema</value>
@@ -899,6 +887,9 @@ Installerad version: {0}, ny version: {1}</value>
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

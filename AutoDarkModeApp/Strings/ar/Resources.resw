@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>التكيف مع النظام</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>إضافة</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>داكن دائماً</value>
   </data>
@@ -395,9 +392,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>إخفاء أيقونة الدرج</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>يمكنك تحرير مفاتيح الاختصار فقط عندما تكون معطلة.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>مفاتيح التشغيل السريع</value>
@@ -753,9 +747,6 @@
   <data name="Settings" xml:space="preserve">
     <value>إعدادات</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>إظهار الإشعار عند التبديل</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>شكر خاص</value>
   </data>
@@ -767,9 +758,6 @@
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>تمكين تبديل نسق Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>تبديل الأوضاع</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>تبديل النسق الحالي</value>
@@ -896,6 +884,9 @@
     <value>لقد قمت بتعطيل إدخال بدء التشغيل التلقائي عبر Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

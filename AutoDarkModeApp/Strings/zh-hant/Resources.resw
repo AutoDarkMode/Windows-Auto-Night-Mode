@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>跟隨系統</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>新增</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>總是深色</value>
   </data>
@@ -396,9 +393,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>隱藏系統匣圖示</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>您只能在停用快速鍵的情況下進行編輯。</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>快速鍵</value>
@@ -756,9 +750,6 @@
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>切換主題時顯示通知</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>特別感謝</value>
   </data>
@@ -770,9 +761,6 @@
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>啟用 Windows 佈景主題切換</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>切換模式</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>切換目前主題</value>
@@ -899,6 +887,9 @@
     <value>您已透過 Windows 停用自動啟動。</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

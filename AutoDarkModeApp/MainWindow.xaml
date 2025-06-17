@@ -53,11 +53,6 @@
                     Icon="{ui:FontIcon Glyph=&#xE823;}"
                     Tag="Time" />
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=SwitchModes}"
-                    Icon="{ui:FontIcon Glyph=&#xE945;}"
-                    Tag="SwitchModes" />
-                <!--  TODO: Update item content in resource  -->
-                <NavigationViewItem
                     Content="{helpers:ResourceString Name=SystemAreas}"
                     Icon="{ui:FontIcon Glyph=&#xEC4E;}"
                     Tag="SystemAreas" />
@@ -65,6 +60,14 @@
                     Content="{helpers:ResourceString Name=Personalization}"
                     Icon="{ui:FontIcon Glyph=&#xE771;}"
                     Tag="Personalization" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=Conditions}"
+                    Icon="{ui:FontIcon Glyph=&#xE835;}"
+                    Tag="Conditions" />
+                <NavigationViewItem
+                    Content="{helpers:ResourceString Name=Hotkeys}"
+                    Icon="{ui:FontIcon Glyph=&#xEDA7;}"
+                    Tag="Hotkeys" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=Scripts}"
                     Icon="{ui:FontIcon Glyph=&#xF000;}"

@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Зависит от текущей</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Всегда тёмная</value>
   </data>
@@ -396,9 +393,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Скрыть значок в трее</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Вы можете редактировать горячие клавиши, только когда они отключены.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Горячие клавиши</value>
@@ -756,9 +750,6 @@
   <data name="Settings" xml:space="preserve">
     <value>Параметры</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Показать уведомление при переключении</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Особая благодарность</value>
   </data>
@@ -770,9 +761,6 @@
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Включить смену тем Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Смена режимов</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Сменить текущую тему</value>
@@ -899,6 +887,9 @@
     <value>Вы отключили автоматический запуск средствами Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

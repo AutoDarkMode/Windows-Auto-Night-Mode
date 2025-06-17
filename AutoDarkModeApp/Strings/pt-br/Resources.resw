@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Ajustar ao sistema</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Adicionar</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Sempre escuro</value>
   </data>
@@ -396,9 +393,6 @@ Clique em "Sim" para abrir uma nova janela no navegador.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Esconder o Ícone do Tabuleiro do Sistema</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Só pode editar as teclas de atalho enquanto elas estiverem desativadas.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Teclas de atalho</value>
@@ -756,9 +750,6 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Mostrar notificação na mudança</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Agradecimentos especiais</value>
   </data>
@@ -770,9 +761,6 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Activar a mudança do tema do Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Modos de Mudança</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Trocar o tema atual</value>
@@ -899,6 +887,9 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
     <value>Desativou a entrada do início automático pelo Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

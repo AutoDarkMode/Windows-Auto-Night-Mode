@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Προσαρμογή στο σύστημα</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Προσθήκη</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Πάντα σκοτεινό</value>
   </data>
@@ -396,9 +393,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Απόκρυψη εικονιδίου περιοχής ειδοποήσεων</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Μπορείτε να επεξεργαστείτε τα πλήκτρα συντόμευσης μόνο όταν είναι απενεργοποιημένα.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Πλήκτρα συντόμευσης</value>
@@ -756,9 +750,6 @@
   <data name="Settings" xml:space="preserve">
     <value>Ρυθμίσεις</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Εμφάνιση ειδοποίησης κατά την ενεργοποίηση/απενεργοποίηση</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Θερμές ευχαριστίες</value>
   </data>
@@ -770,9 +761,6 @@
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Ενεργοποίηση εναλλαγής θέματος των Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Λειτουργίες Εναλλαγής</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Εναλλαγή τρέχοντος θέματος</value>
@@ -899,6 +887,9 @@
     <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

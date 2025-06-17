@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Як в поточній темі</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Додати</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Завжди темна</value>
   </data>
@@ -396,9 +393,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Приховати значок в треї</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>Редагування можливе лише за неактивних гарячих клавіш.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Гарячі клавіші</value>
@@ -756,9 +750,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="Settings" xml:space="preserve">
     <value>Налаштування</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Показувати сповіщення за перемикання</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>Особлива подяка</value>
   </data>
@@ -770,9 +761,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Увімкніть перемикач тем Windows</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Перемикання режимів</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Перемкнути поточну тему</value>
@@ -899,6 +887,9 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Ви вимкнули автозапуск застосунку засобами Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Tilpass til system</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>Legg til</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>Always dark</value>
   </data>
@@ -396,9 +393,6 @@ Klikk "Ja" for å åpne et nytt nettleservindu.
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Skjul verktøylinjeikon.</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>You can only edit hotkeys while they are disabled.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hurtigtaster</value>
@@ -756,9 +750,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Settings" xml:space="preserve">
     <value>Innstillinger</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>Vis varsling på bryter</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>En spesiell takk</value>
   </data>
@@ -770,9 +761,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Slå på Windowstema-bytte</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>Bytt modus</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Bytt nåværende tema</value>
@@ -899,6 +887,9 @@ Currently installed version: {0}, new version: {1}</value>
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>

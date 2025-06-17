@@ -141,9 +141,6 @@
   <data name="AdaptToSystem" xml:space="preserve">
     <value>시스템 적응</value>
   </data>
-  <data name="AddApps" xml:space="preserve">
-    <value>추가</value>
-  </data>
   <data name="AlwaysDark" xml:space="preserve">
     <value>항상 어둡게</value>
   </data>
@@ -396,9 +393,6 @@
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>트레이 아이콘 숨기기</value>
-  </data>
-  <data name="HotkeyEditHint" xml:space="preserve">
-    <value>핫키가 비활성화된 상태에서만 편집할 수 있습니다.</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>핫키</value>
@@ -756,9 +750,6 @@
   <data name="Settings" xml:space="preserve">
     <value>설정</value>
   </data>
-  <data name="ShowNotificationToggled" xml:space="preserve">
-    <value>전환에 알림 표시</value>
-  </data>
   <data name="SpecialThanks" xml:space="preserve">
     <value>특별히 감사합니다</value>
   </data>
@@ -770,9 +761,6 @@
   </data>
   <data name="SwichWindowsTheme" xml:space="preserve">
     <value>Windows 테마 전환 사용</value>
-  </data>
-  <data name="SwitchModes" xml:space="preserve">
-    <value>전환 모드</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>현재 테마 전환</value>
@@ -899,6 +887,9 @@
     <value>Windows를 통해 자동 시작 항목을 비활성화했습니다.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
 </root>
