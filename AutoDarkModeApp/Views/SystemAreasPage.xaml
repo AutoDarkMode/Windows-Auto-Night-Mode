@@ -17,9 +17,10 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  Apps  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Set}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=SystemAreas}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SystemAreas}" />
+
+                <!--  App Mode  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AppMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
@@ -28,8 +29,8 @@
                     </ComboBox>
                 </controls:SettingsCard>
 
-                <!--  System  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=System}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+                <!--  Windows mode  -->
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=WindowsMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
@@ -39,12 +40,12 @@
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.AccentColorForTaskbarSettingsCardVisible, Mode=OneWay}">
                             <controls:SettingsCard.Header>
                                 <CheckBox Content="{helpers:ResourceString Name=AccentColorForTaskbar}" IsChecked="{x:Bind ViewModel.IsTaskbarColorOnAdaptive, Mode=TwoWay}" />
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
-                        <controls:SettingsCard>
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAdaptiveTaskbarAccent, Mode=OneWay}">
                             <controls:SettingsCard.Header>
                                 <StackPanel Orientation="Vertical">
                                     <CheckBox
@@ -87,6 +88,9 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ColorFilter}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+                <HyperlinkButton Click="WindowsColorsSetingHyperlinkButton_Click" Content="{helpers:ResourceString Name=WindowsColorsSetting}" />
 
             </StackPanel>
         </Grid>

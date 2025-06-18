@@ -942,4 +942,13 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="AddApps" xml:space="preserve">
     <value>Start typing to add any apps</value>
   </data>
+  <data name="AppMode" xml:space="preserve">
+    <value>App mode</value>
+  </data>
+  <data name="WindowsMode" xml:space="preserve">
+    <value>Windows mode</value>
+  </data>
+  <data name="WindowsColorsSetting" xml:space="preserve">
+    <value>Personalized colors setting of Windows</value>
+  </data>
 </root>
