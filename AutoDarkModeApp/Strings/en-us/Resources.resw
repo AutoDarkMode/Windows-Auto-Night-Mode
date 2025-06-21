@@ -942,4 +942,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="AddApps" xml:space="preserve">
     <value>Start typing to add any apps</value>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="ChooseCustomColor" xml:space="preserve">
+    <value>Choose a custom color</value>
+  </data>
 </root>

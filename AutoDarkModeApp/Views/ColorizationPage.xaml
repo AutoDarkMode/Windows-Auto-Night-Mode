@@ -23,10 +23,7 @@
                 </controls:SettingsCard>
 
                 <!--  Light  -->
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=LightTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -43,7 +40,7 @@
                                 <Button
                                     MinWidth="120"
                                     Click="LightModeCheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
@@ -79,11 +76,7 @@
                     x:Name="ColorPickerContentDialog"
                     CloseButtonText="{helpers:ResourceString Name=Cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{helpers:ResourceString Name=Set}">
-                    <StackPanel>
-                        <ColorPicker x:Name="CheckColorColorPicker" />
-                    </StackPanel>
-                </ContentDialog>
+                    PrimaryButtonText="{helpers:ResourceString Name=Set}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>
