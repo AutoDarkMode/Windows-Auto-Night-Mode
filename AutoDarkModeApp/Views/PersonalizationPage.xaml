@@ -16,12 +16,12 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ManagedMode}" />
                 <InfoBar
                     IsClosable="False"
-                    IsOpen="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}"
+                    IsOpen="{x:Bind ViewModel.ManagedModeEnabled, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=FeatureDisabled_WhileThemeMode}"
                     Severity="Informational">
                     <InfoBar.ActionButton>
                         <!--  TODO: resource string  -->
-                        <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="Disable Windows manages your theme" />
+                        <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="{helpers:ResourceString Name=DisableWindowsManagesTheme}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
                 <controls:SettingsCard
@@ -49,7 +49,7 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=UnmanagedMode}" />
                 <InfoBar
                     IsClosable="False"
-                    IsOpen="{x:Bind ViewModel.ThemeSwitchDisabled, Mode=OneWay}"
+                    IsOpen="{x:Bind ViewModel.UnmanagedModeEnabled, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=FeatureDisabled_WhileManagedMode}"
                     Severity="Informational" />
                 <controls:SettingsCard

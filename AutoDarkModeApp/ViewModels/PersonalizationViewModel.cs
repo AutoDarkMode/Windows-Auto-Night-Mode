@@ -4,7 +4,6 @@ using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -15,14 +14,13 @@ public partial class PersonalizationViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
 
     [ObservableProperty]
-    public partial bool ThemeSwitchEnabled { get; set; }
+    public partial bool ManagedModeEnabled { get; set; }
 
     [ObservableProperty]
     public partial bool ManagedModeSettingsCardEnabled { get; set; }
 
-    // TODO: Replace by better name
     [ObservableProperty]
-    public partial bool ThemeSwitchDisabled { get; set; }
+    public partial bool UnmanagedModeEnabled { get; set; }
 
     [ObservableProperty]
     public partial bool UnmanagedModeSettingsCardEnabled { get; set; }
@@ -64,28 +62,20 @@ public partial class PersonalizationViewModel : ObservableRecipient
 
     private void LoadSettings()
     {
-        ThemeSwitchEnabled = _builder.Config.WindowsThemeMode.Enabled;
+        ManagedModeEnabled = _builder.Config.WindowsThemeMode.Enabled;
         ManagedModeSettingsCardEnabled = !_builder.Config.WindowsThemeMode.Enabled;
-        ThemeSwitchDisabled = _builder.Config.WallpaperSwitch.Enabled || _builder.Config.ColorizationSwitch.Enabled || _builder.Config.CursorSwitch.Enabled;
+        UnmanagedModeEnabled = _builder.Config.WallpaperSwitch.Enabled || _builder.Config.ColorizationSwitch.Enabled || _builder.Config.CursorSwitch.Enabled;
         UnmanagedModeSettingsCardEnabled = !(_builder.Config.WallpaperSwitch.Enabled || _builder.Config.ColorizationSwitch.Enabled || _builder.Config.CursorSwitch.Enabled);
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
+        StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {
-            StateUpdateHandler.StopConfigWatcher();
-
             _builder.Load();
             LoadSettings();
-
-            StateUpdateHandler.StartConfigWatcher();
         });
-    }
-
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
+        StateUpdateHandler.StartConfigWatcher();
     }
 }

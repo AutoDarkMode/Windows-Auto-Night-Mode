@@ -942,4 +942,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="AddApps" xml:space="preserve">
     <value>Start typing to add any apps</value>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
 </root>
