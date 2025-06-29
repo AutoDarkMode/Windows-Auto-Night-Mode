@@ -6,6 +6,7 @@ using AutoDarkModeLib;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 
 namespace AutoDarkModeApp.Views;
 
@@ -13,7 +14,6 @@ public sealed partial class ColorizationPage : Page
 {
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
-
 
     public ColorizationViewModel ViewModel { get; }
 
@@ -39,6 +39,7 @@ public sealed partial class ColorizationPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
+            ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
             _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.CustomColor.ToHex();
         }
 
@@ -68,6 +69,7 @@ public sealed partial class ColorizationPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
+            ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
             _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.CustomColor.ToHex();
         }
         try
