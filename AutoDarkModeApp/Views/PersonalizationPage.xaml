@@ -13,6 +13,7 @@
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  AutoDarkMode manage your theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ManagedMode}" />
                 <InfoBar
                     IsClosable="False"
@@ -24,6 +25,7 @@
                         <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="{helpers:ResourceString Name=DisableWindowsManagesTheme}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
+
                 <controls:SettingsCard
                     Click="PickWallpaperSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PickWallpaper_Description}"
@@ -46,12 +48,14 @@
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.ManagedModeSettingsCardEnabled, Mode=OneWay}" />
 
+                <!--  Windows manage your theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=UnmanagedMode}" />
                 <InfoBar
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.UnmanagedModeEnabled, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=FeatureDisabled_WhileManagedMode}"
                     Severity="Informational" />
+
                 <controls:SettingsCard
                     Click="ThemePickerSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PickTheme_Description}"
