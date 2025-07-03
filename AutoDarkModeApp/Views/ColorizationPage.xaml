@@ -23,7 +23,10 @@
                 </controls:SettingsCard>
 
                 <!--  Light  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=LightTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -47,7 +50,10 @@
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=DarkTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
