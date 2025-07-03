@@ -76,7 +76,8 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  TODO: follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
+                <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
+                <!--  TODO: Don't enable Dialog until it works properly  -->
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
