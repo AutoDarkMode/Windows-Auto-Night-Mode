@@ -24,6 +24,12 @@ public class NavigationService : INavigationService
         set => _frame = value;
     }
 
+    public string? Header
+    {
+        get => _navigationView?.Header.ToString();
+        set => _navigationView?.Header = value;
+    }
+
     // Please do not use Primary Constructors here
     public NavigationService(IPageService pageService)
     {

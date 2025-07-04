@@ -945,4 +945,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
 </root>

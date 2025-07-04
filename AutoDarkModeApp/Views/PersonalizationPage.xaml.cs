@@ -1,4 +1,5 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
 
@@ -20,6 +21,7 @@ public sealed partial class PersonalizationPage : Page
         if (navigation?.Frame != null)
         {
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
+            navigation.Header = "Wallpaper".GetLocalized();
         }
     }
 
@@ -29,6 +31,7 @@ public sealed partial class PersonalizationPage : Page
         if (navigation?.Frame != null)
         {
             navigation.NavigateTo(typeof(ColorizationViewModel).FullName!);
+            navigation.Header = "AccentColor".GetLocalized();
         }
     }
 
@@ -38,6 +41,7 @@ public sealed partial class PersonalizationPage : Page
         if (navigation?.Frame != null)
         {
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
+            navigation.Header = "Cursors".GetLocalized();
         }
     }
 
@@ -47,6 +51,7 @@ public sealed partial class PersonalizationPage : Page
         if (navigation?.Frame != null)
         {
             navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
+            navigation.Header = "Theme".GetLocalized();
         }
     }
 }
