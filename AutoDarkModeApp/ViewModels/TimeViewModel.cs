@@ -506,7 +506,6 @@ public partial class TimeViewModel : ObservableRecipient
     {
         if (_isInitializing)
             return;
-    }
 
         var postponeMinutes = (SelectedPostponeIndex) switch
         {
