@@ -126,7 +126,7 @@ public sealed partial class AboutPage : Page
 
     private void OpenShellHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var filepath = AdmExtensions.ExectuionPathShell;
+        var filepath = AdmExtensions.ExecutionPathShell;
         try
         {
             new Process

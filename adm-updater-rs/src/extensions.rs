@@ -62,6 +62,7 @@ pub fn get_working_dir() -> PathBuf {
 /// Returns the path to the service executable, used for starting the service
 pub fn get_service_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("core");
     path.push(SERVICE_EXE);
     path
 }
@@ -69,6 +70,7 @@ pub fn get_service_path() -> PathBuf {
 /// Returns the path to the app executable, used for starting the app
 pub fn get_app_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("ui");
     path.push(APP_EXE);
     path
 }
@@ -76,6 +78,7 @@ pub fn get_app_path() -> PathBuf {
 /// Returns the path to the shell executable, used for starting the shell
 pub fn get_shell_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("core");
     path.push(SHELL_EXE);
     path
 }

@@ -275,7 +275,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
     };
     debug!("new cwd: {}", get_adm_app_dir().display());
     let service_path = Rc::new(extensions::get_service_path());
-    Command::new(&*Rc::clone(&service_path)).spawn().map_err(|e| {
+    Command::new(Rc::clone(&service_path).as_ref()).spawn().map_err(|e| {
         Box::new(OpError {
             message: format!(
                 "could not relaunch service at path: {}: {}",
@@ -289,7 +289,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         let app_path = Rc::new(extensions::get_app_path());
         info!("relaunching app");
         debug!("app path {}", app_path.display());
-        Command::new(&*Rc::clone(&app_path)).spawn().map_err(|e| {
+        Command::new(Rc::clone(&app_path).as_ref()).spawn().map_err(|e| {
             Box::new(OpError {
                 message: format!(
                     "could not relaunch app at path: {}: {}",

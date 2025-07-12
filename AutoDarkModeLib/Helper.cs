@@ -34,8 +34,8 @@ public static class Helper
     public static readonly string ExecutionDir = GetExecutionDir();
     public static readonly string ExecutionPathApp = GetExecutionPathApp();
     public static readonly string ExecutionPathUpdater = GetExecutionPathUpdater();
-    public static readonly string ExectuionPathThemeBridge = GetExecutionPathThemeBridge();
-    public static readonly string ExectuionPathShell = GetExecutionPathShell();
+    public static readonly string ExecutionPathThemeBridge = GetExecutionPathThemeBridge();
+    public static readonly string ExecutionPathShell = GetExecutionPathShell();
     public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
     public static readonly string ExecutionPathService = GetExecutionPathService();
     public static readonly string UpdateDataDir = GetUpdateDataDir();

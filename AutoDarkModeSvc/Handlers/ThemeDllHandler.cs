@@ -34,7 +34,7 @@ internal class ThemeDllHandler
     {
 
         Process bridge = new();
-        bridge.StartInfo.FileName = Helper.ExectuionPathThemeBridge;
+        bridge.StartInfo.FileName = Helper.ExecutionPathThemeBridge;
         bridge.StartInfo.ArgumentList.Add(displayName);
         bridge.StartInfo.RedirectStandardOutput = true;
         bridge.Start();
