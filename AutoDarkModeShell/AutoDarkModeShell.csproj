@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharprompt" Version="3.0.0-preview4" />
+    <PackageReference Include="Sharprompt" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
