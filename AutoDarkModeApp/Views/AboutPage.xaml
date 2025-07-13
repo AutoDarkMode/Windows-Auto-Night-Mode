@@ -80,7 +80,10 @@
                 </TeachingTip>
 
                 <!--  Log and Shell  -->
-                <controls:SettingsExpander Header="Log and Shell" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
+                <controls:SettingsExpander 
+                    Header="Log and Shell" 
+                    HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
+                    IsExpanded="True">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <!--  Margin: -12 Maintain visual balance  -->
@@ -97,7 +100,10 @@
                 </controls:SettingsExpander>
 
                 <!--  SpecialThanks  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=SpecialThanks}" HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}">
+                <controls:SettingsExpander 
+                    Header="{helpers:ResourceString Name=SpecialThanks}" 
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}"
+                    IsExpanded="True">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel
@@ -122,7 +128,10 @@
                 </controls:SettingsExpander>
 
                 <!--  Follow us  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=FollowUs}" HeaderIcon="{ui:FontIcon Glyph=&#xED15;}">
+                <controls:SettingsExpander 
+                    Header="{helpers:ResourceString Name=FollowUs}" 
+                    HeaderIcon="{ui:FontIcon Glyph=&#xED15;}"
+                    IsExpanded="True">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel
@@ -155,7 +164,10 @@
                 </controls:SettingsExpander>
 
                 <!--  Third Party  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=ThirdParty}" HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}">
+                <controls:SettingsExpander 
+                    Header="{helpers:ResourceString Name=ThirdParty}" 
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}"
+                    IsExpanded="False">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel Margin="-12,0,0,0">
