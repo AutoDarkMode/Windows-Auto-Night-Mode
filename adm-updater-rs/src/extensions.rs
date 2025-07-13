@@ -70,7 +70,6 @@ pub fn get_service_path() -> PathBuf {
 /// Returns the path to the app executable, used for starting the app
 pub fn get_app_path() -> PathBuf {
     let mut path = get_adm_app_dir();
-    path.push("ui");
     path.push(APP_EXE);
     path
 }

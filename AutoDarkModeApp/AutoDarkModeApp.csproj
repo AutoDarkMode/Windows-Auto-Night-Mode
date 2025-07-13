@@ -29,13 +29,13 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <OutputPath>..\bin\Debug\adm-app\ui</OutputPath>
+    <OutputPath>..\bin\Debug\adm-app\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <OutputPath>..\bin\Release\adm-app\ui</OutputPath>
+    <OutputPath>..\bin\Release\adm-app\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

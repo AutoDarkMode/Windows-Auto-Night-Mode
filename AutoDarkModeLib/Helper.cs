@@ -141,9 +141,8 @@ public static class Helper
         var currentPath = AppContext.BaseDirectory;
         var directoryInfo = new DirectoryInfo(currentPath);
 
-        // Check if current directory is "ui" or "core"
-        if (directoryInfo.Name.Equals("ui", StringComparison.OrdinalIgnoreCase) ||
-            directoryInfo.Name.Equals("core", StringComparison.OrdinalIgnoreCase))
+        // Check if current directory is "core"
+        if (directoryInfo.Name.Equals("core", StringComparison.OrdinalIgnoreCase))
         {
             directoryInfo = directoryInfo.Parent ?? throw new InvalidOperationException("Parent directory is missing.");
         }
@@ -165,7 +164,7 @@ public static class Helper
     private static string GetExecutionPathApp()
     {
         var assemblyLocation = GetValidatedBasePath();
-        return Path.Combine(assemblyLocation, "ui", "AutoDarkModeApp.exe");
+        return Path.Combine(assemblyLocation, "AutoDarkModeApp.exe");
     }
 
     private static string GetExecutionPathUpdater()
