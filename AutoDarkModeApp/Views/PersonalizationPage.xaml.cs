@@ -20,8 +20,8 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(WallpaperPickerViewModel).FullName!, "Wallpaper".GetLocalized());
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
-            navigation.Header = "Wallpaper".GetLocalized();
         }
     }
 
@@ -30,8 +30,8 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(ColorizationViewModel).FullName!, "AccentColor".GetLocalized());
             navigation.NavigateTo(typeof(ColorizationViewModel).FullName!);
-            navigation.Header = "AccentColor".GetLocalized();
         }
     }
 
@@ -40,8 +40,8 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(CursorsViewModel).FullName!, "Cursors".GetLocalized());
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
-            navigation.Header = "Cursors".GetLocalized();
         }
     }
 
@@ -50,8 +50,8 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(ThemePickerViewModel).FullName!, "Theme".GetLocalized());
             navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
-            navigation.Header = "Theme".GetLocalized();
         }
     }
 }
