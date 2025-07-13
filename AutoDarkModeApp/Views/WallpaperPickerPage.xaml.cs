@@ -47,7 +47,7 @@ public sealed partial class WallpaperPickerPage : Page
 
         foreach (var monitor in disconnected)
         {
-            monitor.MonitorString = $"{"DisplayMonitorDisconnected".GetLocalized()} - {monitor.MonitorString}";
+            monitor.MonitorString = $"{"Disconnected".GetLocalized()} - {monitor.MonitorString}";
         }
 
         monitors.Clear();
