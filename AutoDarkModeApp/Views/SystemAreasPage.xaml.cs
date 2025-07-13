@@ -12,4 +12,9 @@ public sealed partial class SystemAreasPage : Page
         ViewModel = App.GetService<SystemAreasViewModel>();
         InitializeComponent();
     }
+
+    private async void WindowsColorsSetingHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
+    }
 }
