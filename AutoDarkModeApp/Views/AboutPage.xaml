@@ -25,7 +25,7 @@
                             x:Name="AppNameTextBlock"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="Auto Dark Mode" />
-                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2024 Armin Osaj &amp; Samuel Schiegg" />
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2025 Armin Osaj &amp; Samuel Schiegg" />
                     </StackPanel>
                 </StackPanel>
 
