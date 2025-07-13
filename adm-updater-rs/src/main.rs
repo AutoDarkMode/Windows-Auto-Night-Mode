@@ -172,7 +172,6 @@ fn shutdown_running_instances(channel: &str) -> Result<(), Box<dyn Error>> {
             api_shutdown_confirmed = true;
         } else {
             warn!("could not cleanly stop service: {}", e);
-            return Err(e.into());
         }
     }
     if !api_shutdown_confirmed {
@@ -399,7 +398,7 @@ mod tests {
     #[test]
     fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
         setup_logger()?;
-        let username = whoami::username();
+        //let username = whoami::username();
         //shutdown_running_instances(&username)?;
         shutdown_with_retries("AutoDarkModeSvc", "service", 5)?;
         shutdown_with_retries("AutoDarkModeApp", "app", 5)?;
