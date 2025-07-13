@@ -8,8 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel>
-        <ColorPicker ColorChanged="SelectColorColorPicker_ColorChanged" Color="{x:Bind CustomColor}" />
-    </StackPanel>
+    <ScrollViewer>
+        <StackPanel Padding="16">
+            <ColorPicker ColorChanged="SelectColorColorPicker_ColorChanged" Color="{x:Bind CustomColor}" />
+        </StackPanel>
+    </ScrollViewer>
 
 </UserControl>
