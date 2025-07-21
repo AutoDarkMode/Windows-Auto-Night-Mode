@@ -148,7 +148,6 @@ public class AddAutoStartException : Exception
 public class AutoStartStatusGetException : Exception
 {
     public override string Message => "Auto start info could not be retrieved.";
-
     public AutoStartStatusGetException()
     {
         Source = "AutoStartException";
