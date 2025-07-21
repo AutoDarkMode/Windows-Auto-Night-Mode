@@ -14,14 +14,15 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, Exception ex, XamlRoot xamlRoot)
     {
-        var error =
-            $"{"ErrorMessageBox_Content".GetLocalized()}\n\n"
-            + $"Exception Source: {ex.Source}\n"
-            + $"Exception Message: {ex.Message}\n\n"
-            + $"API Response:\n"
-            + $"Status Code: {response.StatusCode}\n"
-            + $"Message: {response.Message}\n"
-            + $"Details: {response.Details}";
+        var error = $@"{"ErrorMessageBox".GetLocalized()}
+
+Exception Source: {ex.Source}
+Exception Message: {ex.Message}
+
+API Response:
+Status Code: {response.StatusCode}
+Message: {response.Message}
+Details: {response.Details}";
 
         var request = new DialogRequest
         {
@@ -35,7 +36,12 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, XamlRoot xamlRoot)
     {
-        var error = $"{"ErrorMessageBox_Content".GetLocalized()}\n\n" + $"API Response:\n" + $"Status Code: {response.StatusCode}\n" + $"Message: {response.Message}\n" + $"Details: {response.Details}";
+        var error = $@"{"ErrorMessageBox".GetLocalized()}
+
+            API Response:
+            Status Code: {response.StatusCode}
+    Message: {response.Message}
+    Details: {response.Details}";
 
         var request = new DialogRequest
         {
@@ -49,8 +55,13 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessage(Exception ex, XamlRoot xamlRoot, string location, string extraInfo = "")
     {
-        var error = "ErrorMessageBox_Content".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
-        if (extraInfo.Length > 0)
+        var error = $@"{"ErrorMessageBox".GetLocalized()}
+    
+Error occurred in: {location}
+Source: {ex.Source}
+Message: {ex.Message}";
+
+        if (!string.IsNullOrEmpty(extraInfo))
         {
             error += $"\nExtra Detail: {extraInfo}";
         }
