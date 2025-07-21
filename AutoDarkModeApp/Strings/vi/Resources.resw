@@ -340,7 +340,7 @@ Bạn có muốn tạo sự cố trên kho lưu trữ Chế độ tối tự đ�
 Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Có lỗi đã xảy ra</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Tải bản cập nhật</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>có lỗi xảy ra :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Cài đặt này không hỗ trợ chủ đề mặc định của Windows</value>

@@ -340,7 +340,7 @@ Vuoi aprire un resoconto del problema nell'archvio di Auto Dark Mode?
 Premi il pulsante "Sì" per aprire una nuova finestra del browser.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Si è verificato un errore</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Scarica aggiornamento</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>si è verificato un errore :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Questa opzione non supporta i temi predefiniti di Windows</value>

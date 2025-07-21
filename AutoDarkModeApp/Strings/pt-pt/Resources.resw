@@ -340,7 +340,7 @@ Gostaria de criar um Issue no repositório Auto Dark Mode?
 Clique em "Sim" para abrir uma nova janela no navegador.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Ocorreu um erro</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Clique em "Sim" para abrir uma nova janela no navegador.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Transferir atualização</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>Ocorreu um erro :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Esta opção não suporta temas padrão do Windows</value>

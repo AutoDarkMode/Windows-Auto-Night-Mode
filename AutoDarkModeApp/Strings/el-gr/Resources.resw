@@ -340,7 +340,7 @@
 Κάντε κλικ στο "Ναι" για να ανοίξετε ένα νέο παράθυρο προγράμματος περιήγησης.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Παρουσιάστηκε ένα σφάλμα</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Λήψη ενημέρωσης</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>παρουσιάστηκε σφάλμα :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Αυτή η ρύθμιση δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
