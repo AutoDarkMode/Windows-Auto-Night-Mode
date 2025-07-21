@@ -10,6 +10,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class PersonalizationViewModel : ObservableRecipient
 {
+    private const string Location = "PersonalizationPage";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -40,7 +41,7 @@ public partial class PersonalizationViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "PersonalizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         LoadSettings();
@@ -57,7 +58,7 @@ public partial class PersonalizationViewModel : ObservableRecipient
             }
             catch (Exception ex)
             {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "PersonalizationPage");
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
             }
         });
     }
@@ -75,6 +76,8 @@ public partial class PersonalizationViewModel : ObservableRecipient
         _dispatcherQueue.TryEnqueue(() =>
         {
             StateUpdateHandler.StopConfigWatcher();
+            
+            Console.WriteLine($"Configuration updated from: {e.FullPath}");
 
             _builder.Load();
             LoadSettings();

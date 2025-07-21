@@ -84,7 +84,7 @@ public partial class ConditionsViewModel : ObservableRecipient
             _debounceTimer.Stop();
         };
 
-        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
         StateUpdateHandler.StartConfigWatcher();
     }
 
@@ -158,6 +158,7 @@ public partial class ConditionsViewModel : ObservableRecipient
             return;
 
         _builder.Config.GPUMonitoring.Samples = value + 1;
+        RequestDebouncedSave();
         try
         {
             _builder.Save();

@@ -9,6 +9,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class ThemePickerViewModel : ObservableRecipient
 {
+    private const string Location = "SaveThemeSettings";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -90,6 +91,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
             flags.Add(ThemeApplyFlags.IgnoreSound);
         if (IgnoreDesktopIconsEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreDesktopIcons);
+
         _builder.Config.WindowsThemeMode.ApplyFlags = flags;
         try
         {
@@ -179,7 +181,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -216,7 +218,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 

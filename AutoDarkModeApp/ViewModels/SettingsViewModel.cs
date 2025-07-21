@@ -15,6 +15,8 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class SettingsViewModel : ObservableRecipient
 {
+    private const string Location = "SettingsViewModel";
+    private const int MillisecondsDelay = 800;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly Updater _updater;
@@ -107,7 +109,7 @@ public partial class SettingsViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         LoadSettings();
@@ -124,7 +126,7 @@ public partial class SettingsViewModel : ObservableRecipient
             }
             catch (Exception ex)
             {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
             }
 
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
@@ -264,10 +266,7 @@ public partial class SettingsViewModel : ObservableRecipient
         StateUpdateHandler.StopConfigWatcher();
         _builder.Load();
         _builder.LoadUpdaterData();
-        _dispatcherQueue.TryEnqueue(() =>
-        {
-            LoadSettings();
-        });
+        _dispatcherQueue.TryEnqueue(LoadSettings);
         StateUpdateHandler.StartConfigWatcher();
     }
 
@@ -299,15 +298,7 @@ public partial class SettingsViewModel : ObservableRecipient
             };
             _dispatcherQueue.TryEnqueue(async () =>
             {
-                var result = await contentDialog.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    IsAlwaysFullDwmRefresh = true;
-                }
-                else
-                {
-                    IsAlwaysFullDwmRefresh = false;
-                }
+                IsAlwaysFullDwmRefresh = (await contentDialog.ShowAsync() == ContentDialogResult.Primary);
             });
             _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
         }
@@ -342,8 +333,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            var oldValue = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (value != oldValue)
+            if (value != await _localSettingsService.ReadSettingAsync<string>("Language"))
             {
                 IsLanguageChangedInfoBarOpen = true;
                 await _localSettingsService.SaveSettingAsync("Language", value);
@@ -474,7 +464,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(MillisecondsDelay);
                 });
             }
             catch (Exception ex)
@@ -498,7 +488,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     {
                         throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(MillisecondsDelay);
                 });
             }
             catch (Exception ex)
@@ -532,7 +522,7 @@ public partial class SettingsViewModel : ObservableRecipient
                         SafeSaveBuilder();
                         throw new AddAutoStartException($"error while processing CheckBoxLogonTask", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(MillisecondsDelay);
                 });
             }
         }
@@ -550,7 +540,7 @@ public partial class SettingsViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 }

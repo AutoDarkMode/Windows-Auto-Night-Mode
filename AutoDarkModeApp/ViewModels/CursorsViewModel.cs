@@ -7,6 +7,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class CursorsViewModel : ObservableRecipient
 {
+    private const string Location = "ColorizationPage";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -32,7 +33,7 @@ public partial class CursorsViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         LoadSettings();
@@ -61,6 +62,7 @@ public partial class CursorsViewModel : ObservableRecipient
             _builder.Load();
             LoadSettings();
 
+            RequestDebouncedSave(); // Uncommenting to enable debounced save
             StateUpdateHandler.StartConfigWatcher();
         });
     }
@@ -71,6 +73,7 @@ public partial class CursorsViewModel : ObservableRecipient
             return;
 
         _builder.Config.CursorSwitch.Enabled = value;
+        RequestDebouncedSave(); // Uncommenting to enable debounced save
         try
         {
             _builder.Save();
@@ -109,6 +112,7 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _builder.Config.CursorSwitch.Component.CursorsDark = value.ToString();
         }
+        RequestDebouncedSave();
         try
         {
             _builder.Save();
@@ -116,6 +120,23 @@ public partial class CursorsViewModel : ObservableRecipient
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+        }
+    }
+
+    private async void RequestDebouncedSave()
+    {
+        // Logic to handle debounced saving
+        // This could involve setting a timer or flag to delay the save operation
+        await Task.Delay(500); // Example delay for debouncing
+        try
+        {
+            // Call the save method on the builder
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            // Handle any exceptions that occur during saving
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
     }
 }

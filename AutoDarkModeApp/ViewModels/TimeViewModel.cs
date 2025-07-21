@@ -111,10 +111,7 @@ public partial class TimeViewModel : ObservableRecipient
         StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
         StateUpdateHandler.StartPostponeTimer();
 
-        SaveCoordinatesCommand = new RelayCommand(() =>
-        {
-            UpdateCoordinates();
-        });
+        SaveCoordinatesCommand = new RelayCommand(UpdateCoordinates);
 
         _debounceTimer = _dispatcherQueue.CreateTimer();
         _debounceTimer.Interval = TimeSpan.FromMilliseconds(500);
