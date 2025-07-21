@@ -340,7 +340,7 @@ Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
 Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Une erreur est survenue</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

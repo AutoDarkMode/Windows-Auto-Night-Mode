@@ -340,7 +340,7 @@ Doriți să creați o problemă în repository-ul Auto Dark Mode?
 Faceți clic pe „Da” pentru a deschide o nouă fereastră de browser.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>A aparut o eroare</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

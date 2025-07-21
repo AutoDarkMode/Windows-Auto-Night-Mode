@@ -340,7 +340,7 @@ Czy chcesz zgłosić problem w repozytorium Auto Dark Mode?
 Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Wystąpił błąd</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

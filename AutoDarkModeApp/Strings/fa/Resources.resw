@@ -340,7 +340,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
 برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>یک خطا رخ داده است.</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

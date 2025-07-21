@@ -340,7 +340,7 @@ Chcete vytvořit nový problém v repozitáři Auto Dark Mode?
 Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Nastala chyba</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

@@ -76,7 +76,7 @@ internal class Updater
     private static void ShowErrorMessage(Exception ex, string location)
     {
         string error = AdmProperties.Resources.ErrorMessageBox_Content + $"\n\nError ocurred in: {location}" + ex.Source + "\n\n" + ex.Message;
-        MsgBox msg = new(error, AdmProperties.Resources.ErrorOcurred_Title, "error", "yesno");
+        MsgBox msg = new(error, AdmProperties.Resources.ErrorOccurred_Title, "error", "yesno");
         msg.ShowDialog();
         var result = msg.DialogResult;
         if (result == true)

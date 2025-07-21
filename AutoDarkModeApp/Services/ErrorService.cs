@@ -26,7 +26,7 @@ Details: {response.Details}";
 
         var request = new DialogRequest
         {
-            Title = "ErrorOcurred_Title".GetLocalized(),
+            Title = "ErrorOccurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -45,7 +45,7 @@ Details: {response.Details}";
 
         var request = new DialogRequest
         {
-            Title = "ErrorOcurred_Title".GetLocalized(),
+            Title = "ErrorOccurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -68,7 +68,7 @@ Message: {ex.Message}";
 
         var request = new DialogRequest
         {
-            Title = "ErrorOcurred_Title".GetLocalized(),
+            Title = "ErrorOccurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };

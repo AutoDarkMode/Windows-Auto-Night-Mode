@@ -340,7 +340,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
 「はい」のクリックで、ブラウザのウィンドウを表示します。
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>エラーが発生しました</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -876,6 +876,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="ThemeTutorialDescription" xml:space="preserve">
     <value />
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
   </data>
@@ -893,8 +896,5 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
-  </data>
-  <data name="EditHotkey" xml:space="preserve">
-    <value />
   </data>
 </root>

@@ -340,7 +340,7 @@
 點按「是」以開啟新的瀏覽器視窗。
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>發生錯誤</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
