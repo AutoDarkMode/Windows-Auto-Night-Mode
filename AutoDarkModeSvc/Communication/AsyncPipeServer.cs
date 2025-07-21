@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Communication;
 
-class AsyncPipeServer : IMessageServer
+internal class AsyncPipeServer : IMessageServer
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private CancellationTokenSource WorkerTokenSource { get; set; } = new();
@@ -45,23 +45,22 @@ class AsyncPipeServer : IMessageServer
         Service = service;
         this.streamTimeout = streamTimeout;
     }
+
     public void Start()
     {
         if (disposed)
         {
             Logger.Error("cannot start async pipe server as it has already been disposed");
-            throw (new ObjectDisposedException(GetType().Name));
+            throw new ObjectDisposedException(GetType().Name);
         }
         Loop();
     }
+
     public void Dispose()
     {
         Workers.CompleteAdding();
         WorkerTokenSource.Cancel();
-        if (ConnectionHandler != null)
-        {
-            ConnectionHandler.Wait();
-        }
+        ConnectionHandler?.Wait();
         WorkerTokenSource.Dispose();
         Logger.Debug("npipe server stopped");
         disposed = true;
@@ -258,16 +257,15 @@ class AsyncPipeServer : IMessageServer
 
             try
             {
-                // exppect pipe data to be consumed within the streamTimeout timeframe
+                // expect pipe data to be consumed within the streamTimeout timeframe
                 // if not cancel the write operation
                 using CancellationTokenSource writeTimeoutTokenSource = new();
                 writeTimeoutTokenSource.CancelAfter(streamTimeout);
-                StreamWriter sw = new(responsePipe)
-                { AutoFlush = true };
-                using (sw)
                 {
                     StringBuilder builder = new(response);
-                    await sw.WriteAsync(builder, writeTimeoutTokenSource.Token);
+                    using StreamWriter sw = new(responsePipe)
+                    { AutoFlush = true };
+                    await sw.WriteAsync(builder.ToString().AsMemory(), writeTimeoutTokenSource.Token); // updated method to use AsMemory()
                 }
             }
             catch (OperationCanceledException)
@@ -337,5 +335,4 @@ internal class TimeoutEventWrapper
             Logger.Error(ex, "error while monitoring stream timeout:");
         }
     }
-
 }
