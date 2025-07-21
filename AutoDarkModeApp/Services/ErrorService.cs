@@ -49,7 +49,7 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessage(Exception ex, XamlRoot xamlRoot, string location, string extraInfo = "")
     {
-        var error = "ErrorMessageBox_Content".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
+        var error = "ErrorMessageBox_Content".GetLocalized() + $"\n\nError occurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
         if (extraInfo.Length > 0)
         {
             error += $"\nExtra Detail: {extraInfo}";
@@ -131,7 +131,7 @@ public class SwitchThemeException : Exception
 
 public class AddAutoStartException : Exception
 {
-    public override string Message => "Auto start task could not been set.";
+    public override string Message => "Auto start task could not be set.";
 
     public AddAutoStartException()
     {
@@ -147,7 +147,7 @@ public class AddAutoStartException : Exception
 
 public class AutoStartStatusGetException : Exception
 {
-    public override string Message => "Auto start info could not be retrievbed.";
+    public override string Message => "Auto start info could not be retrieved.";
 
     public AutoStartStatusGetException()
     {
@@ -163,7 +163,7 @@ public class AutoStartStatusGetException : Exception
 
 public class RemoveAutoStartException : Exception
 {
-    public override string Message => "Auto start task could not been removed.";
+    public override string Message => "Auto start task could not be removed.";
 
     public RemoveAutoStartException()
     {
