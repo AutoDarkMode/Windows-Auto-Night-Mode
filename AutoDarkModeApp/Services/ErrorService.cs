@@ -83,31 +83,44 @@ Details: {response.Details}";
 
     private static async Task ProcessDialogQueue()
     {
-        while (_dialogQueue.Count > 0)
+        try
         {
-            _isDialogShowing = true;
-            var request = _dialogQueue.Dequeue();
-
-            ContentDialog dialog = new()
+            while (_dialogQueue.Count > 0)
             {
-                Title = request.Title,
-                Content = request.Content,
-                DefaultButton = ContentDialogButton.Primary,
-                PrimaryButtonText = "Yes",
-                CloseButtonText = "No",
-                XamlRoot = request.XamlRoot,
-            };
+                _isDialogShowing = true;
+                var request = _dialogQueue.Dequeue();
 
-            var result = await dialog.ShowAsync();
+                try
+                {
+                    ContentDialog dialog = new()
+                    {
+                        Title = request.Title,
+                        Content = request.Content,
+                        DefaultButton = ContentDialogButton.Primary,
+                        PrimaryButtonText = "Yes",
+                        CloseButtonText = "No",
+                        XamlRoot = request.XamlRoot,
+                    };
 
-            if (result == ContentDialogResult.Primary)
-            {
-                var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
-                Process.Start(new ProcessStartInfo(issueUri) { UseShellExecute = true, Verb = "open" });
+                    var result = await dialog.ShowAsync();
+
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
+                        Process.Start(new ProcessStartInfo(issueUri) { UseShellExecute = true, Verb = "open" });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Optionally log or handle the dialog-specific exception here
+                    Debug.WriteLine($"Error showing dialog: {ex}");
+                }
             }
         }
-
-        _isDialogShowing = false;
+        finally
+        {
+            _isDialogShowing = false;
+        }
     }
 }
 
