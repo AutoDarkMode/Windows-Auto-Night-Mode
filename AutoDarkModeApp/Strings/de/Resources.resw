@@ -340,7 +340,7 @@ Möchtest du eine Fehlermeldung in unserem GitHub Repo erstellen?
 Drücke "ja", um ein neues Browserfenster zu öffnen.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

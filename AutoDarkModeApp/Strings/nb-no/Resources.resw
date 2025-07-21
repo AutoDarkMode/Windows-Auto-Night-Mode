@@ -340,7 +340,7 @@ Vil du opprette ensak på Auto Dark Mode-repositoriumet?
 Klikk "Ja" for å åpne et nytt nettleservindu.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>En feil har vist seg</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

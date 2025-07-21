@@ -14,19 +14,18 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, Exception ex, XamlRoot xamlRoot)
     {
-        var error = $@"{"ErrorMessageBox".GetLocalized()}
-
-Exception Source: {ex.Source}
-Exception Message: {ex.Message}
-
-API Response:
-Status Code: {response.StatusCode}
-Message: {response.Message}
-Details: {response.Details}";
+        var error =
+            $"{"ErrorMessageBox".GetLocalized()}\n\n"
+            + $"Exception Source: {ex.Source}\n"
+            + $"Exception Message: {ex.Message}\n\n"
+            + $"API Response:\n"
+            + $"Status Code: {response.StatusCode}\n"
+            + $"Message: {response.Message}\n"
+            + $"Details: {response.Details}";
 
         var request = new DialogRequest
         {
-            Title = "ErrorOccurred_Title".GetLocalized(),
+            Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -36,16 +35,11 @@ Details: {response.Details}";
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, XamlRoot xamlRoot)
     {
-        var error = $@"{"ErrorMessageBox".GetLocalized()}
-
-            API Response:
-            Status Code: {response.StatusCode}
-    Message: {response.Message}
-    Details: {response.Details}";
+        var error = $"{"ErrorMessageBox".GetLocalized()}\n\n" + $"API Response:\n" + $"Status Code: {response.StatusCode}\n" + $"Message: {response.Message}\n" + $"Details: {response.Details}";
 
         var request = new DialogRequest
         {
-            Title = "ErrorOccurred_Title".GetLocalized(),
+            Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -55,20 +49,15 @@ Details: {response.Details}";
 
     public async Task ShowErrorMessage(Exception ex, XamlRoot xamlRoot, string location, string extraInfo = "")
     {
-        var error = $@"{"ErrorMessageBox".GetLocalized()}
-    
-Error occurred in: {location}
-Source: {ex.Source}
-Message: {ex.Message}";
-
-        if (!string.IsNullOrEmpty(extraInfo))
+        var error = "ErrorMessageBox".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
+        if (extraInfo.Length > 0)
         {
             error += $"\nExtra Detail: {extraInfo}";
         }
 
         var request = new DialogRequest
         {
-            Title = "ErrorOccurred_Title".GetLocalized(),
+            Title = "errorOcurredTitle".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -171,8 +160,8 @@ public class AddAutoStartException : Exception
 
 public class AutoStartStatusGetException : Exception
 {
-    public override string Message => "Auto start info could not be retrieved.";
-        
+    public override string Message => "Auto start info could not be retrievbed.";
+
     public AutoStartStatusGetException()
     {
         Source = "AutoStartException";
@@ -187,7 +176,7 @@ public class AutoStartStatusGetException : Exception
 
 public class RemoveAutoStartException : Exception
 {
-    public override string Message => "Auto start task could not be removed.";
+    public override string Message => "Auto start task could not been removed.";
 
     public RemoveAutoStartException()
     {

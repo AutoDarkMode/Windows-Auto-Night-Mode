@@ -340,7 +340,7 @@ Would you like to create an issue on the Auto Dark Mode repository?
 Click "Yes" to open a new browser window.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>An error has occured</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

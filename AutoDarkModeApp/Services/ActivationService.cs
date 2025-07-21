@@ -65,7 +65,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
                 {
                     new InfoBar
                     {
-                        Title = "ErrorOccurred_Title".GetLocalized(),
+                        Title = "ErrorOcurred_Title".GetLocalized(),
                         Severity = InfoBarSeverity.Error,
                         IsOpen = true,
                         IsClosable = false,

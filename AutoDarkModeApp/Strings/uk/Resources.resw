@@ -340,7 +340,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
 Натисніть «Так», щоб відкрити нове вікно браузера.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>Сталася помилка</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

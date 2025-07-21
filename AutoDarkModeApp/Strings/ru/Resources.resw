@@ -340,7 +340,7 @@
 Нажмите «Да», чтобы открыть новое окно браузера.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>Произошла ошибка</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

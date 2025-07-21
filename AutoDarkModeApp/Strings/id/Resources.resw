@@ -340,7 +340,7 @@ Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
 Klik "Ya" untuk membuka jendela peramban baru.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>Masalah terjadi</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">

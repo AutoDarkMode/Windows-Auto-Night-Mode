@@ -340,7 +340,7 @@ Auto Dark Mode deposunda bir sorun konusu oluşturmak ister misiniz?
 Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
 </value>
   </data>
-  <data name="ErrorOccurred_Title" xml:space="preserve">
+  <data name="ErrorOcurred_Title" xml:space="preserve">
     <value>Bir hata oluştu</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
