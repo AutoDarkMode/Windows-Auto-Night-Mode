@@ -9,6 +9,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class SystemAreasViewModel : ObservableRecipient
 {
+    private const string Source = "SystemAreasViewModel";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -79,7 +80,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         LoadSettings();
@@ -127,27 +128,29 @@ public partial class SystemAreasViewModel : ObservableRecipient
         IsAdaptiveTaskbarAccent = SystemSwitchComponentMode == SystemSwitchMode.AccentOnly;
 
         IsTaskbarColorOnAdaptive = _builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
-        if (_builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Light)
+        switch (_builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive)
         {
-            IsAdaptiveTaskbarAccentOnLight = true;
-            IsAdaptiveTaskbarAccentOnDark = false;
-        }
-        else
-        {
-            IsAdaptiveTaskbarAccentOnLight = false;
-            IsAdaptiveTaskbarAccentOnDark = true;
+            case Theme.Light:
+                IsAdaptiveTaskbarAccentOnLight = true;
+                IsAdaptiveTaskbarAccentOnDark = false;
+                break;
+            default:
+                IsAdaptiveTaskbarAccentOnLight = false;
+                IsAdaptiveTaskbarAccentOnDark = true;
+                break;
         }
 
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
-        if (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light)
+        switch (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme)
         {
-            IsDWMPrevalenceEnableThemeLight = true;
-            IsDWMPrevalenceEnableThemeDark = false;
-        }
-        else
-        {
-            IsDWMPrevalenceEnableThemeLight = false;
-            IsDWMPrevalenceEnableThemeDark = true;
+            case Theme.Light:
+                IsDWMPrevalenceEnableThemeLight = true;
+                IsDWMPrevalenceEnableThemeDark = false;
+                break;
+            default:
+                IsDWMPrevalenceEnableThemeLight = false;
+                IsDWMPrevalenceEnableThemeDark = true;
+                break;
         }
 
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
@@ -175,12 +178,12 @@ public partial class SystemAreasViewModel : ObservableRecipient
             var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
             if (result != StatusCode.Ok)
             {
-                throw new SwitchThemeException(result, "SystemAreasViewModel");
+                throw new SwitchThemeException(result, Source);
             }
         }
         catch (Exception ex)
         {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
     }
 
@@ -211,7 +214,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -240,7 +243,8 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         AccentColorForTaskbarSettingsCardVisible =
             SystemSwitchComponentMode != SystemSwitchMode.AlwaysLight && SystemSwitchComponentMode != SystemSwitchMode.AccentOnly && SystemSwitchComponentMode != SystemSwitchMode.Disabled;
-        IsAdaptiveTaskbarAccent = value == SystemSwitchMode.AccentOnly;
+        IsAdaptiveTaskbarAccent = value
+            == SystemSwitchMode.AccentOnly;
 
         try
         {
@@ -248,7 +252,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -267,7 +271,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -282,13 +286,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Light;
         }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -303,13 +308,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Dark;
         }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -328,7 +334,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -343,13 +349,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Light;
         }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -364,13 +371,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Dark;
         }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
 
         RequestThemeSwitch();
@@ -382,13 +390,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
             return;
 
         _builder.Config.TouchKeyboardSwitch.Enabled = value;
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
     }
 
@@ -398,13 +407,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
             return;
 
         _builder.Config.ColorFilterSwitch.Enabled = value;
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
         }
     }
 }
