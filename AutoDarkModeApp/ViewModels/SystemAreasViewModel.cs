@@ -243,8 +243,8 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         AccentColorForTaskbarSettingsCardVisible =
             SystemSwitchComponentMode != SystemSwitchMode.AlwaysLight && SystemSwitchComponentMode != SystemSwitchMode.AccentOnly && SystemSwitchComponentMode != SystemSwitchMode.Disabled;
-        IsAdaptiveTaskbarAccent = value
-            == SystemSwitchMode.AccentOnly;
+        IsAdaptiveTaskbarAccent =
+        value == SystemSwitchMode.AccentOnly;
 
         try
         {
