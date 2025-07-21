@@ -892,4 +892,7 @@
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>연결 끊김</value>
+  </data>
 </root>

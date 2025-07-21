@@ -892,4 +892,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Terputus</value>
+  </data>
 </root>

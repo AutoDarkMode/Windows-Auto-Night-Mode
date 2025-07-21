@@ -892,4 +892,7 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Déconnecté</value>
+  </data>
 </root>
