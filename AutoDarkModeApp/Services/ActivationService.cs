@@ -116,15 +116,14 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
     private static async Task WaitForXamlRootAsync()
     {
         var tcs = new TaskCompletionSource();
-
-        int attempts = 0;
-        const int maxAttempts = 50;
-        const int delayMs = 50;
-
         DispatcherQueue
             .GetForCurrentThread()
             .TryEnqueue(async () =>
             {
+
+                int attempts = 0;
+                const int maxAttempts = 50;
+
                 while (attempts < maxAttempts)
                 {
                     if (App.MainWindow.Content?.XamlRoot != null)
@@ -134,7 +133,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
                     }
 
                     attempts++;
-                    await Task.Delay(delayMs);
+                    await Task.Delay(50);
                 }
 
                 tcs.SetException(new TimeoutException("MainWindow XamlRoot not available after waiting."));
@@ -173,21 +172,14 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             await Task.Delay(1000);
         }
 
-        if (response.StatusCode == StatusCode.Timeout)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return response.StatusCode != StatusCode.Timeout;
     }
 
     private async Task SystemTimeFormatAsync()
     {
         string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         sysFormat = sysFormat[..sysFormat.IndexOf(':')];
-        if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
+        if (sysFormat.Equals("hh") || sysFormat.Equals("h")) // Changed '|' to '||'
         {
             if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
                 await localSettingsService.SaveSettingAsync("TwelveHourClock", true);
