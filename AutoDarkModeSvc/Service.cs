@@ -37,7 +37,7 @@ using static AutoDarkModeSvc.DarkColorTable;
 
 namespace AutoDarkModeSvc;
 
-class Service : Form
+internal class Service : Form
 {
     private readonly bool allowshowdisplay = false;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
@@ -99,14 +99,14 @@ class Service : Form
         ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
         //ModuleTimer StateUpdateTimer = new(TimerFrequency.StateUpdate, TimerName.StateUpdate);
 
-        Timers = new List<ModuleTimer>()
-        {
+        Timers =
+        [
             MainTimer,
             //ShortTimer,
             IOTimer,
             GeoposTimer,
             //StateUpdateTimer
-        };
+        ];
 
         WardenModule warden = new("ModuleWarden", Timers, true);
         ConfigMonitor.RegisterWarden(warden);
@@ -238,17 +238,19 @@ class Service : Form
             }
             else
             {
-                if (skipType == SkipType.UntilSunset)
+                switch (skipType)
                 {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
-                }
-                else if (skipType == SkipType.UntilSunrise)
-                {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
-                }
-                else
-                {
-                    pauseThemeSwitchItem.Text = Strings.Resources.TrayMenuItem_ThemeSwitchPause;
+                    case SkipType.UntilSunset:
+                        pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
+                        break;
+                    case SkipType.UntilSunrise:
+                        pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
+                        break;
+                    case SkipType.Unspecified:
+                        break;
+                    default:
+                        pauseThemeSwitchItem.Text = Strings.Resources.TrayMenuItem_ThemeSwitchPause;
+                        break;
                 }
             }
         }
@@ -346,7 +348,7 @@ class Service : Form
     public void ToggleTheme(object sender, EventArgs e)
     {
         Theme newTheme = ThemeManager.SwitchThemeAutoPauseAndNotify();
-        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme");
+        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(newTheme).ToLower()} theme");
     }
 
     public void ToggleAutoThemeSwitching(object sender, EventArgs e)
@@ -468,7 +470,7 @@ class Service : Form
     public const int WM_HOTKEY = 0x312;
     protected override void WndProc(ref Message m)
     {
-        if (m.Msg == WM_HOTKEY && m.WParam == (IntPtr)0)
+        if (m.Msg == WM_HOTKEY && m.WParam == 0)
         {
             int modifiers = (int)m.LParam & 0xFFFF;
             Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
@@ -481,9 +483,8 @@ class Service : Form
             var match = HotkeyHandler.GetRegistered(modifiersPressed, key);
             if (match == null)
             {
-                if (modifiersPressed.Contains(Keys.LWin))
+                if (modifiersPressed.Remove(Keys.LWin)) // Directly attempt to remove without checking Contains (CA1868)
                 {
-                    modifiersPressed.Remove(Keys.LWin);
                     modifiersPressed.Add(Keys.RWin);
                 }
                 match = HotkeyHandler.GetRegistered(modifiersPressed, key);
@@ -517,7 +518,7 @@ public static class WindowHelper
         SetForegroundWindow(handle);
     }
 
-    const int SW_RESTORE = 9;
+    private const int SW_RESTORE = 9;
 
     [System.Runtime.InteropServices.DllImport("User32.dll")]
     private static extern bool SetForegroundWindow(IntPtr handle);
@@ -529,39 +530,14 @@ public static class WindowHelper
 
 public class DarkColorTable : ProfessionalColorTable
 {
-    public override Color MenuItemBorder
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color MenuItemSelected
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-
-    public override Color MenuItemSelectedGradientBegin
-    {
-        get { return Color.FromArgb(64, 64, 64); }
-    }
-    public override Color MenuItemSelectedGradientEnd
-    {
-        get { return Color.FromArgb(64, 64, 64); }
-    }
-    public override Color ToolStripDropDownBackground
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientBegin
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientMiddle
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientEnd
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
+    public override Color MenuItemBorder => Color.FromArgb(32, 32, 32);
+    public override Color MenuItemSelected => Color.FromArgb(32, 32, 32);
+    public override Color MenuItemSelectedGradientBegin => Color.FromArgb(64, 64, 64);
+    public override Color MenuItemSelectedGradientEnd => Color.FromArgb(64, 64, 64);
+    public override Color ToolStripDropDownBackground => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientBegin => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientMiddle => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientEnd => Color.FromArgb(32, 32, 32);
 
     public class DarkRenderer : ToolStripProfessionalRenderer
     {
@@ -569,6 +545,7 @@ public class DarkColorTable : ProfessionalColorTable
             : base(new DarkColorTable())
         {
         }
+
         protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;

@@ -65,15 +65,12 @@ public class SwitchEventArgs : EventArgs
     /// Updates the switch time
     /// </summary>
     /// <param name="time">the switch time to set</param>
-    public void UpdateSwitchTime(DateTime time)
-    {
-        SwitchTime = time;
-    }
+    public void UpdateSwitchTime(DateTime time) => SwitchTime = time;
 
     public bool RefreshDwm { get; } = false;
     public SwitchSource Source { get; }
     private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
-    public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
+    public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources => new(_themeOverrideSources);
     public Theme Theme { get; private set; } = Theme.Automatic;
     public DateTime? SwitchTime { get; private set; } = null;
 }
