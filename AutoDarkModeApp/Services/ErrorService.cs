@@ -15,7 +15,7 @@ public class ErrorService : IErrorService
     public async Task ShowErrorMessageFromApi(ApiResponse response, Exception ex, XamlRoot xamlRoot)
     {
         var error =
-            $"{"ErrorMessageBox".GetLocalized()}\n\n"
+            $"{"ErrorMessageBox_Content".GetLocalized()}\n\n"
             + $"Exception Source: {ex.Source}\n"
             + $"Exception Message: {ex.Message}\n\n"
             + $"API Response:\n"
@@ -25,7 +25,7 @@ public class ErrorService : IErrorService
 
         var request = new DialogRequest
         {
-            Title = "errorOcurredTitle".GetLocalized(),
+            Title = "ErrorOcurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -35,11 +35,11 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, XamlRoot xamlRoot)
     {
-        var error = $"{"ErrorMessageBox".GetLocalized()}\n\n" + $"API Response:\n" + $"Status Code: {response.StatusCode}\n" + $"Message: {response.Message}\n" + $"Details: {response.Details}";
+        var error = $"{"ErrorMessageBox_Content".GetLocalized()}\n\n" + $"API Response:\n" + $"Status Code: {response.StatusCode}\n" + $"Message: {response.Message}\n" + $"Details: {response.Details}";
 
         var request = new DialogRequest
         {
-            Title = "errorOcurredTitle".GetLocalized(),
+            Title = "ErrorOcurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -49,7 +49,7 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessage(Exception ex, XamlRoot xamlRoot, string location, string extraInfo = "")
     {
-        var error = "ErrorMessageBox".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
+        var error = "ErrorMessageBox_Content".GetLocalized() + $"\n\nError ocurred in: {location}" + $"\nSource: {ex.Source}" + $"\nMessage: {ex.Message}";
         if (extraInfo.Length > 0)
         {
             error += $"\nExtra Detail: {extraInfo}";
@@ -57,7 +57,7 @@ public class ErrorService : IErrorService
 
         var request = new DialogRequest
         {
-            Title = "errorOcurredTitle".GetLocalized(),
+            Title = "ErrorOcurred_Title".GetLocalized(),
             Content = error,
             XamlRoot = xamlRoot,
         };
@@ -147,8 +147,8 @@ public class AddAutoStartException : Exception
 
 public class AutoStartStatusGetException : Exception
 {
-    public override string Message => "Auto start info could not be retrievbed.";
-
+    public override string Message => "Auto start info could not be retrieved.";
+        
     public AutoStartStatusGetException()
     {
         Source = "AutoStartException";
@@ -163,7 +163,7 @@ public class AutoStartStatusGetException : Exception
 
 public class RemoveAutoStartException : Exception
 {
-    public override string Message => "Auto start task could not been removed.";
+    public override string Message => "Auto start task could not be removed.";
 
     public RemoveAutoStartException()
     {
