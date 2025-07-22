@@ -340,7 +340,7 @@ Chcete vytvořit nový problém v repozitáři Auto Dark Mode?
 Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Nastala chyba</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Klikněte na „Ano“ pro otevření nového okna v prohlížeči.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Nainstalovat aktualizaci</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>Nastala chyba</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Tato volba nepodporuje výchozí motivy Windows</value>

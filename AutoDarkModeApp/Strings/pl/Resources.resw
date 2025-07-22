@@ -340,7 +340,7 @@ Czy chcesz zgłosić problem w repozytorium Auto Dark Mode?
 Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Wystąpił błąd</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Pobierz aktualizację</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>wystąpił błąd :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Ta opcja nie obsługuje domyślnych motywów systemu Windows</value>
