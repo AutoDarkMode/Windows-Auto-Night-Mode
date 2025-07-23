@@ -331,17 +331,16 @@ For this reason you could support me with a voluntary donation. Even a small amo
     <value>Energy saver mitigation for theme switch</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>There was an issue with the UI.
+    <value>There was an error with the UI.
 
 Please ensure:
 - the service is running
 - the config.yaml file is correct
 
 Would you like to create an issue on the Auto Dark Mode repository?</value>
-    <comment>Text like "Click yes to..." is (and should be) obvious</comment>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
-    <value>An error has occured</value>
+    <value>An error has occurred</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
     <value>This feature is disabled while Auto Dark Mode manages your theme.</value>
@@ -398,7 +397,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Hotkeys</value>
   </data>
   <data name="IdleTime" xml:space="preserve">
-    <value>Time in minutes before the system is considered idle</value>
+    <value>Time (in minutes) before the system is considered idle</value>
   </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Ignore background</value>
@@ -536,7 +535,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Searching for updates…</value>
   </data>
   <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again!</value>
+    <value>The service is not responding. Please check if AutoDarkModeSvc.exe is running, and try again.</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>Theme switch pending</value>
@@ -551,7 +550,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>A new version is available on GitHub with fixes and enhancements.
 
 Currently installed version: {0}, new version: {1}</value>
-    <comment>This should be handled with discrete ("Update" or "Dismiss") buttons</comment>
   </data>
   <data name="Msg_VersionInfoCopied" xml:space="preserve">
     <value>Version info copied to clipboard</value>
@@ -572,20 +570,19 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Ok</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
-    <value>Open configuration file</value>
-    <comment>Don't use unnessecary abbreviations</comment>
+    <value>Open the configuration file</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
-    <value>Open configuration folder</value>
+    <value>Open the configuration folder</value>
   </data>
   <data name="OpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>Open the log file</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Open folder</value>
+    <value>Open the folder</value>
   </data>
   <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Open Windows pointer settings</value>
+    <value>Go to Windows pointer settings</value>
   </data>
   <data name="OpenScriptConfig" xml:space="preserve">
     <value>Open script configuration</value>
@@ -594,7 +591,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Open shell</value>
   </data>
   <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>Open the updater log</value>
   </data>
   <data name="OpenWindowsNightLight" xml:space="preserve">
     <value>Go to Night light settings</value>
@@ -603,7 +600,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Path:</value>
   </data>
   <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Toggle pause auto theme switch</value>
+    <value>Toggle pause the auto theme switch</value>
   </data>
   <data name="Personalization" xml:space="preserve">
     <value>Personalization</value>
@@ -631,9 +628,10 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Position" xml:space="preserve">
     <value>Position</value>
+      <comment>noun</comment>
   </data>
   <data name="PostponeControl" xml:space="preserve">
-    <value>Postpone control</value>
+    <value>Postpone the control</value>
   </data>
   <data name="PostponeInfoAt" xml:space="preserve">
     <value>Auto theme switching is currently paused due to the following modules:</value>
@@ -660,10 +658,10 @@ Currently installed version: {0}, new version: {1}</value>
     <value>System idle checker</value>
   </data>
   <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>postpones until next sunrise</value>
+    <value>postpones until the next sunrise</value>
   </data>
   <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>postpones until next sunset</value>
+    <value>postpones until the next sunset</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
     <value>2 hours</value>
@@ -778,36 +776,47 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Theme10_Flowers" xml:space="preserve">
     <value>Flowers</value>
+      <comment>Windows 10 theme; must match localized name</comment>
   </data>
   <data name="Theme10_Windows" xml:space="preserve">
     <value>Windows</value>
+      <comment>Windows 10 theme; must match localized name</comment>
   </data>
   <data name="Theme10_Windows10" xml:space="preserve">
     <value>Windows 10</value>
+      <comment>Windows 10 theme; must match localized name</comment>
   </data>
   <data name="Theme10_WindowsLight" xml:space="preserve">
     <value>Windows (Light)</value>
+      <comment>Windows 10 theme; must match localized name</comment>
   </data>
   <data name="Theme11_CapturedMotion" xml:space="preserve">
     <value>Captured Motion</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Dark" xml:space="preserve">
     <value>Windows (Dark)</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
     <value>Flow</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
     <value>Glow</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Light" xml:space="preserve">
     <value>Windows (Light)</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
     <value>Spotlight</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
+      <comment>Windows 11 theme; must match localized name</comment>
   </data>
   <data name="ThirdParty" xml:space="preserve">
     <value>Used software</value>
@@ -847,7 +856,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Updates</value>
   </data>
   <data name="UseLocationService" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>Use location service</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
@@ -869,7 +878,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
     <value>This option is disabled. Need to run on Windows 10 April 2019 or later.</value>
-    <comment>Don't blame a user directly!</comment>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
@@ -905,15 +913,16 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
+      <comment>verb</comment>
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>UnDelay</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Show a notification when the automatic theme switch is paused</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Show a notification when toggling the automatic theme switch</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
     <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
