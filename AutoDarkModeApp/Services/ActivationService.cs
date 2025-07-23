@@ -43,7 +43,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
                     Children =
                     {
                         new TextBlock { Text = "Msg_NoService".GetLocalized() },
-                        new ProgressBar { IsIndeterminate = true },
+                        new ProgressRing { IsIndeterminate = true, Width = 50, Height = 50 },
                     },
                 },
                 XamlRoot = App.MainWindow.Content.XamlRoot,

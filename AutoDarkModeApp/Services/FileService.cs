@@ -41,10 +41,10 @@ public class FileService : IFileService
 
     public void Save<T>(string folderPath, string fileName, T content)
     {
-        if (!Directory.Exists(folderPath))
-        {
+        //if (!Directory.Exists(folderPath))
+        //{
             Directory.CreateDirectory(folderPath);
-        }
+        //}
 
         var fileContent = JsonSerializer.Serialize(content, _jsonOptions);
         WriteAllTextWithRetry(Path.Combine(folderPath, fileName), fileContent);
@@ -58,6 +58,7 @@ public class FileService : IFileService
         }
     }
 
+    // Question: Why do we need to retry writing the file? And why create a function for it? When it's only used here? [Jay]
     private static void WriteAllTextWithRetry(string filePath, string content, int maxRetries = 5, int delayMs = 500)
     {
         for (var attempt = 0; attempt < maxRetries; attempt++)

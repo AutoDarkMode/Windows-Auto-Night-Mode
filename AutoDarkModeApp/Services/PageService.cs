@@ -8,7 +8,7 @@ namespace AutoDarkModeApp.Services;
 
 public class PageService : IPageService
 {
-    private readonly Dictionary<string, Type> _pages = new();
+    private readonly Dictionary<string, Type> _pages = [];
 
     public PageService()
     {
@@ -38,7 +38,7 @@ public class PageService : IPageService
             }
         }
 
-        return pageType;
+        return pageType!;
     }
 
     private void Configure<VM, V>()

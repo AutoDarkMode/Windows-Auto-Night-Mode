@@ -14,7 +14,7 @@ public class ErrorService : IErrorService
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, Exception ex, XamlRoot xamlRoot)
     {
-        var error = $@"{"ErrorMessageBox".GetLocalized()}
+        var error = $@"{"ErrorMessageBox_Content".GetLocalized()}
 
 Exception Source: {ex.Source}
 Exception Message: {ex.Message}
@@ -36,7 +36,7 @@ Details: {response.Details}";
 
     public async Task ShowErrorMessageFromApi(ApiResponse response, XamlRoot xamlRoot)
     {
-        var error = $@"{"ErrorMessageBox".GetLocalized()}
+        var error = $@"{"ErrorMessageBox_Content".GetLocalized()}
 
             API Response:
             Status Code: {response.StatusCode}
@@ -97,8 +97,8 @@ Details: {response.Details}";
                         Title = request.Title,
                         Content = request.Content,
                         DefaultButton = ContentDialogButton.Primary,
-                        PrimaryButtonText = "Yes",
-                        CloseButtonText = "No",
+                        PrimaryButtonText = "Open issue",
+                        CloseButtonText = "Cancel",
                         XamlRoot = request.XamlRoot,
                     };
 

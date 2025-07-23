@@ -94,37 +94,37 @@ public class NavigationService : INavigationService
     {
         if (_frame == null)
         {
-            args.Handled = false;
+            //args.Handled = false;
             return;
         }
 
-        if (sender.Key == VirtualKey.Left && sender.Modifiers == VirtualKeyModifiers.Menu)
+        switch (sender.Key)
         {
-            if (_frame.CanGoBack)
-            {
-                _frame.GoBack();
-                args.Handled = true;
-            }
-            else
-            {
-                args.Handled = false;
-            }
-        }
-        else if (sender.Key == VirtualKey.Right && sender.Modifiers == VirtualKeyModifiers.Menu)
-        {
-            if (_frame.CanGoForward)
-            {
-                _frame.GoForward();
-                args.Handled = true;
-            }
-            else
-            {
-                args.Handled = false;
-            }
-        }
-        else
-        {
-            args.Handled = false;
+            case VirtualKey.Left when sender.Modifiers == VirtualKeyModifiers.Menu:
+                if (_frame.CanGoBack)
+                {
+                    _frame.GoBack();
+                    args.Handled = true;
+                }
+                //else
+                //{
+                //    args.Handled = false;
+                //}
+                break;
+            case VirtualKey.Right when sender.Modifiers == VirtualKeyModifiers.Menu:
+                if (_frame.CanGoForward)
+                {
+                    _frame.GoForward();
+                    args.Handled = true;
+                }
+                //else
+                //{
+                //    args.Handled = false;
+                //}
+                break;
+            default:
+                //args.Handled = false;
+                break;
         }
     }
 
