@@ -899,4 +899,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
 </root>

@@ -899,4 +899,7 @@ Bunu indirmek istiyor musunuz?
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
 </root>

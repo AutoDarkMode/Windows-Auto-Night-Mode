@@ -43,14 +43,17 @@
                                 <Button
                                     MinWidth="120"
                                     Click="LightModeCheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=DarkTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -67,7 +70,7 @@
                                 <Button
                                     MinWidth="120"
                                     Click="DarkModeCheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

@@ -899,4 +899,7 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
 </root>

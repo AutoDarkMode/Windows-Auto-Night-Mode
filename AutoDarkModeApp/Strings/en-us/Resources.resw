@@ -891,6 +891,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Disconnected</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -957,8 +961,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
-  <data name="Background" xml:space="preserve">
-    <value>Background</value>
-    <comment>match Windows Settings</comment>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
   </data>
 </root>
