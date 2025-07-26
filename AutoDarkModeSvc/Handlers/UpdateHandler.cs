@@ -36,7 +36,7 @@ using HttpClientProgress;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class UpdateHandler
+internal static class UpdateHandler
 {
     private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
     private const string defaultDownloadBaseUrl = "https://github.com";
@@ -72,7 +72,6 @@ static class UpdateHandler
     /// Details carries a yaml serialized UpdateInfo object</returns>
     public static ApiResponse CheckNewVersion()
     {
-        IsARMUpgrade = false;
         ApiResponse response = new();
         try
         {
@@ -112,11 +111,7 @@ static class UpdateHandler
             UpstreamVersion = UpdateInfo.Deserialize(data);
             Version newVersion = new(UpstreamVersion.Tag);
 
-            if (RuntimeInformation.OSArchitecture == Architecture.Arm64)
-            {
-                IsARMUpgrade = true;
-            }
-            string archString = IsARMUpgrade ? " (ARM64)" : "";
+            string archString = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? " (ARM64)" : "";
 
             if (currentVersion.CompareTo(newVersion) < 0)
             {
@@ -182,16 +177,12 @@ static class UpdateHandler
     /// </summary>
     public static ApiResponse CheckDowngrade()
     {
-        if (UpstreamResponse.StatusCode == StatusCode.Ok)
+        if (UpstreamResponse.StatusCode == StatusCode.Ok && currentVersion.CompareTo(new Version(UpstreamVersion.Tag)) > 0)
         {
-            Version newVersion = new(UpstreamVersion.Tag);
-            if (currentVersion.CompareTo(newVersion) > 0)
-            {
-                UpstreamResponse.StatusCode = StatusCode.Downgrade;
-                return UpstreamResponse;
-            }
+            UpstreamResponse.StatusCode = StatusCode.Downgrade;
+            return UpstreamResponse;
         }
-        return new()
+        return new ApiResponse()
         {
             StatusCode = StatusCode.No,
             Message = "no downgrade available"
@@ -375,9 +366,11 @@ static class UpdateHandler
         }
         else
         {
-            ProcessStartInfo startInfo = new();
-            startInfo.FileName = Helper.ExecutionPathUpdater;
-            startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
+            ProcessStartInfo startInfo = new()
+            {
+                FileName = Helper.ExecutionPathUpdater,
+                WorkingDirectory = Helper.ExecutionDirUpdater
+            };
             Process.Start(startInfo);
         }
     }
@@ -657,33 +650,28 @@ static class UpdateHandler
         long totalBytes = progress.Item2;
         long receivedBytes = progress.Item3;
 
-        if (percent > Progress)
+        if (percent > Progress && percent % 10 == 0)
         {
-            if (percent % 10 == 0)
+            string mbReceived = (receivedBytes / 1000000).ToString();
+            string mbTotal = (totalBytes / 1000000).ToString();
+            nfi.NumberDecimalSeparator = ".";
+            Progress = percent;
+            string progressString = (Progress / 100d).ToString(nfi);
+            Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {Progress} % complete");
+            try
             {
-                string mbReceived = (receivedBytes / 1000000).ToString();
-                string mbTotal = (totalBytes / 1000000).ToString();
-                nfi.NumberDecimalSeparator = ".";
-                Progress = percent;
-                string progressString = (Progress / 100d).ToString(nfi);
-                Logger.Info($"downloaded {mbReceived} of {mbTotal} MB. {Progress} % complete");
-                try
-                {
-                    ToastHandler.UpdateProgressToast(progressString, $"{mbReceived} / {mbTotal} MB");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "toast updater died, please tell the devs to add the toast updater to the ActionQueue:");
-                }
+                ToastHandler.UpdateProgressToast(progressString, $"{mbReceived} / {mbTotal} MB");
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "toast updater died, please tell the devs to add the toast updater to the ActionQueue:");
             }
         }
     }
 
     private static string GetUpdateUrl()
     {
-        List<string> blacklistUrls = new()
-        {
-        };
+        List<string> blacklistUrls = [];
         string current = builder.Config.Updater.VersionQueryUrl;
         if (current == null)
         {
@@ -712,9 +700,7 @@ static class UpdateHandler
 
     private static string GetBaseUrl()
     {
-        List<string> blacklistUrls = new()
-        {
-        };
+        List<string> blacklistUrls = [];
         string current = builder.Config.Updater.DownloadBaseUrl;
         if (current == null)
         {

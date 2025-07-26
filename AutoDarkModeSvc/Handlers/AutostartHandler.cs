@@ -70,6 +70,7 @@ public static class AutoStartHandler
                 };
             }
         }
+
         return new ApiResponse()
         {
             StatusCode = StatusCode.Err,
@@ -91,6 +92,7 @@ public static class AutoStartHandler
             Logger.Debug("autostart mode selected");
             ok = RegistryHandler.RemoveAutoStart();
         }
+
         if (ok)
         {
             return new ApiResponse()
@@ -148,7 +150,7 @@ public static class AutoStartHandler
                     return new()
                     {
                         StatusCode = StatusCode.AutostartRegistryEntry,
-                        Message = $"Enabled",
+                        Message = "Enabled",
                         Details = autostartPath.Replace("\"", "")
                     };
                 }
@@ -157,7 +159,7 @@ public static class AutoStartHandler
                     return new()
                     {
                         StatusCode = StatusCode.AutostartRegistryEntry,
-                        Message = $"Disabled",
+                        Message = "Disabled",
                         Details = autostartPath.Replace("\"", "")
                     };
                 }

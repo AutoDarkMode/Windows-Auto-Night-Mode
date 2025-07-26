@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2;
 public static class Tm2Handler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static GlobalState state = GlobalState.Instance();
+    private static readonly GlobalState state = GlobalState.Instance();
 
     [DllImport("ole32.dll", CallingConvention = CallingConvention.StdCall)]
     internal static extern int CoCreateInstance(

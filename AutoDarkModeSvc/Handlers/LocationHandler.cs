@@ -22,7 +22,7 @@ using Windows.Devices.Geolocation;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class LocationHandler
+internal static class LocationHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     /// <summary>
@@ -130,7 +130,7 @@ static class LocationHandler
 
     }
 
-    public async static Task<bool> HasLocation()
+    public static async Task<bool> HasLocation()
     {
         return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed || Geolocator.DefaultGeoposition.HasValue;
     }

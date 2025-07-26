@@ -30,7 +30,7 @@ public static class ScriptHandler
         {
             int timeoutValue = timeoutMillis ?? 0;
             if (timeoutValue == 0) timeoutValue = 10000;
-            if (args == null) args = new();
+            args ??= new();
             string argsString = "";
             argsString = string.Join(" ", args.Select(a => $"\"{a}\""));
             Logger.Info($"running {name}: \"{path}\" {argsString}");

@@ -250,21 +250,17 @@ public static class ToastHandler
                 .GetToastContent();
 
             // Generate the toast notification
-            ToastNotification toast = new(content.GetXml());
-
-            // Assign the tag and group
-            toast.Tag = tag;
-            toast.Group = group;
-
-            // Assign initial NotificationData values
-            // Values must be of type string
-            toast.Data = new NotificationData();
+            ToastNotification toast = new(content.GetXml())
+            {
+                Tag = tag,
+                Group = group,
+                Data = new NotificationData()
+            };
             toast.Data.Values["progressValue"] = "0.0";
             toast.Data.Values["progressValueString"] = "0 MB";
             toast.Data.Values["progressStatus"] = Strings.Resources.UpdateToast_Downloading;
+            toast.Data.SequenceNumber = 0; // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
 
-            // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
-            toast.Data.SequenceNumber = 0;
             ToastNotificationManagerCompat.History.Remove("adm_update");
             ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
         });

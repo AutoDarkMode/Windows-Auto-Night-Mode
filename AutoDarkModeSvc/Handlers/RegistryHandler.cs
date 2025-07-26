@@ -29,7 +29,7 @@ using WindowsInput.Native;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class RegistryHandler
+internal static class RegistryHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -216,12 +216,12 @@ static class RegistryHandler
         int colorNum = 0;
         for (int i = 0; i < binPalette.Length; i++)
         {
-            if (i == 0 || (i+1) % 4 != 0)
+            if (i == 0 || (i + 1) % 4 != 0)
             {
                 int value = binPalette[i];
                 hexString.Append(value.ToString("X2"));
             }
-            else if (i != 0 && (i+1) % 4 == 0)
+            else if (i != 0 && (i + 1) % 4 == 0)
             {
                 palette.Add(colorNum++, hexString.ToString());
                 hexString.Clear();
@@ -380,14 +380,7 @@ static class RegistryHandler
     public static bool IsColorFilterActive()
     {
         var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-        if (filterKey != null)
-        {
-            return filterKey.Equals(1);
-        }
-        else
-        {
-            return false;
-        }
+        return filterKey != null && filterKey.Equals(1);
     }
     public static void ColorFilterSetup()
     {

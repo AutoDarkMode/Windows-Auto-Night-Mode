@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.Handlers;
 
 internal class ThemeDllHandler
 {
-    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
     /// <summary>
     /// Sets a theme given a path via a bridging application
     /// </summary>
@@ -48,20 +48,20 @@ internal class ThemeDllHandler
         if (exitCode == 0)
         {
             ApiResponse response = ApiResponse.FromString(line);
-            bool success = Enum.TryParse(response.StatusCode, out BridgeResponseCode statusCode);
-            if (success)
+            if (Enum.TryParse(response.StatusCode, out BridgeResponseCode statusCode))
             {
-                if (statusCode == BridgeResponseCode.Success)
+                switch (statusCode)
                 {
-                    Logger.Info($"applied theme {displayName} successfully via IThemeManager2");
-                    return (true, true);
+                    case BridgeResponseCode.Success:
+                        Logger.Info($"applied theme {displayName} successfully via IThemeManager2");
+                        return (true, true);
+                    case BridgeResponseCode.NotFound:
+                        return (false, true);
+                    case BridgeResponseCode.InvalidArguments:
+                        return (false, false);
+                    case BridgeResponseCode.Fail:
+                        return (false, false);
                 }
-                else if (statusCode == BridgeResponseCode.NotFound)
-                {
-                    return (false, true);
-                }
-                else if (statusCode == BridgeResponseCode.InvalidArguments) return (false, false);
-                else if (statusCode == BridgeResponseCode.Fail) return (false, false);
             }
             if (response.Message != null)
             {

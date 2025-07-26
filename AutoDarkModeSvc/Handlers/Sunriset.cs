@@ -246,19 +246,19 @@ public sealed class Sunriset
             double cost;
             cost = (sind(altit) - sind(lat) * sind(sdec)) /
             (cosd(lat) * cosd(sdec));
-            if (cost >= 1.0) /* Sun always below altit */
+            switch (cost)
             {
-                rc = -1;
-                t = 0.0;
-            }
-            else if (cost <= -1.0) /* Sun always above altit */
-            {
-                rc = +1;
-                t = 12.0;
-            }
-            else
-            {
-                t = acosd(cost) / 15.0;   /* The diurnal arc, hours */
+                case >= 1.0:
+                    rc = -1;
+                    t = 0.0;
+                    break;
+                case <= -1.0:
+                    rc = +1;
+                    t = 12.0;
+                    break;
+                default:
+                    t = acosd(cost) / 15.0;   /* The diurnal arc, hours */
+                    break;
             }
         }
 
@@ -303,7 +303,6 @@ public sealed class Sunriset
         double sin_sdecl;  /* Sine of Sun's declination */
         double cos_sdecl;  /* Cosine of Sun's declination */
         double sradius;    /* Sun's apparent radius */
-        double t;          /* Diurnal arc */
 
         /* Compute d of 12h local mean solar time */
         d = daysSince2000Jan0(year, month, day) + 0.5 - lon / 360.0;
@@ -330,23 +329,15 @@ public sealed class Sunriset
         /* Compute the diurnal arc that the Sun traverses to reach */
         /* the specified altitude altit: */
         double cost = (sind(altit) - sind(lat) * sin_sdecl) / (cosd(lat) * cos_sdecl);
-
-        /* Sun always below altit */
-        if (cost >= 1.0)
+        var t = cost switch
         {
-            t = 0.0;
-        }
-        /* Sun always above altit */
-        else if (cost <= -1.0)
-        {
-            t = 24.0;
-        }
-        /* The diurnal arc, hours */
-        else
-        {
-            t = (2.0 / 15.0) * acosd(cost);
-        }
-
+            // Sun always below altit
+            >= 1.0 => 0.0,
+            // Sun always above altit
+            <= -1.0 => 24.0,
+            // The diurnal arc, hours
+            _ => 2.0 / 15.0 * acosd(cost),
+        };
         return t;
     }
 

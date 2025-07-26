@@ -27,8 +27,7 @@ internal class WMIHandler
     public static ManagementEventWatcher CreateHKCURegistryValueMonitor(Action callback, string keyPath, string key)
     {
         string sidString = SID.ToString();
-        string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = " +
-            $"'{sidString}\\\\{keyPath}' AND ValueName='{key}'";
+        string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = '{sidString}\\\\{keyPath}' AND ValueName='{key}'";
         WqlEventQuery query = new WqlEventQuery(queryString);
         ManagementEventWatcher autostartWatcher = new(query);
         autostartWatcher.EventArrived += new EventArrivedEventHandler((s, e) => callback());

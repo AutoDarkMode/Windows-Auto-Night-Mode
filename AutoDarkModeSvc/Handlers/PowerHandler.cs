@@ -21,7 +21,7 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class PowerHandler
+internal static class PowerHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     public static bool EnergySaverMitigationActive { get; private set; }

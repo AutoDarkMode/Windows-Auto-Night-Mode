@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Handlers;
 internal static class DisplayHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     public static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
     {

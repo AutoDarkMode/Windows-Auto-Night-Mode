@@ -27,10 +27,10 @@ using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class HotkeyHandler
+internal static class HotkeyHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     public static Service Service { get; set; }
     [DllImport("user32.dll")]
     private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);

@@ -23,13 +23,13 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class SystemEventHandler
+internal static class SystemEventHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static bool darkThemeOnBatteryEnabled;
     private static bool resumeEventEnabled;
     private static DateTime lastSystemTimeChange;
-    private static GlobalState state = GlobalState.Instance();
+    private static readonly GlobalState state = GlobalState.Instance();
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     public static void RegisterThemeEvent()
@@ -177,41 +177,37 @@ static class SystemEventHandler
 
     private static void SystemEvents_Windows10_SessionSwitch(object sender, SessionSwitchEventArgs e)
     {
-        if (e.Reason == SessionSwitchReason.SessionUnlock && !builder.Config.AutoThemeSwitchingEnabled)
+        switch (e.Reason)
         {
-            Logger.Info("system unlocked, auto switching disabled, no action");
-            state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
-            return;
-        }
-        if (e.Reason == SessionSwitchReason.SessionUnlock)
-        {
-            if (builder.Config.AutoSwitchNotify.Enabled)
-            {
-                NotifyAtResume();
-            }
-        }
-        else if (e.Reason == SessionSwitchReason.SessionLock)
-        {
-            if (builder.Config.AutoSwitchNotify.Enabled) state.PostponeManager.Add(new(Helper.PostponeItemSessionLock));
+            case SessionSwitchReason.SessionUnlock when !builder.Config.AutoThemeSwitchingEnabled:
+                Logger.Info("system unlocked, auto switching disabled, no action");
+                state.PostponeManager.Remove(new(Helper.PostponeItemSessionLock));
+                return;
+            case SessionSwitchReason.SessionUnlock:
+                if (builder.Config.AutoSwitchNotify.Enabled)
+                {
+                    NotifyAtResume();
+                }
+                break;
+            case SessionSwitchReason.SessionLock:
+                if (builder.Config.AutoSwitchNotify.Enabled) state.PostponeManager.Add(new(Helper.PostponeItemSessionLock));
+                break;
         }
     }
 
 
     private static void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
     {
-        if (e.Mode == PowerModes.Resume)
+        if (e.Mode == PowerModes.Resume && !builder.Config.AutoSwitchNotify.Enabled)
         {
-            if (builder.Config.AutoSwitchNotify.Enabled == false)
+            if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
             {
-                if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
-                {
-                    Logger.Info("system resuming from suspended state, refreshing theme");
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
-                }
-                else
-                {
-                    Logger.Info($"system resuming from suspended state, no refresh due to active user postpones: {state.PostponeManager}");
-                }
+                Logger.Info("system resuming from suspended state, refreshing theme");
+                ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+            }
+            else
+            {
+                Logger.Info($"system resuming from suspended state, no refresh due to active user postpones: {state.PostponeManager}");
             }
         }
     }
@@ -220,14 +216,17 @@ static class SystemEventHandler
     private static void NotifyAtResume()
     {
         bool shouldNotify = false;
-        if (builder.Config.Governor == Governor.NightLight)
+        switch (builder.Config.Governor)
         {
-            if (state.NightLight.Requested != state.InternalTheme) shouldNotify = true;
-        }
-        else if (builder.Config.Governor == Governor.Default)
-        {
-            TimedThemeState ts = new();
-            if (ts.TargetTheme != state.InternalTheme) shouldNotify = true;
+            case Governor.NightLight:
+                if (state.NightLight.Requested != state.InternalTheme) shouldNotify = true;
+                break;
+            case Governor.Default:
+                {
+                    TimedThemeState ts = new();
+                    if (ts.TargetTheme != state.InternalTheme) shouldNotify = true;
+                    break;
+                }
         }
 
         if (shouldNotify)

@@ -24,11 +24,11 @@ namespace AutoDarkModeSvc.Handlers;
 public static class TaskSchdHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    static readonly string logon = "ADM Logon";
-    static readonly string folder = "ADM_" + Environment.UserName;
-    static readonly string author = "Armin Osaj";
-    static readonly string program = "Windows Auto Dark Mode";
-    static readonly string description = "Task of the program Windows Auto Dark Mode.";
+    private static readonly string logon = "ADM Logon";
+    private static readonly string folder = "ADM_" + Environment.UserName;
+    private static readonly string author = "Armin Osaj";
+    private static readonly string program = "Windows Auto Dark Mode";
+    private static readonly string description = "Task of the program Windows Auto Dark Mode.";
 
     public static bool CreateLogonTask()
     {

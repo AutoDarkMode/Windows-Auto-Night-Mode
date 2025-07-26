@@ -35,7 +35,7 @@ public static class ThemeHandler
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     private static readonly GlobalState state = GlobalState.Instance();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
@@ -78,38 +78,41 @@ public static class ThemeHandler
         // refresh active theme for syncing data into unmanaged themes
         state.ManagedThemeFile.SyncWithActiveTheme(patch: false, logging: false);
 
-        if (newTheme == Theme.Light)
+        switch (newTheme)
         {
-            ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
-            light.UnmanagedOriginalName = light.DisplayName;
-            light.DisplayName = Helper.NameUnmanagedLightTheme;
-            if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
-            {
-                ThemeFile.PatchColorsWin11AndSave(light);
-            }
-            else
-            {
-                light.Save(managed: false);
-            }
-            Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
+            case Theme.Light:
+                {
+                    var light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
+                    light.UnmanagedOriginalName = light.DisplayName;
+                    light.DisplayName = Helper.NameUnmanagedLightTheme;
+                    if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                    {
+                        ThemeFile.PatchColorsWin11AndSave(light);
+                    }
+                    else
+                    {
+                        light.Save(managed: false);
+                    }
+                    Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
+                    break;
+                }
+            case Theme.Dark:
+                {
+                    var dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
+                    dark.UnmanagedOriginalName = dark.DisplayName;
+                    dark.DisplayName = Helper.NameUnmanagedDarkTheme;
+                    if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                    {
+                        ThemeFile.PatchColorsWin11AndSave(dark);
+                    }
+                    else
+                    {
+                        dark.Save(managed: false);
+                    }
+                    Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
+                    break;
+                }
         }
-        else if (newTheme == Theme.Dark)
-        {
-            ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
-            dark.UnmanagedOriginalName = dark.DisplayName;
-            dark.DisplayName = Helper.NameUnmanagedDarkTheme;
-            if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
-            {
-                ThemeFile.PatchColorsWin11AndSave(dark);
-            }
-            else
-            {
-                dark.Save(managed: false);
-            }
-            Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
-        }
-
-
 
         if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
         {
@@ -140,14 +143,15 @@ public static class ThemeHandler
             && !builder.Config.WindowsThemeMode.MonitorActiveTheme
             && state.UnmanagedActiveThemePath == themePath)
         {
-            Logger.Debug("enforcing theme refresh with disabled MonitorActiveTheme");
+            Logger.Debug("Enforcing theme refresh with disabled MonitorActiveTheme");
             state.UnmanagedActiveThemePath = "";
         }
     }
 
     public static string GetCurrentThemeName()
     {
-        string themeName = "";/*Exception applyEx = null;*/
+        string themeName = "";
+        //Exception applyEx = null;
         Thread thread = new(() =>
         {
             try
@@ -156,7 +160,7 @@ public static class ThemeHandler
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, $"could not retrieve active theme name");
+                Logger.Error(ex, $"Could not retrieve active theme name");
                 //applyEx = ex;
             }
         })
@@ -171,7 +175,7 @@ public static class ThemeHandler
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "theme handler thread was interrupted");
+            Logger.Error(ex, "Theme handler thread was interrupted");
         }
         return themeName;
     }
@@ -204,7 +208,7 @@ public static class ThemeHandler
             return false;
         }
 
-        // TODO change tracking when having active theme monitor disabled
+        // TODO: change tracking when having active theme monitor disabled
         if (newTheme == Theme.Dark && (skipCheck ||
             (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme))))
         {
@@ -230,31 +234,26 @@ public static class ThemeHandler
                 if (!managed)
                 {
                     state.ManagedThemeFile.SyncWithActiveTheme(false, false, true);
-                    ThemeFile unmanagedTarget;
-                    if (e.Theme == Theme.Dark)
-                    {
-                        unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
-                    }
-                    else
-                    {
-                        unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
-                    }
+                    ThemeFile unmanagedTarget = (e.Theme == Theme.Dark)
+                        ? new(builder.Config.WindowsThemeMode.DarkThemePath)
+                        : new(builder.Config.WindowsThemeMode.LightThemePath);
                     try
                     {
                         unmanagedTarget.Load();
                     }
                     catch (Exception ex)
                     {
-                        Logger.Error(ex, "dwm management: could not load unmanaged target theme while refreshing dwm, forcing refresh:");
+                        Logger.Error(ex, "DWM management: could not load unmanaged target theme while refreshing DWM, forcing refresh:");
                     }
+
                     if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "1")
                     {
-                        Logger.Info("dwm management: no refresh required because auto colorization is enabled in the target theme");
+                        Logger.Info("DWM management: no refresh required because auto colorization is enabled in the target theme");
                         return;
                     }
                     else if (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1)
                     {
-                        Logger.Info("dwm management: no refresh required because target theme has different accent color");
+                        Logger.Info("DWM management: no refresh required because target theme has different accent color");
                         return;
                     }
                     dwmRefreshTheme.SetContentAndParse(unmanagedTarget.ThemeFileContent);
@@ -281,19 +280,19 @@ public static class ThemeHandler
                 dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
                 dwmRefreshTheme.Save();
 
-                List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
+                List<ThemeApplyFlags> flagList = [ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver];
                 Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
 
-                Logger.Info("dwm management: refresh performed by theme handler");
+                Logger.Info("DWM management: refresh performed by theme handler");
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, "dwm management: could not refresh dwm due to malformed colorization string: ");
+                Logger.Warn(ex, "DWM management: could not refresh DWM due to malformed colorization string: ");
             }
         }
         else
         {
-            Logger.Trace("dwm management: no refresh required needed in this windows version");
+            Logger.Trace("DWM management: no refresh required needed in this windows version");
         }
     }
 
@@ -301,7 +300,7 @@ public static class ThemeHandler
     {
         string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;
         bool success = false;
-        /*Exception applyEx = null;*/
+        //Exception applyEx = null;
         Thread thread = new(() =>
         {
             try
@@ -331,7 +330,7 @@ public static class ThemeHandler
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "theme handler thread was interrupted");
+            Logger.Error(ex, "Theme handler thread was interrupted");
         }
         return success;
     }
@@ -366,23 +365,22 @@ public static class ThemeHandler
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, $"could not retrieve display name for path {themeFilePath}:");
+            Logger.Error(ex, $"Could not retrieve display name for path {themeFilePath}:");
         }
 
         if (!tm2Found && tm2Success)
         {
-            Logger.Warn("theme name not found in IThemeManager2, using mitigation (ignores ignore flags)");
+            Logger.Warn("Theme name not found in IThemeManager2, using mitigation (ignores ignore flags)");
             ApplyIThemeManager(themeFilePath, suppressLogging);
             string displayNameApi = GetCurrentThemeName();
-            if (!state.LearnedThemeNames.ContainsKey(displayNameFromFile))
+            if (state.LearnedThemeNames.TryAdd(displayNameFromFile, displayNameApi))
             {
-                Logger.Debug($"learned new theme name association: {displayNameFromFile}={displayNameApi}");
-                state.LearnedThemeNames.Add(displayNameFromFile, displayNameApi);
+                Logger.Debug($"Learned new theme name association: {displayNameFromFile}={displayNameApi}");
             }
             else
             {
-                Logger.Debug($"updated theme name association: {displayNameFromFile}={displayNameApi}");
                 state.LearnedThemeNames[displayNameFromFile] = displayNameApi;
+                Logger.Debug($"Updated theme name association: {displayNameFromFile}={displayNameApi}");
             }
         }
 
@@ -393,7 +391,7 @@ public static class ThemeHandler
 
         if (elapsed.TotalSeconds > 10 && tm2Success)
         {
-            Logger.Warn($"theme switching took longer than expected ({elapsed.TotalSeconds} seconds)");
+            Logger.Warn($"Theme switching took longer than expected ({elapsed.TotalSeconds} seconds)");
         }
     }
 }
