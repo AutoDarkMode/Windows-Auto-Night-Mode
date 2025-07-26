@@ -43,14 +43,17 @@
                                 <Button
                                     MinWidth="120"
                                     Click="LightModeCheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
                 <!--  Dark  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE793;}">
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=DarkTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsExpanded="True">
                     <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                         <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -73,17 +76,14 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  TODO: follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
+                <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
+                <!--  TODO: Don't enable Dialog until it works properly  -->
                 <!--  Color Picker Dialog  -->
                 <ContentDialog
                     x:Name="ColorPickerContentDialog"
                     CloseButtonText="{helpers:ResourceString Name=Cancel}"
                     DefaultButton="Primary"
-                    PrimaryButtonText="{helpers:ResourceString Name=Set}">
-                    <StackPanel>
-                        <ColorPicker x:Name="CheckColorColorPicker" />
-                    </StackPanel>
-                </ContentDialog>
+                    PrimaryButtonText="{helpers:ResourceString Name=Set}" />
             </StackPanel>
         </Grid>
     </ScrollViewer>
