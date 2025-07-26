@@ -342,7 +342,7 @@ static class ThemeManager
                 themeSwitched = true;
             }
 
-            //todo change to switcheventargs
+            //TODO: change to switcheventargs
             cm.RunCallbacks(componentsToUpdate, newTheme, e);
 
             bool shuffleCondition = false;

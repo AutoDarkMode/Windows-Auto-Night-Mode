@@ -35,7 +35,7 @@ public static class ThemeHandler
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     private static readonly GlobalState state = GlobalState.Instance();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
@@ -204,7 +204,7 @@ public static class ThemeHandler
             return false;
         }
 
-        // TODO change tracking when having active theme monitor disabled
+        // TODO: change tracking when having active theme monitor disabled
         if (newTheme == Theme.Dark && (skipCheck ||
             (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme))))
         {
@@ -301,7 +301,7 @@ public static class ThemeHandler
     {
         string themeFilePath = unmanaged != null ? unmanaged.ThemeFilePath : originalPath;
         bool success = false;
-        /*Exception applyEx = null;*/
+        //Exception applyEx = null;
         Thread thread = new(() =>
         {
             try
