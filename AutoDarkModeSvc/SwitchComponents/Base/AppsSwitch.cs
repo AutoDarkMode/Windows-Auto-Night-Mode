@@ -28,7 +28,7 @@ internal class AppsSwitch : AppsSwitchThemeFile
 {
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         try
         {
             if (Settings.Component.Mode == Mode.DarkOnly)
@@ -51,6 +51,6 @@ internal class AppsSwitch : AppsSwitchThemeFile
         {
             Logger.Error(ex, "could not set apps theme");
         }
-        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(currentComponentTheme)}, mode: {Enum.GetName(Settings.Component.Mode)}");
     }
 }

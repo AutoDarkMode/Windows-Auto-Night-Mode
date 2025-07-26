@@ -65,7 +65,7 @@ internal static class MessageParser
                     SendResponse(new ApiResponse()
                     {
                         StatusCode = StatusCode.Ok,
-                        Message = Enum.GetName(typeof(Theme), theme)
+                        Message = Enum.GetName(theme)
                     }.ToString());
                     break;
                 #endregion
@@ -381,7 +381,7 @@ internal static class MessageParser
                     SendResponse(new ApiResponse()
                     {
                         StatusCode = StatusCode.Ok,
-                        Message = Enum.GetName(typeof(Theme), state.InternalTheme)
+                        Message = Enum.GetName(state.InternalTheme)
                     }.ToString());
                     break;
                 #endregion

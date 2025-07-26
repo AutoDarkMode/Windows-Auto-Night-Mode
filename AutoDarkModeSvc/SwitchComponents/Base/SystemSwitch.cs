@@ -30,7 +30,7 @@ internal class SystemSwitch : SystemSwitchThemeFile
     protected override async Task SwitchSystemTheme(Theme newTheme)
     {
         bool oldAccent = currentTaskbarColorActive;
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         int taskdelay = Settings.Component.TaskbarSwitchDelay;
         try
         {
@@ -59,15 +59,15 @@ internal class SystemSwitch : SystemSwitchThemeFile
         string accentInfo;
         if (Settings.Component.Mode == Mode.AccentOnly)
         {
-            accentInfo = $"on {Enum.GetName(typeof(Theme), Settings.Component.TaskbarColorWhenNonAdaptive).ToLower()}";
+            accentInfo = $"on {Enum.GetName(Settings.Component.TaskbarColorWhenNonAdaptive).ToLower()}";
         }
         else
         {
             accentInfo = Settings.Component.TaskbarColorOnAdaptive ? "yes" : "no";
         }
         Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "accent" : "NoAccent")}, " +
-            $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
-            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
+            $"now: {Enum.GetName(currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
+            $"mode: {Enum.GetName(Settings.Component.Mode)}, " +
             $"accent: {accentInfo}");
     }
 

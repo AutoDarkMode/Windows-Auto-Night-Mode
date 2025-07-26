@@ -42,7 +42,7 @@ internal class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
 
     protected override async void HandleSwitch(SwitchEventArgs e)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         switchTask = Task.Run(() =>
         {
             if (e.Theme == Theme.Light)
@@ -65,7 +65,7 @@ internal class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
             }
         });
         await switchTask;
-        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(currentComponentTheme)}");
     }
 
     protected override void EnableHook()

@@ -62,7 +62,7 @@ internal class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         ThemeFile themeFile = GlobalState.ManagedThemeFile;
 
         if (Settings.Component.Mode == Mode.DarkOnly)
@@ -77,9 +77,9 @@ internal class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
         }
         else
         {
-            themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), e.Theme), themeFile.VisualStyles.AppMode.Item2);
+            themeFile.VisualStyles.AppMode = (Enum.GetName(e.Theme), themeFile.VisualStyles.AppMode.Item2);
             currentComponentTheme = e.Theme;
         }
-        Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+        Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(currentComponentTheme)}, mode: {Enum.GetName(Settings.Component.Mode)}");
     }
 }

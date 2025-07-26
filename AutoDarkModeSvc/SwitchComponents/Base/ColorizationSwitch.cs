@@ -88,7 +88,7 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         if (prevAutoColorizationState != newAutoColorizationState)
         {
             Logger.Info($"update info - auto colorization - previous {(prevAutoColorizationState ? "enabled" : "disabled")}, " +
-                $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(typeof(Theme), e.Theme)})");
+                $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(e.Theme)})");
         }
 
         // if auto colorization is enabled the hex value doesn't matter, so the rest can be skipped.
@@ -113,7 +113,7 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
             invalidHexFound = true;
             return;
         }
-        Logger.Info($"update info - color - previous: {oldColor}, pending: {newHex} ({Enum.GetName(typeof(Theme), e.Theme)})");
+        Logger.Info($"update info - color - previous: {oldColor}, pending: {newHex} ({Enum.GetName(e.Theme)})");
         newHex = newHex.Replace("#", "0X");
         GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor = (newHex, sortOrderColCol);
     }

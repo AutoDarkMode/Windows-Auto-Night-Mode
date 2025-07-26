@@ -94,7 +94,7 @@ internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
                 RegistryHandler.SetDWMPrevalence(0);
                 currentDWMColorActive = false;
             }
-            Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
+            Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
         }
         catch (Exception ex)
         {

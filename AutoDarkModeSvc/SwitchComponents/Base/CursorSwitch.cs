@@ -54,7 +54,7 @@ internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
         if (cursorSchemeNew != null && cursorSchemeNew.Length > 0)
         {
             GlobalState.ManagedThemeFile.Cursors = RegistryHandler.GetCursorScheme(cursorSchemeNew);
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), e.Theme)} ({cursorSchemeNew})");
+            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(e.Theme)} ({cursorSchemeNew})");
         }
         else
         {
