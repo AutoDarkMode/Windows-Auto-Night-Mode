@@ -22,7 +22,7 @@ using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class OfficeSwitch : BaseComponent<OfficeSwitchSettings>
+internal class OfficeSwitch : BaseComponent<OfficeSwitchSettings>
 {
     private Theme currentComponentTheme = Theme.Unknown;
     private int ChoosenLightTheme = 0;

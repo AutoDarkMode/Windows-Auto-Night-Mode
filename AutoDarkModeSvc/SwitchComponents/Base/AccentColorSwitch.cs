@@ -22,7 +22,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
+internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
 {
     public override bool ThemeHandlerCompatibility => true;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;

@@ -29,7 +29,7 @@ public class WardenModule : AutoDarkModeModule
     private AdmConfigBuilder ConfigBuilder { get; }
     private GlobalState State { get; }
     private List<ModuleTimer> Timers { get; }
-    private GovernorModule governorModule;
+    private readonly GovernorModule governorModule;
 
     public override string TimerAffinity { get; } = TimerName.Main;
 

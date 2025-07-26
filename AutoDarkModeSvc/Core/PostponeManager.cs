@@ -29,10 +29,10 @@ namespace AutoDarkModeSvc.Core;
 public class PostponeManager
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private List<PostponeItem> PostponeQueue { get; } = new();
     private List<IAutoDarkModeModule> CallbackModules { get; } = new();
-    private GlobalState state;
+    private readonly GlobalState state;
 
     public PostponeManager(GlobalState state)
     {
@@ -469,7 +469,7 @@ public class PostponeItem
     public bool IsUserClearable { get; }
     public DateTime? Expiry { get; private set; }
     private Task Task { get; set; }
-    CancellationTokenSource CancelTokenSource { get; set; } = new CancellationTokenSource();
+    private CancellationTokenSource CancelTokenSource { get; set; } = new CancellationTokenSource();
     public SkipType SkipType { get; set; } = SkipType.Unspecified;
     public bool Expires
     {

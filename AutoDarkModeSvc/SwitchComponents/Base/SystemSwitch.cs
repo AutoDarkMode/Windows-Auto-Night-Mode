@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 /// <summary>
 /// This class is a special case for the SwitchSystemThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
 /// </summary>
-class SystemSwitch : SystemSwitchThemeFile
+internal class SystemSwitch : SystemSwitchThemeFile
 {
     public override bool ThemeHandlerCompatibility { get; } = false;
     protected override async Task SwitchSystemTheme(Theme newTheme)

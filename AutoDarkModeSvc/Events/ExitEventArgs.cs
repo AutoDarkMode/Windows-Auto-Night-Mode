@@ -18,7 +18,7 @@ using System;
 
 namespace AutoDarkModeSvc.Events;
 
-class ExitEventArgs : EventArgs
+internal class ExitEventArgs : EventArgs
 {
     public ExitEventArgs(bool closeApp)
     {

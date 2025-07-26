@@ -20,7 +20,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
-class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
+internal class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
 {
     protected override void ChangeEvent()
     {

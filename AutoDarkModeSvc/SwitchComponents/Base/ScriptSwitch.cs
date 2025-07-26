@@ -23,13 +23,13 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
+internal class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
 {
     public override int PriorityToDark => 30;
     public override int PriorityToLight => 30;
     private Theme currentComponentTheme = Theme.Unknown;
     public override bool ThemeHandlerCompatibility { get; } = true;
-    Task switchTask;
+    private Task switchTask;
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {

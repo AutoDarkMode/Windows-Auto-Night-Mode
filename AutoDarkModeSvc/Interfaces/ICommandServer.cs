@@ -16,14 +16,14 @@
 #endregion
 namespace AutoDarkModeSvc.Communication;
 
-interface IMessageServer
+internal interface IMessageServer
 {
     /// <summary>
     /// Start a command server that receives command messages
     /// </summary>
-    public void Start();
+    void Start();
     /// <summary>
     /// stop a command server and release all used resources
     /// </summary>
-    public void Dispose();
+    void Dispose();
 }

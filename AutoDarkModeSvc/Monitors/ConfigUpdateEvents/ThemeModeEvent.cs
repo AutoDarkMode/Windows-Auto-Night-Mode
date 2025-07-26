@@ -21,7 +21,7 @@ using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
-class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
+internal class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
 {
     private readonly ComponentManager cm;
     private readonly GlobalState state = GlobalState.Instance();

@@ -61,7 +61,7 @@ internal class Service : Form
     private readonly ToolStripProfessionalRenderer toolStripDefaultRenderer = new();
 
     private bool closeApp = true;
-    private bool admReady = false;
+    private readonly bool admReady = false;
 
     public Service(int timerMillis)
     {

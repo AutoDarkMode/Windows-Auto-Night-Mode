@@ -24,7 +24,7 @@ using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
+internal class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
     protected bool themeModeEnabled;

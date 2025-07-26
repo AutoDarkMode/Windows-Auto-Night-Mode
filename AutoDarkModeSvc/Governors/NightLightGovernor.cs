@@ -18,8 +18,8 @@ public class NightLightGovernor : IAutoDarkModeGovernor
     private DateTime lastNightLightQueryTime = DateTime.Now;
     private Theme nightLightState = Theme.Unknown;
     private ManagementEventWatcher nightLightKeyWatcher;
-    private GlobalState state = GlobalState.Instance();
-    private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private readonly GlobalState state = GlobalState.Instance();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private bool init = true;
     private bool queuePostponeRemove = false;
     private bool switchQueuedButNotRequested = false;

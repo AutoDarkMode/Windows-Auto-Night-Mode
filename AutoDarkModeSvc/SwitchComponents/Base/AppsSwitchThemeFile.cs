@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
+internal class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
 {
     protected Theme currentComponentTheme;
     public AppsSwitchThemeFile() : base() { }

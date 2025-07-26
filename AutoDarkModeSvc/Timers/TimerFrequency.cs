@@ -16,7 +16,7 @@
 #endregion
 namespace AutoDarkModeSvc.Timers;
 
-static class TimerFrequency
+internal static class TimerFrequency
 {
     // Main Timer is 60s by default
     public static int Main { get; set; } = 60000;

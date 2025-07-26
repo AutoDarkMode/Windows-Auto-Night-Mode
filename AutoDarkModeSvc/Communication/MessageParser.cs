@@ -25,7 +25,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Communication;
 
-static class MessageParser
+internal static class MessageParser
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();

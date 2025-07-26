@@ -12,9 +12,9 @@ namespace AutoDarkModeSvc.Modules;
 internal class GovernorModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    GlobalState State { get; } = GlobalState.Instance();
-    AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-    DateTime LastSwitchWindow { get; set; }
+    private GlobalState State { get; } = GlobalState.Instance();
+    private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
+    private DateTime LastSwitchWindow { get; set; }
     private IAutoDarkModeGovernor ActiveGovernor { get; set; }
     private bool NglInstantSwitchWindow { get; set; } = false;
     public GovernorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)

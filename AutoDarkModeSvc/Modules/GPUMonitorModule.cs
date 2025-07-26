@@ -24,7 +24,7 @@ using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules;
 
-class GPUMonitorModule : AutoDarkModeModule
+internal class GPUMonitorModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     //private static readonly string NoSwitch = "no_switch_pending";

@@ -30,7 +30,7 @@ public class ModuleTimer
     public string Name { get; }
     private bool TickOnStart { get; }
 
-    readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     /// <summary>
     /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules

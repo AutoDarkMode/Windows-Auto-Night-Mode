@@ -24,7 +24,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 /// <summary>
 /// This class is a special case for the AppsSwitchThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
 /// </summary>
-class AppsSwitch : AppsSwitchThemeFile
+internal class AppsSwitch : AppsSwitchThemeFile
 {
     protected override void HandleSwitch(SwitchEventArgs e)
     {

@@ -30,7 +30,7 @@ using NLog;
 
 namespace AutoDarkModeSvc;
 
-static class Program
+internal static class Program
 {
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
     private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");

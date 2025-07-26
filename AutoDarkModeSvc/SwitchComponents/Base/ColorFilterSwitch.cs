@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class ColorFilterSwitch : BaseComponent<object>
+internal class ColorFilterSwitch : BaseComponent<object>
 {
     private bool currentColorFilterActive;
     public ColorFilterSwitch() : base() { }

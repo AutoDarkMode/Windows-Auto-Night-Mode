@@ -26,7 +26,7 @@ using AutoDarkModeSvc.SwitchComponents.Base;
 
 namespace AutoDarkModeSvc.Core;
 
-class ComponentManager
+internal class ComponentManager
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static ComponentManager instance;
@@ -77,7 +77,7 @@ class ComponentManager
     /// <summary>
     /// Registers all components and handles version specific component management
     /// </summary>
-    ComponentManager()
+    private ComponentManager()
     {
         bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
         Logger.Info($"current windows build: {Environment.OSVersion.Version.Build}.{(hasUbr ? ubr : 0)}");

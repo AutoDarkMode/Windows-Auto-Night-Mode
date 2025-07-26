@@ -23,7 +23,7 @@ namespace AutoDarkModeSvc.Core;
 
 public static class LoggerSetup
 {
-    private static string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+    private static readonly string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
     // Targets where to log to: File and Console

@@ -14,7 +14,7 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
     public Governor Type => Governor.Default;
     private AdmConfigBuilder Builder { get; }
     private GlobalState State { get; } = GlobalState.Instance();
-    bool init = true;
+    private bool init = true;
 
     /// <summary>
     /// Instantiates a new TimeSwitchModule.

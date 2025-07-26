@@ -27,7 +27,7 @@ using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
 namespace AutoDarkModeSvc.Monitors;
 
-class AdmConfigMonitor
+internal class AdmConfigMonitor
 {
     private static AdmConfigMonitor instance;
     private FileSystemWatcher ConfigWatcher { get; }
