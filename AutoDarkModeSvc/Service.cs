@@ -42,13 +42,13 @@ internal class Service : Form
     private readonly bool allowshowdisplay = false;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-    private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private NotifyIcon NotifyIcon { get; }
     private List<ModuleTimer> Timers { get; set; }
     private IMessageServer MessageServer { get; }
     private AdmConfigMonitor ConfigMonitor { get; }
     private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-    GlobalState state = GlobalState.Instance();
+    private readonly GlobalState state = GlobalState.Instance();
 
     public readonly ToolStripMenuItem forceDarkMenuItem = new();
     public readonly ToolStripMenuItem forceLightMenuItem = new();
@@ -190,34 +190,26 @@ internal class Service : Form
 
     private void UpdateContextMenu(object sender, EventArgs e)
     {
-        if (state.InternalTheme == Theme.Dark)
+        NotifyIcon.ContextMenuStrip.Renderer = state.InternalTheme == Theme.Dark ? toolStripDarkRenderer : toolStripDefaultRenderer;
+
+        switch (state.ForcedTheme)
         {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
-        }
-        else
-        {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDefaultRenderer;
+            case Theme.Light:
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = true;
+                break;
+            case Theme.Dark:
+                forceDarkMenuItem.Checked = true;
+                forceLightMenuItem.Checked = false;
+                break;
+            default:
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = false;
+                break;
         }
 
-        if (state.ForcedTheme == Theme.Light)
-        {
-            forceDarkMenuItem.Checked = false;
-            forceLightMenuItem.Checked = true;
-        }
-        else if (state.ForcedTheme == Theme.Dark)
-        {
-            forceDarkMenuItem.Checked = true;
-            forceLightMenuItem.Checked = false;
-        }
-        else
-        {
-            forceDarkMenuItem.Checked = false;
-            forceLightMenuItem.Checked = false;
-        }
         autoThemeSwitchingItem.Checked = builder.Config.AutoThemeSwitchingEnabled;
-
-        if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
-        else pauseThemeSwitchItem.Visible = false;
+        pauseThemeSwitchItem.Visible = builder.Config.AutoThemeSwitchingEnabled;
 
         PostponeItem tempDelay = state.PostponeManager.Get(Helper.PostponeItemDelayAutoSwitch);
         if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
@@ -234,7 +226,7 @@ internal class Service : Form
             if (expiry.Year != 1)
             {
                 if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.Until} {expiry:HH:mm})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ({Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
@@ -244,7 +236,7 @@ internal class Service : Form
                         pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
                         break;
                     case SkipType.UntilSunrise:
-                        pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
+                        pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunrise})";
                         break;
                     case SkipType.Unspecified:
                         break;
@@ -285,7 +277,7 @@ internal class Service : Form
         }
         catch (Exception ex)
         {
-            Logger.Warn(ex, "could not close app before shutting down service");
+            Logger.Warn(ex, "Could not close app before shutting down service");
         }
         Application.Exit();
     }
@@ -295,7 +287,7 @@ internal class Service : Form
         bool isInitializing = !admReady;
         if (isInitializing)
         {
-            Logger.Warn("adm initialization in progress, waiting for completion before exiting service");
+            Logger.Warn("ADM initialization in progress, waiting for completion before exiting service");
         }
         while (!admReady)
         {
@@ -303,7 +295,7 @@ internal class Service : Form
         }
         if (isInitializing)
         {
-            Logger.Info("adm initialization complete");
+            Logger.Info("ADM initialization complete");
         }
     }
 
@@ -348,7 +340,7 @@ internal class Service : Form
     public void ToggleTheme(object sender, EventArgs e)
     {
         Theme newTheme = ThemeManager.SwitchThemeAutoPauseAndNotify();
-        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(newTheme).ToLower()} theme");
+        Logger.Info($"UI signal received: theme toggle: switching to {Enum.GetName(newTheme).ToLower()} theme");
     }
 
     public void ToggleAutoThemeSwitching(object sender, EventArgs e)
@@ -358,7 +350,7 @@ internal class Service : Form
 
         if (mi.Checked)
         {
-            Logger.Info("ui signal received: disabling auto theme switching");
+            Logger.Info("UI signal received: disabling auto theme switching");
 
             state.SkipConfigFileReload = true;
             builder.Config.AutoThemeSwitchingEnabled = false;
@@ -367,7 +359,7 @@ internal class Service : Form
         }
         else
         {
-            Logger.Info("ui signal received: enabling auto theme switching");
+            Logger.Info("UI signal received: enabling auto theme switching");
             state.SkipConfigFileReload = true;
             builder.Config.AutoThemeSwitchingEnabled = true;
             ThemeManager.RequestSwitch(new(SwitchSource.Manual));
@@ -380,7 +372,7 @@ internal class Service : Form
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "could not save config: ");
+            Logger.Error(ex, "Could not save config: ");
         }
     }
 
@@ -389,7 +381,7 @@ internal class Service : Form
         ToolStripMenuItem mi = sender as ToolStripMenuItem;
         if (mi.Checked)
         {
-            Logger.Info("ui signal received: stop forcing specific theme");
+            Logger.Info("UI signal received: stop forcing specific theme");
             state.ForcedTheme = Theme.Unknown;
             ThemeManager.RequestSwitch(new(SwitchSource.Manual));
             mi.Checked = false;
@@ -405,14 +397,14 @@ internal class Service : Form
             }
             if (mi.Name == "forceLight")
             {
-                Logger.Info("ui signal received: forcing light theme");
+                Logger.Info("UI signal received: forcing light theme");
                 state.ForcedTheme = Theme.Light;
                 ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
                 ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
             }
             else if (mi.Name == "forceDark")
             {
-                Logger.Info("ui signal received: forcing dark theme");
+                Logger.Info("UI signal received: forcing dark theme");
                 state.ForcedTheme = Theme.Dark;
                 ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
                 ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
@@ -462,7 +454,7 @@ internal class Service : Form
             }
             catch (AbandonedMutexException ex)
             {
-                Logger.Debug(ex, "mutex abandoned before wait");
+                Logger.Debug(ex, "Mutex abandoned before wait");
             }
         }
     }
@@ -497,7 +489,7 @@ internal class Service : Form
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex, "error in hwnd proc while processing hotkey:");
+                    Logger.Error(ex, "Error in hwnd proc while processing hotkey:");
                 }
             }
         }

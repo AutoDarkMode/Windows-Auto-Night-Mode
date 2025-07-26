@@ -17,13 +17,13 @@ internal class VersionInfo
 
     public VersionInfo()
     {
-        var currentDirectory = AdmExtensions.ExecutionDir;
+        //var currentDirectory = AdmExtensions.ExecutionDir;
 
         Commit = AdmExtensions.CommitHash();
         Svc = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(AdmExtensions.ExecutionPathService)?.FileVersion);
         Updater = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(AdmExtensions.ExecutionPathUpdater)?.FileVersion);
         Shell = ValueOrNotFound(() => FileVersionInfo.GetVersionInfo(AdmExtensions.ExecutionPathShell)?.FileVersion);
-        NetCore = ValueOrNotFound(() => Environment.Version.ToString());
+        NetCore = ValueOrNotFound(Environment.Version.ToString);
         WindowsVersion = ValueOrNotFound(() => $"{Environment.OSVersion.Version.Build}.{RegistryHandler.GetUbr()}");
         Arch = RuntimeInformation.ProcessArchitecture.ToString();
 
