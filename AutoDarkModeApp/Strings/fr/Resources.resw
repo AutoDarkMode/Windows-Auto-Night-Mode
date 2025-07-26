@@ -895,4 +895,8 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Déconnecté</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

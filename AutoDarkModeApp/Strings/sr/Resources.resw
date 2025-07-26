@@ -895,4 +895,8 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Nije povezano</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

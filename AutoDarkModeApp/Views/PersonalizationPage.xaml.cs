@@ -20,7 +20,7 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
-            navigation.RegisterCustomHeader(typeof(WallpaperPickerViewModel).FullName!, "Wallpaper".GetLocalized());
+            navigation.RegisterCustomHeader(typeof(WallpaperPickerViewModel).FullName!, "Background".GetLocalized());
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
         }
     }

@@ -895,4 +895,8 @@ Click "Yes" to open a new browser window.
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>מנותק</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

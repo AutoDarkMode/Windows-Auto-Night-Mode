@@ -885,6 +885,12 @@ Currently installed version: {0}, new version: {1}</value>
 5. Save your theme.
 6. Repeat this process for the dark theme.</value>
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value>Edit hotkey</value>
+  </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -930,9 +936,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
     <value>The hotkey didn't work? Don't worry, let's save it again</value>
   </data>
-  <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
-  </data>
   <data name="SaveSuccessfully" xml:space="preserve">
     <value>Save successfully</value>
   </data>
@@ -954,7 +957,8 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
-  <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Disconnected</value>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
   </data>
 </root>

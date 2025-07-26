@@ -892,4 +892,8 @@
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Disconnected</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

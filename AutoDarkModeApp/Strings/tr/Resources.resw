@@ -895,4 +895,8 @@ Bunu indirmek istiyor musunuz?
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Bağlantı kesildi</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

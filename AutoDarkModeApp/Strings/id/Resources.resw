@@ -895,4 +895,8 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Terputus</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>

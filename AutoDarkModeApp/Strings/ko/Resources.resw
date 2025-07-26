@@ -895,4 +895,8 @@
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>연결 끊김</value>
   </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
 </root>
