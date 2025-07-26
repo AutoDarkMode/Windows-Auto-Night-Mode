@@ -7,7 +7,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class CursorsViewModel : ObservableRecipient
 {
-    private const string Location = "ColorizationPage";
+    private const string Location = "CursorsViewModel";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -62,7 +62,7 @@ public partial class CursorsViewModel : ObservableRecipient
             _builder.Load();
             LoadSettings();
 
-            RequestDebouncedSave(); // Uncommenting to enable debounced save
+            RequestDebouncedSave();
             StateUpdateHandler.StartConfigWatcher();
         });
     }
@@ -73,14 +73,15 @@ public partial class CursorsViewModel : ObservableRecipient
             return;
 
         _builder.Config.CursorSwitch.Enabled = value;
-        RequestDebouncedSave(); // Uncommenting to enable debounced save
+        RequestDebouncedSave();
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -93,13 +94,15 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _builder.Config.CursorSwitch.Component.CursorsLight = value.ToString();
         }
+        RequestDebouncedSave();
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -113,13 +116,14 @@ public partial class CursorsViewModel : ObservableRecipient
             _builder.Config.CursorSwitch.Component.CursorsDark = value.ToString();
         }
         RequestDebouncedSave();
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -136,7 +140,7 @@ public partial class CursorsViewModel : ObservableRecipient
         catch (Exception ex)
         {
             // Handle any exceptions that occur during saving
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class PersonalizationViewModel : ObservableRecipient
 {
-    private const string Location = "PersonalizationPage";
+    private const string Location = "PersonalizationViewModel";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;

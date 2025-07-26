@@ -11,6 +11,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class ColorizationViewModel : ObservableRecipient
 {
+    private const string Location = "ColorizationViewModel";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -53,7 +54,7 @@ public partial class ColorizationViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         LoadSettings();
@@ -75,6 +76,7 @@ public partial class ColorizationViewModel : ObservableRecipient
             LightThemeMode = ThemeColorMode.Manual;
             IsLightThemeSettingsCardEnabled = true;
         }
+
         if (_builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
         {
             DarkThemeMode = ThemeColorMode.Automatic;
@@ -85,6 +87,7 @@ public partial class ColorizationViewModel : ObservableRecipient
             DarkThemeMode = ThemeColorMode.Manual;
             IsDarkThemeSettingsCardEnabled = true;
         }
+
         LightModeColorPreviewBorderBackground = new SolidColorBrush(_builder.Config.ColorizationSwitch.Component.LightHex.ToColor());
         DarkModeColorPreviewBorderBackground = new SolidColorBrush(_builder.Config.ColorizationSwitch.Component.DarkHex.ToColor());
     }
@@ -111,52 +114,56 @@ public partial class ColorizationViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
     partial void OnLightThemeModeChanged(ThemeColorMode value)
     {
-        if (value == ThemeColorMode.Automatic)
+        switch (value)
         {
-            _builder.Config.ColorizationSwitch.Component.LightAutoColorization = true;
-            IsLightThemeSettingsCardEnabled = false;
-            Debug.WriteLine(IsLightThemeSettingsCardEnabled);
+            case ThemeColorMode.Automatic:
+                _builder.Config.ColorizationSwitch.Component.LightAutoColorization = true;
+                IsLightThemeSettingsCardEnabled = false;
+                Debug.WriteLine(IsLightThemeSettingsCardEnabled);
+                break;
+            default:
+                _builder.Config.ColorizationSwitch.Component.LightAutoColorization = false;
+                IsLightThemeSettingsCardEnabled = true;
+                break;
         }
-        else
-        {
-            _builder.Config.ColorizationSwitch.Component.LightAutoColorization = false;
-            IsLightThemeSettingsCardEnabled = true;
-        }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
     partial void OnDarkThemeModeChanged(ThemeColorMode value)
     {
-        if (value == ThemeColorMode.Automatic)
+        switch (value)
         {
-            _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = true;
-            IsDarkThemeSettingsCardEnabled = false;
+            case ThemeColorMode.Automatic:
+                _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = true;
+                IsDarkThemeSettingsCardEnabled = false;
+                break;
+            default:
+                _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = false;
+                IsDarkThemeSettingsCardEnabled = true;
+                break;
         }
-        else
-        {
-            _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = false;
-            IsDarkThemeSettingsCardEnabled = true;
-        }
+
         try
         {
             _builder.Save();
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 

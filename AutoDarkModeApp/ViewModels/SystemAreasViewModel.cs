@@ -9,7 +9,7 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class SystemAreasViewModel : ObservableRecipient
 {
-    private const string Source = "SystemAreasViewModel";
+    private const string Location = "SystemAreasViewModel";
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -80,7 +80,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         LoadSettings();
@@ -178,12 +178,12 @@ public partial class SystemAreasViewModel : ObservableRecipient
             var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
             if (result != StatusCode.Ok)
             {
-                throw new SwitchThemeException(result, Source);
+                throw new SwitchThemeException(result, Location);
             }
         }
         catch (Exception ex)
         {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -214,7 +214,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -252,7 +252,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -271,7 +271,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -293,7 +293,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -315,7 +315,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -334,7 +334,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -356,7 +356,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -378,7 +378,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
 
         RequestThemeSwitch();
@@ -397,7 +397,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 
@@ -414,7 +414,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Source);
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
     }
 }
