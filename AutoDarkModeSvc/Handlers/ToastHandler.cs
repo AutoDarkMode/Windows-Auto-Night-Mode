@@ -115,6 +115,7 @@ public static class ToastHandler
 
                     tcb.AddText($"{Strings.Resources.Msg_PauseOnce}\n({until})");
                 }
+
                 tcb.AddText($"{Strings.Resources.Msg_PauseActionNotification} {Strings.Resources.Msg_PauseActionDisableQuestion}")
                    .AddButton(new ToastButton().SetContent(Strings.Resources.DisableAutomaticSwitch)
                    .AddArgument("action-toggle-auto-theme-switch", "enabled")
@@ -233,7 +234,7 @@ public static class ToastHandler
         string typeVerb = downgrade ? Strings.Resources.UpdateToast_DowngradingTo : Strings.Resources.UpdateToast_UpgradingTo;
         Program.ActionQueue.Add(() =>
         {
-            // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
+            // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later
             string tag = "adm_update_in_progress";
             string group = "downloads";
 

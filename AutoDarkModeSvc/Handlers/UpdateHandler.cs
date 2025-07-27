@@ -415,12 +415,14 @@ internal static class UpdateHandler
         string baseZipUrl = GetBaseUrl();
         string baseUrlHash = GetBaseUrl();
         bool useCustomUrls = false;
+
         if (builder.Config.Updater.ZipCustomUrl != null && builder.Config.Updater.HashCustomUrl != null)
         {
             baseZipUrl = builder.Config.Updater.ZipCustomUrl;
             baseUrlHash = builder.Config.Updater.HashCustomUrl;
             useCustomUrls = true;
         }
+
         string downloadPath = Path.Combine(Helper.UpdateDataDir, "update.zip");
         try
         {
@@ -442,6 +444,7 @@ internal static class UpdateHandler
             {
                 Logger.Warn("changelog page not found");
             }
+
             Task<byte[]> hashDownloadTask = client.GetByteArrayAsync(UpstreamVersion.GetUpdateHashUrl(baseUrlHash, useCustomUrls));
             hashDownloadTask.Wait();
             byte[] buffer = hashDownloadTask.Result;
@@ -473,6 +476,7 @@ internal static class UpdateHandler
             using FileStream fileStream = File.OpenRead(downloadPath);
             byte[] downloadHash = sha256.ComputeHash(fileStream);
             StringBuilder downloadHashStringBuilder = new();
+
             for (int i = 0; i < downloadHash.Length; i++)
             {
                 downloadHashStringBuilder.Append(downloadHash[i].ToString("x2"));
@@ -565,7 +569,7 @@ internal static class UpdateHandler
                     {
                         p.Dispose();
                     }
-                    Logger.Debug($"end blocking processes attempt: {i+1}/5");
+                    Logger.Debug($"end blocking processes attempt: {i + 1}/5");
                 }
                 catch (Exception ex)
                 {
@@ -599,7 +603,7 @@ internal static class UpdateHandler
         string tempDir = Path.Combine(Helper.ExecutionDir, "Temp");
         if (Directory.Exists(tempDir))
         {
-            Logger.Warn($"emp directory {tempDir} already exists, cleaning");
+            Logger.Warn($"temp directory {tempDir} already exists, cleaning");
             try
             {
                 Directory.Delete(tempDir, true);

@@ -267,13 +267,13 @@ public static class ThemeHandler
 
                 // get current accent color
                 string currentColorization = RegistryHandler.GetAccentColor().Replace("#", "0X");
-                string lastColorizationDigitString = currentColorization[currentColorization.Length - 1].ToString();
+                string lastColorizationDigitString = currentColorization[^1].ToString();
                 int lastColorizationDigit = int.Parse(lastColorizationDigitString, System.Globalization.NumberStyles.HexNumber);
 
                 // modify last digit
                 if (lastColorizationDigit >= 9) lastColorizationDigit--;
                 else lastColorizationDigit++;
-                string newColorizationColor = currentColorization[..(currentColorization.Length - 1)] + lastColorizationDigit.ToString("X");
+                string newColorizationColor = $"{currentColorization[..^1]}{lastColorizationDigit:X}";
 
                 // update theme
                 dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);

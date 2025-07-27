@@ -478,8 +478,17 @@ public class TimedThemeState
         }
 
         //the time bewteen sunrise and sunset, aka "day"
-        TargetTheme = Helper.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay) ? Theme.Light : Theme.Dark;
-        CurrentSwitchTime = _adjustedSunset;
-        NextSwitchTime = _adjustedSunrise;
+        if (Helper.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
+        {
+            TargetTheme = Theme.Light;
+            CurrentSwitchTime = _adjustedSunrise;
+            NextSwitchTime = _adjustedSunset;
+        }
+        else
+        {
+            TargetTheme = Theme.Dark;
+            CurrentSwitchTime = _adjustedSunset;
+            NextSwitchTime = _adjustedSunrise;
+        }
     }
 }

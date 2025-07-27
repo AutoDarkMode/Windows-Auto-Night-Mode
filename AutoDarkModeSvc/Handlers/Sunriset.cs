@@ -105,8 +105,8 @@ public sealed class Sunriset
         SunriseSunset(year, month, day, lng, lat, AstronomicalTwilightAltitude, false, out tsunrise, out tsunset);
     }
 
-    /* +++Date last modified: 05-Jul-1997 */
-    /* Updated comments, 05-Aug-2013 */
+    // +++Date last modified: 05-Jul-1997
+    // Updated comments, 05-Aug-2013
 
     /*
 			SUNRISET.C - computes Sun rise/set times, start/end of twilight, and
@@ -117,7 +117,7 @@ public sealed class Sunriset
 			Released to the public domain by Paul Schlyter, December 1992
 		*/
 
-    /* Converted to C# by Mursaat 05-Feb-2017 */
+    // Converted to C# by Mursaat 05-Feb-2017
 
     /// <summary>
     /// A function to compute the number of days elapsed since 2000 Jan 0.0
@@ -132,11 +132,11 @@ public sealed class Sunriset
         return (367L * y - ((7 * (y + ((m + 9) / 12))) / 4) + ((275 * m) / 9) + d - 730530L);
     }
 
-    /* Some conversion factors between radians and degrees */
+    // Some conversion factors between radians and degrees
     private const double RadDeg = 180.0 / Math.PI;
     private const double DegRad = Math.PI / 180.0;
 
-    /* The trigonometric functions in degrees */
+    // The trigonometric functions in degrees
     private static double sind(double x)
     {
         return Math.Sin(x * DegRad);
@@ -210,59 +210,59 @@ public sealed class Sunriset
     private static int SunriseSunset(int year, int month, int day, double lon, double lat,
                      double altit, bool upper_limb, out double trise, out double tset)
     {
-        double d;          /* Days since 2000 Jan 0.0 (negative before) */
-        double sr;         /* Solar distance, astronomical units */
-        double sRA;        /* Sun's Right Ascension */
-        double sdec;       /* Sun's declination */
-        double sradius;    /* Sun's apparent radius */
-        double t;          /* Diurnal arc */
-        double tsouth;     /* Time when Sun is at south */
-        double sidtime;    /* Local sidereal time */
+        double d;          // Days since 2000 Jan 0.0 (negative before)
+        double sr;         // Solar distance, astronomical units
+        double sRA;        // Sun's Right Ascension
+        double sdec;       // Sun's declination
+        double sradius;    // Sun's apparent radius
+        double t;          // Diurnal arc
+        double tsouth;     // Time when Sun is at south
+        double sidtime;    // Local sidereal time
 
-        int rc = 0; /* Return cde from function - usually 0 */
+        int rc = 0; // Return code from function - usually 0
 
-        /* Compute d of 12h local mean solar time */
+        // Compute d of 12h local mean solar time
         d = daysSince2000Jan0(year, month, day) + 0.5 - lon / 360.0;
 
-        /* Compute the local sidereal time of this moment */
+        // Compute the local sidereal time of this moment
         sidtime = revolution(GMST0(d) + 180.0 + lon);
 
-        /* Compute Sun's RA, Decl and distance at this moment */
+        // Compute Sun's RA, Decl and distance at this moment
         sun_RA_dec(d, out sRA, out sdec, out sr);
 
-        /* Compute time when Sun is at south - in hours UT */
+        // Compute time when Sun is at south - in hours UT
         tsouth = 12.0 - rev180(sidtime - sRA) / 15.0;
 
-        /* Compute the Sun's apparent radius in degrees */
+        // Compute the Sun's apparent radius in degrees
         sradius = 0.2666 / sr;
 
-        /* Do correction to upper limb, if necessary */
+        // Do correction to upper limb, if necessary
         if (upper_limb)
             altit -= sradius;
 
-        /* Compute the diurnal arc that the Sun traverses to reach */
-        /* the specified altitude altit: */
+        // Compute the diurnal arc that the Sun traverses to reach
+        // the specified altitude altit:
         {
             double cost;
             cost = (sind(altit) - sind(lat) * sind(sdec)) /
             (cosd(lat) * cosd(sdec));
             switch (cost)
             {
-                case >= 1.0:
+                case >= 1.0:  // Sun always below altit
                     rc = -1;
                     t = 0.0;
                     break;
-                case <= -1.0:
+                case <= -1.0:  // Sun always above altit
                     rc = +1;
                     t = 12.0;
                     break;
                 default:
-                    t = acosd(cost) / 15.0;   /* The diurnal arc, hours */
+                    t = acosd(cost) / 15.0;  // The diurnal arc, hours
                     break;
             }
         }
 
-        /* Store rise and set times - in hours UT */
+        // Store rise and set times - in hours UT
         trise = tsouth - t;
         tset = tsouth + t;
 
@@ -296,38 +296,38 @@ public sealed class Sunriset
     public static double DayLen(int year, int month, int day, double lon, double lat,
                       double altit, bool upper_limb)
     {
-        double d;          /* Days since 2000 Jan 0.0 (negative before) */
-        double obl_ecl;    /* Obliquity (inclination) of Earth's axis */
-        double sr;         /* Solar distance, astronomical units */
-        double slon;       /* True solar longitude */
-        double sin_sdecl;  /* Sine of Sun's declination */
-        double cos_sdecl;  /* Cosine of Sun's declination */
-        double sradius;    /* Sun's apparent radius */
+        double d;          // Days since 2000 Jan 0.0 (negative before)
+        double obl_ecl;    // Obliquity (inclination) of Earth's axis
+        double sr;         // Solar distance, astronomical units
+        double slon;       // True solar longitude
+        double sin_sdecl;  // Sine of Sun's declination
+        double cos_sdecl;  // Cosine of Sun's declination
+        double sradius;    // Sun's apparent radius
 
-        /* Compute d of 12h local mean solar time */
+        // Compute d of 12h local mean solar time
         d = daysSince2000Jan0(year, month, day) + 0.5 - lon / 360.0;
 
-        /* Compute obliquity of ecliptic (inclination of Earth's axis) */
+        // Compute obliquity of ecliptic (inclination of Earth's axis)
         obl_ecl = 23.4393 - 3.563E-7 * d;
 
-        /* Compute Sun's ecliptic longitude and distance */
+        // Compute Sun's ecliptic longitude and distance
         sunpos(d, out slon, out sr);
 
-        /* Compute sine and cosine of Sun's declination */
+        // Compute sine and cosine of Sun's declination
         sin_sdecl = sind(obl_ecl) * sind(slon);
         cos_sdecl = Math.Sqrt(1.0 - sin_sdecl * sin_sdecl);
 
-        /* Compute the Sun's apparent radius, degrees */
+        // Compute the Sun's apparent radius, degrees
         sradius = 0.2666 / sr;
 
-        /* Do correction to upper limb, if necessary */
+        // Do correction to upper limb, if necessary
         if (upper_limb)
         {
             altit -= sradius;
         }
 
-        /* Compute the diurnal arc that the Sun traverses to reach */
-        /* the specified altitude altit: */
+        // Compute the diurnal arc that the Sun traverses to reach
+        // the specified altitude altit:
         double cost = (sind(altit) - sind(lat) * sin_sdecl) / (cosd(lat) * cos_sdecl);
         var t = cost switch
         {
@@ -344,7 +344,7 @@ public sealed class Sunriset
     /// <summary>
     /// Computes the Sun's ecliptic longitude and distance
     /// at an instant given in d, number of days since
-    /// 2000 Jan 0.0.  The Sun's ecliptic latitude is not
+    /// 2000 Jan 0.0. The Sun's ecliptic latitude is not
     /// computed, since it's always very near 0.
     /// </summary>
     /// <param name="d"></param>
@@ -352,29 +352,29 @@ public sealed class Sunriset
     /// <param name="r"></param>
     private static void sunpos(double d, out double lon, out double r)
     {
-        double M;         /* Mean anomaly of the Sun */
-        double w;         /* Mean longitude of perihelion */
-        /* Note: Sun's mean longitude = M + w */
-        double e;         /* Eccentricity of Earth's orbit */
-        double E;         /* Eccentric anomaly */
-        double x, y;      /* x, y coordinates in orbit */
-        double v;         /* True anomaly */
+        double M;         // Mean anomaly of the Sun
+        double w;         // Mean longitude of perihelion
+        // Note: Sun's mean longitude = M + w
+        double e;         // Eccentricity of Earth's orbit
+        double E;         // Eccentric anomaly
+        double x, y;      // x, y coordinates in orbit
+        double v;         // True anomaly
 
-        /* Compute mean elements */
+        // Compute mean elements
         M = revolution(356.0470 + 0.9856002585 * d);
         w = 282.9404 + 4.70935E-5 * d;
         e = 0.016709 - 1.151E-9 * d;
 
-        /* Compute true longitude and radius vector */
+        // Compute true longitude and radius vector
         E = M + e * RadDeg * sind(M) * (1.0 + e * cosd(M));
         x = cosd(E) - e;
         y = Math.Sqrt(1.0 - e * e) * sind(E);
-        r = Math.Sqrt(x * x + y * y);       /* Solar distance */
-        v = atan2d(y, x);                   /* True anomaly */
-        lon = v + w;                        /* True solar longitude */
+        r = Math.Sqrt(x * x + y * y);       // Solar distance
+        v = atan2d(y, x);                   // True anomaly
+        lon = v + w;                        // True solar longitude
         if (lon >= 360.0)
         {
-            lon -= 360.0;                   /* Make it 0..360 degrees */
+            lon -= 360.0;                   // Make it 0..360 degrees
         }
     }
 
@@ -391,21 +391,21 @@ public sealed class Sunriset
     {
         double lon, obl_ecl, x, y, z;
 
-        /* Compute Sun's ecliptical coordinates */
+        // Compute Sun's ecliptical coordinates
         sunpos(d, out lon, out r);
 
-        /* Compute ecliptic rectangular coordinates (z=0) */
+        // Compute ecliptic rectangular coordinates (z=0)
         x = r * cosd(lon);
         y = r * sind(lon);
 
-        /* Compute obliquity of ecliptic (inclination of Earth's axis) */
+        // Compute obliquity of ecliptic (inclination of Earth's axis)
         obl_ecl = 23.4393 - 3.563E-7 * d;
 
-        /* Convert to equatorial rectangular coordinates - x is unchanged */
+        // Convert to equatorial rectangular coordinates - x is unchanged
         z = y * sind(obl_ecl);
         y = y * cosd(obl_ecl);
 
-        /* Convert to spherical coordinates */
+        // Convert to spherical coordinates
         RA = atan2d(y, x);
         dec = atan2d(z, Math.Sqrt(x * x + y * y));
     }
@@ -421,7 +421,7 @@ public sealed class Sunriset
     /// <returns></returns>
     private static double revolution(double x)
     {
-        return (x - 360.0 * Math.Floor(x * INV360));
+        return x - 360.0 * Math.Floor(x * INV360);
     }
 
     /// <summary>
@@ -431,7 +431,7 @@ public sealed class Sunriset
     /// <returns></returns>
     private static double rev180(double x)
     {
-        return (x - 360.0 * Math.Floor(x * INV360 + 0.5));
+        return x - 360.0 * Math.Floor(x * INV360 + 0.5);
     }
 
     /// <summary>
@@ -460,11 +460,11 @@ public sealed class Sunriset
     private static double GMST0(double d)
     {
         double sidtim0;
-        /* Sidtime at 0h UT = L (Sun's mean longitude) + 180.0 degr  */
-        /* L = M + w, as defined in sunpos().  Since I'm too lazy to */
-        /* add these numbers, I'll let the C compiler do it for me.  */
-        /* Any decent C compiler will add the constants at compile   */
-        /* time, imposing no runtime or code overhead.               */
+        // Sidtime at 0h UT = L (Sun's mean longitude) + 180.0 degr 
+        // L = M + w, as defined in sunpos().  Since I'm too lazy to
+        // add these numbers, I'll let the C compiler do it for me. 
+        // Any decent C compiler will add the constants at compile  
+        // time, imposing no runtime or code overhead.              
         sidtim0 = revolution((180.0 + 356.0470 + 282.9404) + (0.9856002585 + 4.70935E-5) * d);
         return sidtim0;
     }

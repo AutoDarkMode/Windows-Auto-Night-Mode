@@ -275,7 +275,6 @@ internal static class WallpaperHandler
                     return GetGlobalWallpaper() == globalWallpaper.Dark;
 
                 }
-
             case Theme.Light:
                 {
                     _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);

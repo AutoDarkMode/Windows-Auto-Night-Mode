@@ -102,9 +102,7 @@ Details: {response.Details}";
                         XamlRoot = request.XamlRoot,
                     };
 
-                    var result = await dialog.ShowAsync();
-
-                    if (result == ContentDialogResult.Primary)
+                    if (await dialog.ShowAsync() == ContentDialogResult.Primary)
                     {
                         var issueUri = @"https://github.com/Armin2208/Windows-Auto-Night-Mode/issues";
                         Process.Start(new ProcessStartInfo(issueUri) { UseShellExecute = true, Verb = "open" });
