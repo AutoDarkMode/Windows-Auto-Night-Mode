@@ -5,7 +5,6 @@ using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -94,15 +93,13 @@ public partial class ColorizationViewModel : ObservableRecipient
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
+        StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {
-            StateUpdateHandler.StopConfigWatcher();
-
             _builder.Load();
             LoadSettings();
-
-            StateUpdateHandler.StartConfigWatcher();
         });
+        StateUpdateHandler.StartConfigWatcher();
     }
 
     partial void OnIsColorizationEnabledChanged(bool value)
@@ -165,11 +162,5 @@ public partial class ColorizationViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, Location);
         }
-    }
-
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
     }
 }
