@@ -340,7 +340,7 @@
 点击“是”将打开一个新的浏览器窗口。
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>发生错误</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>下载更新</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>发生错误 :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>此选项不支持默认 Windows 主题</value>
@@ -886,6 +883,9 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
   </data>
@@ -904,7 +904,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="UnDelay" xml:space="preserve">
     <value>未推迟</value>
   </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
+  <data name="EditHotkey" xml:space="preserve">
+    <value />
   </data>
 </root>

@@ -230,7 +230,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Color filter (sends Win + Ctrl + C)</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Customize the Windows system color scheme to your liking</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Conditions</value>
@@ -340,7 +340,7 @@ Please ensure:
 Would you like to create an issue on the Auto Dark Mode repository?</value>
     <comment>Text like "Click yes to..." is (and should be) obvious</comment>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>An error has occured</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Download update</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>error occurred :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>This option does not support default Windows themes</value>
@@ -895,6 +892,9 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="EditHotkey" xml:space="preserve">
+    <value>Edit hotkey</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -957,11 +957,5 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
-  </data>
-  <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
-  </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>Select a color</value>
   </data>
 </root>

@@ -340,7 +340,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?
 Kattintson "Igen"-re egy új böngészőablak megnyitásához.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Hiba történt</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Frissítés letöltése</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>hiba történt :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Ez a beállítás nem támogatja az alapértelmezett Windows-témákat</value>

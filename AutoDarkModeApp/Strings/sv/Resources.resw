@@ -340,7 +340,7 @@ Vill du skapa ett issue på Auto Dark Mode's repository?
 Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Ett fel har inträffat</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Klicka på "Ja" för att öppna ett nytt webbläsarfönster.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Ladda ner uppdatering</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>ett fel inträffade :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>This option does not support default Windows themes</value>

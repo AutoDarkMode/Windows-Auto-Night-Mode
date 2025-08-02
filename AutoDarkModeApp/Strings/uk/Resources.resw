@@ -340,7 +340,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
 Натисніть «Так», щоб відкрити нове вікно браузера.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Сталася помилка</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Завантажити оновлення</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>сталася помилка :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Цей параметр не підтримує стандартні теми Windows</value>

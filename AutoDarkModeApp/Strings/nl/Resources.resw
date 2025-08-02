@@ -340,7 +340,7 @@ Wilt u een probleem melden in de Auto Dark Mode-repository?
 Klik op "Ja" om een nieuw browservenster te openen.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Er is een fout opgetreden</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Klik op "Ja" om een nieuw browservenster te openen.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Update downloaden</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>fout opgetreden :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Deze optie ondersteunt geen standaardthema's van Windows</value>

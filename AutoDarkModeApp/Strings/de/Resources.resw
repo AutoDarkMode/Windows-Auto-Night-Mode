@@ -340,7 +340,7 @@ Möchtest du eine Fehlermeldung in unserem GitHub Repo erstellen?
 Drücke "ja", um ein neues Browserfenster zu öffnen.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Update herunterladen</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>Ein Fehler ist aufgetreten :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Diese Option wird von Standard Windows Designs nicht unterstützt</value>

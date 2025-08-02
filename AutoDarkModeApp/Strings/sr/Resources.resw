@@ -340,7 +340,7 @@ Da li biste želeli da otvorite problem na repozitorijumu Auto Dark Mode-a?
 Pritisnite "Da" da otvorite novi prozor u pregledaču.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Desila se greška</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@ Pritisnite "Da" da otvorite novi prozor u pregledaču.
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>Preuzmi ažuriranje</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>Greška :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>Ova opcija ne podržava podrazumevane Windows teme</value>

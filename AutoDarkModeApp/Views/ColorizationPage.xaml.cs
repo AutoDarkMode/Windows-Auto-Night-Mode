@@ -1,9 +1,12 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.UserControls;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using CommunityToolkit.WinUI.Helpers;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml.Media;
 
 namespace AutoDarkModeApp.Views;
 
@@ -11,7 +14,6 @@ public sealed partial class ColorizationPage : Page
 {
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
-
 
     public ColorizationViewModel ViewModel { get; }
 
@@ -23,12 +25,24 @@ public sealed partial class ColorizationPage : Page
 
     private async void LightModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        CheckColorColorPicker.Color = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor();
-        var result = await ColorPickerContentDialog.ShowAsync();
+        var dialogContent = new ColorPickerDialogContentControl() { CustomColor = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor() };
+        var colorPickerDialog = new ContentDialog()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "ChooseCustomColor".GetLocalized(),
+            CloseButtonText = "Cancel".GetLocalized(),
+            PrimaryButtonText = "Save".GetLocalized(),
+            DefaultButton = ContentDialogButton.Primary,
+            Content = dialogContent,
+        };
+        var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            _builder.Config.ColorizationSwitch.Component.LightHex = CheckColorColorPicker.Color.ToHex();
+            ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
+            _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.CustomColor.ToHex();
         }
+
         try
         {
             _builder.Save();
@@ -41,11 +55,22 @@ public sealed partial class ColorizationPage : Page
 
     private async void DarkModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        CheckColorColorPicker.Color = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor();
-        var result = await ColorPickerContentDialog.ShowAsync();
+        var dialogContent = new ColorPickerDialogContentControl() { CustomColor = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor() };
+        var colorPickerDialog = new ContentDialog()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "ChooseCustomColor".GetLocalized(),
+            CloseButtonText = "Cancel".GetLocalized(),
+            PrimaryButtonText = "Save".GetLocalized(),
+            DefaultButton = ContentDialogButton.Primary,
+            Content = dialogContent,
+        };
+        var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            _builder.Config.ColorizationSwitch.Component.DarkHex = CheckColorColorPicker.Color.ToHex();
+            ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
+            _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.CustomColor.ToHex();
         }
         try
         {
@@ -56,6 +81,4 @@ public sealed partial class ColorizationPage : Page
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
         }
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }

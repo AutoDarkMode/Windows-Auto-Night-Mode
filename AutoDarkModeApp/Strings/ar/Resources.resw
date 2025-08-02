@@ -339,7 +339,7 @@
  انقر فوق "نعم" لفتح نافذة متصفح جديدة.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>حدث خطأ</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -509,9 +509,6 @@
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>تنزيل التحديث</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>حدث خطأ :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>لا يدعم هذا الخيار نسق Windows الافتراضية</value>

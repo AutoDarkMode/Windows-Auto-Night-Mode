@@ -340,7 +340,7 @@
 새 브라우저 창을 열려면 "예"를 누릅니다.
 </value>
   </data>
-  <data name="ErrorOcurred_Title" xml:space="preserve">
+  <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>오류가 발생했습니다</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
@@ -510,9 +510,6 @@
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
     <value>업데이트 다운로드</value>
-  </data>
-  <data name="Msg_ErrorOcc" xml:space="preserve">
-    <value>오류가 발생했습니다 :(</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
     <value>이 옵션은 기본 Windows 테마를 지원하지 않습니다</value>
