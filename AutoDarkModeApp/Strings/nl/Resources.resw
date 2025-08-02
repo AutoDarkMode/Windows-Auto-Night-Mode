@@ -899,4 +899,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="SelectColor" xml:space="preserve">
     <value>Select color</value>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
 </root>

@@ -21,7 +21,6 @@
                     Message="{helpers:ResourceString Name=FeatureDisabled_WhileThemeMode}"
                     Severity="Informational">
                     <InfoBar.ActionButton>
-                        <!--  TODO: resource string  -->
                         <Button Command="{x:Bind ViewModel.ThemeSwitchDisabledCommand}" Content="{helpers:ResourceString Name=DisableWindowsManagesTheme}" />
                     </InfoBar.ActionButton>
                 </InfoBar>

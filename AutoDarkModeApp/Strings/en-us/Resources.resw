@@ -892,8 +892,8 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
-  <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -957,5 +957,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
   </data>
 </root>
