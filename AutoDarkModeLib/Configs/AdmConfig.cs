@@ -44,7 +44,6 @@ public class AdmConfig
         SystemSwitch = new();
         TouchKeyboardSwitch = new();
         ColorFilterSwitch = new();
-        OfficeSwitch = new();
         WallpaperSwitch = new();
         ColorizationSwitch = new();
         CursorSwitch = new();
@@ -58,7 +57,6 @@ public class AdmConfig
     public BaseSettings<object> TouchKeyboardSwitch { get; set; }
     public BaseSettings<ColorizationSwitchSettings> ColorizationSwitch { get; set; }
     public BaseSettings<object> ColorFilterSwitch { get; set; }
-    public BaseSettings<OfficeSwitchSettings> OfficeSwitch { get; set; }
     public BaseSettings<CursorSwitchSettings> CursorSwitch { get; set; }
     public DateTime Sunrise { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 7, 0, 0);
     public DateTime Sunset { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 20, 0, 0);
