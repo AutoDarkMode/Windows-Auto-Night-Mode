@@ -11,7 +11,6 @@ using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -379,11 +378,5 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
-    }
-
-    internal void OnViewModelNavigatedFrom(NavigationEventArgs e)
-    {
-        StateUpdateHandler.OnConfigUpdate -= HandleConfigUpdate;
-        StateUpdateHandler.StopConfigWatcher();
     }
 }

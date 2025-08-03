@@ -8,7 +8,6 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -32,18 +31,20 @@ public sealed partial class WallpaperPickerPage : Page
         // Generate a list with all installed Monitors, select the first one
         List<MonitorSettings> monitors = _builder.Config.WallpaperSwitch.Component.Monitors;
         var disconnected = new List<MonitorSettings>();
-        var connected = monitors.Where(m =>
-        {
-            // Preload tostring to avoid dropdown opening lag
-            m.ToString();
-            // Return monitors connecte to system connected monitors
-            if (m.Connected)
+        var connected = monitors
+            .Where(m =>
             {
-                return true;
-            }
-            disconnected.Add(m);
-            return false;
-        }).ToList();
+                // Preload tostring to avoid dropdown opening lag
+                m.ToString();
+                // Return monitors connecte to system connected monitors
+                if (m.Connected)
+                {
+                    return true;
+                }
+                disconnected.Add(m);
+                return false;
+            })
+            .ToList();
 
         foreach (var monitor in disconnected)
         {
@@ -87,9 +88,10 @@ public sealed partial class WallpaperPickerPage : Page
 
     private async void CheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        CheckColorColorPicker.Color = ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
-            ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
-            : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
+        CheckColorColorPicker.Color =
+            ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
+                ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
+                : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
 
         var result = await ColorPickerContentDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
@@ -117,6 +119,4 @@ public sealed partial class WallpaperPickerPage : Page
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:personalization-background"));
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }
