@@ -113,11 +113,10 @@
                         <!--  Color  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <!--  TODO: Replace Content to Resource  -->
                                 <Button
                                     MinWidth="120"
                                     Click="CheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
 
@@ -127,19 +126,6 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-
-
-                <!--  TODO: follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
-                <!--  Color Picker Dialog  -->
-                <ContentDialog
-                    x:Name="ColorPickerContentDialog"
-                    CloseButtonText="{helpers:ResourceString Name=Cancel}"
-                    DefaultButton="Primary"
-                    PrimaryButtonText="{helpers:ResourceString Name=Set}">
-                    <StackPanel>
-                        <ColorPicker x:Name="CheckColorColorPicker" />
-                    </StackPanel>
-                </ContentDialog>
 
             </StackPanel>
         </Grid>

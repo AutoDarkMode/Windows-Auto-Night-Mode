@@ -1,12 +1,14 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
+using AutoDarkModeApp.UserControls;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
@@ -115,23 +117,37 @@ public sealed partial class WallpaperPickerPage : Page
 
     private async void CheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        CheckColorColorPicker.Color =
-            ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
-                ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
-                : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
-
-        var result = await ColorPickerContentDialog.ShowAsync();
+        var dialogContent = new ColorPickerDialogContentControl()
+        {
+            CustomColor =
+                ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
+                    ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
+                    : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor(),
+        };
+        var colorPickerDialog = new ContentDialog()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "ChooseCustomColor".GetLocalized(),
+            CloseButtonText = "Cancel".GetLocalized(),
+            PrimaryButtonText = "Set".GetLocalized(),
+            DefaultButton = ContentDialogButton.Primary,
+            Content = dialogContent,
+        };
+        var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
             if (ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light)
             {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = CheckColorColorPicker.Color.ToHex();
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = dialogContent.CustomColor.ToHex();
             }
             else
             {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = CheckColorColorPicker.Color.ToHex();
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = dialogContent.CustomColor.ToHex();
             }
+            ViewModel.ColorPreviewBorderBackground = new Microsoft.UI.Xaml.Media.SolidColorBrush(dialogContent.CustomColor);
         }
+
         try
         {
             _builder.Save();
