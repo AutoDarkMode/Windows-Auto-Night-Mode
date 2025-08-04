@@ -889,4 +889,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>

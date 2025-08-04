@@ -19,10 +19,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
                 <!--
                     TODO:
-                    * Hide Border when setting == Spotlight?
-                    * Hide DesktopPreviewImage when setting == Solid Color
-                    * Stretch = ViewModel.SelectWallpaperFillingMode
-                    * Get system display size (aspect ratio) and apply it to the border (width) ?
+                    * Get system display size (aspect ratio) and apply it to the border (width) ??
                 -->
                 <Border
                     Margin="0,0,0,12"
@@ -77,16 +74,11 @@
                         </controls:SettingsCard>
 
                         <!--  Picture path  -->
-                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
-                            <controls:SettingsCard.Header>
-                                <StackPanel Orientation="Horizontal" Spacing="4">
-                                    <TextBlock Text="{helpers:ResourceString Name=PathAt}" />
-                                    <TextBlock
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        IsTextSelectionEnabled="True"
-                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
-                                </StackPanel>
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Path}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->

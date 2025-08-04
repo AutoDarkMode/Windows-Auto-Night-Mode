@@ -886,4 +886,7 @@
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>

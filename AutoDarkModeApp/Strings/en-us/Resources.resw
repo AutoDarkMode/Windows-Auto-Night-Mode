@@ -954,4 +954,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="ChooseCustomColor" xml:space="preserve">
     <value>Choose a custom color</value>
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>
