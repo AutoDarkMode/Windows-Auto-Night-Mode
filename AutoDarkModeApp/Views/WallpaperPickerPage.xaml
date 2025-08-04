@@ -36,8 +36,7 @@
                         Width="320"
                         Height="180"
                         Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
-                        Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}"
-                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                        Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
                 </Border>
 
                 <!--  Desktop background  -->
@@ -58,7 +57,7 @@
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <!--  Background Type  -->
+                        <!--  Background type  -->
                         <controls:SettingsCard ContentAlignment="Left">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
@@ -75,6 +74,19 @@
                                 HorizontalAlignment="Right"
                                 Command="{x:Bind ViewModel.PickFileCommand}"
                                 Content="{helpers:ResourceString Name=BrowsePhotos}" />
+                        </controls:SettingsCard>
+
+                        <!--  Picture path  -->
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                    <TextBlock Text="{helpers:ResourceString Name=PathAt}" />
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        IsTextSelectionEnabled="True"
+                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->
