@@ -23,7 +23,34 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
 
+        if (_builder.Config.WallpaperSwitch.Component.Monitors.Count == 0)
+            Task.Run(async () => await DetectMonitorsAsync());
+
         DispatcherQueue.TryEnqueue(LoadMonitors);
+    }
+
+    private async Task DetectMonitorsAsync()
+    {
+        try
+        {
+            string result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.DetectMonitors);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "WallpaperPickerPage");
+            }
+            try
+            {
+                _builder.Load();
+            }
+            catch (Exception ex)
+            {
+                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Constructor");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Constructor");
+        }
     }
 
     private void LoadMonitors()

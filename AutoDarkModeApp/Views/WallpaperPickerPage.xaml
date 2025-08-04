@@ -64,7 +64,7 @@
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" IsEnabled="{x:Bind ViewModel.SpotlightEnabled}" />
                             </RadioButtons>
                         </controls:SettingsCard>
 
