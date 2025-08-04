@@ -90,7 +90,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
 
-        SelectWallpaperThemeMode = App.Current.RequestedTheme;
+        SelectWallpaperThemeMode = Application.Current.RequestedTheme;
 
         try
         {
@@ -230,12 +230,13 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             //TODO: It is necessary to determine the correct position of focusing wallpaper
             if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
             {
-                GlobalWallpaperPath = @"C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg";
+                //GlobalWallpaperPath = @"C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg";
+                GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg");
                 GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
             }
             else if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_23H2)
             {
-                GlobalWallpaperPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\Microsoft\Windows\Themes\TranscodedWallpaper";
+                GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
                 GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
             }
             else
