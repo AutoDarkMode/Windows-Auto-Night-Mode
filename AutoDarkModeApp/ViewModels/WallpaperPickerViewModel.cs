@@ -366,6 +366,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
 
         SafeSaveBuilder();
+        LoadSettings();
     }
 
     partial void OnSelectMonitorChanged(object? value)
