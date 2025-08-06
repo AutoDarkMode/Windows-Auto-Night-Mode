@@ -17,10 +17,7 @@
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
-                <!--
-                    TODO:
-                    * Get system display size (aspect ratio) and apply it to the border (width) ??
-                -->
+                <!--  TODO: Get system display size (aspect ratio) and apply it to the border (width) ??  -->
                 <Border
                     Margin="0,0,0,12"
                     HorizontalAlignment="Left"

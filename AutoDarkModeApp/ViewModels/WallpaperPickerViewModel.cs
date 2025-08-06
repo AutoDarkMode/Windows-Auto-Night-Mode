@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
@@ -227,21 +229,33 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
         else if (currentType == WallpaperType.Spotlight)
         {
-            //TODO: It is necessary to determine the correct position of focusing wallpaper
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+            [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+            static extern bool SystemParametersInfo(uint uAction, uint uParam, StringBuilder lpvParam, uint init);
+
+            const uint SPI_GETDESKWALLPAPER = 0x0073;
+
+            var wallPaperPath = new StringBuilder(200);
+            if (SystemParametersInfo(SPI_GETDESKWALLPAPER, 200, wallPaperPath, 0) && wallPaperPath.ToString() != string.Empty)
             {
-                //GlobalWallpaperPath = @"C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg";
-                GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg");
-                GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
-            }
-            else if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_23H2)
-            {
-                GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
-                GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+                GlobalWallpaperSource = new BitmapImage(new Uri(wallPaperPath.ToString()));
             }
             else
             {
-                GlobalWallpaperSource = null;
+                if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+                {
+                    GlobalWallpaperPath = Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.Windows),
+                        @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg"
+                    );
+                    if (File.Exists(GlobalWallpaperPath))
+                        GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+                }
+                else
+                {
+                    GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
+                    if (File.Exists(GlobalWallpaperPath))
+                        GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+                }
             }
         }
 
