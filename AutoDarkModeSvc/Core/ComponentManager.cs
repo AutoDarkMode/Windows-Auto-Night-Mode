@@ -43,7 +43,6 @@ class ComponentManager
     // Components
     private readonly ISwitchComponent AppsSwitch;
     private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
-    private readonly ISwitchComponent OfficeSwitch = new OfficeSwitch();
     private readonly ISwitchComponent AccentColorSwitch = new AccentColorSwitch();
     private readonly ISwitchComponent SystemSwitch;
     private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
@@ -60,7 +59,6 @@ class ComponentManager
     {
         AppsSwitch?.RunUpdateSettingsState(Builder.Config.AppsSwitch);
         ColorFilterSwitch?.RunUpdateSettingsState(Builder.Config.ColorFilterSwitch);
-        OfficeSwitch?.RunUpdateSettingsState(Builder.Config.OfficeSwitch);
         SystemSwitch?.RunUpdateSettingsState(Builder.Config.SystemSwitch);
         AccentColorSwitch?.RunUpdateSettingsState(Builder.Config.SystemSwitch);
         WallpaperSwitch?.RunUpdateSettingsState(Builder.Config.WallpaperSwitch);
@@ -113,7 +111,6 @@ class ComponentManager
         {
             AppsSwitch,
             ColorFilterSwitch,
-            OfficeSwitch,
             SystemSwitch,
             AccentColorSwitch,
             WallpaperSwitch,
