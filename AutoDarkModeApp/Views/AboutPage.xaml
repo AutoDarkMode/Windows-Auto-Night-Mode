@@ -37,7 +37,7 @@
                     IsExpanded="True">
                     <Button
                         x:Name="CopyVersionInfoButton"
-                        Click="CopyVersionInfoButoon_Click"
+                        Click="CopyVersionInfoButton_Click"
                         Content="{helpers:ResourceString Name=Copy}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">

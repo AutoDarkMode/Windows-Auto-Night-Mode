@@ -10,4 +10,5 @@ public interface INavigationService
 
     void InitializeNavigationView(NavigationView navigationView);
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
+    void RegisterCustomHeader(string key, string header);
 }

@@ -889,4 +889,17 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Ngắt kết nối</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
 </root>

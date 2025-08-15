@@ -876,6 +876,13 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>切断済み</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
   </data>
@@ -893,5 +900,8 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
   </data>
 </root>

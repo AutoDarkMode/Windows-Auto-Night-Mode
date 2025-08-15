@@ -885,6 +885,16 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value>Edit hotkey</value>
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -948,10 +958,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
   </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
-  </data>
-  <data name="ChooseCustomColor" xml:space="preserve">
-    <value>Choose a custom color</value>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
   </data>
 </root>

@@ -889,4 +889,17 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Nicht verbunden</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
 </root>

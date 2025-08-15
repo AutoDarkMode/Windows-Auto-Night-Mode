@@ -14,6 +14,7 @@ public class NavigationService : INavigationService
     private readonly IPageService _pageService;
     private Frame? _frame;
     private NavigationView? _navigationView;
+    private readonly Dictionary<Type, string> _customHeaders = [];
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public object? SettingsItem => _navigationView?.SettingsItem;
@@ -46,6 +47,12 @@ public class NavigationService : INavigationService
             _frame.Navigating += OnNavigating;
             _frame.Navigated += OnNavigated;
         }
+    }
+
+    public void RegisterCustomHeader(string key, string header)
+    {
+        var pageType = _pageService.GetPageType(key);
+        _customHeaders[pageType] = header;
     }
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
@@ -159,6 +166,12 @@ public class NavigationService : INavigationService
         {
             _navigationView.SelectedItem = _navigationView.SettingsItem;
             _navigationView.Header = ((ContentControl)_navigationView.SettingsItem).Content;
+            return;
+        }
+
+        if (_customHeaders.TryGetValue(e.SourcePageType, out string? customHeader))
+        {
+            _navigationView.Header = customHeader;
             return;
         }
 
