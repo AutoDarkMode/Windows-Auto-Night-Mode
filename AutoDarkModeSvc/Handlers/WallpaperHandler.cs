@@ -26,34 +26,39 @@ using AutoDarkModeLib.ComponentSettings.Base;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class WallpaperHandler
+internal static class WallpaperHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     public static void SetSolidColor(SolidColors colors, Theme newTheme)
     {
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-        if (newTheme == Theme.Dark)
+        switch (newTheme)
         {
-            Color dark = HexToColor(colors.Dark);
-            int res = handler.SetBackgroundColor(ToUint(dark));
-            if (res != 0)
-            {
-                Logger.Warn($"set background color exit code was {res}");
-            }
-            //Thread.Sleep(500);
-            handler.Enable(false);
-        }
-        else if (newTheme == Theme.Light)
-        {
-            Color light = HexToColor(colors.Light);
-            int res = handler.SetBackgroundColor(ToUint(light));
-            if (res != 0)
-            {
-                Logger.Warn($"set background color exit code was {res}");
-            }
-            //Thread.Sleep(500);
-            handler.Enable(false);
+            case Theme.Light:
+                {
+                    var light = HexToColor(colors.Light);
+                    var res = handler.SetBackgroundColor(ToUint(light));
+                    if (res != 0)
+                    {
+                        Logger.Warn($"set background color exit code was {res}");
+                    }
+                    //Thread.Sleep(500);
+                    handler.Enable(false);
+                    break;
+                }
+            case Theme.Dark:
+                {
+                    var dark = HexToColor(colors.Dark);
+                    var res = handler.SetBackgroundColor(ToUint(dark));
+                    if (res != 0)
+                    {
+                        Logger.Warn($"set background color exit code was {res}");
+                    }
+                    //Thread.Sleep(500);
+                    handler.Enable(false);
+                    break;
+                }
         }
     }
 
@@ -61,14 +66,13 @@ static class WallpaperHandler
     {
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         Color c = ToColor(handler.GetBackgroundColor());
-        return $"#{(c.ToArgb() & 0x00FFFFFF).ToString("X6")}";
+        return $"#{c.ToArgb() & 0x00FFFFFF:X6}";
 
     }
 
     private static Color HexToColor(string hexString)
     {
-        if (hexString.IndexOf('#') != -1)
-            hexString = hexString.Replace("#", "");
+        if (hexString.Contains('#')) hexString = hexString.Replace("#", "");
 
         int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
         int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
@@ -78,8 +82,7 @@ static class WallpaperHandler
 
     public static string HexToRgb(string hexString)
     {
-        if (hexString.IndexOf('#') != -1)
-            hexString = hexString.Replace("#", "");
+        if (hexString.Contains('#')) hexString = hexString.Replace("#", "");
 
         int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
         int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
@@ -105,27 +108,31 @@ static class WallpaperHandler
             MonitorSettings monitorSetting = monitorSettings.Find(s => s.Id == monitor.DeviceId);
             if (monitorSetting != null)
             {
-                if (newTheme == Theme.Dark)
+                switch (newTheme)
                 {
-                    if (!File.Exists(monitorSetting.DarkThemeWallpaper))
-                    {
-                        Logger.Warn($"target {Enum.GetName(typeof(Theme), newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
-                    }
-                    else
-                    {
-                        handler.SetWallpaper(monitor.DeviceId, monitorSetting.DarkThemeWallpaper);
-                    }
-                }
-                else
-                {
-                    if (!File.Exists(monitorSetting.LightThemeWallpaper))
-                    {
-                        Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitor.DeviceId}");
-                    }
-                    handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
+                    case Theme.Light:
+                        if (File.Exists(monitorSetting.LightThemeWallpaper))
+                        {
+                            handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
+                        }
+                        else
+                        {
+                            Logger.Warn($"wallpaper does not exist. path ${monitorSetting.LightThemeWallpaper}, monitor ${monitor.DeviceId}");
+                        }
+                        break;
+                    default:
+                        if (File.Exists(monitorSetting.DarkThemeWallpaper))
+                        {
+                            handler.SetWallpaper(monitor.DeviceId, monitorSetting.DarkThemeWallpaper);
+                        }
+                        else
+                        {
+                            Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
+                        }
+                        break;
                 }
             }
-            else if (monitor.DeviceId == "")
+            else if (string.IsNullOrEmpty(monitor.DeviceId))
             {
                 Logger.Warn("invalid monitor id, skipping device. This most likely needs a windows restart to be fixed.");
             }
@@ -199,6 +206,7 @@ static class WallpaperHandler
     }
 
     [ComImport, Guid("B92B56A9-8B55-4E14-9A89-0199BBB6F93B"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    //TODO: "SYSLIB1096	Use GeneratedComInterfaceAttribute instead of ComImportAttribute to generate COM marshalling code at compile time." ?
     public interface IDesktopWallpaper
     {
         void SetWallpaper([MarshalAs(UnmanagedType.LPWStr)] string monitorID, [MarshalAs(UnmanagedType.LPWStr)] string wallpaper);
@@ -259,18 +267,18 @@ static class WallpaperHandler
     /// <return>true if wallpaper switch succeeded</return>
     public static bool SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
     {
-        if (newTheme == Theme.Dark)
+        switch (newTheme)
         {
-            _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
-            string currentWallpaper = GetGlobalWallpaper();
-            return currentWallpaper == globalWallpaper.Dark;
-
-        }
-        else if (newTheme == Theme.Light)
-        {
-            _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
-            string currentWallpaper = GetGlobalWallpaper();
-            return currentWallpaper == globalWallpaper.Light;
+            case Theme.Light:
+                {
+                    _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
+                    return GetGlobalWallpaper() == globalWallpaper.Light;
+                }
+            case Theme.Dark:
+                {
+                    _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
+                    return GetGlobalWallpaper() == globalWallpaper.Dark;
+                }
         }
         return false;
     }
@@ -292,7 +300,7 @@ static class WallpaperHandler
     }
 
     /// <summary>
-    /// Gets the currenvt wallpaper
+    /// Gets the current wallpaper
     /// </summary>
     /// <returns>string with a path to the current wallpapers</returns>
     public static string GetGlobalWallpaper()
@@ -307,7 +315,7 @@ static class WallpaperHandler
 #pragma warning disable CA2101
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
 #pragma warning restore CA2101
-        internal static extern int SystemParametersInfo(int uAction, int uParam, String lpvParam, int fuWinIni);
+        internal static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
     }
 
     private static uint ToUint(Color c)
