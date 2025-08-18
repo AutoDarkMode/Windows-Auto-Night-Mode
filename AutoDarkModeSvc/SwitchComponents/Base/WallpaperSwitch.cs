@@ -198,26 +198,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             {
                 SwitchGlobal(newTheme);
             }
-            else if (type == WallpaperType.All)
-            {
-                Logger.Error("not implemented anymore");
-                /*
-                bool globalSwitched = false;
-                if (currentGlobalTheme != newTheme)
-                {
-                    WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-                    globalSwitched = true;
-                }
-                if (currentIndividualTheme != newTheme || globalSwitched)
-                {
-                    WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
-                }
-                currentGlobalTheme = newTheme;
-                currentIndividualTheme = newTheme;
-                currentSolidColorTheme = Theme.Unknown;
-                spotlightEnabled = false;
-                */
-            }
             else if (type == WallpaperType.SolidColor)
             {
                 SwitchSolidColor(newTheme);
