@@ -44,7 +44,7 @@ public enum WallpaperType
     Unknown = -1,
     Individual = 0,
     Global = 1,
-    All = 2,
+//    All = 2,
     SolidColor = 3,
     Spotlight = 4
 }
