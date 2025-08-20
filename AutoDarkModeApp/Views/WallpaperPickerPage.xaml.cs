@@ -88,7 +88,7 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel.SelectMonitor = monitors.FirstOrDefault();
     }
 
-    private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
         try
         {
@@ -115,12 +115,12 @@ public sealed partial class WallpaperPickerPage : Page
         }
     }
 
-    private async void CheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void CheckColorButton_Click(object sender, RoutedEventArgs e)
     {
         var dialogContent = new ColorPickerDialogContentControl()
         {
             CustomColor =
-                ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light
+                ViewModel.SelectWallpaperThemeMode == ApplicationTheme.Light
                     ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
                     : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor(),
         };
@@ -137,13 +137,14 @@ public sealed partial class WallpaperPickerPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            if (ViewModel.SelectWallpaperThemeMode == Microsoft.UI.Xaml.ApplicationTheme.Light)
+            switch (ViewModel.SelectWallpaperThemeMode)
             {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = dialogContent.CustomColor.ToHex();
-            }
-            else
-            {
-                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = dialogContent.CustomColor.ToHex();
+                case ApplicationTheme.Light:
+                    _builder.Config.WallpaperSwitch.Component.SolidColors.Light = dialogContent.CustomColor.ToHex();
+                    break;
+                default:
+                    _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = dialogContent.CustomColor.ToHex();
+                    break;
             }
             ViewModel.ColorPreviewBorderBackground = new Microsoft.UI.Xaml.Media.SolidColorBrush(dialogContent.CustomColor);
         }
@@ -158,7 +159,7 @@ public sealed partial class WallpaperPickerPage : Page
         }
     }
 
-    private async void WindowsSpotlightHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void WindowsSpotlightHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:personalization-background"));
     }
