@@ -39,7 +39,7 @@ public static class ThemeHandler
 
     private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win10_21H2)
         {
             ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched, flagList);
         }

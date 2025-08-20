@@ -80,13 +80,13 @@ class ComponentManager
         bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
         Logger.Info($"current windows build: {Environment.OSVersion.Version.Build}.{(hasUbr ? ubr : 0)}");
 
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win10_21H2)
         {
-            Logger.Info($"using apps and system components for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
+            Logger.Info($"using apps and system components for newer builds {(int)WindowsBuilds.Win10_21H2} and up");
             SystemSwitch = new SystemSwitchThemeFile();
             AppsSwitch = new AppsSwitchThemeFile();
         }
-        else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
+        else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win10_21H2)
         {
             Logger.Info($"using app and system components for legacy builds");
             SystemSwitch = new SystemSwitch();
@@ -117,9 +117,9 @@ class ComponentManager
             ScriptSwitch,
             TouchKeyboardSwitch
         };
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win10_21H2)
         {
-            Logger.Info($"using colorization and cursor switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
+            Logger.Info($"using colorization and cursor switcher for newer builds {(int)WindowsBuilds.Win10_21H2} and up");
             ColorizationSwitch = new ColorizationSwitch();
             Components.Add(ColorizationSwitch);
             CursorSwitch = new CursorSwitch();
