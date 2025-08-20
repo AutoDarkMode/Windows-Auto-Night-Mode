@@ -1,7 +1,7 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -20,6 +20,7 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(WallpaperPickerViewModel).FullName!, "Background".GetLocalized());
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
         }
     }
@@ -29,6 +30,7 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(ColorizationViewModel).FullName!, "AccentColor".GetLocalized());
             navigation.NavigateTo(typeof(ColorizationViewModel).FullName!);
         }
     }
@@ -38,6 +40,7 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(CursorsViewModel).FullName!, "Cursors".GetLocalized());
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
         }
     }
@@ -47,9 +50,8 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
+            navigation.RegisterCustomHeader(typeof(ThemePickerViewModel).FullName!, "Theme".GetLocalized());
             navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
         }
     }
-
-    protected override void OnNavigatedFrom(NavigationEventArgs e) => ViewModel.OnViewModelNavigatedFrom(e);
 }

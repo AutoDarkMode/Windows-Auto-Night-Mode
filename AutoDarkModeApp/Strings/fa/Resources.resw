@@ -892,4 +892,17 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
 </root>

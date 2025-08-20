@@ -21,34 +21,20 @@ public sealed partial class AboutPage : Page
         InitializeComponent();
     }
 
-    private void CopyVersionInfoButoon_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void CopyVersionInfoButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         // most likely use case is to paste in an issue, so
         // we create a markdown string that will look nice
         // in that context
         var versionInfo = new VersionInfo();
         var versionText = new StringBuilder()
-                .Append("- Commit: `")
-                .Append(versionInfo.Commit)
-                .AppendLine("`")
-                .Append("- Service/App: `")
-                .Append(versionInfo.Svc)
-                .AppendLine("`")
-                .Append("- Updater: `")
-                .Append(versionInfo.Updater)
-                .AppendLine("`")
-                .Append("- Shell: `")
-                .Append(versionInfo.Shell)
-                .AppendLine("`")
-                .Append("- .Net: `")
-                .Append(versionInfo.NetCore)
-                .AppendLine("`")
-                .Append("- Windows: `")
-                .Append(versionInfo.WindowsVersion)
-                .AppendLine("`")
-                .Append("- Arch: `")
-                .Append(versionInfo.Arch)
-                .AppendLine("`")
+                .Append("- Commit: `").Append(versionInfo.Commit).AppendLine("`")
+                .Append("- Service/App: `").Append(versionInfo.Svc).AppendLine("`")
+                .Append("- Updater: `").Append(versionInfo.Updater).AppendLine("`")
+                .Append("- Shell: `").Append(versionInfo.Shell).AppendLine("`")
+                .Append("- .Net: `").Append(versionInfo.NetCore).AppendLine("`")
+                .Append("- Windows: `").Append(versionInfo.WindowsVersion).AppendLine("`")
+                .Append("- Arch: `").Append(versionInfo.Arch).AppendLine("`")
                 .ToString();
         try
         {

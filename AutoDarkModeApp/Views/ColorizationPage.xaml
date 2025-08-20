@@ -70,7 +70,7 @@
                                 <Button
                                     MinWidth="120"
                                     Click="DarkModeCheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

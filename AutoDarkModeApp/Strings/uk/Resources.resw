@@ -889,6 +889,19 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
+  <data name="DisplayMonitorDisconnected" xml:space="preserve">
+    <value>Відключено</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Background</value>
+    <comment>match Windows Settings</comment>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select color</value>
+  </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
