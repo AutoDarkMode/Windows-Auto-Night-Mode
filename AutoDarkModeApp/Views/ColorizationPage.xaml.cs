@@ -30,7 +30,7 @@ public sealed partial class ColorizationPage : Page
         {
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ChooseCustomColor".GetLocalized(),
+            Title = "SelectColor".GetLocalized(),
             CloseButtonText = "Cancel".GetLocalized(),
             PrimaryButtonText = "Save".GetLocalized(),
             DefaultButton = ContentDialogButton.Primary,
@@ -60,7 +60,7 @@ public sealed partial class ColorizationPage : Page
         {
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ChooseCustomColor".GetLocalized(),
+            Title = "SelectColor".GetLocalized(),
             CloseButtonText = "Cancel".GetLocalized(),
             PrimaryButtonText = "Save".GetLocalized(),
             DefaultButton = ContentDialogButton.Primary,

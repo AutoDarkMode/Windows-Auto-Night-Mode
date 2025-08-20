@@ -128,7 +128,7 @@ public sealed partial class WallpaperPickerPage : Page
         {
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "ChooseCustomColor".GetLocalized(),
+            Title = "SelectColor".GetLocalized(),
             CloseButtonText = "Cancel".GetLocalized(),
             PrimaryButtonText = "Set".GetLocalized(),
             DefaultButton = ContentDialogButton.Primary,
