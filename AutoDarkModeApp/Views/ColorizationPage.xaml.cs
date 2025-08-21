@@ -25,7 +25,11 @@ public sealed partial class ColorizationPage : Page
 
     private async void LightModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var dialogContent = new ColorPickerDialogContentControl() { CustomColor = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor() };
+        var dialogContent = new ColorPickerDialogContentControl();
+        dialogContent.InternalColorPicker.IsAlphaEnabled = true;
+        dialogContent.InternalColorPicker.IsAlphaSliderVisible = true;
+        dialogContent.InternalColorPicker.IsAlphaTextInputVisible = true;
+        dialogContent.InternalColorPicker.Color = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor();
         var colorPickerDialog = new ContentDialog()
         {
             XamlRoot = this.XamlRoot,
@@ -39,8 +43,8 @@ public sealed partial class ColorizationPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
-            _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.CustomColor.ToHex();
+            ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
+            _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.InternalColorPicker.Color.ToHex();
         }
 
         try
@@ -55,7 +59,11 @@ public sealed partial class ColorizationPage : Page
 
     private async void DarkModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var dialogContent = new ColorPickerDialogContentControl() { CustomColor = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor() };
+        var dialogContent = new ColorPickerDialogContentControl();
+        dialogContent.InternalColorPicker.IsAlphaEnabled = true;
+        dialogContent.InternalColorPicker.IsAlphaSliderVisible = true;
+        dialogContent.InternalColorPicker.IsAlphaTextInputVisible = true;
+        dialogContent.InternalColorPicker.Color = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor();
         var colorPickerDialog = new ContentDialog()
         {
             XamlRoot = this.XamlRoot,
@@ -69,8 +77,8 @@ public sealed partial class ColorizationPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.CustomColor);
-            _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.CustomColor.ToHex();
+            ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
+            _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.InternalColorPicker.Color.ToHex();
         }
         try
         {

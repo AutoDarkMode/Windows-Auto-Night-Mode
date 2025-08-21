@@ -327,7 +327,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
 
         SafeSaveBuilder();
-        RequestThemeSwitch();
+        _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
 
         // Here, respond and save the configuration file before refreshing the UI, in order to read the Spotlight wallpaper correctly
         LoadSettings();

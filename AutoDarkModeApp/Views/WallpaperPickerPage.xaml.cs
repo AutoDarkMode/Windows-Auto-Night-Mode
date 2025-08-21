@@ -88,6 +88,22 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel.SelectMonitor = monitors.FirstOrDefault();
     }
 
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "WallpaperPickerPage");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
+        }
+    }
+
     private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
         try
@@ -117,13 +133,12 @@ public sealed partial class WallpaperPickerPage : Page
 
     private async void CheckColorButton_Click(object sender, RoutedEventArgs e)
     {
-        var dialogContent = new ColorPickerDialogContentControl()
-        {
-            CustomColor =
-                ViewModel.SelectWallpaperThemeMode == ApplicationTheme.Light
-                    ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
-                    : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor(),
-        };
+        var dialogContent = new ColorPickerDialogContentControl();
+        dialogContent.InternalColorPicker.IsAlphaEnabled = false;
+        dialogContent.InternalColorPicker.Color =
+            ViewModel.SelectWallpaperThemeMode == ApplicationTheme.Light
+                ? _builder.Config.WallpaperSwitch.Component.SolidColors.Light.ToColor()
+                : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
         var colorPickerDialog = new ContentDialog()
         {
             XamlRoot = this.XamlRoot,
@@ -137,16 +152,14 @@ public sealed partial class WallpaperPickerPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            switch (ViewModel.SelectWallpaperThemeMode)
-            {
-                case ApplicationTheme.Light:
-                    _builder.Config.WallpaperSwitch.Component.SolidColors.Light = dialogContent.CustomColor.ToHex();
-                    break;
-                default:
-                    _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = dialogContent.CustomColor.ToHex();
-                    break;
-            }
-            ViewModel.ColorPreviewBorderBackground = new Microsoft.UI.Xaml.Media.SolidColorBrush(dialogContent.CustomColor);
+            var color = dialogContent.InternalColorPicker.Color;
+            var rgbColor = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+            if (ViewModel.SelectWallpaperThemeMode == ApplicationTheme.Light)
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Light = rgbColor;
+            else
+                _builder.Config.WallpaperSwitch.Component.SolidColors.Dark = rgbColor;
+
+            ViewModel.ColorPreviewBorderBackground = new Microsoft.UI.Xaml.Media.SolidColorBrush(dialogContent.InternalColorPicker.Color);
         }
 
         try
@@ -157,6 +170,8 @@ public sealed partial class WallpaperPickerPage : Page
         {
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
+
+        DispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
     }
 
     private async void WindowsSpotlightHyperlinkButton_Click(object sender, RoutedEventArgs e)
