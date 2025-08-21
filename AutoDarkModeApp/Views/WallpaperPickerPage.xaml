@@ -25,12 +25,51 @@
                     BorderBrush="Black"
                     BorderThickness="8"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <Image
-                        x:Name="DesktopPreviewImage"
-                        Width="320"
-                        Height="180"
-                        Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
-                        Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
+                    <Grid>
+                        <Image
+                            x:Name="DesktopPreviewImage"
+                            Width="320"
+                            Height="180"
+                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
+                            Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
+
+                        <StackPanel
+                            Width="98"
+                            Height="98"
+                            Margin="8"
+                            Padding="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="42"
+                                Height="1"
+                                Margin="0,0,0,8"
+                                HorizontalAlignment="Left"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="24"
+                                Height="8"
+                                Margin="0,26,0,0"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                CornerRadius="2" />
+                        </StackPanel>
+                    </Grid>
                 </Border>
 
                 <!--  Desktop background  -->

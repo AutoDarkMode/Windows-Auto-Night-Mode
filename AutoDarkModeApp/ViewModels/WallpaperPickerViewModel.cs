@@ -65,6 +65,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial ApplicationTheme SelectWallpaperThemeMode { get; set; }
 
     [ObservableProperty]
+    public partial ElementTheme DesktopPreviewThemeMode { get; set; }
+
+    [ObservableProperty]
     public partial WallpaperDisplayMode CurrentDisplayMode { get; set; }
 
     [ObservableProperty]
@@ -166,6 +169,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
 
         IsWallpaperSwitchEnabled = _builder.Config.WallpaperSwitch.Enabled;
 
+        DesktopPreviewThemeMode = SelectWallpaperThemeMode == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
+
         SelectWallpaperFillingMode = _builder.Config.WallpaperSwitch.Component.Position switch
         {
             WallpaperPosition.Fill => WallpaperFillingMode.Fill,
@@ -201,7 +206,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         {
             case WallpaperType.Global:
                 GlobalWallpaperPath =
-                            SelectWallpaperThemeMode == ApplicationTheme.Light ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
+                    SelectWallpaperThemeMode == ApplicationTheme.Light
+                        ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
+                        : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
                 GlobalWallpaperSource = GlobalWallpaperPath != null ? new BitmapImage(new Uri(GlobalWallpaperPath)) : (ImageSource?)null;
                 break;
             case WallpaperType.Individual when SelectMonitor != null:
