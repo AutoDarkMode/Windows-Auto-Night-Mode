@@ -1,4 +1,5 @@
 ﻿#region copyright
+
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -13,7 +14,9 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -43,6 +46,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             return true;
         }
+
         if (e.Theme == Theme.Dark)
         {
             return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
@@ -58,12 +62,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     protected bool TypeNeedsUpdate(WallpaperType type, Theme targetTheme)
     {
         // if all wallpaper mode is selected and one needs an update, component also does.
-        if (type == WallpaperType.All && (currentGlobalTheme != targetTheme || currentIndividualTheme != targetTheme))
-        {
-            HookPosition = HookPosition.PreSync;
-            return true;
-        }
-        else if (type == WallpaperType.Individual && currentIndividualTheme != targetTheme)
+        if (type == WallpaperType.Individual && currentIndividualTheme != targetTheme)
         {
             HookPosition = HookPosition.PreSync;
             return true;
@@ -83,9 +82,11 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             {
                 return false;
             }
+
             HookPosition = HookPosition.PostSync;
             return true;
         }
+
         return false;
     }
 
@@ -131,22 +132,10 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
     }
 
-    protected void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid, string oldPos, string oldSpotlight)
+    protected void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid,
+        string oldPos, string oldSpotlight)
     {
-        if (type == WallpaperType.All)
-        {
-            string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
-            string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
-            Logger.Info($"update info - previous global: {oldGlobal}/{oldPos}, " +
-                        $"global now: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                        $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
-            Logger.Info($"update info - previous individual: {oldIndividual}/{oldPos}, " +
-                        $"individual now: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                        $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
-        }
-        else if (type == WallpaperType.Individual)
+        if (type == WallpaperType.Individual)
         {
             string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
             Logger.Info($"update info - previous: {oldIndividual}/{oldPos}, " +
@@ -192,26 +181,6 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         else if (type == WallpaperType.Global)
         {
             SwitchGlobal(newTheme);
-        }
-        else if (type == WallpaperType.All)
-        {
-            Logger.Error("not implemented anymore");
-            /*
-            bool globalSwitched = false;
-            if (currentGlobalTheme != newTheme)
-            {
-                WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-                globalSwitched = true;
-            }
-            if (currentIndividualTheme != newTheme || globalSwitched)
-            {
-                WallpaperHandler.SetWallpapers(Settings.Component.Monitors, Settings.Component.Position, newTheme);
-            }
-            currentGlobalTheme = newTheme;
-            currentIndividualTheme = newTheme;
-            currentSolidColorTheme = Theme.Unknown;
-            spotlightEnabled = false;
-            */
         }
         else if (type == WallpaperType.SolidColor)
         {
@@ -266,11 +235,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected void StateUpdateOnTypeToggle(WallpaperType current)
     {
-        if (current == WallpaperType.All)
-        {
-            currentGlobalTheme = Theme.Unknown;
-        }
-        else if (current == WallpaperType.Global)
+        if (current == WallpaperType.Global)
         {
             currentGlobalTheme = Theme.Unknown;
         }
@@ -290,6 +255,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             return;
         }
+
         string globalLightBefore = SettingsBefore.Component.GlobalWallpaper.Light ?? "";
         string globalDarkBefore = SettingsBefore.Component.GlobalWallpaper.Dark ?? "";
         string globalLightAfter = Settings.Component.GlobalWallpaper.Light ?? "";
@@ -301,6 +267,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             currentGlobalTheme = Theme.Unknown;
         }
+
         if (!globalLightBefore.Equals(globalLightAfter))
         {
             currentGlobalTheme = Theme.Unknown;
@@ -349,7 +316,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
 
         // solid color enable state synchronization
-        if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 && GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds == 0)
+        if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 &&
+            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds == 0)
         {
             string solidColorHex = WallpaperHandler.GetSolidColor();
             if (solidColorHex == Settings.Component.SolidColors.Light) currentSolidColorTheme = Theme.Light;
@@ -406,6 +374,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                 }
             }
         }
+
         // if one single wallpaper does not match a theme, then we don't know the state and it needs to be updated
         if (wallpaperStates.TrueForAll(c => c == Theme.Dark))
         {
@@ -420,5 +389,4 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             return Theme.Unknown;
         }
     }
-
 }
