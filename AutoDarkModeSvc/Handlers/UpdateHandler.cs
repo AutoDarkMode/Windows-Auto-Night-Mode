@@ -40,8 +40,8 @@ static class UpdateHandler
 {
     private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
     private const string defaultDownloadBaseUrl = "https://github.com";
-    private static readonly Version minUpdaterVersion = new("3.0");
-    private static readonly Version maxUpdaterVersion = new("3.99");
+    private static readonly Version minUpdaterVersion = new("4.0");
+    private static readonly Version maxUpdaterVersion = new("4.99");
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     public static ApiResponse UpstreamResponse { get; private set; } = new();
     public static UpdateInfo UpstreamVersion { get; private set; } = new();
