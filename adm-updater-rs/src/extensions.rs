@@ -13,7 +13,7 @@ pub static APP_DIR: &'static str = "adm-app";
 #[cfg(debug_assertions)]
 /// Returns the execution directory the updater resides in
 pub fn get_assembly_dir() -> PathBuf {
-    let path = PathBuf::from(r"D:\Code\Repos\AutoDarkMode\ADM-Test-Environment\adm-updater");
+    let path = PathBuf::from(r"F:\Programs\ADM-Test-Environment\adm-updater");
     //let path = PathBuf::from(r"F:\\");
     let parent = path.parent();
     if parent.is_none() {
@@ -102,8 +102,9 @@ mod tests {
     #[test]
     fn print_updater_paths() {
         use super::*;
-        unsafe {
-            AttachConsole(ATTACH_PARENT_PROCESS);
+        let result = unsafe { AttachConsole(ATTACH_PARENT_PROCESS) };
+        if let Err(e) = result {
+            panic!("error attaching to parent console: {}", e);
         }
         println!("exedir: {:?}", get_assembly_dir());
         println!("cwd: {:?}", get_working_dir());

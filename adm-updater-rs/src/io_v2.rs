@@ -1,4 +1,4 @@
-use log::{debug, error, warn, info};
+use log::{debug, error, info, warn};
 use std::{
     ffi::c_void,
     fmt::Formatter,
@@ -7,10 +7,8 @@ use std::{
     path::{Path, PathBuf},
 };
 use walkdir::WalkDir;
-use windows::{
-    w,
-    Win32::Storage::FileSystem::{GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO},
-};
+use windows::Win32::Storage::FileSystem::{GetFileVersionInfoSizeW, GetFileVersionInfoW, VerQueryValueW, VS_FIXEDFILEINFO};
+use windows_strings::w;
 
 use crate::{
     extensions::{self, get_assembly_dir, get_update_data_dir, get_working_dir},
@@ -216,10 +214,11 @@ pub fn get_file_version(path: PathBuf) -> Result<Version, OpError> {
     }
 
     let mut buffer: Vec<u8> = vec![0; size as usize];
-    let result = unsafe { GetFileVersionInfoW(&path, 0, size, buffer.as_mut_ptr() as *mut c_void) };
-    if !result.as_bool() {
-        let msg = "could not read file version";
-        debug!("{}", msg);
+    let result = unsafe { GetFileVersionInfoW(&path, Some(0u32), size, buffer.as_mut_ptr() as *mut c_void) };
+    if let Err(e) = result {
+        let error_message = e.message().to_string();
+        let msg = String::from("could not read file version ");
+        debug!("{}: {}", msg, error_message);
         return Err(OpError {
             message: msg.into(),
             severe: false,
@@ -320,7 +319,6 @@ pub fn patch(update_dir: &PathBuf) -> Result<(), OpError> {
     }
     Ok(())
 }
-
 
 #[cfg(test)]
 mod tests {
