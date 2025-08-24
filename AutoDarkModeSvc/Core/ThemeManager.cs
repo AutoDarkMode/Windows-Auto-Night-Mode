@@ -391,8 +391,8 @@ static class ThemeManager
             if (shuffleCondition)
             {
                 Logger.Debug("advancing slideshow in shuffled mode");
-                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
 
+                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
                 /*
                 // randomize slideshow forwarding when shuffle is enabled
                 Logger.Debug("slideshow and shuffling enabled, rolling the dice...");
