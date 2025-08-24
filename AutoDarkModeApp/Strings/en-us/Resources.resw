@@ -895,6 +895,15 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="SelectColor" xml:space="preserve">
     <value>Select a color</value>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -915,9 +924,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
-  </data>
-  <data name="UnDelay" xml:space="preserve">
-    <value>UnDelay</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
     <value>Show notification when the automatic theme switch is paused</value>
@@ -958,10 +964,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
   </data>
-  <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
-  </data>
-  <data name="Path" xml:space="preserve">
-    <value>Path</value>
+  <data name="NotDelayed" xml:space="preserve">
+    <value>Not Delayed</value>
   </data>
 </root>

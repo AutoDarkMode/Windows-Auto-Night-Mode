@@ -905,4 +905,10 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="Delayed" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NotDelayed" xml:space="preserve">
+    <value />
+  </data>
 </root>
