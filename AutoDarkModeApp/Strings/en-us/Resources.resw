@@ -922,9 +922,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
   </data>
-  <data name="UnDelay" xml:space="preserve">
-    <value>UnDelay</value>
-  </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
     <value>Show notification when the automatic theme switch is paused</value>
   </data>
@@ -964,7 +961,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
   </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
-  </data>
+	<data name="Delayed" xml:space="preserve">
+		<value>Delayed</value>
+	</data>
+		<data name="NotDelayed" xml:space="preserve">
+		<value>Not Delayed</value>
+	</data>
 </root>
