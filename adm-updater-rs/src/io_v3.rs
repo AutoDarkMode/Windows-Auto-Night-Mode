@@ -84,9 +84,10 @@ pub fn patch(update_dir: &PathBuf, adm_app_dir: &PathBuf) -> Result<(), OpError>
 }
 
 pub fn clean_update_files(update_dir: &PathBuf) {
-    let previous_service = update_dir.join("tmp").join(extensions::SERVICE_EXE);
+    let previous_service = update_dir.join("tmp").join("core").join(extensions::SERVICE_EXE);
     if !previous_service.exists() {
         warn!("could not find valid tmp directory with previous service data, skipping update file removal");
+        return;
     }
     if let Err(e) = fs::remove_dir_all(update_dir) {
         warn!("could not remove old update files, manual investigation required: {}", e);
