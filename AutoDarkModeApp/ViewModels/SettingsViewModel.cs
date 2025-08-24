@@ -10,6 +10,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -47,6 +48,15 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial bool IsTunableTrace { get; set; }
+
+    [ObservableProperty]
+    public partial bool EnergySaverSettingsCardVisiblity { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsDisableEnergySaverOnThemeSwitch { get; set; }
+
+    [ObservableProperty]
+    public partial int BatterySliderValue { get; set; }
 
     [ObservableProperty]
     public partial bool IsUpdaterEnabled { get; set; }
@@ -111,6 +121,7 @@ public partial class SettingsViewModel : ObservableRecipient
         }
 
         LoadSettings();
+        _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
@@ -159,6 +170,9 @@ public partial class SettingsViewModel : ObservableRecipient
         IsAlwaysFullDwmRefresh = _builder.Config.Tunable.AlwaysFullDwmRefresh;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
+        EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures);
+        IsDisableEnergySaverOnThemeSwitch = _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch;
+        BatterySliderValue = _builder.Config.Tunable.BatterySliderDefaultValue;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;
         SelectedDaysBetweenUpdateCheck = _builder.Config.Updater.DaysBetweenUpdateCheck switch
         {
@@ -209,7 +223,6 @@ public partial class SettingsViewModel : ObservableRecipient
                 Language = "English (English)";
                 await _localSettingsService.SaveSettingAsync("Language", "English (English)");
             }
-            await GetAutostartInfo();
 
             _isInitializing = false;
         });
@@ -300,15 +313,13 @@ public partial class SettingsViewModel : ObservableRecipient
             _dispatcherQueue.TryEnqueue(async () =>
             {
                 var result = await contentDialog.ShowAsync();
-                if (result == ContentDialogResult.Primary)
-                {
-                    IsAlwaysFullDwmRefresh = true;
-                }
-                else
-                {
+                if (result != ContentDialogResult.Primary)
                     IsAlwaysFullDwmRefresh = false;
-                }
             });
+            _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
+        }
+        else
+        {
             _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
         }
 
@@ -331,6 +342,26 @@ public partial class SettingsViewModel : ObservableRecipient
             return;
 
         _builder.Config.Tunable.Trace = value;
+
+        SafeSaveBuilder();
+    }
+
+    partial void OnIsDisableEnergySaverOnThemeSwitchChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = value;
+
+        SafeSaveBuilder();
+    }
+
+    partial void OnBatterySliderValueChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Tunable.BatterySliderDefaultValue = value;
 
         SafeSaveBuilder();
     }
@@ -467,9 +498,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
                 SafeSaveBuilder();
 
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -491,9 +523,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
                 SafeSaveBuilder();
 
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RemoveAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
@@ -523,9 +556,10 @@ public partial class SettingsViewModel : ObservableRecipient
 
             if (_builder.Config.AutoThemeSwitchingEnabled)
             {
-                Task.Run(async () =>
+                _dispatcherQueue.TryEnqueue(async () =>
                 {
                     result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.AddAutostart));
+                    await GetAutostartInfo();
                     if (result.StatusCode != StatusCode.Ok)
                     {
                         _builder.Config.Tunable.UseLogonTask = value;

@@ -17,13 +17,7 @@
     <ScrollViewer>
         <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
-                <!--
-                    TODO:
-                    * Hide Border when setting == Spotlight?
-                    * Hide DesktopPreviewImage when setting == Solid Color
-                    * Stretch = ViewModel.SelectWallpaperFillingMode
-                    * Get system display size (aspect ratio) and apply it to the border (width) ?
-                -->
+                <!--  TODO: Get system display size (aspect ratio) and apply it to the border (width) ??  -->
                 <Border
                     Margin="0,0,0,12"
                     HorizontalAlignment="Left"
@@ -31,13 +25,51 @@
                     BorderBrush="Black"
                     BorderThickness="8"
                     CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <Image
-                        x:Name="DesktopPreviewImage"
-                        Width="320"
-                        Height="180"
-                        Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
-                        Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}"
-                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                    <Grid>
+                        <Image
+                            x:Name="DesktopPreviewImage"
+                            Width="320"
+                            Height="180"
+                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
+                            Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
+
+                        <StackPanel
+                            Width="98"
+                            Height="98"
+                            Margin="8"
+                            Padding="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="42"
+                                Height="1"
+                                Margin="0,0,0,8"
+                                HorizontalAlignment="Left"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="24"
+                                Height="8"
+                                Margin="0,26,0,0"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                CornerRadius="2" />
+                        </StackPanel>
+                    </Grid>
                 </Border>
 
                 <!--  Desktop background  -->
@@ -58,13 +90,13 @@
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <!--  Background Type  -->
+                        <!--  Background type  -->
                         <controls:SettingsCard ContentAlignment="Left">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
                                 <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" IsEnabled="{x:Bind ViewModel.SpotlightEnabled}" />
                             </RadioButtons>
                         </controls:SettingsCard>
 
@@ -75,6 +107,14 @@
                                 HorizontalAlignment="Right"
                                 Command="{x:Bind ViewModel.PickFileCommand}"
                                 Content="{helpers:ResourceString Name=BrowsePhotos}" />
+                        </controls:SettingsCard>
+
+                        <!--  Picture path  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Path}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->
@@ -101,11 +141,10 @@
                         <!--  Color  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <!--  TODO: Replace Content to Resource  -->
                                 <Button
                                     MinWidth="120"
                                     Click="CheckColorButton_Click"
-                                    Content="Select color" />
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </StackPanel>
                         </controls:SettingsCard>
 
@@ -116,21 +155,7 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-
-                <!--  TODO: follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
-                <!--  Color Picker Dialog  -->
-                <ContentDialog
-                    x:Name="ColorPickerContentDialog"
-                    CloseButtonText="{helpers:ResourceString Name=Cancel}"
-                    DefaultButton="Primary"
-                    PrimaryButtonText="{helpers:ResourceString Name=Set}">
-                    <StackPanel>
-                        <ColorPicker x:Name="CheckColorColorPicker" />
-                    </StackPanel>
-                </ContentDialog>
-
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>
