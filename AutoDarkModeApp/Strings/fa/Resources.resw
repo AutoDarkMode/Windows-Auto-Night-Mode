@@ -905,10 +905,4 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
-  <data name="Delayed" xml:space="preserve">
-    <value />
-  </data>
-  <data name="NotDelayed" xml:space="preserve">
-    <value />
-  </data>
 </root>

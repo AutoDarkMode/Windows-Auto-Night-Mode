@@ -901,9 +901,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
-  <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
-  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -964,7 +961,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
   </data>
-  <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
-  </data>
+	<data name="Delayed" xml:space="preserve">
+		<value>Delayed</value>
+	</data>
+		<data name="NotDelayed" xml:space="preserve">
+		<value>Not Delayed</value>
+	</data>
 </root>
