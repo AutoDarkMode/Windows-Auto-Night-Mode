@@ -27,7 +27,6 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Desktop wallpaper switch.
 - Mouse cursor switch.
 - Accent color switch.
-- Office theme switch.
 - Windows .theme file switch.
 - Keyboard shortcuts.
 - Support for turning on/off accent color on the Taskbar and title bars.
