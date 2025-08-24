@@ -247,6 +247,10 @@ public partial class SettingsViewModel : ObservableRecipient
                     AutostartMode = "RegistryKey".GetLocalized();
                     AutostartPath = autostartResponse.Details;
                 }
+                else if (autostartResponse.Message == "Disabled")
+                {
+                    AutostartMode = "Disabled".GetLocalized();
+                }
                 else
                 {
                     IsAutostart = false;
