@@ -18,12 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
+using Windows.Devices.Sensors;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -262,6 +264,42 @@ static class ThemeManager
             {
                 // get data from active theme and apply theme fix
                 state.ManagedThemeFile.SyncWithActiveTheme(true);
+
+                int retrySleep = 1000;
+                var integrityCheckResults = cm.RunIntegrityChecks(componentsToUpdate, e, HookPosition.PreSync);
+                foreach (var (component, integrityResult) in integrityCheckResults)
+                {
+                    if (!integrityResult)
+                    {
+                        // the first loop iteration will be without a module retry
+                        // because the synchronization may have failed because the system is slow
+                        // in that case re-calling the component switch would be a resource waste
+                        // and could potentially introduce unnecessary lag
+                        int maxRetries = 1;
+                        int i;
+                        // allow for one more loop after maxRetry has been reached
+                        // because we are wrapping around with the sync call
+                        for (i = 0; i <= maxRetries; i++)
+                        {
+                            Thread.Sleep(retrySleep);
+                            // Don't patch because it's a retry operation and it could actually change the value back, which we don't want
+                            // This introduces the limitation that a pre-hook can't be a component that requires a partial or full dwm refresh
+                            state.ManagedThemeFile.SyncWithActiveTheme(false);
+                            if (component.RunVerifyOperationIntegrity(e))
+                            {
+                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i+1}/{maxRetries+1}");
+                                break;
+                            }
+                            // early return because calling switch only makes sense if a sync call is performed.
+                            if (i == maxRetries)
+                            {
+                                Logger.Error($"failed to restore integrity for {component.GetType().Name}");
+                                break;
+                            }
+                            component.Switch(e);
+                        }
+                    }
+                }
             }
 
             // regular modules that do not need to modify the active theme

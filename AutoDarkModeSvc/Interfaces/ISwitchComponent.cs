@@ -59,6 +59,10 @@ interface ISwitchComponent
     /// </summary>
     public HookPosition HookPosition { get; }
     /// <summary>
+    /// Verifies that the component's operation was completed successfully
+    /// </summary>
+    public bool RunVerifyOperationIntegrity(SwitchEventArgs e);
+    /// <summary>
     /// Initializes the module if it has a hook specified. Does nothing otherwise.
     /// </summary>
     public void RunEnableHook();
