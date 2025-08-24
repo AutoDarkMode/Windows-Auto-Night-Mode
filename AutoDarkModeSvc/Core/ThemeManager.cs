@@ -258,7 +258,7 @@ static class ThemeManager
             cm.RunPreSync(componentsToUpdate, e);
 
             //logic for our classic mode 2.0, gets the currently active theme for modification
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win10_21H2)
+            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 // get data from active theme and apply theme fix
                 state.ManagedThemeFile.SyncWithActiveTheme(true);
@@ -303,7 +303,7 @@ static class ThemeManager
             #endregion
 
             // Logic for managed mode
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win10_21H2)
+            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
                 try
                 {

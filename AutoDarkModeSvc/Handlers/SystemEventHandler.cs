@@ -82,7 +82,7 @@ static class SystemEventHandler
     {
         if (!resumeEventEnabled)
         {
-            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_21H2)
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
             {
                 Logger.Info("enabling theme refresh at system unlock (win 11)");
                 SystemEvents.SessionSwitch += SystemEvents_Windows11_SessionSwitch;

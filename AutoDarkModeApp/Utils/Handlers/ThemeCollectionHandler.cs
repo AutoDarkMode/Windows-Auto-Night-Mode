@@ -60,7 +60,7 @@ public static class ThemeCollectionHandler
 
     private static void InjectWindowsThemes(List<ThemeFile> themeFiles)
     {
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_21H2)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
         {
             themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "Theme11_Light".GetLocalized()));
             themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\dark.theme"), "Theme11_Dark".GetLocalized()));
