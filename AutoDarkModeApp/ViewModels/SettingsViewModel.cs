@@ -250,6 +250,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 else if (autostartResponse.Message == "Disabled")
                 {
                     AutostartMode = "Disabled".GetLocalized();
+                    IsAutostart = false;
                 }
                 else
                 {
@@ -519,7 +520,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
             }
         }
-        else
+        else if (!AutostartMode?.Equals("Disabled".GetLocalized()) == true)
         {
             try
             {
