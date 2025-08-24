@@ -25,11 +25,16 @@ internal class WallpaperSwitchThemeFile : WallpaperSwitch
 {
     protected override void SwitchSolidColor(Theme newTheme)
     {
-        GlobalState.ManagedThemeFile.Colors.Background = newTheme switch
+        if (newTheme == Theme.Dark)
         {
-            Theme.Light => (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Light), GlobalState.ManagedThemeFile.Colors.Background.Item2),
-            _ => (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Dark), GlobalState.ManagedThemeFile.Colors.Background.Item2),
-        };
+            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Dark),
+                GlobalState.ManagedThemeFile.Colors.Background.Item2);
+        }
+        else
+        {
+            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Light),
+                GlobalState.ManagedThemeFile.Colors.Background.Item2);
+        }
         GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
         GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
         GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
@@ -45,7 +50,14 @@ internal class WallpaperSwitchThemeFile : WallpaperSwitch
     protected override void SwitchGlobal(Theme newTheme)
     {
         WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-        GlobalState.ManagedThemeFile.Desktop.Wallpaper = newTheme == Theme.Light ? Settings.Component.GlobalWallpaper.Light : Settings.Component.GlobalWallpaper.Dark;
+        if (newTheme == Theme.Light)
+        {
+            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
+        }
+        else
+        {
+            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
+        }
         GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
         GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
         currentGlobalTheme = newTheme;

@@ -37,18 +37,18 @@ using static AutoDarkModeSvc.DarkColorTable;
 
 namespace AutoDarkModeSvc;
 
-internal class Service : Form
+class Service : Form
 {
     private readonly bool allowshowdisplay = false;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private NotifyIcon NotifyIcon { get; }
     private List<ModuleTimer> Timers { get; set; }
     private IMessageServer MessageServer { get; }
     private AdmConfigMonitor ConfigMonitor { get; }
     private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-    private readonly GlobalState state = GlobalState.Instance();
+    GlobalState state = GlobalState.Instance();
 
     public readonly ToolStripMenuItem forceDarkMenuItem = new();
     public readonly ToolStripMenuItem forceLightMenuItem = new();
@@ -61,7 +61,7 @@ internal class Service : Form
     private readonly ToolStripProfessionalRenderer toolStripDefaultRenderer = new();
 
     private bool closeApp = true;
-    private readonly bool admReady = false;
+    private bool admReady = false;
 
     public Service(int timerMillis)
     {
@@ -190,29 +190,34 @@ internal class Service : Form
 
     private void UpdateContextMenu(object sender, EventArgs e)
     {
-        NotifyIcon.ContextMenuStrip.Renderer = state.InternalTheme switch
+        if (state.InternalTheme == Theme.Dark)
         {
-            Theme.Light => toolStripDefaultRenderer,
-            _ => toolStripDarkRenderer,
-        };
+            NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
+        }
+        else
+        {
+            NotifyIcon.ContextMenuStrip.Renderer = toolStripDefaultRenderer;
+        }
 
-        switch (state.ForcedTheme)
+        if (state.ForcedTheme == Theme.Light)
         {
-            case Theme.Light:
-                forceDarkMenuItem.Checked = false;
-                forceLightMenuItem.Checked = true;
-                break;
-            case Theme.Dark:
-                forceDarkMenuItem.Checked = true;
-                forceLightMenuItem.Checked = false;
-                break;
-            default:
-                forceDarkMenuItem.Checked = false;
-                forceLightMenuItem.Checked = false;
-                break;
+            forceDarkMenuItem.Checked = false;
+            forceLightMenuItem.Checked = true;
+        }
+        else if (state.ForcedTheme == Theme.Dark)
+        {
+            forceDarkMenuItem.Checked = true;
+            forceLightMenuItem.Checked = false;
+        }
+        else
+        {
+            forceDarkMenuItem.Checked = false;
+            forceLightMenuItem.Checked = false;
         }
         autoThemeSwitchingItem.Checked = builder.Config.AutoThemeSwitchingEnabled;
-        pauseThemeSwitchItem.Visible = builder.Config.AutoThemeSwitchingEnabled;
+
+        if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
+        else pauseThemeSwitchItem.Visible = false;
 
         PostponeItem tempDelay = state.PostponeManager.Get(Helper.PostponeItemDelayAutoSwitch);
         if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
@@ -229,16 +234,22 @@ internal class Service : Form
             if (expiry.Year != 1)
             {
                 if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
-                pauseThemeSwitchItem.Text = skipType switch
+                if (skipType == SkipType.UntilSunset)
                 {
-                    SkipType.UntilSunset => $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})",
-                    SkipType.UntilSunrise => $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunrise})",
-                    _ => Strings.Resources.TrayMenuItem_ThemeSwitchPause,
-                };
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
+                }
+                else if (skipType == SkipType.UntilSunrise)
+                {
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
+                }
+                else
+                {
+                    pauseThemeSwitchItem.Text = Strings.Resources.TrayMenuItem_ThemeSwitchPause;
+                }
             }
         }
     }
@@ -335,7 +346,7 @@ internal class Service : Form
     public void ToggleTheme(object sender, EventArgs e)
     {
         Theme newTheme = ThemeManager.SwitchThemeAutoPauseAndNotify();
-        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(newTheme).ToLower()} theme");
+        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme");
     }
 
     public void ToggleAutoThemeSwitching(object sender, EventArgs e)
@@ -461,7 +472,7 @@ internal class Service : Form
         {
             int modifiers = (int)m.LParam & 0xFFFF;
             Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
-            List<Keys> modifiersPressed = [];
+            List<Keys> modifiersPressed = new();
             if ((modifiers & (int)HotkeyHandler.ModifierKeys.Alt) != 0) modifiersPressed.Add(Keys.Alt);
             if ((modifiers & (int)HotkeyHandler.ModifierKeys.Shift) != 0) modifiersPressed.Add(Keys.Shift);
             if ((modifiers & (int)HotkeyHandler.ModifierKeys.Control) != 0) modifiersPressed.Add(Keys.Control);
@@ -470,13 +481,13 @@ internal class Service : Form
             var match = HotkeyHandler.GetRegistered(modifiersPressed, key);
             if (match == null)
             {
-                if (modifiersPressed.Remove(Keys.LWin))
+                if (modifiersPressed.Contains(Keys.LWin))
                 {
+                    modifiersPressed.Remove(Keys.LWin);
                     modifiersPressed.Add(Keys.RWin);
                 }
                 match = HotkeyHandler.GetRegistered(modifiersPressed, key);
             }
-
             if (match != null)
             {
                 try
@@ -506,7 +517,7 @@ public static class WindowHelper
         SetForegroundWindow(handle);
     }
 
-    private const int SW_RESTORE = 9;
+    const int SW_RESTORE = 9;
 
     [System.Runtime.InteropServices.DllImport("User32.dll")]
     private static extern bool SetForegroundWindow(IntPtr handle);
@@ -518,14 +529,39 @@ public static class WindowHelper
 
 public class DarkColorTable : ProfessionalColorTable
 {
-    public override Color MenuItemBorder => Color.FromArgb(32, 32, 32);
-    public override Color MenuItemSelected => Color.FromArgb(32, 32, 32);
-    public override Color MenuItemSelectedGradientBegin => Color.FromArgb(64, 64, 64);
-    public override Color MenuItemSelectedGradientEnd => Color.FromArgb(64, 64, 64);
-    public override Color ToolStripDropDownBackground => Color.FromArgb(32, 32, 32);
-    public override Color ImageMarginGradientBegin => Color.FromArgb(32, 32, 32);
-    public override Color ImageMarginGradientMiddle => Color.FromArgb(32, 32, 32);
-    public override Color ImageMarginGradientEnd => Color.FromArgb(32, 32, 32);
+    public override Color MenuItemBorder
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
+    public override Color MenuItemSelected
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
+
+    public override Color MenuItemSelectedGradientBegin
+    {
+        get { return Color.FromArgb(64, 64, 64); }
+    }
+    public override Color MenuItemSelectedGradientEnd
+    {
+        get { return Color.FromArgb(64, 64, 64); }
+    }
+    public override Color ToolStripDropDownBackground
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
+    public override Color ImageMarginGradientBegin
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
+    public override Color ImageMarginGradientMiddle
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
+    public override Color ImageMarginGradientEnd
+    {
+        get { return Color.FromArgb(32, 32, 32); }
+    }
 
     public class DarkRenderer : ToolStripProfessionalRenderer
     {
