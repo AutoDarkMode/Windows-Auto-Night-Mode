@@ -904,4 +904,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>

@@ -904,4 +904,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>

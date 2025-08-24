@@ -902,4 +902,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
 </root>

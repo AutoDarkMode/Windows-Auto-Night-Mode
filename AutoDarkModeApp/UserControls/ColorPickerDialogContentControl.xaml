@@ -10,7 +10,7 @@
 
     <ScrollViewer>
         <StackPanel Padding="16">
-            <ColorPicker ColorChanged="SelectColorColorPicker_ColorChanged" Color="{x:Bind CustomColor}" />
+            <ColorPicker x:Name="DialogContentColorPicker" />
         </StackPanel>
     </ScrollViewer>
 
