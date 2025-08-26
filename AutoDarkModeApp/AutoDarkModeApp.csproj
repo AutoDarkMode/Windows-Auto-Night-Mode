@@ -22,9 +22,6 @@
 		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Styles\CustomStyles.xaml" />
-  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
