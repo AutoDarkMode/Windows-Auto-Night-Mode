@@ -883,6 +883,12 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
   </data>
@@ -901,10 +907,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="UnDelay" xml:space="preserve">
     <value>延期していない</value>
   </data>
-  <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
-  </data>
-  <data name="Path" xml:space="preserve">
-    <value>Path</value>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Enabling Auto Dark Mode with Windows failed. You should try to enable Auto Dark Mode in the Startup apps tab in Task Manager.</value>
   </data>
 </root>

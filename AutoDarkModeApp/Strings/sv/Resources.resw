@@ -905,4 +905,7 @@ Installerad version: {0}, ny version: {1}</value>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Enabling Auto Dark Mode with Windows failed. You should try to enable Auto Dark Mode in the Startup apps tab in Task Manager.</value>
+  </data>
 </root>

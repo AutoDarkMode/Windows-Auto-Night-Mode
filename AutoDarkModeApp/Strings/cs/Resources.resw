@@ -889,9 +889,6 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   <data name="EditHotkey" xml:space="preserve">
     <value />
   </data>
-  <data name="Path" xml:space="preserve">
-    <value>Path</value>
-  </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Odpojeno</value>
   </data>
@@ -904,5 +901,11 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Enabling Auto Dark Mode with Windows failed. You should try to enable Auto Dark Mode in the Startup apps tab in Task Manager.</value>
   </data>
 </root>
