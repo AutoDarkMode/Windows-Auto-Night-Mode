@@ -249,8 +249,19 @@ public partial class SettingsViewModel : ObservableRecipient
                 }
                 else if (autostartResponse.Message == "Disabled")
                 {
-                    AutostartMode = "Disabled".GetLocalized();
+                    ContentDialog contentDialog = new()
+                    {
+                        Title = "StartWithWindows".GetLocalized(),
+                        Content = "StartWithWindowsFailed_Content".GetLocalized(),
+                        XamlRoot = App.MainWindow.Content.XamlRoot,
+                        CloseButtonText = "Confirm".GetLocalized(),
+                    };
+
+                    if (IsAutostart)
+                        await contentDialog.ShowAsync();
+
                     IsAutostart = false;
+                    AutostartMode = "Disabled".GetLocalized();
                 }
                 else
                 {
