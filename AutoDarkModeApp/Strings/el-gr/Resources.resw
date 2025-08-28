@@ -906,6 +906,6 @@
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Enabling Auto Dark Mode with Windows failed. You should try to enable Auto Dark Mode in the Startup apps tab in Task Manager.</value>
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
 </root>
