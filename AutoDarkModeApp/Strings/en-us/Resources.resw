@@ -895,6 +895,12 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="SelectColor" xml:space="preserve">
     <value>Select a color</value>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -958,10 +964,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="WindowsColorsSetting" xml:space="preserve">
     <value>Personalized colors setting of Windows</value>
   </data>
-  <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
-  </data>
-  <data name="Path" xml:space="preserve">
-    <value>Path</value>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
 </root>
