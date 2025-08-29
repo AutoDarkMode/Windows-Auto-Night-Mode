@@ -905,4 +905,7 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  </data>
 </root>

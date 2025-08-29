@@ -904,4 +904,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="Stable" xml:space="preserve">
     <value>稳定版</value>
   </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  </data>
 </root>
