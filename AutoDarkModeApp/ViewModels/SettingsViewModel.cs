@@ -247,6 +247,22 @@ public partial class SettingsViewModel : ObservableRecipient
                     AutostartMode = "RegistryKey".GetLocalized();
                     AutostartPath = autostartResponse.Details;
                 }
+                else if (autostartResponse.Message == "Disabled")
+                {
+                    ContentDialog contentDialog = new()
+                    {
+                        Title = "StartWithWindows".GetLocalized(),
+                        Content = "StartWithWindowsFailed_Content".GetLocalized(),
+                        XamlRoot = App.MainWindow.Content.XamlRoot,
+                        CloseButtonText = "Confirm".GetLocalized(),
+                    };
+
+                    if (IsAutostart)
+                        await contentDialog.ShowAsync();
+
+                    IsAutostart = false;
+                    AutostartMode = "Disabled".GetLocalized();
+                }
                 else
                 {
                     IsAutostart = false;
@@ -515,7 +531,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
             }
         }
-        else
+        else if (!AutostartMode?.Equals("Disabled".GetLocalized()) == true)
         {
             try
             {
