@@ -883,6 +883,12 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="DisableWindowsManagesTheme" xml:space="preserve">
+    <value>Disable Windows manages your theme</value>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>Path</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
   </data>
@@ -901,10 +907,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
   <data name="UnDelay" xml:space="preserve">
     <value>未推迟</value>
   </data>
-  <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
-  </data>
-  <data name="Path" xml:space="preserve">
-    <value>Path</value>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
 </root>
