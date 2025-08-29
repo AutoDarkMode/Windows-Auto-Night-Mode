@@ -32,11 +32,21 @@
     <OutputPath>..\bin\Debug\adm-app\ui\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release|AnyCPU'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release|x64'">
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release|ARM64'">
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
+  </PropertyGroup>
+
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
