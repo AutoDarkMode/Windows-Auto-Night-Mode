@@ -258,8 +258,8 @@
                                     Grid.Column="1"
                                     Margin="0,0,-24,0"
                                     IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                    OffContent="{helpers:ResourceString Name=UnDelay}"
-                                    OnContent="{helpers:ResourceString Name=Delay}" />
+                                    OffContent="{helpers:ResourceString Name=NotDelayed}"
+                                    OnContent="{helpers:ResourceString Name=Delayed}" />
 
                                 <Border
                                     Grid.Row="1"
