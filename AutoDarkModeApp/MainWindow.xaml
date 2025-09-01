@@ -35,6 +35,7 @@
         <NavigationView
             x:Name="NavigationViewControl"
             Grid.Row="1"
+            CompactModeThresholdWidth="0"
             IsBackButtonVisible="Collapsed"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="True"
