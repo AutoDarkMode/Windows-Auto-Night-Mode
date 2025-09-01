@@ -819,7 +819,7 @@ Remarque : N'exécutez JAMAIS Auto Dark Mode en tant qu'administrateur manuellem
     <value>Activer les raccourcis du système</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Forcer le thème sombre</value>
+    <value>Forcer le Thème &amp;Sombre</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
     <value>Forcer le thème clair</value>
