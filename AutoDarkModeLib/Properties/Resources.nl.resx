@@ -529,7 +529,7 @@ N.B.: Voer Auto Dark Mode NOOIT handmatig uit als administrator!</value>
     <value>Locatiegegevens</value>
   </data>
   <data name="rbLocationGeo" xml:space="preserve">
-    <value>Van zonsondergang tot -opgang (geografische coördinaten)</value>
+    <value>Van zonsonder- tot -opgang (geografische coördinaten)</value>
   </data>
   <data name="tbGetCoordinates" xml:space="preserve">
     <value>Geografische coördinaten voor uw locatie</value>
