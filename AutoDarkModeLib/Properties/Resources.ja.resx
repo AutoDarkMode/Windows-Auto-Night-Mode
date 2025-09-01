@@ -1128,10 +1128,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>テーマを切り替える(&amp;T)</value>
   </data>
   <data name="ThemePickerTheme11Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>スポットライト</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Windows スポットライト</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
     <value>アクセントカラー</value>
