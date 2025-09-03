@@ -122,9 +122,16 @@
 
                         <!--  Picture path  -->
                         <controls:SettingsCard
-                            Description="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
                             Header="{helpers:ResourceString Name=Path}"
-                            Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}" />
+                            Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <TextBlock
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                        </controls:SettingsCard>
 
                         <!--  Picture fit  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Position}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
