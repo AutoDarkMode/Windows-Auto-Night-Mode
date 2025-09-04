@@ -884,15 +884,15 @@
     <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Χρώματα.
-2. Αλλάξτε το χρώμα συστήματος σε 'Ανοιχτόχρωμο' για το φωτεινό θέμα.
-3. Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Θέματα.
-4. Επιλέξτε την αγαπημένη σας ταπετσαρία, δείκτες ποντικιού και χρώμα έμφασης.
-5. Αποθηκεύστε το θέμα σας.
-6. Επαναλάβετε αυτήν τη διαδικασία για το σκούρο θέμα.</value>
+    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+2. Change the system color to 'Light' for the light theme.
+3. Go to Windows Settings &gt; Personalization &gt; Themes.
+4. Select your favorite wallpaper, mouse pointers and accent color.
+5. Save your theme.
+6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Επεξεργασία πλήκτρου συντόμευσης</value>
+    <value>Edit hotkey</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Αποσυνδέθηκε</value>

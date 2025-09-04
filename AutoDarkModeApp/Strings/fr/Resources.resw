@@ -884,10 +884,15 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Vous avez désactivé l'entrée du démarrage automatique dans Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value />
+    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+2. Change the system color to 'Light' for the light theme.
+3. Go to Windows Settings &gt; Personalization &gt; Themes.
+4. Select your favorite wallpaper, mouse pointers and accent color.
+5. Save your theme.
+6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value />
+    <value>Edit hotkey</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Déconnecté</value>
