@@ -436,7 +436,7 @@
     <value>اختر الوضع:</value>
   </data>
   <data name="ThemeApplyError1" xml:space="preserve">
-    <value>حدث خطأ أثناء تطبيق النسق المحدد، وتم تعطيل التبديل بين النسق.</value>
+    <value>حدث خطأ أثناء تطبيق النسق المحدد، وتم تعطيل التبديل بين النسق</value>
   </data>
   <data name="cbOfficeWhiteTheme" xml:space="preserve">
     <value>النسق الفاتح البديل</value>
@@ -576,7 +576,7 @@
     <value>قم بتخصيص خلفية سطح المكتب لجميع الشاشات، أو الشاشات الفردية، أو قم بتعيين لون الخلفية أو قم بتمكين تسليط الضوء.</value>
   </data>
   <data name="tbUpdates" xml:space="preserve">
-    <value>نقوم بالتحقق من وجود إصدارات جديدة من "الوضع الداكن التلقائي" في الخلفية. عند توفر تحديث، سنقوم بإعلامك عبر إشعار منبثق.</value>
+    <value>نقوم بالتحقق من وجود إصدارات جديدة من "الوضع الداكن التلقائي" في الخلفية. عند توفر تحديث، سنقوم بإعلامك عبر إشعار منبثق</value>
   </data>
   <data name="UpdatesCheckBoxAutoInstall" xml:space="preserve">
     <value>تنزيل الإصدارات الجديدة وتثبيتها تلقائياً</value>
@@ -887,7 +887,7 @@
     <value>مفتاح التشغيل السريع</value>
   </data>
   <data name="SwitchModesTextBlockHeaderToggleAutomaticThemeSwitch" xml:space="preserve">
-    <value>تبديل تبديل النسق التلقائي</value>
+    <value>تبديل مفتاح السمة التلقائية</value>
   </data>
   <data name="ThemeSwitchActionDisable" xml:space="preserve">
     <value>تعطيل التبديل التلقائي</value>
@@ -1132,7 +1132,7 @@
     <value>Spotlight</value>
   </data>
   <data name="WallpaperComboBoxItemSpotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>ويندوز spotlight</value>
   </data>
   <data name="ColorizationTextBlockHeader" xml:space="preserve">
     <value>لون مميز</value>

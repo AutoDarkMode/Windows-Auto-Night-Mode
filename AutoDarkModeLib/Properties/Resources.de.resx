@@ -313,7 +313,7 @@ Falls die Aktivierung Probleme verursacht: Erhöhe bitte die Verzögerungszeit i
     <value>Info</value>
   </data>
   <data name="cb12HourTime" xml:space="preserve">
-    <value>12 Stunden Zeitformat</value>
+    <value>12-Stunden-Zeitformat</value>
   </data>
   <data name="msgClose" xml:space="preserve">
     <value>Schließen</value>
@@ -970,7 +970,7 @@ Möchtest du wirklich fortfahren?</value>
     <value>Die Benachrichtigung soll so viele Minuten aktiv sein</value>
   </data>
   <data name="SettngsPageDebugMode" xml:space="preserve">
-    <value>Debug Modus</value>
+    <value>Debug-Modus</value>
   </data>
   <data name="SettingsPageWin10AllowLockscreenSwitch" xml:space="preserve">
     <value>Designwechsel während des Sperrbildschirms erlauben (Win10)</value>

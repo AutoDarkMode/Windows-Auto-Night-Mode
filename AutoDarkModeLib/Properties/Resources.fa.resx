@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"></xsd:import>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"></xsd:element>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"></xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string"></xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string"></xsd:attribute>
+              <xsd:attribute ref="xml:space"></xsd:attribute>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"></xsd:attribute>
+              <xsd:attribute name="name" type="xsd:string"></xsd:attribute>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"></xsd:element>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"></xsd:element>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"></xsd:attribute>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"></xsd:attribute>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"></xsd:attribute>
+              <xsd:attribute ref="xml:space"></xsd:attribute>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"></xsd:element>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"></xsd:attribute>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -210,7 +210,7 @@
 نسخه جدیدی در گیت هاب با حل مشکلات و برخی بهبودها موجود است.
 آیا می خواهید دانلودش کنید؟
 
-در حال نصب نسخه:{0}، نسخه جدید:{1}</value>
+نسخه نصب شده:{0}، نسخه جدید:{1}</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>حالت تاریک خوکار</value>
@@ -237,7 +237,7 @@
     <value>موقعیت</value>
   </data>
   <data name="restartNeeded" xml:space="preserve">
-    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است.</value>
+    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است</value>
   </data>
   <data name="lblLanguage" xml:space="preserve">
     <value>زبان:</value>
@@ -270,10 +270,10 @@
     <value>عکس‌ها</value>
   </data>
   <data name="dbSaveToolTip" xml:space="preserve">
-    <value>لطفا دو پس‌زمینه انتخاب کنید.</value>
+    <value>لطفا دو پس‌زمینه انتخاب کنید</value>
   </data>
   <data name="dbSelectImage" xml:space="preserve">
-    <value>لطفا یک عکس انتخاب کنید.</value>
+    <value>لطفا یک عکس انتخاب کنید</value>
   </data>
   <data name="dbTitle" xml:space="preserve">
     <value>پیکربندی پس‌زمینه میزکار</value>
@@ -297,17 +297,17 @@
     <value>شاید تصویر خراب است یا چنین مسیری وجود ندارد.</value>
   </data>
   <data name="dbPreviewError" xml:space="preserve">
-    <value>متأسفیم! نتوانستیم  پیش‌نمایشی از تصویر شما بسازیم.</value>
+    <value>نتوانستیم پیش نمایشی از تصویر شما را بسازیم؛ متاسفیم!</value>
   </data>
   <data name="dbSavedError" xml:space="preserve">
-    <value>متأسفیم! نتوانستیم تنظیمات شما را ذخیره کنیم.</value>
+    <value>نتوانستیم تنظیمات شما را ذخیره کنیم؛ متاسفیم!</value>
   </data>
   <data name="errorOcurredTitle" xml:space="preserve">
-    <value>یک خطا رخ داده است.</value>
+    <value>یک خطا رخ داده است</value>
   </data>
   <data name="cbAccentColor" xml:space="preserve">
     <value>فقط در حالت تاریک نمایان است.
-اگر به مشکلی برخوردید، لطفا مقدار تأخیر در تغییر نمایه را  در بخش تنظیمات افزایش دهید.</value>
+اگر به مشکلی برخوردید، لطفا مقدار تأخیر در تغییر نمایه را در بخش تنظیمات افزایش دهید.</value>
   </data>
   <data name="info" xml:space="preserve">
     <value>اطلاعات</value>
@@ -338,32 +338,32 @@
 - فایل config.yaml شما سالم است
 
 آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟
-برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
+برای باز کردن یک پنجره جدید در مرورگر روی «بله» کلید کنید.
 </value>
   </data>
   <data name="errorNumberInput" xml:space="preserve">
-    <value>خطا: ورودی شما اشتباه است.</value>
+    <value>خطا: ورودی شما اشتباه است</value>
   </data>
   <data name="cbConnectedStandby" xml:space="preserve">
-    <value>تغییر پس از آماده به کار متصل (پیشنهاد نمی شود)</value>
+    <value>تغییر پس از اتصال پایدار (که توصیه نمی شود)</value>
   </data>
   <data name="cbConnectedStandbyTooltip" xml:space="preserve">
-    <value>دستگاه‌های موبایلی مانند محصولات Microsoft Surface از نوع جدید از حالت آماده به کار استفاده می‌کنند.
-فعال کردن این گزینه از اینکه Auto Dark Mode بلافاصله پس بیدار شدن رایانه‌ی شما تغییر حالت انجام دهد، اطمینان حاصل می‌کند.
+    <value>دستگاه های موبایل مانند محصولات Microsoft Surface از نوع جدیدی از حالت آماده به کار استفاده می کنند.
+فعال کردن این گزینه Auto Dark Mode را مطمئن میکند که بلافاصله پس بیدار شدن رایانه‌ی شما تغییر حالت انجام دهد،.
 اما همچنان عمر باتری را نیز کاهش می‌دهد؛ پس فقط در صورت نیاز فعال کنید!</value>
   </data>
   <data name="msgBatterySaver" xml:space="preserve">
-    <value>به خاطر یک باگ در ویندوز، نوار وظیفه رنگ‌ خود را در حالت ذخیره‌ انرژی به درستی تغییر نمی‌دهد. در صورت مواجهه با این مشکل، لطفا حالت ذخیره انرژی را غیرفعال کنید.</value>
+    <value>با توجه به یک باگ ویندوز، نوار وظیفه به درستی رنگ خود را در حالت صرفه جویی در باتری تغییر نمی دهد. در صورت مواجهه با این مشکل، لطفا حالت ذخیره انرژی را غیرفعال کنید.</value>
   </data>
   <data name="lblOffset" xml:space="preserve">
-    <value>جابجایی</value>
+    <value>افست</value>
   </data>
   <data name="offsetButton" xml:space="preserve">
     <value>تنظیم کردن</value>
   </data>
   <data name="ToolTipDisabledDueTheme" xml:space="preserve">
     <value>این گزینه‌ها به هنگام استفاده از Windows Theme غیرفعال اند.
-شما می‌توانید ‌آن‌ها را در Windows Theme  به طور جداگانه تغییر دهید.</value>
+شما می‌توانید ‌آن‌ها را در Windows Theme به طور جداگانه تغییر دهید.</value>
   </data>
   <data name="NavbarApps" xml:space="preserve">
     <value>برنامه ها</value>
@@ -381,10 +381,10 @@
     <value>نمایه تاریک</value>
   </data>
   <data name="ThemeHeaderCreate" xml:space="preserve">
-    <value>نمایه‌ی خود را بسازید.</value>
+    <value>نمایه خود را بسازید</value>
   </data>
   <data name="ThemeHeaderPick" xml:space="preserve">
-    <value>نمایه‌ی خود را انتخاب کنید.</value>
+    <value>نمایه‌ی خود را انتخاب کنید</value>
   </data>
   <data name="ThemeLight" xml:space="preserve">
     <value>نمایه‌ی روشن</value>
@@ -432,7 +432,7 @@
     <value>فیلتر رنگی (ارسال با Win + Ctrl + C)</value>
   </data>
   <data name="cbSettingsLogonTask" xml:space="preserve">
-    <value>استفاده از Logon Task به جای Startup entry</value>
+    <value>به جای ورودی هنگام راه‌اندازی، از وظیفه ورود به سیستم استفاده کنید</value>
   </data>
   <data name="ThemeSelection" xml:space="preserve">
     <value>انتخاب حالت:</value>
@@ -456,7 +456,7 @@
     <value>پیدا نشد</value>
   </data>
   <data name="DonationHeaderReason" xml:space="preserve">
-    <value>چرا اعانه بدهیم؟</value>
+    <value>چرا باید حمایت کنید؟</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>چگونه اعانه بدهیم؟</value>
@@ -710,11 +710,11 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows" xml:space="preserve">
-    <value>Windows</value>
+    <value>ویندوز</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10Windows10" xml:space="preserve">
-    <value>Windows 10</value>
+    <value>ویندوز 10</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme10WindowsLight" xml:space="preserve">
@@ -722,7 +722,7 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="ThemePickerTheme11CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>حرکت ثبت شده</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Dark" xml:space="preserve">
@@ -730,19 +730,19 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>جریان</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Glow" xml:space="preserve">
-    <value>Glow</value>
+    <value>درخشش</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Light" xml:space="preserve">
-    <value>Windows (Light)</value>
+    <value>ویندوز (روشن)</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThemePickerTheme11Sunrise" xml:space="preserve">
-    <value>Sunrise</value>
+    <value>طلوع آفتاب</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="UpdatesComboBoxInterval1" xml:space="preserve">
@@ -752,10 +752,10 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>برای ذخیره تغییرات کلیک کنید.</value>
   </data>
   <data name="AppsTextBlockAdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>استفاده از Taskbar Accent Color</value>
   </data>
   <data name="AppSystemComboBoxItemAccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>تنها شدت آن</value>
   </data>
   <data name="AboutTextBlockVersion" xml:space="preserve">
     <value>نگارش</value>
@@ -791,7 +791,7 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>پیدا نشد</value>
   </data>
   <data name="SettingsPageAutostartModeRegistry" xml:space="preserve">
-    <value>Registry Key</value>
+    <value>کلید رجیستری</value>
   </data>
   <data name="SettingsPageAutostartModeTask" xml:space="preserve">
     <value>فعالیت</value>
@@ -824,10 +824,10 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>فعالسازی میانبرها</value>
   </data>
   <data name="TrayMenuItemForceDarkTheme" xml:space="preserve">
-    <value>Force &amp;Dark Theme</value>
+    <value>پوسته تیره اجباری</value>
   </data>
   <data name="TrayMenuItemForceLightTheme" xml:space="preserve">
-    <value>Force &amp;Light Theme</value>
+    <value>پوسته اجباری روشن</value>
   </data>
   <data name="SettingsPageTrayDisableMessageBoxContent" xml:space="preserve">
     <value>پنهان کردن این آیکون پیشنهاد نمی‌شود.
@@ -837,19 +837,19 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>پنهان کردن آیکون tray</value>
   </data>
   <data name="TrayMenuItemOpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>باز کردن دایرکتوری پیکربندی</value>
   </data>
   <data name="LabelFollowSystemTheme" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>بگذارید برنامه تصمیم بگیرد</value>
   </data>
   <data name="SwitchModesCheckBoxIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>مگر اینکه سیستم در حالت آماده به کار باشد، تم‌ها را تغییر ندهید</value>
   </data>
   <data name="SwitchModesTextBlockIdleTimerDescription" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>دقیقه ها تا زمانی که سیستم به عنوان بی کار در نظر گرفته شود</value>
   </data>
   <data name="AppsCheckBoxDWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
+    <value>شدت رنگ برای بخش های عنوان و مرزهای ویندوز در طول کار</value>
   </data>
   <data name="AboutVersionInfoCopied" xml:space="preserve">
     <value>Version info copied to clipboard</value>
@@ -930,10 +930,10 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>Follow Windows night light</value>
   </data>
   <data name="TimePageFollowNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>دنبال کردن حالت روشنایی شب ویندوز</value>
   </data>
   <data name="ThemeSwitchPauseHeaderNoExpiry" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>تغییر قالب یکبار متوقف شده است!</value>
   </data>
   <data name="PostponeReasonPostponesUntil" xml:space="preserve">
     <value>postpones until</value>
@@ -1148,7 +1148,7 @@ Auto Dark Mode پس از این دوباره اجرا می‌شود و شما ن
     <value>Update colorization</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>لینک ها</value>
   </data>
   <data name="PageScriptsCardDocumentationTextBlock" xml:space="preserve">
     <value>Documentation for custom scripts</value>
@@ -1217,48 +1217,48 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards.</value>
   </data>
   <data name="AboutHyperLinkOpenShell" xml:space="preserve">
-    <value>Open shell</value>
+    <value>بازکردن پوسته</value>
   </data>
   <data name="AboutHyperLinkOpenUpdaterLog" xml:space="preserve">
-    <value>Open updater log</value>
+    <value>بازکردن اطلاعات بروزرسانی</value>
   </data>
   <data name="ColorizationEnableSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>فعال کردن تغییر شدت رنگ</value>
   </data>
   <data name="AppsLabelTouchKeyboard" xml:space="preserve">
-    <value>Switch touch keyboard and input</value>
+    <value>تغییر صفحه کلید لمسی و ورودی</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>خودکار</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>دستی</value>
   </data>
   <data name="SwitchModesButtonAddProcess" xml:space="preserve">
-    <value>Add</value>
+    <value>افزودن</value>
   </data>
   <data name="SwitchModesButtonRemoveProcess" xml:space="preserve">
-    <value>Remove</value>
+    <value>حذف</value>
   </data>
   <data name="SwitchModesExpanderHeaderBlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>مسدودسازی فرآیندها</value>
   </data>
   <data name="SwitchModesCheckBoxProcessBlockList" xml:space="preserve">
-    <value>Don't switch while certain processes are running</value>
+    <value>درحالی که فرآیندهای خاصی درحال اجراست، صفحه را تغییر ندهید</value>
   </data>
   <data name="RecommendedAppsButton" xml:space="preserve">
-    <value>Browse apps with Auto Dark Mode support</value>
+    <value>مرور برنامه هایی که از Auto Dark Mode پشتیبانی میکنند</value>
   </data>
   <data name="RecommendedAppsDescription" xml:space="preserve">
-    <value>Not every third party app supports Auto Dark Mode by default. On our wiki page we provide a curated list with supported apps.</value>
+    <value>هر برنامه شخص ثالثی از Auto Dark Mode به طور پیش فرض پشتیبانی نمی کند. در صفحه ویکی ما یک لیست با برنامه های پشتیبانی شده ارائه می دهیم.</value>
   </data>
   <data name="RecommendedAppsTitle" xml:space="preserve">
-    <value>Recommended apps</value>
+    <value>برنامه های پیشنهادی</value>
   </data>
   <data name="DonationGitHubSponsorsDescription" xml:space="preserve">
-    <value>Alternatively you can donate via GitHub Sponsors, which also supports recurring monthly donations.</value>
+    <value>در عوض، شما می توانید از طریق GitHub حمایت کنید، که همچنین از حمایت ماهانه پشتیبانی می کند.</value>
   </data>
   <data name="TrayMenuItemTryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>تلاش در تعمیر نمایه</value>
   </data>
 </root>
