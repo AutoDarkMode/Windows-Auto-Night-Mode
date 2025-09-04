@@ -229,7 +229,7 @@
     <value>颜色滤镜（发送 Win + Ctrl + C）</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>根据您的喜好自定义 Windows 系统颜色方案。</value>
+    <value>根据您的喜好自定义 Windows 系统颜色方案</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>条件</value>
@@ -280,12 +280,11 @@
     <value>捐赠</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>您好！感谢您使用 Auto Dark Mode。迄今为止，您还喜欢这个应用吗？
+    <value>感谢您使用 Auto Dark Mode！到现在为止，您还喜欢这个应用吗？
 
-这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。
-我并不靠本项目盈利。
+这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。我并不靠本项目盈利。
 
-如上所述，您可以通过捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。只要您重视我的工作，就捐献吧。</value>
+如上所述，您可以通过自愿捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。您认为我的工作值得多少，就捐赠多少吧。</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>如何捐赠？</value>
@@ -334,11 +333,9 @@
 
 请确保：
 - 服务正在运行
-- 您的 config.yaml 无误
+- config.yaml 文件无误
 
-您想在 Auto Dark Mode 的存储库中创建一个 issue 吗？
-点击“是”将打开一个新的浏览器窗口。
-</value>
+您想在 Auto Dark Mode 的存储库中创建一个 issue 吗？</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>发生错误</value>
@@ -521,7 +518,7 @@
     <value>服务尚未运行，请稍候…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>暂无更新。</value>
+    <value>暂无更新</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>主题切换已暂停一次！</value>
@@ -548,10 +545,7 @@
     <value>有新版本可用！</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>感谢您使用 Auto Dark Mode！
-
-GitHub 上发布的新版本包含一些漏洞修复和改进。
-您想安装新版本吗？
+    <value>GitHub 上发布的新版本包含一些漏洞修复和改进。
 
 当前版本：{0}，新版本：{1}</value>
   </data>
@@ -559,7 +553,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>版本信息已复制到剪贴板</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>下一次更新将在</value>
+    <value>下一次更新： </value>
   </data>
   <data name="None" xml:space="preserve">
     <value>无</value>
@@ -628,7 +622,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>选择壁纸</value>
   </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
-    <value>为所有显示器或单个显示器自定义您的桌面壁纸，设置背景颜色或启用 Spotlight。</value>
+    <value>为所有显示器或单个显示器自定义您的桌面壁纸，设置背景颜色或启用 Windows 聚焦。</value>
   </data>
   <data name="Position" xml:space="preserve">
     <value>位置</value>
@@ -802,7 +796,7 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>Windows（浅色主题）</value>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>windows聚焦</value>
+    <value>Windows 聚焦</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>日出</value>
@@ -871,28 +865,28 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>您在 Windows 中禁用了启动项。</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. 前往 Windows 设置 &gt; 个性化 &gt; 颜色。
+2. 将浅色主题的系统颜色改为“浅色”。
+3. 前往 Windows 设置 &gt; 个性化 &gt; 主题。
+4. 选择您喜欢的壁纸、鼠标指针和强调色。
+5. 保存您的主题。
+6. 为深色主题重复此过程。</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>编辑快捷键</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>已断开</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>背景</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>停用 Windows 管理您的主题</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>路径</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
@@ -910,63 +904,63 @@ GitHub 上发布的新版本包含一些漏洞修复和改进。
     <value>稳定版</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>自动启动已在任务管理器的“启动应用”标签页中禁用。如果您想重新让 Auto Dark Mode 随 Windows 启动，请在那里重新启用。</value>
   </data>
   <data name="Set" xml:space="preserve">
-    <value>Set</value>
+    <value>设定</value>
   </data>
   <data name="SelectColor" xml:space="preserve">
-    <value>Select a color</value>
+    <value>选择颜色</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>前往 Windows 聚焦设置</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>切换</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>自动主题切换暂停时显示通知</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>自动主题切换开启或关闭时显示通知</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>选择一个按键组合。只有以 Windows 键、Ctrl、Alt 或 Shift 开始的快捷键有效。</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>激活快捷键</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>保存</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>强制保存</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>快捷键不起作用？别担心，我们再保存一次</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>保存成功</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>保存失败</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>键入以添加任何应用</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>应用模式</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Windows 模式</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Windows 个性化颜色</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>已推迟</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>未推迟</value>
   </data>
 </root>
