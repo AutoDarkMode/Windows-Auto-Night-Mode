@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -884,10 +884,15 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value />
+    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+2. Change the system color to 'Light' for the light theme.
+3. Go to Windows Settings &gt; Personalization &gt; Themes.
+4. Select your favorite wallpaper, mouse pointers and accent color.
+5. Save your theme.
+6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value />
+    <value>Edit hotkey</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Terputus</value>
@@ -907,5 +912,71 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
     <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  </data>
+  <data name="Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="DebugMode" xml:space="preserve">
+    <value>Debug mode</value>
+  </data>
+  <data name="EnterToApply" xml:space="preserve">
+    <value>Select Enter to apply</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value>Go to Windows Spotlight settings</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Switch" xml:space="preserve">
+    <value>Switch</value>
+  </data>
+  <data name="ShowNotificationPostponeToggled" xml:space="preserve">
+    <value>Show notification when the automatic theme switch is paused</value>
+  </data>
+  <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
+    <value>Show notification when toggling the automatic theme switch</value>
+  </data>
+  <data name="SelectTheKeyCombination" xml:space="preserve">
+    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+  </data>
+  <data name="ActivationShortcut" xml:space="preserve">
+    <value>Activation shortcut</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ForceSaveSettings" xml:space="preserve">
+    <value>Force save</value>
+  </data>
+  <data name="Msg_HotkeyProblem" xml:space="preserve">
+    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+  </data>
+  <data name="SaveSuccessfully" xml:space="preserve">
+    <value>Save successfully</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>Save failed</value>
+  </data>
+  <data name="AddApps" xml:space="preserve">
+    <value>Start typing to add any apps</value>
+  </data>
+  <data name="AppMode" xml:space="preserve">
+    <value>App mode</value>
+  </data>
+  <data name="WindowsMode" xml:space="preserve">
+    <value>Windows mode</value>
+  </data>
+  <data name="WindowsColorsSetting" xml:space="preserve">
+    <value>Personalized colors setting of Windows</value>
+  </data>
+  <data name="Delayed" xml:space="preserve">
+    <value>Delayed</value>
+  </data>
+  <data name="NotDelayed" xml:space="preserve">
+    <value>Not Delayed</value>
   </data>
 </root>
