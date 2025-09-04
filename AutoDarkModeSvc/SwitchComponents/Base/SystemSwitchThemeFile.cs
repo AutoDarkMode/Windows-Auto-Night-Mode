@@ -29,6 +29,7 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
     protected Theme currentComponentTheme = Theme.Unknown;
     protected bool themeModeEnabled;
     protected bool currentTaskbarColorActive;
+    public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public SystemSwitchThemeFile() : base() { }
 
     protected override void EnableHook()
@@ -54,8 +55,6 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
     {
         if (Settings.Component.Mode == Mode.AccentOnly)
         {
-            NeedsDwmRefresh = DwmRefreshType.Standard;
-            TriggersDwmRefresh = DwmRefreshType.None;
             // if theme does not match dark we need to report true, as accent color isn't available in light mode
             // Do not return true on windows theme mode, as this would potentially modify the theme
             if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
@@ -84,22 +83,16 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
             // Themes do not match
             if (currentComponentTheme != Theme.Dark)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.Standard;
                 return true;
             }
             // Task bar accent color is disabled, but still active
             else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.None;
                 return true;
             }
             // task bar accent color should switch, and taskbar color hasn't switched yet
             else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.None;
                 return true;
             }
             return false;
@@ -109,8 +102,6 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
         {
             if (currentComponentTheme != Theme.Light)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.Standard;
                 return true;
             }
             return false;
@@ -120,29 +111,21 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
             // Themes do not match
             if (currentComponentTheme != e.Theme)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.Standard;
                 return true;
             }
             // Task bar accent color should switch, target is light mode and the taskbar color hasn't switched yet
             else if (Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive && e.Theme == Theme.Light)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.None;
                 return true;
             }
             // Task bar accent color is disabled, but still active
             else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.None;
                 return true;
             }
             // task bar accent color should switch, target is dark mode and taskbar color hasn't switched yet
             else if (Settings.Component.TaskbarColorOnAdaptive && !currentTaskbarColorActive && e.Theme == Theme.Dark)
             {
-                NeedsDwmRefresh = DwmRefreshType.Standard;
-                TriggersDwmRefresh = DwmRefreshType.None;
                 return true;
             }
             return false;

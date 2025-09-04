@@ -179,7 +179,6 @@ public class Tunable
     public bool Trace { get; set; }
     public bool DebugTimerMessage { get; set; }
     public bool ShowTrayIcon { get; set; } = true;
-    public bool AlwaysFullDwmRefresh { get; set; } = false;
     public string UICulture { get; set; } = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
 }
 
