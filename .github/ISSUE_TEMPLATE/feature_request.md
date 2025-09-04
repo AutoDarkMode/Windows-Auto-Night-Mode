@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for Auto Dark Mode
 title: ''
-labels: enhancement
+type: Feature
 assignees: ''
 
 ---
