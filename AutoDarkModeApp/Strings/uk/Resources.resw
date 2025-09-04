@@ -229,7 +229,7 @@
     <value>Кольоровий фільтр (сполучення Win + Ctrl + C)</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Налаштуйте кольорову схему системи Windows на свій смак.</value>
+    <value>Налаштуйте кольорову схему системи Windows на свій смак</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Умови</value>
@@ -265,7 +265,7 @@
     <value>Темна тема</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Затримка</value>
+    <value>Затримки</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Заборонити</value>
@@ -282,8 +282,7 @@
   <data name="Donation_Description" xml:space="preserve">
     <value>Вітаю! Дякую за використання Auto Dark Mode! Поки подобається цей застосунок?
 
-Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час він абсолютно безплатний, без реклами, не збирає даних про користувачів та має відкриті джерела.
-Я не отримую жодного прибутку від цього проєкту.
+Auto Dark Mode робить ваше повсякдення приємнішим, допомагаючи дбати про очі. У той же час він абсолютно безплатний, без реклами, не збирає даних про користувачів та має відкриті джерела. Я не отримую жодного прибутку від цього проєкту.
 
 З цієї причини ви могли б підтримати мене добровільним внеском. Навіть від невеликої суми я стрибатиму по квартирі. Просто пожертвуйте стільки, на скільки цінуєте мою роботу.</value>
   </data>
@@ -334,11 +333,9 @@ Auto Dark Mode робить ваше повсякдення приємнішим
 
 Будь ласка, переконайтеся, що:
 - служба запущена
-- ваш файл config.yaml правильний
+- файл config.yaml правильний
 
-Чи хочете створити питання в репозиторії Auto Dark Mode? 
-Натисніть «Так», щоб відкрити нове вікно браузера.
-</value>
+Ви хочете створити задачу в репозиторії автоматичного темного режиму?</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Сталася помилка</value>
@@ -374,7 +371,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Світлий режим увімкнути</value>
   </data>
   <data name="General" xml:space="preserve">
-    <value>Налаштування</value>
+    <value>Загальна</value>
   </data>
   <data name="GeoCoordinates" xml:space="preserve">
     <value>Географічні координати</value>
@@ -521,7 +518,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Служба ще не працює, зачекайте…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>немає нових оновлень.</value>
+    <value>Нових оновлень не знайдено</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>Зміна тем призупинена одноразово!</value>
@@ -548,18 +545,15 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Доступне нове оновлення!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>Дякуємо за використання Auto Dark Mode!
+    <value>Нова версія доступна на GitHub з виправленнями та покращеннями.
 
-Доступна нова версія на GitHub з виправленнями та вдосконаленнями.
-Хочете її встановити?
-
-Зараз встановлена версія: {0}, нова версія: {1}</value>
+Поточна встановлена версія: {0}, нова версія: {1}</value>
   </data>
   <data name="Msg_VersionInfoCopied" xml:space="preserve">
     <value>Інформація про версію скопійована до буферу обміну</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Наступне оновлення о</value>
+    <value>Наступне оновлення: </value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Немає</value>
@@ -814,7 +808,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Прожектор</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Схід сонця</value>
@@ -875,7 +869,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Суцільний колір</value>
   </data>
   <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Прожектор Windows</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
     <value>Ця функція недоступна, оскільки на комп'ютері не встановлене оновлення Windows 10 April 2019 Update...</value>
@@ -884,99 +878,99 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Ви вимкнули автозапуск застосунку засобами Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Перейдіть до «Налаштування Windows» &gt; «Персоналізація» &gt; «Кольори».
+2. Змініть колір системи на «Світлий» для світлої теми.
+3. Перейдіть до «Налаштування Windows» &gt; «Персоналізація» &gt; «Теми».
+4. Виберіть улюблені шпалери, покажчики миші та акцентний колір.
+5. Збережіть свою тему.
+6. Повторіть цей процес для темної теми.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Редагувати гарячу клавішу</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Відключено</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Фон</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Вимкнути керування темою Windows</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Шлях</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Автоматичний запуск вимкнено на вкладці «Програми автозавантаження» в диспетчері завдань. Якщо ви хочете, щоб автоматичний темний режим знову запускався разом із Windows, увімкніть його знову там.</value>
   </data>
   <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Бета</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Режим налагодження</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Натисніть Enter, щоб застосувати</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Мова</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Перейдіть до налаштувань Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Стабільний</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Перемикач</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Показувати сповіщення, коли автоматичне перемикання тем призупинено</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Показувати сповіщення під час увімкнення/вимкнення автоматичного перемикання тем</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Виберіть комбінацію клавіш. Дійсні лише комбінації клавіш, що починаються з клавіші Windows, Ctrl, Alt або Shift.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Швидкий доступ до активації</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Зберегти</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Примусове збереження</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Гаряча клавіша не спрацювала? Не хвилюйтеся, збережемо ще раз</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Збережено успішно</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Збереження не вдалося</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Почніть вводити текст, щоб додати будь-які програми</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Режим програми</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Режим Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Персоналізоване налаштування кольорів Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Затримка</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Не затримується</value>
   </data>
 </root>
