@@ -41,11 +41,6 @@ public static class ThemeHandler
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
 
-    private const int HWND_BROADCAST = 0xffff;
-    private const int WM_SETTINGCHANGE = 0x001A;
-    private const int WM_THEMECHANGED = 0x031A;
-    private const int SMTO_ABORTIFHUNG = 0x0002;
-
     private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
@@ -213,8 +208,7 @@ public static class ThemeHandler
         return false;
     }
 
-    [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-    static extern IntPtr SendMessageTimeout(IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam, uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+
 
     public static void RefreshDwm(bool managed, SwitchEventArgs e)
     {
@@ -248,54 +242,7 @@ public static class ThemeHandler
                     return;
                 }
             }
-
-            Thread thread = new(() =>
-            {
-                try
-                {
-                    UIntPtr result;
-
-                    SendMessageTimeout(
-                        new IntPtr(HWND_BROADCAST),
-                        WM_SETTINGCHANGE,
-                        UIntPtr.Zero,
-                        "ImmersiveColorSet",
-                        SMTO_ABORTIFHUNG,
-                        5000,
-                        out result);
-
-                    if (result.Equals(IntPtr.Zero))
-                    {
-                        var code = Marshal.GetLastWin32Error();
-                        Logger.Error("dwm management: refresh failed while broadcasting hwnd message wm_settingchange", code);
-                    }
-
-                    SendMessageTimeout(
-                        new IntPtr(HWND_BROADCAST),
-                        WM_THEMECHANGED,
-                        UIntPtr.Zero,
-                        null,
-                        SMTO_ABORTIFHUNG,
-                        5000,
-                        out result);
-
-                    if (result.Equals(IntPtr.Zero))
-                    {
-                        var code = Marshal.GetLastWin32Error();
-                        Logger.Error("dwm management: refresh failed while broadcasting hwnd message wm_themechanged", code);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "dwm management: could not refresh dwm", ex);
-                }
-                Logger.Info("dwm management: refresh performed by theme handler");
-            })
-            {
-                Name = "DWMRefreshThread"
-            };
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            DwmRefreshHandler.Enqueue(e);
         }
         else
         {

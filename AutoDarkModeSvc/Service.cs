@@ -50,6 +50,7 @@ class Service : Form
     private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
     GlobalState state = GlobalState.Instance();
 
+
     public readonly ToolStripMenuItem forceDarkMenuItem = new();
     public readonly ToolStripMenuItem forceLightMenuItem = new();
     public readonly ToolStripMenuItem autoThemeSwitchingItem = new();
@@ -262,6 +263,7 @@ class Service : Form
 
         MessageServer.Dispose();
         ConfigMonitor.Dispose();
+        DwmRefreshHandler.Shutdown();
         WindowsThemeMonitor.StopThemeMonitor();
         Timers.ForEach(t => t.Stop());
         Timers.ForEach(t => t.Dispose());
