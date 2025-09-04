@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using AutoDarkModeApp.Contracts.Services;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -7,6 +8,9 @@ namespace AutoDarkModeApp;
 
 public sealed partial class MainWindow : Window
 {
+    [DllImport("user32.dll")]
+    private static extern uint GetDpiForWindow([In] IntPtr hwnd);
+
     private readonly INavigationService _navigationService;
 
     public MainWindow(INavigationService navigationService)
@@ -16,8 +20,11 @@ public sealed partial class MainWindow : Window
 
         // TODO: No one knows what the correct way to use it is. Waiting for official examples.
         var overlappedPresenter = OverlappedPresenter.Create();
-        overlappedPresenter.PreferredMinimumWidth = 680;
-        overlappedPresenter.PreferredMinimumHeight = 320;
+        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        var dpiForWindow = GetDpiForWindow(hWnd);
+        double scaleFactor = dpiForWindow / 96.0;
+        overlappedPresenter.PreferredMinimumWidth = (int)(870 * scaleFactor);
+        overlappedPresenter.PreferredMinimumHeight = (int)(600 * scaleFactor);
         AppWindow.SetPresenter(overlappedPresenter);
 
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
