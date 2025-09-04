@@ -884,10 +884,15 @@
     <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value />
+    <value>1. Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Χρώματα.
+2. Αλλάξτε το χρώμα συστήματος σε 'Ανοιχτόχρωμο' για το φωτεινό θέμα.
+3. Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Θέματα.
+4. Επιλέξτε την αγαπημένη σας ταπετσαρία, δείκτες ποντικιού και χρώμα έμφασης.
+5. Αποθηκεύστε το θέμα σας.
+6. Επαναλάβετε αυτήν τη διαδικασία για το σκούρο θέμα.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value />
+    <value>Επεξεργασία πλήκτρου συντόμευσης</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Αποσυνδέθηκε</value>
@@ -912,28 +917,28 @@
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Λειτουργία εντοπισμού σφαλμάτων</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Επιλέξτε Enter για εφαρμογή</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Γλώσσα</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Μετάβαση στις ρυθμίσεις του Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Σταθερή</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Εναλλαγή</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Εμφάνιση ειδοποίησης όταν η αυτόματη εναλλαγή θέματος έχει τεθεί σε παύση</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Εμφάνιση ειδοποίησης κατά την εναλλαγή του αυτόματου θέματος</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
     <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
