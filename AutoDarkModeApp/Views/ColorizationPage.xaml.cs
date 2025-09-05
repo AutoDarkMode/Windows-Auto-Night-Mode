@@ -1,8 +1,11 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
+using AutoDarkModeApp.Services;
 using AutoDarkModeApp.UserControls;
+using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -13,12 +16,14 @@ namespace AutoDarkModeApp.Views;
 public sealed partial class ColorizationPage : Page
 {
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
+    private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
     public ColorizationViewModel ViewModel { get; }
 
     public ColorizationPage()
     {
+        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         ViewModel = App.GetService<ColorizationViewModel>();
         InitializeComponent();
     }
@@ -48,6 +53,7 @@ public sealed partial class ColorizationPage : Page
         try
         {
             _builder.Save();
+            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
         }
         catch (Exception ex)
         {
@@ -79,6 +85,23 @@ public sealed partial class ColorizationPage : Page
         try
         {
             _builder.Save();
+            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+        }
+    }
+
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "ColorizationPage");
+            }
         }
         catch (Exception ex)
         {

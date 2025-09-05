@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Media;
@@ -13,6 +15,7 @@ public partial class ColorizationViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private bool _initComplete;
 
     public enum ThemeColorMode
     {
@@ -59,6 +62,8 @@ public partial class ColorizationViewModel : ObservableRecipient
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
+        _initComplete = true;
+        
     }
 
     private void LoadSettings()
@@ -128,6 +133,7 @@ public partial class ColorizationViewModel : ObservableRecipient
         try
         {
             _builder.Save();
+            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
         }
         catch (Exception ex)
         {
@@ -150,10 +156,27 @@ public partial class ColorizationViewModel : ObservableRecipient
         try
         {
             _builder.Save();
+            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
         }
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+        }
+    }
+
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "ColorizationViewModel");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
         }
     }
 }

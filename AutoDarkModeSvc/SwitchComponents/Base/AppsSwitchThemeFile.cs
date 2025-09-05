@@ -30,6 +30,11 @@ class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
 
     protected override void EnableHook()
     {
+        RefreshRegkeys();
+    }
+
+    protected void RefreshRegkeys()
+    {
         try
         {
             currentComponentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
@@ -39,6 +44,7 @@ class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
             Logger.Error(ex, "couldn't initialize apps theme state");
         }
     }
+
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public override bool ThemeHandlerCompatibility { get; } = false;
 
@@ -80,5 +86,10 @@ class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
             currentComponentTheme = e.Theme;
         }
         Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+    }
+
+    protected override void UpdateSettingsState()
+    {
+        RefreshRegkeys();
     }
 }

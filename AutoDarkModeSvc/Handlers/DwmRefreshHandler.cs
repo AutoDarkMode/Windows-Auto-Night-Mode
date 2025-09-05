@@ -28,6 +28,7 @@ internal sealed partial class DwmRefreshHandler
     private const int WM_SETTINGCHANGE = 0x001A;
     private const int WM_THEMECHANGED = 0x031A;
     private const int SMTO_ABORTIFHUNG = 0x0002;
+    private const int WM_DWMCOLORIZATIONCOLORCHANGED = 0x0320;
 
     private DwmRefreshHandler()
     {
