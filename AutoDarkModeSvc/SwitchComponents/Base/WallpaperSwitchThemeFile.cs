@@ -14,8 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 
@@ -87,20 +94,60 @@ internal class WallpaperSwitchThemeFile : WallpaperSwitch
         spotlightEnabled = false;
     }
 
-    protected override void Callback(SwitchEventArgs e)
-    {
 
-        /*
-        GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
+    protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
+    {
+        var wantedAgreement = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
+        var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
+            .Select(w => Path.GetFileName(w.Item1))
+            .ToList();
+
         if (e.Theme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
         {
-            GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
-            Settings.Component.Monitors.All(m => m.DarkThemeWallpaper == GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.)
+            var wallpapersTarget = Settings.Component.Monitors
+                .Select(m => Path.GetFileName(m.DarkThemeWallpaper))
+                .ToList();
+            return CheckAgreement(wallpapersInThemeFile, wallpapersTarget);
         }
         else if (e.Theme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
         {
-            GlobalState.ManagedThemeFile.SyncWithActiveTheme(false);
+            var wallpapersTarget = Settings.Component.Monitors
+                .Select(m => Path.GetFileName(m.LightThemeWallpaper))
+                .ToList();
+            return CheckAgreement(wallpapersInThemeFile, wallpapersTarget);
         }
-        */
+
+        return true;
+    }
+
+    private bool CheckAgreement(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
+    {
+        var wantedAgreement = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
+
+        var counts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var name in wallpapersInThemeFile)
+        {
+            counts.TryGetValue(name, out var c);
+            counts[name] = c + 1;
+        }
+
+        int agreement = 0;
+        foreach (var name in wallpapersTarget)
+        {
+            if (counts.TryGetValue(name, out var c) && c > 0)
+            {
+                agreement++;
+                counts[name] = c - 1;
+            }
+        }
+
+        bool ok = agreement == wantedAgreement;
+
+        if (ok)
+            Logger.Info($"wallpaper synchronization integrity check passed ({agreement}/{wantedAgreement})");
+        else
+            Logger.Warn($"wallpaper synchronization integrity check failed ({agreement}/{wantedAgreement})");
+
+        return ok;
     }
 }

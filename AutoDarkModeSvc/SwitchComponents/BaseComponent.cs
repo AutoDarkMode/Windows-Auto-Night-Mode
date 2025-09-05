@@ -40,10 +40,7 @@ abstract class BaseComponent<T> : ISwitchComponent
     public virtual int PriorityToDark { get; }
     public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;
     public bool ForceSwitch { get; set; }
-    public virtual bool Enabled
-    {
-        get { return Settings.Enabled; }
-    }
+    public virtual bool Enabled { get => Settings.Enabled; }
     public void Switch(SwitchEventArgs e)
     {
         Logger.Trace($"switch invoked for {GetType().Name} ({Enum.GetName(HookPosition)})");
@@ -70,6 +67,11 @@ abstract class BaseComponent<T> : ISwitchComponent
     }
 
     protected virtual void UpdateSettingsState() { }
+
+    /// <summary>
+    /// Verifies that the component's operation was completed successfully
+    /// </summary>
+    protected virtual bool VerifyOperationIntegrity(SwitchEventArgs e) { return true; }
 
     /// <summary>
     /// Initializes the module if it has a hook specified. Does nothing otherwise.
@@ -178,4 +180,11 @@ abstract class BaseComponent<T> : ISwitchComponent
         }
         return false;
     }
+
+    public bool RunVerifyOperationIntegrity(SwitchEventArgs e) 
+    {
+        Logger.Trace($"running integrity check for {GetType().Name}");
+        return VerifyOperationIntegrity(e);
+    }
+
 }

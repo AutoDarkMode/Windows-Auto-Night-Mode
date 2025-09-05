@@ -39,7 +39,6 @@ class AppsSwitchThemeFile : BaseComponent<AppsSwitchSettings>
             Logger.Error(ex, "couldn't initialize apps theme state");
         }
     }
-    public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Standard;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public override bool ThemeHandlerCompatibility { get; } = false;
 

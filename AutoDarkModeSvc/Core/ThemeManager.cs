@@ -18,12 +18,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
+using Windows.Devices.Sensors;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -219,7 +221,6 @@ static class ThemeManager
         }
 
         (List<ISwitchComponent> componentsToUpdate, DwmRefreshType neededDwmRefresh, DwmRefreshType providedDwmRefresh) = cm.GetComponentsToUpdate(e);
-        if (e.RefreshDwm) neededDwmRefresh = DwmRefreshType.Full;
 
         #endregion
 
@@ -250,7 +251,7 @@ static class ThemeManager
         bool themeSwitched = false;
 
         #region apply themes and run components
-        if (e.RefreshDwm || componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
+        if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
         {
             PowerHandler.RequestDisableEnergySaver(builder.Config);
 
@@ -262,46 +263,46 @@ static class ThemeManager
             {
                 // get data from active theme and apply theme fix
                 state.ManagedThemeFile.SyncWithActiveTheme(true);
+
+                int retrySleep = 1000;
+                var integrityCheckResults = cm.RunIntegrityChecks(componentsToUpdate, e, HookPosition.PreSync);
+                foreach (var (component, integrityResult) in integrityCheckResults)
+                {
+                    if (!integrityResult)
+                    {
+                        // the first loop iteration will be without a module retry
+                        // because the synchronization may have failed because the system is slow
+                        // in that case re-calling the component switch would be a resource waste
+                        // and could potentially introduce unnecessary lag
+                        int maxRetries = 1;
+                        int i;
+                        // allow for one more loop after maxRetry has been reached
+                        // because we are wrapping around with the sync call
+                        for (i = 0; i <= maxRetries; i++)
+                        {
+                            Thread.Sleep(retrySleep);
+                            // Don't patch because it's a retry operation and it could actually change the value back, which we don't want
+                            // This introduces the limitation that a pre-hook can't be a component that requires a partial or full dwm refresh
+                            state.ManagedThemeFile.SyncWithActiveTheme(false);
+                            if (component.RunVerifyOperationIntegrity(e))
+                            {
+                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i+1}/{maxRetries+1}");
+                                break;
+                            }
+                            // early return because calling switch only makes sense if a sync call is performed.
+                            if (i == maxRetries)
+                            {
+                                Logger.Error($"failed to restore integrity for {component.GetType().Name}");
+                                break;
+                            }
+                            component.Switch(e);
+                        }
+                    }
+                }
             }
 
             // regular modules that do not need to modify the active theme
             cm.RunPostSync(componentsToUpdate, e);
-
-            #region dwm refresh
-            // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
-            if (builder.Config.Tunable.AlwaysFullDwmRefresh &&
-               (providedDwmRefresh != DwmRefreshType.Full && neededDwmRefresh != DwmRefreshType.None || themeModeNeedsUpdate))
-            {
-                Logger.Info("dwm management: full refresh requested by user");
-                if (builder.Config.WindowsThemeMode.Enabled)
-                {
-                    ThemeHandler.RefreshDwmFull(managed: false, e);
-                    themeModeNeedsUpdate = true;
-                }
-                else ThemeHandler.RefreshDwmFull(managed: true, e);
-            }
-            // on managed mode if the dwm refresh is insufficient, queue a full refresh
-            else if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
-            {
-                Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
-                ThemeHandler.RefreshDwmFull(managed: true, e);
-            }
-            // on managed mode, if the dwm refresh is provided by the components, no refresh is required
-            else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
-            {
-                Logger.Info($"dwm management: requested {Enum.GetName(providedDwmRefresh).ToLower()} refresh will be performed by component(s) in queue");
-            }
-            // if windows theme mode is enabled the user needs to ensure that the selected themes refresh properly
-            else if (themeModeNeedsUpdate)
-            {
-                Logger.Info($"dwm management: refresh is expected to be handled by user");
-            }
-            else
-            {
-                Logger.Info("dwm management: no refresh required");
-            }
-            #endregion
-
             // Logic for managed mode
             if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
             {
@@ -353,8 +354,8 @@ static class ThemeManager
             if (shuffleCondition)
             {
                 Logger.Debug("advancing slideshow in shuffled mode");
-                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
 
+                AdvanceSlideshow(DesktopSlideshowDirection.Forward);
                 /*
                 // randomize slideshow forwarding when shuffle is enabled
                 Logger.Debug("slideshow and shuffling enabled, rolling the dice...");
@@ -366,6 +367,30 @@ static class ThemeManager
                 }
                 */
             }
+
+            #region dwm refresh
+            // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
+            // on managed mode if the dwm refresh is insufficient, queue a full refresh
+            if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
+            {
+                Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
+                ThemeHandler.RefreshDwm(managed: true, e);
+            }
+            // on managed mode, if the dwm refresh is provided by the components, no refresh is required
+            else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
+            {
+                Logger.Info($"dwm management: requested {Enum.GetName(providedDwmRefresh).ToLower()} refresh was performed by component(s) in queue");
+            }
+            // if windows theme mode is enabled, always perform a dwm refresh to be safe. Wé don't know what settings are changed
+            else if (themeModeNeedsUpdate)
+            {
+                ThemeHandler.RefreshDwm(managed: false, e);
+            }
+            else
+            {
+                Logger.Info("dwm management: no refresh required");
+            }
+            #endregion
 
             themeSwitched = true;
 

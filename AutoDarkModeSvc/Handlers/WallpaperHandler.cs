@@ -283,11 +283,18 @@ static class WallpaperHandler
     /// </summary>
     public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
     {
-        IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-        for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
+        try
         {
-            handler.AdvanceSlideshow(null, direction);
-            Thread.Sleep(200);
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
+            {
+                handler.AdvanceSlideshow(null, direction);
+                Thread.Sleep(200);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error("could not advance slideshow", ex);
         }
     }
 

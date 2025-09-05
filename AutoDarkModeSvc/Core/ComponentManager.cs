@@ -296,4 +296,27 @@ class ComponentManager
             c.RunCallback(e);
         });
     }
+
+
+    [MethodImpl(MethodImplOptions.Synchronized)]
+    public List<(ISwitchComponent, bool)> RunIntegrityChecks(List<ISwitchComponent> components,SwitchEventArgs e, HookPosition hookPosition)
+    {
+        List<ISwitchComponent> filtered = [.. components.Where(c => c.HookPosition.Equals(hookPosition))];
+        List<(ISwitchComponent, bool)> results = [];
+        if (e.Theme == Theme.Dark && lastSorting != Theme.Dark)
+        {
+            filtered.Sort((x, y) => x.PriorityToDark.CompareTo(y.PriorityToDark));
+            lastSorting = Theme.Dark;
+        }
+        else if (e.Theme == Theme.Light && lastSorting != Theme.Light)
+        {
+            filtered.Sort((x, y) => x.PriorityToLight.CompareTo(y.PriorityToLight));
+            lastSorting = Theme.Light;
+        }
+        filtered.ForEach(c =>
+        {
+            results.Add((c, c.RunVerifyOperationIntegrity(e)));
+        });
+        return results;
+    }
 }

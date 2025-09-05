@@ -41,9 +41,6 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial bool IsHideTray { get; set; }
 
     [ObservableProperty]
-    public partial bool IsAlwaysFullDwmRefresh { get; set; }
-
-    [ObservableProperty]
     public partial bool IsTunableDebug { get; set; }
 
     [ObservableProperty]
@@ -167,7 +164,6 @@ public partial class SettingsViewModel : ObservableRecipient
         _isInitializing = true;
 
         IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
-        IsAlwaysFullDwmRefresh = _builder.Config.Tunable.AlwaysFullDwmRefresh;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
         EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures);
@@ -310,38 +306,6 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
-
-    partial void OnIsAlwaysFullDwmRefreshChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (value)
-        {
-            ContentDialog contentDialog = new()
-            {
-                Title = "AlwaysRefreshDwm".GetLocalized(),
-                Content = "AlwaysRefreshDwm_Content".GetLocalized(),
-                XamlRoot = App.MainWindow.Content.XamlRoot,
-                CloseButtonText = "Cancel".GetLocalized(),
-                PrimaryButtonText = "Confirm".GetLocalized(),
-            };
-            _dispatcherQueue.TryEnqueue(async () =>
-            {
-                var result = await contentDialog.ShowAsync();
-                if (result != ContentDialogResult.Primary)
-                    IsAlwaysFullDwmRefresh = false;
-            });
-            _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
-        }
-        else
-        {
-            _builder.Config.Tunable.AlwaysFullDwmRefresh = IsAlwaysFullDwmRefresh;
-        }
-
-        SafeSaveBuilder();
-    }
-
     partial void OnIsTunableDebugChanged(bool value)
     {
         if (_isInitializing)
