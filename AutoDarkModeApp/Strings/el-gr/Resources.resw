@@ -229,7 +229,7 @@
     <value>Φίλτρο χρώματος (αποστολή Win + Ctrl + C)</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Προσαρμόστε τον συνδυασμό χρωμάτων του συστήματος των Windows σύμφωνα με τις προτιμήσεις σας.</value>
+    <value>Προσαρμόστε τον συνδυασμό χρωμάτων του συστήματος των Windows σύμφωνα με τις προτιμήσεις σας</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Συνθήκες</value>
@@ -282,10 +282,9 @@
   <data name="Donation_Description" xml:space="preserve">
     <value>Γειά σας! Σας ευχαριστούμε που χρησιμοποιείτε το Auto Dark Mode! Σας αρέσει μέχρι τώρα;
 
-Αυτή η εφαρμογή κάνει την καθημερινότητά σας πιο ευχάριστη, βοηθώντας σας να φροντίζετε τα μάτια σας. Ταυτόχρονα είναι εντελώς δωρεάν, χωρίς διαφημίσεις, δεν συλλέγει δεδομένα χρήστη και είναι ανοιχτού κώδικα.
-Δεν αποφέρω κανένα κέρδος με αυτό το έργο.
+Αυτή η εφαρμογή κάνει την καθημερινότητά σας πιο ευχάριστη, βοηθώντας σας να φροντίζετε τα μάτια σας. Ταυτόχρονα είναι εντελώς δωρεάν, χωρίς διαφημίσεις, δεν συλλέγει δεδομένα χρήστη και είναι ανοιχτού κώδικα. Δεν αποφέρω κανένα κέρδος με αυτό το έργο.
 
-Για αυτό το λόγο μπορείτε να με υποστηρίξετε με μια εθελοντική δωρεά. Ακόμη και έναα μικρό ποσό με κάνει να χοροπηδάω χαρούμενος στο διαμέρισμά μου. Απλώς κάντε μια δωρεά αντίστοιχη της εκτίμησής σας για τη δουλειά μου.</value>
+Για αυτό το λόγο μπορείτε να με υποστηρίξετε με μια εθελοντική δωρεά. Ακόμη και ένα μικρό ποσό με κάνει να χοροπηδάω χαρούμενος στο διαμέρισμά μου. Απλώς κάντε μια δωρεά αντίστοιχη της εκτίμησής σας για τη δουλειά μου.</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Πώς να κάνετε δωρεά;</value>
@@ -336,9 +335,7 @@
 - η υπηρεσία λειτουργεί
 - Το αρχείο config.yaml σας είναι σωστό
 
-Θέλετε να δημιουργήσετε ένα ζήτημα (issue) στο αποθετήριο του Auto Dark Mode;
-Κάντε κλικ στο "Ναι" για να ανοίξετε ένα νέο παράθυρο προγράμματος περιήγησης.
-</value>
+Θέλετε να δημιουργήσετε ένα ζήτημα (issue) στο αποθετήριο του Auto Dark Mode;</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Παρουσιάστηκε ένα σφάλμα</value>
@@ -521,7 +518,7 @@
     <value>Η υπηρεσία δεν λειτουργεί ακόμα, παρακαλώ περιμένετε…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>Δεν υπάρχουν διαθέσιμες νέες ενημερώσεις.</value>
+    <value>Δεν υπάρχουν διαθέσιμες νέες ενημερώσεις</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>Η εναλλαγή θέματος τέθηκε σε παύση για μία φορά!</value>
@@ -548,10 +545,7 @@
     <value>Μια νέα έκδοση είναι διαθέσιμη!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>Σας ευχαριστούμε που χρησιμοποιείτε το Auto Dark Mode!
-
-Μια νέα έκδοση είναι διαθέσιμη στο GitHub με διορθώσεις και βελτιώσεις.
-Θέλετε να την εγκαταστήσετε;
+    <value>Μια νέα έκδοση είναι διαθέσιμη στο GitHub με διορθώσεις και βελτιώσεις.
 
 Τρέχουσα εγκατεστημένη έκδοση: {0}, νέα έκδοση: {1}</value>
   </data>
@@ -559,7 +553,7 @@
     <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Επόμενη ενημέρωση στις</value>
+    <value>Επόμενη ενημέρωση στις </value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Καμία</value>
@@ -884,34 +878,34 @@
     <value>Εχετε απενεργοποιήσει την καταχώρηση αυτόματης εκκίνησης από τα Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Χρώματα.
+2. Αλλάξτε το χρώμα συστήματος σε 'Ανοιχτόχρωμο' για το φωτεινό θέμα.
+3. Μεταβείτε στις Ρυθμίσεις των Windows &gt; Εξατομίκευση &gt; Θέματα.
+4. Επιλέξτε την αγαπημένη σας ταπετσαρία, δείκτες ποντικιού και χρώμα έμφασης.
+5. Αποθηκεύστε το θέμα σας.
+6. Επαναλάβετε αυτή τη διαδικασία για το σκούρο θέμα.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Επεξεργασία πλήκτρου συντόμευσης</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Αποσυνδέθηκε</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Φόντο</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Απενεργοποίηση της διαχείρισης θέματος από τα Windows</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Διαδρομή</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Η αυτόματη εκκίνηση έχει απενεργοποιηθεί μέσω της καρτέλας "Εκκίνηση εφαρμογών" της Διαχείρισης Εργασιών. Εάν θέλετε το Auto Dark Mode να ξεκινήσει ξανά με τα Windows, παρακαλώ ενεργοποιήστε την ξανά από εκεί.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -941,42 +935,42 @@
     <value>Εμφάνιση ειδοποίησης κατά την εναλλαγή του αυτόματου θέματος</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Επιλέξτε έναν συνδυασμό πλήκτρων. Μόνο οι συντομεύσεις που ξεκινούν με το πλήκτρο των Windows, Ctrl, Alt ή Shift είναι έγκυρες.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Συντόμευση ενεργοποίησης</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Αποθήκευση</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Αναγκαστική αποθήκευση</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Το πλήκτρο συντόμευσης δεν λειτούργησε; Μην ανησυχείτε, ας το αποθηκεύσουμε ξανά</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Η αποθήκευση ήταν επιτυχής</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Η αποθήκευση απέτυχε</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Ξεκινήστε να πληκτρολογείτε για να προσθέσετε εφαρμογές</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Λειτουργία εφαρμογής</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Λειτουργία Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Ρύθμιση εξατομικευμένων χρωμάτων των Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Με καθυστέρηση</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Χωρίς καθυστέρηση</value>
   </data>
 </root>
