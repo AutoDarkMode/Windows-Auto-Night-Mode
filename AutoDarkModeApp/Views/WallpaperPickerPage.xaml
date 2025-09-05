@@ -121,16 +121,20 @@
                         </controls:SettingsCard>
 
                         <!--  Picture path  -->
-                        <controls:SettingsCard
-                            HorizontalContentAlignment="Stretch"
-                            ContentAlignment="Vertical"
-                            Header="{helpers:ResourceString Name=Path}"
-                            Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
-                            <TextBlock
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                IsTextSelectionEnabled="True"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Header>
+                                <StackPanel
+                                    Margin="0,0,-24,0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <TextBlock Text="{helpers:ResourceString Name=PathAt}" />
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        IsTextSelectionEnabled="True"
+                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->
