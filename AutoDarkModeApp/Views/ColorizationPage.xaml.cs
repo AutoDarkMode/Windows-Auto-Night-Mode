@@ -53,7 +53,8 @@ public sealed partial class ColorizationPage : Page
         try
         {
             _builder.Save();
-            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+            if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+
         }
         catch (Exception ex)
         {
@@ -85,7 +86,7 @@ public sealed partial class ColorizationPage : Page
         try
         {
             _builder.Save();
-            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+            if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
         }
         catch (Exception ex)
         {
