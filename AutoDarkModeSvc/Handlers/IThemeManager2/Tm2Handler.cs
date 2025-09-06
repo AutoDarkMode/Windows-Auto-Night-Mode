@@ -192,8 +192,7 @@ public static class Tm2Handler
         {
             flagList.ForEach(f =>
             {
-                // never allow color ignore flag to be set as this breaks win 11 theme switching
-                if (f != ThemeApplyFlags.IgnoreColor) flags |= f;
+                flags |= f;
             });
         }
 

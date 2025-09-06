@@ -373,7 +373,7 @@ public class PostponeManager
         return new(itemDtos);
     }
 
-    public void GetPostonesFromDisk()
+    public void GetPostponesFromDisk()
     {
         try
         {

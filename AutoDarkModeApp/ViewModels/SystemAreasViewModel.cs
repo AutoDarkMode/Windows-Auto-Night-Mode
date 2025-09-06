@@ -27,7 +27,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         AdaptToSystem,
         AlwaysLight,
         AlwaysDark,
-        AccentOnly,
         Disabled,
     }
 
@@ -38,19 +37,13 @@ public partial class SystemAreasViewModel : ObservableRecipient
     public partial SystemSwitchMode SystemSwitchComponentMode { get; set; }
 
     [ObservableProperty]
-    public partial bool AccentColorForTaskbarSettingsCardVisible { get; set; }
+    public partial bool IsTaskbarColorSwitch { get; set; }
 
     [ObservableProperty]
-    public partial bool IsTaskbarColorOnAdaptive { get; set; }
+    public partial bool IsTaskbarAccentOnLight { get; set; }
 
     [ObservableProperty]
-    public partial bool IsAdaptiveTaskbarAccent { get; set; }
-
-    [ObservableProperty]
-    public partial bool IsAdaptiveTaskbarAccentOnLight { get; set; }
-
-    [ObservableProperty]
-    public partial bool IsAdaptiveTaskbarAccentOnDark { get; set; }
+    public partial bool IsTaskbarAccentOnDark { get; set; }
 
     [ObservableProperty]
     public partial bool IsDWMPrevalenceSwitch { get; set; }
@@ -114,7 +107,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
                 Mode.Switch => SystemSwitchMode.AdaptToSystem,
                 Mode.LightOnly => SystemSwitchMode.AlwaysLight,
                 Mode.DarkOnly => SystemSwitchMode.AlwaysDark,
-                Mode.AccentOnly => SystemSwitchMode.AccentOnly,
                 _ => SystemSwitchMode.Disabled,
             };
         }
@@ -122,20 +114,17 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             SystemSwitchComponentMode = SystemSwitchMode.Disabled;
         }
-        AccentColorForTaskbarSettingsCardVisible =
-            SystemSwitchComponentMode != SystemSwitchMode.AlwaysLight && SystemSwitchComponentMode != SystemSwitchMode.AccentOnly && SystemSwitchComponentMode != SystemSwitchMode.Disabled;
-        IsAdaptiveTaskbarAccent = SystemSwitchComponentMode == SystemSwitchMode.AccentOnly;
 
-        IsTaskbarColorOnAdaptive = _builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive;
-        if (_builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive == Theme.Light)
+        IsTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.TaskbarColorSwitch;
+        if (_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
         {
-            IsAdaptiveTaskbarAccentOnLight = true;
-            IsAdaptiveTaskbarAccentOnDark = false;
+            IsTaskbarAccentOnLight = true;
+            IsTaskbarAccentOnDark = false;
         }
         else
         {
-            IsAdaptiveTaskbarAccentOnLight = false;
-            IsAdaptiveTaskbarAccentOnDark = true;
+            IsTaskbarAccentOnLight = false;
+            IsTaskbarAccentOnDark = true;
         }
 
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
@@ -230,7 +219,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
                 SystemSwitchMode.AdaptToSystem => Mode.Switch,
                 SystemSwitchMode.AlwaysLight => Mode.LightOnly,
                 SystemSwitchMode.AlwaysDark => Mode.DarkOnly,
-                SystemSwitchMode.AccentOnly => Mode.AccentOnly,
                 _ => Mode.Switch,
             };
         }
@@ -238,9 +226,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Enabled = false;
         }
-        AccentColorForTaskbarSettingsCardVisible =
-            SystemSwitchComponentMode != SystemSwitchMode.AlwaysLight && SystemSwitchComponentMode != SystemSwitchMode.AccentOnly && SystemSwitchComponentMode != SystemSwitchMode.Disabled;
-        IsAdaptiveTaskbarAccent = value == SystemSwitchMode.AccentOnly;
 
         try
         {
@@ -254,12 +239,12 @@ public partial class SystemAreasViewModel : ObservableRecipient
         RequestThemeSwitch();
     }
 
-    partial void OnIsTaskbarColorOnAdaptiveChanged(bool value)
+    partial void OnIsTaskbarColorSwitchChanged(bool value)
     {
         if (_isInitializing)
             return;
 
-        _builder.Config.SystemSwitch.Component.TaskbarColorOnAdaptive = value;
+        _builder.Config.SystemSwitch.Component.TaskbarColorSwitch = value;
 
         try
         {
@@ -273,35 +258,35 @@ public partial class SystemAreasViewModel : ObservableRecipient
         RequestThemeSwitch();
     }
 
-    partial void OnIsAdaptiveTaskbarAccentOnLightChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (value)
-        {
-            _builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Light;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
-        }
-
-        RequestThemeSwitch();
-    }
-
-    partial void OnIsAdaptiveTaskbarAccentOnDarkChanged(bool value)
+    partial void OnIsTaskbarAccentOnLightChanged(bool value)
     {
         if (_isInitializing)
             return;
 
         if (value)
         {
-            _builder.Config.SystemSwitch.Component.TaskbarColorWhenNonAdaptive = Theme.Dark;
+            _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Light;
+        }
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+        }
+
+        RequestThemeSwitch();
+    }
+
+    partial void OnIsTaskbarAccentOnDarkChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (value)
+        {
+            _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
         }
         try
         {

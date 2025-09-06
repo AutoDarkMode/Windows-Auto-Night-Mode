@@ -82,7 +82,7 @@ static class RegistryHandler
     /// Sets the taskbar color prevalence
     /// </summary>
     /// <param name="theme">0 for disabled, 1 for enabled</param>
-    public static void SetColorPrevalence(int theme)
+    public static void SetTaskbarColorPrevalence(int theme)
     {
         using RegistryKey key = GetPersonalizeKey();
         key.SetValue("ColorPrevalence", theme, RegistryValueKind.DWord);
@@ -92,7 +92,7 @@ static class RegistryHandler
     /// Checks if color prevalence is enabled
     /// </summary>
     /// <returns>true if enabled; false otherwise</returns>
-    public static bool IsColorPrevalence()
+    public static bool IsTaskbarColor()
     {
         using RegistryKey key = GetPersonalizeKey();
         var enabled = key.GetValue("ColorPrevalence").Equals(1);

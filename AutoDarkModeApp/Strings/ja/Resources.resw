@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -741,6 +741,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SelectLightCursor" xml:space="preserve">
     <value>ライト用のカーソルを選択</value>
   </data>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
@@ -888,11 +891,17 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>Select a color</value>
+  </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
+  </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
@@ -906,20 +915,11 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Language" xml:space="preserve">
     <value>言語</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>安定版</value>
-  </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
-  </data>
-  <data name="Set" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>Select a color</value>
-  </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
     <value>Go to Windows Spotlight settings</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>安定版</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
@@ -968,5 +968,8 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="NotDelayed" xml:space="preserve">
     <value>Not Delayed</value>
+  </data>
+  <data name="IgnoreColor" xml:space="preserve">
+    <value>Ignore color</value>
   </data>
 </root>

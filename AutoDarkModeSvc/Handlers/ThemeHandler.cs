@@ -242,7 +242,7 @@ public static class ThemeHandler
                     return;
                 }
             }
-            DwmRefreshHandler.Enqueue(e);
+            DwmRefreshHandler.Enqueue(DwmRefreshSource.ThemeHandler);
         }
         else
         {

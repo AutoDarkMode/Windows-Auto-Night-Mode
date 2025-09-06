@@ -50,6 +50,7 @@ class ComponentManager
     private readonly ISwitchComponent ColorizationSwitch;
     private readonly ISwitchComponent CursorSwitch;
     private readonly ISwitchComponent TouchKeyboardSwitch = new TouchKeyboardSwitch();
+    private readonly ISwitchComponent TaskbarColorSwitch;
 
     /// <summary>
     /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -65,6 +66,7 @@ class ComponentManager
         ColorizationSwitch?.RunUpdateSettingsState(Builder.Config.ColorizationSwitch);
         CursorSwitch?.RunUpdateSettingsState(Builder.Config.CursorSwitch);
         TouchKeyboardSwitch?.RunUpdateSettingsState(Builder.Config.TouchKeyboardSwitch);
+        TaskbarColorSwitch?.RunUpdateSettingsState(Builder.Config.SystemSwitch);
     }
 
     public void UpdateScriptSettings()
@@ -121,9 +123,11 @@ class ComponentManager
         {
             Logger.Info($"using colorization and cursor switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
             ColorizationSwitch = new ColorizationSwitch();
-            Components.Add(ColorizationSwitch);
             CursorSwitch = new CursorSwitch();
+            TaskbarColorSwitch = new TaskbarColorSwitch();
+            Components.Add(ColorizationSwitch);
             Components.Add(CursorSwitch);
+            Components.Add(TaskbarColorSwitch);
         }
         UpdateSettings();
         UpdateScriptSettings();

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -735,6 +735,9 @@
   <data name="SelectLightCursor" xml:space="preserve">
     <value>选择浅色光标</value>
   </data>
+  <data name="Set" xml:space="preserve">
+    <value>设定</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -882,11 +885,17 @@
     <value>背景</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>选择颜色</value>
+  </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>停用 Windows 管理您的主题</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>路径</value>
+  </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>自动启动已在任务管理器的“启动应用”标签页中禁用。如果您想重新让 Auto Dark Mode 随 Windows 启动，请在那里重新启用。</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
@@ -900,20 +909,11 @@
   <data name="Language" xml:space="preserve">
     <value>语言</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>稳定版</value>
-  </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>自动启动已在任务管理器的“启动应用”标签页中禁用。如果您想重新让 Auto Dark Mode 随 Windows 启动，请在那里重新启用。</value>
-  </data>
-  <data name="Set" xml:space="preserve">
-    <value>设定</value>
-  </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>选择颜色</value>
-  </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
     <value>前往 Windows 聚焦设置</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>稳定版</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>切换</value>
@@ -962,5 +962,8 @@
   </data>
   <data name="NotDelayed" xml:space="preserve">
     <value>未推迟</value>
+  </data>
+  <data name="IgnoreColor" xml:space="preserve">
+    <value>Ignore color</value>
   </data>
 </root>
