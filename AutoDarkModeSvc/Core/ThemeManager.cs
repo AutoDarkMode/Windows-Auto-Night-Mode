@@ -82,8 +82,8 @@ static class ThemeManager
             }
         }
 
-        // process switches with a requested theme set before automatic ones
-        if (e.Theme != Theme.Automatic)
+        // process switches with a requested theme
+        if (e.Theme != Theme.Resolve)
         {
             UpdateTheme(e);
             return;
@@ -192,7 +192,7 @@ static class ThemeManager
     [MethodImpl(MethodImplOptions.Synchronized)]
     public static void UpdateTheme(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Unknown || e.Theme == Theme.Automatic)
+        if (e.Theme == Theme.Unknown || e.Theme == Theme.Resolve)
         {
             Logger.Info("theme switch requested with no target theme");
             return;

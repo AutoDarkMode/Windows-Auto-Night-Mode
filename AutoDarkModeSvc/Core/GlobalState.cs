@@ -54,7 +54,7 @@ public class GlobalState
     /// </summary>
     public Theme InternalTheme
     {
-        get { return _requestedTheme; }
+        get => _requestedTheme;
         set
         {
             _requestedTheme = value;

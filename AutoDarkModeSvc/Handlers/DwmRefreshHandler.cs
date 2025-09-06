@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using NLog;
 
@@ -15,7 +16,7 @@ internal sealed partial class DwmRefreshHandler
     private static readonly DwmRefreshHandler _instance = new();
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-    private BlockingCollection<SwitchEventArgs> Queue { get; }
+    private BlockingCollection<DwmRefreshSource> Queue { get; }
     private Thread Worker { get; set; }
     private CancellationTokenSource Cancellation { get; } = new();
 
@@ -42,7 +43,7 @@ internal sealed partial class DwmRefreshHandler
         {
             try
             {
-                foreach (SwitchEventArgs e in Queue.GetConsumingEnumerable(Cancellation.Token))
+                foreach (DwmRefreshSource s in Queue.GetConsumingEnumerable(Cancellation.Token))
                 {
                     try
                     {
@@ -50,7 +51,7 @@ internal sealed partial class DwmRefreshHandler
                     }
                     catch (Exception ex)
                     {
-                        Logger.Warn(ex, "dwm management: refresh failed");
+                        Logger.Warn(ex, $"dwm management: refresh failed, source {Enum.GetName(s)}");
                     }
                 }
             }
@@ -68,10 +69,10 @@ internal sealed partial class DwmRefreshHandler
         Worker.Start();
     }
 
-    public static void Enqueue(SwitchEventArgs e)
+    public static void Enqueue(DwmRefreshSource source)
     {
         Logger.Debug("dwm management: enqueuing new dwm refresh");
-        _instance.Queue.Add(e);
+        _instance.Queue.Add(source);
     }
 
     public static void Shutdown()

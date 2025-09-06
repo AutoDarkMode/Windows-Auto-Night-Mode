@@ -30,7 +30,11 @@ public enum Theme
     Unknown = -1,
     Dark = 0,
     Light = 1,
-    Automatic = 2
+    /// <summary>
+    /// If resovle is set, ADM needs to determine the theme that the EventArgs should propagate.
+    /// This is the case during overrides (postpone, dark on battery etc)
+    /// </summary>
+    Resolve = 2
 };
 
 /// <summary>
@@ -59,7 +63,15 @@ public enum SwitchSource
     Startup,
     SystemUnlock,
     Api,
-    SystemTimeChanged
+    SystemTimeChanged,
+}
+
+public enum DwmRefreshSource
+{
+    ThemeManager,
+    ThemeHandler,
+    TaskbarColorSwitchComponent,
+    User
 }
 
 public enum ThemeOverrideSource
