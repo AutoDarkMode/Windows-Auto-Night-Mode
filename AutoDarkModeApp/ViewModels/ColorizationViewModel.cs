@@ -313,20 +313,4 @@ public partial class ColorizationViewModel : ObservableRecipient
 
         _isInitializing = false;
     }
-
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "ColorizationViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
-        }
-    }
 }
