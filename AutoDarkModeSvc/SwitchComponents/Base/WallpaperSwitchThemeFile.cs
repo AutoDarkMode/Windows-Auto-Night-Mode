@@ -53,25 +53,6 @@ internal class WallpaperSwitchThemeFile : WallpaperSwitch
         spotlightEnabled = false;
     }
 
-    protected override void SwitchGlobal(Theme newTheme)
-    {
-        WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
-        if (newTheme == Theme.Light)
-        {
-            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Light;
-        }
-        else
-        {
-            GlobalState.ManagedThemeFile.Desktop.Wallpaper = Settings.Component.GlobalWallpaper.Dark;
-        }
-        GlobalState.ManagedThemeFile.Slideshow.Enabled = false;
-        GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
-        currentGlobalTheme = newTheme;
-        currentIndividualTheme = Theme.Unknown;
-        currentSolidColorTheme = Theme.Unknown;
-        spotlightEnabled = false;
-    }
-
     protected override bool SolidColorNeedsUpdateHandler()
     {
         HookPosition = HookPosition.PostSync;
@@ -101,25 +82,36 @@ internal class WallpaperSwitchThemeFile : WallpaperSwitch
             .Select(w => Path.GetFileName(w.Item1))
             .ToList();
 
-        if (e.Theme == Theme.Dark && Settings.Component.TypeDark == WallpaperType.Individual)
+        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        switch (type)
         {
-            var wallpapersTarget = Settings.Component.Monitors
-                .Select(m => Path.GetFileName(m.DarkThemeWallpaper))
-                .ToList();
-            return CheckAgreement(wallpapersInThemeFile, wallpapersTarget);
-        }
-        else if (e.Theme == Theme.Light && Settings.Component.TypeLight == WallpaperType.Individual)
-        {
-            var wallpapersTarget = Settings.Component.Monitors
-                .Select(m => Path.GetFileName(m.LightThemeWallpaper))
-                .ToList();
-            return CheckAgreement(wallpapersInThemeFile, wallpapersTarget);
+            case WallpaperType.Individual:
+                List<string> wallpapersTarget = [.. Settings.Component.Monitors.
+                    Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper))];
+                return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
+            case WallpaperType.Global:
+                return CheckAgreementGlobal();
         }
 
         return true;
     }
 
-    private bool CheckAgreement(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
+    private bool CheckAgreementGlobal()
+    {
+        bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper) == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper());
+        if (ok)
+        {
+            Logger.Info($"wallpaper synchronization integrity check passed");
+        }
+        else
+        {
+            Logger.Warn($"wallpaper synchronization integrity check failed: wanted {GlobalState.ManagedThemeFile.Desktop.Wallpaper}, is {WallpaperHandler.GetGlobalWallpaper()}");
+        }
+        return ok;
+    }
+
+    private bool CheckAgreementIndividual(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
     {
         var wantedAgreement = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
 

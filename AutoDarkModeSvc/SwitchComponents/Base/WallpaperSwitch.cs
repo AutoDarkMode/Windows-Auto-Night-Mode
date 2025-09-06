@@ -73,17 +73,17 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
         else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
         {
-            HookPosition = HookPosition.PostSync;
+            HookPosition = HookPosition.PreSync;
             return true;
         }
         else if (type == WallpaperType.Spotlight)
         {
+            HookPosition = HookPosition.PostSync;
             if (spotlightEnabled.HasValue && spotlightEnabled.Value)
             {
                 return false;
             }
 
-            HookPosition = HookPosition.PostSync;
             return true;
         }
 
