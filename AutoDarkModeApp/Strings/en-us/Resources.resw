@@ -901,6 +901,9 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
@@ -967,7 +970,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="NotDelayed" xml:space="preserve">
     <value>Not Delayed</value>
   </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  <data name="IgnoreColor" xml:space="preserve">
+    <value>Ignore color</value>
   </data>
 </root>

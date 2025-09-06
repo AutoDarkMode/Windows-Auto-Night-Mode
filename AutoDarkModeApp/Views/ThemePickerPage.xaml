@@ -72,6 +72,9 @@
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreDesktopIcons}" IsChecked="{x:Bind ViewModel.IgnoreDesktopIconsEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreColor}" IsChecked="{x:Bind ViewModel.IgnoreColorEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
 
             </StackPanel>
         </Grid>
