@@ -302,6 +302,14 @@ class ComponentManager
     }
 
 
+    /// <summary>
+    /// Runs integrity checks for pre-hook modules that depend on being loaded into the theme file before Auto Dark Mode
+    /// writes its own changes
+    /// </summary>
+    /// <param name="components"></param>
+    /// <param name="e"></param>
+    /// <param name="hookPosition"></param>
+    /// <returns></returns>
     [MethodImpl(MethodImplOptions.Synchronized)]
     public List<(ISwitchComponent, bool)> RunIntegrityChecks(List<ISwitchComponent> components,SwitchEventArgs e, HookPosition hookPosition)
     {

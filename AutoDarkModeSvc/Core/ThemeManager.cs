@@ -281,8 +281,6 @@ static class ThemeManager
                         for (i = 0; i <= maxRetries; i++)
                         {
                             Thread.Sleep(retrySleep);
-                            // Don't patch because it's a retry operation and it could actually change the value back, which we don't want
-                            // This introduces the limitation that a pre-hook can't be a component that requires a partial or full dwm refresh
                             state.ManagedThemeFile.SyncWithActiveTheme(false);
                             if (component.RunVerifyOperationIntegrity(e))
                             {
