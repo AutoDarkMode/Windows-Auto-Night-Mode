@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Auto Dark Mode title image" src="./Assets/Readme.png" />
+  <img alt="Auto Dark Mode title image" src="./assets/Readme.png" />
 </p>
 
 <p href="https://hosted.weblate.org/engage/auto-dark-mode/">
