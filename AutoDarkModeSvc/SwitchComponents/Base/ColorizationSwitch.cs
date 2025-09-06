@@ -113,7 +113,7 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
             invalidHexFound = true;
             return;
         }
-        Logger.Info($"update info - color - previous: {oldColor}, pending: {newHex} ({Enum.GetName(typeof(Theme), e.Theme)})");
+        Logger.Info($"update info - color - previous: {NormalizeHex(oldColor)}, pending: {NormalizeHex(newHex)} ({Enum.GetName(typeof(Theme), e.Theme)})");
         newHex = newHex.Replace("#", "0X");
         GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor = (newHex, sortOrderColCol);
     }
@@ -170,5 +170,11 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
                 Logger.Error(ex, $"error auto updating colorization value {accent} for {Enum.GetName(e.Theme)}");
             }
         }
+    }
+
+
+    private string NormalizeHex(string hex)
+    {
+        return hex != null && hex.StartsWith('#') && hex.Length == 9 ? string.Concat("#", hex.AsSpan(3)) : hex;
     }
 }
