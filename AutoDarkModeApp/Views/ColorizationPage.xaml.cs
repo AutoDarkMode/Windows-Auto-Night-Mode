@@ -48,17 +48,16 @@ public sealed partial class ColorizationPage : Page
         {
             ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
             _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.InternalColorPicker.Color.ToHex();
-        }
 
-        try
-        {
-            _builder.Save();
-            if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
-
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            try
+            {
+                _builder.Save();
+                if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+            }
+            catch (Exception ex)
+            {
+                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            }
         }
     }
 
@@ -82,16 +81,17 @@ public sealed partial class ColorizationPage : Page
         {
             ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
             _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.InternalColorPicker.Color.ToHex();
+            try
+            {
+                _builder.Save();
+                if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+            }
+            catch (Exception ex)
+            {
+                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
+            }
         }
-        try
-        {
-            _builder.Save();
-            if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
-        }
+
     }
 
     private async void RequestThemeSwitch()
