@@ -30,12 +30,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles;
 public partial class ThemeFile
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private bool themeFixShouldAdd = false;
-    public ThemeFile(string path)
-    {
-        Random rnd = new Random();
-        int val = rnd.Next(0, 2);
-        if (val == 0) themeFixShouldAdd = true;
+    public ThemeFile(string path) {
         ThemeFilePath = path;
     }
     public Encoding Encoding { get; set; } = Encoding.GetEncoding(1252);

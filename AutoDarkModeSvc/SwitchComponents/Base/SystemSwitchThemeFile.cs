@@ -28,7 +28,6 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
     protected bool themeModeEnabled;
-    protected bool currentTaskbarColorActive;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public SystemSwitchThemeFile() : base() { }
 
@@ -90,7 +89,6 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
 
     protected virtual void SwitchSystemTheme(Theme newTheme)
     {
-        bool oldAccent = currentTaskbarColorActive;
         string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
         try
         {
@@ -120,8 +118,8 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
         {
             accentInfo = Settings.Component.TaskbarColorSwitch ? "yes" : "no";
         }
-        Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "Accent" : "NoAccent")}, " +
-            $"pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
+        Logger.Info($"update info - previous: {oldTheme}, " +
+            $"pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, " +
             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
             $"accent: {accentInfo}");
     }

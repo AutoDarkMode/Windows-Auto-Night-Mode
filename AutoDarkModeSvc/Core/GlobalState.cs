@@ -31,13 +31,9 @@ namespace AutoDarkModeSvc.Core;
 public class GlobalState
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static GlobalState state;
+    private static readonly GlobalState state = new();
     public static GlobalState Instance()
     {
-        if (state == null)
-        {
-            state = new GlobalState();
-        }
         return state;
     }
     protected GlobalState()

@@ -22,7 +22,7 @@ internal sealed partial class DwmRefreshHandler
 
     [LibraryImport("user32.dll", SetLastError = true, EntryPoint = "SendMessageTimeoutW",
                    StringMarshalling = StringMarshalling.Utf16)]
-    internal static partial IntPtr SendMessageTimeout(IntPtr hWnd, uint Msg, UIntPtr wParam, string? lParam, uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+    internal static partial IntPtr SendMessageTimeout(IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam, uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
 
     private const int TIMEOUT_MS = 5000;
     private const int HWND_BROADCAST = 0xffff;
