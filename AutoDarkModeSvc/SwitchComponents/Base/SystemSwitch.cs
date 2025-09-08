@@ -29,7 +29,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 class SystemSwitch : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
-    protected bool themeModeEnabled;
     protected bool currentTaskbarColorActive;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public SystemSwitch() : base() { }
@@ -60,7 +59,7 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
         {
             // if theme does not match dark we need to report true, as accent color isn't available in light mode
             // Do not return true on windows theme mode, as this would potentially modify the theme
-            if (currentComponentTheme != Theme.Dark && !themeModeEnabled) return true;
+            if (currentComponentTheme != Theme.Dark) return true;
 
             if (e.Theme == Theme.Dark)
             {
@@ -253,7 +252,7 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
 
     protected async Task SwitchAccentOnly(Theme newTheme, int taskdelay)
     {
-        if (currentComponentTheme != Theme.Dark && !themeModeEnabled)
+        if (currentComponentTheme != Theme.Dark)
         {
             RegistryHandler.SetSystemTheme((int)Theme.Dark);
         }

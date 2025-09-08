@@ -27,7 +27,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
-    protected bool themeModeEnabled;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public SystemSwitchThemeFile() : base() { }
 
@@ -161,8 +160,6 @@ class SystemSwitchThemeFile : BaseComponent<SystemSwitchSettings>
 
     protected override void UpdateSettingsState()
     {
-        AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-        themeModeEnabled = builder.Config.WindowsThemeMode.Enabled;
         RefreshRegkeys();
     }
 
