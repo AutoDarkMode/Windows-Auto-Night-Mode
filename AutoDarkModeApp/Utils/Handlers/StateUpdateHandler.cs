@@ -129,12 +129,12 @@ internal static class StateUpdateHandler
     {
         add
         {
-            ConfigWatcher.Changed += value;
+            ConfigWatcher?.Changed += value;
             _delegatesConfigWatcher.Add(value);
         }
         remove
         {
-            ConfigWatcher.Changed -= value;
+            ConfigWatcher?.Changed -= value;
             _delegatesConfigWatcher.Remove(value);
         }
     }
@@ -143,12 +143,12 @@ internal static class StateUpdateHandler
     {
         add
         {
-            ScriptConfigWatcher.Changed += value;
+            ScriptConfigWatcher?.Changed += value;
             _delegatesScriptConfigWatcher.Add(value);
         }
         remove
         {
-            ScriptConfigWatcher.Changed -= value;
+            ScriptConfigWatcher?.Changed -= value;
             _delegatesScriptConfigWatcher.Remove(value);
         }
     }
@@ -183,8 +183,8 @@ internal static class StateUpdateHandler
 
     public static void Dispose()
     {
-        ConfigWatcher.Dispose();
-        ScriptConfigWatcher.Dispose();
+        ConfigWatcher?.Dispose();
+        ScriptConfigWatcher?.Dispose();
         PostponeRefreshTimer.Dispose();
         _debounceTimer.Stop();
     }
