@@ -41,16 +41,16 @@ class ComponentManager
     private Theme lastSorting = Theme.Unknown;
 
     // Components
-    private readonly ISwitchComponent AppsSwitch;
+    private readonly ISwitchComponent AppsSwitch = new AppsSwitch();
     private readonly ISwitchComponent ColorFilterSwitch = new ColorFilterSwitch();
     private readonly ISwitchComponent AccentColorSwitch = new AccentColorSwitch();
-    private readonly ISwitchComponent SystemSwitch;
+    private readonly ISwitchComponent SystemSwitch = new SystemSwitch();
     private readonly ISwitchComponent WallpaperSwitch = new WallpaperSwitch();
     private readonly ISwitchComponent ScriptSwitch = new ScriptSwitch();
-    private readonly ISwitchComponent ColorizationSwitch;
-    private readonly ISwitchComponent CursorSwitch;
+    private readonly ISwitchComponent ColorizationSwitch = new ColorizationSwitch();
+    private readonly ISwitchComponent CursorSwitch = new CursorSwitch();
     private readonly ISwitchComponent TouchKeyboardSwitch = new TouchKeyboardSwitch();
-    private readonly ISwitchComponent TaskbarColorSwitch;
+    private readonly ISwitchComponent TaskbarColorSwitch = new TaskbarColorSwitch();
 
     /// <summary>
     /// Instructs all components to refresh their settings objects by injecting a new settings object
@@ -81,54 +81,20 @@ class ComponentManager
     {
         bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
         Logger.Info($"current windows build: {Environment.OSVersion.Version.Build}.{(hasUbr ? ubr : 0)}");
-
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
-        {
-            Logger.Info($"using apps and system components for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
-            SystemSwitch = new SystemSwitchThemeFile();
-            AppsSwitch = new AppsSwitchThemeFile();
-        }
-        else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.MinBuildForNewFeatures)
-        {
-            Logger.Info($"using app and system components for legacy builds");
-            SystemSwitch = new SystemSwitch();
-            AppsSwitch = new AppsSwitch();
-        }
-
-        if (hasUbr &&
-           ((Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight) ||
-           Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2))
-        {
-            Logger.Info($"using wallpaper component for windows builds {(int)WindowsBuilds.Win11_22H2}.{(int)WindowsBuildsUbr.Win11_22H2_Spotlight} and up");
-            WallpaperSwitch = new WallpaperSwitchThemeFile();
-        }
-        else
-        {
-            WallpaperSwitch = new WallpaperSwitch();
-            Logger.Info($"using default wallpaper component");
-        }
-
         Builder = AdmConfigBuilder.Instance();
-        Components = new List<ISwitchComponent>
-        {
+        Components =
+        [
             AppsSwitch,
             ColorFilterSwitch,
             SystemSwitch,
             AccentColorSwitch,
             WallpaperSwitch,
             ScriptSwitch,
-            TouchKeyboardSwitch
-        };
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
-        {
-            Logger.Info($"using colorization and cursor switcher for newer builds {(int)WindowsBuilds.MinBuildForNewFeatures} and up");
-            ColorizationSwitch = new ColorizationSwitch();
-            CursorSwitch = new CursorSwitch();
-            TaskbarColorSwitch = new TaskbarColorSwitch();
-            Components.Add(ColorizationSwitch);
-            Components.Add(CursorSwitch);
-            Components.Add(TaskbarColorSwitch);
-        }
+            TouchKeyboardSwitch,
+            TaskbarColorSwitch,
+            ColorizationSwitch,
+            CursorSwitch
+        ];
         UpdateSettings();
         UpdateScriptSettings();
     }

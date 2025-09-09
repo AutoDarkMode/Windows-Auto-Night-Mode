@@ -259,7 +259,7 @@ static class ThemeManager
             cm.RunPreSync(componentsToUpdate, e);
 
             //logic for our classic mode 2.0, gets the currently active theme for modification
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 // get data from active theme and apply theme fix
                 state.ManagedThemeFile.SyncWithActiveTheme(true);
@@ -302,7 +302,7 @@ static class ThemeManager
             // regular modules that do not need to modify the active theme
             cm.RunPostSync(componentsToUpdate, e);
             // Logic for managed mode
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 try
                 {
@@ -319,7 +319,7 @@ static class ThemeManager
                         if (newTheme == Theme.Light && builder.Config.ColorizationSwitch.Component.LightAutoColorization) needsWallpaperRefresh = true;
                         else if (newTheme == Theme.Dark && builder.Config.ColorizationSwitch.Component.DarkAutoColorization) needsWallpaperRefresh = true;
                     }
-                    if (!componentsToUpdate.Any(c => c is WallpaperSwitchThemeFile) && !needsWallpaperRefresh)
+                    if (!componentsToUpdate.Any(c => c is WallpaperSwitch) && !needsWallpaperRefresh)
                     {
                         flagList = new() { ThemeApplyFlags.IgnoreBackground };
                     }

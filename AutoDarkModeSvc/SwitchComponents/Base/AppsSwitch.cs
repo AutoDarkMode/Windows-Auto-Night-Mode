@@ -16,41 +16,80 @@
 #endregion
 using System;
 using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-/// <summary>
-/// This class is a special case for the AppsSwitchThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
-/// </summary>
-class AppsSwitch : AppsSwitchThemeFile
+class AppsSwitch : BaseComponent<AppsSwitchSettings>
 {
-    protected override void HandleSwitch(SwitchEventArgs e)
+    protected Theme currentComponentTheme;
+    public AppsSwitch() : base() { }
+
+    protected override void EnableHook()
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        RefreshRegkeys();
+    }
+
+    protected void RefreshRegkeys()
+    {
         try
         {
-            if (Settings.Component.Mode == Mode.DarkOnly)
-            {
-                RegistryHandler.SetAppsTheme((int)Theme.Dark);
-                currentComponentTheme = Theme.Dark;
-            }
-            else if (Settings.Component.Mode == Mode.LightOnly)
-            {
-                RegistryHandler.SetAppsTheme((int)Theme.Light);
-                currentComponentTheme = Theme.Light;
-            }
-            else
-            {
-                RegistryHandler.SetAppsTheme((int)e.Theme);
-                currentComponentTheme = e.Theme;
-            }
+            currentComponentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
         }
         catch (Exception ex)
         {
-            Logger.Error(ex, "could not set apps theme");
+            Logger.Error(ex, "couldn't initialize apps theme state");
         }
-        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+    }
+
+    public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
+    public override bool ThemeHandlerCompatibility { get; } = false;
+
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    {
+        if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
+        {
+            return true;
+        }
+        else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
+        {
+            return true;
+        }
+        else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    protected override void HandleSwitch(SwitchEventArgs e)
+    {
+        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        ThemeFile themeFile = GlobalState.ManagedThemeFile;
+
+        if (Settings.Component.Mode == Mode.DarkOnly)
+        {
+            themeFile.VisualStyles.AppMode = (nameof(Theme.Dark), themeFile.VisualStyles.AppMode.Item2);
+            currentComponentTheme = Theme.Dark;
+        }
+        else if (Settings.Component.Mode == Mode.LightOnly)
+        {
+            themeFile.VisualStyles.AppMode = (nameof(Theme.Light), themeFile.VisualStyles.AppMode.Item2);
+            currentComponentTheme = Theme.Light;
+        }
+        else
+        {
+            themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), e.Theme), themeFile.VisualStyles.AppMode.Item2);
+            currentComponentTheme = e.Theme;
+        }
+        Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+    }
+
+    protected override void UpdateSettingsState()
+    {
+        RefreshRegkeys();
     }
 }

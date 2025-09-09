@@ -47,7 +47,7 @@ internal sealed partial class DwmRefreshHandler
                 {
                     try
                     {
-                        BroadcastMessages();
+                        BroadcastThemeChangedMessages();
                     }
                     catch (Exception ex)
                     {
@@ -96,7 +96,7 @@ internal sealed partial class DwmRefreshHandler
         Logger.Debug("dwm management: refresh handler stopped");
     }
 
-    private static void BroadcastMessages()
+    private static void BroadcastThemeChangedMessages()
     {
         Logger.Info("dwm management: starting refresh");
         try

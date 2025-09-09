@@ -166,7 +166,7 @@ public partial class SettingsViewModel : ObservableRecipient
         IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
-        EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent || Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures);
+        EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent);
         IsDisableEnergySaverOnThemeSwitch = _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch;
         BatterySliderValue = _builder.Config.Tunable.BatterySliderDefaultValue;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;

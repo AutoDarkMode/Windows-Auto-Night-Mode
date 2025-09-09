@@ -43,14 +43,7 @@ public static class ThemeHandler
 
     private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
-        {
-            ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched, flagList);
-        }
-        else
-        {
-            ApplyIThemeManager(themeFilePath, suppressLogging, unmanagedPatched);
-        }
+        ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched, flagList);
     }
 
     /// <summary>

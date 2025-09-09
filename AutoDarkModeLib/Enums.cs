@@ -120,7 +120,6 @@ public enum BridgeResponseCode
 
 public enum WindowsBuilds : int
 {
-    MinBuildForNewFeatures = 19044,
     Win11_RC = 22000,
     Win11_22H2 = 22621,
     Win11_23H2 = 22631,
