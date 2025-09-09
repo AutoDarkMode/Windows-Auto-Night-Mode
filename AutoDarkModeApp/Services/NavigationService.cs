@@ -3,6 +3,7 @@ using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
+using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
@@ -19,6 +20,14 @@ public class NavigationService : INavigationService
 
     private readonly ObservableCollection<BreadcrumbItem> _breadcrumbItems = [];
     private readonly Dictionary<Type, string> _customHeaders = [];
+    private readonly Dictionary<Type, string> _hiddenPageParents = new()
+{
+    // Replace with your actual page types
+    { typeof(WallpaperPickerPage), "Personalization" },
+    { typeof(ColorizationPage), "Personalization" },
+    { typeof(CursorsPage), "Personalization" },
+    { typeof(ThemePickerPage), "Personalization" }
+};
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public object? SettingsItem => _navigationView?.SettingsItem;
@@ -168,35 +177,49 @@ public class NavigationService : INavigationService
         }
     }
 
+    private List<NavigationViewItem> GetFullNavigationPath(Type pageType)
+    {
+        var path = GetNavigationPath(_navigationView.MenuItems, pageType);
+        if (path.Count > 0)
+            return path;
+
+        // Check footer menu items
+        path = GetNavigationPath(_navigationView.FooterMenuItems, pageType);
+        if (path.Count > 0)
+            return path;
+
+        // Check if it's the Settings item
+        if (_navigationView.SettingsItem is NavigationViewItem settingsItem)
+        {
+            if (IsMenuItemForPageType(settingsItem, pageType))
+                return [settingsItem];
+        }
+
+        return [];
+    }
+
+    // Replace in OnNavigated:
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         if (_navigationView == null)
             return;
 
-        if (e.SourcePageType == typeof(SettingsPage))
-        {
-            _navigationView.SelectedItem = _navigationView.SettingsItem;
-            _breadcrumbItems.Clear();
-            _breadcrumbItems.Add(new BreadcrumbItem()
-            {
-                Content = ((ContentControl)_navigationView.SettingsItem).Content,
-                Tag = ((ContentControl)_navigationView.SettingsItem).Tag
-            });
-            return;
-        }
+        // Get the path to the loaded page in the nav menu, including footer and settings
+        var path = GetFullNavigationPath(e.SourcePageType);
 
-        if (_customHeaders.TryGetValue(e.SourcePageType, out string? customHeader))
+        // Optionally update breadcrumbs
+        _breadcrumbItems.Clear();
+        if (path.Count > 0)
         {
-            _breadcrumbItems.Add(new BreadcrumbItem() { Content = customHeader });
-            return;
+            foreach (var item in path)
+                _breadcrumbItems.Add(new BreadcrumbItem { Content = item.Content, Tag = item.Tag });
         }
-
-        var selectedItem = GetSelectedItem(e.SourcePageType);
-        if (selectedItem != null)
+        else if (_hiddenPageParents.TryGetValue(e.SourcePageType, out var parentName))
         {
-            _navigationView.SelectedItem = selectedItem;
-            _breadcrumbItems.Clear();
-            _breadcrumbItems.Add(new BreadcrumbItem() { Content = selectedItem.Content, Tag = selectedItem.Tag });
+            // Add the parent as the first breadcrumb
+            _breadcrumbItems.Add(new BreadcrumbItem { Content = parentName, Tag = "Personalization" });
+            // Add the current page as the second breadcrumb
+            _breadcrumbItems.Add(new BreadcrumbItem { Content = e.SourcePageType.Name, Tag = e.SourcePageType.Name });
         }
     }
 
@@ -207,11 +230,6 @@ public class NavigationService : INavigationService
 
     private void OnBreadcrumbItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
     {
-        for (int i = _breadcrumbItems.Count - 1; i >= args.Index + 1; i--)
-        {
-            _breadcrumbItems.RemoveAt(i);
-        }
-
         if (args.Item is BreadcrumbItem breadcrumbItem && breadcrumbItem.Tag is string pageKey)
         {
             pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
@@ -256,6 +274,26 @@ public class NavigationService : INavigationService
             return _pageService.GetPageType(pageKey) == sourcePageType;
         }
         return false;
+    }
+
+    private List<NavigationViewItem> GetNavigationPath(IEnumerable<object> menuItems, Type pageType)
+    {
+        foreach (var item in menuItems.OfType<NavigationViewItem>())
+        {
+            if (IsMenuItemForPageType(item, pageType))
+            {
+                return [item];
+            }
+
+            var childPath = GetNavigationPath(item.MenuItems, pageType);
+            if (childPath.Count > 0)
+            {
+                var path = new List<NavigationViewItem> { item };
+                path.AddRange(childPath);
+                return path;
+            }
+        }
+        return [];
     }
 }
 
