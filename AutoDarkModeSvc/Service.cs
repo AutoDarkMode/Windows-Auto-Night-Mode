@@ -235,7 +235,7 @@ class Service : Form
             if (expiry.Year != 1)
             {
                 if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.Until} {expiry:HH:mm})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ({Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
@@ -245,7 +245,7 @@ class Service : Form
                 }
                 else if (skipType == SkipType.UntilSunrise)
                 {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ( {Strings.Resources.UntilSunset})";
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ({Strings.Resources.UntilSunset})";
                 }
                 else
                 {
