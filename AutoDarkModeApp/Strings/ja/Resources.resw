@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -741,9 +741,6 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SelectLightCursor" xml:space="preserve">
     <value>ライト用のカーソルを選択</value>
   </data>
-  <data name="Set" xml:space="preserve">
-    <value>Set</value>
-  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
@@ -882,7 +879,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
 6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>ホットキーを編集</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>切断済み</value>
@@ -891,17 +888,11 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>Select a color</value>
-  </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
-  </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
@@ -915,61 +906,67 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Language" xml:space="preserve">
     <value>言語</value>
   </data>
-  <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
-  </data>
   <data name="Stable" xml:space="preserve">
     <value>安定版</value>
   </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>色を選択</value>
+  </data>
+  <data name="OpenWindowsSpotlight" xml:space="preserve">
+    <value>Windows スポットライトの設定を開く</value>
+  </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>切り替え</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>自動的なテーマ切り替えが停止されたら通知を表示</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>自動的なテーマ切り替えを切り替えたら通知を表示</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>キーの組み合わせを選択します。Windowsキー、Ctrl、Alt、Shift とのショートカットが使えます</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>ショートカットを使用</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>保存</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>強制的に保存</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>ホットキーが動作していない？再び保存してみてください</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>保存しました</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>保存に失敗</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>アプリを追加するには入力を開始します</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>アプリモード</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Windows モード</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Windows の色の個人用設定</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>遅延</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
-  </data>
-  <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>遅延しない</value>
   </data>
 </root>
