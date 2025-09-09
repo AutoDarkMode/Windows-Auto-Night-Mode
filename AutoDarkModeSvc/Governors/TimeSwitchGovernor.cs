@@ -55,15 +55,8 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
             }
         }
 
-        if (!State.PostponeManager.IsPostponed)
-        {
-            if (init) init = false;
-            return new(isInSwitchWindow, new(SwitchSource.TimeSwitchModule, Theme.Resolve));
-        }
-        else
-        {
-            return new(isInSwitchWindow);
-        }
+        if (init) init = false;
+        return new(isInSwitchWindow, new(SwitchSource.TimeSwitchModule, Theme.Resolve));
     }
 
     public void EnableHook()

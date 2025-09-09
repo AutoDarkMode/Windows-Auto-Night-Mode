@@ -221,7 +221,11 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected virtual void SwitchGlobal(Theme newTheme)
     {
-        WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+        (bool ok, string wallpaper) = WallpaperHandler.SetGlobalWallpaper(Settings.Component.GlobalWallpaper, newTheme);
+        if (ok)
+        {
+            GlobalState.ManagedThemeFile.Desktop.Wallpaper = wallpaper;
+        }
         currentGlobalTheme = newTheme;
         currentIndividualTheme = Theme.Unknown;
         currentSolidColorTheme = Theme.Unknown;
