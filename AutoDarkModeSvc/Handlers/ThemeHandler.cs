@@ -73,7 +73,7 @@ public static class ThemeHandler
         // string appliedThemeFilePath = null;
 
         // refresh active theme for syncing data into unmanaged themes
-        state.ManagedThemeFile.SyncWithActiveTheme(logging: false);
+        state.ManagedThemeFile.SyncWithActiveTheme(false, logging: false);
 
         if (newTheme == Theme.Light)
         {

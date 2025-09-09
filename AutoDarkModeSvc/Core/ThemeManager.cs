@@ -262,7 +262,7 @@ static class ThemeManager
             if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 // get data from active theme and apply theme fix
-                state.ManagedThemeFile.SyncWithActiveTheme(true);
+                state.ManagedThemeFile.SyncWithActiveTheme(false);
 
                 int retrySleep = 1000;
                 var integrityCheckResults = cm.RunIntegrityChecks(componentsToUpdate, e, HookPosition.PreSync);
