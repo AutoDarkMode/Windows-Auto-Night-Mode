@@ -9,6 +9,7 @@ public interface INavigationService
     object? SettingsItem { get; }
 
     void InitializeNavigationView(NavigationView navigationView);
+    void InitializeBreadcrumbBar(BreadcrumbBar breadcrumbBar);
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
     void RegisterCustomHeader(string key, string header);
 }

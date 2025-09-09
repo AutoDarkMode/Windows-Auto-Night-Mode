@@ -1,4 +1,5 @@
-﻿using AutoDarkModeApp.Contracts.Services;
+﻿using System.Collections.ObjectModel;
+using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
@@ -14,6 +15,9 @@ public class NavigationService : INavigationService
     private readonly IPageService _pageService;
     private Frame? _frame;
     private NavigationView? _navigationView;
+    private BreadcrumbBar? _breadcrumbBar;
+
+    private readonly ObservableCollection<BreadcrumbItem> _breadcrumbItems = [];
     private readonly Dictionary<Type, string> _customHeaders = [];
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
@@ -47,6 +51,13 @@ public class NavigationService : INavigationService
             _frame.Navigating += OnNavigating;
             _frame.Navigated += OnNavigated;
         }
+    }
+
+    public void InitializeBreadcrumbBar(BreadcrumbBar breadcrumbBar)
+    {
+        _breadcrumbBar = breadcrumbBar;
+        _breadcrumbBar.ItemsSource = _breadcrumbItems;
+        _breadcrumbBar.ItemClicked += OnBreadcrumbItemClicked;
     }
 
     public void RegisterCustomHeader(string key, string header)
@@ -165,13 +176,18 @@ public class NavigationService : INavigationService
         if (e.SourcePageType == typeof(SettingsPage))
         {
             _navigationView.SelectedItem = _navigationView.SettingsItem;
-            _navigationView.Header = ((ContentControl)_navigationView.SettingsItem).Content;
+            _breadcrumbItems.Clear();
+            _breadcrumbItems.Add(new BreadcrumbItem()
+            {
+                Content = ((ContentControl)_navigationView.SettingsItem).Content,
+                Tag = ((ContentControl)_navigationView.SettingsItem).Tag
+            });
             return;
         }
 
         if (_customHeaders.TryGetValue(e.SourcePageType, out string? customHeader))
         {
-            _navigationView.Header = customHeader;
+            _breadcrumbItems.Add(new BreadcrumbItem() { Content = customHeader });
             return;
         }
 
@@ -179,13 +195,28 @@ public class NavigationService : INavigationService
         if (selectedItem != null)
         {
             _navigationView.SelectedItem = selectedItem;
-            _navigationView.Header = selectedItem.Content;
+            _breadcrumbItems.Clear();
+            _breadcrumbItems.Add(new BreadcrumbItem() { Content = selectedItem.Content, Tag = selectedItem.Tag });
         }
     }
 
     private void OnNavigating(object sender, NavigatingCancelEventArgs e)
     {
         StateUpdateHandler.ClearAllEvents();
+    }
+
+    private void OnBreadcrumbItemClicked(BreadcrumbBar sender, BreadcrumbBarItemClickedEventArgs args)
+    {
+        for (int i = _breadcrumbItems.Count - 1; i >= args.Index + 1; i--)
+        {
+            _breadcrumbItems.RemoveAt(i);
+        }
+
+        if (args.Item is BreadcrumbItem breadcrumbItem && breadcrumbItem.Tag is string pageKey)
+        {
+            pageKey = "AutoDarkModeApp.ViewModels." + pageKey + "ViewModel";
+            NavigateTo(pageKey);
+        }
     }
 
     public NavigationViewItem? GetSelectedItem(Type pageType)
@@ -226,4 +257,10 @@ public class NavigationService : INavigationService
         }
         return false;
     }
+}
+
+public class BreadcrumbItem
+{
+    public object? Content { get; set; }
+    public object? Tag { get; set; }
 }
