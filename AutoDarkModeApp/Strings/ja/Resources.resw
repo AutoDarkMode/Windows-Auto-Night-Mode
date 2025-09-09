@@ -969,4 +969,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="NotDelayed" xml:space="preserve">
     <value>遅延しない</value>
   </data>
+  <data name="IgnoreColor" xml:space="preserve">
+    <value>Ignore color</value>
+  </data>
 </root>
