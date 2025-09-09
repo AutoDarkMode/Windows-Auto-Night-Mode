@@ -82,8 +82,8 @@ static class ThemeManager
             }
         }
 
-        // process switches with a requested theme set before automatic ones
-        if (e.Theme != Theme.Automatic)
+        // process switches with a requested theme
+        if (e.Theme != Theme.Resolve)
         {
             UpdateTheme(e);
             return;
@@ -192,7 +192,7 @@ static class ThemeManager
     [MethodImpl(MethodImplOptions.Synchronized)]
     public static void UpdateTheme(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Unknown || e.Theme == Theme.Automatic)
+        if (e.Theme == Theme.Unknown || e.Theme == Theme.Resolve)
         {
             Logger.Info("theme switch requested with no target theme");
             return;
@@ -259,10 +259,10 @@ static class ThemeManager
             cm.RunPreSync(componentsToUpdate, e);
 
             //logic for our classic mode 2.0, gets the currently active theme for modification
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 // get data from active theme and apply theme fix
-                state.ManagedThemeFile.SyncWithActiveTheme(true);
+                state.ManagedThemeFile.SyncWithActiveTheme(false);
 
                 int retrySleep = 1000;
                 var integrityCheckResults = cm.RunIntegrityChecks(componentsToUpdate, e, HookPosition.PreSync);
@@ -281,8 +281,6 @@ static class ThemeManager
                         for (i = 0; i <= maxRetries; i++)
                         {
                             Thread.Sleep(retrySleep);
-                            // Don't patch because it's a retry operation and it could actually change the value back, which we don't want
-                            // This introduces the limitation that a pre-hook can't be a component that requires a partial or full dwm refresh
                             state.ManagedThemeFile.SyncWithActiveTheme(false);
                             if (component.RunVerifyOperationIntegrity(e))
                             {
@@ -304,7 +302,7 @@ static class ThemeManager
             // regular modules that do not need to modify the active theme
             cm.RunPostSync(componentsToUpdate, e);
             // Logic for managed mode
-            if (builder.Config.WindowsThemeMode.Enabled == false && Environment.OSVersion.Version.Build >= (int)WindowsBuilds.MinBuildForNewFeatures)
+            if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 try
                 {
@@ -321,7 +319,7 @@ static class ThemeManager
                         if (newTheme == Theme.Light && builder.Config.ColorizationSwitch.Component.LightAutoColorization) needsWallpaperRefresh = true;
                         else if (newTheme == Theme.Dark && builder.Config.ColorizationSwitch.Component.DarkAutoColorization) needsWallpaperRefresh = true;
                     }
-                    if (!componentsToUpdate.Any(c => c is WallpaperSwitchThemeFile) && !needsWallpaperRefresh)
+                    if (!componentsToUpdate.Any(c => c is WallpaperSwitch) && !needsWallpaperRefresh)
                     {
                         flagList = new() { ThemeApplyFlags.IgnoreBackground };
                     }

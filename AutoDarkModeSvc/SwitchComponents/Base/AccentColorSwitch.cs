@@ -26,10 +26,7 @@ class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
 {
     public override bool ThemeHandlerCompatibility => true;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
-    public override bool Enabled
-    {
-        get { return Settings.Component.DWMPrevalenceSwitch; }
-    }
+    public override bool Enabled => Settings.Component.DWMPrevalenceSwitch;
 
     private bool currentDWMColorActive;
 

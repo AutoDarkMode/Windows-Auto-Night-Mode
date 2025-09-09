@@ -23,6 +23,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers;
 
@@ -257,22 +258,21 @@ static class WallpaperHandler
     /// </summary>
     /// <param name="wallpaperCollection">List with wallpapers</param>
     /// <return>true if wallpaper switch succeeded</return>
-    public static bool SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
+    public static (bool, string) SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
     {
         if (newTheme == Theme.Dark)
         {
             _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
             string currentWallpaper = GetGlobalWallpaper();
-            return currentWallpaper == globalWallpaper.Dark;
-
+            return (currentWallpaper == globalWallpaper.Dark, currentWallpaper);
         }
         else if (newTheme == Theme.Light)
         {
             _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
             string currentWallpaper = GetGlobalWallpaper();
-            return currentWallpaper == globalWallpaper.Light;
+            return (currentWallpaper == globalWallpaper.Light, currentWallpaper);
         }
-        return false;
+        return (false, "");
     }
 
 

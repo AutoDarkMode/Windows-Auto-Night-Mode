@@ -41,29 +41,51 @@ internal static class StateUpdateHandler
         }
     }
 
-    private static FileSystemWatcher ConfigWatcher { get; } =
-        new()
+    private static FileSystemWatcher? ConfigWatcher
+    {
+        get
         {
-            Path = AdmConfigBuilder.ConfigDir,
-            Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
-            NotifyFilter = NotifyFilters.LastWrite,
-        };
+            if (!Directory.Exists(AdmConfigBuilder.ConfigDir))
+            {
+                return null;
+            }
 
-    private static FileSystemWatcher ScriptConfigWatcher { get; } =
-        new()
+            return new FileSystemWatcher
+            {
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.ConfigFilePath),
+                NotifyFilter = NotifyFilters.LastWrite,
+            };
+        }
+    }
+
+
+
+    private static FileSystemWatcher? ScriptConfigWatcher
+    {
+        get
         {
-            Path = AdmConfigBuilder.ConfigDir,
-            Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath),
-            NotifyFilter = NotifyFilters.LastWrite,
-        };
+            if (!File.Exists(AdmConfigBuilder.ScriptConfigPath))
+            {
+                return null;
+            }
+
+            return new FileSystemWatcher
+            {
+                Path = AdmConfigBuilder.ConfigDir,
+                Filter = Path.GetFileName(AdmConfigBuilder.ScriptConfigPath),
+                NotifyFilter = NotifyFilters.LastWrite,
+            };
+        }
+    }
 
     private static System.Timers.Timer PostponeRefreshTimer { get; } = new();
 
     public static void ClearAllEvents()
     {
         ClearEventHandlers(_delegatesTimer, eh => PostponeRefreshTimer.Elapsed -= eh);
-        ClearEventHandlers(_delegatesConfigWatcher, eh => ConfigWatcher.Changed -= eh);
-        ClearEventHandlers(_delegatesScriptConfigWatcher, eh => ScriptConfigWatcher.Changed -= eh);
+        ClearEventHandlers(_delegatesConfigWatcher, eh => ConfigWatcher?.Changed -= eh);
+        ClearEventHandlers(_delegatesScriptConfigWatcher, eh => ScriptConfigWatcher?.Changed -= eh);
     }
 
     private static void ClearEventHandlers<T>(List<T> handlers, Action<T> removeAction)
@@ -75,13 +97,13 @@ internal static class StateUpdateHandler
         handlers.Clear();
     }
 
-    public static void StartConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = true);
+    public static void StartConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher?.EnableRaisingEvents = true);
 
-    public static void StopConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher.EnableRaisingEvents = false);
+    public static void StopConfigWatcher() => SafetyExtensions.IgnoreExceptions(() => ConfigWatcher?.EnableRaisingEvents = false);
 
-    public static void StartScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher.EnableRaisingEvents = true);
+    public static void StartScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher?.EnableRaisingEvents = true);
 
-    public static void StopScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher.EnableRaisingEvents = false);
+    public static void StopScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => ScriptConfigWatcher?.EnableRaisingEvents = false);
 
     public static void StartPostponeTimer() => PostponeRefreshTimer.Start();
 
@@ -107,12 +129,12 @@ internal static class StateUpdateHandler
     {
         add
         {
-            ConfigWatcher.Changed += value;
+            ConfigWatcher?.Changed += value;
             _delegatesConfigWatcher.Add(value);
         }
         remove
         {
-            ConfigWatcher.Changed -= value;
+            ConfigWatcher?.Changed -= value;
             _delegatesConfigWatcher.Remove(value);
         }
     }
@@ -121,12 +143,12 @@ internal static class StateUpdateHandler
     {
         add
         {
-            ScriptConfigWatcher.Changed += value;
+            ScriptConfigWatcher?.Changed += value;
             _delegatesScriptConfigWatcher.Add(value);
         }
         remove
         {
-            ScriptConfigWatcher.Changed -= value;
+            ScriptConfigWatcher?.Changed -= value;
             _delegatesScriptConfigWatcher.Remove(value);
         }
     }
@@ -161,8 +183,8 @@ internal static class StateUpdateHandler
 
     public static void Dispose()
     {
-        ConfigWatcher.Dispose();
-        ScriptConfigWatcher.Dispose();
+        ConfigWatcher?.Dispose();
+        ScriptConfigWatcher?.Dispose();
         PostponeRefreshTimer.Dispose();
         _debounceTimer.Stop();
     }

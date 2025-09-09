@@ -105,16 +105,8 @@ public class NightLightGovernor : IAutoDarkModeGovernor
         // set this back to false by default, doesn't matter
         regkeyUpdatedJustNow = false;
 
-        if (!state.PostponeManager.IsPostponed)
-        {
-            if (init) init = false;
-            return new(reportSwitchWindow, new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
-        }
-        else
-        {
-            return new(reportSwitchWindow);
-        }
-
+        if (init) init = false;
+        return new(reportSwitchWindow, new(SwitchSource.NightLightTrackerModule, state.NightLight.Requested, adjustedTime));
     }
 
     public void DisableHook()

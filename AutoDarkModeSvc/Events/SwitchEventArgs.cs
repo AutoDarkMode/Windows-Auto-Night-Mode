@@ -73,7 +73,7 @@ public class SwitchEventArgs : EventArgs
     public bool RefreshDwm { get; } = false;
     public SwitchSource Source { get; }
     private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
-    public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get { return new(_themeOverrideSources); } }
-    public Theme Theme { get; private set; } = Theme.Automatic;
+    public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get => new(_themeOverrideSources); }
+    public Theme Theme { get; private set; } = Theme.Resolve;
     public DateTime? SwitchTime { get; private set; } = null;
 }

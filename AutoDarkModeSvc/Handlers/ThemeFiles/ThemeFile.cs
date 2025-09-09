@@ -30,12 +30,7 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles;
 public partial class ThemeFile
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private bool themeFixShouldAdd = false;
-    public ThemeFile(string path)
-    {
-        Random rnd = new Random();
-        int val = rnd.Next(0, 2);
-        if (val == 0) themeFixShouldAdd = true;
+    public ThemeFile(string path) {
         ThemeFilePath = path;
     }
     public Encoding Encoding { get; set; } = Encoding.GetEncoding(1252);
@@ -139,22 +134,23 @@ public partial class ThemeFile
                 $"{nameof(Desktop.WindowsSpotlight)}={Desktop.WindowsSpotlight}",
                 $"{nameof(Desktop.PicturePosition)}={Desktop.PicturePosition}"
             };
+
             Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(Desktop.Section.Item1, desktopSerialized);
 
-            List<string> desktopWSerialized =
-            [
-                DesktopW.Section.Item1,
-                $"{nameof(DesktopW.Wallpaper)}={DesktopW.Wallpaper}",
-            ];
+            List<string> desktopWSerialized = [ DesktopW.Section.Item1 ];
+            if (DesktopW.Wallpaper.Length > 0)
+            {
+                desktopWSerialized.Add($"{nameof(DesktopW.Wallpaper)}={DesktopW.Wallpaper}");
+            }
             DesktopW.MultimonWallpapers.ForEach(w => desktopWSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(DesktopW.Section.Item1, desktopWSerialized);
 
-            List<string> desktopASerialized =
-            [
-                DesktopA.Section.Item1,
-                $"{nameof(DesktopA.Wallpaper)}={DesktopA.Wallpaper}",
-            ];
+            List<string> desktopASerialized =[ DesktopA.Section.Item1 ];
+            if (DesktopA.Wallpaper.Length > 0)
+            {
+                desktopASerialized.Add($"{nameof(DesktopA.Wallpaper)}={DesktopA.Wallpaper}");
+            }
             DesktopA.MultimonWallpapers.ForEach(w => desktopASerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(DesktopA.Section.Item1, desktopASerialized);
 

@@ -37,6 +37,9 @@ public partial class ThemePickerViewModel : ObservableRecipient
     public partial bool IgnoreSoundEnabled { get; set; }
 
     [ObservableProperty]
+    public partial bool IgnoreColorEnabled { get; set; }
+
+    [ObservableProperty]
     public partial bool IgnoreDesktopIconsEnabled { get; set; }
 
     public ThemePickerViewModel(IErrorService errorService)
@@ -72,6 +75,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         IgnoreCursorEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreCursor);
         IgnoreDesktopIconsEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreDesktopIcons);
         IgnoreSoundEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreSound);
+        IgnoreColorEnabled = flagsSet.Contains(ThemeApplyFlags.IgnoreColor);
 
         _isInitializing = false;
     }
@@ -90,6 +94,8 @@ public partial class ThemePickerViewModel : ObservableRecipient
             flags.Add(ThemeApplyFlags.IgnoreSound);
         if (IgnoreDesktopIconsEnabled == true)
             flags.Add(ThemeApplyFlags.IgnoreDesktopIcons);
+        if (IgnoreColorEnabled == true)
+            flags.Add(ThemeApplyFlags.IgnoreColor);
         _builder.Config.WindowsThemeMode.ApplyFlags = flags;
         try
         {
@@ -236,6 +242,11 @@ public partial class ThemePickerViewModel : ObservableRecipient
     }
 
     partial void OnIgnoreDesktopIconsEnabledChanged(bool value)
+    {
+        WriteSettings();
+    }
+
+    partial void OnIgnoreColorEnabledChanged(bool value)
     {
         WriteSettings();
     }

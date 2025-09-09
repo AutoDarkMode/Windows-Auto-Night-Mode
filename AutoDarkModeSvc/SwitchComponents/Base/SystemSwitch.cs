@@ -17,39 +17,91 @@
 using System;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-/// <summary>
-/// This class is a special case for the SwitchSystemThemeFile component, because on Windows builds older than 21H2 we use the legacy theme switching method
-/// </summary>
-class SystemSwitch : SystemSwitchThemeFile
+class SystemSwitch : BaseComponent<SystemSwitchSettings>
 {
-    public override bool ThemeHandlerCompatibility { get; } = false;
-    protected override async Task SwitchSystemTheme(Theme newTheme)
+    protected Theme currentComponentTheme = Theme.Unknown;
+    public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
+    public SystemSwitch() : base() { }
+
+    protected override void EnableHook()
     {
-        bool oldAccent = currentTaskbarColorActive;
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-        int taskdelay = Settings.Component.TaskbarSwitchDelay;
+        RefreshRegkeys();
+    }
+
+
+    protected void RefreshRegkeys()
+    {
         try
         {
-            // Set system theme
-            if (Settings.Component.Mode == Mode.AccentOnly)
+            currentComponentTheme = RegistryHandler.SystemUsesLightTheme() ? Theme.Light : Theme.Dark;
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "couldn't initialize system apps theme state");
+        }
+    }
+    public override bool ThemeHandlerCompatibility => false;
+
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    {
+        if (Settings.Component.Mode == Mode.DarkOnly)
+        {
+            // Themes do not match
+            if (currentComponentTheme != Theme.Dark)
             {
-                await SwitchAccentOnly(newTheme, taskdelay);
+                return true;
             }
-            else if (Settings.Component.Mode == Mode.LightOnly)
+            return false;
+
+        }
+        else if (Settings.Component.Mode == Mode.LightOnly)
+        {
+            if (currentComponentTheme != Theme.Light)
             {
-                await SwitchLightOnly(taskdelay);
+                return true;
+            }
+            return false;
+        }
+        else if (Settings.Component.Mode == Mode.Switch)
+        {
+            // Themes do not match
+            if (currentComponentTheme != e.Theme)
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    protected override void HandleSwitch(SwitchEventArgs e)
+    {
+        SwitchSystemTheme(e.Theme);
+    }
+
+    protected virtual void SwitchSystemTheme(Theme newTheme)
+    {
+        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        try
+        {
+            if (Settings.Component.Mode == Mode.LightOnly)
+            {
+                SwitchLightOnly();
             }
             else if (Settings.Component.Mode == Mode.DarkOnly)
             {
-                await SwitchDarkOnly(taskdelay);
+                SwitchDarkOnly();
             }
             else
             {
-                await SwitchAdaptive(newTheme, taskdelay);
+                SwitchAdaptive(newTheme);
             }
         }
         catch (Exception ex)
@@ -59,86 +111,57 @@ class SystemSwitch : SystemSwitchThemeFile
         string accentInfo;
         if (Settings.Component.Mode == Mode.AccentOnly)
         {
-            accentInfo = $"on {Enum.GetName(typeof(Theme), Settings.Component.TaskbarColorWhenNonAdaptive).ToLower()}";
+            accentInfo = $"on {Enum.GetName(typeof(Theme), Settings.Component.TaskbarColorDuring).ToLower()}";
         }
         else
         {
-            accentInfo = Settings.Component.TaskbarColorOnAdaptive ? "yes" : "no";
+            accentInfo = Settings.Component.TaskbarColorSwitch ? "yes" : "no";
         }
-        Logger.Info($"update info - previous: {oldTheme}/{(oldAccent ? "accent" : "NoAccent")}, " +
-            $"now: {Enum.GetName(typeof(Theme), currentComponentTheme)}/{(currentTaskbarColorActive ? "Accent" : "NoAccent")}, " +
+        Logger.Info($"update info - previous: {oldTheme}, " +
+            $"pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, " +
             $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
             $"accent: {accentInfo}");
     }
 
-    private async Task SwitchLightOnly(int taskdelay)
+    protected void SwitchLightOnly()
     {
-        if (Settings.Component.TaskbarColorOnAdaptive)
+
+        if (currentComponentTheme != Theme.Dark)
         {
-            RegistryHandler.SetColorPrevalence(0);
-            await Task.Delay(taskdelay);
+            ThemeFile themeFile = GlobalState.ManagedThemeFile;
+            themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
         }
-        currentTaskbarColorActive = false;
-        RegistryHandler.SetSystemTheme((int)Theme.Light);
         currentComponentTheme = Theme.Light;
     }
 
-    private async Task SwitchDarkOnly(int taskdelay)
+    protected void SwitchDarkOnly()
     {
         if (currentComponentTheme != Theme.Dark)
         {
-            RegistryHandler.SetSystemTheme((int)Theme.Dark);
-        }
-        else
-        {
-            taskdelay = 0;
+            ThemeFile themeFile = GlobalState.ManagedThemeFile;
+            themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
         }
         currentComponentTheme = Theme.Dark;
-        await Task.Delay(taskdelay);
-        if (Settings.Component.TaskbarColorOnAdaptive)
-        {
-            RegistryHandler.SetColorPrevalence(1);
-            currentTaskbarColorActive = true;
-        }
-        else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
-        {
-            RegistryHandler.SetColorPrevalence(0);
-            currentTaskbarColorActive = false;
-        }
     }
 
-    private async Task SwitchAdaptive(Theme newTheme, int taskdelay)
+    protected void SwitchAdaptive(Theme newTheme)
     {
+        ThemeFile themeFile = GlobalState.ManagedThemeFile;
         if (newTheme == Theme.Light)
         {
-            RegistryHandler.SetColorPrevalence(0);
-            currentTaskbarColorActive = false;
-            await Task.Delay(taskdelay);
-            RegistryHandler.SetSystemTheme((int)newTheme);
+            themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
         }
         else if (newTheme == Theme.Dark)
         {
-            if (currentComponentTheme != Theme.Dark)
-            {
-                RegistryHandler.SetSystemTheme((int)Theme.Dark);
-            }
-            else
-            {
-                taskdelay = 0;
-            }
-            currentComponentTheme = Theme.Dark;
-            await Task.Delay(taskdelay);
-            if (Settings.Component.TaskbarColorOnAdaptive)
-            {
-                RegistryHandler.SetColorPrevalence(1);
-                currentTaskbarColorActive = true;
-            }
-            else if (!Settings.Component.TaskbarColorOnAdaptive && currentTaskbarColorActive)
-            {
-                RegistryHandler.SetColorPrevalence(0);
-                currentTaskbarColorActive = false;
-            }
+            themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
         }
         currentComponentTheme = newTheme;
     }
+
+    protected override void UpdateSettingsState()
+    {
+        RefreshRegkeys();
+    }
+
+
 }

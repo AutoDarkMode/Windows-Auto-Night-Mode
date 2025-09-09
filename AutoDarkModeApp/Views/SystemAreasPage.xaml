@@ -35,28 +35,21 @@
                         <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysDark}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=AccentOnly}" />
                         <ComboBoxItem Content="{helpers:ResourceString Name=Disabled}" />
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Visibility="{x:Bind ViewModel.AccentColorForTaskbarSettingsCardVisible, Mode=OneWay}">
-                            <controls:SettingsCard.Header>
-                                <CheckBox Content="{helpers:ResourceString Name=AccentColorForTaskbar}" IsChecked="{x:Bind ViewModel.IsTaskbarColorOnAdaptive, Mode=TwoWay}" />
-                            </controls:SettingsCard.Header>
-                        </controls:SettingsCard>
-                        <controls:SettingsCard Visibility="{x:Bind ViewModel.IsAdaptiveTaskbarAccent, Mode=OneWay}">
+                        <controls:SettingsCard>
                             <controls:SettingsCard.Header>
                                 <StackPanel Orientation="Vertical">
                                     <CheckBox
                                         x:Name="AdaptiveTaskbarAccentCheckBox"
                                         Content="{helpers:ResourceString Name=AdaptiveTaskbarAccent}"
-                                        IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccent, Mode=OneWay}"
-                                        IsEnabled="False" />
+                                              IsChecked="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}"/>
 
-                                    <RadioButtons IsEnabled="{x:Bind ViewModel.IsAdaptiveTaskbarAccent, Mode=OneWay}">
-                                        <RadioButton Content="{helpers:ResourceString Name=LightTheme}" IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccentOnLight, Mode=TwoWay}" />
-                                        <RadioButton Content="{helpers:ResourceString Name=DarkTheme}" IsChecked="{x:Bind ViewModel.IsAdaptiveTaskbarAccentOnDark, Mode=TwoWay}" />
+                                    <RadioButtons IsEnabled="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=OneWay}">
+                                        <RadioButton Content="{helpers:ResourceString Name=LightTheme}" IsChecked="{x:Bind ViewModel.IsTaskbarAccentOnLight, Mode=TwoWay}" />
+                                        <RadioButton Content="{helpers:ResourceString Name=DarkTheme}" IsChecked="{x:Bind ViewModel.IsTaskbarAccentOnDark, Mode=TwoWay}" />
                                     </RadioButtons>
                                 </StackPanel>
                             </controls:SettingsCard.Header>

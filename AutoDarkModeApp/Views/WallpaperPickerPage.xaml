@@ -100,6 +100,17 @@
                             </RadioButtons>
                         </controls:SettingsCard>
 
+                        <!--  Monitor  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Description>
+                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=RemoveDisconnected}" />
+                            </controls:SettingsCard.Description>
+                            <ComboBox
+                                x:Name="MonitorsComboBox"
+                                HorizontalAlignment="Right"
+                                SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
+                        </controls:SettingsCard>
+
                         <!--  Picture  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                             <Button
@@ -110,11 +121,20 @@
                         </controls:SettingsCard>
 
                         <!--  Picture path  -->
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=Path}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
-                            <TextBlock
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                IsTextSelectionEnabled="True"
-                                Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Header>
+                                <StackPanel
+                                    Margin="0,0,-24,0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <TextBlock Text="{helpers:ResourceString Name=PathAt}" />
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        IsTextSelectionEnabled="True"
+                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
                         </controls:SettingsCard>
 
                         <!--  Picture fit  -->
@@ -125,17 +145,6 @@
                                 <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fit}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fill}" />
                             </ComboBox>
-                        </controls:SettingsCard>
-
-                        <!--  Monitor  -->
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=RemoveDisconnected}" />
-                                <ComboBox
-                                    x:Name="MonitorsComboBox"
-                                    HorizontalAlignment="Right"
-                                    SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
-                            </StackPanel>
                         </controls:SettingsCard>
 
                         <!--  Color  -->

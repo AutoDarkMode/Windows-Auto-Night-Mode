@@ -149,6 +149,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             if (file != null)
             {
                 GlobalWallpaperPath = file.Path;
+                _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
             }
         });
     }

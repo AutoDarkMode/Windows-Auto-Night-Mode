@@ -92,7 +92,7 @@ class Service : Form
         ConfigMonitor.Start();
 
         // load pending postpone events
-        state.PostponeManager.GetPostonesFromDisk();
+        state.PostponeManager.GetPostponesFromDisk();
 
         ModuleTimer MainTimer = new(timerMillis, TimerName.Main);
         //ModuleTimer ShortTimer = new(TimerFrequency.Short, TimerName.Short);
@@ -186,7 +186,7 @@ class Service : Form
 
     private void TryFixTheme(object sender, EventArgs e)
     {
-        DwmRefreshHandler.Enqueue(new SwitchEventArgs(SwitchSource.Manual));
+        DwmRefreshHandler.Enqueue(DwmRefreshSource.User);
     }
 
     private void UpdateContextMenu(object sender, EventArgs e)
