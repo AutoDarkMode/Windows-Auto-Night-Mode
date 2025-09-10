@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -892,7 +892,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
 6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Edytuj skrót klawiszowy</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Odłączony</value>
@@ -917,19 +917,19 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Tryb debugowania</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
     <value>Select Enter to apply</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Język</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Przejdź do ustawień Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Stabilne</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Switch</value>
