@@ -2,32 +2,40 @@
 
     <!--  NavigationView Thickness  -->
     <Thickness x:Key="NavigationViewHeaderMargin">24,24,24,12</Thickness>
-    <Thickness x:Key="NavigationViewPageContentMargin">24</Thickness>
+
+    <!--  BreadcrumbBar style like Win.11 Settings  -->
+    <x:Double x:Key="BreadcrumbBarChevronFontSize">16</x:Double>
+    <Thickness x:Key="BreadcrumbBarChevronPadding">11,4,12,0</Thickness>
+    <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+    <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+
+    <!--  Max width of content  -->
+    <x:Double x:Key="PageContentMaxWidth">1000</x:Double>
 
     <!--  Spacing between cards  -->
     <x:Double x:Key="SettingsCardSpacing">4</x:Double>
+
+    <!--  StackPanel style for the base page layout  -->
+    <Style x:Key="PageBaseStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="MaxWidth" Value="{StaticResource PageContentMaxWidth}" />
+        <Setter Property="Margin" Value="24,0,24,24" />
+        <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
+    </Style>
 
     <!--  Style of a section header  -->
     <Style
         x:Key="SettingsSectionHeaderTextBlockStyle"
         BasedOn="{StaticResource BodyStrongTextBlockStyle}"
         TargetType="TextBlock">
-        <Style.Setters>
-            <Setter Property="Margin" Value="0,16,0,12" />
-        </Style.Setters>
+        <Setter Property="Margin" Value="0,28,0,4" />
     </Style>
 
-    <!--  StackPanel style for the base page layout  -->
-    <Style x:Key="PageBaseStackPanelStyle" TargetType="StackPanel">
-        <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
-        <Setter Property="MaxWidth" Value="1000" />
+    <!--  Divider line in SettingsExpander  -->
+    <Style x:Key="DividerBorderStyle" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="BorderBrush" Value="{ThemeResource DividerStrokeColorDefaultBrush}" />
+        <Setter Property="Margin" Value="-16,0,-40,0" />
     </Style>
-
-    <!--  BreadcrumbBarChevron style like win11 settings  -->
-    <x:Double x:Key="BreadcrumbBarChevronFontSize">16</x:Double>
-    <Thickness x:Key="BreadcrumbBarChevronPadding">11,4,12,0</Thickness>
-    <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
-    <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
 
 
 </ResourceDictionary>

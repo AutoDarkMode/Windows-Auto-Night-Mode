@@ -43,7 +43,7 @@
             OpenPaneLength="240"
             PaneDisplayMode="Auto">
             <NavigationView.Header>
-                <BreadcrumbBar x:Name="BreadcrumBarControl" MaxWidth="1000">
+                <BreadcrumbBar x:Name="BreadcrumBarControl" MaxWidth="{StaticResource PageContentMaxWidth}">
                     <BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="navigationService:BreadcrumbItem">
                             <BreadcrumbBarItem AutomationProperties.Name="{Binding Content}" Content="{Binding}">
