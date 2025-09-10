@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
@@ -61,9 +62,9 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Dark)
+        if (e.Theme == Theme.Light)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Dark)
+            if (Settings.Component.TaskbarColorDuring == Theme.Light)
             {
                 RegistryHandler.SetTaskbarColorPrevalence(1);
                 currentTaskbarColorActive = true;
@@ -74,9 +75,18 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
                 currentTaskbarColorActive = false;
             }
         }
-        else if (e.Theme == Theme.Light)
+    }
+
+
+    protected override void Callback(SwitchEventArgs e)
+    {
+        if (e.Theme == Theme.Dark)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Light)
+            if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC)
+            {
+                Thread.Sleep(Settings.Component.TaskbarSwitchDelay);
+            }
+            if (Settings.Component.TaskbarColorDuring == Theme.Dark)
             {
                 RegistryHandler.SetTaskbarColorPrevalence(1);
                 currentTaskbarColorActive = true;
