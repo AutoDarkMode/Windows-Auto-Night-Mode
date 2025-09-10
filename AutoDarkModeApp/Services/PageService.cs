@@ -6,9 +6,12 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Services;
 
+// Thanks to Jay for providing the code to update the related functions of the parent page
+
 public class PageService : IPageService
 {
     private readonly Dictionary<string, Type> _pages = new();
+    private readonly Dictionary<string, Type> _pageParents = new();
 
     public PageService()
     {
@@ -25,6 +28,11 @@ public class PageService : IPageService
         Configure<ColorizationViewModel, ColorizationPage>();
         Configure<CursorsViewModel, CursorsPage>();
         Configure<ThemePickerViewModel, ThemePickerPage>();
+
+        Matching<WallpaperPickerPage, PersonalizationPage>();
+        Matching<ColorizationPage, PersonalizationPage>();
+        Matching<CursorsPage, PersonalizationPage>();
+        Matching<ThemePickerPage, PersonalizationPage>();
     }
 
     public Type GetPageType(string key)
@@ -39,6 +47,39 @@ public class PageService : IPageService
         }
 
         return pageType;
+    }
+
+    public Type? GetPageParents(string key)
+    {
+        Type? pageType;
+        lock (_pageParents)
+        {
+            _pageParents.TryGetValue(key, out pageType);
+        }
+
+        return pageType;
+    }
+
+    public List<Type> GetPageParentChain(string key)
+    {
+        var parentChain = new List<Type>();
+        var currentPageType = GetPageType(key);
+
+        while (currentPageType != null)
+        {
+            var parentType = GetPageParents(currentPageType.FullName!);
+            if (parentType != null)
+            {
+                parentChain.Insert(0, parentType);
+                currentPageType = parentType;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return parentChain;
     }
 
     private void Configure<VM, V>()
@@ -60,6 +101,24 @@ public class PageService : IPageService
             }
 
             _pages.Add(key, type);
+        }
+    }
+
+    private void Matching<CV, PV>()
+        where CV : Page
+        where PV : Page
+    {
+        lock (_pageParents)
+        {
+            var key = typeof(CV).FullName!;
+            if (_pageParents.ContainsKey(key))
+            {
+                throw new ArgumentException($"The key {key} is already matched in PageService");
+            }
+
+            var type = typeof(PV);
+
+            _pageParents.Add(key, type);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using AutoDarkModeApp.Services;
+using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Contracts.Services;
 
@@ -11,5 +12,5 @@ public interface INavigationService
     void InitializeNavigationView(NavigationView navigationView);
     void InitializeBreadcrumbBar(BreadcrumbBar breadcrumbBar);
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
-    void RegisterCustomHeader(string key, string header);
+    void RegisterCustomBreadcrumbBarItem(string key, BreadcrumbItem item);
 }

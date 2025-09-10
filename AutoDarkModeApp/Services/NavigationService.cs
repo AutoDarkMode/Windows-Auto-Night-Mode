@@ -3,7 +3,6 @@ using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
@@ -19,15 +18,7 @@ public class NavigationService : INavigationService
     private BreadcrumbBar? _breadcrumbBar;
 
     private readonly ObservableCollection<BreadcrumbItem> _breadcrumbItems = [];
-    private readonly Dictionary<Type, string> _customHeaders = [];
-    private readonly Dictionary<Type, string> _hiddenPageParents = new()
-{
-    // Replace with your actual page types
-    { typeof(WallpaperPickerPage), "Personalization" },
-    { typeof(ColorizationPage), "Personalization" },
-    { typeof(CursorsPage), "Personalization" },
-    { typeof(ThemePickerPage), "Personalization" }
-};
+    private readonly Dictionary<Type, BreadcrumbItem> _customBreadcrumbBarItems = [];
 
     public IList<object>? MenuItems => _navigationView?.MenuItems;
     public object? SettingsItem => _navigationView?.SettingsItem;
@@ -69,10 +60,10 @@ public class NavigationService : INavigationService
         _breadcrumbBar.ItemClicked += OnBreadcrumbItemClicked;
     }
 
-    public void RegisterCustomHeader(string key, string header)
+    public void RegisterCustomBreadcrumbBarItem(string key, BreadcrumbItem item)
     {
         var pageType = _pageService.GetPageType(key);
-        _customHeaders[pageType] = header;
+        _customBreadcrumbBarItems[pageType] = item;
     }
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
@@ -177,49 +168,34 @@ public class NavigationService : INavigationService
         }
     }
 
-    private List<NavigationViewItem> GetFullNavigationPath(Type pageType)
-    {
-        var path = GetNavigationPath(_navigationView.MenuItems, pageType);
-        if (path.Count > 0)
-            return path;
-
-        // Check footer menu items
-        path = GetNavigationPath(_navigationView.FooterMenuItems, pageType);
-        if (path.Count > 0)
-            return path;
-
-        // Check if it's the Settings item
-        if (_navigationView.SettingsItem is NavigationViewItem settingsItem)
-        {
-            if (IsMenuItemForPageType(settingsItem, pageType))
-                return [settingsItem];
-        }
-
-        return [];
-    }
-
-    // Replace in OnNavigated:
     private void OnNavigated(object sender, NavigationEventArgs e)
     {
         if (_navigationView == null)
             return;
 
-        // Get the path to the loaded page in the nav menu, including footer and settings
-        var path = GetFullNavigationPath(e.SourcePageType);
-
-        // Optionally update breadcrumbs
         _breadcrumbItems.Clear();
-        if (path.Count > 0)
+
+        if (e.SourcePageType == typeof(SettingsPage))
         {
-            foreach (var item in path)
-                _breadcrumbItems.Add(new BreadcrumbItem { Content = item.Content, Tag = item.Tag });
+            var settingsItem = (ContentControl)_navigationView.SettingsItem;
+            _navigationView.SelectedItem = settingsItem;
+            _breadcrumbItems.Add(new BreadcrumbItem { Content = settingsItem.Content, Tag = settingsItem.Tag });
+            return;
         }
-        else if (_hiddenPageParents.TryGetValue(e.SourcePageType, out var parentName))
+
+        if (_customBreadcrumbBarItems.TryGetValue(e.SourcePageType, out BreadcrumbItem? customBreadcrumbItem))
         {
-            // Add the parent as the first breadcrumb
-            _breadcrumbItems.Add(new BreadcrumbItem { Content = parentName, Tag = "Personalization" });
-            // Add the current page as the second breadcrumb
-            _breadcrumbItems.Add(new BreadcrumbItem { Content = e.SourcePageType.Name, Tag = e.SourcePageType.Name });
+            var pageKey = "AutoDarkModeApp.ViewModels." + customBreadcrumbItem.Tag + "ViewModel";
+            HandleCustomBreadcrumbPage(e.SourcePageType, customBreadcrumbItem, pageKey);
+            return;
+        }
+
+        var selectedItem = GetSelectedItem(e.SourcePageType);
+        if (selectedItem != null)
+        {
+            _navigationView.SelectedItem = selectedItem;
+
+            _breadcrumbItems.Add(new BreadcrumbItem() { Content = selectedItem.Content, Tag = selectedItem.Tag });
         }
     }
 
@@ -276,24 +252,43 @@ public class NavigationService : INavigationService
         return false;
     }
 
-    private List<NavigationViewItem> GetNavigationPath(IEnumerable<object> menuItems, Type pageType)
+    private void HandleCustomBreadcrumbPage(Type sourcePageType, BreadcrumbItem customBreadcrumbItem, string pageKey)
     {
-        foreach (var item in menuItems.OfType<NavigationViewItem>())
-        {
-            if (IsMenuItemForPageType(item, pageType))
-            {
-                return [item];
-            }
+        if (_navigationView == null)
+            return;
 
-            var childPath = GetNavigationPath(item.MenuItems, pageType);
-            if (childPath.Count > 0)
+        var parentChain = _pageService.GetPageParentChain(pageKey);
+
+        if (parentChain.Count > 0)
+        {
+            var topParentPage = parentChain[0];
+            var topParentSelectItem = GetSelectedItem(topParentPage);
+
+            if (topParentSelectItem != null)
             {
-                var path = new List<NavigationViewItem> { item };
-                path.AddRange(childPath);
-                return path;
+                _navigationView.SelectedItem = topParentSelectItem;
+
+                foreach (var parentPage in parentChain)
+                {
+                    var parentSelectItem = GetSelectedItem(parentPage);
+                    if (parentSelectItem != null)
+                    {
+                        _breadcrumbItems.Add(new BreadcrumbItem() { Content = parentSelectItem.Content, Tag = parentSelectItem.Tag });
+                    }
+                }
+
+                _breadcrumbItems.Add(new BreadcrumbItem() { Content = customBreadcrumbItem.Content, Tag = customBreadcrumbItem.Tag });
             }
         }
-        return [];
+        else
+        {
+            var selectedItem = GetSelectedItem(sourcePageType);
+            if (selectedItem != null)
+            {
+                _navigationView.SelectedItem = selectedItem;
+                _breadcrumbItems.Add(new BreadcrumbItem() { Content = customBreadcrumbItem.Content, Tag = customBreadcrumbItem.Tag });
+            }
+        }
     }
 }
 
