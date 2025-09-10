@@ -18,7 +18,7 @@
     <PackageIconUrl />
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <SupportedOSPlatformVersion>10.0.18362.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <Platforms>x64;arm64</Platforms>
     <PackageOutputPath></PackageOutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
