@@ -30,6 +30,9 @@ public partial class SystemAreasViewModel : ObservableRecipient
         Disabled,
     }
 
+    public bool LightTaskbarAccentPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
+
+
     [ObservableProperty]
     public partial AppSwitchMode AppsSwitchComponentMode { get; set; }
 

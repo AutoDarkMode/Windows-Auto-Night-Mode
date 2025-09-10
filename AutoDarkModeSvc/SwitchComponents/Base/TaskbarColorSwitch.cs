@@ -16,6 +16,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
     public override bool ThemeHandlerCompatibility => true;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public override bool Enabled => Settings.Component.TaskbarColorSwitch;
+    public bool useCallbackForDark = Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC;
 
     private bool currentTaskbarColorActive;
 
@@ -62,9 +63,10 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
+        var lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
         if (e.Theme == Theme.Light)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Light)
+            if (Settings.Component.TaskbarColorDuring == Theme.Light && lightTaskbarAccentPermitted)
             {
                 RegistryHandler.SetTaskbarColorPrevalence(1);
                 currentTaskbarColorActive = true;
@@ -74,28 +76,34 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
                 RegistryHandler.SetTaskbarColorPrevalence(0);
                 currentTaskbarColorActive = false;
             }
+        } 
+        else if (e.Theme == Theme.Dark && !useCallbackForDark)
+        {
+            SwitchDark();
         }
     }
 
 
     protected override void Callback(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Dark)
+        if (e.Theme == Theme.Dark && useCallbackForDark)
         {
-            if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC)
-            {
-                Thread.Sleep(Settings.Component.TaskbarSwitchDelay);
-            }
-            if (Settings.Component.TaskbarColorDuring == Theme.Dark)
-            {
-                RegistryHandler.SetTaskbarColorPrevalence(1);
-                currentTaskbarColorActive = true;
-            }
-            else
-            {
-                RegistryHandler.SetTaskbarColorPrevalence(0);
-                currentTaskbarColorActive = false;
-            }
+            Thread.Sleep(Settings.Component.TaskbarSwitchDelay);
+            SwitchDark();
+        }
+    }
+
+    protected void SwitchDark()
+    {
+        if (Settings.Component.TaskbarColorDuring == Theme.Dark)
+        {
+            RegistryHandler.SetTaskbarColorPrevalence(1);
+            currentTaskbarColorActive = true;
+        }
+        else
+        {
+            RegistryHandler.SetTaskbarColorPrevalence(0);
+            currentTaskbarColorActive = false;
         }
     }
 
