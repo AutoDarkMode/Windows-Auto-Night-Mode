@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Accentkleur</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Accentkleur voor taakbalk</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Alleen accentkleur</value>
   </data>
@@ -298,9 +295,6 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Niet van thema wisselen tenzij het systeem inactief is</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Accentkleur voor titelbalken en vensterranden alleen bij</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (oud)</value>
@@ -981,5 +975,17 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

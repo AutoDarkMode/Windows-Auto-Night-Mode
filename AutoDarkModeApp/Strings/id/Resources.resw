@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Aksen warna</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Aksen warna untuk bilah tugas</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Dengan aksen</value>
   </data>
@@ -298,9 +295,6 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Jangan beralih tema kecuali sistem menganggur</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Aksen warna untuk bilah judul dan batas jendela hanya dalam</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (versi lama)</value>
@@ -981,5 +975,17 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

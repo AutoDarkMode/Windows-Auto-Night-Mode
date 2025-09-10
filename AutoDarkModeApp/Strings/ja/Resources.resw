@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -125,9 +125,6 @@
   </data>
   <data name="AccentColor" xml:space="preserve">
     <value>アクセントカラー</value>
-  </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>タスクバーのアクセントカラー</value>
   </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>アクセントカラーのみ</value>
@@ -298,9 +295,6 @@
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>システムがアイドル状態でないならテーマを切り替えない</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>タイトルバーとウィンドウの境界線のアクセントカラー</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (旧バージョン用)</value>
@@ -741,6 +735,9 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="SelectLightCursor" xml:space="preserve">
     <value>ライト用のカーソルを選択</value>
   </data>
+  <data name="Set" xml:space="preserve">
+    <value>Set</value>
+  </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
@@ -888,11 +885,17 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Background</value>
     <comment>match Windows Settings</comment>
   </data>
+  <data name="SelectColor" xml:space="preserve">
+    <value>色を選択</value>
+  </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Disable Windows manages your theme</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
+  </data>
+  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
+    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>ベータ版</value>
@@ -906,20 +909,11 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="Language" xml:space="preserve">
     <value>言語</value>
   </data>
-  <data name="Stable" xml:space="preserve">
-    <value>安定版</value>
-  </data>
-  <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
-  </data>
-  <data name="Set" xml:space="preserve">
-    <value>Set</value>
-  </data>
-  <data name="SelectColor" xml:space="preserve">
-    <value>色を選択</value>
-  </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
     <value>Windows スポットライトの設定を開く</value>
+  </data>
+  <data name="Stable" xml:space="preserve">
+    <value>安定版</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>切り替え</value>
@@ -971,5 +965,17 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

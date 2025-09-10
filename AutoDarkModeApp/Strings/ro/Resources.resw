@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Nuanță culoare</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Culoare de accent pentru bara de activități</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Numai accent</value>
   </data>
@@ -298,9 +295,6 @@ Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantit
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Nu schimbați teme decât dacă sistemul este inactiv</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Culoarea accent pentru bara de titlu și pentru conturul ferestrelor numai în timpul</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Versiune veche)</value>
@@ -981,5 +975,17 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

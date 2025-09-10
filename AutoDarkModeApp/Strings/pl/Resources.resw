@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Kolor akcentu</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Kolor paska zadań</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Tylko kolor paska zadań</value>
   </data>
@@ -298,9 +295,6 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Nie przełączaj, jeśli system jest zajęty</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Kolor akcentu dla pasków tytułu i ramek okien dla motywu</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (starsza wersja)</value>
@@ -981,5 +975,17 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

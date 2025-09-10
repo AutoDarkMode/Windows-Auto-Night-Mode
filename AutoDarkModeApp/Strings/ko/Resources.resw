@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>강조 색상</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>작업 표시줄의 강조 색상</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>강조만</value>
   </data>
@@ -298,9 +295,6 @@
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>시스템이 유휴 상태가 아니면 테마 전환 안 함</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>제목 표시줄 및 창 테두리에 대한 강조 색상은 다음 기간 동안만 사용됩니다</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (기존)</value>
@@ -981,5 +975,17 @@
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

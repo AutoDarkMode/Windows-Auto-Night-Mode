@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Kontrastní barva</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Zvýraznění barev hlavního panelu</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Pouze barva</value>
   </data>
@@ -298,9 +295,6 @@ Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit.
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Neměnit motivy pokud systém není v nečinnosti</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Kontrastní barvy pro titulní pruhy a hranice okna pouze během</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (stará verze)</value>
@@ -981,5 +975,17 @@ Nainstalovaná verze: {0}, nová verze: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>
