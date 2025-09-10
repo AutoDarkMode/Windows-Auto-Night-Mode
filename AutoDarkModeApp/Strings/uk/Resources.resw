@@ -744,7 +744,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
   <data name="StopForcing" xml:space="preserve">
     <value>Примусову тему вимкнути</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Увімкніть перемикач тем Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

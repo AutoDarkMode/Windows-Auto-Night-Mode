@@ -750,7 +750,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Dừng cưỡng ép chủ đề</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Bật tính năng thay đổi chủ đề Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

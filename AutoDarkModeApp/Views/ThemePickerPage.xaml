@@ -15,7 +15,7 @@
 
                 <!--  Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Theme}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=SwichWindowsTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SwitchWindowsTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">

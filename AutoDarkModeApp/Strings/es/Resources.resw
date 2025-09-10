@@ -750,7 +750,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Dejar de forzar tema</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Activar cambio de temas de Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

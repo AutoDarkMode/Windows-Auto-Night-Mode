@@ -750,7 +750,7 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Ne prisiljavaj temu</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Omogući promenu Windows tema</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

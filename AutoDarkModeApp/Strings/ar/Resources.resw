@@ -747,7 +747,7 @@
   <data name="StopForcing" xml:space="preserve">
     <value>التوقف عن إجبار النسق</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>تمكين تبديل نسق Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

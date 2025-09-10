@@ -750,7 +750,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="StopForcing" xml:space="preserve">
     <value>テーマの変更を中止する</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Windows テーマの有効を切り替え</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
