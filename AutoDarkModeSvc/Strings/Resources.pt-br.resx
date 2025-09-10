@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Mudança automática do tema</value>
+    <value>Troca automática de tema</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmar</value>
@@ -127,10 +127,10 @@
     <value>Escuro</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Atraso</value>
+    <value>Atrasar</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Desactivar a mudança automática</value>
+    <value>Desativar troca automática</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Desativado</value>
@@ -142,25 +142,25 @@
     <value>Claro</value>
   </data>
   <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Gostaria de desactivar a mudança automática?</value>
+    <value>Você gostaria de desabilitar a troca automática?</value>
   </data>
   <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>A mudança automática irá retomar também se regressar ao seu tema anterior.</value>
+    <value>A troca automática também será retomada se você retornar ao tema anterior.</value>
   </data>
   <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Mudança de tema pausada até</value>
+    <value>A troca de tema foi pausada até</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>A mudança do tema está pausada uma vez!</value>
+    <value>A troca de temas é pausada uma vez!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Gostaria de mudar agora ou atrasar para mais tarde?</value>
+    <value>Você gostaria de trocar agora ou adiar mais?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Mudança automática do tema retomada</value>
+    <value>Troca automática de tema retomada</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Mudança de tema pendente</value>
+    <value>Troca de tema pendente</value>
   </data>
   <data name="Paused" xml:space="preserve">
     <value>Pausado</value>
@@ -187,16 +187,16 @@
     <value>12 horas</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Prima Confirmar para pedir a mudança de tema imediata.</value>
+    <value>Confirme para solicitar uma troca de tema imediatamente.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Reverter esta acção ao clicar no botão Anular em baixo.</value>
+    <value>Reverta esta ação clicando no botão desfazer abaixo.</value>
   </data>
   <data name="SwitchNow" xml:space="preserve">
-    <value>Mudar agora</value>
+    <value>Trocar agora</value>
   </data>
   <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>Mudança automática do tema</value>
+    <value>Troca automática do tema</value>
   </data>
   <data name="TrayMenuItem_Close" xml:space="preserve">
     <value>Fechar</value>
@@ -211,16 +211,16 @@
     <value>Abrir a pasta de configurações</value>
   </data>
   <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Pausar mudança automática</value>
+    <value>Pausar troca automática</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Alternar tema</value>
+    <value>Alternar o tema</value>
   </data>
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Tente consertar o tema</value>
+    <value>Tentar consertar o tema</value>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>Anular</value>
+    <value>Desfazer</value>
   </data>
   <data name="Until" xml:space="preserve">
     <value>até</value>
@@ -232,53 +232,53 @@
     <value>até ao próximo pôr-do-sol</value>
   </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>Ocorreu um erro enquanto fazia patching,.</value>
+    <value>Ocorreu um erro durante a aplicação do patch.</value>
   </data>
   <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Desactualizar</value>
+    <value>Reverter atualização</value>
   </data>
   <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Abrir a pasta dos registos</value>
+    <value>Abrir diretório de log</value>
   </data>
   <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
     <value>Adiar</value>
   </data>
   <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Actualizar</value>
+    <value>Atualizar</value>
   </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Versão Actual</value>
+    <value>Versão Atual</value>
   </data>
   <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
     <value>Versão anterior {0} disponível</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Desactualizar para</value>
+    <value>Reverter para</value>
   </data>
   <data name="UpdateToast_Downloading" xml:space="preserve">
     <value>Baixando…</value>
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Descarga em progresso</value>
+    <value>Download em andamento</value>
   </data>
   <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Ir para a página de transferências</value>
+    <value>Ir para a página de download</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Messagem</value>
+    <value>Mensagem</value>
   </data>
   <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
     <value>Nova versão {0} disponível</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>O patching falhou</value>
+    <value>Falha aplicando o patch</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
     <value>Por favor, verifique o service.log e updater.log para informações</value>
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>A actulizar para</value>
+    <value>Atualizando para</value>
   </data>
 </root>
