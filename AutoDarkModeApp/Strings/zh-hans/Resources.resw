@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -172,7 +172,7 @@
     <value>自动</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>启用自动主题切换</value>
+    <value>自动主题切换开关</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>自启动</value>
@@ -964,6 +964,6 @@
     <value>未推迟</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>忽略颜色</value>
   </data>
 </root>
