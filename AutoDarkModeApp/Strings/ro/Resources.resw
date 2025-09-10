@@ -979,13 +979,13 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Apply accent color to the taskbar</value>
-  </data>
-  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Apply accent color on title bars and window borders</value>
-  </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Choose when the accent color should be applied</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to title bars and window borders</value>
   </data>
 </root>
