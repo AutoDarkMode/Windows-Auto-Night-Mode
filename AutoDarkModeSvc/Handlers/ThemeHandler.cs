@@ -201,39 +201,44 @@ public static class ThemeHandler
         return false;
     }
 
-
-
     public static void RefreshDwm(bool managed, SwitchEventArgs e)
     {
-        if (!managed)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
         {
-            state.ManagedThemeFile.SyncWithActiveTheme(false, true);
-            ThemeFile unmanagedTarget;
-            if (e.Theme == Theme.Dark)
+            if (!managed)
             {
-                unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
-            }
-            else
-            {
-                unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
-            }
-            try
-            {
-                unmanagedTarget.Load();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "dwm management: could not load unmanaged target theme while refreshing dwm, forcing refresh:");
-            }
+                state.ManagedThemeFile.SyncWithActiveTheme(false, true);
+                ThemeFile unmanagedTarget;
+                if (e.Theme == Theme.Dark)
+                {
+                    unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
+                }
+                else
+                {
+                    unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
+                }
+                try
+                {
+                    unmanagedTarget.Load();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "dwm management: could not load unmanaged target theme while refreshing dwm, forcing refresh:");
+                }
 
-            if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "0" 
-                && (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1))
-            {
-                Logger.Info("dwm management: no refresh required because target theme has different accent color");
-                return;
+                if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "0"
+                    && (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1))
+                {
+                    Logger.Info("dwm management: no refresh required because target theme has different accent color");
+                    return;
+                }
             }
+            DwmRefreshHandler.Enqueue(DwmRefreshSource.ThemeHandler);
         }
-        DwmRefreshHandler.Enqueue(DwmRefreshSource.ThemeHandler);
+        else
+        {
+            Logger.Trace("dwm management: no refresh required needed in this windows version");
+        }
     }
 
     private static bool ApplyIThemeManager(string originalPath, bool suppressLogging = false, ThemeFile unmanaged = null)
