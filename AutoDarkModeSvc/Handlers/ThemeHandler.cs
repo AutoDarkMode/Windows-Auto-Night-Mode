@@ -201,7 +201,7 @@ public static class ThemeHandler
         return false;
     }
 
-    public static void RefreshDwm(bool managed, SwitchEventArgs e)
+    public static void RefreshDwm(bool managed, SwitchEventArgs e, DwmRefreshEventArgs d)
     {
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
         {
@@ -233,7 +233,7 @@ public static class ThemeHandler
                     return;
                 }
             }
-            DwmRefreshHandler.Enqueue(DwmRefreshSource.ThemeHandler);
+            DwmRefreshHandler.Enqueue(d);
         }
         else
         {

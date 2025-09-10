@@ -982,10 +982,10 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Choose when the accent color should be applied</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Apply accent color to the taskbar</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Apply accent color to title bars and window borders</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar during dark mode</value>
   </data>
 </root>

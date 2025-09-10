@@ -220,7 +220,10 @@ static class ThemeManager
             else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
         }
 
-        (List<ISwitchComponent> componentsToUpdate, DwmRefreshType neededDwmRefresh, DwmRefreshType providedDwmRefresh) = cm.GetComponentsToUpdate(e);
+        (List<ISwitchComponent> componentsToUpdate, 
+         DwmRefreshType neededDwmRefresh, 
+         DwmRefreshType providedDwmRefresh, 
+         int dwmRefreshDelay) = cm.GetComponentsToUpdate(e);
 
         #endregion
 
@@ -372,7 +375,7 @@ static class ThemeManager
             if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
             {
                 Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
-                ThemeHandler.RefreshDwm(managed: true, e);
+                ThemeHandler.RefreshDwm(managed: true, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
             }
             // on managed mode, if the dwm refresh is provided by the components, no refresh is required
             else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
@@ -382,11 +385,11 @@ static class ThemeManager
             // if windows theme mode is enabled, always perform a dwm refresh to be safe. Wé don't know what settings are changed
             else if (themeModeNeedsUpdate)
             {
-                ThemeHandler.RefreshDwm(managed: false, e);
+                ThemeHandler.RefreshDwm(managed: true, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
             }
             else
             {
-                Logger.Info("dwm management: no refresh required");
+                Logger.Info("dwm management: no refresh required from module list");
             }
             #endregion
 

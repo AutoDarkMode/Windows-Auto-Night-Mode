@@ -134,11 +134,12 @@ class ComponentManager
     /// <param name="newTheme">The theme that should be checked against</param>
     /// <returns>a list of components that require an update and a boolean that informs whether a dwm refresh needs to be initiated manually</returns>
     /// </summary>
-    public (List<ISwitchComponent>, DwmRefreshType needsDwmRefresh, DwmRefreshType dwmRefreshType) GetComponentsToUpdate(SwitchEventArgs e)
+    public (List<ISwitchComponent>, DwmRefreshType needsDwmRefresh, DwmRefreshType dwmRefreshType, int dwmRefreshDelay) GetComponentsToUpdate(SwitchEventArgs e)
     {
         List<ISwitchComponent> shouldUpdate = new();
         DwmRefreshType needsDwmRefresh = DwmRefreshType.None;
         DwmRefreshType dwmRefreshType = DwmRefreshType.None;
+        int dwmRefreshDelay = 0;
         foreach (ISwitchComponent c in Components)
         {
             // require update if theme mode is enabled, the module is enabled and compatible with theme mode
@@ -148,7 +149,7 @@ class ComponentManager
 
                 if (c.RunComponentNeedsUpdate(e))
                 {
-                    AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                    AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType, ref dwmRefreshDelay);
                 }
             }
             // require update if module is enabled and theme mode is disabled (previously known as classic mode)
@@ -158,7 +159,7 @@ class ComponentManager
 
                 if (c.RunComponentNeedsUpdate(e))
                 {
-                    AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                    AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType, ref dwmRefreshDelay);
                 }
             }
             // require update if the component is no longer enabled but still initialized. this will trigger the deinit hook
@@ -170,15 +171,20 @@ class ComponentManager
             // if the force flag is set to true, we also need to update
             else if (c.ForceSwitch)
             {
-                AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType);
+                AddComponentAndGetDwmInfo(c, shouldUpdate, ref needsDwmRefresh, ref dwmRefreshType, ref dwmRefreshDelay);
             }
         }
 
         if (shouldUpdate.Count > 0) Logger.Info($"components queued for update: [{string.Join(", ", shouldUpdate.Select(c => c.GetType().Name.ToString()).ToArray())}]");
-        return (shouldUpdate, needsDwmRefresh, dwmRefreshType);
+        return (shouldUpdate, needsDwmRefresh, dwmRefreshType, dwmRefreshDelay);
     }
 
-    private static void AddComponentAndGetDwmInfo(ISwitchComponent c, List<ISwitchComponent> shouldUpdate, ref DwmRefreshType needsDwmRefresh, ref DwmRefreshType dwmRefreshType)
+    private static void AddComponentAndGetDwmInfo(
+        ISwitchComponent c, 
+        List<ISwitchComponent> shouldUpdate, 
+        ref DwmRefreshType needsDwmRefresh, 
+        ref DwmRefreshType dwmRefreshType,
+        ref int dwmRefreshDelay)
     {
         if ((int)c.NeedsDwmRefresh > (int)needsDwmRefresh)
         {
@@ -188,6 +194,11 @@ class ComponentManager
         if ((int)c.TriggersDwmRefresh > (int)dwmRefreshType)
         {
             dwmRefreshType = c.TriggersDwmRefresh;
+        }
+
+        if (c.DwmRefreshDelay > dwmRefreshDelay)
+        {
+            dwmRefreshDelay = c.DwmRefreshDelay;
         }
         shouldUpdate.Add(c);
     }

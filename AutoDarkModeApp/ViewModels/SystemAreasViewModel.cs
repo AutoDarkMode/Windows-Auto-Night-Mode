@@ -43,12 +43,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
     public partial bool IsTaskbarColorSwitch { get; set; }
 
     [ObservableProperty]
-    public partial bool IsTaskbarAccentOnLight { get; set; }
-
-    [ObservableProperty]
-    public partial bool IsTaskbarAccentOnDark { get; set; }
-
-    [ObservableProperty]
     public partial bool IsDWMPrevalenceSwitch { get; set; }
 
     [ObservableProperty]
@@ -118,18 +112,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             SystemSwitchComponentMode = SystemSwitchMode.Disabled;
         }
 
-        IsTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.TaskbarColorSwitch;
-        if (_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
-        {
-            IsTaskbarAccentOnLight = true;
-            IsTaskbarAccentOnDark = false;
-        }
-        else
-        {
-            IsTaskbarAccentOnLight = false;
-            IsTaskbarAccentOnDark = true;
-        }
-
+        IsTaskbarColorSwitch = (_builder.Config.SystemSwitch.Component.TaskbarColorSwitch && !(_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light));
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
         if (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light)
         {
@@ -248,6 +231,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             return;
 
         _builder.Config.SystemSwitch.Component.TaskbarColorSwitch = value;
+        _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
 
         try
         {
@@ -259,48 +243,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         }
 
         RequestThemeSwitch();
-    }
-
-    partial void OnIsTaskbarAccentOnLightChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (value)
-        {
-            _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Light;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
-        }
-
-        if (value) RequestThemeSwitch();
-    }
-
-    partial void OnIsTaskbarAccentOnDarkChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (value)
-        {
-            _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
-        }
-
-        if (value) RequestThemeSwitch();
     }
 
     partial void OnIsDWMPrevalenceSwitchChanged(bool value)

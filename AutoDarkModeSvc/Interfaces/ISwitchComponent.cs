@@ -83,6 +83,10 @@ interface ISwitchComponent
     /// </summary>
     public DwmRefreshType TriggersDwmRefresh { get; }
     /// <summary>
+    /// Dtermines if the DWM refresh needs to be delayed or not
+    /// </summary>
+    public int DwmRefreshDelay { get; }
+    /// <summary>
     /// Determines if the module can be run with the windows theme switcher
     /// </summary>
     /// <returns></returns>

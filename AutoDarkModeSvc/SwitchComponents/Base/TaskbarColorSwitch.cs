@@ -16,6 +16,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
     public override bool ThemeHandlerCompatibility => true;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
     public override bool Enabled => Settings.Component.TaskbarColorSwitch;
+    public override int DwmRefreshDelay => 1000;
     public bool useCallbackForDark = Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC;
 
     private bool currentTaskbarColorActive;
@@ -42,14 +43,15 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
             {
                 return true;
             }
-            else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentTaskbarColorActive)
+            else if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive)
             {
                 return true;
             }
         }
         else if (e.Theme == Theme.Light)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Light && !currentTaskbarColorActive)
+            // change to !currentTaskbarColorActive here in the future
+            if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive)
             {
                 return true;
             }
@@ -63,7 +65,8 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        var lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
+        // disable this option for now, may reserve for future windows builds
+        var lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2) && false;
         if (e.Theme == Theme.Light)
         {
             if (Settings.Component.TaskbarColorDuring == Theme.Light && lightTaskbarAccentPermitted)
@@ -112,7 +115,13 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         if (RegistryHandler.SystemUsesLightTheme() && currentTaskbarColorActive)
         {
             RegistryHandler.SetTaskbarColorPrevalence(0);
-            DwmRefreshHandler.Enqueue(DwmRefreshSource.TaskbarColorSwitchComponent);
+            DwmRefreshHandler.Enqueue(new(DwmRefreshSource.TaskbarColorSwitchComponent, DwmRefreshDelay));
+        } 
+        else
+        {
+            // default this for now
+            RegistryHandler.SetTaskbarColorPrevalence(0);
+            DwmRefreshHandler.Enqueue(new(DwmRefreshSource.TaskbarColorSwitchComponent, DwmRefreshDelay));
         }
     }
 }

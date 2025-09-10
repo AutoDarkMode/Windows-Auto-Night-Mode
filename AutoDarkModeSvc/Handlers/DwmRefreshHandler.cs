@@ -16,7 +16,7 @@ internal sealed partial class DwmRefreshHandler
     private static readonly DwmRefreshHandler _instance = new();
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
-    private BlockingCollection<DwmRefreshSource> Queue { get; }
+    private BlockingCollection<DwmRefreshEventArgs> Queue { get; }
     private Thread Worker { get; set; }
     private CancellationTokenSource Cancellation { get; } = new();
 
@@ -37,21 +37,47 @@ internal sealed partial class DwmRefreshHandler
         WorkerManager();
     }
 
+    private int _refreshInProgress;
+    private long _nextExecutionTicks;
+
     private void WorkerManager()
     {
         Worker = new Thread(() =>
         {
             try
             {
-                foreach (DwmRefreshSource s in Queue.GetConsumingEnumerable(Cancellation.Token))
+                foreach (DwmRefreshEventArgs e in Queue.GetConsumingEnumerable(Cancellation.Token))
                 {
+
+                    while (true)
+                    {
+                        long now = DateTime.UtcNow.Ticks;
+                        long deadline = Volatile.Read(ref _nextExecutionTicks);
+                        long remainingMs = (deadline - now) / TimeSpan.TicksPerMillisecond;
+                        if (remainingMs > 0)
+                        {
+                            Thread.Sleep((int)remainingMs);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    // we consider a refresh "done" as soon as the wait time is over
+                    // because we don't know at which stage the refresh is
+                    // and it's better to allow enqueuing a new one instead of
+                    // potentially having UI components not update
+                    Volatile.Write(ref _refreshInProgress, 0);
+                    Volatile.Write(ref _nextExecutionTicks, 0);
+
                     try
                     {
-                        BroadcastThemeChangedMessages();
+                        Broadcast();
                     }
                     catch (Exception ex)
                     {
-                        Logger.Warn(ex, $"dwm management: refresh failed, source {Enum.GetName(s)}");
+                        Logger.Warn(ex, $"dwm management: refresh failed, source {Enum.GetName(e.RefreshSource)}");
                     }
                 }
             }
@@ -69,10 +95,38 @@ internal sealed partial class DwmRefreshHandler
         Worker.Start();
     }
 
-    public static void Enqueue(DwmRefreshSource source)
+    public void AddWithGuard(DwmRefreshEventArgs e) 
     {
-        Logger.Debug("dwm management: enqueuing new dwm refresh");
-        _instance.Queue.Add(source);
+
+    }
+
+    public static void Enqueue(DwmRefreshEventArgs e)
+    {
+
+        long now = DateTime.UtcNow.Ticks;
+        long delayTicks = TimeSpan.FromMilliseconds(e.Delay).Ticks;
+        long newDeadline = now + delayTicks;
+
+        if (Interlocked.CompareExchange(ref _instance._refreshInProgress, 1, 0) == 0)
+        {
+            Logger.Debug($"dwm management: enqueuing new dwm refresh{(e.Delay > 0 ? $" with a delay of {e.Delay} millis" : "")} from source {Enum.GetName(e.RefreshSource)}");
+            Volatile.Write(ref _instance._nextExecutionTicks, newDeadline);
+            _instance.Queue.Add(e);
+        }
+        else
+        {
+            long currentDeadline = Volatile.Read(ref _instance._nextExecutionTicks);
+            double remainingMs = (currentDeadline - now) / (double)TimeSpan.TicksPerMillisecond;
+            //remainingMs = Math.Max(0, remainingMs);
+
+            Logger.Debug($"dwm management: combining refresh request from source {Enum.GetName(e.RefreshSource)} with active pending refresh in queue");
+
+            // if the currently requested delay is larger than our wait time, we re-set the deadline to the last reque´sted delay
+            if (e.Delay >= remainingMs)
+            {
+                Interlocked.CompareExchange(ref _instance._nextExecutionTicks, newDeadline, currentDeadline);
+            }
+        }
     }
 
     public static void Shutdown()
@@ -96,9 +150,9 @@ internal sealed partial class DwmRefreshHandler
         Logger.Debug("dwm management: refresh handler stopped");
     }
 
-    private static void BroadcastThemeChangedMessages()
+    private static void Broadcast()
     {
-        Logger.Info("dwm management: starting refresh");
+        Logger.Info("dwm management: starting broadcast");
         try
         {
             UIntPtr result;
@@ -115,7 +169,7 @@ internal sealed partial class DwmRefreshHandler
             if (result.Equals(IntPtr.Zero))
             {
                 var code = Marshal.GetLastWin32Error();
-                Logger.Error("dwm management: refresh failed while broadcasting hwnd message wm_settingchange", code);
+                Logger.Error("dwm management: broadcast failed while broadcasting hwnd message wm_settingchange", code);
             }
 
             SendMessageTimeout(
@@ -130,7 +184,7 @@ internal sealed partial class DwmRefreshHandler
             if (result.Equals(IntPtr.Zero))
             {
                 var code = Marshal.GetLastWin32Error();
-                Logger.Error("dwm management: refresh failed while broadcasting hwnd message wm_themechanged", code);
+                Logger.Error("dwm management: broadcast failed while broadcasting hwnd message wm_themechanged", code);
             }
         }
         catch (Exception ex)

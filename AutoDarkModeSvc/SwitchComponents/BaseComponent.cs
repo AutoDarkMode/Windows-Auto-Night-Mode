@@ -36,6 +36,7 @@ abstract class BaseComponent<T> : ISwitchComponent
     }
     public virtual DwmRefreshType TriggersDwmRefresh { get; protected set; } = DwmRefreshType.None;
     public virtual DwmRefreshType NeedsDwmRefresh { get; protected set; } = DwmRefreshType.None;
+    public virtual int DwmRefreshDelay { get; protected set; } = 2500;
     public virtual int PriorityToLight { get; }
     public virtual int PriorityToDark { get; }
     public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;

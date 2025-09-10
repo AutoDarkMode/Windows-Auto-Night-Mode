@@ -45,23 +45,11 @@
                                            Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
                                        HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <CheckBox x:Name="AdaptiveTaskbarAccentCheckBox"
-                                              Content="{helpers:ResourceString Name=AccentApplyTaskbar}"
-                                              IsChecked="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
 
-                                    <RadioButtons IsEnabled="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=OneWay}">
-                                        <RadioButton Content="{helpers:ResourceString Name=LightTheme}"
-                                                     IsChecked="{x:Bind ViewModel.IsTaskbarAccentOnLight, Mode=TwoWay}"
-                                                     IsEnabled="{x:Bind ViewModel.LightTaskbarAccentPermitted}" />
-                                        <RadioButton Content="{helpers:ResourceString Name=DarkTheme}"
-                                                     IsChecked="{x:Bind ViewModel.IsTaskbarAccentOnDark, Mode=TwoWay}" />
-                                    </RadioButtons>
-                                </StackPanel>
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}">
+                            <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
                         </controls:SettingsCard>
+
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
                                 <StackPanel Orientation="Vertical">
