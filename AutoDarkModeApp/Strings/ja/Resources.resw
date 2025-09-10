@@ -972,10 +972,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Choose when the accent color should be applied</value>
   </data>
-  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+  <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Apply accent color to the taskbar</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Apply accent color to title bars and window borders</value>
   </data>
 </root>
