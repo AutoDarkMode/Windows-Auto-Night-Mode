@@ -279,7 +279,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        if (value) RequestThemeSwitch();
     }
 
     partial void OnIsTaskbarAccentOnDarkChanged(bool value)
@@ -300,7 +300,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        if (value) RequestThemeSwitch();
     }
 
     partial void OnIsDWMPrevalenceSwitchChanged(bool value)
@@ -340,7 +340,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        if (value) RequestThemeSwitch();
     }
 
     partial void OnIsDWMPrevalenceEnableThemeDarkChanged(bool value)
@@ -361,7 +361,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        if (value) RequestThemeSwitch();
     }
 
     partial void OnIsTouchKeyboardSwitchChanged(bool value)
