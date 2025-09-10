@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Cor de destaque</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Cor de destaque para a barra de tarefas</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Destaque apenas</value>
   </data>
@@ -298,9 +295,6 @@ Por esta razão, você pode me apoiar com uma doação voluntária. Até uma peq
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Não altere os temas a menos que o sistema esteja parado</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Cor de destaque para barras de título e bordas de janela somente durante</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (versão antiga)</value>
@@ -981,5 +975,17 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

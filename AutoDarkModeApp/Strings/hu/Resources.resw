@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Kiemelőszín</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Kiemelő szín a tálcához</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Csak Kiemelőszín</value>
   </data>
@@ -298,9 +295,6 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Csak akkor váltson témát, ha a rendszer tétlen</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Kiemelő szín csak a címsorok és az ablakszegélyek számára a következő időszakban</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Régi)</value>
@@ -981,5 +975,17 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

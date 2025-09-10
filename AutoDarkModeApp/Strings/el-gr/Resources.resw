@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Χρώμα έμφασης</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Χρώμα έμφασης στη γραμμή εργασιών</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Μόνο χρώμα έμφασης</value>
   </data>
@@ -297,9 +294,6 @@
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Να μην γίνεται εναλλαγή θεμάτων εκτός εάν το σύστημά είναι σε αδράνεια</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Χρώμα έμφασης για γραμμές τίτλου και περιγράμματα παραθύρων μόνο όταν εφαρμόζεται</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (παλιά μέθοδος)</value>
@@ -975,5 +969,17 @@
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

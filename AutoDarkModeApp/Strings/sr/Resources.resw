@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Boja naglašavanja</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Boja naglašavanja na traci zadataka</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Samo naglašavanje</value>
   </data>
@@ -298,9 +295,6 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Ne menjaj teme ako sistem nije neaktivan</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Boja naglašavanja na naslovnoj traci i ivicama prozora samo tokom</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (zastareli)</value>
@@ -981,5 +975,17 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

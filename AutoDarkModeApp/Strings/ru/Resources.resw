@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Акцентный цвет</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Использовать акцентный цвет для панели задач</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Только акцентный цвет</value>
   </data>
@@ -298,9 +295,6 @@
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Не переключать темы, пока система не бездействует</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Использовать акцентный цвет для заголовков и границ окон только во время</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (старая версия)</value>
@@ -981,5 +975,17 @@
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

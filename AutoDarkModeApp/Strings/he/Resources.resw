@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Accent color</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Accent Color for Taskbar</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Accent only</value>
   </data>
@@ -298,9 +295,6 @@ For this reason you could support me with a voluntary donation. Even a small amo
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Don't switch themes unless the system is idle</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Accent Color for title bars and window borders only during</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>گوشه (قدیمی)</value>
@@ -981,5 +975,17 @@ Click "Yes" to open a new browser window.
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Màu nhấn</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Màu nhấn cho Thanh tác vụ</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Chỉ màu nhấn</value>
   </data>
@@ -298,9 +295,6 @@ Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng gó
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Không chuyển chủ đề trừ khi hệ thống đang nghỉ</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Màu nhấn cho thanh tiêu đề và viền cửa sổ chỉ trong khi</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Phiên bản cũ)</value>
@@ -981,5 +975,17 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

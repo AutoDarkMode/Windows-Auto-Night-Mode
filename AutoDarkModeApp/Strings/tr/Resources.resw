@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>Vurgu rengi</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>Görev çubuğu için vurgu rengi</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>Sadece vurgu</value>
   </data>
@@ -298,9 +295,6 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>Sistem boşta olmadığı sürece temaları değiştirme</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>Yalnızca temadayken başlık çubukları ve pencere kenarlıkları için Vurgu Rengi</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (Eski)</value>
@@ -981,5 +975,17 @@ Bunu indirmek istiyor musunuz?
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>

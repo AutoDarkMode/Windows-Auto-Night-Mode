@@ -126,9 +126,6 @@
   <data name="AccentColor" xml:space="preserve">
     <value>主题色</value>
   </data>
-  <data name="AccentColorForTaskbar" xml:space="preserve">
-    <value>使用主题色作为任务栏颜色</value>
-  </data>
   <data name="AccentOnly" xml:space="preserve">
     <value>仅主题色</value>
   </data>
@@ -297,9 +294,6 @@
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
     <value>系统非空闲状态时不进行切换</value>
-  </data>
-  <data name="DWMPrevalence" xml:space="preserve">
-    <value>仅当使用所选主题时，将相应的主题色应用到标题栏和窗口边框</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge（旧版）</value>
@@ -965,5 +959,17 @@
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
+  </data>
+  <data name="AccentSurfaces" xml:space="preserve">
+    <value>Accent Surfaces</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Apply accent color to the taskbar</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Apply accent color on title bars and window borders</value>
+  </data>
+  <data name="AccentSurfacesChoose" xml:space="preserve">
+    <value>Choose when the accent color should be applied</value>
   </data>
 </root>
