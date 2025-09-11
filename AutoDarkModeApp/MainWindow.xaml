@@ -46,10 +46,7 @@
                 <BreadcrumbBar x:Name="BreadcrumBarControl" MaxWidth="1000">
                     <BreadcrumbBar.ItemTemplate>
                         <DataTemplate x:DataType="navigationService:BreadcrumbItem">
-                            <BreadcrumbBarItem
-                                AutomationProperties.Name="{Binding Content}"
-                                Content="{Binding}"
-                                Foreground="{ThemeResource TextFillColorTertiaryBrush}">
+                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Content}" Content="{Binding}">
                                 <BreadcrumbBarItem.ContentTemplate>
                                     <DataTemplate>
                                         <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Content}" />
