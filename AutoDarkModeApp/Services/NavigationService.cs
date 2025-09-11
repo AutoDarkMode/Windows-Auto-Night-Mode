@@ -183,6 +183,7 @@ public class NavigationService : INavigationService
             return;
         }
 
+        // Check if the page is a custom breadcrumb page
         if (_customBreadcrumbBarItems.TryGetValue(e.SourcePageType, out BreadcrumbItem? customBreadcrumbItem))
         {
             var pageKey = "AutoDarkModeApp.ViewModels." + customBreadcrumbItem.Tag + "ViewModel";
@@ -261,6 +262,7 @@ public class NavigationService : INavigationService
 
         if (parentChain.Count > 0)
         {
+            // Select the top parent in NavigationView
             var topParentPage = parentChain[0];
             var topParentSelectItem = GetSelectedItem(topParentPage);
 
@@ -268,6 +270,7 @@ public class NavigationService : INavigationService
             {
                 _navigationView.SelectedItem = topParentSelectItem;
 
+                // Add all parents to breadcrumb items
                 foreach (var parentPage in parentChain)
                 {
                     var parentSelectItem = GetSelectedItem(parentPage);
@@ -277,6 +280,7 @@ public class NavigationService : INavigationService
                     }
                 }
 
+                // Finally, add the custom breadcrumb item
                 _breadcrumbItems.Add(new BreadcrumbItem() { Content = customBreadcrumbItem.Content, Tag = customBreadcrumbItem.Tag });
             }
         }

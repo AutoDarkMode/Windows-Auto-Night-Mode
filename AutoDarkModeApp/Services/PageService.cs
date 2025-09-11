@@ -60,6 +60,7 @@ public class PageService : IPageService
         return pageType;
     }
 
+    // Lists the parent pages of the specified page
     public List<Type> GetPageParentChain(string key)
     {
         var parentChain = new List<Type>();
@@ -75,6 +76,7 @@ public class PageService : IPageService
             }
             else
             {
+                // No more parents found, exit the loop
                 break;
             }
         }
@@ -108,6 +110,7 @@ public class PageService : IPageService
         where CV : Page
         where PV : Page
     {
+        // CV: Child View, PV: Parent View
         lock (_pageParents)
         {
             var key = typeof(CV).FullName!;
