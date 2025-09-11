@@ -446,10 +446,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
     {
-        var wantedAgreement = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
-        var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
-            .Select(w => Path.GetFileName(w.Item1))
-            .ToList();
+        var currentMonitorCount = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
 
         WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
 
@@ -458,6 +455,25 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             case WallpaperType.Individual:
                 List<string> wallpapersTarget = [.. Settings.Component.Monitors.
                     Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper))];
+
+                if (type == WallpaperType.Individual)
+                {
+                    var themeFileMonitorCount = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Count;
+                    if (themeFileMonitorCount > currentMonitorCount)
+                    {
+                        // if the managed theme file has more multi monitor wallpapers, then we truncate those extra monitors
+                        // otherwise we will potentially lose synchronization state
+                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers =
+                            GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Where((a, b) => b < currentMonitorCount).ToList();
+                        Logger.Warn($"managed theme file contained more wallpapers than there are monitors, pruned wallpaper list from {themeFileMonitorCount} to {currentMonitorCount}");
+                    }
+                }
+
+                var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
+                    .Select(w => Path.GetFileName(w.Item1))
+                    .ToList();
+
                 return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
             case WallpaperType.Global:
                 return CheckAgreementGlobal();

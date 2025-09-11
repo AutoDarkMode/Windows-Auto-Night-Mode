@@ -26,6 +26,9 @@ public class Desktop
     public int PicturePosition { get; set; } = 4;
     public int MultimonBackgrounds { get; set; } = 0;
     public int WindowsSpotlight { get; set; } = 0;
+    /// <summary>
+    /// Tuple of Path, WallpaperId
+    /// </summary>
     public List<(string, string)> MultimonWallpapers { get; set; } = new();
 }
 
