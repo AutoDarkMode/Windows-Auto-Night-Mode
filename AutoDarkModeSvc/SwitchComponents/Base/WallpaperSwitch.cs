@@ -500,7 +500,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             }
         }
 
-        bool ok = agreement == wantedAgreement;
+        bool ok = agreement >= wantedAgreement;
 
         if (ok)
             Logger.Info($"wallpaper synchronization integrity check passed ({agreement}/{wantedAgreement})");
