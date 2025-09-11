@@ -28,6 +28,7 @@ using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using NLog.Targets;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
@@ -470,43 +471,63 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper) == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper());
         if (ok)
         {
-            Logger.Info($"wallpaper synchronization integrity check passed");
+            Logger.Info($"wallpaper synchronization: integrity check passed");
         }
         else
         {
-            Logger.Warn($"wallpaper synchronization integrity check failed: wanted {GlobalState.ManagedThemeFile.Desktop.Wallpaper}, is {WallpaperHandler.GetGlobalWallpaper()}");
+            Logger.Warn($"wallpaper synchronization: integrity check failed: wanted {GlobalState.ManagedThemeFile.Desktop.Wallpaper}, is {WallpaperHandler.GetGlobalWallpaper()}");
         }
         return ok;
     }
 
     private bool CheckAgreementIndividual(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
     {
-        var wantedAgreement = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
-
-        var counts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var name in wallpapersInThemeFile)
+        // Count how many of each wallpaper exists in the lists
+        var requiredCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var wallpaperName in wallpapersInThemeFile)
         {
-            counts.TryGetValue(name, out var c);
-            counts[name] = c + 1;
+            requiredCounts.TryGetValue(wallpaperName, out var count);
+            requiredCounts[wallpaperName] = count + 1;
+        }
+        var availableCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+        foreach (var wallpaperName in wallpapersTarget)
+        {
+            availableCounts.TryGetValue(wallpaperName, out var count);
+            availableCounts[wallpaperName] = count + 1;
         }
 
-        int agreement = 0;
-        foreach (var name in wallpapersTarget)
+        int totalRequired = wallpapersInThemeFile.Count;
+        int matched = 0;
+
+        foreach (var requiredEntry in requiredCounts)
         {
-            if (counts.TryGetValue(name, out var c) && c > 0)
+            string wallpaperName = requiredEntry.Key;
+            int requiredCount = requiredEntry.Value;
+
+            int availableCount = availableCounts.TryGetValue(wallpaperName, out var count) ? count : 0;
+            matched += Math.Min(availableCount, requiredCount);
+
+            if (availableCount < requiredCount)
             {
-                agreement++;
-                counts[name] = c - 1;
+                int missing = requiredCount - availableCount;
+                Logger.Warn($"wallpaper synchronization: maybe missing {wallpaperName} x{missing}");
             }
         }
 
-        bool ok = agreement >= wantedAgreement;
+        double coverage = (double)matched / totalRequired;
+        bool ok = coverage >= 0.5;
 
         if (ok)
-            Logger.Info($"wallpaper synchronization integrity check passed ({agreement}/{wantedAgreement})");
-        else
-            Logger.Warn($"wallpaper synchronization integrity check failed ({agreement}/{wantedAgreement})");
+        {
+            Logger.Info($"wallpaper synchronization: integrity check passed ({matched}/{totalRequired}, {coverage:P0} coverage)");
 
+        }
+        else
+        {
+            Logger.Warn($"wallpaper synchronization: integrity check failed ({matched}/{totalRequired}, {coverage:P0} coverage)");
+            Logger.Warn($"wallpaper synchronization: required wallpaper list: [{string.Join(", ", wallpapersInThemeFile)}], target list: [{string.Join(", ", wallpapersTarget)}]");
+        }
+           
         return ok;
     }
 }
