@@ -20,7 +20,10 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
-            navigation.RegisterCustomHeader(typeof(WallpaperPickerViewModel).FullName!, "Background".GetLocalized());
+            navigation.RegisterCustomBreadcrumbBarItem(
+                typeof(WallpaperPickerViewModel).FullName!,
+                new Services.BreadcrumbItem() { Content = "Background".GetLocalized(), Tag = "WallpaperPicker" }
+            );
             navigation.NavigateTo(typeof(WallpaperPickerViewModel).FullName!);
         }
     }
@@ -30,7 +33,10 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
-            navigation.RegisterCustomHeader(typeof(ColorizationViewModel).FullName!, "AccentColor".GetLocalized());
+            navigation.RegisterCustomBreadcrumbBarItem(
+                typeof(ColorizationViewModel).FullName!,
+                new Services.BreadcrumbItem() { Content = "AccentColor".GetLocalized(), Tag = "Colorization" }
+            );
             navigation.NavigateTo(typeof(ColorizationViewModel).FullName!);
         }
     }
@@ -40,7 +46,10 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
-            navigation.RegisterCustomHeader(typeof(CursorsViewModel).FullName!, "Cursors".GetLocalized());
+            navigation.RegisterCustomBreadcrumbBarItem(
+                typeof(CursorsViewModel).FullName!,
+                new Services.BreadcrumbItem() { Content = "Cursors".GetLocalized(), Tag = "Cursors" }
+            );
             navigation.NavigateTo(typeof(CursorsViewModel).FullName!);
         }
     }
@@ -50,7 +59,10 @@ public sealed partial class PersonalizationPage : Page
         var navigation = App.GetService<INavigationService>();
         if (navigation?.Frame != null)
         {
-            navigation.RegisterCustomHeader(typeof(ThemePickerViewModel).FullName!, "Theme".GetLocalized());
+            navigation.RegisterCustomBreadcrumbBarItem(
+                typeof(ThemePickerViewModel).FullName!,
+                new Services.BreadcrumbItem() { Content = "Theme".GetLocalized(), Tag = "ThemePicker" }
+            );
             navigation.NavigateTo(typeof(ThemePickerViewModel).FullName!);
         }
     }

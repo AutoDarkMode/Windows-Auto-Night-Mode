@@ -7,6 +7,7 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigationService="using:AutoDarkModeApp.Services"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
@@ -41,6 +42,22 @@
             IsSettingsVisible="True"
             OpenPaneLength="240"
             PaneDisplayMode="Auto">
+            <NavigationView.Header>
+                <BreadcrumbBar x:Name="BreadcrumBarControl" MaxWidth="1000">
+                    <BreadcrumbBar.ItemTemplate>
+                        <DataTemplate x:DataType="navigationService:BreadcrumbItem">
+                            <BreadcrumbBarItem AutomationProperties.Name="{Binding Content}" Content="{Binding}">
+                                <BreadcrumbBarItem.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{Binding Content}" />
+                                    </DataTemplate>
+                                </BreadcrumbBarItem.ContentTemplate>
+                            </BreadcrumbBarItem>
+                        </DataTemplate>
+                    </BreadcrumbBar.ItemTemplate>
+                </BreadcrumbBar>
+            </NavigationView.Header>
+
             <NavigationView.MenuItems>
                 <!--
               TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.

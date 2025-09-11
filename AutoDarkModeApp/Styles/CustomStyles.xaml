@@ -23,4 +23,11 @@
         <Setter Property="MaxWidth" Value="1000" />
     </Style>
 
+    <!--  BreadcrumbBarChevron style like win11 settings  -->
+    <x:Double x:Key="BreadcrumbBarChevronFontSize">16</x:Double>
+    <Thickness x:Key="BreadcrumbBarChevronPadding">11,4,12,0</Thickness>
+    <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+    <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+
+
 </ResourceDictionary>
