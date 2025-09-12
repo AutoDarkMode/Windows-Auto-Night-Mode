@@ -3,7 +3,9 @@ using System.Globalization;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AutoDarkModeApp;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Utils;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Index.Strtree;
@@ -14,6 +16,7 @@ public class GeolocatorService : IGeolocatorService
 {
     private readonly STRtree<IFeature> _indexAdmin1 = new();
     private readonly STRtree<IFeature> _indexAdmin0 = new();
+    private readonly string _langcode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpperInvariant();
 
     public GeolocatorService()
     {
@@ -27,6 +30,15 @@ public class GeolocatorService : IGeolocatorService
 
         _indexAdmin1.Build();
         _indexAdmin0.Build();
+
+        var localSettings = App.GetService<ILocalSettingsService>();
+        string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("Language")).Result;
+        if (language != null)
+        {
+            language = language.Replace("\"", "");
+            string transcoded = Localization.LanguageTranscoding(language);
+            _langcode = CultureInfo.GetCultureInfo(transcoded).TwoLetterISOLanguageName.ToUpperInvariant();
+        }
     }
 
     private void LoadGeoJsonIntoIndex(string jsonPath, STRtree<IFeature> index)
@@ -52,8 +64,7 @@ public class GeolocatorService : IGeolocatorService
     public Task<string?> GetRegionNameAsync(double longitude, double latitude)
     {
         var point = new Point(longitude, latitude);
-        string langCode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpperInvariant();
-        string cultureSpecificField = $"NAME_{langCode}";
+        string cultureSpecificField = $"NAME_{_langcode}";
 
         string name = "Unknown";
         string? admin0name = FindNameAdmin0(point, _indexAdmin0, cultureSpecificField);
