@@ -172,7 +172,7 @@ public partial class TimeViewModel : ObservableRecipient
         });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
-        LocationNextUpdateDateDescription = "NextUpdateAt".GetLocalized() + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
+        LocationNextUpdateDateDescription = "NextUpdateAt".GetLocalized() + ": " + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
 
         _isInitializing = false;
     }

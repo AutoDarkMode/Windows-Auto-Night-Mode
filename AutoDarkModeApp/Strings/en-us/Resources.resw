@@ -551,7 +551,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Version info copied to clipboard</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Next update: </value>
+    <value>Next update</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
