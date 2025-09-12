@@ -179,7 +179,7 @@ public class GlobalState
         else
         {
             // we're only reading here, so we can't apply the theme fix safely
-            ManagedThemeFile.SyncWithActiveTheme(false);
+            ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: true);
         }
     }
 

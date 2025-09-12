@@ -70,17 +70,19 @@ public static class ThemeHandler
             WindowsThemeMonitor.PauseThemeMonitor();
         }
 
-        // string appliedThemeFilePath = null;
-
-        // refresh active theme for syncing data into unmanaged themes
-        state.ManagedThemeFile.SyncWithActiveTheme(false, logging: false);
-
         if (newTheme == Theme.Light)
         {
             ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
             light.UnmanagedOriginalName = light.DisplayName;
             light.DisplayName = Helper.NameUnmanagedLightTheme;
-            light.Save(managed: false);
+            if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+            {
+                ThemeFile.PatchColorsWin11AndSave(light);
+            }
+            else
+            {
+                light.Save(managed: false);
+            }
             Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
         }
         else if (newTheme == Theme.Dark)
@@ -88,7 +90,14 @@ public static class ThemeHandler
             ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
             dark.UnmanagedOriginalName = dark.DisplayName;
             dark.DisplayName = Helper.NameUnmanagedDarkTheme;
-            dark.Save(managed: false);
+            if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+            {
+                ThemeFile.PatchColorsWin11AndSave(dark);
+            }
+            else
+            {
+                dark.Save(managed: false);
+            }
             Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
         }
 
@@ -207,7 +216,6 @@ public static class ThemeHandler
         {
             if (!managed)
             {
-                state.ManagedThemeFile.SyncWithActiveTheme(false, true);
                 ThemeFile unmanagedTarget;
                 if (e.Theme == Theme.Dark)
                 {

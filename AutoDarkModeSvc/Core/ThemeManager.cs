@@ -265,7 +265,7 @@ static class ThemeManager
             if (builder.Config.WindowsThemeMode.Enabled == false)
             {
                 // get data from active theme and apply theme fix
-                state.ManagedThemeFile.SyncWithActiveTheme(false);
+                state.ManagedThemeFile.SyncWithActiveTheme(patch: true, keepDisplayNameAndGuid: false, logging: true);
 
                 int retrySleep = 1000;
                 var integrityCheckResults = cm.RunIntegrityChecks(componentsToUpdate, e, HookPosition.PreSync);
@@ -284,7 +284,7 @@ static class ThemeManager
                         for (i = 0; i <= maxRetries; i++)
                         {
                             Thread.Sleep(retrySleep);
-                            state.ManagedThemeFile.SyncWithActiveTheme(false);
+                            state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                             if (component.RunVerifyOperationIntegrity(e))
                             {
                                 Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i+1}/{maxRetries+1}");
@@ -340,6 +340,8 @@ static class ThemeManager
             if (themeModeNeedsUpdate)
             {
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
+                // refresh active theme for syncing data into unmanaged themes
+                state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                 ThemeHandler.ApplyUnmanagedTheme(newTheme);
                 themeSwitched = true;
             }

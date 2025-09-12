@@ -30,7 +30,11 @@ namespace AutoDarkModeSvc.Handlers.ThemeFiles;
 public partial class ThemeFile
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private bool themeFixShouldAdd = false;
     public ThemeFile(string path) {
+        Random rnd = new Random();
+        int val = rnd.Next(0, 2);
+        if (val == 0) themeFixShouldAdd = true;
         ThemeFilePath = path;
     }
     public Encoding Encoding { get; set; } = Encoding.GetEncoding(1252);
@@ -80,6 +84,54 @@ public partial class ThemeFile
         target.SetContentAndParse(source.ThemeFileContent);
         target.RefreshGuid();
         return target;
+    }
+
+    public static void PatchColorsWin11AndSave(ThemeFile theme, string data = null)
+    {
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+        {
+            if (data != null) theme.Colors.InfoText = (data, theme.Colors.InfoText.Item2);
+            PatchColorsWin11InMemory(theme);
+        }
+        theme.Save(managed: false);
+    }
+
+    public static void PatchColorsWin11InMemory(ThemeFile theme)
+    {
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+        {
+            string[] rgb = theme.Colors.InfoText.Item1.Split(" ");
+            _ = int.TryParse(rgb[0], out int r);
+            _ = int.TryParse(rgb[1], out int g);
+            _ = int.TryParse(rgb[2], out int b);
+
+            if (theme.themeFixShouldAdd)
+            {
+                if (r == 255)
+                {
+                    r--;
+                }
+                else
+                {
+                    r++;
+                    theme.themeFixShouldAdd = false;
+                }
+            }
+            else if (!theme.themeFixShouldAdd)
+            {
+                if (r == 0)
+                {
+                    r++;
+                }
+                else
+                {
+                    r--;
+                    theme.themeFixShouldAdd = true;
+                }
+            }
+            Logger.Debug($"patched colors from [{theme.Colors.InfoText.Item1}] to [{r} {g} {b}]");
+            theme.Colors.InfoText = ($"{r} {g} {b}", theme.Colors.InfoText.Item2);
+        }
     }
 
     /// <summary>
@@ -202,7 +254,7 @@ public partial class ThemeFile
     /// <param name="patch">Set to true if the theme switch fix should be applied or not. Set this to false if you plan to apply the active theme. <br/>
     /// Otherwise you might face theme state desync with Windows 11 22H2 and get a buggy taskbar / explorer.</param>
     /// <param name="keepDisplayNameAndGuid">if the name and guid of the original theme should be preserved</param>
-    public void SyncWithActiveTheme(bool keepDisplayNameAndGuid = false, bool logging = true)
+    public void SyncWithActiveTheme(bool patch, bool keepDisplayNameAndGuid, bool logging)
     {
         try
         {
@@ -252,6 +304,15 @@ public partial class ThemeFile
             string oldInfoText = Colors.InfoText.Item1;
 
             Parse();
+
+            if (patch)
+            {
+                if (Colors.InfoText.Item1 == oldInfoText) PatchColorsWin11InMemory(this);
+                else
+                {
+                    Logger.Trace($"no color patch necessary. target theme: [{Colors.InfoText.Item1}], we have: [{oldInfoText}]");
+                }
+            }
 
             if (!keepDisplayNameAndGuid)
             {
