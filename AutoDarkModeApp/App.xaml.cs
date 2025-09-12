@@ -69,6 +69,7 @@ public partial class App : Application
             services.AddSingleton<INavigationService, NavigationService>();
 
             services.AddSingleton<IErrorService, ErrorService>();
+            services.AddSingleton<IGeolocatorService, GeolocatorService>();
 
             // Views and ViewModels
             services.AddTransient<ThemePickerViewModel>();

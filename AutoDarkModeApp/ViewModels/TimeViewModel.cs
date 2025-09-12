@@ -17,6 +17,7 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
     private bool _isInitializing;
 
@@ -87,10 +88,11 @@ public partial class TimeViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool ResumeInfoBarEnabled { get; set; }
 
-    public TimeViewModel(IErrorService errorService)
+    public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        _geolocatorService = geolocatorService;
 
         try
         {
@@ -194,20 +196,11 @@ public partial class TimeViewModel : ObservableRecipient
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
             if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
-                LocationBlockText = "City".GetLocalized() + ": " + await LocationHandler.GetCityName();
+                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
             else if (!_builder.Config.Location.UseGeolocatorService)
             {
-                LocationBlockText =
-                    "Position".GetLocalized()
-                    + ": "
-                    + "Latitude".GetLocalized()
-                    + " "
-                    + Math.Round(_builder.LocationData.Lat, 3)
-                    + " / "
-                    + "Longitude".GetLocalized()
-                    + " "
-                    + Math.Round(_builder.LocationData.Lon, 3);
+                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
         }
         catch
