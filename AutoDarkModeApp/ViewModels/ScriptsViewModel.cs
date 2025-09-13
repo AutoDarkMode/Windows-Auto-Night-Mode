@@ -63,7 +63,7 @@ public partial class ScriptsViewModel : ObservableRecipient
         _builder.ScriptConfig.Enabled = value;
         try
         {
-            _builder.Save();
+            _builder.SaveScripts();
         }
         catch (Exception ex)
         {
