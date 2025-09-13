@@ -266,16 +266,16 @@ public static class ThemeHandler
     {
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
         {
+            ThemeFile unmanagedTarget = null;
             try
             {
                 // prepare theme
                 ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
                 if (!managed)
                 {
+                    unmanagedTarget = PrepareUnmanagedDwmRefresh(e);
                     try
                     {
-                        ThemeFile unmanagedTarget = PrepareUnmanagedDwmRefresh(e);
-
                         if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "1")
                         {
                             Logger.Info("dwm management: no full colorization refresh required because auto colorization is enabled in the target theme");
@@ -318,6 +318,14 @@ public static class ThemeHandler
 
                 List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
                 Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
+
+                // if the unmanaged mode has the ignorecolor flag applied, we need to patch the theme back with the previous color first
+                // which will be present in the synced managed theme
+                if (!managed && unmanagedTarget != null && builder.Config.WindowsThemeMode.ApplyFlags.Contains(ThemeApplyFlags.IgnoreColor))
+                {
+                    Thread.Sleep(500);
+                    Apply(state.ManagedThemeFile.ThemeFilePath, true, null, flagList);
+                }
 
                 Logger.Info("dwm management: full colorization refresh performed by theme handler");
             }
