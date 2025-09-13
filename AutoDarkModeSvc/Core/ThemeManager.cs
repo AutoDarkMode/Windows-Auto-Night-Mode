@@ -192,6 +192,7 @@ static class ThemeManager
     [MethodImpl(MethodImplOptions.Synchronized)]
     public static void UpdateTheme(SwitchEventArgs e)
     {
+        bool refreshDwmViaColorization = e.RefreshDwmViaColorization;
         if (e.Theme == Theme.Unknown || e.Theme == Theme.Resolve)
         {
             Logger.Info("theme switch requested with no target theme");
@@ -225,6 +226,11 @@ static class ThemeManager
          DwmRefreshType providedDwmRefresh, 
          int dwmRefreshDelay) = cm.GetComponentsToUpdate(e);
 
+        if (neededDwmRefresh >= DwmRefreshType.Full)
+        {
+            refreshDwmViaColorization = true;
+        }
+
         #endregion
 
         #region logic for adm startup
@@ -254,7 +260,7 @@ static class ThemeManager
         bool themeSwitched = false;
 
         #region apply themes and run components
-        if (componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
+        if (refreshDwmViaColorization || componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
         {
             PowerHandler.RequestDisableEnergySaver(builder.Config);
 
@@ -304,6 +310,21 @@ static class ThemeManager
 
             // regular modules that do not need to modify the active theme
             cm.RunPostSync(componentsToUpdate, e);
+
+            // entrypoint for full colorization dwm refresh is different than hwnd, because we need to
+            // apply the dwm refresh theme that has a modified colorization value that is later
+            // replaced by the requested theme, either managed or unmanaged
+            if (refreshDwmViaColorization)
+            {
+                Logger.Info("dwm management: full colorization refresh required");
+                if (builder.Config.WindowsThemeMode.Enabled)
+                {
+                    ThemeHandler.RefreshDwmViaColorization(managed: false, e);
+                    themeModeNeedsUpdate = true;
+                }
+                else ThemeHandler.RefreshDwmViaColorization(managed: true, e);
+            }
+
             // Logic for managed mode
             if (builder.Config.WindowsThemeMode.Enabled == false)
             {
@@ -340,8 +361,8 @@ static class ThemeManager
             if (themeModeNeedsUpdate)
             {
                 PowerHandler.RequestDisableEnergySaver(builder.Config);
-                // refresh active theme for syncing data into unmanaged themes
-                state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
+                // refresh active theme for syncing data into unmanaged themes if it hasn't already
+                if (!refreshDwmViaColorization) state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                 ThemeHandler.ApplyUnmanagedTheme(newTheme);
                 themeSwitched = true;
             }
@@ -371,27 +392,32 @@ static class ThemeManager
                 */
             }
 
-            #region dwm refresh
-            // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
-            // on managed mode if the dwm refresh is insufficient, queue a full refresh
-            if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
+            #region dwm refresh via hwnd broadcast
+            // full colorization dwm refresh is still higher quality than the current hwnd broadasts
+            // why is unknown, Microsoft pls?
+            if (!refreshDwmViaColorization)
             {
-                Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
-                ThemeHandler.RefreshDwm(managed: true, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
-            }
-            // on managed mode, if the dwm refresh is provided by the components, no refresh is required
-            else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
-            {
-                Logger.Info($"dwm management: requested {Enum.GetName(providedDwmRefresh).ToLower()} refresh was performed by component(s) in queue");
-            }
-            // if windows theme mode is enabled, always perform a dwm refresh to be safe. Wé don't know what settings are changed
-            else if (themeModeNeedsUpdate)
-            {
-                ThemeHandler.RefreshDwm(managed: true, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
-            }
-            else
-            {
-                Logger.Info("dwm management: no refresh required from module list");
+                // force refresh should only happen if there are actually operations that switch parts of windows that require dwm refreshes
+                // on managed mode if the dwm refresh is insufficient, queue a full refresh
+                if (builder.Config.WindowsThemeMode.Enabled == false && (providedDwmRefresh < neededDwmRefresh))
+                {
+                    Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
+                    ThemeHandler.RefreshDwm(managed: true, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
+                }
+                // on managed mode, if the dwm refresh is provided by the components, no refresh is required
+                else if ((providedDwmRefresh >= neededDwmRefresh) && (neededDwmRefresh != DwmRefreshType.None))
+                {
+                    Logger.Info($"dwm management: requested {Enum.GetName(providedDwmRefresh).ToLower()} refresh was performed by component(s) in queue");
+                }
+                // if windows theme mode is enabled, always perform a dwm refresh to be safe. Wé don't know what settings are changed
+                else if (themeModeNeedsUpdate)
+                {
+                    ThemeHandler.RefreshDwm(managed: false, e, new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay));
+                }
+                else
+                {
+                    Logger.Info("dwm management: no refresh required from module list");
+                }
             }
             #endregion
 

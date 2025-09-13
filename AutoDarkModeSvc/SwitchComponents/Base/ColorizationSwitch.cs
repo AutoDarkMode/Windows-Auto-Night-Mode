@@ -27,7 +27,7 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
 {
     public override bool ThemeHandlerCompatibility => false;
-    public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Standard;
+    public override DwmRefreshType TriggersDwmRefresh => DwmRefreshType.Full;
     private bool invalidHexFound = false;
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {

@@ -161,7 +161,7 @@ static class SystemEventHandler
                 if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
                 {
                     Logger.Info("system unlocked, refreshing theme");
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock, refreshDwm: true));
+                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
                 }
                 else
                 {

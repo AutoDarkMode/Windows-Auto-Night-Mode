@@ -45,8 +45,8 @@ public class GlobalState
 
     public Theme _requestedTheme = Theme.Unknown;
     /// <summary>
-    /// The theme that was last requested to be set. This either reflects the already applied theme, 
-    /// or the pending theme shortly before a switch will be performed
+    /// The theme that Auto Dark Mode has set last and that reflects the current theme state within the Service
+    /// The internal theme may be pending fór a short time before a theme switch is fully applied
     /// </summary>
     public Theme InternalTheme
     {

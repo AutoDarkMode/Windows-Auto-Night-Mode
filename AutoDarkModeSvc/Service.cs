@@ -186,7 +186,7 @@ class Service : Form
 
     private void TryFixTheme(object sender, EventArgs e)
     {
-        DwmRefreshHandler.Enqueue(new(DwmRefreshSource.User));
+        ThemeManager.RequestSwitch(new(SwitchSource.Manual, refreshDwmViaColorization: true));
     }
 
     private void UpdateContextMenu(object sender, EventArgs e)

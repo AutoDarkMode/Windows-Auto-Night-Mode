@@ -34,18 +34,18 @@ public class SwitchEventArgs : EventArgs
         Theme = requestedTheme;
     }
 
-    public SwitchEventArgs(SwitchSource source, Theme requestedTheme, DateTime time, bool refreshDwm = false)
+    public SwitchEventArgs(SwitchSource source, Theme requestedTheme, DateTime time, bool refreshDwmViaColorization = false)
     {
         Source = source;
         Theme = requestedTheme;
         SwitchTime = time;
-        RefreshDwm = refreshDwm;
+        RefreshDwmViaColorization = refreshDwmViaColorization;
     }
 
-    public SwitchEventArgs(SwitchSource source, bool refreshDwm = false)
+    public SwitchEventArgs(SwitchSource source, bool refreshDwmViaColorization = false)
     {
         Source = source;
-        RefreshDwm = refreshDwm;
+        RefreshDwmViaColorization = refreshDwmViaColorization;
     }
 
     public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
@@ -70,7 +70,7 @@ public class SwitchEventArgs : EventArgs
         SwitchTime = time;
     }
 
-    public bool RefreshDwm { get; } = false;
+    public bool RefreshDwmViaColorization { get; } = false;
     public SwitchSource Source { get; }
     private List<ThemeOverrideSource> _themeOverrideSources { get; } = new();
     public ReadOnlyCollection<ThemeOverrideSource> ThemeOverrideSources { get => new(_themeOverrideSources); }
