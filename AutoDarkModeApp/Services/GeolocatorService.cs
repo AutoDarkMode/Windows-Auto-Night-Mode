@@ -21,11 +21,11 @@ public class GeolocatorService : IGeolocatorService
     public GeolocatorService()
     {
         LoadGeoJsonIntoIndex(
-            Path.Combine(AppContext.BaseDirectory, "Assets", "Geo", "ne_10m_admin_1_states_provinces.json"),
+            Path.Combine(AppContext.BaseDirectory, "Assets", "Geo", "ne_10m_admin_1_states_provinces.geojson"),
             _indexAdmin1);
 
         LoadGeoJsonIntoIndex(
-            Path.Combine(AppContext.BaseDirectory, "Assets", "Geo", "ne_50m_admin_0_countries.json"),
+            Path.Combine(AppContext.BaseDirectory, "Assets", "Geo", "ne_50m_admin_0_countries.geojson"),
             _indexAdmin0);
 
         _indexAdmin1.Build();

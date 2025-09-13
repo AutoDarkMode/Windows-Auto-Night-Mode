@@ -204,10 +204,6 @@
                                     NavigateUri="https://www.naturalearthdata.com/"
                                     ToolTipService.ToolTip="https://www.naturalearthdata.com/" />
                                 <HyperlinkButton
-                                    Content="Natural Earth GeoJSON"
-                                    NavigateUri="https://github.com/martynafford/natural-earth-geojson"
-                                    ToolTipService.ToolTip="https://github.com/martynafford/natural-earth-geojson" />
-                                <HyperlinkButton
                                     Content="NetTopologySuite"
                                     NavigateUri="https://github.com/NetTopologySuite/NetTopologySuite"
                                     ToolTipService.ToolTip="https://github.com/NetTopologySuite/NetTopologySuite" />
