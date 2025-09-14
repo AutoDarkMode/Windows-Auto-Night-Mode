@@ -40,24 +40,20 @@
                     </ComboBox>
                 </controls:SettingsCard>
 
-                <!--  Accent Mode  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentSurfaces}"
+
+                <!--  Accent Mode for title bars and window borders  -->
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
                                            Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
-                                       HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                                           HeaderIcon="{ui:FontIcon Glyph=&#xEB41;}">
+
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
+
+
                     <controls:SettingsExpander.Items>
-
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}">
-                            <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
-                        </controls:SettingsCard>
-
                         <controls:SettingsCard>
                             <controls:SettingsCard.Header>
                                 <StackPanel Orientation="Vertical">
-                                    <CheckBox x:Name="DWMPrevalenceSwitcCheckBox"
-                                              Content="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
-                                              IsChecked="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
-
-                                    <RadioButtons IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
+                                    <RadioButtons Header="{helpers:ResourceString Name=ApplyDuring}"  IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
                                         <RadioButton Content="{helpers:ResourceString Name=LightTheme}"
                                                      IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeLight, Mode=TwoWay}" />
                                         <RadioButton Content="{helpers:ResourceString Name=DarkTheme}"
@@ -68,6 +64,15 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
+                <!--  Accent mode for the taskbar -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE90E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+
+               
 
                 <!--  Touch Keyboard  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
