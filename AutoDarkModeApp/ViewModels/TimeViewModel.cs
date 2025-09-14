@@ -304,9 +304,9 @@ public partial class TimeViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
-    private void SafeApplyTheme()
+    private static async void SafeApplyTheme()
     {
-        _dispatcherQueue.TryEnqueue(async () => await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15));
+        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
     }
 
     private void HandleConfigUpdate()
@@ -468,6 +468,7 @@ public partial class TimeViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
         }
+
         SafeApplyTheme();
     }
 
