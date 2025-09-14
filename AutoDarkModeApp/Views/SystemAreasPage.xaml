@@ -46,8 +46,7 @@
                                            Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
                                            HeaderIcon="{ui:FontIcon Glyph=&#xEB41;}">
 
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
-
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
 
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard>
