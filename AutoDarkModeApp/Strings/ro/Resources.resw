@@ -750,7 +750,7 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Nu mai forțați tema</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Activați schimbarea temelor Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

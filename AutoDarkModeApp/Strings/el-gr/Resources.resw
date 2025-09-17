@@ -744,7 +744,7 @@
   <data name="StopForcing" xml:space="preserve">
     <value>Διακοπή επιβολής Θέματος</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Ενεργοποίηση εναλλαγής θέματος των Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

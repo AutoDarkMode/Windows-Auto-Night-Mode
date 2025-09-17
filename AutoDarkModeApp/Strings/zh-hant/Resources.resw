@@ -750,7 +750,7 @@
   <data name="StopForcing" xml:space="preserve">
     <value>停止強制使用主題</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>啟用 Windows 佈景主題切換</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

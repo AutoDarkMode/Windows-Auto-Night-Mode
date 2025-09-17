@@ -18,7 +18,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  AutoThemeSwitching  -->
@@ -37,7 +37,7 @@
                                 <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
                             </RadioButtons>
 
-                            <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
+                            <Border Style="{StaticResource DividerBorderStyle}" />
 
                             <!--  Custom Time  -->
                             <Grid
@@ -93,10 +93,7 @@
                                     Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
                             </Grid>
 
-                            <Border
-                                BorderBrush="{ThemeResource DividerStrokeColorDefault}"
-                                BorderThickness="0,1,0,0"
-                                Visibility="{x:Bind ViewModel.DividerBorderVisibility, Mode=OneWay}" />
+                            <Border Style="{StaticResource DividerBorderStyle}" Visibility="{x:Bind ViewModel.DividerBorderVisibility, Mode=OneWay}" />
 
                             <!--  Location  -->
                             <Grid
@@ -162,7 +159,7 @@
                                 </Grid>
 
 
-                                <Border BorderBrush="{ThemeResource DividerStrokeColorDefault}" BorderThickness="0,1,0,0" />
+                                <Border Style="{StaticResource DividerBorderStyle}" />
 
                                 <StackPanel Orientation="Horizontal" Spacing="24">
                                     <TextBox
@@ -264,8 +261,7 @@
                                 <Border
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
-                                    BorderBrush="{ThemeResource DividerStrokeColorDefault}"
-                                    BorderThickness="0,1,0,0" />
+                                    Style="{StaticResource DividerBorderStyle}" />
 
                                 <StackPanel
                                     Grid.Row="2"

@@ -16,14 +16,13 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Some settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}"
-                              IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
+                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander>
@@ -39,7 +38,7 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
-                
+
                 <controls:SettingsExpander Visibility="{x:Bind ViewModel.EnergySaverSettingsCardVisiblity, Mode=OneWay}">
                     <controls:SettingsExpander.Header>
                         <CheckBox Content="{helpers:ResourceString Name=EnergySaverMitigation}" IsChecked="{x:Bind ViewModel.IsDisableEnergySaverOnThemeSwitch, Mode=TwoWay}" />
@@ -171,16 +170,32 @@
 
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock>
-                                <Run Text="{helpers:ResourceString Name=ModeAt}" />
-                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
-                            </TextBlock>
-                            <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
-                                <Run Text="{helpers:ResourceString Name=PathAt}" />
-                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
-                            </TextBlock>
-                        </StackPanel>
+                        <Grid ColumnSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{helpers:ResourceString Name=PathAt}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
+                                ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                        </Grid>
                     </controls:SettingsCard.Header>
                     <Button
                         MinWidth="120"

@@ -750,7 +750,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>A téma kényszerítésének leállítása</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Windows-téma váltás engedélyezése</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

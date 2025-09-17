@@ -750,7 +750,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Cegah memaksa tema</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Nyalakan pergantian tema Windows</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

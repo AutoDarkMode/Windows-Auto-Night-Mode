@@ -13,7 +13,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Colorization  -->
@@ -22,7 +22,7 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <StackPanel Style="{StaticResource PageBaseStackPanelStyle}" Visibility="{x:Bind ViewModel.ThemeSettingsExpanderVisibility, Mode=OneWay}">
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.ThemeSettingsExpanderVisibility, Mode=OneWay}">
                     <!--  Light  -->
                     <controls:SettingsExpander
                         Header="{helpers:ResourceString Name=LightTheme}"

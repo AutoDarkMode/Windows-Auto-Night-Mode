@@ -749,8 +749,8 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Stop forcing theme</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
-    <value>Enable Windows theme switch</value>
+  <data name="SwitchWindowsTheme" xml:space="preserve">
+    <value>Switch Windows theme</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
     <value>Switch current theme</value>
@@ -825,7 +825,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Let Windows manage my theme</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Check for updates when Auto Dark Mode starts</value>
+    <value>Check when Auto Dark Mode starts</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Update channel</value>

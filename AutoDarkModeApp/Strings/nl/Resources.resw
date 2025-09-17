@@ -750,7 +750,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Forceren opheffen</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Wisselen van Windows-thema inschakelen</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

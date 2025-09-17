@@ -750,7 +750,7 @@ Click "Yes" to open a new browser window.
   <data name="StopForcing" xml:space="preserve">
     <value>Stop forcing theme</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Enable Windows theme switch</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">

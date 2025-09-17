@@ -14,7 +14,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Conditions  -->
