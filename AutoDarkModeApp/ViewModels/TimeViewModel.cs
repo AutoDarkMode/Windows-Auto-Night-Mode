@@ -19,7 +19,9 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
     private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
+
     private bool _isInitializing;
+    private bool _skipConfigUpdate;
 
     public enum TimeSourceMode
     {
@@ -124,15 +126,11 @@ public partial class TimeViewModel : ObservableRecipient
         {
             _builder.Config.Location.SunriseOffsetMin = OffsetLight;
             _builder.Config.Location.SunsetOffsetMin = OffsetDark;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-            }
+
             _debounceTimer.Stop();
+            SafeSaveBuilder();
+            SafeApplyTheme();
+            LoadSettings();
         };
     }
 
@@ -140,11 +138,8 @@ public partial class TimeViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+        UpdateUIStates();
 
-        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
-
-        TimePickHourClock = Windows.Globalization.ClockIdentifiers.TwentyFourHour;
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
         LocationBlockText = "Msg_SearchLoc".GetLocalized();
@@ -152,24 +147,19 @@ public partial class TimeViewModel : ObservableRecipient
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
         string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
-        TimePickHourClock = timeFormat.Contains('h') ? Windows.Globalization.ClockIdentifiers.TwelveHour : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
+        TimePickHourClock = timeFormat.Contains('h')
+            ? Windows.Globalization.ClockIdentifiers.TwelveHour
+            : Windows.Globalization.ClockIdentifiers.TwentyFourHour;
 
-        _dispatcherQueue.TryEnqueue(async () =>
+        if (SelectedTimeSource == TimeSourceMode.CustomTimes)
         {
-            if (SelectedTimeSource == TimeSourceMode.CustomTimes)
-            {
-                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-            }
-            else
-            {
-                await LoadGeolocationData();
-
-                LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
-                TimeLightStart = SunriseWithOffset.TimeOfDay;
-                TimeDarkStart = SunsetWithOffset.TimeOfDay;
-            }
-        });
+            TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+            TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+        }
+        else
+        {
+            Task.Run(async () => await LoadGeolocationData());
+        }
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
         LocationNextUpdateDateDescription = "NextUpdateAt".GetLocalized() + ": " + nextUpdate.ToString("g", CultureInfo.CurrentCulture);
@@ -177,41 +167,9 @@ public partial class TimeViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
-    private async Task LoadGeolocationData()
+    private void UpdateUIStates()
     {
-        var maxTries = 5;
-        for (var i = 0; i < maxTries; i++)
-        {
-            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
-            if (result.StatusCode == StatusCode.Ok)
-            {
-                break;
-            }
-
-            await Task.Delay(1000);
-        }
-        _builder.LoadLocationData();
-        try
-        {
-            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
-            {
-                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
-            }
-            else if (!_builder.Config.Location.UseGeolocatorService)
-            {
-                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
-            }
-        }
-        catch
-        {
-            return;
-        }
-    }
-
-    private void HandleAutoTheme(bool value)
-    {
-        AutoThemeSwitchingEnabled = value;
+        AutoThemeSwitchingEnabled = _builder.Config.AutoThemeSwitchingEnabled;
 
         if (_builder.Config.Governor == Governor.NightLight)
         {
@@ -240,10 +198,49 @@ public partial class TimeViewModel : ObservableRecipient
             SelectedTimeSource = TimeSourceMode.CoordinateTimes;
         }
 
-        OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
+        OffsetTimeSettingsCardVisibility = AutoThemeSwitchingEnabled ? Visibility.Visible : Visibility.Collapsed;
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
+    }
+
+    private async Task LoadGeolocationData()
+    {
+        var maxTries = 5;
+        for (var i = 0; i < maxTries; i++)
+        {
+            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
+            if (result.StatusCode == StatusCode.Ok)
+            {
+                break;
+            }
+
+            await Task.Delay(1000);
+        }
+        _builder.LoadLocationData();
+        try
+        {
+            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+            _dispatcherQueue.TryEnqueue(async () =>
+            {
+                if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+                {
+                    LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
+                }
+                else if (!_builder.Config.Location.UseGeolocatorService)
+                {
+                    LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
+                }
+
+                LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+                TimeLightStart = SunriseWithOffset.TimeOfDay;
+                TimeDarkStart = SunsetWithOffset.TimeOfDay;
+            });
+        }
+        catch
+        {
+            return;
+        }
     }
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
@@ -304,6 +301,54 @@ public partial class TimeViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
+    private void UpdateCoordinates()
+    {
+        if (double.TryParse(LatValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lat))
+        {
+            if (lat > 90)
+                lat = 90.000000;
+            if (lat < -90)
+                lat = -90.000000;
+
+            LatValue = lat.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LatValue = "0";
+        }
+        if (double.TryParse(LonValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lon))
+        {
+            if (lon > 180)
+                lon = 180.000000;
+            if (lon < -180)
+                lon = -180.000000;
+
+            LonValue = lon.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LonValue = "0";
+        }
+
+        _builder.Config.Location.CustomLat = lat;
+        _builder.Config.Location.CustomLon = lon;
+
+        SafeSaveBuilder();
+        SafeApplyTheme();
+    }
+
+    private void SafeSaveBuilder()
+    {
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+        }
+    }
+
     private static async void SafeApplyTheme()
     {
         await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
@@ -311,6 +356,11 @@ public partial class TimeViewModel : ObservableRecipient
 
     private void HandleConfigUpdate()
     {
+        if (_skipConfigUpdate)
+        {
+            _skipConfigUpdate = false;
+            return;
+        }
         StateUpdateHandler.StopConfigWatcher();
         _dispatcherQueue.TryEnqueue(() =>
         {
@@ -323,27 +373,24 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
         if (_isInitializing)
+        {
             return;
-
-        HandleAutoTheme(value);
+        }
+        _skipConfigUpdate = true;
 
         _builder.Config.AutoThemeSwitchingEnabled = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
+        SafeSaveBuilder();
+
+        LoadSettings();
     }
 
     partial void OnSelectedTimeSourceChanged(TimeSourceMode value)
     {
         if (_isInitializing)
+        {
             return;
-
-        HandleAutoTheme(AutoThemeSwitchingEnabled);
+        }
+        _skipConfigUpdate = true;
 
         switch (value)
         {
@@ -380,102 +427,51 @@ public partial class TimeViewModel : ObservableRecipient
                 break;
         }
 
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
-
+        SafeSaveBuilder();
         SafeApplyTheme();
+
+        LoadSettings();
     }
 
     partial void OnTimeLightStartChanged(TimeSpan value)
     {
         if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+        {
             return;
+        }
+        _skipConfigUpdate = true;
 
         _builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
 
+        SafeSaveBuilder();
         SafeApplyTheme();
+
+        LoadSettings();
     }
 
     partial void OnTimeDarkStartChanged(TimeSpan value)
     {
         if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+        {
             return;
+        }
+        _skipConfigUpdate = true;
 
         _builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
 
+        SafeSaveBuilder();
         SafeApplyTheme();
-    }
 
-    private void UpdateCoordinates()
-    {
-        if (double.TryParse(LatValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lat))
-        {
-            if (lat > 90)
-                lat = 90.000000;
-            if (lat < -90)
-                lat = -90.000000;
-
-            LatValue = lat.ToString("0.######", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            LatValue = "0";
-        }
-        if (double.TryParse(LonValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lon))
-        {
-            if (lon > 180)
-                lon = 180.000000;
-            if (lon < -180)
-                lon = -180.000000;
-
-            LonValue = lon.ToString("0.######", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            LonValue = "0";
-        }
-
-        _builder.Config.Location.CustomLat = lat;
-        _builder.Config.Location.CustomLon = lon;
-
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
-
-        SafeApplyTheme();
+        LoadSettings();
     }
 
     partial void OnOffsetLightChanged(int value)
     {
         if (_isInitializing)
+        {
             return;
+        }
+        _skipConfigUpdate = true;
 
         if (_debounceTimer != null)
         {
@@ -487,7 +483,10 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnOffsetDarkChanged(int value)
     {
         if (_isInitializing)
+        {
             return;
+        }
+        _skipConfigUpdate = true;
 
         if (_debounceTimer != null)
         {
@@ -499,7 +498,10 @@ public partial class TimeViewModel : ObservableRecipient
     partial void OnIsPostponedChanged(bool value)
     {
         if (_isInitializing)
+        {
             return;
+        }
+        _skipConfigUpdate = true;
 
         var postponeMinutes = (SelectedPostponeIndex) switch
         {
