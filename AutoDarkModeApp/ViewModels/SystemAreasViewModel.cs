@@ -32,7 +32,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
 
     public bool LightTaskbarAccentPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
 
-
     [ObservableProperty]
     public partial AppSwitchMode AppsSwitchComponentMode { get; set; }
 
@@ -46,10 +45,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
     public partial bool IsDWMPrevalenceSwitch { get; set; }
 
     [ObservableProperty]
-    public partial bool IsDWMPrevalenceEnableThemeLight { get; set; }
-
-    [ObservableProperty]
-    public partial bool IsDWMPrevalenceEnableThemeDark { get; set; }
+    public partial int DWMPrevalenceMode { get; set; }
 
     [ObservableProperty]
     public partial bool IsTouchKeyboardSwitch { get; set; }
@@ -112,17 +108,17 @@ public partial class SystemAreasViewModel : ObservableRecipient
             SystemSwitchComponentMode = SystemSwitchMode.Disabled;
         }
 
-        IsTaskbarColorSwitch = (_builder.Config.SystemSwitch.Component.TaskbarColorSwitch && !(_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light));
+        IsTaskbarColorSwitch = (
+            _builder.Config.SystemSwitch.Component.TaskbarColorSwitch && !(_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
+        );
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
         if (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light)
         {
-            IsDWMPrevalenceEnableThemeLight = true;
-            IsDWMPrevalenceEnableThemeDark = false;
+            DWMPrevalenceMode = 0;
         }
         else
         {
-            IsDWMPrevalenceEnableThemeLight = false;
-            IsDWMPrevalenceEnableThemeDark = true;
+            DWMPrevalenceMode = 1;
         }
 
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
@@ -264,15 +260,14 @@ public partial class SystemAreasViewModel : ObservableRecipient
         RequestThemeSwitch();
     }
 
-    partial void OnIsDWMPrevalenceEnableThemeLightChanged(bool value)
+    partial void OnDWMPrevalenceModeChanged(int value)
     {
         if (_isInitializing)
-            return;
-
-        if (value)
         {
-            _builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Light;
+            return;
         }
+
+        _builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = (value == 0) ? Theme.Light : Theme.Dark;
         try
         {
             _builder.Save();
@@ -281,29 +276,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
-
-        if (value) RequestThemeSwitch();
-    }
-
-    partial void OnIsDWMPrevalenceEnableThemeDarkChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (value)
-        {
-            _builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme = Theme.Dark;
-        }
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
-        }
-
-        if (value) RequestThemeSwitch();
+        RequestThemeSwitch();
     }
 
     partial void OnIsTouchKeyboardSwitchChanged(bool value)
