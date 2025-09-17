@@ -50,15 +50,11 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
 
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <RadioButtons Header="{helpers:ResourceString Name=ApplyDuring}" IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
-                                        <RadioButton Content="{helpers:ResourceString Name=LightTheme}" IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeLight, Mode=TwoWay}" />
-                                        <RadioButton Content="{helpers:ResourceString Name=DarkTheme}" IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeDark, Mode=TwoWay}" />
-                                    </RadioButtons>
-                                </StackPanel>
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ApplyDuring}" IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.DWMPrevalenceMode, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
+                            </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
