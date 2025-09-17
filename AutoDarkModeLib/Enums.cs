@@ -120,6 +120,7 @@ public enum BridgeResponseCode
 
 public enum WindowsBuilds : int
 {
+    Win10_22H2 = 19045,
     Win11_RC = 22000,
     Win11_22H2 = 22621,
     Win11_23H2 = 22631,
@@ -128,5 +129,6 @@ public enum WindowsBuilds : int
 
 public enum WindowsBuildsUbr : int
 {
+    Win10_22H2_Spotlight = 4239,
     Win11_22H2_Spotlight = 1105
 }
