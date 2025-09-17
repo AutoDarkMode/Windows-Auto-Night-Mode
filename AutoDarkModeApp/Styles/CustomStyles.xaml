@@ -48,6 +48,11 @@
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
         </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <!--  BreadcrumbBar style like Win.11 Settings  -->
+            <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+            <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+        </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
 </ResourceDictionary>
