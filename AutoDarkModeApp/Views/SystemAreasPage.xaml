@@ -45,7 +45,7 @@
                 <controls:SettingsExpander
                     Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
                     Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xEB41;}">
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE737;}">
 
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
 
