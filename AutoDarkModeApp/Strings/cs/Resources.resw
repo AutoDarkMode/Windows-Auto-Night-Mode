@@ -192,9 +192,6 @@ Ve vzácných případech může systém Windows při pohybu myší během obnov
   <data name="BatteryPowered" xml:space="preserve">
     <value>Zařízení napájená baterií</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Výchozí hodnota pro posuvník spořiče energie</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Blokování procesů</value>
   </data>
@@ -319,9 +316,6 @@ Jestli se Vám moje aplikace líbí, zvažte, zda byste mne nechtěli podpořit.
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Povolit přepínání pozadí</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Zmírnění úspory energie pro přepínač motivů</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Došlo k problému s uživatelským rozhraním.

@@ -192,9 +192,6 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="BatteryPowered" xml:space="preserve">
     <value>Enheter på batteri</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Standardverdi for strømsparer-glidebryter</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Blokkerer Prosesser</value>
   </data>
@@ -319,9 +316,6 @@ For this reason you could support me with a voluntary donation. Even a small amo
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Enable wallpaper switch</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Energy saver mitigation for theme switch</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Det var et problem med brukergrensesnittet.

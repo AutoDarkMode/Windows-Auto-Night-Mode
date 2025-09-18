@@ -192,9 +192,6 @@ Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika
   <data name="BatteryPowered" xml:space="preserve">
     <value>Perangkat dengan tenaga baterai</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Nilai bawaan untuk slider penghemat energi</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Proses Yang Memblokir</value>
   </data>
@@ -319,9 +316,6 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Aktifkan perubahan layar</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Mitigasi penghemat energi untuk pergantian tema</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Ada masalah dengan UI.

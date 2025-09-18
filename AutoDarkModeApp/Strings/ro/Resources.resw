@@ -192,9 +192,6 @@ Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul s
   <data name="BatteryPowered" xml:space="preserve">
     <value>Dispozitive cu baterie</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Valoare implicită ajustor salvare energie</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Procese ce blochează</value>
   </data>
@@ -319,9 +316,6 @@ Din acest motiv ai putea sa ma sustii cu o donatie voluntara. Chiar și o cantit
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Activați schimbarea pentru imagine de fundal</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Reducerea economisirii de energie pentru schimbarea temei</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>A existat o problemă cu interfața de utilizare.

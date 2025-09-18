@@ -192,9 +192,6 @@ U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera to
   <data name="BatteryPowered" xml:space="preserve">
     <value>Uređaji koji rade na baterije</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Podrazumevana vrednost slajdera uštede energije</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Procesi koji blokiraju</value>
   </data>
@@ -319,9 +316,6 @@ Zato bi bilo baš lepo od vas da me podržite donacijom. Čak i mala količina j
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Omogući promenu pozadine</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Ublažavanje problema sa režimom uštede baterije pri promeni teme</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Desila se greška sa korisničkim interfejsom.

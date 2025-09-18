@@ -22,8 +22,7 @@
                 <!--  Some settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}"
-                              IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
+                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander>
@@ -36,22 +35,6 @@
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind DebugModeCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
                             <CheckBox Content="{helpers:ResourceString Name=TraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-                
-                <controls:SettingsExpander Visibility="{x:Bind ViewModel.EnergySaverSettingsCardVisiblity, Mode=OneWay}">
-                    <controls:SettingsExpander.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=EnergySaverMitigation}" IsChecked="{x:Bind ViewModel.IsDisableEnergySaverOnThemeSwitch, Mode=TwoWay}" />
-                    </controls:SettingsExpander.Header>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Description>
-                                <Slider
-                                    Header="{helpers:ResourceString Name=BatterySlider}"
-                                    TickFrequency="20"
-                                    Value="{x:Bind ViewModel.BatterySliderValue, Mode=TwoWay}" />
-                            </controls:SettingsCard.Description>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>

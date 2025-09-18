@@ -192,9 +192,6 @@
   <data name="BatteryPowered" xml:space="preserve">
     <value>バッテリー駆動の端末</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>バッテリー節約機能のスライダーの初期値</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>阻止するプロセス</value>
   </data>
@@ -319,9 +316,6 @@
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>壁紙の有効化</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>テーマ切り替え用のバッテリー節約機能の緩和</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>UI の問題が発生しました。

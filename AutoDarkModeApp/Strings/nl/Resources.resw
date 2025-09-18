@@ -192,9 +192,6 @@ Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijd
   <data name="BatteryPowered" xml:space="preserve">
     <value>Apparaten met batterij</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Standaardwaarde voor energiebesparingsmodus</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Blokkerende processen</value>
   </data>
@@ -319,9 +316,6 @@ Hierom zou u mij kunnen steunen met een vrijwillige donatie. Zelfs een klein bed
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Bureaubladachtergrondwisseling inschakelen</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Mitigatie energiebesparingsmodus voor themawisseling</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Er was een probleem met de gebruikersinterface.
