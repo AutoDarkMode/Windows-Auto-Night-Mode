@@ -192,9 +192,6 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   <data name="BatteryPowered" xml:space="preserve">
     <value>Appareils alimentés par batterie</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Valeur par défaut du curseur d'économie d'énergie</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Processus bloqués</value>
   </data>
@@ -319,9 +316,6 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Activer le changement de fond d'écran</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Réduction de la consommation d'énergie pour le changement de thème</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Il y a eu un problème avec l'interface utilisateur.

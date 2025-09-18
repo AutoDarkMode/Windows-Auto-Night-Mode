@@ -64,7 +64,6 @@ public static class ThemeHandler
     /// <returns>true if an update was performed; false otherwise</returns>
     public static void ApplyUnmanagedTheme(Theme newTheme)
     {
-        PowerHandler.RequestDisableEnergySaver(builder.Config);
         if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
         {
             WindowsThemeMonitor.PauseThemeMonitor();

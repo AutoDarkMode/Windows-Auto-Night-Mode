@@ -192,9 +192,6 @@ W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zo
   <data name="BatteryPowered" xml:space="preserve">
     <value>Urządzenia zasilane akumulatorem</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Domyślna wartość trybu oszczędzania energii</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Procesy blokujące zmianę</value>
   </data>
@@ -319,9 +316,6 @@ Jeżeli chcesz, możesz wesprzeć mnie dobrowolną darowizną. Nawet najmniejsza
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Włącz zmianę tła</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Wyłącz oszczędzanie energii podczas zmiany motywu</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Wystąpił problem z interfejsem użytkownika.

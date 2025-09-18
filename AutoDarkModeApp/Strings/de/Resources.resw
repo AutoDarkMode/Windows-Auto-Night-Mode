@@ -192,9 +192,6 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
   <data name="BatteryPowered" xml:space="preserve">
     <value>Geräte mit Akku</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Stromsparmodus aktivieren bei folgendem Akkustand</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Anwendungen</value>
   </data>
@@ -319,9 +316,6 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Hintergrundwechsel aktivieren</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Versuche den Stormsparmodus für den Designwechsel zu deaktivieren</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Es ist ein Problem mit der Benutzeroberfläche aufgetreten.

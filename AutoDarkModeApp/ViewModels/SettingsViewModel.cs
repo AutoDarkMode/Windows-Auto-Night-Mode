@@ -47,15 +47,6 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial bool IsTunableTrace { get; set; }
 
     [ObservableProperty]
-    public partial bool EnergySaverSettingsCardVisiblity { get; set; }
-
-    [ObservableProperty]
-    public partial bool IsDisableEnergySaverOnThemeSwitch { get; set; }
-
-    [ObservableProperty]
-    public partial int BatterySliderValue { get; set; }
-
-    [ObservableProperty]
     public partial bool IsUpdaterEnabled { get; set; }
 
     [ObservableProperty]
@@ -166,9 +157,6 @@ public partial class SettingsViewModel : ObservableRecipient
         IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
-        EnergySaverSettingsCardVisiblity = !(PowerManager.BatteryStatus == BatteryStatus.NotPresent);
-        IsDisableEnergySaverOnThemeSwitch = _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch;
-        BatterySliderValue = _builder.Config.Tunable.BatterySliderDefaultValue;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;
         SelectedDaysBetweenUpdateCheck = _builder.Config.Updater.DaysBetweenUpdateCheck switch
         {
@@ -322,26 +310,6 @@ public partial class SettingsViewModel : ObservableRecipient
             return;
 
         _builder.Config.Tunable.Trace = value;
-
-        SafeSaveBuilder();
-    }
-
-    partial void OnIsDisableEnergySaverOnThemeSwitchChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        _builder.Config.Tunable.DisableEnergySaverOnThemeSwitch = value;
-
-        SafeSaveBuilder();
-    }
-
-    partial void OnBatterySliderValueChanged(int value)
-    {
-        if (_isInitializing)
-            return;
-
-        _builder.Config.Tunable.BatterySliderDefaultValue = value;
 
         SafeSaveBuilder();
     }

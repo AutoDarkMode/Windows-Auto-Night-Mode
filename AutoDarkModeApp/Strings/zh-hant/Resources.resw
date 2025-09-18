@@ -192,9 +192,6 @@
   <data name="BatteryPowered" xml:space="preserve">
     <value>充電設備</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>省電滑條預設值</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>阻止中的處理程序</value>
   </data>
@@ -319,9 +316,6 @@
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>啟用桌面背景切換</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>降低主題切換的耗電量</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>介面發生一些問題。

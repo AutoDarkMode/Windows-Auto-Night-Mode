@@ -192,9 +192,6 @@
   <data name="BatteryPowered" xml:space="preserve">
     <value>Устройства с питанием от батареи</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Значение по умолчанию для ползунка энергосбережения</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Блокирующие процессы</value>
   </data>
@@ -319,9 +316,6 @@
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Включить смену обоев</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Включить режим энергосбережения при смене тем</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Возникла проблема с интерфейсом.

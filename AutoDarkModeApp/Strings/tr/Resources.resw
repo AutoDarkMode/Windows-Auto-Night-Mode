@@ -192,9 +192,6 @@ Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Wind
   <data name="BatteryPowered" xml:space="preserve">
     <value>Pille çalışan cihazlar</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Enerji tasarrufu kaydırıcısı için varsayılan değer</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Engellenen İşlemler</value>
   </data>
@@ -319,9 +316,6 @@ Bu nedenle bana gönüllü bir bağışla destek olabilirsiniz. Küçük bir mik
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Arka plan değişimini etkinleştir</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Tema değişimi için enerji tasarrufu sınırlaması</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Kullanıcı arayüzüyle ilgili bir sorun var.

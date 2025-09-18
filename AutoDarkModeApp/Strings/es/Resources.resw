@@ -192,9 +192,6 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
   <data name="BatteryPowered" xml:space="preserve">
     <value>Dispositivos con batería</value>
   </data>
-  <data name="BatterySlider" xml:space="preserve">
-    <value>Valor por defecto para el control deslizante de ahorro de batería</value>
-  </data>
   <data name="BlockedProcesses" xml:space="preserve">
     <value>Bloqueando los procesos</value>
   </data>
@@ -319,9 +316,6 @@ Por este motivo puedes apoyarme con una donación voluntaria. Incluso una peque�
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
     <value>Activar cambio de fondo de pantalla</value>
-  </data>
-  <data name="EnergySaverMitigation" xml:space="preserve">
-    <value>Atenuación del ahorro de batería para el cambio de tema</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
     <value>Hubo un problema con la interfaz de usuario.

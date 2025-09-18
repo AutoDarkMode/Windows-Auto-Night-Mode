@@ -39,22 +39,6 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <controls:SettingsExpander Visibility="{x:Bind ViewModel.EnergySaverSettingsCardVisiblity, Mode=OneWay}">
-                    <controls:SettingsExpander.Header>
-                        <CheckBox Content="{helpers:ResourceString Name=EnergySaverMitigation}" IsChecked="{x:Bind ViewModel.IsDisableEnergySaverOnThemeSwitch, Mode=TwoWay}" />
-                    </controls:SettingsExpander.Header>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Description>
-                                <Slider
-                                    Header="{helpers:ResourceString Name=BatterySlider}"
-                                    TickFrequency="20"
-                                    Value="{x:Bind ViewModel.BatterySliderValue, Mode=TwoWay}" />
-                            </controls:SettingsCard.Description>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-
                 <!--  Language  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Language}" />
                 <controls:SettingsCard
