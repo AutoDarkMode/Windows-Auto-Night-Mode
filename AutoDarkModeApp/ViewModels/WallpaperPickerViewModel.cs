@@ -162,11 +162,13 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         if (
             hasUbr
             && (
-                (Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win11_22H2 && ubr >= (int)WindowsBuildsUbr.Win11_22H2_Spotlight)
-                || Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win11_22H2
+                (Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win10_22H2 && ubr >= (int)WindowsBuildsUbr.Win10_22H2_Spotlight)
+                || Environment.OSVersion.Version.Build > (int)WindowsBuilds.Win10_22H2
             )
         )
+        {
             SpotlightEnabled = true;
+        }
 
         IsWallpaperSwitchEnabled = _builder.Config.WallpaperSwitch.Enabled;
 
