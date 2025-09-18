@@ -173,7 +173,6 @@ public class Tunable
             }
         }
     }
-    public bool DisableEnergySaverOnThemeSwitch { get; set; }
     public bool UseLogonTask { get; set; }
     public bool Debug { get; set; }
     public bool Trace { get; set; }

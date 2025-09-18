@@ -262,8 +262,6 @@ static class ThemeManager
         #region apply themes and run components
         if (refreshDwmViaColorization || componentsToUpdate.Count > 0 || themeModeNeedsUpdate)
         {
-            PowerHandler.RequestDisableEnergySaver(builder.Config);
-
             // run modules that require their data to be re-synced with auto dark mode after running because they modify the active theme file
             cm.RunPreSync(componentsToUpdate, e);
 
@@ -360,7 +358,6 @@ static class ThemeManager
             // windows theme mode apply theme
             if (themeModeNeedsUpdate)
             {
-                PowerHandler.RequestDisableEnergySaver(builder.Config);
                 // refresh active theme for syncing data into unmanaged themes if it hasn't already
                 if (!refreshDwmViaColorization) state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                 ThemeHandler.ApplyUnmanagedTheme(newTheme);
@@ -422,9 +419,6 @@ static class ThemeManager
             #endregion
 
             themeSwitched = true;
-
-            PowerHandler.RequestRestoreEnergySaver(builder.Config);
-
         }
         #endregion
 
