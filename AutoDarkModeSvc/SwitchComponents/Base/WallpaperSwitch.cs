@@ -58,7 +58,20 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
         else if (Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_22H2)
         {
-            Logger.Warn($"spotlight not supported on build {WindowsBuilds.Win11_22H2}");
+            if (Environment.OSVersion.Version.Build == (int)WindowsBuilds.Win10_22H2)
+            {
+                bool hasUbr = int.TryParse(RegistryHandler.GetUbr(), out int ubr);
+                if (hasUbr)
+                {
+                    if (ubr >= (int)WindowsBuildsUbr.Win10_22H2_Spotlight)
+                    {
+                        return true;
+                    }
+                    Logger.Warn($"spotlight not supported on build {Environment.OSVersion.Version.Build}.{ubr}");
+                    return false;
+                }
+            }
+            Logger.Warn($"spotlight not supported on build {Environment.OSVersion.Version.Build}");
             return false;
         }
 

@@ -744,7 +744,7 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="StopForcing" xml:space="preserve">
     <value>Ne prisiljavaj temu</value>
   </data>
-  <data name="SwichWindowsTheme" xml:space="preserve">
+  <data name="SwitchWindowsTheme" xml:space="preserve">
     <value>Omogući promenu Windows tema</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
@@ -976,10 +976,13 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Choose when the accent color should be applied</value>
   </data>
-  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Apply accent color to title bars and window borders</value>
+  <data name="ApplyDuring" xml:space="preserve">
+    <value>Apply during</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Apply accent color to the taskbar during dark mode</value>
+    <value>Accent color for the taskbar during dark mode</value>
+  </data>
+  <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
+    <value>Accent color for title bars and window borders</value>
   </data>
 </root>

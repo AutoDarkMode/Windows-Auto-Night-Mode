@@ -16,7 +16,7 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Some settings  -->
@@ -154,16 +154,32 @@
 
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock>
-                                <Run Text="{helpers:ResourceString Name=ModeAt}" />
-                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
-                            </TextBlock>
-                            <TextBlock IsTextSelectionEnabled="True" ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}">
-                                <Run Text="{helpers:ResourceString Name=PathAt}" />
-                                <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
-                            </TextBlock>
-                        </StackPanel>
+                        <Grid ColumnSpacing="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{helpers:ResourceString Name=PathAt}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                IsTextSelectionEnabled="True"
+                                Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
+                                ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                        </Grid>
                     </controls:SettingsCard.Header>
                     <Button
                         MinWidth="120"

@@ -14,21 +14,10 @@
     </Page.Resources>
 
     <ScrollViewer>
-        <Grid x:Name="ContentArea" Margin="{StaticResource NavigationViewPageContentMargin}">
+        <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SystemAreas}" />
-
-                <!--  App Mode  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=AppMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysDark}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Disabled}" />
-                    </ComboBox>
-                </controls:SettingsCard>
-                
 
                 <!--  Windows mode  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=WindowsMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
@@ -40,34 +29,42 @@
                     </ComboBox>
                 </controls:SettingsCard>
 
-                <!--  Accent Mode  -->
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentSurfaces}"
-                                           Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
-                                       HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <!--  App Mode  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AppMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Disabled}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+
+
+
+                <!--  Accent Mode for title bars and window borders  -->
+                <controls:SettingsExpander
+                    Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
+                    Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE737;}">
+
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
+
                     <controls:SettingsExpander.Items>
-
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}">
-                            <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
-                        </controls:SettingsCard>
-
-                        <controls:SettingsCard>
-                            <controls:SettingsCard.Header>
-                                <StackPanel Orientation="Vertical">
-                                    <CheckBox x:Name="DWMPrevalenceSwitcCheckBox"
-                                              Content="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
-                                              IsChecked="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
-
-                                    <RadioButtons IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
-                                        <RadioButton Content="{helpers:ResourceString Name=LightTheme}"
-                                                     IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeLight, Mode=TwoWay}" />
-                                        <RadioButton Content="{helpers:ResourceString Name=DarkTheme}"
-                                                     IsChecked="{x:Bind ViewModel.IsDWMPrevalenceEnableThemeDark, Mode=TwoWay}" />
-                                    </RadioButtons>
-                                </StackPanel>
-                            </controls:SettingsCard.Header>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ApplyDuring}" IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.DWMPrevalenceMode, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
+                            </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
+
+                <!--  Accent mode for the taskbar  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}" HeaderIcon="{ui:FontIcon Glyph=&#xE90E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+
 
                 <!--  Touch Keyboard  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
