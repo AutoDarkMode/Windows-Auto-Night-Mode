@@ -21,6 +21,7 @@ impl fmt::Display for PipeError {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct ApiResponse {
     pub status_code: String,

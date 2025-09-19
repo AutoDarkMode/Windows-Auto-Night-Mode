@@ -53,6 +53,7 @@ impl OpError {
     }
 }
 
+#[allow(dead_code)]
 trait LogExt {
     fn log(self) -> Self;
 }
@@ -118,7 +119,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let temp_dir = &update_data_dir.join("tmp");
 
     shutdown_running_instances(&username).map_err(|op| {
-        error!("update process failed, restarting auto dark mode");
+        error!("update process failed, restarting auto dark mode: {}", op);
         try_relaunch(restart_shell, restart_app, &username, false);
         op
     })?;
