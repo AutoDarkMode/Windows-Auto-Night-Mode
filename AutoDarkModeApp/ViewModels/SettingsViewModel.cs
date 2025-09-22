@@ -13,6 +13,7 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.Windows.ApplicationModel.Resources;
 using Microsoft.Windows.Globalization;
 
 
@@ -207,8 +208,13 @@ public partial class SettingsViewModel : ObservableRecipient
             _isInitializing = true;
 
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (string.IsNullOrEmpty(languageText))
+            if (!string.IsNullOrEmpty(languageText))
             {
+                Language = languageText;
+            }
+            else
+            {
+                //search for regional language
                 var preferredLanguages = ApplicationLanguages.Languages;
                 string topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
                 if (LanguageConstants.SupportedCultures.Contains(topLanguage))
@@ -217,6 +223,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 }
                 else
                 {
+                    //search for neutral language
                     var neutralLanguage = topLanguage.Split('-')[0]; // e.g., "fr"
                     if (LanguageConstants.SupportedCultures.Contains(neutralLanguage))
                     {
@@ -225,13 +232,10 @@ public partial class SettingsViewModel : ObservableRecipient
                     else
                     {
                         Language = "en";
+                        //or default to <DefaultLanguage/>
                     }
                 }
                 await _localSettingsService.SaveSettingAsync("Language", Language);
-            }
-            else
-            {
-                Language = languageText;
             }
 
             _isInitializing = false;
@@ -347,19 +351,22 @@ public partial class SettingsViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(() =>
         {
-            var currentCulture = System.Globalization.CultureInfo.CurrentUICulture;
-            bool isSameLanguage = string.Equals(value, currentCulture.Name, StringComparison.OrdinalIgnoreCase);
+            string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
+            bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
+            //Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected Language: {value}, IsSameLanguage: {isSameLanguage}");
 
-            if (!isSameLanguage)
-            {
-                IsLanguageChangedInfoBarOpen = true;
-                _localSettingsService.SaveSettingAsync("Language", value);
-                _localSettingsService.SaveSettingAsync("LanguageChanged", true);
-            }
-            else
-            {
-                IsLanguageChangedInfoBarOpen = false;
-            }
+            _localSettingsService.SaveSettingAsync("Language", value);
+            _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
+            IsLanguageChangedInfoBarOpen = !isSameLanguage;
+
+            // TO-DO: refresh UI
+
+            /*
+            ApplicationLanguages.PrimaryLanguageOverride = value;
+            var resourceManager = new ResourceManager();
+            var context = resourceManager.CreateResourceContext();
+            context.QualifierValues["Language"] = value;
+            */
         });
     }
 
