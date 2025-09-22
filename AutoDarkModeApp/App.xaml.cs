@@ -129,10 +129,9 @@ public partial class App : Application
     {
         var localSettings = App.GetService<ILocalSettingsService>();
         var language = await localSettings.ReadSettingAsync<string>("Language");
-        if (language != null)
+        if (!string.IsNullOrEmpty(language))
         {
-            language = language.Replace("\"", "");
-            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = Localization.LanguageTranscoding(language);
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
         }
     }
 }

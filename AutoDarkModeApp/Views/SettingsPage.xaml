@@ -50,32 +50,10 @@
                     Description="{helpers:ResourceString Name=Translator}"
                     Header="{helpers:ResourceString Name=Language}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
-                        <x:String>Česky (Czech)</x:String>
-                        <x:String>Deutsch (German)</x:String>
-                        <x:String>Nederlands (Dutch)</x:String>
-                        <x:String>English (English)</x:String>
-                        <x:String>Français (French)</x:String>
-                        <x:String>Ελληνικά (Greek)</x:String>
-                        <x:String>Magyarul (Hungarian)</x:String>
-                        <x:String>Bahasa Indonesia (Indonesian)</x:String>
-                        <x:String>Italiano (Italian)</x:String>
-                        <x:String>日本語 (Japanese)</x:String>
-                        <x:String>Norwegian Bokmål</x:String>
-                        <x:String>Persian (Farsi)</x:String>
-                        <x:String>Polski (Polish)</x:String>
-                        <x:String>Português (Portuguese)</x:String>
-                        <x:String>Português (Brazil)</x:String>
-                        <x:String>Română (Romanian)</x:String>
-                        <x:String>Русский (Russian)</x:String>
-                        <x:String>Srpski (Serbian)</x:String>
-                        <x:String>Español (Spanish)</x:String>
-                        <x:String>Türkçe (Turkish)</x:String>
-                        <x:String>Українська (Ukrainian)</x:String>
-                        <x:String>Tiếng Việt (Vietnamese)</x:String>
-                        <x:String>简体中文 (Simplified Chinese)</x:String>
-                        <x:String>繁體中文 (Traditional Chinese)</x:String>
-                    </ComboBox>
+                    <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}"
+                              DisplayMemberPath="DisplayName"
+                              SelectedValuePath="CultureCode"
+                              SelectedValue="{x:Bind ViewModel.Language, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <InfoBar
                     IsClosable="False"
