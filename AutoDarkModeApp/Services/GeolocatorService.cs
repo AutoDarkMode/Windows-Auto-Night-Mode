@@ -35,9 +35,7 @@ public class GeolocatorService : IGeolocatorService
         string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("Language")).Result;
         if (language != null)
         {
-            language = language.Replace("\"", "");
-            string transcoded = Localization.LanguageTranscoding(language);
-            _langcode = CultureInfo.GetCultureInfo(transcoded).TwoLetterISOLanguageName.ToUpperInvariant();
+            _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();
         }
     }
 

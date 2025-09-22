@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -10,7 +13,8 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.System.Power;
+using Microsoft.Windows.Globalization;
+
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -128,7 +132,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
-            App.Current.Exit();
+            Microsoft.UI.Xaml.Application.Current.Exit();
         });
 
         CheckUpdateCommand = new RelayCommand(() =>
@@ -198,14 +202,31 @@ public partial class SettingsViewModel : ObservableRecipient
             _isInitializing = true;
 
             var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (languageText != null)
+            if (string.IsNullOrEmpty(languageText))
             {
-                Language = languageText.Replace("\"", "");
+                var preferredLanguages = ApplicationLanguages.Languages;
+                string topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
+                if (LanguageConstants.SupportedCultures.Contains(topLanguage))
+                {
+                    Language = topLanguage;
+                }
+                else
+                {
+                    var neutralLanguage = topLanguage.Split('-')[0]; // e.g., "fr"
+                    if (LanguageConstants.SupportedCultures.Contains(neutralLanguage))
+                    {
+                        Language = neutralLanguage;
+                    }
+                    else
+                    {
+                        Language = "en";
+                    }
+                }
+                await _localSettingsService.SaveSettingAsync("Language", Language);
             }
             else
             {
-                Language = "English (English)";
-                await _localSettingsService.SaveSettingAsync("Language", "English (English)");
+                Language = languageText;
             }
 
             _isInitializing = false;
@@ -319,14 +340,16 @@ public partial class SettingsViewModel : ObservableRecipient
         if (_isInitializing)
             return;
 
-        _dispatcherQueue.TryEnqueue(async () =>
+        _dispatcherQueue.TryEnqueue(() =>
         {
-            var oldValue = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (value != oldValue)
+            var currentCulture = System.Globalization.CultureInfo.CurrentUICulture;
+            bool isSameLanguage = string.Equals(value, currentCulture.Name, StringComparison.OrdinalIgnoreCase);
+
+            if (!isSameLanguage)
             {
                 IsLanguageChangedInfoBarOpen = true;
-                await _localSettingsService.SaveSettingAsync("Language", value);
-                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
+                _localSettingsService.SaveSettingAsync("Language", value);
+                _localSettingsService.SaveSettingAsync("LanguageChanged", true);
             }
             else
             {
@@ -535,4 +558,100 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
     }
+}
+
+
+public partial class SettingsViewModel
+{
+    public ObservableCollection<LanguageOption> LanguageOptions { get; } =
+        [
+            new() { DisplayName = "Bahasa Indonesia (Indonesian)", CultureCode = "id" },
+            new() { DisplayName = "Česky (Czech)", CultureCode = "cs" },
+            new() { DisplayName = "Deutsch (German)", CultureCode = "de" },
+            new() { DisplayName = "English (English)", CultureCode = "en" },
+            new() { DisplayName = "Español (Spanish)", CultureCode = "es" },
+            new() { DisplayName = "Français (French)", CultureCode = "fr" },
+            new() { DisplayName = "Italiano (Italian)", CultureCode = "it" },
+            new() { DisplayName = "Magyarul (Hungarian)", CultureCode = "hu" },
+            new() { DisplayName = "Nederlands (Dutch)", CultureCode = "nl" },
+            new() { DisplayName = "Norsk Bokmål (Norwegian Bokmål)", CultureCode = "nb" },
+            new() { DisplayName = "فارسی (Persian)", CultureCode = "fa" },
+            new() { DisplayName = "Polski (Polish)", CultureCode = "pl" },
+            new() { DisplayName = "Português (Brazilian Portuguese)", CultureCode = "pt-BR" },
+            new() { DisplayName = "Português (European Portuguese)", CultureCode = "pt-PT" },
+            new() { DisplayName = "Română (Romanian)", CultureCode = "ro" },
+            new() { DisplayName = "Ελληνικά (Greek)", CultureCode = "el" },
+            new() { DisplayName = "Русский (Russian)", CultureCode = "ru" },
+            new() { DisplayName = "Srpski (Serbian)", CultureCode = "sr" },
+            new() { DisplayName = "Türkçe (Turkish)", CultureCode = "tr" },
+            new() { DisplayName = "Українська (Ukrainian)", CultureCode = "uk" },
+            new() { DisplayName = "Tiếng Việt (Vietnamese)", CultureCode = "vi" },
+            new() { DisplayName = "日本語 (Japanese)", CultureCode = "ja" },
+            new() { DisplayName = "简体中文 (Chinese Simplified)", CultureCode = "zh-Hans" },
+            new() { DisplayName = "繁體中文 (Chinese Traditional)", CultureCode = "zh-Hant" },
+        ];
+}
+
+public partial class LanguageViewModel : INotifyPropertyChanged
+{
+    public ObservableCollection<LanguageOption> LanguageOptions { get; set; }
+    private string _selectedLanguage;
+
+    public string SelectedLanguage
+    {
+        get => _selectedLanguage;
+        set
+        {
+            if (_selectedLanguage != value)
+            {
+                _selectedLanguage = value;
+                OnPropertyChanged(nameof(SelectedLanguage));
+            }
+        }
+    }
+
+    public LanguageViewModel()
+    {
+        LanguageOptions = new ObservableCollection<LanguageOption>(GetHybridLanguageNames());
+        SelectedLanguage = LanguageOptions.FirstOrDefault()?.CultureCode
+            ?? LanguageOptions.FirstOrDefault()?.CultureCode
+            ?? string.Empty;
+    }
+
+    private static ObservableCollection<LanguageOption> GetHybridLanguageNames()
+    {
+        return new ObservableCollection<LanguageOption>(
+            LanguageConstants.SupportedCultures.Select(code =>
+            {
+                var culture = CultureInfo.GetCultureInfo(code);
+                string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
+                string english = culture.EnglishName.Split('(')[0].Trim();
+                return new LanguageOption
+                {
+                    DisplayName = $"{native} ({english})",
+                    CultureCode = code
+                };
+            })
+           );
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void OnPropertyChanged(string name) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+}
+
+public class LanguageOption
+{
+    public required string DisplayName { get; set; }
+    public required string CultureCode { get; set; }
+}
+
+public static class LanguageConstants
+{
+    public static readonly string[] SupportedCultures = new[]
+    {
+        "id", "cs", "de", "en", "es", "fr", "it", "hu", "nl", "nb",
+        "fa", "pl", "pt-BR", "pt-PT", "ro", "sr", "vi", "tr", "el",
+        "ru", "uk", "ja", "zh-Hans", "zh-Hant"
+    };
 }
