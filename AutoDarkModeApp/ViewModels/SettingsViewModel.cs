@@ -58,7 +58,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial string? UpdatesDate { get; set; }
 
     [ObservableProperty]
-    public partial string? Language { get; set; }
+    public partial string? SelectedLanguageCode { get; set; }
 
     [ObservableProperty]
     public partial bool IsLanguageChangedInfoBarOpen { get; set; }
@@ -121,7 +121,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
-            _builder.Config.Tunable.UICulture = Localization.LanguageTranscoding(Language!);
+            _builder.Config.Tunable.UICulture = SelectedLanguageCode!;
             try
             {
                 _builder.Save();
@@ -202,10 +202,10 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             _isInitializing = true;
 
-            var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
+            var languageText = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
             if (!string.IsNullOrEmpty(languageText))
             {
-                Language = languageText;
+                SelectedLanguageCode = languageText;
             }
             else
             {
@@ -214,7 +214,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 string topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
                 if (LanguageConstants.SupportedCultures.Contains(topLanguage))
                 {
-                    Language = topLanguage;
+                    SelectedLanguageCode = topLanguage;
                 }
                 else
                 {
@@ -222,15 +222,15 @@ public partial class SettingsViewModel : ObservableRecipient
                     var neutralLanguage = topLanguage.Split('-')[0]; // e.g., "fr"
                     if (LanguageConstants.SupportedCultures.Contains(neutralLanguage))
                     {
-                        Language = neutralLanguage;
+                        SelectedLanguageCode = neutralLanguage;
                     }
                     else
                     {
-                        Language = "en";
+                        SelectedLanguageCode = "en";
                         //or default to <DefaultLanguage/>
                     }
                 }
-                await _localSettingsService.SaveSettingAsync("Language", Language);
+                await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
             }
 
             _isInitializing = false;
@@ -339,7 +339,7 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
     }
 
-    partial void OnLanguageChanged(string? value)
+    partial void OnSelectedLanguageCodeChanged(string? value)
     {
         if (_isInitializing)
             return;
@@ -348,20 +348,12 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
             bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
-            //Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected Language: {value}, IsSameLanguage: {isSameLanguage}");
+            //Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguageCode: {value}, IsSameLanguage: {isSameLanguage}");
 
-            _localSettingsService.SaveSettingAsync("Language", value);
+            _localSettingsService.SaveSettingAsync("SelectedLanguageCode", value);
             _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
             IsLanguageChangedInfoBarOpen = !isSameLanguage;
-
-            // TO-DO: refresh UI
-
-            /*
-            ApplicationLanguages.PrimaryLanguageOverride = value;
-            var resourceManager = new ResourceManager();
-            var context = resourceManager.CreateResourceContext();
-            context.QualifierValues["Language"] = value;
-            */
+            //Button in InfoBar will restart the app (RestartCommand) and apply the new language
         });
     }
 
@@ -565,69 +557,8 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
     }
-}
-
-
-public partial class SettingsViewModel
-{
     public ObservableCollection<LanguageOption> LanguageOptions { get; } =
-        [
-            new() { DisplayName = "Bahasa Indonesia (Indonesian)", CultureCode = "id" },
-            new() { DisplayName = "Česky (Czech)", CultureCode = "cs" },
-            new() { DisplayName = "Deutsch (German)", CultureCode = "de" },
-            new() { DisplayName = "English (English)", CultureCode = "en" },
-            new() { DisplayName = "Español (Spanish)", CultureCode = "es" },
-            new() { DisplayName = "Français (French)", CultureCode = "fr" },
-            new() { DisplayName = "Italiano (Italian)", CultureCode = "it" },
-            new() { DisplayName = "Magyarul (Hungarian)", CultureCode = "hu" },
-            new() { DisplayName = "Nederlands (Dutch)", CultureCode = "nl" },
-            new() { DisplayName = "Norsk Bokmål (Norwegian Bokmål)", CultureCode = "nb" },
-            new() { DisplayName = "فارسی (Persian)", CultureCode = "fa" },
-            new() { DisplayName = "Polski (Polish)", CultureCode = "pl" },
-            new() { DisplayName = "Português (Brazilian Portuguese)", CultureCode = "pt-BR" },
-            new() { DisplayName = "Português (European Portuguese)", CultureCode = "pt-PT" },
-            new() { DisplayName = "Română (Romanian)", CultureCode = "ro" },
-            new() { DisplayName = "Ελληνικά (Greek)", CultureCode = "el" },
-            new() { DisplayName = "Русский (Russian)", CultureCode = "ru" },
-            new() { DisplayName = "Srpski (Serbian)", CultureCode = "sr" },
-            new() { DisplayName = "Türkçe (Turkish)", CultureCode = "tr" },
-            new() { DisplayName = "Українська (Ukrainian)", CultureCode = "uk" },
-            new() { DisplayName = "Tiếng Việt (Vietnamese)", CultureCode = "vi" },
-            new() { DisplayName = "日本語 (Japanese)", CultureCode = "ja" },
-            new() { DisplayName = "简体中文 (Chinese Simplified)", CultureCode = "zh-Hans" },
-            new() { DisplayName = "繁體中文 (Chinese Traditional)", CultureCode = "zh-Hant" },
-        ];
-}
-
-public partial class LanguageViewModel : INotifyPropertyChanged
-{
-    public ObservableCollection<LanguageOption> LanguageOptions { get; set; }
-    private string _selectedLanguage;
-
-    public string SelectedLanguage
-    {
-        get => _selectedLanguage;
-        set
-        {
-            if (_selectedLanguage != value)
-            {
-                _selectedLanguage = value;
-                OnPropertyChanged(nameof(SelectedLanguage));
-            }
-        }
-    }
-
-    public LanguageViewModel()
-    {
-        LanguageOptions = new ObservableCollection<LanguageOption>(GetHybridLanguageNames());
-        SelectedLanguage = LanguageOptions.FirstOrDefault()?.CultureCode
-            ?? LanguageOptions.FirstOrDefault()?.CultureCode
-            ?? string.Empty;
-    }
-
-    private static ObservableCollection<LanguageOption> GetHybridLanguageNames()
-    {
-        return new ObservableCollection<LanguageOption>(
+        new ObservableCollection<LanguageOption>(
             LanguageConstants.SupportedCultures.Select(code =>
             {
                 var culture = CultureInfo.GetCultureInfo(code);
@@ -635,17 +566,13 @@ public partial class LanguageViewModel : INotifyPropertyChanged
                 string english = culture.EnglishName.Split('(')[0].Trim();
                 return new LanguageOption
                 {
-                    DisplayName = $"{native} ({english})",
-                    CultureCode = code
+                    DisplayName = $"{native} ({english})", // example: Deutsch (German)
+                    CultureCode = code // example: de
                 };
             })
-           );
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    protected void OnPropertyChanged(string name) =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        );
 }
+
 
 public class LanguageOption
 {
