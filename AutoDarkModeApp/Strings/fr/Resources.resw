@@ -150,9 +150,6 @@
 Sur certains systèmes, cela peut entraîner un décalage plus ou moins important lors du changement de thème, comme c'est le cas sur Windows 10. 
 Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est déplacée pendant le rafraîchissement de DWM.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Forcer le rechargement de DWM ?</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Appliquer</value>
   </data>
@@ -984,5 +981,8 @@ Version installée : {0}, nouvelle version : {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

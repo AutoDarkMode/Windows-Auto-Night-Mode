@@ -150,9 +150,6 @@
 這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
 在極少數情況下，當重新啟動桌面視窗管理員（DWM）期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>強制重新啟動桌面視窗管理員（DWM）嗎？</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>套用</value>
   </data>
@@ -984,5 +981,8 @@
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

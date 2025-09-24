@@ -150,9 +150,6 @@
 这可能会在某些系统上引入轻到中度的主题切换延迟，类似于 Windows 10 上发生的情况。
 在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>强制 DWM 刷新吗？</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
   </data>
@@ -968,5 +965,8 @@
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

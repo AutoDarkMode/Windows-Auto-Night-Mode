@@ -150,9 +150,6 @@
 Može izazvati blaga do umerena kočenja na nekim sistemima tokom promene teme, slično kao što je bilo na Windows-u 10. 
 U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera tokom osvežavanja DWM-a.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Prinudno osvežiti DWM?</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Primeni</value>
   </data>
@@ -984,5 +981,8 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

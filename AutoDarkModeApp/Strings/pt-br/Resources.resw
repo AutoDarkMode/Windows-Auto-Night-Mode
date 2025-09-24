@@ -150,9 +150,6 @@
 Isso pode introduzir um pequeno ou moderado lag em alguns sistemas durante a mudança de temas de forma similar ao que acontecia no Windows 10.
 Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movido durante atualizações do DWM.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Forçar atualização do DWM?</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
   </data>
@@ -984,5 +981,8 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

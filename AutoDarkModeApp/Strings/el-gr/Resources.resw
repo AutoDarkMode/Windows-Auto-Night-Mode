@@ -150,9 +150,6 @@
 Αυτό μπορεί να προκαλέσει μικρή έως μέτρια καθυστέρηση σε ορισμένα συστήματα κατά τη διάρκεια της αλλαγής θέματος παρόμοια με αυτή που συνέβαινε στα Windows 10.
 Σε σπάνιες περιπτώσεις, τα Windows ενδέχεται να εκπέμπουν έναν ήχο μπιπ όταν μετακινείται το ποντίκι κατά τη διάρκεια της ανανέωσης του DWM.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Επιβολή ανανέωσης DWM;</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Εφαρμογή</value>
   </data>
@@ -978,5 +975,8 @@
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

@@ -150,9 +150,6 @@
 Beim Themenwechsel kann es hierbei zu leichtem Stocken kommen, ähnlich wie dies bei Windows 10 schon der Fall war. 
 In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM Aktualisierung bewegt wird.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Erzwinge DWM Aktualisierung?</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Anwenden</value>
   </data>
@@ -984,5 +981,8 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>

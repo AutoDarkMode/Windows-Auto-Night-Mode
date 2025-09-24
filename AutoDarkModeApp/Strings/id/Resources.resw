@@ -150,9 +150,6 @@
 Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10. 
 Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
   </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Paksa penyegaran DWM?</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Terapkan</value>
   </data>
@@ -984,5 +981,8 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
 </root>
