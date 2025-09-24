@@ -107,7 +107,7 @@ public enum DwmRefreshType
 {
     None = 0,
     Standard = 1,
-    Full = 2
+    Colorization = 2
 }
 
 public enum BridgeResponseCode

@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>总是浅色</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>在切换主题时始终刷新 DWM</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色出现的频率。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
 
@@ -968,5 +965,8 @@
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Uvek svetla</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Uvek osveži DWM pri promeni teme</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Pokušava da ispravi povremeno pojavljivanje pogrešnih boja u interfejsu Istraživača, trake zadataka i Start menija. Ako vam se ovo često dešava ili vas nervira, probajte da omogućite ovu postavku.
 
@@ -984,5 +981,8 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Altijd licht</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>DWM altijd vernieuwen bij themawisselen</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
 
@@ -984,5 +981,8 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

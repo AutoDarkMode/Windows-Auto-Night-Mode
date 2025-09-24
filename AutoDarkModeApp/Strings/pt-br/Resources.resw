@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Sempre claro</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Sempre atualizar o DWM na mudança de temas</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Tenta reduzir a ocorrência de cores de interface de usuário erradas no Explorador, na barra de tarefas e no menu Iniciar. Se você experiencia isso com frequência ou se incomoda com isso, tente ativar esta configuração.
 
@@ -984,5 +981,8 @@ Versão instalada atualmente: {0}, nova versão: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

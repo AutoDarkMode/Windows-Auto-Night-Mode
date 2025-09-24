@@ -37,6 +37,10 @@ public partial class SettingsViewModel : ObservableRecipient
         Beta,
     }
 
+
+    [ObservableProperty]
+    public partial bool IsDwmRefreshViaColorization { get; set; }
+
     [ObservableProperty]
     public partial bool IsHideTray { get; set; }
 
@@ -155,6 +159,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _isInitializing = true;
 
         IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
+        IsDwmRefreshViaColorization = _builder.Config.Tunable.DwmRefreshViaColorization;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
         IsUpdaterEnabled = _builder.Config.Updater.Enabled;
@@ -429,6 +434,43 @@ public partial class SettingsViewModel : ObservableRecipient
             IsTunableDebug = true;
         }
 
+        SafeSaveBuilder();
+    }
+
+
+    partial void OnIsDwmRefreshViaColorizationChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (value)
+        {
+            ContentDialog contentDialog = new()
+            {
+                Title = "AlwaysRefreshDwm".GetLocalized(),
+                Content = "AlwaysRefreshDwm_Content".GetLocalized(),
+                XamlRoot = App.MainWindow.Content.XamlRoot,
+                CloseButtonText = "Cancel".GetLocalized(),
+                PrimaryButtonText = "Confirm".GetLocalized(),
+            };
+            _dispatcherQueue.TryEnqueue(async () =>
+            {
+                var result = await contentDialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    IsDwmRefreshViaColorization = true;
+                }
+                else
+                {
+                    IsDwmRefreshViaColorization = false;
+                }
+            });
+            _builder.Config.Tunable.DwmRefreshViaColorization = IsDwmRefreshViaColorization;
+        }
+        else
+        {
+            _builder.Config.Tunable.DwmRefreshViaColorization = IsDwmRefreshViaColorization;
+        }
         SafeSaveBuilder();
     }
 

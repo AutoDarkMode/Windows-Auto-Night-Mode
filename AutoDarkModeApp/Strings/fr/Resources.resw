@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Toujours clair</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Toujours rafraichir DWM pendant le changement de thème</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Cette option vise à réduire l'apparition de mauvaises couleurs dans l'explorateur de fichiers, la barre de tâches et le menu Démarrer. Si vous constatez régulièrement ce problème ou si cela vous dérange, essayez d'activer cette option.
 
@@ -984,5 +981,8 @@ Version installée : {0}, nouvelle version : {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

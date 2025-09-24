@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Always light</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Alltid oppdater DWM ved temabytte</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
@@ -984,5 +981,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>

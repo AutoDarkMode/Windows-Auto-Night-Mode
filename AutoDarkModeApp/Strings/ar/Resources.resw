@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>دائماً فاتح</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>تحديث DWM دائمًا عند تبديل النسق</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>محاولات لتقليل حدوث ألوان واجهة المستخدم غير الصحيحة في مستكشف الملفات، شريط المهام، وقائمة ابدأ. إذا كنت تواجه هذه المشكلة بشكل متكرر أو تجدها مزعجة، حاول تمكين هذا الإعداد.
 
@@ -981,5 +978,8 @@
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>Aggressive DWM refresh</value>
   </data>
 </root>

@@ -7,14 +7,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 using NLog;
+using static System.Windows.Forms.AxHost;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers;
 internal sealed partial class DwmRefreshHandler
 {
     private static readonly DwmRefreshHandler _instance = new();
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+    private static readonly GlobalState state = GlobalState.Instance();
 
     private BlockingCollection<DwmRefreshEventArgs> Queue { get; }
     private Thread Worker { get; set; }
@@ -73,7 +78,8 @@ internal sealed partial class DwmRefreshHandler
 
                     try
                     {
-                        Broadcast();
+                        if (e.Type > DwmRefreshType.Standard) RefreshDwmViaColorization();
+                        else Broadcast();
                     }
                     catch (Exception ex)
                     {
@@ -93,11 +99,6 @@ internal sealed partial class DwmRefreshHandler
 
         Worker.SetApartmentState(ApartmentState.STA);
         Worker.Start();
-    }
-
-    public void AddWithGuard(DwmRefreshEventArgs e) 
-    {
-
     }
 
     public static void Enqueue(DwmRefreshEventArgs e)
@@ -126,6 +127,53 @@ internal sealed partial class DwmRefreshHandler
             {
                 Interlocked.CompareExchange(ref _instance._nextExecutionTicks, newDeadline, currentDeadline);
             }
+        }
+    }
+
+    private static void RefreshDwmViaColorization()
+    {
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
+        {
+            try
+            {
+                // prepare theme
+                ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
+                dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                dwmRefreshTheme.RefreshGuid();
+                dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
+
+                // get current accent color
+                string currentColorization = RegistryHandler.GetAccentColor().Replace("#", "0X");
+                string lastColorizationDigitString = currentColorization[currentColorization.Length - 1].ToString();
+                int lastColorizationDigit = int.Parse(lastColorizationDigitString, System.Globalization.NumberStyles.HexNumber);
+
+                // modify last digit
+                if (lastColorizationDigit >= 9) lastColorizationDigit--;
+                else lastColorizationDigit++;
+                string newColorizationColor = currentColorization[..(currentColorization.Length - 1)] + lastColorizationDigit.ToString("X");
+
+                // update theme
+                dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
+                dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
+                dwmRefreshTheme.Save();
+
+                List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
+                Logger.Debug($"dwm management: temporarily setting accent color to {dwmRefreshTheme.VisualStyles.ColorizationColor.Item1} from {currentColorization}");
+                ThemeHandler.Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
+                Thread.Sleep(1000);
+                ThemeHandler.Apply(state.ManagedThemeFile.ThemeFilePath, true, null, flagList);
+                Thread.Sleep(1000);
+
+                Logger.Info("dwm management: full colorization refresh performed by theme handler");
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex, "dwm management: could not perform full colorization refresh due to malformed colorization string: ");
+            }
+        }
+        else
+        {
+            Logger.Trace("dwm management: no full colorization refresh required needed in this windows version");
         }
     }
 

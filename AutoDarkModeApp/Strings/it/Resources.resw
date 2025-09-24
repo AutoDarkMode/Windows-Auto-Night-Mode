@@ -144,9 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Sempre chiaro</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Rinfresca sempre il DWM al cambio del tema</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Tenta di ridurre il verificarsi di colori errati dell'interfaccia utente in: esplora risorse, barra delle applicazioni e menu di avvio. Se il problema si verifica spesso o è fastidioso, provate ad attivare questa impostazione.
 
@@ -984,5 +981,8 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
   </data>
 </root>
