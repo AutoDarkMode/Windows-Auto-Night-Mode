@@ -128,7 +128,7 @@ public partial class App : Application
     private static async Task SetApplicationLanguageAsync()
     {
         var localSettings = App.GetService<ILocalSettingsService>();
-        var language = await localSettings.ReadSettingAsync<string>("Language");
+        var language = await localSettings.ReadSettingAsync<string>("SelectedLanguageCode");
         if (!string.IsNullOrEmpty(language))
         {
             Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;

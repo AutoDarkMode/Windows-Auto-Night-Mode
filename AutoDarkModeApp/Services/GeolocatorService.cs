@@ -32,7 +32,7 @@ public class GeolocatorService : IGeolocatorService
         _indexAdmin0.Build();
 
         var localSettings = App.GetService<ILocalSettingsService>();
-        string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("Language")).Result;
+        string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("SelectedLanguageCode")).Result;
         if (language != null)
         {
             _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();

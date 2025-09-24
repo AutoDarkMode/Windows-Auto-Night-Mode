@@ -53,7 +53,7 @@
                     <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}"
                               DisplayMemberPath="DisplayName"
                               SelectedValuePath="CultureCode"
-                              SelectedValue="{x:Bind ViewModel.Language, Mode=TwoWay}" />
+                              SelectedValue="{x:Bind ViewModel.SelectedLanguageCode, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <InfoBar
                     IsClosable="False"
