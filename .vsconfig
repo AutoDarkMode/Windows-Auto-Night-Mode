@@ -7,5 +7,7 @@
         "Microsoft.NetCore.Component.SDK", // .NET SDK
         "Microsoft.NetCore.Component.Runtime.9.0", // .NET 9 runtime (preview or latest)
         "Microsoft.VisualStudio.Component.NuGet", // NuGet package manager
+        "Microsoft.VisualStudio.Component.ManagedDesktopCore", // .NET desktop development (WPF, WinForms)
+        "Microsoft.VisualStudio.Component.MSBuild" // MSBuild
     ]
 }
