@@ -1,19 +1,16 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.ApplicationModel.Resources;
 using Microsoft.Windows.Globalization;
 
 
@@ -207,16 +204,24 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             _isInitializing = true;
 
-            var languageText = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
-            if (!string.IsNullOrEmpty(languageText))
+            var language = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
+            if (!string.IsNullOrEmpty(language))
             {
-                SelectedLanguageCode = languageText;
+                SelectedLanguageCode = language;
             }
             else
             {
                 //search for regional language
                 var preferredLanguages = ApplicationLanguages.Languages;
-                string topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
+                string topLanguage;
+                if (preferredLanguages.Any()) // just to be sure
+                {
+                    topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
+                }
+                else // extremely rare case
+                {
+                    topLanguage = CultureInfo.CurrentUICulture.Name; // e.g., "fr-FR"
+                }
                 if (LanguageConstants.SupportedCultures.Contains(topLanguage))
                 {
                     SelectedLanguageCode = topLanguage;
