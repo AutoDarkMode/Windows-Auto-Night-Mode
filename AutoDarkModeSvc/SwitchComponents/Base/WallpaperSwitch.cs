@@ -239,6 +239,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         if (ok)
         {
             GlobalState.ManagedThemeFile.Desktop.Wallpaper = wallpaper;
+            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
         }
         currentGlobalTheme = newTheme;
         currentIndividualTheme = Theme.Unknown;
