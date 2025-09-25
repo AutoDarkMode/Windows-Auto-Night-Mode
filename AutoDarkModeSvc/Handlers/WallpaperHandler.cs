@@ -110,7 +110,7 @@ static class WallpaperHandler
                 {
                     if (!File.Exists(monitorSetting.DarkThemeWallpaper))
                     {
-                        Logger.Warn($"target {Enum.GetName(typeof(Theme), newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
+                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
                     }
                     else
                     {

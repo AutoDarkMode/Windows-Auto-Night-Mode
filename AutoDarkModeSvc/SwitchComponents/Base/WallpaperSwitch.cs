@@ -372,9 +372,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         spotlightEnabled = null;
 
         // global wallpaper enable state synchronization;
-        string globalWallpaper = WallpaperHandler.GetGlobalWallpaper();
-        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
-        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
+        string globalWallpaper = WallpaperHandler.GetGlobalWallpaper().ToLower();
+        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light.ToLower()) currentGlobalTheme = Theme.Light;
+        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark.ToLower()) currentGlobalTheme = Theme.Dark;
 
         // solid color enable state synchronization
         if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 &&
@@ -467,7 +467,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             case WallpaperType.Individual:
                 List<string> wallpapersTarget = [.. Settings.Component.Monitors.
-                    Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper))];
+                    Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())];
 
                 if (type == WallpaperType.Individual)
                 {
@@ -484,7 +484,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                 }
 
                 var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
-                    .Select(w => Path.GetFileName(w.Item1))
+                    .Select(w => Path.GetFileName(w.Item1).ToLower())
                     .ToList();
 
                 return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
@@ -549,7 +549,6 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         if (ok)
         {
             Logger.Info($"wallpaper synchronization: integrity check passed ({matched}/{totalRequired}, {coverage:P0} coverage)");
-
         }
         else
         {
