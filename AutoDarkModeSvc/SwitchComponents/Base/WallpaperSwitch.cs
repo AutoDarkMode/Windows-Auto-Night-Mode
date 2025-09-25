@@ -516,7 +516,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             availableCounts[wallpaperName] = count + 1;
         }
 
-        int totalRequired = wallpapersInThemeFile.Count;
+        int totalRequired = wallpapersTarget.Count;
         int matched = 0;
 
         foreach (var requiredEntry in requiredCounts)
@@ -527,7 +527,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             int availableCount = availableCounts.TryGetValue(wallpaperName, out var count) ? count : 0;
             matched += Math.Min(availableCount, requiredCount);
 
-            if (availableCount < requiredCount)
+            if (requiredCount < availableCount)
             {
                 int missing = requiredCount - availableCount;
                 Logger.Warn($"wallpaper synchronization: maybe missing {wallpaperName} x{missing}");
@@ -535,7 +535,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
 
         double coverage = (double)matched / totalRequired;
-        bool ok = coverage >= 0.5;
+        bool ok = coverage >= 1;
 
         if (ok)
         {
