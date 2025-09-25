@@ -240,6 +240,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             GlobalState.ManagedThemeFile.Desktop.Wallpaper = wallpaper;
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+            GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
         }
         currentGlobalTheme = newTheme;
         currentIndividualTheme = Theme.Unknown;
@@ -503,13 +504,13 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     {
         // Count how many of each wallpaper exists in the lists
         var requiredCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var wallpaperName in wallpapersInThemeFile)
+        foreach (var wallpaperName in wallpapersTarget)
         {
             requiredCounts.TryGetValue(wallpaperName, out var count);
             requiredCounts[wallpaperName] = count + 1;
         }
         var availableCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var wallpaperName in wallpapersTarget)
+        foreach (var wallpaperName in wallpapersInThemeFile)
         {
             availableCounts.TryGetValue(wallpaperName, out var count);
             availableCounts[wallpaperName] = count + 1;
