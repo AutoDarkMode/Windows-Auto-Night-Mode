@@ -293,6 +293,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnIsColorFilterSwitchChanged(bool value)
@@ -309,5 +310,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
+        RequestThemeSwitch();
     }
 }

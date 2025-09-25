@@ -15,11 +15,13 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
@@ -53,7 +55,8 @@ class ColorFilterSwitch : BaseComponent<object>
     {
         if (!Settings.Enabled && currentColorFilterActive)
         {
-            RegistryHandler.ColorFilterKeySender(false);
+            RegistryHandler.SetColorFilter(false);
+            LaunchAtBroker();
             currentColorFilterActive = false;
         }
     }
@@ -70,33 +73,41 @@ class ColorFilterSwitch : BaseComponent<object>
         return false;
     }
 
+    private void LaunchAtBroker()
+    {
+        using Process atBrokerColorFilter = new();
+        atBrokerColorFilter.StartInfo.FileName = "atbroker.exe";
+        atBrokerColorFilter.StartInfo.Arguments = $"/colorfiltershortcut /resettransferkeys";
+        atBrokerColorFilter.StartInfo.UseShellExecute = false;
+        atBrokerColorFilter.StartInfo.CreateNoWindow = true;
+        atBrokerColorFilter.Start();
+    }
+
     [MethodImpl(MethodImplOptions.Synchronized)]
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        Task.Delay(250).ContinueWith(t =>
+        bool oldTheme = currentColorFilterActive;
+        try
         {
-            bool oldTheme = currentColorFilterActive;
-            try
+            RegistryHandler.ColorFilterSetup();
+            if (e.Theme == Theme.Dark)
             {
-                RegistryHandler.ColorFilterSetup();
-                if (e.Theme == Theme.Dark)
-                {
+                RegistryHandler.SetColorFilter(true);
+                LaunchAtBroker();
+                currentColorFilterActive = true;
 
-                    RegistryHandler.ColorFilterKeySender(true);
-                    currentColorFilterActive = true;
-
-                }
-                else
-                {
-                    RegistryHandler.ColorFilterKeySender(false);
-                    currentColorFilterActive = false;
-                }
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error(ex, "could not enable color filter:");
+                RegistryHandler.SetColorFilter(false);
+                LaunchAtBroker();
+                currentColorFilterActive = false;
             }
-            Logger.Info($"update info - previous: {oldTheme}, now: {currentColorFilterActive}, enabled: {Settings.Enabled}");
-        }).Wait();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "could not enable color filter:");
+        }
+        Logger.Info($"update info - previous: {oldTheme}, now: {currentColorFilterActive}, enabled: {Settings.Enabled}");
     }
 }

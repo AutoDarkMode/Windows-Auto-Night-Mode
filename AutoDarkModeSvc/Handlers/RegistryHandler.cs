@@ -24,8 +24,6 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using Microsoft.Win32;
-using WindowsInput;
-using WindowsInput.Native;
 
 namespace AutoDarkModeSvc.Handlers;
 
@@ -379,21 +377,6 @@ static class RegistryHandler
         return "";
     }
 
-    //Colour filter grayscale feature
-    public static void ColorFilterKeySender(bool dark)
-    {
-        var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-        if ((dark && filterKey.Equals(0)) || (!dark && filterKey.Equals(1)))
-        {
-            //simulate key presses
-            InputSimulator inputSimulator = new();
-            inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LWIN);
-            inputSimulator.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
-            inputSimulator.Keyboard.KeyPress(VirtualKeyCode.VK_C);
-            inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LWIN);
-            inputSimulator.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
-        }
-    }
     public static bool IsColorFilterActive()
     {
         var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
@@ -431,6 +414,19 @@ static class RegistryHandler
 
         filterType.SetValue("HotkeyEnabled", 1, RegistryValueKind.DWord); //and we activate the hotkey as free bonus :)
         filterType.Dispose();
+    }
+
+    private static RegistryKey GetColorFilterKey()
+    {
+        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+        return registryKey;
+    }
+
+    public static void SetColorFilter(bool enabled)
+    {
+        using RegistryKey key = GetColorFilterKey();
+        var value = enabled ? 1 : 0;
+        key.SetValue("Active", value, RegistryValueKind.DWord);
     }
 
     public static Cursors GetCursorScheme(string name)
