@@ -205,7 +205,7 @@ public partial class SettingsViewModel : ObservableRecipient
             _isInitializing = true;
 
             var language = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
-            if (!string.IsNullOrEmpty(language))
+            if (!string.IsNullOrEmpty(language) && LanguageConstants.SupportedCultures.Contains(language))
             {
                 SelectedLanguageCode = language;
             }
@@ -216,12 +216,13 @@ public partial class SettingsViewModel : ObservableRecipient
                 string topLanguage;
                 if (preferredLanguages.Any()) // just to be sure
                 {
-                    topLanguage = preferredLanguages.FirstOrDefault(); // e.g., "fr-FR"
+                    topLanguage = preferredLanguages[0]; // e.g., "fr-FR"
                 }
                 else // extremely rare case
                 {
                     topLanguage = CultureInfo.CurrentUICulture.Name; // e.g., "fr-FR"
                 }
+
                 if (LanguageConstants.SupportedCultures.Contains(topLanguage))
                 {
                     SelectedLanguageCode = topLanguage;
