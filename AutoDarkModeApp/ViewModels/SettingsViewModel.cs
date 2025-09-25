@@ -359,7 +359,7 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
             bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
-            //Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguageCode: {value}, IsSameLanguage: {isSameLanguage}");
+            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguageCode: {value}, IsSameLanguage: {isSameLanguage}");
 
             _localSettingsService.SaveSettingAsync("SelectedLanguageCode", value);
             _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
