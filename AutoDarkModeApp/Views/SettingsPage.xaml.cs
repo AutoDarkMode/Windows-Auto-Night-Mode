@@ -12,7 +12,6 @@ public sealed partial class SettingsPage : Page
     {
         ViewModel = App.GetService<SettingsViewModel>();
         InitializeComponent();
-        //this.DataContext = new LanguageViewModel();
     }
 
     private void OpenConfigSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
