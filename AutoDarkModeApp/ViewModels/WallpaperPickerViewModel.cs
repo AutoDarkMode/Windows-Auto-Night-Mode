@@ -364,15 +364,19 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 break;
             case WallpaperDisplayMode.PictureMM when SelectMonitor != null:
                 {
-                    var monitorSettings = (MonitorSettings)SelectMonitor;
+                    var selectedMonitor = (MonitorSettings)SelectMonitor;
+                    var configMonitorSetting = _builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == selectedMonitor.Id);
+                    if (configMonitorSetting == null) return;
                     if (SelectWallpaperThemeMode == ApplicationTheme.Light)
                     {
-                        monitorSettings.LightThemeWallpaper = value;
+                        configMonitorSetting.LightThemeWallpaper = value;
+                        selectedMonitor.LightThemeWallpaper = value;
                         _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
                     }
                     else
                     {
-                        monitorSettings.DarkThemeWallpaper = value;
+                        configMonitorSetting.DarkThemeWallpaper = value;
+                        selectedMonitor.DarkThemeWallpaper = value;
                         _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Individual;
                     }
 
