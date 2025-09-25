@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils;
+using AutoDarkModeApp.ViewModels;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Index.Strtree;
@@ -32,11 +33,11 @@ public class GeolocatorService : IGeolocatorService
         _indexAdmin0.Build();
 
         var localSettings = App.GetService<ILocalSettingsService>();
-        string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("SelectedLanguageCode")).Result;
-        if (!string.IsNullOrEmpty(language))
-        {
-            _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();
-        }
+        //TO-DO: Make async
+        //TO-DO: use GetLanguageCodeAsync from LocalizationService
+        //string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("SelectedLanguageCode")).Result;
+        string? language = Task.Run(LanguageConstants.GetDefaultLanguageAsync).Result;
+        _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();
     }
 
     private void LoadGeoJsonIntoIndex(string jsonPath, STRtree<IFeature> index)

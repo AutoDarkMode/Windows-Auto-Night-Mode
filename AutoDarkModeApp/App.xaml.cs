@@ -117,23 +117,12 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        await SetApplicationLanguageAsync();
+        //await SetApplicationLanguageAsync();
+        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageConstants.GetDefaultLanguageAsync();
 
         var navigationService = App.GetService<INavigationService>();
         MainWindow = new MainWindow(navigationService);
 
         await App.GetService<IActivationService>().ActivateAsync(args);
-    }
-
-    // TO-DO: create a funcion/method in LocalSettingsService (?) to get the language code directly
-    // and move the line "PrimaryLanguageOverride" into OnLaunched
-    private static async Task SetApplicationLanguageAsync()
-    {
-        var localSettings = App.GetService<ILocalSettingsService>();
-        var language = await localSettings.ReadSettingAsync<string>("SelectedLanguageCode");
-        if (!string.IsNullOrEmpty(language) && LanguageConstants.SupportedCultures.Contains(language))
-        {
-            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = language;
-        }
     }
 }

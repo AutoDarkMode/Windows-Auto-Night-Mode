@@ -62,6 +62,7 @@
                     Severity="Informational">
                     <InfoBar.ActionButton>
                         <Button
+                            Style="{ThemeResource AccentButtonStyle}"
                             MinWidth="120"
                             HorizontalAlignment="Right"
                             Command="{x:Bind ViewModel.RestartCommand}"
@@ -76,8 +77,7 @@
                     <Button
                         MinWidth="120"
                         Command="{x:Bind ViewModel.CheckUpdateCommand}"
-                        Content="{helpers:ResourceString Name=CheckUpdate}"
-                        Style="{ThemeResource AccentButtonStyle}" />
+                        Content="{helpers:ResourceString Name=CheckUpdate}" />
                 </controls:SettingsCard>
 
                 <!--  Auto check  -->
