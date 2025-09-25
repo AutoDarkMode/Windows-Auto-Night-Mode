@@ -180,10 +180,6 @@
                                     NavigateUri="https://github.com/CommunityToolkit/dotnet"
                                     ToolTipService.ToolTip="https://github.com/CommunityToolkit/dotnet" />
                                 <HyperlinkButton
-                                    Content="InputSimulator"
-                                    NavigateUri="https://archive.codeplex.com/?p=inputsimulator"
-                                    ToolTipService.ToolTip="https://archive.codeplex.com/?p=inputsimulator" />
-                                <HyperlinkButton
                                     Content="NLog"
                                     NavigateUri="https://nlog-project.org/"
                                     ToolTipService.ToolTip="https://nlog-project.org/" />
