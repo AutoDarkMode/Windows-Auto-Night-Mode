@@ -456,6 +456,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     protected override void Callback(SwitchEventArgs e)
     {
         if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
+        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        if (type == WallpaperType.Spotlight) Thread.Sleep(4500);
     }
 
 
@@ -496,7 +499,6 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
                 return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
         }
-
         return true;
     }
 
