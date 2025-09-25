@@ -1,6 +1,8 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -79,6 +81,7 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnSelectLightCursorChanged(object? value)
@@ -98,6 +101,7 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnSelectDarkCursorChanged(object? value)
@@ -116,6 +120,25 @@ public partial class CursorsViewModel : ObservableRecipient
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
+        }
+        RequestThemeSwitch();
+    }
+
+
+
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "CursorsViewModel");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsViewModel");
         }
     }
 }
