@@ -110,7 +110,8 @@ static class WallpaperHandler
                 {
                     if (!File.Exists(monitorSetting.DarkThemeWallpaper))
                     {
-                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist (skipping) path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
+                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
+                        handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
                     }
                     else
                     {
@@ -121,9 +122,13 @@ static class WallpaperHandler
                 {
                     if (!File.Exists(monitorSetting.LightThemeWallpaper))
                     {
-                        Logger.Warn($"wallpaper does not exist. path ${monitorSetting.DarkThemeWallpaper}, monitor ${monitor.DeviceId}");
+                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.LightThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
+                        handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
                     }
-                    handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
+                    else
+                    {
+                        handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
+                    }
                 }
             }
             else if (monitor.DeviceId == "")

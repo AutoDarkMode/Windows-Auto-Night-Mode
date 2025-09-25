@@ -467,8 +467,13 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         switch (type)
         {
             case WallpaperType.Individual:
-                List<string> wallpapersTarget = [.. Settings.Component.Monitors.
-                    Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())];
+                List<string> wallpapersTarget =
+                [
+                    ..Settings.Component.Monitors
+                        .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
+                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())
+                ];
+
 
                 if (type == WallpaperType.Individual)
                 {
@@ -540,7 +545,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             Logger.Warn($"wallpaper synchronization: integrity check failed ({matched}/{totalRequired}, {coverage:P0} coverage)");
             Logger.Warn($"wallpaper synchronization: required wallpaper list: [{string.Join(", ", wallpapersInThemeFile)}], target list: [{string.Join(", ", wallpapersTarget)}]");
         }
-           
+
         return ok;
     }
 }

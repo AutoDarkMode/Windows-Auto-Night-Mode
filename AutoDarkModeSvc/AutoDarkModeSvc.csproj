@@ -118,4 +118,10 @@
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\AutoDarkModeMissingWallpaper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
