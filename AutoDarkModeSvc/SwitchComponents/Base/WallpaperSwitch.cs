@@ -112,7 +112,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
         else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
         {
-            HookPosition = HookPosition.PreSync;
+            HookPosition = HookPosition.PostSync;
             return true;
         }
         else if (type == WallpaperType.Spotlight && IsSpotlightCompatible())
@@ -488,25 +488,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                     .ToList();
 
                 return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
-            case WallpaperType.Global:
-                return CheckAgreementGlobal();
         }
 
         return true;
-    }
-
-    private bool CheckAgreementGlobal()
-    {
-        bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper).ToLower() == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper().ToLower());
-        if (ok)
-        {
-            Logger.Info($"wallpaper synchronization: integrity check passed");
-        }
-        else
-        {
-            Logger.Warn($"wallpaper synchronization: integrity check failed: wanted {GlobalState.ManagedThemeFile.Desktop.Wallpaper}, is {WallpaperHandler.GetGlobalWallpaper()}");
-        }
-        return ok;
     }
 
     private bool CheckAgreementIndividual(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
