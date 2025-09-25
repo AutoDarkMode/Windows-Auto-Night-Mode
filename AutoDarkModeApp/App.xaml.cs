@@ -117,7 +117,7 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        await SetApplicationLanguageAsync();
+        //await SetApplicationLanguageAsync();
 
         var navigationService = App.GetService<INavigationService>();
         MainWindow = new MainWindow(navigationService);
