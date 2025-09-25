@@ -497,7 +497,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     private bool CheckAgreementGlobal()
     {
-        bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper) == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper());
+        bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper).ToLower() == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper().ToLower());
         if (ok)
         {
             Logger.Info($"wallpaper synchronization: integrity check passed");
