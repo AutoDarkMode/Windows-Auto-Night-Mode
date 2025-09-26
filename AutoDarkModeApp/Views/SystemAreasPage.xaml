@@ -76,11 +76,11 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
+                <!-- More info -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
                 <HyperlinkButton Click="WindowsColorsSetingHyperlinkButton_Click" Content="{helpers:ResourceString Name=WindowsColorsSetting}" />
 
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>

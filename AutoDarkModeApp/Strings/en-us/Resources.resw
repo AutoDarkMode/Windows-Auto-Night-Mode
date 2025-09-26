@@ -215,7 +215,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Color</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Enable color filter during dark mode</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Customize the Windows system color scheme to your liking</value>

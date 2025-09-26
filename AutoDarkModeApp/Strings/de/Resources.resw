@@ -214,7 +214,7 @@ In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM 
     <value>Farbe</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Farbfilter (Sendet Win + Strg + C)</value>
+    <value>Farbfilter während des Dark Modes</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Passe die Windows Akzentfarbe nach deiner Präferenz an.</value>
