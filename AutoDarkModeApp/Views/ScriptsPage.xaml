@@ -15,7 +15,7 @@
 
                 <!--  Script  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Scripts}" />
-                <controls:SettingsExpander Header="{helpers:ResourceString Name=EnableCustomScripts}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=EnableCustomScripts}" HeaderIcon="{ui:FontIcon Glyph=&#xF000;}" IsExpanded="True">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.ScriptSwitchEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard
