@@ -953,7 +953,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Windows mode</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Farbeinstellungen von Windows aufrufen</value>
   </data>
   <data name="Delayed" xml:space="preserve">
     <value>Delayed</value>
@@ -984,5 +984,12 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DarkModeForWebbrowser" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="DarkModeForWebbrowserDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

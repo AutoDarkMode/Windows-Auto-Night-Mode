@@ -944,7 +944,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Windows mode</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Personalized color settings of Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
     <value>Delayed</value>
@@ -975,5 +975,11 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="DarkModeForWebbrowser" xml:space="preserve">
+    <value>Dark mode for your web browser</value>
+  </data>
+  <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
+    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
   </data>
 </root>
