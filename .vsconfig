@@ -1,16 +1,14 @@
 {
-  "version": "1.0",
-  "components": [
-    "Microsoft.Component.MSBuild",
-    "Microsoft.NetCore.Component.Runtime.7.0",
-    "Microsoft.NetCore.Component.SDK",
-    "Microsoft.VisualStudio.Component.ManagedDesktop.Core",
-    "Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites",
-    "Microsoft.VisualStudio.Component.NuGet",
-    "Microsoft.VisualStudio.Component.Windows10SDK.19041",
-    "Microsoft.VisualStudio.Component.Windows10SDK",
-    "Microsoft.VisualStudio.ComponentGroup.MSIX.Packaging",
-    "Microsoft.VisualStudio.ComponentGroup.WindowsAppSDK.Cs",
-    "Microsoft.VisualStudio.Workload.ManagedDesktop"
-  ]
+    "version": "1.0",
+    "components": [
+        "Microsoft.NetCore.Component.Runtime.9.0", // .NET 9 runtime (preview or latest)
+        "Microsoft.NetCore.Component.SDK", // .NET SDK
+        "Microsoft.VisualStudio.Component.ManagedDesktop.Prerequisites", // Prerequisites for .NET desktop development
+        "Microsoft.VisualStudio.Component.ManagedDesktopCore", // .NET desktop development (WPF, WinForms)
+        "Microsoft.VisualStudio.Component.MSBuild", // MSBuild
+        "Microsoft.VisualStudio.Component.NuGet", // NuGet package manager
+        "Microsoft.VisualStudio.Component.Windows10SDK.19041", // Minimum supported OS SDK
+        "Microsoft.VisualStudio.Component.WindowsAppSDK.Cs", // Windows App SDK for C#
+        "Microsoft.VisualStudio.Workload.Universal" // UWP workload (needed for WinUI 3 tooling)
+    ]
 }
