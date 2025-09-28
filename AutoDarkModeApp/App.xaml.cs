@@ -5,6 +5,7 @@ using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
+using AutoDarkModeApp.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -118,7 +119,7 @@ public partial class App : Application
         base.OnLaunched(args);
 
         //await SetApplicationLanguageAsync();
-        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageConstants.GetDefaultLanguageAsync();
+        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
 
         var navigationService = App.GetService<INavigationService>();
         MainWindow = new MainWindow(navigationService);

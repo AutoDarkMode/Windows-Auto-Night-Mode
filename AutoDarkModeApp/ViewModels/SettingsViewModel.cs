@@ -204,7 +204,7 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             _isInitializing = true;
 
-            SelectedLanguageCode = await LanguageConstants.GetDefaultLanguageAsync();
+            SelectedLanguageCode = await LanguageHelper.GetDefaultLanguageAsync();
 
             _isInitializing = false;
         });
@@ -600,49 +600,4 @@ public static class LanguageConstants
         "ru", "uk", "ja", "zh-Hans", "zh-Hant"
     };
 
-    public static string SelectedLanguageCode { get; private set; }
-
-    internal static async Task<string> GetDefaultLanguageAsync()
-    {
-        var language = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
-        if (!string.IsNullOrEmpty(language) && LanguageConstants.SupportedCultures.Contains(language))
-        {
-            SelectedLanguageCode = language;
-        }
-        else
-        {
-            //search for regional language
-            var preferredLanguages = ApplicationLanguages.Languages;
-            string topLanguage;
-            if (preferredLanguages.Any()) // just to be sure
-            {
-                topLanguage = preferredLanguages[0]; // e.g., "fr-FR"
-            }
-            else // extremely rare case
-            {
-                topLanguage = CultureInfo.CurrentUICulture.Name; // e.g., "fr-FR"
-            }
-
-            if (LanguageConstants.SupportedCultures.Contains(topLanguage))
-            {
-                SelectedLanguageCode = topLanguage;
-            }
-            else
-            {
-                //search for neutral language
-                var neutralLanguage = topLanguage.Split('-')[0]; // e.g., "fr"
-                if (LanguageConstants.SupportedCultures.Contains(neutralLanguage))
-                {
-                    SelectedLanguageCode = neutralLanguage;
-                }
-                else
-                {
-                    //SelectedLanguageCode = "en-US";
-                    SelectedLanguageCode = CultureInfo.CurrentUICulture.Name; // try to set to the system language
-                }
-            }
-            await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
-        }
-        return SelectedLanguageCode;
-    }
 }
