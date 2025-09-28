@@ -30,13 +30,13 @@ public static class LanguageHelper
         }
         else
         {
-            var preferredLanguages = ApplicationLanguages.Languages;
+            var preferredLanguages = ApplicationLanguages.Languages; // example: ["fr-FR", "en-US", "de-DE"]
             string topLanguage;
             if (preferredLanguages.Any())
             {
                 topLanguage = preferredLanguages[0];
             }
-            else
+            else // very unlikely, but just in case
             {
                 topLanguage = CultureInfo.CurrentUICulture.Name;
             }
@@ -47,14 +47,14 @@ public static class LanguageHelper
             }
             else
             {
-                var neutralLanguage = topLanguage.Split('-')[0];
+                var neutralLanguage = topLanguage.Split('-')[0]; // example: "fr"
                 if (SupportedCultures.Contains(neutralLanguage))
                 {
                     SelectedLanguageCode = neutralLanguage;
                 }
                 else
                 {
-                    SelectedLanguageCode = CultureInfo.CurrentUICulture.Name;
+                    SelectedLanguageCode = CultureInfo.CurrentUICulture.Name; // example: "fr-FR"
                     // SelectedLanguageCode = new CultureInfo("en-US");
                 }
             }
