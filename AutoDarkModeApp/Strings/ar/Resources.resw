@@ -982,4 +982,10 @@
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="CurrentlySelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColor" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
 </root>

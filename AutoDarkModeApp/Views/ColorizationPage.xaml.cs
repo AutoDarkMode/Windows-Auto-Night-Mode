@@ -1,38 +1,63 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Services;
+﻿using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.UserControls;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Shapes;
 
 namespace AutoDarkModeApp.Views;
 
 public sealed partial class ColorizationPage : Page
 {
-    private readonly IErrorService _errorService = App.GetService<IErrorService>();
-    private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
-    private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
-
     public ColorizationViewModel ViewModel { get; }
 
     public ColorizationPage()
     {
-        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         ViewModel = App.GetService<ColorizationViewModel>();
         InitializeComponent();
     }
 
-    private async void LightModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void WindowsColorGridView_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        var rectangleItem = e.ClickedItem as Rectangle;
+        var solidColorBrush = rectangleItem?.Fill as SolidColorBrush;
+        if (solidColorBrush == null)
+        {
+            return;
+        }
+        var rectangleItemFill = solidColorBrush.Color;
+        ViewModel.AccentColorPreviewBorderBackground = new SolidColorBrush(rectangleItemFill);
+        if (ViewModel.SelectColorThemeMode == ApplicationTheme.Light)
+        {
+            ViewModel.GetAdmConfig().ColorizationSwitch.Component.LightHex = rectangleItemFill.ToHex();
+        }
+        else
+        {
+            ViewModel.GetAdmConfig().ColorizationSwitch.Component.DarkHex = rectangleItemFill.ToHex();
+        }
+        ViewModel.AccentColorMode = ColorizationViewModel.ThemeColorMode.Manual;
+
+        ViewModel.SafeSaveBuilder();
+        if (ViewModel.GetAdmConfig().ColorizationSwitch.Enabled)
+        {
+            ViewModel.RequestThemeSwitch();
+        }
+    }
+
+    private async void CheckColorButton_Click(object sender, RoutedEventArgs e)
     {
         var dialogContent = new ColorPickerDialogContentControl();
         dialogContent.InternalColorPicker.IsAlphaEnabled = false;
-        dialogContent.InternalColorPicker.Color = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor();
+        if (ViewModel.SelectColorThemeMode == ApplicationTheme.Light)
+        {
+            dialogContent.InternalColorPicker.Color = ViewModel.GetAdmConfig().ColorizationSwitch.Component.LightHex.ToColor();
+        }
+        else
+        {
+            dialogContent.InternalColorPicker.Color = ViewModel.GetAdmConfig().ColorizationSwitch.Component.DarkHex.ToColor();
+        }
         var colorPickerDialog = new ContentDialog()
         {
             XamlRoot = this.XamlRoot,
@@ -46,67 +71,22 @@ public sealed partial class ColorizationPage : Page
         var result = await colorPickerDialog.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            ViewModel.LightModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
-            _builder.Config.ColorizationSwitch.Component.LightHex = dialogContent.InternalColorPicker.Color.ToHex();
+            ViewModel.AccentColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
+            if (ViewModel.SelectColorThemeMode == ApplicationTheme.Light)
+            {
+                ViewModel.GetAdmConfig().ColorizationSwitch.Component.LightHex = dialogContent.InternalColorPicker.Color.ToHex();
+            }
+            else
+            {
+                ViewModel.GetAdmConfig().ColorizationSwitch.Component.DarkHex = dialogContent.InternalColorPicker.Color.ToHex();
+            }
+            ViewModel.AccentColorMode = ColorizationViewModel.ThemeColorMode.Manual;
 
-            try
+            ViewModel.SafeSaveBuilder();
+            if (ViewModel.GetAdmConfig().ColorizationSwitch.Enabled)
             {
-                _builder.Save();
-                if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+                ViewModel.RequestThemeSwitch();
             }
-            catch (Exception ex)
-            {
-                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
-            }
-        }
-    }
-
-    private async void DarkModeCheckColorButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        var dialogContent = new ColorPickerDialogContentControl();
-        dialogContent.InternalColorPicker.IsAlphaEnabled = false;
-        dialogContent.InternalColorPicker.Color = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor();
-        var colorPickerDialog = new ContentDialog()
-        {
-            XamlRoot = this.XamlRoot,
-            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
-            Title = "SelectColor".GetLocalized(),
-            CloseButtonText = "Cancel".GetLocalized(),
-            PrimaryButtonText = "Save".GetLocalized(),
-            DefaultButton = ContentDialogButton.Primary,
-            Content = dialogContent,
-        };
-        var result = await colorPickerDialog.ShowAsync();
-        if (result == ContentDialogResult.Primary)
-        {
-            ViewModel.DarkModeColorPreviewBorderBackground = new SolidColorBrush(dialogContent.InternalColorPicker.Color);
-            _builder.Config.ColorizationSwitch.Component.DarkHex = dialogContent.InternalColorPicker.Color.ToHex();
-            try
-            {
-                _builder.Save();
-                if (_builder.Config.ColorizationSwitch.Enabled) _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
-            }
-            catch (Exception ex)
-            {
-                await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
-            }
-        }
-
-    }
-
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "ColorizationPage");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
         }
     }
 }

@@ -5,6 +5,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:local="using:AutoDarkModeApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
@@ -22,57 +23,138 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.ThemeSettingsExpanderVisibility, Mode=OneWay}">
-                    <!--  Light  -->
-                    <controls:SettingsExpander
-                        Header="{helpers:ResourceString Name=LightTheme}"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
-                        IsExpanded="True">
-                        <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
-                            <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
-                            <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
-                        </ComboBox>
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.LightThemeColorizationSettingsCardEnabled, Mode=OneWay}">
-                                <StackPanel Orientation="Horizontal" Spacing="12">
-                                    <Border
-                                        Width="30"
-                                        Height="28"
-                                        Background="{x:Bind ViewModel.LightModeColorPreviewBorderBackground, Mode=OneWay}"
-                                        CornerRadius="{StaticResource ControlCornerRadius}" />
-                                    <!--  TODO: Replace Content to Res  -->
-                                    <Button
-                                        MinWidth="120"
-                                        Click="LightModeCheckColorButton_Click"
-                                        Content="{helpers:ResourceString Name=SelectColor}" />
-                                </StackPanel>
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
+                <!--  Theme  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=PickTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}">
+                    <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectColorThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <controls:SegmentedItem
+                            Content="{helpers:ResourceString Name=Light}"
+                            Icon="{ui:FontIcon Glyph=&#xE706;}"
+                            ToolTipService.ToolTip="Light" />
+                        <controls:SegmentedItem
+                            Content="{helpers:ResourceString Name=Dark}"
+                            Icon="{ui:FontIcon Glyph=&#xE708;}"
+                            ToolTipService.ToolTip="Dark" />
+                    </controls:Segmented>
+                </controls:SettingsCard>
 
-                    <!--  Dark  -->
+                <!--  Accent Color  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
                     <controls:SettingsExpander
-                        Header="{helpers:ResourceString Name=DarkTheme}"
-                        HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                        Header="{helpers:ResourceString Name=AccentColor}"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                         IsExpanded="True">
-                        <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                        <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                             <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                             <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
                         </ComboBox>
+
                         <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.DarkThemeColorizationSettingsCardEnabled, Mode=OneWay}">
-                                <StackPanel Orientation="Horizontal" Spacing="12">
-                                    <Border
-                                        Width="30"
-                                        Height="28"
-                                        Background="{x:Bind ViewModel.DarkModeColorPreviewBorderBackground, Mode=OneWay}"
-                                        CornerRadius="{StaticResource ControlCornerRadius}" />
-                                    <!--  TODO: Replace Content to Res  -->
-                                    <Button
-                                        MinWidth="120"
-                                        Click="DarkModeCheckColorButton_Click"
-                                        Content="{helpers:ResourceString Name=SelectColor}" />
-                                </StackPanel>
+                            <controls:SettingsCard>
+                                <controls:SettingsCard.Header>
+                                    <!--  Currently selected color  -->
+                                    <StackPanel Orientation="Vertical" Spacing="6">
+                                        <TextBlock Text="{helpers:ResourceString Name=CurrentlySelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
+                                        <GridView SelectionMode="None" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
+                                            <GridView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <ItemsWrapGrid MaximumRowsOrColumns="9" Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </GridView.ItemsPanel>
+                                            <GridView.Resources>
+                                                <Style TargetType="Rectangle">
+                                                    <Setter Property="Width" Value="44" />
+                                                    <Setter Property="Height" Value="44" />
+                                                    <Setter Property="RadiusX" Value="4" />
+                                                    <Setter Property="RadiusY" Value="4" />
+                                                </Style>
+                                            </GridView.Resources>
+
+                                            <GridView.Items>
+                                                <Rectangle Fill="{x:Bind ViewModel.AccentColorPreviewBorderBackground, Mode=OneWay}" />
+                                            </GridView.Items>
+                                        </GridView>
+
+                                        <TextBlock Text="{helpers:ResourceString Name=WindowsColor}" />
+                                        <GridView IsItemClickEnabled="True" ItemClick="WindowsColorGridView_ItemClick">
+                                            <GridView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <ItemsWrapGrid MaximumRowsOrColumns="9" Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </GridView.ItemsPanel>
+                                            <GridView.Resources>
+                                                <Style TargetType="Rectangle">
+                                                    <Setter Property="Width" Value="44" />
+                                                    <Setter Property="Height" Value="44" />
+                                                    <Setter Property="RadiusX" Value="4" />
+                                                    <Setter Property="RadiusY" Value="4" />
+                                                </Style>
+                                            </GridView.Resources>
+
+                                            <GridView.Items>
+                                                <Rectangle Fill="#FFB900" />
+                                                <Rectangle Fill="#FF8C00" />
+                                                <Rectangle Fill="#F7630D" />
+                                                <Rectangle Fill="#CA5010" />
+                                                <Rectangle Fill="#DA3B01" />
+                                                <Rectangle Fill="#EF6950" />
+                                                <Rectangle Fill="#D13438" />
+                                                <Rectangle Fill="#FF4343" />
+                                                <Rectangle Fill="#E74856" />
+
+                                                <Rectangle Fill="#E81123" />
+                                                <Rectangle Fill="#EA005E" />
+                                                <Rectangle Fill="#C30052" />
+                                                <Rectangle Fill="#E3008C" />
+                                                <Rectangle Fill="#BF0077" />
+                                                <Rectangle Fill="#C239B3" />
+                                                <Rectangle Fill="#9A0089" />
+                                                <Rectangle Fill="#0078D4" />
+                                                <Rectangle Fill="#0063B1" />
+
+                                                <Rectangle Fill="#8E8CD8" />
+                                                <Rectangle Fill="#6B69D6" />
+                                                <Rectangle Fill="#8764B8" />
+                                                <Rectangle Fill="#744DA9" />
+                                                <Rectangle Fill="#B146C2" />
+                                                <Rectangle Fill="#881798" />
+                                                <Rectangle Fill="#0099BC" />
+                                                <Rectangle Fill="#2D7D9A" />
+                                                <Rectangle Fill="#00B7C3" />
+
+                                                <Rectangle Fill="#038387" />
+                                                <Rectangle Fill="#00B294" />
+                                                <Rectangle Fill="#018574" />
+                                                <Rectangle Fill="#00CC6A" />
+                                                <Rectangle Fill="#10893E" />
+                                                <Rectangle Fill="#7A7574" />
+                                                <Rectangle Fill="#5D5A58" />
+                                                <Rectangle Fill="#68768A" />
+                                                <Rectangle Fill="#515C6B" />
+
+                                                <Rectangle Fill="#567C73" />
+                                                <Rectangle Fill="#486860" />
+                                                <Rectangle Fill="#498205" />
+                                                <Rectangle Fill="#767676" />
+                                                <Rectangle Fill="#4C4A48" />
+                                                <Rectangle Fill="#4C4A48" />
+                                                <Rectangle Fill="#69797E" />
+                                                <Rectangle Fill="#4A5459" />
+                                                <Rectangle Fill="#647C64" />
+
+                                                <Rectangle Fill="#525E54" />
+                                                <Rectangle Fill="#847545" />
+                                                <Rectangle Fill="#7E735F" />
+                                            </GridView.Items>
+                                        </GridView>
+                                    </StackPanel>
+                                </controls:SettingsCard.Header>
+                            </controls:SettingsCard>
+
+                            <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}">
+                                <Button
+                                    MinWidth="120"
+                                    Click="CheckColorButton_Click"
+                                    Content="{helpers:ResourceString Name=SelectColor}" />
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
