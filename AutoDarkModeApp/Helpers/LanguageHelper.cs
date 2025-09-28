@@ -16,10 +16,14 @@ public static class LanguageHelper
     private static readonly ILocalSettingsService _localSettingsService = App.GetService<ILocalSettingsService>()!;
     public static readonly string[] SupportedCultures =
     [
-    "id", "cs", "de", "en", "es", "fr", "it", "hu", "nl", "nb",
-    "fa", "pl", "pt-BR", "pt-PT", "ro", "sr", "vi", "tr", "el",
-    "ru", "uk", "ja", "zh-Hans", "zh-Hant"
-];
+        // Left-to-Right (LTR) languages
+        "cs", "de", "en", "es", "fr", "hu", "id", "it", "ja", "nb",
+    "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "tr", "uk",
+    "vi", "zh-Hans", "zh-Hant",
+
+    // Right-to-Left (RTL) languages
+    "ar", "fa", "he"
+    ];
 
     public static async Task<string> GetDefaultLanguageAsync()
     {

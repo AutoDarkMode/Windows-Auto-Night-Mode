@@ -26,8 +26,7 @@
                 </controls:SettingsCard>
 
                 <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}"
-                              IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
+                    <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}" IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander>
@@ -50,23 +49,23 @@
                     Description="{helpers:ResourceString Name=Translator}"
                     Header="{helpers:ResourceString Name=Language}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}"
-                              DisplayMemberPath="DisplayName"
-                              SelectedValuePath="CultureCode"
-                              SelectedValue="{x:Bind ViewModel.SelectedLanguageCode, Mode=TwoWay}" />
+                    <ComboBox
+                        DisplayMemberPath="DisplayName"
+                        ItemsSource="{x:Bind ViewModel.LanguageOptions}"
+                        SelectedValue="{x:Bind ViewModel.SelectedLanguageCode, Mode=TwoWay}"
+                        SelectedValuePath="CultureCode" />
                 </controls:SettingsCard>
                 <InfoBar
-                    IsClosable="False"
                     IsOpen="{x:Bind ViewModel.IsLanguageChangedInfoBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=RestartNeeded}"
-                    Severity="Informational">
+                    Severity="Warning">
                     <InfoBar.ActionButton>
                         <Button
-                            Style="{ThemeResource AccentButtonStyle}"
                             MinWidth="120"
                             HorizontalAlignment="Right"
                             Command="{x:Bind ViewModel.RestartCommand}"
-                            Content="{helpers:ResourceString Name=Restart}" />
+                            Content="{helpers:ResourceString Name=Restart}"
+                            Style="{ThemeResource AccentButtonStyle}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
 
