@@ -1,17 +1,11 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
+﻿using System.Globalization;
 using System.Text.Json;
-using System.Threading.Tasks;
 using AutoDarkModeApp;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Utils;
-using AutoDarkModeApp.ViewModels;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Index.Strtree;
-using NetTopologySuite.IO;
 using NetTopologySuite.IO.Converters;
 
 public class GeolocatorService : IGeolocatorService
@@ -34,10 +28,7 @@ public class GeolocatorService : IGeolocatorService
         _indexAdmin0.Build();
 
         var localSettings = App.GetService<ILocalSettingsService>();
-        //TO-DO: Make async
-        //TO-DO: use GetLanguageCodeAsync from LocalizationService
-        //string? language = Task.Run(() => localSettings.ReadSettingAsync<string>("SelectedLanguageCode")).Result;
-        string? language = Task.Run(LanguageHelper.GetDefaultLanguageAsync).Result;
+        string language = Task.Run(LanguageHelper.GetDefaultLanguageAsync).Result;
         _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();
     }
 

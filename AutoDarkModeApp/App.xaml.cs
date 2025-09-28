@@ -118,7 +118,6 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
-        //await SetApplicationLanguageAsync();
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
 
         var navigationService = App.GetService<INavigationService>();

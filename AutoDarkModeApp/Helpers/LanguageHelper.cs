@@ -14,12 +14,12 @@ public static class LanguageHelper
     }
 
     private static readonly ILocalSettingsService _localSettingsService = App.GetService<ILocalSettingsService>()!;
-    public static readonly string[] SupportedCultures = new[]
-    {
+    public static readonly string[] SupportedCultures =
+    [
     "id", "cs", "de", "en", "es", "fr", "it", "hu", "nl", "nb",
     "fa", "pl", "pt-BR", "pt-PT", "ro", "sr", "vi", "tr", "el",
     "ru", "uk", "ja", "zh-Hans", "zh-Hant"
-};
+];
 
     public static async Task<string> GetDefaultLanguageAsync()
     {
@@ -55,6 +55,7 @@ public static class LanguageHelper
                 else
                 {
                     SelectedLanguageCode = CultureInfo.CurrentUICulture.Name;
+                    // SelectedLanguageCode = new CultureInfo("en-US");
                 }
             }
             await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
@@ -62,3 +63,4 @@ public static class LanguageHelper
         return SelectedLanguageCode;
     }
 }
+

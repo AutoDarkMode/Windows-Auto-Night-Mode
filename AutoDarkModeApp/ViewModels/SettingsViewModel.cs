@@ -11,7 +11,6 @@ using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.Globalization;
 
 
 namespace AutoDarkModeApp.ViewModels;
@@ -569,7 +568,7 @@ public partial class SettingsViewModel : ObservableRecipient
     }
     public ObservableCollection<LanguageOption> LanguageOptions { get; } =
         new ObservableCollection<LanguageOption>(
-            LanguageConstants.SupportedCultures.Select(code =>
+            LanguageHelper.SupportedCultures.Select(code =>
             {
                 var culture = CultureInfo.GetCultureInfo(code);
                 string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
@@ -590,14 +589,3 @@ public class LanguageOption
     public required string CultureCode { get; set; }
 }
 
-public static class LanguageConstants
-{
-    private static readonly ILocalSettingsService _localSettingsService = App.GetService<ILocalSettingsService>()!;
-    public static readonly string[] SupportedCultures = new[]
-    {
-        "id", "cs", "de", "en", "es", "fr", "it", "hu", "nl", "nb",
-        "fa", "pl", "pt-BR", "pt-PT", "ro", "sr", "vi", "tr", "el",
-        "ru", "uk", "ja", "zh-Hans", "zh-Hant"
-    };
-
-}
