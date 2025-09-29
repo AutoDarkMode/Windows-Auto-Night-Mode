@@ -48,22 +48,14 @@ public partial class ColorizationViewModel : ObservableRecipient
 
     public void SafeSaveBuilder()
     {
-        _skipConfigUpdate = true;
         try
         {
+            _skipConfigUpdate = true;
             _builder.Save();
         }
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
-        }
-        finally
-        {
-            Task.Run(async () =>
-            {
-                await Task.Delay(100);
-                _skipConfigUpdate = false;
-            });
         }
     }
 
@@ -203,14 +195,18 @@ public partial class ColorizationViewModel : ObservableRecipient
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
+        StateUpdateHandler.StopConfigWatcher();
         if (_skipConfigUpdate)
         {
-            return;
+            _skipConfigUpdate = false;
+            StateUpdateHandler.StartConfigWatcher();
         }
-        _builder.Load();
-        StateUpdateHandler.StopConfigWatcher();
-        _dispatcherQueue.TryEnqueue(() => LoadSettings());
-        StateUpdateHandler.StartConfigWatcher();
+        else
+        {
+            _builder.Load();
+            _dispatcherQueue.TryEnqueue(() => LoadSettings());
+            StateUpdateHandler.StartConfigWatcher();
+        }
     }
 
     private async Task WaitForColorizationChange(string initial, int timeout)
