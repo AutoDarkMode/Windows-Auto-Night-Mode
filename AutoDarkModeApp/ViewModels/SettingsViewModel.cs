@@ -58,7 +58,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial string? UpdatesDate { get; set; }
 
     [ObservableProperty]
-    public partial string? SelectedLanguageCode { get; set; }
+    public partial string SelectedLanguage { get; set; }
 
     [ObservableProperty]
     public partial bool IsLanguageChangedInfoBarOpen { get; set; }
@@ -135,7 +135,8 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
-            _builder.Config.Tunable.UICulture = SelectedLanguageCode!;
+            _builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode;
+            Debug.WriteLine($"SettingsViewModel.RestartCommand: Set UICulture to {_builder.Config.Tunable.UICulture}");
             try
             {
                 _builder.Save();
@@ -213,7 +214,7 @@ public partial class SettingsViewModel : ObservableRecipient
             UpdatesDate = "LastCheckedTime".GetLocalized() + " " + _builder.UpdaterData.LastCheck;
         }
 
-        SelectedLanguageCode = await LanguageHelper.GetDefaultLanguageAsync();
+        SelectedLanguage = await LanguageHelper.GetDefaultLanguageAsync();
 
         _isInitializing = false;
     }
@@ -319,7 +320,7 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
     }
 
-    partial void OnSelectedLanguageCodeChanged(string? value)
+    partial void OnSelectedLanguageChanged(string value)
     {
         if (_isInitializing)
             return;
@@ -328,12 +329,13 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
             bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
-            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguageCode: {value}, IsSameLanguage: {isSameLanguage}");
+            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguage: {value}, IsSameLanguage: {isSameLanguage}");
 
             _localSettingsService.SaveSettingAsync("SelectedLanguageCode", value);
             _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
             IsLanguageChangedInfoBarOpen = !isSameLanguage;
-            //Button in InfoBar will restart the app (RestartCommand) and apply the new language
+            //Button in InfoBar will restart the app (RestartCommand)
+            LanguageHelper.SelectedLanguageCode = value; // for internal reference, example: in SettingsViewModel.RestartCommand
         });
     }
 
@@ -573,6 +575,7 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
     }
+
 }
 
 public class LanguageOption

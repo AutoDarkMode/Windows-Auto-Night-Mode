@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Reflection;
 using AutoDarkModeApp.Contracts.Services;
 using Microsoft.Windows.Globalization;
 
@@ -6,23 +7,18 @@ namespace AutoDarkModeApp.Helpers;
 
 public static class LanguageHelper
 {
-    private static string? _selectedLanguageCode;
-    public static string? SelectedLanguageCode
-    {
-        get => _selectedLanguageCode;
-        set => _selectedLanguageCode = value;
-    }
+    public static string SelectedLanguageCode { get; set; } = "en-US"; // equal to <DefaultLanguage>
 
     private static readonly ILocalSettingsService _localSettingsService = App.GetService<ILocalSettingsService>()!;
     public static readonly string[] SupportedCultures =
     [
         // Left-to-Right (LTR) languages
         "cs", "de", "en", "es", "fr", "hu", "id", "it", "ja", "nb",
-    "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "tr", "uk",
-    "vi", "zh-Hans", "zh-Hant",
+        "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "tr", "uk",
+        "vi", "zh-Hans", "zh-Hant",
 
-    // Right-to-Left (RTL) languages
-    "ar", "fa", "he"
+        // Right-to-Left (RTL) languages
+        "ar", "fa", "he"
     ];
 
     public static async Task<string> GetDefaultLanguageAsync()
@@ -56,15 +52,10 @@ public static class LanguageHelper
                 {
                     SelectedLanguageCode = neutralLanguage;
                 }
-                else
-                {
-                    SelectedLanguageCode = CultureInfo.CurrentUICulture.Name; // example: "fr-FR"
-                    // SelectedLanguageCode = new CultureInfo("en-US");
-                }
+                // else keep the default "en-US"
             }
             await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
         }
         return SelectedLanguageCode;
     }
 }
-
