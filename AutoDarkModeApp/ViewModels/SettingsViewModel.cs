@@ -12,7 +12,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
 
-
 namespace AutoDarkModeApp.ViewModels;
 
 public partial class SettingsViewModel : ObservableRecipient
@@ -38,6 +37,7 @@ public partial class SettingsViewModel : ObservableRecipient
         Beta,
     }
 
+    public ObservableCollection<LanguageOption> LanguageOptions { get; }
 
     [ObservableProperty]
     public partial bool IsDwmRefreshViaColorization { get; set; }
@@ -113,6 +113,20 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
 
+        LanguageOptions = new ObservableCollection<LanguageOption>(
+            LanguageHelper.SupportedCultures.Select(code =>
+            {
+                var culture = CultureInfo.GetCultureInfo(code);
+                string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
+                string english = culture.EnglishName.Split('(')[0].Trim();
+                return new LanguageOption
+                {
+                    DisplayName = $"{native} ({english})", // example: Deutsch (German)
+                    CultureCode = code, // example: de
+                };
+            })
+        );
+
         LoadSettings();
         _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
 
@@ -155,7 +169,7 @@ public partial class SettingsViewModel : ObservableRecipient
         });
     }
 
-    private void LoadSettings()
+    private async void LoadSettings()
     {
         _isInitializing = true;
 
@@ -199,14 +213,7 @@ public partial class SettingsViewModel : ObservableRecipient
             UpdatesDate = "LastCheckedTime".GetLocalized() + " " + _builder.UpdaterData.LastCheck;
         }
 
-        _dispatcherQueue.TryEnqueue(async () =>
-        {
-            _isInitializing = true;
-
-            SelectedLanguageCode = await LanguageHelper.GetDefaultLanguageAsync();
-
-            _isInitializing = false;
-        });
+        SelectedLanguageCode = await LanguageHelper.GetDefaultLanguageAsync();
 
         _isInitializing = false;
     }
@@ -291,6 +298,7 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
+
     partial void OnIsTunableDebugChanged(bool value)
     {
         if (_isInitializing)
@@ -425,7 +433,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         SafeSaveBuilder();
     }
-
 
     partial void OnIsDwmRefreshViaColorizationChanged(bool value)
     {
@@ -566,26 +573,10 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
     }
-    public ObservableCollection<LanguageOption> LanguageOptions { get; } =
-        new ObservableCollection<LanguageOption>(
-            LanguageHelper.SupportedCultures.Select(code =>
-            {
-                var culture = CultureInfo.GetCultureInfo(code);
-                string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
-                string english = culture.EnglishName.Split('(')[0].Trim();
-                return new LanguageOption
-                {
-                    DisplayName = $"{native} ({english})", // example: Deutsch (German)
-                    CultureCode = code // example: de
-                };
-            })
-        );
 }
-
 
 public class LanguageOption
 {
     public required string DisplayName { get; set; }
     public required string CultureCode { get; set; }
 }
-
