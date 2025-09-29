@@ -17,12 +17,32 @@ public static class LanguageHelper
     public static readonly string[] SupportedCultures =
     [
         // Left-to-Right (LTR) languages
-        "cs", "de", "en", "es", "fr", "hu", "id", "it", "ja", "nb",
-    "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "tr", "uk",
-    "vi", "zh-Hans", "zh-Hant",
-
-    // Right-to-Left (RTL) languages
-    "ar", "fa", "he"
+        "cs",
+        "de",
+        "en",
+        "es",
+        "fr",
+        "hu",
+        "id",
+        "it",
+        "ja",
+        "nb",
+        "nl",
+        "pl",
+        "pt-BR",
+        "pt-PT",
+        "ro",
+        "ru",
+        "sr",
+        "tr",
+        "uk",
+        "vi",
+        "zh-Hans",
+        "zh-Hant",
+        // Right-to-Left (RTL) languages
+        "ar",
+        "fa",
+        "he",
     ];
 
     public static async Task<string> GetDefaultLanguageAsync()
@@ -51,7 +71,12 @@ public static class LanguageHelper
             }
             else
             {
-                var neutralLanguage = topLanguage.Split('-')[0]; // example: "fr"
+                var topLanguageArray = topLanguage.Split('-');
+                var neutralLanguage = topLanguageArray[0]; // example: "fr"
+                if (topLanguageArray.Length > 2)
+                {
+                    neutralLanguage += "-" + topLanguageArray[1];
+                }
                 if (SupportedCultures.Contains(neutralLanguage))
                 {
                     SelectedLanguageCode = neutralLanguage;
@@ -59,7 +84,6 @@ public static class LanguageHelper
                 else
                 {
                     SelectedLanguageCode = CultureInfo.CurrentUICulture.Name; // example: "fr-FR"
-                    // SelectedLanguageCode = new CultureInfo("en-US");
                 }
             }
             await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
@@ -67,4 +91,3 @@ public static class LanguageHelper
         return SelectedLanguageCode;
     }
 }
-
