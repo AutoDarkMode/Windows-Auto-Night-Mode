@@ -47,7 +47,9 @@ public static class LanguageHelper
             }
             else
             {
-                var neutralLanguage = topLanguage.Split('-')[0]; // example: "fr"
+                var topLanguageArray = topLanguage.Split('-');
+                //var neutralLanguage = topLanguageArray[0]; // example: "fr"
+                var neutralLanguage = string.Join("-", topLanguageArray[..^1]); // example: "fr" or "zh-Hans"
                 if (SupportedCultures.Contains(neutralLanguage))
                 {
                     SelectedLanguageCode = neutralLanguage;

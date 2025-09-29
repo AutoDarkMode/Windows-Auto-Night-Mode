@@ -118,11 +118,11 @@ public partial class SettingsViewModel : ObservableRecipient
             {
                 var culture = CultureInfo.GetCultureInfo(code);
                 string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
-                string english = culture.EnglishName.Split('(')[0].Trim();
+                string english = culture.EnglishName;
                 return new LanguageOption
                 {
-                    DisplayName = $"{native} ({english})", // example: Deutsch (German)
-                    CultureCode = code, // example: de
+                    DisplayName = $"{native} - {english}", // example: Deutsch (German)
+                    CultureCode = code, // example: de, zh-hans
                 };
             })
         );
