@@ -197,7 +197,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
 
             jumpList.Items.Clear();
             Debug.WriteLine("Adding jumplist items");
-            Debug.WriteLine($"Current culture: {CultureInfo.CurrentCulture.Name}");
+            Debug.WriteLine($"Current override: {Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride}");
 
             var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "DarkTheme".GetLocalized());
             darkJumpTask.GroupName = "SwitchTheme".GetLocalized();

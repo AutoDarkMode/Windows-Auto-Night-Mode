@@ -135,8 +135,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
-            _builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode;
-            Debug.WriteLine($"SettingsViewModel.RestartCommand: Set UICulture to {_builder.Config.Tunable.UICulture}");
             try
             {
                 _builder.Save();
@@ -329,13 +327,23 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
             bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
-            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguage: {value}, IsSameLanguage: {isSameLanguage}");
+            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguage: {value}, LanguageChanged: {!isSameLanguage}");
 
             _localSettingsService.SaveSettingAsync("SelectedLanguageCode", value);
             _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
             IsLanguageChangedInfoBarOpen = !isSameLanguage;
-            //Button in InfoBar will restart the app (RestartCommand)
-            LanguageHelper.SelectedLanguageCode = value; // for internal reference, example: in SettingsViewModel.RestartCommand
+
+            LanguageHelper.SelectedLanguageCode = value; // for internal reference
+            _builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // for saving to config > SVC
+
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+            }
         });
     }
 

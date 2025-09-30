@@ -56,6 +56,7 @@
                         SelectedValuePath="CultureCode" />
                 </controls:SettingsCard>
                 <InfoBar
+                    IsClosable="False"
                     IsOpen="{x:Bind ViewModel.IsLanguageChangedInfoBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=RestartNeeded}"
                     Severity="Warning">
