@@ -13,8 +13,8 @@ public static class LanguageHelper
     public static readonly string[] SupportedCultures =
     [
         // Left-to-Right (LTR) languages
-        "cs", "de", "en", "es", "fr", "hu", "id", "it", "ja", "nb",
-        "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "tr", "uk",
+        "cs", "de", "el", "en", "es", "fr", "hu", "id", "it", "ja", "ko", "nb",
+        "nl", "pl", "pt-BR", "pt-PT", "ro", "ru", "sr", "sv", "tr", "uk",
         "vi", "zh-Hans", "zh-Hant",
 
         // Right-to-Left (RTL) languages
