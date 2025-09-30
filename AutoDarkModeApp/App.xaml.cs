@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-using AutoDarkModeApp.Helpers;
+using AutoDarkModeLib;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -119,6 +119,9 @@ public partial class App : Application
         base.OnLaunched(args);
 
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
+        var admConfigBuilder = AdmConfigBuilder.Instance();
+        admConfigBuilder.Load();
+        admConfigBuilder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // save before activation SVC (think of first-launch scenario)
 
         var navigationService = App.GetService<INavigationService>();
         MainWindow = new MainWindow(navigationService);
