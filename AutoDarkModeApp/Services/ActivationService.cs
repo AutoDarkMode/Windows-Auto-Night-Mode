@@ -92,6 +92,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             await localSettingsService.SaveSettingAsync("NotFirstRun", true);
         }
         else
+        {
             AutostartHandler.EnsureAutostart(App.MainWindow.Content.XamlRoot);
         }
 
