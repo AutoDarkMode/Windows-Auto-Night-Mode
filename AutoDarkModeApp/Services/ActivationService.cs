@@ -80,19 +80,22 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             loadingDialog.Hide();
         }
 
-        AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
-
+        
         // Only run at first startup
         if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
         {
             Debug.WriteLine("first-run");
 
+         AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
             await SystemTimeFormatAsync();
             await AddJumpListAsync();
             await localSettingsService.SaveSettingAsync("NotFirstRun", true);
         }
+        else
+            AutostartHandler.EnsureAutostart(App.MainWindow.Content.XamlRoot);
+        }
 
-        // When language changed, add jumplist in new language
+        // If language changed, add jumplist in new language
         if (await localSettingsService.ReadSettingAsync<bool>("LanguageChanged"))
         {
             await AddJumpListAsync();
