@@ -1,16 +1,16 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.Windows.System.Power;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -37,6 +37,7 @@ public partial class SettingsViewModel : ObservableRecipient
         Beta,
     }
 
+    public ObservableCollection<LanguageOption> LanguageOptions { get; }
 
     [ObservableProperty]
     public partial bool IsDwmRefreshViaColorization { get; set; }
@@ -57,7 +58,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial string? UpdatesDate { get; set; }
 
     [ObservableProperty]
-    public partial string? Language { get; set; }
+    public partial string SelectedLanguage { get; set; }
 
     [ObservableProperty]
     public partial bool IsLanguageChangedInfoBarOpen { get; set; }
@@ -112,6 +113,20 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
 
+        LanguageOptions = new ObservableCollection<LanguageOption>(
+            LanguageHelper.SupportedCultures.Select(code =>
+            {
+                var culture = CultureInfo.GetCultureInfo(code);
+                string native = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(culture.NativeName);
+                string english = culture.EnglishName;
+                return new LanguageOption
+                {
+                    DisplayName = $"{native} - {english}", // example: Deutsch (German)
+                    CultureCode = code, // example: de, zh-hans
+                };
+            })
+        );
+
         LoadSettings();
         _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
 
@@ -120,7 +135,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         RestartCommand = new RelayCommand(() =>
         {
-            _builder.Config.Tunable.UICulture = Localization.LanguageTranscoding(Language!);
             try
             {
                 _builder.Save();
@@ -132,7 +146,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
             MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
             Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
-            App.Current.Exit();
+            Microsoft.UI.Xaml.Application.Current.Exit();
         });
 
         CheckUpdateCommand = new RelayCommand(() =>
@@ -154,7 +168,7 @@ public partial class SettingsViewModel : ObservableRecipient
         });
     }
 
-    private void LoadSettings()
+    private async void LoadSettings()
     {
         _isInitializing = true;
 
@@ -198,23 +212,7 @@ public partial class SettingsViewModel : ObservableRecipient
             UpdatesDate = "LastCheckedTime".GetLocalized() + " " + _builder.UpdaterData.LastCheck;
         }
 
-        _dispatcherQueue.TryEnqueue(async () =>
-        {
-            _isInitializing = true;
-
-            var languageText = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (languageText != null)
-            {
-                Language = languageText.Replace("\"", "");
-            }
-            else
-            {
-                Language = "English (English)";
-                await _localSettingsService.SaveSettingAsync("Language", "English (English)");
-            }
-
-            _isInitializing = false;
-        });
+        SelectedLanguage = await LanguageHelper.GetDefaultLanguageAsync();
 
         _isInitializing = false;
     }
@@ -299,6 +297,7 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
     }
+
     partial void OnIsTunableDebugChanged(bool value)
     {
         if (_isInitializing)
@@ -319,23 +318,31 @@ public partial class SettingsViewModel : ObservableRecipient
         SafeSaveBuilder();
     }
 
-    partial void OnLanguageChanged(string? value)
+    partial void OnSelectedLanguageChanged(string value)
     {
         if (_isInitializing)
             return;
 
-        _dispatcherQueue.TryEnqueue(async () =>
+        _dispatcherQueue.TryEnqueue(() =>
         {
-            var oldValue = await _localSettingsService.ReadSettingAsync<string>("Language");
-            if (value != oldValue)
+            string currentCulture = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
+            bool isSameLanguage = string.Equals(currentCulture, value, StringComparison.OrdinalIgnoreCase);
+            Debug.WriteLine($"Current UI Culture: {currentCulture}, Selected SelectedLanguage: {value}, LanguageChanged: {!isSameLanguage}");
+
+            _localSettingsService.SaveSettingAsync("SelectedLanguageCode", value);
+            _localSettingsService.SaveSettingAsync("LanguageChanged", !isSameLanguage); // used for ActivationService > jumplist
+            IsLanguageChangedInfoBarOpen = !isSameLanguage;
+
+            LanguageHelper.SelectedLanguageCode = value; // for internal reference
+            _builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // for saving to config > SVC
+
+            try
             {
-                IsLanguageChangedInfoBarOpen = true;
-                await _localSettingsService.SaveSettingAsync("Language", value);
-                await _localSettingsService.SaveSettingAsync("LanguageChanged", true);
+                _builder.Save();
             }
-            else
+            catch (Exception ex)
             {
-                IsLanguageChangedInfoBarOpen = false;
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
             }
         });
     }
@@ -436,7 +443,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         SafeSaveBuilder();
     }
-
 
     partial void OnIsDwmRefreshViaColorizationChanged(bool value)
     {
@@ -577,4 +583,11 @@ public partial class SettingsViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
         }
     }
+
+}
+
+public class LanguageOption
+{
+    public required string DisplayName { get; set; }
+    public required string CultureCode { get; set; }
 }

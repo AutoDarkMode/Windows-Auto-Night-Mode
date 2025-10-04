@@ -45,7 +45,7 @@ internal class Updater
     /*
     public void MessageBoxHandler(Window owner = null)
     {
-        CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.Language, true);
+        CultureInfo.CurrentUICulture = new CultureInfo(Properties.Settings.Default.SelectedLanguageCode, true);
         if (UpdateAvailable())
         {
             if (!silent)
