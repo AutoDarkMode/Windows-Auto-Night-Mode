@@ -10,6 +10,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -22,6 +23,7 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
     private readonly ILocalSettingsService _localSettingsService;
     private bool _isInitializing;
+    private const int fakeResponsiveUIDelay = 800;
 
     public enum DaysBetweenUpdateCheck
     {
@@ -90,6 +92,12 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? AutostartPath { get; set; }
 
+    [ObservableProperty]
+    public partial Visibility ProgressAutostartDetailsVisibility { get; set; }
+
+    [ObservableProperty]
+    public partial Visibility GridAutostartVisibility { get; set; }
+
     public ICommand RestartCommand { get; }
 
     public ICommand CheckUpdateCommand { get; }
@@ -129,6 +137,7 @@ public partial class SettingsViewModel : ObservableRecipient
 
         LoadSettings();
         _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
+        SetAutostartDetailsVisibility(true);
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
@@ -164,11 +173,26 @@ public partial class SettingsViewModel : ObservableRecipient
 
         AutostartRefreshCommand = new RelayCommand(async () =>
         {
-            await GetAutostartInfo();
+            await ValidateAutostart();
         });
     }
 
-    private async void LoadSettings()
+    private void SetAutostartDetailsVisibility(bool visible)
+    {
+        if (visible)
+        {
+            ProgressAutostartDetailsVisibility = Visibility.Collapsed;
+            GridAutostartVisibility = Visibility.Visible;
+        }
+        else
+        {
+
+            ProgressAutostartDetailsVisibility = Visibility.Visible;
+            GridAutostartVisibility = Visibility.Collapsed;
+        }
+    }
+
+    private void LoadSettings()
     {
         _isInitializing = true;
 
@@ -217,7 +241,28 @@ public partial class SettingsViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
-    private async Task GetAutostartInfo()
+    private async Task ValidateAutostart()
+    {
+        SetAutostartDetailsVisibility(false);
+        try
+        {
+            var response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
+            if (response.StatusCode == StatusCode.Err)
+            {
+                throw new AddAutoStartException();
+            }
+            await GetAutostartInfo();
+        }
+        catch (Exception)
+        {
+            throw new AddAutoStartException($"Could not validate autostart", "ValidateAutostart");
+        }
+        await Task.Delay(fakeResponsiveUIDelay);
+        SetAutostartDetailsVisibility(true);
+    }
+
+
+    private async Task GetAutostartInfo(bool toggleVisibility = true)
     {
         try
         {
@@ -538,11 +583,13 @@ public partial class SettingsViewModel : ObservableRecipient
         }
     }
 
-    partial void OnIsLoginWithTaskChanged(bool value)
+    async partial void OnIsLoginWithTaskChanged(bool value)
     {
         if (_isInitializing)
             return;
 
+
+        SetAutostartDetailsVisibility(false);
         ApiResponse result = new() { StatusCode = StatusCode.Err };
         try
         {
@@ -568,8 +615,10 @@ public partial class SettingsViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
+            await _errorService.ShowErrorMessageFromApi(result, ex, App.MainWindow.Content.XamlRoot);
         }
+        await Task.Delay(fakeResponsiveUIDelay);
+        SetAutostartDetailsVisibility(true);
     }
 
     private void SafeSaveBuilder()

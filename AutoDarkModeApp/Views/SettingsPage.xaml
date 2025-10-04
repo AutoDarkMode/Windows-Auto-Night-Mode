@@ -137,32 +137,32 @@
 
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
-                        <Grid ColumnSpacing="8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{helpers:ResourceString Name=PathAt}" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                IsTextSelectionEnabled="True"
-                                Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
-                                ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
-                        </Grid>
+                        <StackPanel>
+                            <ProgressRing Height="38" Width="38" x:Name="ProgressAutostartDetails" Visibility="{x:Bind ViewModel.ProgressAutostartDetailsVisibility, Mode=TwoWay}"></ProgressRing>
+                            <Grid x:Name="GridAutostartDetails" ColumnSpacing="8" Visibility="{x:Bind ViewModel.GridAutostartVisibility, Mode=TwoWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
+                                <TextBlock Grid.Column="1"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="0"
+                                           Text="{helpers:ResourceString Name=PathAt}" />
+                                <TextBlock Grid.Row="1"
+                                           Grid.Column="1"
+                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                           IsTextSelectionEnabled="True"
+                                           Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
+                                           ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                            </Grid>
+                        </StackPanel>
                     </controls:SettingsCard.Header>
                     <Button
                         MinWidth="120"

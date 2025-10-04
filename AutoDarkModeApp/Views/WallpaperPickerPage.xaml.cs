@@ -24,12 +24,10 @@ public sealed partial class WallpaperPickerPage : Page
     {
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
-
-        if (_builder.Config.WallpaperSwitch.Component.Monitors.Count == 0)
-            Task.Run(async () => await DetectMonitorsAsync());
-
+        Task.Run(DetectMonitorsAsync).Wait();
         DispatcherQueue.TryEnqueue(LoadMonitors);
     }
+
 
     private async Task DetectMonitorsAsync()
     {
@@ -54,6 +52,7 @@ public sealed partial class WallpaperPickerPage : Page
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Constructor");
         }
     }
+
 
     private void LoadMonitors()
     {

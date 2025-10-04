@@ -30,7 +30,7 @@
                             x:Name="DesktopPreviewImage"
                             Width="320"
                             Height="180"
-                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
+                            Source="{x:Bind ViewModel.DisplayWallpaperSource, Mode=OneWay}"
                             Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
 
                         <StackPanel
@@ -131,8 +131,8 @@
                                     <TextBlock
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                         IsTextSelectionEnabled="True"
-                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
-                                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                                        Text="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}" />
                                 </StackPanel>
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
