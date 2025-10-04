@@ -192,7 +192,7 @@ public partial class SettingsViewModel : ObservableRecipient
         }
     }
 
-    private void LoadSettings()
+    private async void LoadSettings()
     {
         _isInitializing = true;
 
