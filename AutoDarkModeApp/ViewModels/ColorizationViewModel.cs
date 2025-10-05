@@ -33,9 +33,6 @@ public partial class ColorizationViewModel : ObservableRecipient
     public partial ThemeColorMode DarkThemeMode { get; set; }
 
     [ObservableProperty]
-    public partial bool ThemeSettingsExpanderVisibility { get; set; }
-
-    [ObservableProperty]
     public partial bool LightThemeColorizationSettingsCardEnabled { get; set; }
 
     [ObservableProperty]
@@ -72,7 +69,6 @@ public partial class ColorizationViewModel : ObservableRecipient
         _isInitializing = true;
 
         IsColorizationEnabled = _builder.Config.ColorizationSwitch.Enabled;
-        ThemeSettingsExpanderVisibility = _builder.Config.ColorizationSwitch.Enabled;
 
         const string DEFAULT_HEX_COLOR = "#C40078D4";
 

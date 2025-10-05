@@ -19,13 +19,13 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <Button
                         x:Name="SaveSettingsButton"
                         HorizontalAlignment="Right"
