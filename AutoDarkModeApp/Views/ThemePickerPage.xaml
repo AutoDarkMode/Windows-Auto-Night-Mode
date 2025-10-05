@@ -29,17 +29,24 @@
 
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=LightTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
+                    IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <ComboBox x:Name="LightThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedLightTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
+                <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=DarkTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE708;}"
+                    IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <ComboBox x:Name="DarkThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
                     Click="OpenThemeFolderSettingsCard_Click"
                     Header="{helpers:ResourceString Name=OpenPath}"
-                    IsClickEnabled="True" />
+                    IsClickEnabled="True"
+                    IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}" />
 
                 <!--  Ignore  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
@@ -49,16 +56,16 @@
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreBackground}" IsChecked="{x:Bind ViewModel.IgnoreBackgroundEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard ContentAlignment="Left">
+                <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreCursor}" IsChecked="{x:Bind ViewModel.IgnoreCursorEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard ContentAlignment="Left">
+                <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreSound}" IsChecked="{x:Bind ViewModel.IgnoreSoundEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard ContentAlignment="Left">
+                <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreDesktopIcons}" IsChecked="{x:Bind ViewModel.IgnoreDesktopIconsEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard ContentAlignment="Left">
+                <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreColor}" IsChecked="{x:Bind ViewModel.IgnoreColorEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 

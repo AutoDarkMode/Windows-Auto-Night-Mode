@@ -234,13 +234,14 @@ public partial class TimeViewModel : ObservableRecipient
         if (_builder.Config.Location.UseGeolocatorService)
         {
             SelectedTimeSource = TimeSourceMode.LocationTimes;
+            OffsetTimeSettingsCardVisibility = Visibility.Visible;
         }
         else
         {
             SelectedTimeSource = TimeSourceMode.CoordinateTimes;
+            OffsetTimeSettingsCardVisibility = Visibility.Visible;
         }
 
-        OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;

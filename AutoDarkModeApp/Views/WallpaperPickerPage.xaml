@@ -81,7 +81,7 @@
                     Header="{helpers:ResourceString Name=PickTheme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                     IsExpanded="True"
-                    Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
+                    IsEnabled="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
 
                     <!--  Wallpaper Switch Theme  -->
                     <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
