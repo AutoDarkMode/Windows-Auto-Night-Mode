@@ -114,7 +114,6 @@
                         <!--  Picture  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                             <Button
-                                MinWidth="120"
                                 HorizontalAlignment="Right"
                                 Command="{x:Bind ViewModel.PickFileCommand}"
                                 Content="{helpers:ResourceString Name=BrowsePhotos}" />
@@ -149,12 +148,7 @@
 
                         <!--  Color  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Button
-                                    MinWidth="120"
-                                    Click="CheckColorButton_Click"
-                                    Content="{helpers:ResourceString Name=SelectColor}" />
-                            </StackPanel>
+                            <Button Click="CheckColorButton_Click" Content="{helpers:ResourceString Name=SelectColor}" />
                         </controls:SettingsCard>
 
                         <!--  Windows Spotlight  -->

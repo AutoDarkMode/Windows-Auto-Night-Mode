@@ -976,4 +976,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number of minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
+  </data>
 </root>

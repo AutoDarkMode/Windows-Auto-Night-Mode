@@ -74,10 +74,7 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Updates}" />
                 <!--  Check now  -->
                 <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
-                    <Button
-                        MinWidth="120"
-                        Command="{x:Bind ViewModel.CheckUpdateCommand}"
-                        Content="{helpers:ResourceString Name=CheckUpdate}" />
+                    <Button Command="{x:Bind ViewModel.CheckUpdateCommand}" Content="{helpers:ResourceString Name=CheckUpdate}" />
                 </controls:SettingsCard>
 
                 <!--  Auto check  -->
@@ -138,8 +135,16 @@
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
                         <StackPanel>
-                            <ProgressRing Height="38" Width="38" x:Name="ProgressAutostartDetails" Visibility="{x:Bind ViewModel.ProgressAutostartDetailsVisibility, Mode=TwoWay}"></ProgressRing>
-                            <Grid x:Name="GridAutostartDetails" ColumnSpacing="8" Visibility="{x:Bind ViewModel.GridAutostartVisibility, Mode=TwoWay}">
+                            <ProgressRing
+                                x:Name="ProgressAutostartDetails"
+                                Width="36"
+                                Height="36"
+                                IsIndeterminate="True"
+                                Visibility="{x:Bind ViewModel.ProgressAutostartDetailsVisibility, Mode=OneWay}" />
+                            <Grid
+                                x:Name="GridAutostartDetails"
+                                ColumnSpacing="8"
+                                Visibility="{x:Bind ViewModel.GridAutostartVisibility, Mode=OneWay}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -149,25 +154,25 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
-                                <TextBlock Grid.Column="1"
-                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
-                                <TextBlock Grid.Row="1"
-                                           Grid.Column="0"
-                                           Text="{helpers:ResourceString Name=PathAt}" />
-                                <TextBlock Grid.Row="1"
-                                           Grid.Column="1"
-                                           Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                           IsTextSelectionEnabled="True"
-                                           Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
-                                           ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{helpers:ResourceString Name=PathAt}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
+                                    ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
                             </Grid>
                         </StackPanel>
                     </controls:SettingsCard.Header>
-                    <Button
-                        MinWidth="120"
-                        Command="{x:Bind ViewModel.AutostartRefreshCommand}"
-                        Content="{helpers:ResourceString Name=RefreshAutostart}" />
+                    <Button Command="{x:Bind ViewModel.AutostartRefreshCommand}" Content="{helpers:ResourceString Name=RefreshAutostart}" />
                 </controls:SettingsCard>
 
                 <!--  Config  -->
@@ -191,5 +196,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>
