@@ -17,6 +17,60 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Desktop preview  -->
+                <Border
+                    Margin="0,0,0,-16"
+                    HorizontalAlignment="Left"
+                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
+                    BorderBrush="Black"
+                    BorderThickness="8"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <Grid>
+                        <Image
+                            x:Name="DesktopPreviewImage"
+                            Width="320"
+                            Height="180"
+                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}" />
+
+                        <StackPanel
+                            Width="98"
+                            Height="98"
+                            Margin="8"
+                            Padding="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="42"
+                                Height="1"
+                                Margin="0,0,0,8"
+                                HorizontalAlignment="Left"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="24"
+                                Height="8"
+                                Margin="0,26,0,0"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                CornerRadius="2" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
                 <!--  Colorization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationPick_Description}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAccentColorSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">

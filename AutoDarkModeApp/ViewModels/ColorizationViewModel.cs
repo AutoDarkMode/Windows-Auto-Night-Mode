@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
@@ -9,6 +12,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.Win32;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -25,6 +30,15 @@ public partial class ColorizationViewModel : ObservableRecipient
         Automatic,
         Manual,
     }
+
+    [ObservableProperty]
+    public partial SolidColorBrush? ColorPreviewBorderBackground { get; set; }
+
+    [ObservableProperty]
+    public partial ImageSource? GlobalWallpaperSource { get; set; }
+
+    [ObservableProperty]
+    public partial ElementTheme DesktopPreviewThemeMode { get; set; }
 
     [ObservableProperty]
     public partial bool IsColorizationEnabled { get; set; }
@@ -101,6 +115,10 @@ public partial class ColorizationViewModel : ObservableRecipient
     private void LoadSettings()
     {
         _isInitializing = true;
+
+        ColorPreviewBorderBackground = new SolidColorBrush(ColorHelper.ToColor("#FF47861D"));
+        GlobalWallpaperSource = GetCurrentWallpaper();
+        DesktopPreviewThemeMode = SelectColorThemeMode == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
 
         IsColorizationEnabled = _builder.Config.ColorizationSwitch.Enabled;
         CurrentlySelectedColorGridViewVisibility = _builder.Config.ColorizationSwitch.Enabled;
@@ -229,6 +247,71 @@ public partial class ColorizationViewModel : ObservableRecipient
 
             await Task.Delay(1000);
         }
+    }
+
+    private static ImageSource GetCurrentWallpaper()
+    {
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern bool SystemParametersInfo(uint uAction, uint uParam, StringBuilder lpvParam, uint init);
+
+        const uint SPI_GETDESKWALLPAPER = 0x0073;
+
+        var wallPaperPath = new StringBuilder(200);
+        if (SystemParametersInfo(SPI_GETDESKWALLPAPER, 200, wallPaperPath, 0) && !string.IsNullOrEmpty(wallPaperPath.ToString()))
+        {
+            return new BitmapImage(new Uri(wallPaperPath.ToString()));
+        }
+        else if (string.IsNullOrEmpty(wallPaperPath.ToString()))
+        {
+            string? colorStr = Registry.GetValue(@"HKEY_CURRENT_USER\Control Panel\Colors", "Background", "")?.ToString();
+
+            if (!string.IsNullOrEmpty(colorStr))
+            {
+                var parts = colorStr.Split(' ');
+                var bitmap = new WriteableBitmap(1920, 1080);
+
+                int pixelCount = 1920 * 1080;
+                byte[] pixels = new byte[pixelCount * 4];
+
+                for (int i = 0; i < pixelCount; i++)
+                {
+                    int index = i * 4;
+                    pixels[index + 0] = Convert.ToByte(parts[2]);
+                    pixels[index + 1] = Convert.ToByte(parts[1]);
+                    pixels[index + 2] = Convert.ToByte(parts[0]);
+                    pixels[index + 3] = 255;
+                }
+
+                using (var stream = bitmap.PixelBuffer.AsStream())
+                {
+                    stream.Write(pixels, 0, pixels.Length);
+                }
+                return bitmap;
+            }
+        }
+        else
+        {
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+            {
+                var spotlitghtWallpaperPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.Windows),
+                    @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg"
+                );
+                if (File.Exists(spotlitghtWallpaperPath))
+                {
+                    return new BitmapImage(new Uri(spotlitghtWallpaperPath));
+                }
+            }
+            else
+            {
+                var spotlitghtWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
+                if (File.Exists(spotlitghtWallpaperPath))
+                {
+                    return new BitmapImage(new Uri(spotlitghtWallpaperPath));
+                }
+            }
+        }
+        return new BitmapImage();
     }
 
     partial void OnIsColorizationEnabledChanged(bool value)
