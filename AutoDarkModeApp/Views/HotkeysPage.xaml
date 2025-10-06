@@ -7,6 +7,9 @@
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:local="using:AutoDarkModeApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:AutoDarkModeApp.ViewModels"
+    x:Name="HotkeysRoot"
+    d:DataContext="{d:DesignInstance Type=viewmodels:HotkeysViewModel}"
     mc:Ignorable="d">
 
     <ScrollViewer>
@@ -45,7 +48,10 @@
                 <ItemsRepeater x:Name="HotkeysItemView">
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:HotkeysDataObject">
-                            <controls:SettingsCard Margin="0,0,0,4" Header="{x:Bind DisplayName}">
+                            <controls:SettingsCard
+                                Margin="0,0,0,4"
+                                Header="{x:Bind DisplayName}"
+                                IsEnabled="{Binding DataContext.HotkeysEnabled, ElementName=HotkeysRoot}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
                                         MinWidth="160"

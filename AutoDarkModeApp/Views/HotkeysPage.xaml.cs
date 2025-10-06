@@ -21,8 +21,9 @@ public sealed partial class HotkeysPage : Page
 
     public HotkeysPage()
     {
-        ViewModel = App.GetService<HotkeysViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<HotkeysViewModel>();
+        DataContext = ViewModel;
 
         try
         {

@@ -1,4 +1,5 @@
-﻿using AutoDarkModeApp.Contracts.Services;
+﻿using System.Diagnostics;
+using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeLib;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -53,6 +54,7 @@ public partial class HotkeysViewModel : ObservableRecipient
             return;
 
         _builder.Config.Hotkeys.Enabled = value;
+        Debug.WriteLine($"HotkeysEnabled changed to: {value}");
         try
         {
             _builder.Save();
