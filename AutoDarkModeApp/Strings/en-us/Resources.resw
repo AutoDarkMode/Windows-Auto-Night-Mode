@@ -675,7 +675,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Don't switch while certain apps are running</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Refresh Autostart</value>
+    <value>Refresh</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Registry Key</value>
