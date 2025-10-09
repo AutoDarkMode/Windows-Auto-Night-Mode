@@ -30,16 +30,10 @@
                 <!--  Pick Theme  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
-                    <ComboBox
-                        x:Name="LightThemeComboBox"
-                        MinWidth="120"
-                        SelectedItem="{x:Bind ViewModel.SelectedLightTheme, Mode=TwoWay}" />
+                    <ComboBox x:Name="LightThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedLightTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
-                    <ComboBox
-                        x:Name="DarkThemeComboBox"
-                        MinWidth="120"
-                        SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
+                    <ComboBox x:Name="DarkThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard
                     ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
@@ -48,8 +42,7 @@
                     IsClickEnabled="True" />
 
                 <!--  Ignore  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
-                           Text="{helpers:ResourceString Name=IgnoreSettings}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
 
                 <controls:SettingsCard ContentAlignment="Left">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreBackground}" IsChecked="{x:Bind ViewModel.IgnoreBackgroundEnabled, Mode=TwoWay}" />
@@ -70,5 +63,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>

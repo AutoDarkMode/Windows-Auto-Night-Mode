@@ -975,4 +975,10 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
+  </data>
 </root>

@@ -23,7 +23,7 @@ public partial class SettingsViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
     private readonly ILocalSettingsService _localSettingsService;
     private bool _isInitializing;
-    private const int fakeResponsiveUIDelay = 800;
+    private const int fakeResponsiveUIDelay = 500;
 
     public enum DaysBetweenUpdateCheck
     {
@@ -547,7 +547,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     {
                         throw new AddAutoStartException($"Could not add Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(fakeResponsiveUIDelay);
                 });
             }
             catch (Exception ex)
@@ -572,7 +572,7 @@ public partial class SettingsViewModel : ObservableRecipient
                     {
                         throw new AddAutoStartException($"Could not remove Auto Dark Mode to autostart", "AutoCheckBox_Checked");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(fakeResponsiveUIDelay);
                 });
             }
             catch (Exception ex)
@@ -609,7 +609,7 @@ public partial class SettingsViewModel : ObservableRecipient
                         SafeSaveBuilder();
                         throw new AddAutoStartException($"error while processing CheckBoxLogonTask", "AutoDarkModeSvc.MessageParser.AddAutostart");
                     }
-                    await Task.Delay(800);
+                    await Task.Delay(fakeResponsiveUIDelay);
                 });
             }
         }

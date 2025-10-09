@@ -180,7 +180,7 @@
                                         Content="{helpers:ResourceString Name=ApplyGeo}" />
                                 </StackPanel>
 
-                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net">Find geographical coordinates</HyperlinkButton>
+                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net" Content="{helpers:ResourceString Name=GetCoordinates}" />
                             </StackPanel>
 
                             <!--  Follow Windows Night Light  -->
@@ -196,7 +196,7 @@
                 <!--  Offset time  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Offset}" />
-                    <controls:SettingsCard Description="Positive values are later, negative values are earlier" Header="Delay switching by a number minutes">
+                    <controls:SettingsCard Description="{helpers:ResourceString Name=OffsetTime_Description}" Header="{helpers:ResourceString Name=OffsetTime_Header}">
                         <StackPanel Orientation="Horizontal" Spacing="24">
                             <NumberBox
                                 MinWidth="120"
@@ -286,5 +286,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>

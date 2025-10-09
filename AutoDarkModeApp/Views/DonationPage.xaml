@@ -24,14 +24,12 @@
                     HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon,
                                              Glyph=&#xE903;}">
                     <Button
-                        MinWidth="120"
                         Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon, Glyph=&#xE902;}">
                     <Button
-                        MinWidth="120"
                         Click="GithubSponsorsButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
@@ -40,5 +38,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>
