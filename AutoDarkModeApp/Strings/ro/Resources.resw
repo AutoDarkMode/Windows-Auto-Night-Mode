@@ -990,6 +990,7 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>
