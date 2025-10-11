@@ -8,6 +8,7 @@
     xmlns:local="using:AutoDarkModeApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:usercontrols="using:AutoDarkModeApp.UserControls"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
@@ -18,58 +19,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Desktop preview  -->
-                <Border
-                    Margin="0,0,0,-16"
-                    HorizontalAlignment="Left"
-                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
-                    BorderBrush="Black"
-                    BorderThickness="8"
-                    CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <Grid>
-                        <Image
-                            x:Name="DesktopPreviewImage"
-                            Width="320"
-                            Height="180"
-                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}" />
-
-                        <StackPanel
-                            Width="98"
-                            Height="98"
-                            Margin="8"
-                            Padding="12"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-                            CornerRadius="{StaticResource ControlCornerRadius}"
-                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Width="42"
-                                Height="1"
-                                Margin="0,0,0,8"
-                                HorizontalAlignment="Left"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Width="24"
-                                Height="8"
-                                Margin="0,26,0,0"
-                                HorizontalAlignment="Right"
-                                Background="{ThemeResource AccentFillColorDefaultBrush}"
-                                CornerRadius="2" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
+                <usercontrols:DesktopPreview DesktopPreviewThemeMode="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}" />
 
                 <!--  Colorization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationPick_Description}" />
@@ -78,7 +28,10 @@
                 </controls:SettingsCard>
 
                 <!--  Theme  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=PickTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}">
+                <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=PickTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
+                    IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}">
                     <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectColorThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                         <controls:SegmentedItem
                             Content="{helpers:ResourceString Name=Light}"
@@ -96,6 +49,7 @@
                     <controls:SettingsExpander
                         Header="{helpers:ResourceString Name=AccentColor}"
                         HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                        IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
                         IsExpanded="True">
                         <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
                             <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
@@ -105,8 +59,8 @@
                         <controls:SettingsExpander.Items>
                             <controls:SettingsCard>
                                 <controls:SettingsCard.Header>
-                                    <!--  Currently selected color  -->
                                     <StackPanel Orientation="Vertical" Spacing="6">
+                                        <!--  Currently selected color  -->
                                         <TextBlock Text="{helpers:ResourceString Name=CurrentlySelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
                                         <GridView SelectionMode="None" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
                                             <GridView.ItemsPanel>
@@ -128,6 +82,7 @@
                                             </GridView.Items>
                                         </GridView>
 
+                                        <!--  Windows color  -->
                                         <TextBlock Text="{helpers:ResourceString Name=WindowsColor}" />
                                         <GridView IsItemClickEnabled="True" ItemClick="WindowsColorGridView_ItemClick">
                                             <GridView.ItemsPanel>
@@ -145,59 +100,203 @@
                                             </GridView.Resources>
 
                                             <GridView.Items>
-                                                <Rectangle Fill="#FFB900" />
-                                                <Rectangle Fill="#FF8C00" />
-                                                <Rectangle Fill="#F7630D" />
-                                                <Rectangle Fill="#CA5010" />
-                                                <Rectangle Fill="#DA3B01" />
-                                                <Rectangle Fill="#EF6950" />
-                                                <Rectangle Fill="#D13438" />
-                                                <Rectangle Fill="#FF4343" />
-                                                <Rectangle Fill="#E74856" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_GoldenYellow}"
+                                                    Fill="#FFB900"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_GoldenYellow}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Orange}"
+                                                    Fill="#FF8C00"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Orange}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_DarkOrange}"
+                                                    Fill="#F7630D"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_DarkOrange}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Rust}"
+                                                    Fill="#CA5010"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Rust}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PaleRust}"
+                                                    Fill="#DA3B01"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PaleRust}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_BrickRed}"
+                                                    Fill="#EF6950"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_BrickRed}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_ModRed}"
+                                                    Fill="#D13438"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_ModRed}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PaleRed}"
+                                                    Fill="#FF4343"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PaleRed}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Red}"
+                                                    Fill="#E74856"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Red}" />
 
-                                                <Rectangle Fill="#E81123" />
-                                                <Rectangle Fill="#EA005E" />
-                                                <Rectangle Fill="#C30052" />
-                                                <Rectangle Fill="#E3008C" />
-                                                <Rectangle Fill="#BF0077" />
-                                                <Rectangle Fill="#C239B3" />
-                                                <Rectangle Fill="#9A0089" />
-                                                <Rectangle Fill="#0078D4" />
-                                                <Rectangle Fill="#0063B1" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_RoseBright}"
+                                                    Fill="#E81123"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_RoseBright}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Rose}"
+                                                    Fill="#EA005E"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Rose}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PlumLight}"
+                                                    Fill="#C30052"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PlumLight}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Plum}"
+                                                    Fill="#E3008C"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Plum}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_OrchidLight}"
+                                                    Fill="#BF0077"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_OrchidLight}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Orchid}"
+                                                    Fill="#C239B3"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Orchid}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_DefaultBlue}"
+                                                    Fill="#9A0089"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_DefaultBlue}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_NavyBlue}"
+                                                    Fill="#0078D4"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_NavyBlue}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PurpleShadow}"
+                                                    Fill="#0063B1"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PurpleShadow}" />
 
-                                                <Rectangle Fill="#8E8CD8" />
-                                                <Rectangle Fill="#6B69D6" />
-                                                <Rectangle Fill="#8764B8" />
-                                                <Rectangle Fill="#744DA9" />
-                                                <Rectangle Fill="#B146C2" />
-                                                <Rectangle Fill="#881798" />
-                                                <Rectangle Fill="#0099BC" />
-                                                <Rectangle Fill="#2D7D9A" />
-                                                <Rectangle Fill="#00B7C3" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PurpleShadowAlt}"
+                                                    Fill="#8E8CD8"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PurpleShadowAlt}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_IrisPastel}"
+                                                    Fill="#6B69D6"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_IrisPastel}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_IrisSpring}"
+                                                    Fill="#8764B8"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_IrisSpring}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_VioletRedLight}"
+                                                    Fill="#744DA9"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_VioletRedLight}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_VioletRed}"
+                                                    Fill="#B146C2"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_VioletRed}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_CoolBlueBright}"
+                                                    Fill="#881798"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_CoolBlueBright}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_CoolBlue}"
+                                                    Fill="#0099BC"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_CoolBlue}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Seafoam}"
+                                                    Fill="#2D7D9A"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Seafoam}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_SeafoamTeal}"
+                                                    Fill="#00B7C3"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_SeafoamTeal}" />
 
-                                                <Rectangle Fill="#038387" />
-                                                <Rectangle Fill="#00B294" />
-                                                <Rectangle Fill="#018574" />
-                                                <Rectangle Fill="#00CC6A" />
-                                                <Rectangle Fill="#10893E" />
-                                                <Rectangle Fill="#7A7574" />
-                                                <Rectangle Fill="#5D5A58" />
-                                                <Rectangle Fill="#68768A" />
-                                                <Rectangle Fill="#515C6B" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_MintLight}"
+                                                    Fill="#038387"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_MintLight}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_MintDark}"
+                                                    Fill="#00B294"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_MintDark}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_TurfGreen}"
+                                                    Fill="#018574"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_TurfGreen}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_SportGreen}"
+                                                    Fill="#00CC6A"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_SportGreen}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Gray}"
+                                                    Fill="#10893E"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Gray}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_GrayBrown}"
+                                                    Fill="#7A7574"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_GrayBrown}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_SteelBlue}"
+                                                    Fill="#5D5A58"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_SteelBlue}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_MetalBlue}"
+                                                    Fill="#68768A"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_MetalBlue}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_PaleMoss}"
+                                                    Fill="#515C6B"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_PaleMoss}" />
 
-                                                <Rectangle Fill="#567C73" />
-                                                <Rectangle Fill="#486860" />
-                                                <Rectangle Fill="#498205" />
-                                                <Rectangle Fill="#767676" />
-                                                <Rectangle Fill="#4C4A48" />
-                                                <Rectangle Fill="#4C4A48" />
-                                                <Rectangle Fill="#69797E" />
-                                                <Rectangle Fill="#4A5459" />
-                                                <Rectangle Fill="#647C64" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Moss}"
+                                                    Fill="#567C73"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Moss}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_MeadowGreen}"
+                                                    Fill="#486860"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_MeadowGreen}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Green}"
+                                                    Fill="#498205"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Green}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Overcast}"
+                                                    Fill="#767676"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Overcast}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Storm}"
+                                                    Fill="#4C4A48"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Storm}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_BlueGray}"
+                                                    Fill="#4C4A48"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_BlueGray}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_GrayDark}"
+                                                    Fill="#69797E"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_GrayDark}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_LiddyGreen}"
+                                                    Fill="#4A5459"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_LiddyGreen}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Sage}"
+                                                    Fill="#647C64"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Sage}" />
 
-                                                <Rectangle Fill="#525E54" />
-                                                <Rectangle Fill="#847545" />
-                                                <Rectangle Fill="#7E735F" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_CamouflageDesert}"
+                                                    Fill="#525E54"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_CamouflageDesert}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Camouflage}"
+                                                    Fill="#847545"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Camouflage}" />
+                                                <Rectangle
+                                                    AutomationProperties.Name="{helpers:ResourceString Name=Color_Taupe}"
+                                                    Fill="#7E735F"
+                                                    ToolTipService.ToolTip="{helpers:ResourceString Name=Color_Taupe}" />
                                             </GridView.Items>
                                         </GridView>
                                     </StackPanel>
