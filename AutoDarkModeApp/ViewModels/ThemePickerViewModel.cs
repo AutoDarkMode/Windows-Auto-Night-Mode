@@ -1,6 +1,8 @@
 ﻿using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 using static AutoDarkModeLib.IThemeManager2.Flags;
@@ -134,6 +136,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ThemePickerPage");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnThemeKeepActiveEnabledChanged(bool value)
@@ -187,6 +190,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnSelectedDarkThemeChanged(object? value)
@@ -224,6 +228,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
         }
+        RequestThemeSwitch();
     }
 
     partial void OnIgnoreBackgroundEnabledChanged(bool value)
@@ -249,6 +254,22 @@ public partial class ThemePickerViewModel : ObservableRecipient
     partial void OnIgnoreColorEnabledChanged(bool value)
     {
         WriteSettings();
+    }
+
+    private async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "ThemePickerViewModel");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ThemePickerViewModel");
+        }
     }
 
 }

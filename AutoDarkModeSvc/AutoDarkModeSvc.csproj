@@ -5,7 +5,7 @@
     <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>11.0.0.45</Version>
+    <Version>11.0.0.51</Version>
     <AssemblyName>AutoDarkModeSvc</AssemblyName>
     <ApplicationIcon>..\adm_tray_new.ico</ApplicationIcon>
     <StartupObject>AutoDarkModeSvc.Program</StartupObject>
@@ -60,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="InputSimulatorCore" Version="1.0.5" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
     <PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.11.35325.10" />
     <PackageReference Include="NLog" Version="6.0.4" />
@@ -117,5 +116,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AutoDarkModeLib\AutoDarkModeLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\AutoDarkModeMissingWallpaper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

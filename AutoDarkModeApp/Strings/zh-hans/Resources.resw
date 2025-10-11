@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>总是浅色</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>在切换主题时始终刷新 DWM</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色出现的频率。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
 
 这可能会在某些系统上引入轻到中度的主题切换延迟，类似于 Windows 10 上发生的情况。
 在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>强制 DWM 刷新吗？</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
@@ -969,6 +963,17 @@
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

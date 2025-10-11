@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Immer hell</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Immer DWM bei Farbwechsel aktualisieren</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren. Wenn dies oft auftritt und stört, bitte diese Einstellung ausprobieren.
 
 Beim Themenwechsel kann es hierbei zu leichtem Stocken kommen, ähnlich wie dies bei Windows 10 schon der Fall war. 
 In einigen Fällen kann ein Piepston auftauchen, wenn die Maus während der DWM Aktualisierung bewegt wird.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Erzwinge DWM Aktualisierung?</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Anwenden</value>
@@ -984,6 +978,18 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>

@@ -80,15 +80,15 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             loadingDialog.Hide();
         }
 
+        
         // Only run at first startup
         if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
         {
-            AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
+            Debug.WriteLine("first-run");
 
+         AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
             await SystemTimeFormatAsync();
-
             await AddJumpListAsync();
-
             await localSettingsService.SaveSettingAsync("NotFirstRun", true);
         }
         else
@@ -96,7 +96,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             AutostartHandler.EnsureAutostart(App.MainWindow.Content.XamlRoot);
         }
 
-        // When language changed, add jumplist in new language
+        // If language changed, add jumplist in new language
         if (await localSettingsService.ReadSettingAsync<bool>("LanguageChanged"))
         {
             await AddJumpListAsync();
@@ -189,8 +189,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         sysFormat = sysFormat[..sysFormat.IndexOf(':')];
         if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
         {
-            if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
-                await localSettingsService.SaveSettingAsync("TwelveHourClock", true);
+            await localSettingsService.SaveSettingAsync("TwelveHourClock", true);
         }
     }
 
@@ -201,6 +200,8 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var jumpList = await JumpList.LoadCurrentAsync();
 
             jumpList.Items.Clear();
+            Debug.WriteLine("Adding jumplist items");
+            Debug.WriteLine($"Current override: {Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride}");
 
             var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "DarkTheme".GetLocalized());
             darkJumpTask.GroupName = "SwitchTheme".GetLocalized();

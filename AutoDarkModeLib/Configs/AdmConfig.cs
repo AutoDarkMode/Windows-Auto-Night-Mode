@@ -154,6 +154,7 @@ public class Location
 public class Tunable
 {
     private int batterySliderDefaultValue = 25;
+    
     public int BatterySliderDefaultValue
     {
         get { return batterySliderDefaultValue; }
@@ -173,6 +174,7 @@ public class Tunable
             }
         }
     }
+    public bool DwmRefreshViaColorization { get; set; } = false;
     public bool UseLogonTask { get; set; }
     public bool Debug { get; set; }
     public bool Trace { get; set; }

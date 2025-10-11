@@ -54,10 +54,6 @@
                     </controls:SettingsExpander.Header>
 
                     <controls:SettingsExpander.Items>
-                        <!--
-                            use ViewModel.IsBlockListEnabled to enable/disable the card
-                            then, NullableBoolToBoolConverter can be removed
-                        -->
                         <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ProcessBlockEnabled, Mode=OneWay}">
                             <controls:TokenizingTextBox
                                 Header="{helpers:ResourceString Name=BlockedProcesses}"
@@ -125,5 +121,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>

@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>總是淺色</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>始終在切換主題時重新啟動桌面視窗管理員（DWM）</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果您經常遇到這種情況或受到困擾，請嘗試啟用此設定。
 
 這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
 在極少數情況下，當重新啟動桌面視窗管理員（DWM）期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>強制重新啟動桌面視窗管理員（DWM）嗎？</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>套用</value>
@@ -985,6 +979,17 @@
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

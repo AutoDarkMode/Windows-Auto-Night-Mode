@@ -112,7 +112,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
         else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
         {
-            HookPosition = HookPosition.PreSync;
+            HookPosition = HookPosition.PostSync;
             return true;
         }
         else if (type == WallpaperType.Spotlight && IsSpotlightCompatible())
@@ -239,6 +239,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         if (ok)
         {
             GlobalState.ManagedThemeFile.Desktop.Wallpaper = wallpaper;
+            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+            GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
         }
         currentGlobalTheme = newTheme;
         currentIndividualTheme = Theme.Unknown;
@@ -372,9 +374,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         spotlightEnabled = null;
 
         // global wallpaper enable state synchronization;
-        string globalWallpaper = WallpaperHandler.GetGlobalWallpaper();
-        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light) currentGlobalTheme = Theme.Light;
-        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark) currentGlobalTheme = Theme.Dark;
+        string globalWallpaper = WallpaperHandler.GetGlobalWallpaper().ToLower();
+        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light.ToLower()) currentGlobalTheme = Theme.Light;
+        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark.ToLower()) currentGlobalTheme = Theme.Dark;
 
         // solid color enable state synchronization
         if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 &&
@@ -454,6 +456,13 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     protected override void Callback(SwitchEventArgs e)
     {
         if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
+        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        if (type == WallpaperType.Spotlight)
+        {
+            Logger.Debug("waiting 4s for spotlight to apply");
+            Thread.Sleep(4000);
+        }
     }
 
 
@@ -466,8 +475,13 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         switch (type)
         {
             case WallpaperType.Individual:
-                List<string> wallpapersTarget = [.. Settings.Component.Monitors.
-                    Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper))];
+                List<string> wallpapersTarget =
+                [
+                    ..Settings.Component.Monitors
+                        .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
+                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())
+                ];
+
 
                 if (type == WallpaperType.Individual)
                 {
@@ -484,48 +498,31 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                 }
 
                 var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
-                    .Select(w => Path.GetFileName(w.Item1))
+                    .Select(w => Path.GetFileName(w.Item1).ToLower())
                     .ToList();
 
                 return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
-            case WallpaperType.Global:
-                return CheckAgreementGlobal();
         }
-
         return true;
-    }
-
-    private bool CheckAgreementGlobal()
-    {
-        bool ok = Path.GetFileName(GlobalState.ManagedThemeFile.Desktop.Wallpaper) == Path.GetFileName(WallpaperHandler.GetGlobalWallpaper());
-        if (ok)
-        {
-            Logger.Info($"wallpaper synchronization: integrity check passed");
-        }
-        else
-        {
-            Logger.Warn($"wallpaper synchronization: integrity check failed: wanted {GlobalState.ManagedThemeFile.Desktop.Wallpaper}, is {WallpaperHandler.GetGlobalWallpaper()}");
-        }
-        return ok;
     }
 
     private bool CheckAgreementIndividual(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
     {
         // Count how many of each wallpaper exists in the lists
         var requiredCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var wallpaperName in wallpapersInThemeFile)
+        foreach (var wallpaperName in wallpapersTarget)
         {
             requiredCounts.TryGetValue(wallpaperName, out var count);
             requiredCounts[wallpaperName] = count + 1;
         }
         var availableCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var wallpaperName in wallpapersTarget)
+        foreach (var wallpaperName in wallpapersInThemeFile)
         {
             availableCounts.TryGetValue(wallpaperName, out var count);
             availableCounts[wallpaperName] = count + 1;
         }
 
-        int totalRequired = wallpapersInThemeFile.Count;
+        int totalRequired = wallpapersTarget.Count;
         int matched = 0;
 
         foreach (var requiredEntry in requiredCounts)
@@ -536,7 +533,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             int availableCount = availableCounts.TryGetValue(wallpaperName, out var count) ? count : 0;
             matched += Math.Min(availableCount, requiredCount);
 
-            if (availableCount < requiredCount)
+            if (requiredCount < availableCount)
             {
                 int missing = requiredCount - availableCount;
                 Logger.Warn($"wallpaper synchronization: maybe missing {wallpaperName} x{missing}");
@@ -544,19 +541,18 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
 
         double coverage = (double)matched / totalRequired;
-        bool ok = coverage >= 0.5;
+        bool ok = coverage >= 1;
 
         if (ok)
         {
             Logger.Info($"wallpaper synchronization: integrity check passed ({matched}/{totalRequired}, {coverage:P0} coverage)");
-
         }
         else
         {
             Logger.Warn($"wallpaper synchronization: integrity check failed ({matched}/{totalRequired}, {coverage:P0} coverage)");
             Logger.Warn($"wallpaper synchronization: required wallpaper list: [{string.Join(", ", wallpapersInThemeFile)}], target list: [{string.Join(", ", wallpapersTarget)}]");
         }
-           
+
         return ok;
     }
 }

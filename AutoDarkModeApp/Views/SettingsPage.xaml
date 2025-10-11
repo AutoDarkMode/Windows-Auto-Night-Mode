@@ -25,6 +25,10 @@
                     <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}" IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
                 <controls:SettingsExpander>
                     <controls:SettingsExpander.Header>
                         <CheckBox
@@ -45,44 +49,24 @@
                     Description="{helpers:ResourceString Name=Translator}"
                     Header="{helpers:ResourceString Name=Language}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
-                    <ComboBox MinWidth="120" SelectedItem="{x:Bind ViewModel.Language, Mode=TwoWay}">
-                        <x:String>Česky (Czech)</x:String>
-                        <x:String>Deutsch (German)</x:String>
-                        <x:String>Nederlands (Dutch)</x:String>
-                        <x:String>English (English)</x:String>
-                        <x:String>Français (French)</x:String>
-                        <x:String>Ελληνικά (Greek)</x:String>
-                        <x:String>Magyarul (Hungarian)</x:String>
-                        <x:String>Bahasa Indonesia (Indonesian)</x:String>
-                        <x:String>Italiano (Italian)</x:String>
-                        <x:String>日本語 (Japanese)</x:String>
-                        <x:String>Norwegian Bokmål</x:String>
-                        <x:String>Persian (Farsi)</x:String>
-                        <x:String>Polski (Polish)</x:String>
-                        <x:String>Português (Portuguese)</x:String>
-                        <x:String>Português (Brazil)</x:String>
-                        <x:String>Română (Romanian)</x:String>
-                        <x:String>Русский (Russian)</x:String>
-                        <x:String>Srpski (Serbian)</x:String>
-                        <x:String>Español (Spanish)</x:String>
-                        <x:String>Türkçe (Turkish)</x:String>
-                        <x:String>Українська (Ukrainian)</x:String>
-                        <x:String>Tiếng Việt (Vietnamese)</x:String>
-                        <x:String>简体中文 (Simplified Chinese)</x:String>
-                        <x:String>繁體中文 (Traditional Chinese)</x:String>
-                    </ComboBox>
+                    <ComboBox
+                        DisplayMemberPath="DisplayName"
+                        ItemsSource="{x:Bind ViewModel.LanguageOptions}"
+                        SelectedValue="{x:Bind ViewModel.SelectedLanguage, Mode=TwoWay}"
+                        SelectedValuePath="CultureCode" />
                 </controls:SettingsCard>
                 <InfoBar
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.IsLanguageChangedInfoBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=RestartNeeded}"
-                    Severity="Informational">
+                    Severity="Warning">
                     <InfoBar.ActionButton>
                         <Button
                             MinWidth="120"
                             HorizontalAlignment="Right"
                             Command="{x:Bind ViewModel.RestartCommand}"
-                            Content="{helpers:ResourceString Name=Restart}" />
+                            Content="{helpers:ResourceString Name=Restart}"
+                            Style="{ThemeResource AccentButtonStyle}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
 
@@ -90,11 +74,7 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Updates}" />
                 <!--  Check now  -->
                 <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
-                    <Button
-                        MinWidth="120"
-                        Command="{x:Bind ViewModel.CheckUpdateCommand}"
-                        Content="{helpers:ResourceString Name=CheckUpdate}"
-                        Style="{ThemeResource AccentButtonStyle}" />
+                    <Button Command="{x:Bind ViewModel.CheckUpdateCommand}" Content="{helpers:ResourceString Name=CheckUpdate}" />
                 </controls:SettingsCard>
 
                 <!--  Auto check  -->
@@ -154,37 +134,45 @@
 
                 <controls:SettingsCard>
                     <controls:SettingsCard.Header>
-                        <Grid ColumnSpacing="8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Text="{helpers:ResourceString Name=PathAt}" />
-                            <TextBlock
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                IsTextSelectionEnabled="True"
-                                Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
-                                ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
-                        </Grid>
+                        <StackPanel>
+                            <ProgressRing
+                                x:Name="ProgressAutostartDetails"
+                                Width="36"
+                                Height="36"
+                                IsIndeterminate="True"
+                                Visibility="{x:Bind ViewModel.ProgressAutostartDetailsVisibility, Mode=OneWay}" />
+                            <Grid
+                                x:Name="GridAutostartDetails"
+                                ColumnSpacing="8"
+                                Visibility="{x:Bind ViewModel.GridAutostartVisibility, Mode=OneWay}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{helpers:ResourceString Name=ModeAt}" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Bind ViewModel.AutostartMode, Mode=OneWay}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Text="{helpers:ResourceString Name=PathAt}" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    IsTextSelectionEnabled="True"
+                                    Text="{x:Bind ViewModel.AutostartPath, Mode=OneWay}"
+                                    ToolTipService.ToolTip="{x:Bind ViewModel.AutostartPath, Mode=OneWay}" />
+                            </Grid>
+                        </StackPanel>
                     </controls:SettingsCard.Header>
-                    <Button
-                        MinWidth="120"
-                        Command="{x:Bind ViewModel.AutostartRefreshCommand}"
-                        Content="{helpers:ResourceString Name=RefreshAutostart}" />
+                    <Button Command="{x:Bind ViewModel.AutostartRefreshCommand}" Content="{helpers:ResourceString Name=RefreshAutostart}" />
                 </controls:SettingsCard>
 
                 <!--  Config  -->
@@ -208,5 +196,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>

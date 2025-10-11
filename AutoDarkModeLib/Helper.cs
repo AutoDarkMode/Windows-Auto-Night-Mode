@@ -24,6 +24,7 @@ namespace AutoDarkModeLib;
 
 public static class Helper
 {
+    public const string MissingWallpaperFileName = "AutoDarkModeMissingWallpaper.png";
     public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
     public const string UpdaterDirName = "adm-updater";
     public const string PostponeItemPauseAutoSwitch = "PauseAutoSwitch";
@@ -228,6 +229,12 @@ public static class Helper
         var yamlDeserializer = new YamlDotNet.Serialization.DeserializerBuilder().IgnoreUnmatchedProperties().WithNamingConvention(PascalCaseNamingConvention.Instance).Build();
         Dictionary<string, string> deserialized = yamlDeserializer.Deserialize<Dictionary<string, string>>(data);
         return deserialized;
+    }
+
+    public static string GetMissingWallpaperPath()
+    {
+        var assemblyLocation = GetValidatedBasePath();
+        return Path.Combine(assemblyLocation, "core", "Assets", MissingWallpaperFileName);
     }
 }
 

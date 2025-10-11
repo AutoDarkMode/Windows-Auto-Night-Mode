@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Mereu luminos</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Întotdeauna reîmprospătează DWM la schimbarea temei</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Se încearcă reducerea ajustării greșite a culorii interfeței în explorator, bara cu evenimente sau meniul de start. Dacă pățești asta des sau te deranjează, activează această setare.
 
 Poate introduce încetinire mică spre moderată pe anumite sisteme în timpul schimbării temei, asemănător cu situația din Windows 10. 
 În câteva ocazii rare sistemul poate emite sunete scurte atunci când este mișcat cursorul în timpul împrospătării DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Forțează reîmprospătare DWM?</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplică</value>
@@ -985,6 +979,17 @@ Versiunea instalată în prezent: {0}, versiune nouă: {1}</value>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

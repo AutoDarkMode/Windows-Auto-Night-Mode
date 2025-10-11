@@ -7,14 +7,20 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
+using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 using NLog;
+using static System.Windows.Forms.AxHost;
+using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers;
 internal sealed partial class DwmRefreshHandler
 {
     private static readonly DwmRefreshHandler _instance = new();
     private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+    private static readonly GlobalState state = GlobalState.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     private BlockingCollection<DwmRefreshEventArgs> Queue { get; }
     private Thread Worker { get; set; }
@@ -73,7 +79,8 @@ internal sealed partial class DwmRefreshHandler
 
                     try
                     {
-                        Broadcast();
+                        if (e.Type > DwmRefreshType.Standard) RefreshDwmViaColorization();
+                        else Broadcast();
                     }
                     catch (Exception ex)
                     {
@@ -93,11 +100,6 @@ internal sealed partial class DwmRefreshHandler
 
         Worker.SetApartmentState(ApartmentState.STA);
         Worker.Start();
-    }
-
-    public void AddWithGuard(DwmRefreshEventArgs e) 
-    {
-
     }
 
     public static void Enqueue(DwmRefreshEventArgs e)
@@ -126,6 +128,86 @@ internal sealed partial class DwmRefreshHandler
             {
                 Interlocked.CompareExchange(ref _instance._nextExecutionTicks, newDeadline, currentDeadline);
             }
+        }
+    }
+
+    private static ThemeFile PrepareUnmanagedDwmRefresh()
+    {
+        state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: true);
+        ThemeFile unmanagedTarget;
+        if (state.InternalTheme == Theme.Dark)
+        {
+            unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
+        }
+        else
+        {
+            unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
+        }
+
+        unmanagedTarget.Load();
+        return unmanagedTarget;
+    }
+
+    private static void RefreshDwmViaColorization()
+    {
+        ThemeFile unmanagedTarget;
+        try
+        {
+            // prepare theme
+            ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
+            bool managed = !builder.Config.WindowsThemeMode.Enabled;
+            if (!managed)
+            {
+                unmanagedTarget = PrepareUnmanagedDwmRefresh();
+                try
+                {
+                    dwmRefreshTheme.SetContentAndParse(unmanagedTarget.ThemeFileContent);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "dwm management: could not load unmanaged target for refresh, forcing with managed theme");
+                    dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+                }
+            }
+            else
+            {
+                dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
+            }
+            dwmRefreshTheme.RefreshGuid();
+            dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
+
+            // get current accent color
+            string currentColorization = RegistryHandler.GetAccentColor().Replace("#", "0X");
+            string lastColorizationDigitString = currentColorization[currentColorization.Length - 1].ToString();
+            int lastColorizationDigit = int.Parse(lastColorizationDigitString, System.Globalization.NumberStyles.HexNumber);
+
+            // modify last digit
+            if (lastColorizationDigit >= 9) lastColorizationDigit--;
+            else lastColorizationDigit++;
+            string newColorizationColor = currentColorization[..(currentColorization.Length - 1)] + lastColorizationDigit.ToString("X");
+
+            // update theme
+            dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
+            dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
+            dwmRefreshTheme.Save();
+
+            List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
+            Logger.Debug($"dwm management: temporarily setting accent color to {dwmRefreshTheme.VisualStyles.ColorizationColor.Item1} from {currentColorization}");
+            ThemeHandler.Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
+            Thread.Sleep(1000);
+            if (managed)
+            {
+                ThemeHandler.Apply(state.ManagedThemeFile.ThemeFilePath, true, null, flagList);
+            }
+            if (!managed)
+            {
+                ThemeHandler.ApplyUnmanagedTheme(state.InternalTheme);
+            }
+            Logger.Info("dwm management: full colorization refresh performed by theme handler");
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn(ex, "dwm management: could not perform full colorization refresh due to malformed colorization string: ");
         }
     }
 

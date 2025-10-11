@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Всегда светлая</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Всегда перезапускать DWM при переключении темы</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Попытка снизить частоту появления неправильных цветов интерфейса в проводнике, панели задач и меню «Пуск». Если вы часто сталкиваетесь с этой проблемой или она вас беспокоит, попробуйте включить этот параметр.
 
 Это может привести к незначительным или умеренным задержкам при переключении тем на некоторых системах, подобно тому, как это было в Windows 10.
 В редких случаях Windows может издавать звуковой сигнал при перемещении мыши во время перезапуска DWM.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Включить принудительный перезапуск DWM?</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Применить</value>
@@ -985,6 +979,17 @@
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

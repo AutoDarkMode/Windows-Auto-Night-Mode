@@ -41,7 +41,7 @@ public static class ThemeHandler
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
 
-    private static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
+    internal static void Apply(string themeFilePath, bool suppressLogging = false, ThemeFile unmanagedPatched = null, List<ThemeApplyFlags> flagList = null)
     {
         ApplyIThemeManager2(themeFilePath, suppressLogging, unmanagedPatched, flagList);
     }
@@ -209,133 +209,15 @@ public static class ThemeHandler
         return false;
     }
 
-    private static ThemeFile PrepareUnmanagedDwmRefresh(SwitchEventArgs e)
-    {
-        state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: true);
-        ThemeFile unmanagedTarget;
-        if (e.Theme == Theme.Dark)
-        {
-            unmanagedTarget = new(builder.Config.WindowsThemeMode.DarkThemePath);
-        }
-        else
-        {
-            unmanagedTarget = new(builder.Config.WindowsThemeMode.LightThemePath);
-        }
-
-        unmanagedTarget.Load();
-        return unmanagedTarget;
-    }
-
-    public static void RefreshDwm(bool managed, SwitchEventArgs e, DwmRefreshEventArgs d)
+    public static void RefreshDwm(DwmRefreshEventArgs d)
     {
         if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
         {
-            if (!managed)
-            {
-                try
-                {
-                    ThemeFile unmanagedTarget = PrepareUnmanagedDwmRefresh(e);
-
-                    // standard dwm refresh should skip auto colorization check
-                    // it has been omitted from the colorization one for optimization reasons (the chance that auto colorization DOESN'T change
-                    // the color is way lower than it staying the same, esp when backgrounds are switched etc)
-                    // but for the new hwnd type broadcast we don't need to optimize for this anymore because it doesn't produce
-                    // as much lag
-                    if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "0"
-                        && (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1))
-                    {
-                        Logger.Info("dwm management: no refresh required because target theme has different accent color");
-                        return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "dwm management: could not load unmanaged target theme to check for colorization switch, not skipping refresh:");
-                }
-            }
             DwmRefreshHandler.Enqueue(d);
         }
         else
         {
             Logger.Trace("dwm management: no refresh required needed in this windows version");
-        }
-    }
-
-    public static void RefreshDwmViaColorization(bool managed, SwitchEventArgs e)
-    {
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2)
-        {
-            ThemeFile unmanagedTarget = null;
-            try
-            {
-                // prepare theme
-                ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
-                if (!managed)
-                {
-                    unmanagedTarget = PrepareUnmanagedDwmRefresh(e);
-                    try
-                    {
-                        if (unmanagedTarget.VisualStyles.AutoColorization.Item1 == "1")
-                        {
-                            Logger.Info("dwm management: no full colorization refresh required because auto colorization is enabled in the target theme");
-                            return;
-                        }
-                        else if (unmanagedTarget.VisualStyles.ColorizationColor.Item1 != state.ManagedThemeFile.VisualStyles.ColorizationColor.Item1)
-                        {
-                            Logger.Info("dwm management: no full colorization refresh required because target theme has different accent color");
-                            return;
-                        }
-                        dwmRefreshTheme.SetContentAndParse(unmanagedTarget.ThemeFileContent);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Warn(ex, "dwm management: could not load unmanaged target for refresh, forcing with managed theme");
-                        dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
-                    }
-                }
-                else
-                {
-                    dwmRefreshTheme.SetContentAndParse(state.ManagedThemeFile.ThemeFileContent);
-                }
-                dwmRefreshTheme.RefreshGuid();
-                dwmRefreshTheme.DisplayName = "DwmRefreshTheme";
-
-                // get current accent color
-                string currentColorization = RegistryHandler.GetAccentColor().Replace("#", "0X");
-                string lastColorizationDigitString = currentColorization[currentColorization.Length - 1].ToString();
-                int lastColorizationDigit = int.Parse(lastColorizationDigitString, System.Globalization.NumberStyles.HexNumber);
-
-                // modify last digit
-                if (lastColorizationDigit >= 9) lastColorizationDigit--;
-                else lastColorizationDigit++;
-                string newColorizationColor = currentColorization[..(currentColorization.Length - 1)] + lastColorizationDigit.ToString("X");
-
-                // update theme
-                dwmRefreshTheme.VisualStyles.ColorizationColor = (newColorizationColor, dwmRefreshTheme.VisualStyles.ColorizationColor.Item2);
-                dwmRefreshTheme.VisualStyles.AutoColorization = ("0", dwmRefreshTheme.VisualStyles.AutoColorization.Item2);
-                dwmRefreshTheme.Save();
-
-                List<ThemeApplyFlags> flagList = new() { ThemeApplyFlags.IgnoreBackground, ThemeApplyFlags.IgnoreCursor, ThemeApplyFlags.IgnoreDesktopIcons, ThemeApplyFlags.IgnoreSound, ThemeApplyFlags.IgnoreScreensaver };
-                Apply(dwmRefreshTheme.ThemeFilePath, true, null, flagList);
-
-                // if the unmanaged mode has the ignorecolor flag applied, we need to patch the theme back with the previous color first
-                // which will be present in the synced managed theme
-                if (!managed && unmanagedTarget != null && builder.Config.WindowsThemeMode.ApplyFlags.Contains(ThemeApplyFlags.IgnoreColor))
-                {
-                    Thread.Sleep(500);
-                    Apply(state.ManagedThemeFile.ThemeFilePath, true, null, flagList);
-                }
-
-                Logger.Info("dwm management: full colorization refresh performed by theme handler");
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(ex, "dwm management: could not perform full colorization refresh due to malformed colorization string: ");
-            }
-        }
-        else
-        {
-            Logger.Trace("dwm management: no full colorization refresh required needed in this windows version");
         }
     }
 

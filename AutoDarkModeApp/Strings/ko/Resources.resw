@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>항상 밝게</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>테마 전환에서 항상 DWM 새로 고침</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>탐색기, 작업 표시줄 및 시작 메뉴에서 잘못된 UI 색상이 발생하는 것을 줄이려고 시도합니다. 자주 경험하거나 귀찮으면 이 설정을 활성화하십시오.
 
 이로 인해 Windows 10에서 발생한 것과 유사하게 테마 전환 중에 일부 시스템에서 약간 또는 중간 정도의 지연이 발생할 수 있습니다.
 드물게 DWM을 새로 고치는 동안 마우스를 움직이면 Windows에서 삐 소리가 날 수 있습니다.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>DWM 강제로 새로 고치시겠습니까?</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>적용</value>
@@ -984,6 +978,18 @@
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
+  </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>

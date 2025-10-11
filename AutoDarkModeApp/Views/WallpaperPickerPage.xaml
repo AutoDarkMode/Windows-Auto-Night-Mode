@@ -30,7 +30,7 @@
                             x:Name="DesktopPreviewImage"
                             Width="320"
                             Height="180"
-                            Source="{x:Bind ViewModel.GlobalWallpaperSource, Mode=OneWay}"
+                            Source="{x:Bind ViewModel.DisplayWallpaperSource, Mode=OneWay}"
                             Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
 
                         <StackPanel
@@ -114,7 +114,6 @@
                         <!--  Picture  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
                             <Button
-                                MinWidth="120"
                                 HorizontalAlignment="Right"
                                 Command="{x:Bind ViewModel.PickFileCommand}"
                                 Content="{helpers:ResourceString Name=BrowsePhotos}" />
@@ -131,8 +130,8 @@
                                     <TextBlock
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                         IsTextSelectionEnabled="True"
-                                        Text="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}"
-                                        ToolTipService.ToolTip="{x:Bind ViewModel.GlobalWallpaperPath, Mode=OneWay}" />
+                                        Text="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}" />
                                 </StackPanel>
                             </controls:SettingsCard.Header>
                         </controls:SettingsCard>
@@ -149,12 +148,7 @@
 
                         <!--  Color  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Button
-                                    MinWidth="120"
-                                    Click="CheckColorButton_Click"
-                                    Content="{helpers:ResourceString Name=SelectColor}" />
-                            </StackPanel>
+                            <Button Click="CheckColorButton_Click" Content="{helpers:ResourceString Name=SelectColor}" />
                         </controls:SettingsCard>
 
                         <!--  Windows Spotlight  -->

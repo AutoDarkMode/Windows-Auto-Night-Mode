@@ -144,17 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Uvek svetla</value>
   </data>
-  <data name="AlwaysRefreshDwm" xml:space="preserve">
-    <value>Uvek osveži DWM pri promeni teme</value>
-  </data>
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Pokušava da ispravi povremeno pojavljivanje pogrešnih boja u interfejsu Istraživača, trake zadataka i Start menija. Ako vam se ovo često dešava ili vas nervira, probajte da omogućite ovu postavku.
 
 Može izazvati blaga do umerena kočenja na nekim sistemima tokom promene teme, slično kao što je bilo na Windows-u 10. 
 U retkim slučajevima, Windows može izdati zvuk pištanja kad se miš pomera tokom osvežavanja DWM-a.</value>
-  </data>
-  <data name="AlwaysRefreshDwm_Title" xml:space="preserve">
-    <value>Prinudno osvežiti DWM?</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Primeni</value>
@@ -985,6 +979,17 @@ Trenutno instalirana verzija: {0}, nova verzija: {1}</value>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
+  <data name="AggressiveDwmRefresh" xml:space="preserve">
+    <value>More aggressive DWM refresh</value>
+  </data>
+  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
+  </data>
+  <data name="OffsetTime_Header" xml:space="preserve">
+    <value>Delay switching by a number minutes</value>
+  </data>
+  <data name="OffsetTime_Description" xml:space="preserve">
+    <value>Positive values are later, negative values are earlier</value>
   <data name="CurrentlySelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

@@ -126,7 +126,7 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
     protected void SwitchLightOnly()
     {
 
-        if (currentComponentTheme != Theme.Dark)
+        if (currentComponentTheme != Theme.Light)
         {
             ThemeFile themeFile = GlobalState.ManagedThemeFile;
             themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
