@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:AutoDarkModeApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:navigationService="using:AutoDarkModeApp.Services"
@@ -20,18 +19,19 @@
         </Grid.RowDefinitions>
         <TitleBar
             x:Name="TitleBar"
-            Title="Auto Dark Mode"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
+            Title="        Auto Dark Mode"
             BackRequested="NavViewTitleBar_BackRequested"
             IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
             IsBackButtonVisible="True"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
-            <TitleBar.IconSource>
-                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico" />
-            </TitleBar.IconSource>
+            <!--  This is a workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/10374, once fixed we should just be using IconSource  -->
         </TitleBar>
+        <ImageIcon
+            Height="16"
+            Margin="100,0,0,0"
+            HorizontalAlignment="Left"
+            Source="/Assets/AutoDarkModeIcon.ico" />
 
         <NavigationView
             x:Name="NavigationViewControl"
