@@ -591,7 +591,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Personalization</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Select an accent color</value>
+    <value>Custom color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Select mouse pointers</value>
@@ -982,10 +982,10 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
   </data>
-  <data name="CurrentlySelectedColor" xml:space="preserve">
-    <value>Currently selected color</value>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Selected color</value>
   </data>
-  <data name="WindowsColor" xml:space="preserve">
-    <value>Windows color</value>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows colors</value>
   </data>
 </root>

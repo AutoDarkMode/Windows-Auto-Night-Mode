@@ -29,7 +29,7 @@
 
                 <!--  Mode  -->
                 <controls:SettingsCard
-                    Header="{helpers:ResourceString Name=PickTheme}"
+                    Header="{helpers:ResourceString Name=Theme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
                     IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}">
                     <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectColorThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
@@ -55,7 +55,7 @@
                                 <controls:SettingsCard.Header>
                                     <StackPanel Orientation="Vertical" Spacing="8">
                                         <!--  Currently selected color  -->
-                                        <TextBlock Text="{helpers:ResourceString Name=CurrentlySelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
+                                        <TextBlock Text="{helpers:ResourceString Name=SelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
                                         <GridView SelectionMode="None" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
                                             <GridView.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -77,7 +77,7 @@
                                         </GridView>
 
                                         <!--  Windows color  -->
-                                        <TextBlock Text="{helpers:ResourceString Name=WindowsColor}" />
+                                        <TextBlock Text="{helpers:ResourceString Name=WindowsColors}" />
                                         <GridView
                                             x:Name="WindowsColorGridView"
                                             IsItemClickEnabled="True"
