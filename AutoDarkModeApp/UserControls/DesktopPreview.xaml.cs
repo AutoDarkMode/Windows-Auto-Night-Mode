@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using AutoDarkModeLib;
 using Microsoft.UI.Xaml;
@@ -7,19 +6,33 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
+using Windows.UI;
 
 namespace AutoDarkModeApp.UserControls;
 
 public sealed partial class DesktopPreview : UserControl
 {
-    public ImageSource? GlobalWallpaperSource
+    public SolidColorBrush? DesktopPreviewBackground
     {
-        get => (ImageSource)GetValue(GlobalWallpaperSourceProperty);
-        set => SetValue(GlobalWallpaperSourceProperty, value);
+        get => (SolidColorBrush)GetValue(DesktopPreviewBackgroundProperty);
+        set => SetValue(DesktopPreviewBackgroundProperty, value);
     }
 
-    public static readonly DependencyProperty GlobalWallpaperSourceProperty = DependencyProperty.Register(
-        "GlobalWallpaperSource",
+    public static readonly DependencyProperty DesktopPreviewBackgroundProperty = DependencyProperty.Register(
+        "DesktopPreviewBackground",
+        typeof(SolidColorBrush),
+        typeof(DesktopPreview),
+        new PropertyMetadata(null)
+    );
+
+    public ImageSource? DesktopPreviewImageSource
+    {
+        get => (ImageSource)GetValue(DesktopPreviewImageSourceProperty);
+        set => SetValue(DesktopPreviewImageSourceProperty, value);
+    }
+
+    public static readonly DependencyProperty DesktopPreviewImageSourceProperty = DependencyProperty.Register(
+        "DesktopPreviewImageSource",
         typeof(ImageSource),
         typeof(DesktopPreview),
         new PropertyMetadata(null)
@@ -46,11 +59,11 @@ public sealed partial class DesktopPreview : UserControl
 
     private void InitializePreview()
     {
-        GlobalWallpaperSource = GetCurrentWallpaper();
+        DesktopPreviewImageSource = GetCurrentWallpaper();
         DesktopPreviewThemeMode = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
     }
 
-    private static ImageSource GetCurrentWallpaper()
+    private ImageSource? GetCurrentWallpaper()
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern bool SystemParametersInfo(uint uAction, uint uParam, StringBuilder lpvParam, uint init);
@@ -69,25 +82,8 @@ public sealed partial class DesktopPreview : UserControl
             if (!string.IsNullOrEmpty(colorStr))
             {
                 var parts = colorStr.Split(' ');
-                var bitmap = new WriteableBitmap(1920, 1080);
-
-                int pixelCount = 1920 * 1080;
-                byte[] pixels = new byte[pixelCount * 4];
-
-                for (int i = 0; i < pixelCount; i++)
-                {
-                    int index = i * 4;
-                    pixels[index + 0] = Convert.ToByte(parts[2]);
-                    pixels[index + 1] = Convert.ToByte(parts[1]);
-                    pixels[index + 2] = Convert.ToByte(parts[0]);
-                    pixels[index + 3] = 255;
-                }
-
-                using (var stream = bitmap.PixelBuffer.AsStream())
-                {
-                    stream.Write(pixels, 0, pixels.Length);
-                }
-                return bitmap;
+                DesktopPreviewBackground = new SolidColorBrush(Color.FromArgb(255, Convert.ToByte(parts[0]), Convert.ToByte(parts[1]), Convert.ToByte(parts[2])));
+                return null;
             }
         }
         else

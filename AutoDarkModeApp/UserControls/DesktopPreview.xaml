@@ -10,6 +10,7 @@
     <Border
         Margin="0,0,0,-16"
         HorizontalAlignment="Left"
+        Background="{x:Bind DesktopPreviewBackground}"
         BorderBrush="Black"
         BorderThickness="8"
         CornerRadius="{StaticResource OverlayCornerRadius}">
@@ -18,7 +19,7 @@
                 x:Name="DesktopPreviewImage"
                 Width="320"
                 Height="180"
-                Source="{x:Bind GlobalWallpaperSource, Mode=OneWay}"
+                Source="{x:Bind DesktopPreviewImageSource, Mode=OneWay}"
                 Stretch="Fill" />
 
             <StackPanel
