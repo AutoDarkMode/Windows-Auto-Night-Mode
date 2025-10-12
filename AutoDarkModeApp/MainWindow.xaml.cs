@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using AutoDarkModeApp.Contracts.Services;
-using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Windows.UI;
@@ -77,15 +76,24 @@ public sealed partial class MainWindow : Window
 
     private async void MainWindow_Closed(object sender, WindowEventArgs args)
     {
-        var postion = App.MainWindow.AppWindow.Position;
-        var size = App.MainWindow.AppWindow.Size;
+        var presenter = AppWindow.Presenter as OverlappedPresenter;
+        var position = AppWindow.Position;
+        var size = AppWindow.Size;
         var localSettings = App.GetService<ILocalSettingsService>();
         await Task.Run(async () =>
         {
-            await localSettings.SaveSettingAsync("X", postion.X);
-            await localSettings.SaveSettingAsync("Y", postion.Y);
-            await localSettings.SaveSettingAsync("Width", size.Width);
-            await localSettings.SaveSettingAsync("Height", size.Height);
+            if (presenter != null)
+            {
+                await localSettings.SaveSettingAsync("WindowState", (int)presenter.State);
+
+                if (presenter.State == OverlappedPresenterState.Restored)
+                {
+                    await localSettings.SaveSettingAsync("X", position.X);
+                    await localSettings.SaveSettingAsync("Y", position.Y);
+                    await localSettings.SaveSettingAsync("Width", size.Width);
+                    await localSettings.SaveSettingAsync("Height", size.Height);
+                }
+            }
 
             //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
             try
