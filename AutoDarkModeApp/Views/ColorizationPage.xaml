@@ -51,62 +51,57 @@
                         </ComboBox>
 
                         <controls:SettingsExpander.Items>
-                            <controls:SettingsCard>
-                                <controls:SettingsCard.Header>
-                                    <StackPanel Orientation="Vertical" Spacing="8">
-                                        <!--  Currently selected color  -->
-                                        <TextBlock Text="{helpers:ResourceString Name=SelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
-                                        <GridView SelectionMode="None" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
-                                            <GridView.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <ItemsWrapGrid MaximumRowsOrColumns="9" Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </GridView.ItemsPanel>
-                                            <GridView.Resources>
-                                                <Style TargetType="Rectangle">
-                                                    <Setter Property="Width" Value="44" />
-                                                    <Setter Property="Height" Value="44" />
-                                                    <Setter Property="RadiusX" Value="4" />
-                                                    <Setter Property="RadiusY" Value="4" />
-                                                </Style>
-                                            </GridView.Resources>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <StackPanel Orientation="Vertical" Spacing="8">
+                                    <!--  Currently selected color  -->
+                                    <TextBlock Text="{helpers:ResourceString Name=SelectedColor}" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
+                                    <GridView SelectionMode="None" Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
+                                        <GridView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </GridView.ItemsPanel>
+                                        <GridView.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width" Value="44" />
+                                                <Setter Property="Height" Value="44" />
+                                                <Setter Property="RadiusX" Value="4" />
+                                                <Setter Property="RadiusY" Value="4" />
+                                            </Style>
+                                        </GridView.Resources>
 
-                                            <GridView.Items>
-                                                <Rectangle Fill="{x:Bind ViewModel.AccentColorPreviewBorderBackground, Mode=OneWay}" />
-                                            </GridView.Items>
-                                        </GridView>
+                                        <GridView.Items>
+                                            <Rectangle Fill="{x:Bind ViewModel.AccentColorPreviewBorderBackground, Mode=OneWay}" />
+                                        </GridView.Items>
+                                    </GridView>
 
-                                        <!--  Windows color  -->
-                                        <TextBlock Text="{helpers:ResourceString Name=WindowsColors}" />
-                                        <GridView
-                                            x:Name="WindowsColorGridView"
-                                            IsItemClickEnabled="True"
-                                            ItemClick="WindowsColorGridView_ItemClick">
-                                            <GridView.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <ItemsWrapGrid MaximumRowsOrColumns="9" Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </GridView.ItemsPanel>
+                                    <!--  Windows colors  -->
+                                    <TextBlock Text="{helpers:ResourceString Name=WindowsColors}" />
+                                    <GridView
+                                        x:Name="WindowsColorGridView"
+                                        IsItemClickEnabled="True"
+                                        ItemClick="WindowsColorGridView_ItemClick">
+                                        <GridView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid MaximumRowsOrColumns="9" Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </GridView.ItemsPanel>
 
-                                            <GridView.Resources>
-                                                <Style TargetType="Rectangle">
-                                                    <Setter Property="Width" Value="44" />
-                                                    <Setter Property="Height" Value="44" />
-                                                    <Setter Property="RadiusX" Value="4" />
-                                                    <Setter Property="RadiusY" Value="4" />
-                                                </Style>
-                                            </GridView.Resources>
+                                        <GridView.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width" Value="44" />
+                                                <Setter Property="Height" Value="44" />
+                                                <Setter Property="RadiusX" Value="4" />
+                                                <Setter Property="RadiusY" Value="4" />
+                                            </Style>
+                                        </GridView.Resources>
 
-                                        </GridView>
-                                    </StackPanel>
-                                </controls:SettingsCard.Header>
+                                    </GridView>
+                                </StackPanel>
                             </controls:SettingsCard>
 
                             <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}">
-                                <Button
-                                    MinWidth="120"
-                                    Click="CheckColorButton_Click"
-                                    Content="{helpers:ResourceString Name=SelectColor}" />
+                                <Button Click="CheckColorButton_Click" Content="{helpers:ResourceString Name=SelectColor}" />
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>

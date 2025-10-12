@@ -17,8 +17,8 @@ public sealed partial class ColorizationPage : Page
 
     public ColorizationPage()
     {
-        ViewModel = App.GetService<ColorizationViewModel>();
         InitializeComponent();
+        ViewModel = App.GetService<ColorizationViewModel>();
 
         PopulateColorGrid();
     }
