@@ -144,7 +144,7 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>總是淺色</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果您經常遇到這種情況或受到困擾，請嘗試啟用此設定。
 
 這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
@@ -982,7 +982,7 @@
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -1011,5 +1011,8 @@
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
 </root>

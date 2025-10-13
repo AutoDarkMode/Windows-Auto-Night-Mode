@@ -144,7 +144,7 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>دائماً فاتح</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>محاولات لتقليل حدوث ألوان واجهة المستخدم غير الصحيحة في مستكشف الملفات، شريط المهام، وقائمة ابدأ. إذا كنت تواجه هذه المشكلة بشكل متكرر أو تجدها مزعجة، حاول تمكين هذا الإعداد.
 
 قد يؤدي ذلك إلى تأخير طفيف إلى متوسط في بعض الأنظمة أثناء تغيير السمات، مشابه لما حدث في Windows 10. في حالات نادرة، قد يصدر Windows صوت تنبيه عند تحريك الماوس أثناء تحديثات DWM.</value>
@@ -979,7 +979,7 @@
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -1008,5 +1008,8 @@
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
 </root>

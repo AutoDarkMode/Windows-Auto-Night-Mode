@@ -144,7 +144,7 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Altijd licht</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
 
 Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10.
@@ -982,7 +982,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -1011,5 +1011,8 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
 </root>

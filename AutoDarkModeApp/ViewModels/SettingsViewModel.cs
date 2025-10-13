@@ -498,8 +498,8 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             ContentDialog contentDialog = new()
             {
-                Title = "AggressiveDwmRefresh_Title".GetLocalized(),
-                Content = "AlwaysRefreshDwm_Content".GetLocalized(),
+                Title = "AggressiveDwmRefreshMsg_Title".GetLocalized(),
+                Content = "AlwaysRefreshDwmMsg_Content".GetLocalized(),
                 XamlRoot = App.MainWindow.Content.XamlRoot,
                 CloseButtonText = "Cancel".GetLocalized(),
                 PrimaryButtonText = "Confirm".GetLocalized(),

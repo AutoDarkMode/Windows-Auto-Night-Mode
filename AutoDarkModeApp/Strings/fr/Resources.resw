@@ -144,7 +144,7 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Toujours clair</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Cette option vise à réduire l'apparition de mauvaises couleurs dans l'explorateur de fichiers, la barre de tâches et le menu Démarrer. Si vous constatez régulièrement ce problème ou si cela vous dérange, essayez d'activer cette option.
 
 Sur certains systèmes, cela peut entraîner un décalage plus ou moins important lors du changement de thème, comme c'est le cas sur Windows 10. 
@@ -982,7 +982,7 @@ Version installée : {0}, nouvelle version : {1}</value>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -1011,5 +1011,8 @@ Version installée : {0}, nouvelle version : {1}</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
 </root>
