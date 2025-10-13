@@ -456,7 +456,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
     <value>Längengrad</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode verwaltet das Theme</value>
+    <value>Auto Dark Mode verwaltet das Theme (empfohlen)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manuell</value>
@@ -894,7 +894,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Pfad</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Der Autostart wurde in den Windows-Einstellungen deaktiviert. Wenn du möchtest, dass Auto Dark Mode mit dem System startet, aktiviere den Eintrag in den Windows-Einstellungen unter Apps &gt; Autostart.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -1015,5 +1015,8 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
     <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren.</value>
+  </data>
+  <data name="OpenWindowsSettings" xml:space="preserve">
+    <value>Windows-Einstellungen öffnen</value>
   </data>
 </root>

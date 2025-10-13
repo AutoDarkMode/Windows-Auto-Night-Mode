@@ -219,7 +219,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Enable color filter during dark mode</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking</value>
+    <value>Customize the Windows system color scheme to your liking.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Conditions</value>
@@ -456,7 +456,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Let Auto Dark Mode manage my theme (recommended)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -885,7 +885,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Auto start has been disabled in Windows Settings. To enable Auto Dark Mode to start with Windows again, please go to Windows Settings &gt; Apps &gt; Startup and enable it.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -1008,5 +1008,8 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+  </data>
+  <data name="OpenWindowsSettings" xml:space="preserve">
+    <value>Open Windows settings</value>
   </data>
 </root>

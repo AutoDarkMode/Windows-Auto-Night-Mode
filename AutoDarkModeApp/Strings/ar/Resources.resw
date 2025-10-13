@@ -1012,4 +1012,7 @@
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
+  <data name="OpenWindowsSettings" xml:space="preserve">
+    <value>Open Windows settings</value>
+  </data>
 </root>
