@@ -113,6 +113,10 @@ You can find our project here: <https://hosted.weblate.org/projects/auto-dark-mo
 
 Alternatively, you can manually edit the translation files in `AutoDarkModeApp\Strings`.
 
+## Awards
+
+![Community Store Winner](./assets/msstore_award_banner.png)
+
 ## More information
 
 You still have open questions? [Check out our wiki!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)
