@@ -6,26 +6,32 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:local="using:AutoDarkModeApp.Views"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+    </Page.Resources>
 
     <ScrollViewer>
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <InfoBar Message="{helpers:ResourceString Name=HotkeyInfoBarMessage}" IsOpen="True" IsClosable="False" Severity="Informational"/>
+
                 <!--  Settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
 
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
-                    <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
+                    <ToggleSwitch x:Name="HotkeysToggleSwitch" IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationAutomaticThemeToggled}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyToggleAutomaticThemeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <Button
                         x:Name="SaveSettingsButton"
                         HorizontalAlignment="Right"
@@ -45,7 +51,10 @@
                 <ItemsRepeater x:Name="HotkeysItemView">
                     <ItemsRepeater.ItemTemplate>
                         <DataTemplate x:DataType="local:HotkeysDataObject">
-                            <controls:SettingsCard Margin="0,0,0,4" Header="{x:Bind DisplayName}">
+                            <controls:SettingsCard
+                                Margin="0,0,0,4"
+                                Header="{x:Bind DisplayName}"
+                                IsEnabled="{Binding IsOn, ElementName=HotkeysToggleSwitch, Converter={StaticResource BoolNegationConverter}}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
                                         MinWidth="160"

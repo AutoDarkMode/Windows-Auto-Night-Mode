@@ -53,6 +53,7 @@ public partial class HotkeysViewModel : ObservableRecipient
             return;
 
         _builder.Config.Hotkeys.Enabled = value;
+
         try
         {
             _builder.Save();

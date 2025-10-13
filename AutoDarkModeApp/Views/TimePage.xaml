@@ -27,7 +27,7 @@
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsCard Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
                             <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
@@ -180,7 +180,10 @@
                                         Content="{helpers:ResourceString Name=ApplyGeo}" />
                                 </StackPanel>
 
-                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net" Content="{helpers:ResourceString Name=GetCoordinates}" />
+                                <HyperlinkButton
+                                    Content="{helpers:ResourceString Name=GetCoordinates}"
+                                    NavigateUri="https://www.latlong.net/"
+                                    ToolTipService.ToolTip="latlong.net" />
                             </StackPanel>
 
                             <!--  Follow Windows Night Light  -->
@@ -196,7 +199,10 @@
                 <!--  Offset time  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Offset}" />
-                    <controls:SettingsCard Description="{helpers:ResourceString Name=OffsetTime_Description}" Header="{helpers:ResourceString Name=OffsetTime_Header}">
+                    <controls:SettingsCard
+                        Description="{helpers:ResourceString Name=OffsetTime_Description}"
+                        Header="{helpers:ResourceString Name=OffsetTime_Header}"
+                        IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                         <StackPanel Orientation="Horizontal" Spacing="24">
                             <NumberBox
                                 MinWidth="120"
@@ -221,67 +227,65 @@
                 </StackPanel>
 
                 <!--  Postpone  -->
-                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
-                    <controls:SettingsCard>
-                        <controls:SettingsCard.Description>
-                            <Grid ColumnSpacing="8" RowSpacing="16">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <ComboBox
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    MinWidth="120"
-                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
-                                </ComboBox>
-                                <ToggleSwitch
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="0,0,-24,0"
-                                    IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                    OffContent="{helpers:ResourceString Name=NotDelayed}"
-                                    OnContent="{helpers:ResourceString Name=Delayed}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
+                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
+                    <controls:SettingsCard.Description>
+                        <Grid ColumnSpacing="8" RowSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ComboBox
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                MinWidth="120"
+                                IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                            </ComboBox>
+                            <ToggleSwitch
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,-24,0"
+                                IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
+                                OffContent="{helpers:ResourceString Name=NotDelayed}"
+                                OnContent="{helpers:ResourceString Name=Delayed}" />
 
-                                <Border
-                                    Grid.Row="1"
-                                    Grid.ColumnSpan="2"
-                                    Style="{StaticResource DividerBorderStyle}" />
+                            <Border
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Style="{StaticResource DividerBorderStyle}" />
 
-                                <StackPanel
-                                    Grid.Row="2"
-                                    Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    Spacing="8">
-                                    <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xECC5;" />
-                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
-                                </StackPanel>
-                            </Grid>
-                        </controls:SettingsCard.Description>
-                    </controls:SettingsCard>
-                    <InfoBar
-                        Content="{helpers:ResourceString Name=ResumeInfo_Content}"
-                        IsClosable="False"
-                        IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
-                </StackPanel>
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Spacing="8">
+                                <FontIcon
+                                    FontSize="{StaticResource BodyTextBlockFontSize}"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xECC5;" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
+                            </StackPanel>
+                        </Grid>
+                    </controls:SettingsCard.Description>
+                </controls:SettingsCard>
+                <InfoBar
+                    Content="{helpers:ResourceString Name=ResumeInfo_Content}"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
 
             </StackPanel>
         </Grid>
