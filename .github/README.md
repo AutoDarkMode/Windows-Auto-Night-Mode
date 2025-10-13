@@ -2,11 +2,11 @@
   <img alt="Auto Dark Mode title image" src="./assets/Readme.png" />
 </p>
 
+Switches between the dark and light theme of Windows at scheduled times.
+
 <p href="https://hosted.weblate.org/engage/auto-dark-mode/">
 <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
 </p>
-
-Switches between the dark and light theme of Windows at scheduled times.
 
 [Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
