@@ -13,7 +13,7 @@ pub static APP_DIR: &'static str = "adm-app";
 #[cfg(debug_assertions)]
 /// Returns the execution directory the updater resides in
 pub fn get_assembly_dir() -> PathBuf {
-    let path = PathBuf::from(r"D:\Code\Repos\AutoDarkMode\ADM-Test-Environment\adm-updater");
+    let path = PathBuf::from(r"F:\Programs\ADM-Test-Environment\adm-updater");
     //let path = PathBuf::from(r"F:\\");
     let parent = path.parent();
     if parent.is_none() {
@@ -62,6 +62,7 @@ pub fn get_working_dir() -> PathBuf {
 /// Returns the path to the service executable, used for starting the service
 pub fn get_service_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("core");
     path.push(SERVICE_EXE);
     path
 }
@@ -69,6 +70,7 @@ pub fn get_service_path() -> PathBuf {
 /// Returns the path to the app executable, used for starting the app
 pub fn get_app_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("ui");
     path.push(APP_EXE);
     path
 }
@@ -76,6 +78,7 @@ pub fn get_app_path() -> PathBuf {
 /// Returns the path to the shell executable, used for starting the shell
 pub fn get_shell_path() -> PathBuf {
     let mut path = get_adm_app_dir();
+    path.push("core");
     path.push(SHELL_EXE);
     path
 }
@@ -99,8 +102,9 @@ mod tests {
     #[test]
     fn print_updater_paths() {
         use super::*;
-        unsafe {
-            AttachConsole(ATTACH_PARENT_PROCESS);
+        let result = unsafe { AttachConsole(ATTACH_PARENT_PROCESS) };
+        if let Err(e) = result {
+            panic!("error attaching to parent console: {}", e);
         }
         println!("exedir: {:?}", get_assembly_dir());
         println!("cwd: {:?}", get_working_dir());

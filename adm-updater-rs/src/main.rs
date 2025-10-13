@@ -10,17 +10,18 @@ use extensions::get_working_dir;
 use log::{debug, warn};
 use log::{error, info};
 use std::error::Error;
+use std::ffi::OsStr;
 use std::process::Command;
 use std::rc::Rc;
 use std::{env, fmt};
-use sysinfo::{ProcessExt, SystemExt};
-use sysinfo::{System, UserExt};
+use sysinfo::System;
+use sysinfo::{ProcessRefreshKind, ProcessesToUpdate, Users};
 use windows::core::PCWSTR;
-use windows::w;
 use windows::Win32::Foundation::HWND;
 use windows::Win32::System::Console::{AttachConsole, ATTACH_PARENT_PROCESS};
 use windows::Win32::UI::Shell::ShellExecuteW;
 use windows::Win32::UI::WindowsAndMessaging::SHOW_WINDOW_CMD;
+use windows_strings::w;
 
 mod comms;
 mod extensions;
@@ -52,6 +53,7 @@ impl OpError {
     }
 }
 
+#[allow(dead_code)]
 trait LogExt {
     fn log(self) -> Self;
 }
@@ -69,8 +71,9 @@ where
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    unsafe {
-        AttachConsole(ATTACH_PARENT_PROCESS);
+    let result = unsafe { AttachConsole(ATTACH_PARENT_PROCESS) };
+    if let Err(e) = result {
+        warn!("error attaching to parent console: {}", e);
     }
     if !setup_logger().is_ok() {
         print!("failed to setup logger");
@@ -116,7 +119,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let temp_dir = &update_data_dir.join("tmp");
 
     shutdown_running_instances(&username).map_err(|op| {
-        error!("update process failed, restarting auto dark mode");
+        error!("update process failed, restarting auto dark mode: {}", op);
         try_relaunch(restart_shell, restart_app, &username, false);
         op
     })?;
@@ -172,7 +175,6 @@ fn shutdown_running_instances(channel: &str) -> Result<(), Box<dyn Error>> {
             api_shutdown_confirmed = true;
         } else {
             warn!("could not cleanly stop service: {}", e);
-            return Err(e.into());
         }
     }
     if !api_shutdown_confirmed {
@@ -227,9 +229,13 @@ fn shutdown_with_retries(process_name: &str, process_description: &str, retries:
 fn shutdown_process(process_name: &str, process_description: &str) -> bool {
     let mut s = System::new();
     let username: String = whoami::username();
-    s.refresh_processes();
-    s.refresh_users_list();
-    let mut p = s.processes_by_name(process_name);
+    s.refresh_processes_specifics(
+        ProcessesToUpdate::All,
+        true,
+        ProcessRefreshKind::nothing().with_user(sysinfo::UpdateKind::OnlyIfNotSet),
+    );
+    let users = Users::new_with_refreshed_list();
+    let mut p = s.processes_by_name(&OsStr::new(process_name));
     while let Some(p) = p.next() {
         let user_id;
         match p.user_id() {
@@ -239,7 +245,7 @@ fn shutdown_process(process_name: &str, process_description: &str) -> bool {
                 continue;
             }
         };
-        if let Some(user) = s.get_user_by_id(user_id) {
+        if let Some(user) = users.get_user_by_id(user_id) {
             if user.name() == username {
                 info!("stopping {} for current user", process_description);
                 p.kill();
@@ -275,7 +281,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
     };
     debug!("new cwd: {}", get_adm_app_dir().display());
     let service_path = Rc::new(extensions::get_service_path());
-    Command::new(&*Rc::clone(&service_path)).spawn().map_err(|e| {
+    Command::new(Rc::clone(&service_path).as_ref()).spawn().map_err(|e| {
         Box::new(OpError {
             message: format!(
                 "could not relaunch service at path: {}: {}",
@@ -289,7 +295,7 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         let app_path = Rc::new(extensions::get_app_path());
         info!("relaunching app");
         debug!("app path {}", app_path.display());
-        Command::new(&*Rc::clone(&app_path)).spawn().map_err(|e| {
+        Command::new(Rc::clone(&app_path).as_ref()).spawn().map_err(|e| {
             Box::new(OpError {
                 message: format!(
                     "could not relaunch app at path: {}: {}",
@@ -305,9 +311,10 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
         let shell_path = windows::core::HSTRING::from(shell_path_buf.as_os_str().to_os_string());
         info!("relaunching shell");
         debug!("shell path {}", shell_path_buf.display());
+        let hwnd = HWND::default();
         let result = unsafe {
             ShellExecuteW(
-                HWND(0),
+                Some(hwnd),
                 w!("open"),
                 &shell_path,
                 PCWSTR::null(),
@@ -315,12 +322,13 @@ fn relaunch(restart_shell: bool, restart_app: bool, channel: &str, patch_success
                 SHOW_WINDOW_CMD(5),
             )
         };
-        if result.0 < 32 {
+        let code = result.0 as isize;
+        if code < 32 {
             return Err(Box::new(OpError {
                 message: format!(
                     "could not relaunch shell at path: {}, (os_error: {})",
                     extensions::get_shell_path().to_str().unwrap_or_default(),
-                    result.0
+                    code
                 ),
                 severe: false,
             }));
@@ -399,7 +407,7 @@ mod tests {
     #[test]
     fn test_adm_shutdown() -> Result<(), Box<dyn Error>> {
         setup_logger()?;
-        let username = whoami::username();
+        //let username = whoami::username();
         //shutdown_running_instances(&username)?;
         shutdown_with_retries("AutoDarkModeSvc", "service", 5)?;
         shutdown_with_retries("AutoDarkModeApp", "app", 5)?;

@@ -1,6 +1,6 @@
 use log::debug;
 use named_pipe::PipeClient;
-use rand::distributions::{Alphanumeric, Distribution};
+use rand::distr::{Alphanumeric, Distribution};
 use std::{
     error::Error,
     fmt,
@@ -21,6 +21,7 @@ impl fmt::Display for PipeError {
     }
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Clone)]
 pub struct ApiResponse {
     pub status_code: String,
@@ -44,8 +45,9 @@ impl From<String> for ApiResponse {
 
 pub fn send_message_and_get_reply(msg: &str, timeout: u32, channel: &str) -> Result<ApiResponse, PipeError> {
     let mut response_pipe_id = String::from("rust_");
-    let mut rng = rand::thread_rng();
-    response_pipe_id.push_str(Alphanumeric.sample_iter(&mut rng).take(10).collect::<String>().as_str());
+    let mut rng = rand::rng();
+    let unique_id: String = Alphanumeric.sample_iter(&mut rng).take(10).map(char::from).collect();
+    response_pipe_id.push_str(&unique_id);
     send_message(msg, timeout, &channel.to_lowercase(), &response_pipe_id)?;
     return receive_reply(&response_pipe_id, timeout);
 }

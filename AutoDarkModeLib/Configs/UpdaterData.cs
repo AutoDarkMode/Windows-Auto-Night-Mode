@@ -15,15 +15,10 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoDarkModeLib.Configs
+namespace AutoDarkModeLib.Configs;
+
+public class UpdaterData
 {
-    public class UpdaterData
-    {
-        public DateTime LastCheck { get; set; }
-    }
+    public DateTime LastCheck { get; set; }
 }

@@ -4,9 +4,11 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "lldb",
             "request": "launch",
+            "sourceLanguages": ["rust"],
             "name": "Debug executable 'adm-updater-rs'",
             "cargo": {
                 "args": [
@@ -20,11 +22,12 @@
                 }
             },
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
         },
         {
             "type": "lldb",
             "request": "launch",
+            "sourceLanguages": ["rust"],
             "name": "Debug unit tests in executable 'adm-updater-rs'",
             "cargo": {
                 "args": [
@@ -39,7 +42,20 @@
                 }
             },
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+        },
+            {
+            "name": "Debug Rust",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/target/debug/adm-updater-rs.exe",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "symbolSearchPath": "https://msdl.microsoft.com/download/symbols",
+            "preLaunchTask": "${defaultBuildTask}",
+            "args": []
         }
     ]
 }

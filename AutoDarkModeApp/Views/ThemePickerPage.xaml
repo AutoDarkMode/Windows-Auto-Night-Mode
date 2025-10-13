@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.ThemePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <!--  Theme  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Theme}" />
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=SwitchWindowsTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xe771;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=TwoWay}" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <CheckBox Content="{helpers:ResourceString Name=RestoreThemeChanged}" IsChecked="{x:Bind ViewModel.ThemeKeepActiveEnabled, Mode=TwoWay}" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Theme Tutorial Steps  -->
+                <controls:SettingsCard Description="{helpers:ResourceString Name=ThemeTutorialDescription}" Header="{helpers:ResourceString Name=CreateTheme}" />
+
+                <!--  Pick Theme  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickTheme}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=LightTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                    <ComboBox x:Name="LightThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedLightTheme, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard Header="{helpers:ResourceString Name=DarkTheme}" HeaderIcon="{ui:FontIcon Glyph=&#xE708;}">
+                    <ComboBox x:Name="DarkThemeComboBox" SelectedItem="{x:Bind ViewModel.SelectedDarkTheme, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE838;}"
+                    Click="OpenThemeFolderSettingsCard_Click"
+                    Header="{helpers:ResourceString Name=OpenPath}"
+                    IsClickEnabled="True" />
+
+                <!--  Ignore  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
+
+                <InfoBar IsOpen="True" IsClosable="False" Message="{helpers:ResourceString Name=Msg_IgnoreDisabled}" />
+
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreBackground}" IsChecked="{x:Bind ViewModel.IgnoreBackgroundEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreCursor}" IsChecked="{x:Bind ViewModel.IgnoreCursorEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreSound}" IsChecked="{x:Bind ViewModel.IgnoreSoundEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreDesktopIcons}" IsChecked="{x:Bind ViewModel.IgnoreDesktopIconsEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard ContentAlignment="Left">
+                    <CheckBox Content="{helpers:ResourceString Name=IgnoreColor}" IsChecked="{x:Bind ViewModel.IgnoreColorEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

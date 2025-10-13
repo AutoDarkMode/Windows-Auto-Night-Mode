@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.CursorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <!--  Cursors  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Cursors}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableCursorSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE962;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.CursorsEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <!--  Light Cursors  -->
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=SelectLightCursor}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
+                    IsExpanded="True"
+                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
+                    <ComboBox
+                        x:Name="LightCursorComboBox"
+                        SelectedItem="{x:Bind ViewModel.SelectLightCursor, Mode=TwoWay}"
+                        SelectionChanged="LightCursorComboBox_SelectionChanged" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Padding="16,8" ContentAlignment="Left">
+                            <VariableSizedWrapGrid x:Name="LightVariableSizedWrapGrid" Orientation="Horizontal" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Dark Cursors  -->
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=SelectDarkCursor}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
+                    IsExpanded="True"
+                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
+                    <ComboBox
+                        x:Name="DarkCursorComboBox"
+                        SelectedItem="{x:Bind ViewModel.SelectDarkCursor, Mode=TwoWay}"
+                        SelectionChanged="DarkCursorComboBox_SelectionChanged" />
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Padding="16,8" ContentAlignment="Left">
+                            <VariableSizedWrapGrid x:Name="DarkVariableSizedWrapGrid" Orientation="Horizontal" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!-- More info -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="WindowsMousePointerSettingHyperlinkButton_Click"
+                    Description="{helpers:ResourceString Name=WindowsMousePointerSettingDescription}"
+                    Header="{helpers:ResourceString Name=WindowsMousePointerSetting}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE713;}"
+                    IsClickEnabled="True" />
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

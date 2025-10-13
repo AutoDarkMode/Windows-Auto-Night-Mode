@@ -24,106 +24,105 @@ using System.Threading;
 using AutoDarkModeSvc.Communication;
 using Sharprompt;
 
-namespace AutoDarkModeComms
+namespace AutoDarkModeComms;
+
+class Program
 {
-    class Program
+    private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
+
+    public const string QuitShell = "QuitShell";
+    public const string Custom = "CustomCommand";
+
+    static void Main(string[] args)
     {
-        private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
-
-        public const string QuitShell = "QuitShell";
-        public const string Custom = "CustomCommand";
-
-        static void Main(string[] args)
+        Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
+        IMessageClient client = new PipeClient();
+        List<string> argsList = args.ToList();
+        if (argsList.Count > 0)
         {
-            Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
-            IMessageClient client = new PipeClient();
-            List<string> argsList = args.ToList();
-            if (argsList.Count > 0)
+            if (argsList.Contains("--and-launch-service"))
             {
-                if (argsList.Contains("--and-launch-service"))
+                using Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
+                if (mutex.WaitOne(1))
                 {
-                    using Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
-                    if (mutex.WaitOne(1))
+                    Console.WriteLine($"attempting to start service");
+                    mutex.ReleaseMutex();
+                    using Process svc = new();
+                    svc.StartInfo.UseShellExecute = false;
+                    svc.StartInfo.FileName = GetExecutionPathService();
+                    _ = svc.Start();
+                }
+                argsList.Remove("--and-launch-service");
+            }
+            int timeoutDefault = 10;
+            Console.WriteLine(argsList[0]);
+            if (argsList.Count == 2)
+            {
+                Console.WriteLine($"custom timeout: {argsList[1]}s");
+                bool success = int.TryParse(argsList[1], out timeoutDefault);
+                if (!success) timeoutDefault = 10;
+            }
+            Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: timeoutDefault)}");
+            Console.WriteLine("Please check service.log for more details");
+
+            if (argsList.Contains("--exit"))
+            {
+                int count = 0;
+                while (true)
+                {
+                    ApiResponse response = ApiResponse.FromString(client.SendMessageAndGetReply("--alive", timeoutSeconds: 1));
+                    if (response.StatusCode == StatusCode.Timeout)
                     {
-                        Console.WriteLine($"attempting to start service");
-                        mutex.ReleaseMutex();
-                        using Process svc = new();
-                        svc.StartInfo.UseShellExecute = false;
-                        svc.StartInfo.FileName = GetExecutionPathService();
-                        _ = svc.Start();
+                        Environment.Exit(0);
                     }
-                    argsList.Remove("--and-launch-service");
+                    else if (count++ > 10)
+                    {
+                        Environment.Exit(-1);
+                    }
+                    Thread.Sleep(1000);
                 }
-                int timeoutDefault = 10;
-                Console.WriteLine(argsList[0]);
-                if (argsList.Count == 2)
-                {
-                    Console.WriteLine($"custom timeout: {argsList[1]}s");
-                    bool success = int.TryParse(argsList[1], out timeoutDefault);
-                    if (!success) timeoutDefault = 10;
-                }
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(args[0], timeoutSeconds: timeoutDefault)}");
+            }
+            Environment.Exit(0);
+        }
+        var flags = BindingFlags.Static | BindingFlags.Public;
+        List<string> fields = typeof(Command).GetFields(flags)
+            .Where(p => p.IsDefined(typeof(IncludableAttribute)))
+            .Select(f => $"{f.Name} ({(string)typeof(Command).GetField(f.Name).GetValue(null)})")
+            .ToList();
+        fields.Add(Custom);
+        fields.Add(QuitShell);
+        string selection = "";
+        do
+        {
+            try
+            {
+                selection = Prompt.Select("Select a command", fields);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                //do nothing, retry prompt select in the next loop
+                continue;
+            }
+            if (selection == Custom)
+            {
+                selection = Prompt.Input<string>("Enter command");
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
+            }
+            else if (selection != QuitShell)
+            {
+                selection = selection.Split("(")[0].Trim();
+                selection = (string)typeof(Command).GetField(selection).GetValue(null);
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
                 Console.WriteLine("Please check service.log for more details");
-
-                if (argsList.Contains("--exit")) 
-                {
-                    int count = 0;
-                    while (true)
-                    {
-                        ApiResponse response = ApiResponse.FromString(client.SendMessageAndGetReply("--alive", timeoutSeconds: 1));
-                        if (response.StatusCode == StatusCode.Timeout)
-                        {
-                            Environment.Exit(0);
-                        }
-                        else if (count++ > 10)
-                        {
-                            Environment.Exit(-1);
-                        }
-                        Thread.Sleep(1000);
-                    }
-                }
-                Environment.Exit(0);
             }
-            var flags = BindingFlags.Static | BindingFlags.Public;
-            List<string> fields = typeof(Command).GetFields(flags)
-                .Where(p => p.IsDefined(typeof(IncludableAttribute)))
-                .Select(f => $"{f.Name} ({(string)typeof(Command).GetField(f.Name).GetValue(null)})")
-                .ToList();
-            fields.Add(Custom);
-            fields.Add(QuitShell);
-            string selection = "";
-            do
-            {
-                try
-                {
-                    selection = Prompt.Select("Select a command", fields);
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    //do nothing, retry prompt select in the next loop
-                    continue;
-                }
-                if (selection == Custom)
-                {
-                    selection = Prompt.Input<string>("Enter command");
-                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                }
-                else if (selection != QuitShell)
-                {
-                    selection = selection.Split("(")[0].Trim();
-                    selection = (string)typeof(Command).GetField(selection).GetValue(null);
-                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                    Console.WriteLine("Please check service.log for more details");
-                }
-            }
-            while (selection != QuitShell);
         }
-        public static string GetExecutionPathService()
-        {
-            var assemblyLocation = AppContext.BaseDirectory;
-            var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
-            var executablePath = Path.GetDirectoryName(assemblyLocation);
-            return Path.Combine(executablePath + executableName);
-        }
+        while (selection != QuitShell);
+    }
+    public static string GetExecutionPathService()
+    {
+        var assemblyLocation = AppContext.BaseDirectory;
+        var executableName = Path.DirectorySeparatorChar + "AutoDarkModeSvc.exe";
+        var executablePath = Path.GetDirectoryName(assemblyLocation);
+        return Path.Combine(executablePath + executableName);
     }
 }

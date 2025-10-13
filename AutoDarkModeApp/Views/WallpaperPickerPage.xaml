@@ -1,0 +1,164 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.WallpaperPickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <helpers:FlagsToVisibilityConverter x:Key="FlagsToVisibilityConverter" />
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+        <helpers:EnumToStretchConverter x:Key="EnumToStretchConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+                <!--  TODO: Get system display size (aspect ratio) and apply it to the border (width) ??  -->
+                <Border
+                    Margin="0,0,0,12"
+                    HorizontalAlignment="Left"
+                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
+                    BorderBrush="Black"
+                    BorderThickness="8"
+                    CornerRadius="{StaticResource OverlayCornerRadius}">
+                    <Grid>
+                        <Image
+                            x:Name="DesktopPreviewImage"
+                            Width="320"
+                            Height="180"
+                            Source="{x:Bind ViewModel.DisplayWallpaperSource, Mode=OneWay}"
+                            Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
+
+                        <StackPanel
+                            Width="98"
+                            Height="98"
+                            Margin="8"
+                            Padding="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}"
+                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Height="1"
+                                Margin="0,0,0,8"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="42"
+                                Height="1"
+                                Margin="0,0,0,8"
+                                HorizontalAlignment="Left"
+                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                            <Border
+                                Width="24"
+                                Height="8"
+                                Margin="0,26,0,0"
+                                HorizontalAlignment="Right"
+                                Background="{ThemeResource AccentFillColorDefaultBrush}"
+                                CornerRadius="2" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!--  Desktop background  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableWallpaperSwitch}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=PickTheme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                    IsExpanded="True"
+                    Visibility="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
+
+                    <!--  Wallpaper Switch Theme  -->
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
+                    </ComboBox>
+
+                    <controls:SettingsExpander.Items>
+                        <!--  Background type  -->
+                        <controls:SettingsCard ContentAlignment="Left">
+                            <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
+                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" IsEnabled="{x:Bind ViewModel.SpotlightEnabled}" />
+                            </RadioButtons>
+                        </controls:SettingsCard>
+
+                        <!--  Monitor  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Description>
+                                <HyperlinkButton Click="RemoveDisconnectedMonitorsHyperlinkButton_Click" Content="{helpers:ResourceString Name=RemoveDisconnected}" />
+                            </controls:SettingsCard.Description>
+                            <ComboBox
+                                x:Name="MonitorsComboBox"
+                                HorizontalAlignment="Right"
+                                SelectedItem="{x:Bind ViewModel.SelectMonitor, Mode=TwoWay}" />
+                        </controls:SettingsCard>
+
+                        <!--  Picture  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ChooseWallpaper}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <Button
+                                HorizontalAlignment="Right"
+                                Command="{x:Bind ViewModel.PickFileCommand}"
+                                Content="{helpers:ResourceString Name=BrowsePhotos}" />
+                        </controls:SettingsCard>
+
+                        <!--  Picture path  -->
+                        <controls:SettingsCard Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowImageSettings, Mode=OneWay}">
+                            <controls:SettingsCard.Header>
+                                <StackPanel
+                                    Margin="0,0,-24,0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <TextBlock Text="{helpers:ResourceString Name=PathAt}" />
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        IsTextSelectionEnabled="True"
+                                        Text="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind ViewModel.DisplayWallpaperPath, Mode=OneWay}" />
+                                </StackPanel>
+                            </controls:SettingsCard.Header>
+                        </controls:SettingsCard>
+
+                        <!--  Picture fit  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Position}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Center}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Stretch}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fit}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fill}" />
+                            </ComboBox>
+                        </controls:SettingsCard>
+
+                        <!--  Color  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=Color}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowColorSettings, Mode=OneWay}">
+                            <Button Click="CheckColorButton_Click" Content="{helpers:ResourceString Name=SelectColor}" />
+                        </controls:SettingsCard>
+
+                        <!--  Windows Spotlight  -->
+                        <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
+                            <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenWindowsSpotlight}" />
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

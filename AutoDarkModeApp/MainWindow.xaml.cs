@@ -1,216 +1,109 @@
-﻿#region copyright
-//  Copyright (C) 2022 Auto Dark Mode
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-//
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#endregion
-using System;
-using System.Windows;
-using System.Diagnostics;
-using System.Globalization;
-using System.Windows.Input;
-using System.Windows.Navigation;
-using AutoDarkModeApp.Handlers;
-using AutoDarkModeApp.Properties;
-using AutoDarkModeApp.Pages;
-using ModernWpf.Media.Animation;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using AutoDarkModeApp.Contracts.Services;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
+using Windows.UI;
+using Windows.UI.WindowManagement;
 
-namespace AutoDarkModeApp
+namespace AutoDarkModeApp;
+
+public sealed partial class MainWindow : Window
 {
-    public partial class MainWindow
+    private readonly INavigationService _navigationService;
+
+    public MainWindow()
     {
-        public MainWindow()
+        _navigationService = App.GetService<INavigationService>();
+        InitializeComponent();
+
+        // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
+        // A custom title bar is required for full window theme and Mica support.
+        // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
+        ExtendsContentIntoTitleBar = true;
+        SetTitleBar(TitleBar);
+        TitleBar.Subtitle = Debugger.IsAttached ? "Debug" : "";
+        TitleBar.ActualThemeChanged += (s, e) => ApplySystemThemeToCaptionButtons();
+
+        ApplySystemThemeToCaptionButtons();
+
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+        AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
+
+        Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
+
+        // TODO: No one knows what the correct way to use it is. Waiting for official examples.
+        [DllImport("user32.dll")]
+        static extern uint GetDpiForWindow([In] IntPtr hwnd);
+        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        var dpiForWindow = GetDpiForWindow(hWnd);
+        double scaleFactor = dpiForWindow / 96.0;
+        if (AppWindow.Presenter is OverlappedPresenter presenter)
         {
-            DataContext = this;
-
-            Trace.WriteLine("--------- AppStart");
-
-            //set current UI language
-            LanguageHelper();
-
-            InitializeComponent();
-
-            Architecture Arch = RuntimeInformation.ProcessArchitecture;
-            if (Arch == Architecture.Arm64)
-            {
-                string title = "ARMto Dark Mode";
-                WindowTitle.Text = title;
-                Title = title;
-            }
-            else
-            {
-                string title = "Auto Dark Mode";
-                WindowTitle.Text = title;
-                Title = title;
-            }
+            presenter.PreferredMinimumWidth = (int)(870 * scaleFactor);
+            presenter.PreferredMinimumHeight = (int)(600 * scaleFactor);
+            presenter.PreferredMaximumHeight = 10000;
+            presenter.PreferredMaximumWidth = 10000;
         }
 
-        private void Window_OnSourceInitialized(object sender, EventArgs e)
-        {
-            if (Settings.Default.Width != 0 || Settings.Default.Height != 0)
-            {
-                Top = Settings.Default.Top;
-                Left = Settings.Default.Left;
-                Height = Settings.Default.Height;
-                Width = Settings.Default.Width;
-            }
+        _navigationService.Frame = NavigationFrame;
+        _navigationService.InitializeNavigationView(NavigationViewControl);
 
-            if (Settings.Default.Maximized)
-            {
-                WindowState = WindowState.Maximized;
-            }
+        _navigationService.InitializeBreadcrumbBar(BreadcrumBarControl);
+
+        Closed += MainWindow_Closed;
+    }
+
+    private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        if (NavigationFrame.CanGoBack)
+        {
+            NavigationFrame.GoBack();
         }
+    }
 
-        private void Window_ContentRendered(object sender, EventArgs e)
-        {
-            LanguageHelper();
-            DonationScreen();
-        }
+    private void NavViewTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
+    {
+        NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
+    }
 
-        private void DonationScreen()
+    private void ApplySystemThemeToCaptionButtons()
+    {
+        var backgroundHoverColor = TitleBar.ActualTheme == ElementTheme.Dark ? Color.FromArgb(20, 255, 255, 255) : Color.FromArgb(40, 0, 0, 0);
+        AppWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
+    }
+
+    private async void MainWindow_Closed(object sender, WindowEventArgs args)
+    {
+        var presenter = AppWindow.Presenter as OverlappedPresenter;
+        var position = AppWindow.Position;
+        var size = AppWindow.Size;
+        var localSettings = App.GetService<ILocalSettingsService>();
+        await Task.Run(async () =>
         {
-            //generate random number between 1 and 100. If the number is under or equals 2, show donation page
-            Random rdmnumber = new Random();
-            int generatedNumber = rdmnumber.Next(1, 100);
-            Debug.WriteLine("Donation gamble number: " + generatedNumber);
-            if (generatedNumber <= 2)
+            if (presenter != null)
             {
-                NavBar.SelectedItem = NavBar.FooterMenuItems[0];
-            }
-        }
+                await localSettings.SaveSettingAsync("WindowState", (int)presenter.State);
 
-
-        //region time and language
-        private static void LanguageHelper()
-        {
-            if (string.IsNullOrWhiteSpace(Settings.Default.Language.ToString()))
-            {
-                try
+                if (presenter.State == OverlappedPresenterState.Restored)
                 {
-                    Settings.Default.Language = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToString();
+                    await localSettings.SaveSettingAsync("X", position.X);
+                    await localSettings.SaveSettingAsync("Y", position.Y);
+                    await localSettings.SaveSettingAsync("Width", size.Width);
+                    await localSettings.SaveSettingAsync("Height", size.Height);
                 }
-                catch
-                {
-                    Settings.Default.Language = CultureInfo.CreateSpecificCulture("en").ToString();
-                }
             }
 
-            var langCode = new CultureInfo(Settings.Default.Language);
-            CultureInfo.CurrentUICulture = langCode;
-            CultureInfo.CurrentCulture = langCode;
-            CultureInfo.DefaultThreadCurrentUICulture = langCode;
-            CultureInfo.DefaultThreadCurrentCulture = langCode;
-        }
-
-        //application close behaviour
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            //NetMQConfig.Cleanup();
-            Settings.Default.Save();
-            Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill(); //needs kill if user uses location service
-        }
-
-
-        private void Window_Closing(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
+            //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
+            try
             {
-                // Use the RestoreBounds as the current values will be 0, 0 and the size of the screen
-                Settings.Default.Top = RestoreBounds.Top;
-                Settings.Default.Left = RestoreBounds.Left;
-                Settings.Default.Height = RestoreBounds.Height;
-                Settings.Default.Width = RestoreBounds.Width;
-                Settings.Default.Maximized = true;
+                Process.GetCurrentProcess().Kill();
             }
-            else
+            catch (Exception ex)
             {
-                Settings.Default.Top = Top;
-                Settings.Default.Left = Left;
-                Settings.Default.Height = Height;
-                Settings.Default.Width = Width;
-                Settings.Default.Maximized = false;
+                Debug.WriteLine(ex.Message);
             }
-
-            Settings.Default.Save();
-        }
-
-        /// <summary>
-        /// Navbar / NavigationView
-        /// </summary>
-
-        //change displayed page based on selection
-        private void NavBar_SelectionChanged(ModernWpf.Controls.NavigationView sender,
-            ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)
-        {
-            if (args.SelectedItemContainer != null)
-            {
-                var navItemTag = args.SelectedItemContainer.Tag.ToString();
-                StateUpdateHandler.ClearAllEvents();
-
-
-                switch (navItemTag)
-                {
-                    case "time":
-                        FrameNavbar.Navigate(typeof(PageTime), new EntranceNavigationTransitionInfo());
-                        break;
-                    case "modes":
-                        FrameNavbar.Navigate(typeof(PageSwitchModes), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "apps":
-                        FrameNavbar.Navigate(typeof(PageApps), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "wallpaper":
-                        FrameNavbar.Navigate(typeof(PagePersonalization), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "scripts":
-                        FrameNavbar.Navigate(typeof(PageScripts), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "settings":
-                        FrameNavbar.Navigate(typeof(PageSettings), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "donation":
-                        FrameNavbar.Navigate(typeof(PageDonation), null, new EntranceNavigationTransitionInfo());
-                        break;
-                    case "about":
-                        FrameNavbar.Navigate(typeof(PageAbout), null, new EntranceNavigationTransitionInfo());
-                        break;
-                }
-
-                ScrollViewerNavbar.ScrollToTop();
-            }
-        }
-
-        //startup page
-        private void NavBar_Loaded(object sender, RoutedEventArgs e)
-        {
-            NavBar.SelectedItem = NavBar.MenuItems[1];
-        }
-
-        //Block back and forward on the frame
-        private void FrameNavbar_Navigating(object sender, NavigatingCancelEventArgs e)
-        {
-            if (e.NavigationMode == NavigationMode.Forward | e.NavigationMode == NavigationMode.Back)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void HelpMenuItem_Clicked(object sender, MouseButtonEventArgs e)
-        {
-            ProcessHandler.StartProcessByProcessInfo(
-                "https://github.com/Armin2208/Windows-Auto-Night-Mode/wiki/Troubleshooting");
-        }
+        });
     }
 }

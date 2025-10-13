@@ -14,34 +14,31 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
+using System;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
 {
-    class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
-    {
-        public override int PriorityToDark => 30;
-        public override int PriorityToLight => 30;
-        private Theme currentComponentTheme = Theme.Unknown;
-        public override bool ThemeHandlerCompatibility { get; } = true;
-        Task switchTask;
+    public override int PriorityToDark => 30;
+    public override int PriorityToLight => 30;
+    private Theme currentComponentTheme = Theme.Unknown;
+    public override bool ThemeHandlerCompatibility { get; } = true;
+    Task switchTask;
 
-        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    {
+        if (currentComponentTheme != e.Theme)
         {
-            if (currentComponentTheme != e.Theme)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
+        return false;
+    }
 
         protected override async void HandleSwitch(SwitchEventArgs e)
         {
@@ -73,33 +70,32 @@ namespace AutoDarkModeSvc.SwitchComponents.Base
             Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
         }
 
-        protected override void EnableHook()
-        {
-            currentComponentTheme = Theme.Unknown;
-        }
-
-        protected override void DisableHook()
-        {
-            currentComponentTheme = Theme.Unknown;
-        }
-
-        protected override void UpdateSettingsState()
-        {
-            if (!Settings.Component.Equals(SettingsBefore.Component))
-            {
-                currentComponentTheme = Theme.Unknown;
-            }
-        }
-
-        /*
-        protected override async void Callback()
-        {
-            if (switchTask != null)
-            {
-                await switchTask;
-            }
-            Logger.Debug("test callback wait");
-        }
-        */
+    protected override void EnableHook()
+    {
+        currentComponentTheme = Theme.Unknown;
     }
+
+    protected override void DisableHook()
+    {
+        currentComponentTheme = Theme.Unknown;
+    }
+
+    protected override void UpdateSettingsState()
+    {
+        if (!Settings.Component.Equals(SettingsBefore.Component))
+        {
+            currentComponentTheme = Theme.Unknown;
+        }
+    }
+
+    /*
+    protected override async void Callback()
+    {
+        if (switchTask != null)
+        {
+            await switchTask;
+        }
+        Logger.Debug("test callback wait");
+    }
+    */
 }

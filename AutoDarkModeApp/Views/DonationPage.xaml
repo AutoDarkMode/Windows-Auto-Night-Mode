@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.DonationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+                
+                <!-- Donation Picture -->
+                <Image Source="/Assets/DonationHeader.png" HorizontalAlignment="Left" />
+
+                <!--  Donation Description  -->
+                <TextBlock Text="{helpers:ResourceString Name=Donation_Description}" TextWrapping="Wrap" />
+
+                <!--  How to donate  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=DonationPayPal_Description}"
+                    Header="Paypal">
+                    <Button
+                        Click="DonationPayPalButton_Click"
+                        Content="{helpers:ResourceString Name=Donation}"
+                        Style="{ThemeResource AccentButtonStyle}" />
+                </controls:SettingsCard>
+                <controls:SettingsCard 
+                    Header="GitHub Sponsors">
+                    <Button
+                        Click="GithubSponsorsButton_Click"
+                        Content="{helpers:ResourceString Name=Donation}"
+                        Style="{ThemeResource AccentButtonStyle}" />
+                </controls:SettingsCard>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

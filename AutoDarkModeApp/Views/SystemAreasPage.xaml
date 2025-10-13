@@ -1,0 +1,99 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.SystemAreasPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--  These are converters for different controls  -->
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SystemAreas}" />
+
+                <!--  Windows mode  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=WindowsMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE770;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SystemSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Disabled}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+
+                <!--  App Mode  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AppMode}" HeaderIcon="{ui:FontIcon Glyph=&#xE71D;}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.AppsSwitchComponentMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AdaptToSystem}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysLight}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=AlwaysDark}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=Disabled}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+
+
+
+                <!--  Accent Mode for title bars and window borders  -->
+                <controls:SettingsExpander
+                    Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
+                    Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE737;}">
+
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}" />
+
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=ApplyDuring}" IsEnabled="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=OneWay}">
+                            <ComboBox SelectedIndex="{x:Bind ViewModel.DWMPrevalenceMode, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
+                            </ComboBox>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  Accent mode for the taskbar  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=AccentApplyTaskbar}" HeaderIcon="{ui:FontIcon Glyph=&#xE90E;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+
+
+                <!--  Touch Keyboard  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}" Visibility="{x:Bind ViewModel.TouchKeyboardSwitchCardVisibility, Mode=OneWay}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTouchKeyboardSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <!--  Color Filter  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ColorFilter}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <!-- More info -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Description="{helpers:ResourceString Name=DarkModeForWebbrowserDescription}"
+                    Click="DarkReaderWebBrowserHyperlinkButton_Click"
+                    Header="{helpers:ResourceString Name=DarkModeForWebbrowser}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEA86;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="WindowsColorsSettingHyperlinkButton_Click"
+                    Header="{helpers:ResourceString Name=WindowsColorsSetting}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE713;}"
+                    IsClickEnabled="True" />
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

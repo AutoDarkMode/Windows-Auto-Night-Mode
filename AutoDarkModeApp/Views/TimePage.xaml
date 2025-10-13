@@ -1,0 +1,289 @@
+﻿<Page
+    x:Class="AutoDarkModeApp.Views.TimePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <!--  These are converters for different controls  -->
+        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
+        <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
+        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+    </Page.Resources>
+
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <!--  AutoThemeSwitching  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Switch}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
+                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <controls:SettingsCard Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
+                    <controls:SettingsCard.Description>
+                        <StackPanel Spacing="12">
+                            <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                                <RadioButton x:Name="RadioButtonCustomTimes" Content="{helpers:ResourceString Name=CustomHours}" />
+                                <RadioButton x:Name="RadioButtonLocationTimes" Content="{helpers:ResourceString Name=LocationService}" />
+                                <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{helpers:ResourceString Name=LocationGeoService}" />
+                                <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
+                            </RadioButtons>
+
+                            <Border Style="{StaticResource DividerBorderStyle}" />
+
+                            <!--  Custom Time  -->
+                            <Grid
+                                Grid.Column="0"
+                                ColumnSpacing="8"
+                                RowSpacing="16"
+                                Visibility="{x:Bind ViewModel.TimePickerVisibility, Mode=OneWay}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <!--  Light  -->
+                                <FontIcon
+                                    Grid.Column="0"
+                                    FontSize="16"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE706;" />
+                                <TextBlock Grid.Column="1" Text="{helpers:ResourceString Name=Light}" />
+                                <TimePicker
+                                    Grid.Column="2"
+                                    Margin="16,0,0,0"
+                                    ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
+                                    Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
+                                <!--  Dark  -->
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="16"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xe708;" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{helpers:ResourceString Name=Dark}" />
+                                <TimePicker
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="16,0,0,0"
+                                    ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
+                                    Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
+                            </Grid>
+
+                            <Border Style="{StaticResource DividerBorderStyle}" Visibility="{x:Bind ViewModel.DividerBorderVisibility, Mode=OneWay}" />
+
+                            <!--  Location  -->
+                            <Grid
+                                ColumnSpacing="8"
+                                RowSpacing="16"
+                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
+                                    <Style TargetType="FontIcon">
+                                        <Setter Property="FontSize" Value="16" />
+                                    </Style>
+                                </Grid.Resources>
+
+                                <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE895;" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+                            </Grid>
+
+
+                            <!--  Geo Coordinates  -->
+                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                                <Grid ColumnSpacing="8" RowSpacing="16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.Resources>
+                                        <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
+                                        <Style TargetType="FontIcon">
+                                            <Setter Property="FontSize" Value="16" />
+                                        </Style>
+                                    </Grid.Resources>
+
+                                    <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
+                                    <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                    <FontIcon
+                                        Grid.Row="1"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE895;" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+                                </Grid>
+
+
+                                <Border Style="{StaticResource DividerBorderStyle}" />
+
+                                <StackPanel Orientation="Horizontal" Spacing="24">
+                                    <TextBox
+                                        MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                        Header="{helpers:ResourceString Name=Latitude}"
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                    <TextBox
+                                        MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                        Header="{helpers:ResourceString Name=Longitude}"
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                    <Button
+                                        VerticalAlignment="Bottom"
+                                        Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
+                                        Content="{helpers:ResourceString Name=ApplyGeo}" />
+                                </StackPanel>
+
+                                <HyperlinkButton NavigateUri="https://www.latlong.net/" ToolTipService.ToolTip="latlong.net" Content="{helpers:ResourceString Name=GetCoordinates}" />
+                            </StackPanel>
+
+                            <!--  Follow Windows Night Light  -->
+                            <HyperlinkButton
+                                Click="WindowsNightLightHyperlinkButton_Click"
+                                Content="{helpers:ResourceString Name=OpenWindowsNightLight}"
+                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
+
+                        </StackPanel>
+                    </controls:SettingsCard.Description>
+                </controls:SettingsCard>
+
+                <!--  Offset time  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Offset}" />
+                    <controls:SettingsCard Description="{helpers:ResourceString Name=OffsetTime_Description}" Header="{helpers:ResourceString Name=OffsetTime_Header}">
+                        <StackPanel Orientation="Horizontal" Spacing="24">
+                            <NumberBox
+                                MinWidth="120"
+                                Header="{helpers:ResourceString Name=Light}"
+                                LargeChange="10"
+                                Maximum="720"
+                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
+                                SmallChange="1"
+                                SpinButtonPlacementMode="Inline"
+                                Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
+                            <NumberBox
+                                MinWidth="120"
+                                Header="{helpers:ResourceString Name=Dark}"
+                                LargeChange="10"
+                                Maximum="720"
+                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
+                                SmallChange="1"
+                                SpinButtonPlacementMode="Inline"
+                                Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
+                        </StackPanel>
+                    </controls:SettingsCard>
+                </StackPanel>
+
+                <!--  Postpone  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
+                    <controls:SettingsCard>
+                        <controls:SettingsCard.Description>
+                            <Grid ColumnSpacing="8" RowSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <ComboBox
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    MinWidth="120"
+                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                                </ComboBox>
+                                <ToggleSwitch
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,-24,0"
+                                    IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
+                                    OffContent="{helpers:ResourceString Name=NotDelayed}"
+                                    OnContent="{helpers:ResourceString Name=Delayed}" />
+
+                                <Border
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    Style="{StaticResource DividerBorderStyle}" />
+
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <FontIcon
+                                        FontSize="{StaticResource BodyTextBlockFontSize}"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xECC5;" />
+                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
+                                </StackPanel>
+                            </Grid>
+                        </controls:SettingsCard.Description>
+                    </controls:SettingsCard>
+                    <InfoBar
+                        Content="{helpers:ResourceString Name=ResumeInfo_Content}"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

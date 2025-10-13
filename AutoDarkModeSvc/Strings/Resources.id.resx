@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Pergantian tema otomatis</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Konfirmasi</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Gelap</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Tunda</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Matikan pergantian otomatis</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Dinonaktifkan</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Diaktifkan</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Terang</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Apakah anda ingin untuk menonaktifkan pergantian otomatis?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>Pergantian otomatis akan juga berlanjut jika anda kembali menggunakan tema sebelumnya.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Pergantian tema akan ditunda hingga</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Pergantian tema tertunda sekali!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Apakah anda mau untuk berganti sekarang? Atau tunda lebih lanjut?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Pergantian tema otomatis dilanjutkan</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Pergantian tema tertunda</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Jeda</value>
+  </data>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 jam</value>
+  </data>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 menit</value>
+  </data>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 jam</value>
+  </data>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 menit</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 jam</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 jam</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 jam</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Tekan konfirmasi untuk meminta pergantian tema secepatnya.</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Pulih kan aksi ini dengan menekan tombol batal di bawah.</value>
+  </data>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Ganti sekarang</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Pergantian tema otomatis</value>
+  </data>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Tutup</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Paksa Mode Gelap</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Paksa Mode Terang</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Buka Direktori Pengaturan</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Tunda pergantian otomatis</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Beralih tema</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Cobalah untuk memperbaiki tema</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Batalkan</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>hingga</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>hingga matahari terbit berikutnya</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>hingga matahari terbenam berikutnya</value>
+  </data>
+  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
+    <value>Terjadi kesalahan saat menambal.</value>
+  </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Penurunan</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Catatan Sejarah Direktori</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Tunda</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Perbarui</value>
+  </data>
+  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
+    <value>Versi Terkini</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Versi lama {0} tersedia</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
+    <value>Menurunkan versi ke</value>
+  </data>
+  <data name="UpdateToast_Downloading" xml:space="preserve">
+    <value>Mengunduh…</value>
+  </data>
+  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
+    <value>Unduhan sedang berlangsung</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Buka halaman unduhan</value>
+  </data>
+  <data name="UpdateToast_Message" xml:space="preserve">
+    <value>Pesan</value>
+  </data>
+  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
+    <value>Versi baru {0} tersedia</value>
+    <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
+  </data>
+  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
+    <value>Gagal menambal</value>
+  </data>
+  <data name="UpdateToast_SeeLogs" xml:space="preserve">
+    <value>Silakan periksa service.log dan updater.log untuk info</value>
+  </data>
+  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
+    <value>Memperbarui ke</value>
+  </data>
+</root>

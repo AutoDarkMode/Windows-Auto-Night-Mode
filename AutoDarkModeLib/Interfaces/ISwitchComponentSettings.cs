@@ -14,15 +14,10 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace AutoDarkModeLib.Interfaces;
 
-namespace AutoDarkModeLib.Interfaces
+public interface ISwitchComponentSettings<T>
 {
-    public interface ISwitchComponentSettings<T>
-    {
-        public bool Enabled { get; set; }
-        public T Component { get; set; }
-    }
+    public bool Enabled { get; set; }
+    public T Component { get; set; }
 }

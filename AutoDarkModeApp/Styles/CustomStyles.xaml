@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  NavigationView Thickness  -->
+    <Thickness x:Key="NavigationViewHeaderMargin">24,24,24,12</Thickness>
+
+    <!--  BreadcrumbBar style like Win.11 Settings  -->
+    <x:Double x:Key="BreadcrumbBarChevronFontSize">16</x:Double>
+    <Thickness x:Key="BreadcrumbBarChevronPadding">11,4,12,0</Thickness>
+
+    <!--  Max width of content  -->
+    <x:Double x:Key="PageContentMaxWidth">1000</x:Double>
+
+    <!--  Spacing between cards  -->
+    <x:Double x:Key="SettingsCardSpacing">4</x:Double>
+
+    <!--  StackPanel style for the base page layout  -->
+    <Style x:Key="PageBaseStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="MaxWidth" Value="{StaticResource PageContentMaxWidth}" />
+        <Setter Property="Margin" Value="24,0,24,24" />
+        <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
+    </Style>
+
+    <!--  Style of a section header  -->
+    <Style
+        x:Key="SettingsSectionHeaderTextBlockStyle"
+        BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+        TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,28,0,4" />
+    </Style>
+
+    <!--  Divider line in SettingsExpander  -->
+    <Style x:Key="DividerBorderStyle" TargetType="Border">
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="BorderBrush" Value="{ThemeResource DividerStrokeColorDefaultBrush}" />
+        <Setter Property="Margin" Value="-16,0,-40,0" />
+    </Style>
+
+
+    <!--  ThemeDictionaries  -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+            <!--  BreadcrumbBar style like Win.11 Settings  -->
+            <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+            <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+            <!--  BreadcrumbBar style like Win.11 Settings  -->
+            <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+            <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="HighContrast">
+            <!--  BreadcrumbBar style like Win.11 Settings  -->
+            <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
+            <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

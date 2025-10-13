@@ -14,90 +14,85 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeSvc.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeLib;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
+using AutoDarkModeLib.ComponentSettings.Base;
+using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Handlers.ThemeFiles;
 
-namespace AutoDarkModeSvc.SwitchComponents.Base
+namespace AutoDarkModeSvc.SwitchComponents.Base;
+
+internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
 {
-    internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
-    {
-        private Theme currentTheme = Theme.Unknown;
-        public override bool ThemeHandlerCompatibility => false;
+    private Theme currentTheme = Theme.Unknown;
+    public override bool ThemeHandlerCompatibility => false;
 
-        protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
+    {
+        if (currentTheme != e.Theme)
         {
-            if (currentTheme != e.Theme)
-            {
-                return true;
-            }
-            return false;
+            return true;
+        }
+        return false;
+    }
+
+    protected override void HandleSwitch(SwitchEventArgs e)
+    {
+        Theme oldTheme = currentTheme;
+        currentTheme = e.Theme;
+        string cursorSchemeNew = "";
+        if (e.Theme == Theme.Light)
+        {
+            cursorSchemeNew = Settings.Component.CursorsLight;
+        }
+        else if (e.Theme == Theme.Dark)
+        {
+            cursorSchemeNew = Settings.Component.CursorsDark;
         }
 
-        protected override void HandleSwitch(SwitchEventArgs e)
+        if (cursorSchemeNew != null && cursorSchemeNew.Length > 0)
         {
-            Theme oldTheme = currentTheme;
-            currentTheme = e.Theme;
-            string cursorSchemeNew = "";
-            if (e.Theme == Theme.Light)
-            {
-                cursorSchemeNew = Settings.Component.CursorsLight;
-            }
-            else if (e.Theme == Theme.Dark)
-            {
-                cursorSchemeNew = Settings.Component.CursorsDark;
-            }
+            GlobalState.ManagedThemeFile.Cursors = RegistryHandler.GetCursorScheme(cursorSchemeNew);
+            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), e.Theme)} ({cursorSchemeNew})");
+        }
+        else
+        {
+            GlobalState.ManagedThemeFile.Cursors = RegistryHandler.GetCursors();
+            Logger.Info("update info - no cursors selected, setting current default cursor");
+        }
+    }
 
-            if (cursorSchemeNew != null && cursorSchemeNew.Length > 0)
+    protected override void EnableHook()
+    {
+        try
+        {
+            Cursors current = RegistryHandler.GetCursors();
+            if (Settings.Component.CursorsLight == Settings.Component.CursorsDark && current.DefaultValue.Item1 == Settings.Component.CursorsLight)
             {
-                GlobalState.ManagedThemeFile.Cursors = RegistryHandler.GetCursorScheme(cursorSchemeNew);
-                Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), e.Theme)} ({cursorSchemeNew})");
+                currentTheme = GlobalState.InternalTheme;
+            }
+            else if (current.DefaultValue.Item1 == Settings.Component.CursorsLight)
+            {
+                currentTheme = Theme.Light;
+            }
+            else if (current.DefaultValue.Item1 == Settings.Component.CursorsDark)
+            {
+                currentTheme = Theme.Dark;
             }
             else
             {
-                GlobalState.ManagedThemeFile.Cursors = RegistryHandler.GetCursors();
-                Logger.Info("update info - no cursors selected, setting current default cursor");
+                currentTheme = Theme.Unknown;
             }
         }
-
-        protected override void EnableHook()
+        catch (Exception ex)
         {
-            try
-            {
-                Cursors current = RegistryHandler.GetCursors();
-                if (Settings.Component.CursorsLight == Settings.Component.CursorsDark && current.DefaultValue.Item1 == Settings.Component.CursorsLight)
-                {
-                    currentTheme = GlobalState.InternalTheme;
-                }
-                else if (current.DefaultValue.Item1 == Settings.Component.CursorsLight)
-                {
-                    currentTheme = Theme.Light;
-                }
-                else if (current.DefaultValue.Item1 == Settings.Component.CursorsDark)
-                {
-                    currentTheme = Theme.Dark;
-                }
-                else
-                {
-                    currentTheme = Theme.Unknown;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Warn(ex, "could not retrieve currently active cursors:");
-            }
+            Logger.Warn(ex, "could not retrieve currently active cursors:");
         }
+    }
 
-        protected override void UpdateSettingsState()
-        {
-            EnableHook();
-        }
+    protected override void UpdateSettingsState()
+    {
+        EnableHook();
     }
 }
