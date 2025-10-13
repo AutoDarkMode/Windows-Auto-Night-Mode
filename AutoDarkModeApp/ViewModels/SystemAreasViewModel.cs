@@ -30,7 +30,8 @@ public partial class SystemAreasViewModel : ObservableRecipient
         Disabled,
     }
 
-    public bool LightTaskbarAccentPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
+    //public bool LightTaskbarAccentPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
+    public bool TouchKeyboardSwitchPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2);
 
     [ObservableProperty]
     public partial AppSwitchMode AppsSwitchComponentMode { get; set; }
@@ -46,6 +47,9 @@ public partial class SystemAreasViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial int DWMPrevalenceMode { get; set; }
+
+    [ObservableProperty]
+    public partial bool TouchKeyboardSwitchCardVisibility { get; set; }
 
     [ObservableProperty]
     public partial bool IsTouchKeyboardSwitch { get; set; }
@@ -121,7 +125,9 @@ public partial class SystemAreasViewModel : ObservableRecipient
             DWMPrevalenceMode = 1;
         }
 
+        TouchKeyboardSwitchCardVisibility = TouchKeyboardSwitchPermitted;
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
+
         IsColorFilterSwitch = _builder.Config.ColorFilterSwitch.Enabled;
 
         _isInitializing = false;

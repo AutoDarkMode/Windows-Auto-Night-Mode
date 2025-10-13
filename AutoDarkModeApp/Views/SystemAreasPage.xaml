@@ -67,7 +67,7 @@
 
 
                 <!--  Touch Keyboard  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}" Visibility="{x:Bind ViewModel.TouchKeyboardSwitchCardVisibility, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsTouchKeyboardSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
