@@ -144,13 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Immer hell</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren. Wenn dies oft auftritt und stört, bitte diese Einstellung ausprobieren.
-
-Beim Designwechsel kann es hierbei zu leichtem Stocken kommen. 
-
-In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Anwenden</value>
   </data>
@@ -983,14 +976,21 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Aggressivere DWM-Aktualisierung</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Verzögere den Designwechsel um eine Anzahl an Minuten</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive Zahlen sind später, negative Zahlen sind früher</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren. Wenn dies oft auftritt und stört, bitte diese Einstellung ausprobieren.
+
+Beim Designwechsel kann es hierbei zu leichtem Stocken kommen. 
+
+In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Dark Mode für deinen Internetbrowser</value>
@@ -1018,5 +1018,8 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows-Einstellungen öffnen</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
   </data>
 </root>

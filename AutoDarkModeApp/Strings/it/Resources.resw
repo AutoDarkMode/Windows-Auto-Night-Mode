@@ -144,12 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Sempre chiaro</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Tenta di ridurre il verificarsi di colori errati dell'interfaccia utente in: esplora risorse, barra delle applicazioni e menu di avvio. Se il problema si verifica spesso o è fastidioso, provate ad attivare questa impostazione.
-
-In alcuni sistemi potrebbe verificarsi un leggero o moderato ritardo durante il passaggio da un tema all'altro, come accade in Windows 10.
-In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante l'aggiornamento del DWM.</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Applica</value>
   </data>
@@ -982,14 +976,20 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Tenta di ridurre il verificarsi di colori errati dell'interfaccia utente in: esplora risorse, barra delle applicazioni e menu di avvio. Se il problema si verifica spesso o è fastidioso, provate ad attivare questa impostazione.
+
+In alcuni sistemi potrebbe verificarsi un leggero o moderato ritardo durante il passaggio da un tema all'altro, come accade in Windows 10.
+In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante l'aggiornamento del DWM.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Dark mode for your web browser</value>
@@ -1017,5 +1017,8 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
   </data>
 </root>

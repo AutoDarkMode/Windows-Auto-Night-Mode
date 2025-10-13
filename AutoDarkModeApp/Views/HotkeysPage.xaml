@@ -6,12 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:local="using:AutoDarkModeApp.Views"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.Resources>
+        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+    </Page.Resources>
 
     <ScrollViewer>
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+
+                <InfoBar Message="{helpers:ResourceString Name=HotkeyInfoBarMessage}" IsOpen="True" IsClosable="False" Severity="Informational"/>
 
                 <!--  Settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
@@ -48,7 +54,7 @@
                             <controls:SettingsCard
                                 Margin="0,0,0,4"
                                 Header="{x:Bind DisplayName}"
-                                IsEnabled="{Binding IsOn, ElementName=HotkeysToggleSwitch}">
+                                IsEnabled="{Binding IsOn, ElementName=HotkeysToggleSwitch, Converter={StaticResource BoolNegationConverter}}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
                                         MinWidth="160"
