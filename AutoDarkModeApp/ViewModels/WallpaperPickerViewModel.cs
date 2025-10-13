@@ -13,6 +13,7 @@ using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
+using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -74,10 +75,10 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial WallpaperDisplayFlags CurrentDisplayFlags { get; set; }
 
     [ObservableProperty]
-    public partial ImageSource? GlobalWallpaperSource { get; set; }
+    public partial ImageSource? DisplayWallpaperSource { get; set; }
 
     [ObservableProperty]
-    public partial string? GlobalWallpaperPath { get; set; }
+    public partial string? DisplayWallpaperPath { get; set; }
 
     [ObservableProperty]
     public partial object? SelectMonitor { get; set; }
@@ -148,10 +149,53 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
-                GlobalWallpaperPath = file.Path;
+                SetWallpaperFromFileDialog(file.Path);
+                SafeSaveBuilder();
+                LoadSettings();
+                DisplayWallpaperPath = file.Path;
                 _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
             }
         });
+    }
+
+    private void SetWallpaperFromFileDialog(string filePath)
+    {
+        switch (CurrentDisplayMode)
+        {
+            case WallpaperDisplayMode.Picture:
+                if (SelectWallpaperThemeMode == ApplicationTheme.Light)
+                {
+                    _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light = filePath;
+                    _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Global;
+                }
+                else
+                {
+                    _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark = filePath;
+                    _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Global;
+                }
+
+                break;
+            case WallpaperDisplayMode.PictureMM when SelectMonitor != null:
+                {
+                    var selectedMonitor = (MonitorSettings)SelectMonitor;
+                    var configMonitorSetting = _builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == selectedMonitor.Id);
+                    if (configMonitorSetting == null) return;
+                    if (SelectWallpaperThemeMode == ApplicationTheme.Light)
+                    {
+                        configMonitorSetting.LightThemeWallpaper = filePath;
+                        selectedMonitor.LightThemeWallpaper = filePath;
+                        _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
+                    }
+                    else
+                    {
+                        configMonitorSetting.DarkThemeWallpaper = filePath;
+                        selectedMonitor.DarkThemeWallpaper = filePath;
+                        _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Individual;
+                    }
+
+                    break;
+                }
+        }
     }
 
     private void LoadSettings()
@@ -208,20 +252,20 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         switch (currentType)
         {
             case WallpaperType.Global:
-                GlobalWallpaperPath =
+                DisplayWallpaperPath =
                     SelectWallpaperThemeMode == ApplicationTheme.Light
                         ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
                         : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
-                GlobalWallpaperSource = GlobalWallpaperPath != null ? new BitmapImage(new Uri(GlobalWallpaperPath)) : (ImageSource?)null;
+                DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : (ImageSource?)null;
                 break;
             case WallpaperType.Individual when SelectMonitor != null:
                 var monitorSettings = (MonitorSettings)SelectMonitor;
-                GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
-                GlobalWallpaperSource = GlobalWallpaperPath != null ? new BitmapImage(new Uri(GlobalWallpaperPath)) : (ImageSource?)null;
+                DisplayWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
+                DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : (ImageSource?)null;
 
                 break;
             case WallpaperType.SolidColor:
-                GlobalWallpaperSource = null;
+                DisplayWallpaperSource = null;
                 break;
             case WallpaperType.Spotlight:
                 [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
@@ -232,24 +276,24 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                 var wallPaperPath = new StringBuilder(200);
                 if (SystemParametersInfo(SPI_GETDESKWALLPAPER, 200, wallPaperPath, 0) && !string.IsNullOrEmpty(wallPaperPath.ToString()))
                 {
-                    GlobalWallpaperSource = new BitmapImage(new Uri(wallPaperPath.ToString()));
+                    DisplayWallpaperSource = new BitmapImage(new Uri(wallPaperPath.ToString()));
                 }
                 else
                 {
                     if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
                     {
-                        GlobalWallpaperPath = Path.Combine(
+                        DisplayWallpaperPath = Path.Combine(
                             Environment.GetFolderPath(Environment.SpecialFolder.Windows),
                             @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg"
                         );
-                        if (File.Exists(GlobalWallpaperPath))
-                            GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+                        if (File.Exists(DisplayWallpaperPath))
+                            DisplayWallpaperSource = new BitmapImage(new Uri(DisplayWallpaperPath));
                     }
                     else
                     {
-                        GlobalWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
-                        if (File.Exists(GlobalWallpaperPath))
-                            GlobalWallpaperSource = new BitmapImage(new Uri(GlobalWallpaperPath));
+                        DisplayWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
+                        if (File.Exists(DisplayWallpaperPath))
+                            DisplayWallpaperSource = new BitmapImage(new Uri(DisplayWallpaperPath));
                     }
                 }
                 break;
@@ -343,51 +387,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         LoadSettings();
     }
 
-    partial void OnGlobalWallpaperPathChanged(string? value)
-    {
-        if (_isInitializing)
-            return;
-
-        switch (CurrentDisplayMode)
-        {
-            case WallpaperDisplayMode.Picture:
-                if (SelectWallpaperThemeMode == ApplicationTheme.Light)
-                {
-                    _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light = value;
-                    _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Global;
-                }
-                else
-                {
-                    _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark = value;
-                    _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Global;
-                }
-                break;
-            case WallpaperDisplayMode.PictureMM when SelectMonitor != null:
-                {
-                    var selectedMonitor = (MonitorSettings)SelectMonitor;
-                    var configMonitorSetting = _builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == selectedMonitor.Id);
-                    if (configMonitorSetting == null) return;
-                    if (SelectWallpaperThemeMode == ApplicationTheme.Light)
-                    {
-                        configMonitorSetting.LightThemeWallpaper = value;
-                        selectedMonitor.LightThemeWallpaper = value;
-                        _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
-                    }
-                    else
-                    {
-                        configMonitorSetting.DarkThemeWallpaper = value;
-                        selectedMonitor.DarkThemeWallpaper = value;
-                        _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Individual;
-                    }
-
-                    break;
-                }
-        }
-
-        SafeSaveBuilder();
-        LoadSettings();
-    }
-
     partial void OnSelectMonitorChanged(object? value)
     {
         if (_isInitializing)
@@ -396,8 +395,8 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM && value != null)
         {
             MonitorSettings monitorSettings = (MonitorSettings)value;
-            GlobalWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
-            GlobalWallpaperSource = GlobalWallpaperPath != null ? new BitmapImage(new Uri(GlobalWallpaperPath)) : null;
+            DisplayWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
+            DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : null;
         }
     }
 

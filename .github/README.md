@@ -63,7 +63,7 @@ This version is under development. The function is not complete, and there may b
 Download Auto Dark Mode from [WinGet](https://github.com/microsoft/winget-cli/releases).
 
 ```powershell
-winget install --id Armin2208.WindowsAutoNightMode
+winget install autodarkmode
 ```
 
 #### Via Chocolatey

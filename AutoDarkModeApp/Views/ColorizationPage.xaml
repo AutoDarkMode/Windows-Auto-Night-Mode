@@ -67,7 +67,6 @@
                                         Height="28"
                                         Background="{x:Bind ViewModel.DarkModeColorPreviewBorderBackground, Mode=OneWay}"
                                         CornerRadius="{StaticResource ControlCornerRadius}" />
-                                    <!--  TODO: Replace Content to Res  -->
                                     <Button
                                         MinWidth="120"
                                         Click="DarkModeCheckColorButton_Click"

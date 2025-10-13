@@ -15,7 +15,7 @@
 
                 <!--  Settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
-                
+
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
@@ -71,5 +71,4 @@
             </StackPanel>
         </Grid>
     </ScrollViewer>
-
 </Page>
