@@ -495,7 +495,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Download update</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>This option does not support the preinstalled default Windows themes</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>ADM needs access to your location</value>

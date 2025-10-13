@@ -495,7 +495,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.
     <value>Update herunterladen</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Diese Option wird von Standard Windows Designs nicht unterstützt</value>
+    <value>Diese Option wird von den vorinstallierten Standard-Windows-Themes nicht unterstützt</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Die Anwendung benötigt Zugriff auf die Standortdienste von Windows</value>
@@ -963,7 +963,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Nicht verzögert</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Farbe ignorieren</value>
+    <value>Akzentfarbe ignorieren</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
