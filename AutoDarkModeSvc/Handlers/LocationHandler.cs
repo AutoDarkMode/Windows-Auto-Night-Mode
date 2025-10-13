@@ -130,9 +130,17 @@ static class LocationHandler
 
     }
 
-    public async static Task<bool> HasLocation()
+    public static async Task<bool> HasLocation()
     {
-        return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed || Geolocator.DefaultGeoposition.HasValue;
+        try
+        {
+            return await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed || Geolocator.DefaultGeoposition.HasValue;
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn("failed to query location access", ex);
+            return false;
+        }
     }
 
     /// <summary>
