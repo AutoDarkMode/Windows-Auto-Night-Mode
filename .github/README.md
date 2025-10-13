@@ -5,12 +5,12 @@
 Switches between the dark and light theme of Windows at scheduled times.
 
 <p href="https://hosted.weblate.org/engage/auto-dark-mode/">
-<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
+  <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
 </p>
 
 [Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
-## Overview
+# Auto Dark Mode
 
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
@@ -21,8 +21,10 @@ Auto Dark Mode helps you to be more productive. Because you shouldn't care about
 Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts.
 
 ## Features
+
 ![Screenshot showing the System areas page of Auto Dark Mode](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/refs/heads/winui3/.github/assets/screenshot_systemareas.png)
-- Compatible with Windows 10* and Windows 11.
+
+- Compatible with Windows 10 22H2 and Windows 11.
 - Theme switch based on sunrise and sunset.
 - Postpone or delay the next switch as you like.
 - Desktop wallpaper switch.
@@ -39,32 +41,30 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 - Automatic updates.
 - Lightweight with clean uninstall. No admin rights needed.
 
-<sup>* Windows 10 versions older than 22H2 are not supported</sup>
-
 ## Download
 
-#### Download from Microsoft Store
+### Download from Microsoft Store
 
 <a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 
-#### Download from GitHub
+### Download from GitHub
 
 [Click here to download the newest version of Auto Dark Mode!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/latest)
 
-#### Download from WinGet
+### Download from WinGet
 
 ```powershell
 winget install autodarkmode
 ```
 
-#### Even more download options
+#### Other download options
 
 <details>
   <summary>Click to expand</summary>
 
-#### Via Chocolatey
+### Via Chocolatey
 
 Download Auto Dark Mode from [Chocolatey](https://chocolatey.org/packages/auto-dark-mode) (unofficial entry).
 
@@ -72,7 +72,7 @@ Download Auto Dark Mode from [Chocolatey](https://chocolatey.org/packages/auto-d
 choco install auto-dark-mode
 ```
 
-#### Via Scoop
+### Via Scoop
 
 Download Auto Dark Mode from [Scoop](https://scoop.sh) (unofficial entry).
 
@@ -92,21 +92,20 @@ scoop install auto-dark-mode-np
 
 </details>
 
-#### Installation
+## Installation
 
-Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument _/allusers /verysilent_ to skip the installer window.
-<br> <br>
-Sometimes Windows or web browsers will show a security notice while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
+Installation is pretty easy, as you only need to run the setup file provided as .exe. If you want to deploy Auto Dark Mode on multiple machines, you can use the argument `/allusers /verysilent` to skip the installer window.
+
+Sometimes Windows or web browsers may show a security notification while downloading Auto Dark Mode. This is due to our lack of a developer license. You can ignore these messages.
 
 ## Translations
 
-We use Weblate's cool [free Libre plan](https://hosted.weblate.org/hosting/) that supports open source software projects!
-You can find our project here: <https://hosted.weblate.org/projects/auto-dark-mode/app/>
-<p align="left">
+We use Weblate's cool [free Libre plan](https://hosted.weblate.org/hosting/) that supports open source software projects! You can find our project here: <https://hosted.weblate.org/projects/auto-dark-mode/app/>
 
-<a href="https://hosted.weblate.org/engage/auto-dark-mode/">
-<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/app/multi-auto.svg" alt="Translation status" />
-</a>
+<p align="left">
+  <a href="https://hosted.weblate.org/engage/auto-dark-mode/">
+    <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/app/multi-auto.svg" alt="Translation status" />
+  </a>
 </p>
 
 Alternatively, you can manually edit the translation files in `AutoDarkModeApp\Strings`.
@@ -117,4 +116,4 @@ Alternatively, you can manually edit the translation files in `AutoDarkModeApp\S
 
 ## More information
 
-You still have open questions? [Check out our wiki!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)
+Still have open questions? Check out [our wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)!
