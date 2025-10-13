@@ -2,11 +2,15 @@
   <img alt="Auto Dark Mode title image" src="./assets/Readme.png" />
 </p>
 
+Switches between the dark and light theme of Windows at scheduled times.
+
 <p href="https://hosted.weblate.org/engage/auto-dark-mode/">
 <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
 </p>
 
-Switches between the dark and light theme of Windows at scheduled times.
+[Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
+
+## Overview
 
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
@@ -16,34 +20,30 @@ Auto Dark Mode helps you to be more productive. Because you shouldn't care about
 
 Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts.
 
-[Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
-
-> [!NOTE]
-This version is under development. The function is not complete, and there may be some errors. Hope you can participate in the feedback of the problem and the modification and addition of the code. Thank you very much.
-
 ## Features
-
+![Screenshot showing the System areas page of Auto Dark Mode](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/refs/heads/winui3/.github/assets/screenshot_systemareas.png)
 - Compatible with Windows 10* and Windows 11.
 - Theme switch based on sunrise and sunset.
+- Postpone or delay the next switch as you like.
 - Desktop wallpaper switch.
 - Mouse cursor switch.
 - Accent color switch.
-- Office theme switch.
+- Support for turning on/off accent color on the Taskbar and title bars.
+- Touch keyboard switch.
 - Windows .theme file switch.
 - Keyboard shortcuts.
-- Support for turning on/off accent color on the Taskbar and title bars.
 - Auto Dark Mode can enable the grayscale color filter of Windows.
 - Suitable for gamers: Doesn't switch while playing games to avoid stuttering.
+- Additional features for battery powered devices, like enabling dark mode on battery.
 - Run custom scripts.
-- Postpone or delay the next switch as you like.
 - Automatic updates.
 - Lightweight with clean uninstall. No admin rights needed.
 
-<sup>*Windows 10 versions 21H1 and older are considered legacy, not all features may work</sup>
+<sup>* Windows 10 versions older than 22H2 are not supported</sup>
 
 ## Download
 
-### Download from Microsoft Store
+#### Download from Microsoft Store
 
 <a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
   <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
@@ -53,18 +53,16 @@ This version is under development. The function is not complete, and there may b
 
 [Click here to download the newest version of Auto Dark Mode!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/latest)
 
-#### Even more download options
-
-<details>
-  <summary>Click to expand</summary>
-
-#### Via WinGet
-
-Download Auto Dark Mode from [WinGet](https://github.com/microsoft/winget-cli/releases).
+#### Download from WinGet
 
 ```powershell
 winget install autodarkmode
 ```
+
+#### Even more download options
+
+<details>
+  <summary>Click to expand</summary>
 
 #### Via Chocolatey
 
