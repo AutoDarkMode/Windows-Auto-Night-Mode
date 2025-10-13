@@ -149,7 +149,7 @@
 
 Beim Designwechsel kann es hierbei zu leichtem Stocken kommen. 
 
-In einigen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
+In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Anwenden</value>
@@ -804,7 +804,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThirdParty" xml:space="preserve">
-    <value>Enthaltene Drittanbieter-Software</value>
+    <value>Verwendete Drittanbieter-Software</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Uhrzeit</value>
@@ -981,7 +981,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Akzentfarbe auf Titelleisten und Fensterrahmen</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>Aggressivere Aktualisierung von DWM</value>
+    <value>Aggressivere DWM-Aktualisierung</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>

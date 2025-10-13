@@ -512,6 +512,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 XamlRoot = App.MainWindow.Content.XamlRoot,
                 CloseButtonText = "Cancel".GetLocalized(),
                 PrimaryButtonText = "Confirm".GetLocalized(),
+                PrimaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
             };
             _dispatcherQueue.TryEnqueue(async () =>
             {
