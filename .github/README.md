@@ -115,7 +115,7 @@ Alternatively, you can manually edit the translation files in `AutoDarkModeApp\S
 
 ## Awards
 
-![Community Store Winner](./assets/msstore_award_banner.png)
+[![Community Store Winner](./assets/msstore_award_banner.png)](https://blogs.windows.com/windowsdeveloper/2022/05/27/announcing-the-microsoft-store-app-awards-winners/)
 
 ## More information
 
