@@ -803,7 +803,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThirdParty" xml:space="preserve">
-    <value>Enthält Drittanbieter-Software</value>
+    <value>Enthaltene Drittanbieter-Software</value>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Uhrzeit</value>
@@ -983,7 +983,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Aggressivere Aktualisierung von DWM</value>
   </data>
   <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
-    <value>Möchtest du die aggressiveren DWM-Aktualisierung verwenden?</value>
+    <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Verzögere den Designwechsel um eine Anzahl an Minuten</value>
@@ -1002,5 +1002,14 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>Definiere neue Mauszeigervorlagen in den Windows-Einstellungen, die anschließend hier zur Wahl stehen</value>
+  </data>
+  <data name="FitMode_Center" xml:space="preserve">
+    <value>Zentriert</value>
+  </data>
+  <data name="LogAndShell" xml:space="preserve">
+    <value>Log und Shell</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Kopiert</value>
   </data>
 </root>

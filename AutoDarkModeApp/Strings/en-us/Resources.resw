@@ -147,7 +147,8 @@
   <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch, similar to how it happened in Windows 10. 
+This may introduce slight to moderate lag on some systems during theme switch. 
+
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="Apply" xml:space="preserve">
@@ -993,5 +994,16 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+  </data>
+  <data name="FitMode_Center" xml:space="preserve">
+    <value>Center</value>
+    <comment>Windows Settings &gt; Personalization &gt; Wallpaper, copy these  translations</comment>
+  </data>
+  <data name="LogAndShell" xml:space="preserve">
+    <value>Log and Shell</value>
+    <comment>Log and Shell will be mostly not translated, only translate the "and" in your language</comment>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
   </data>
 </root>

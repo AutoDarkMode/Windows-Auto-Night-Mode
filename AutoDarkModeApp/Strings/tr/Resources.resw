@@ -1003,4 +1003,13 @@ Bunu indirmek istiyor musunuz?
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
   </data>
+  <data name="FitMode_Center" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="LogAndShell" xml:space="preserve">
+    <value>Log and Shell</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
+  </data>
 </root>
