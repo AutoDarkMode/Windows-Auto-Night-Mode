@@ -23,15 +23,14 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=DonationPayPal_Description}"
-                    Header="Paypal"
-                    HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon,
-                                             Glyph=&#xE903;}">
+                    Header="Paypal">
                     <Button
                         Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard Header="GitHub Sponsors" HeaderIcon="{ui:FontIcon FontFamily=/Assets/AutoDarkModeIconFont.ttf#icomoon, Glyph=&#xE902;}">
+                <controls:SettingsCard 
+                    Header="GitHub Sponsors">
                     <Button
                         Click="GithubSponsorsButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"

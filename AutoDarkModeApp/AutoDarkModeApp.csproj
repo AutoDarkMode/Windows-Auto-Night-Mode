@@ -44,10 +44,6 @@
     <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Assets\DonationHeader.png" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
@@ -78,6 +74,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\AutoDarkModeIconFont.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\DonationHeader.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\Geo\ne_10m_admin_1_states_provinces.*">
