@@ -286,7 +286,11 @@ public partial class SettingsViewModel : ObservableRecipient
                         Title = "StartWithWindows".GetLocalized(),
                         Content = "StartWithWindowsFailed_Content".GetLocalized(),
                         XamlRoot = App.MainWindow.Content.XamlRoot,
-                        CloseButtonText = "Confirm".GetLocalized(),
+                        CloseButtonText = "Close".GetLocalized(),
+                        IsSecondaryButtonEnabled = true,
+                        SecondaryButtonText = "OpenWindowsSettings".GetLocalized(),
+                        SecondaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
+                        SecondaryButtonCommand = new RelayCommand(OpenAutostartSettings)
                     };
 
                     if (IsAutostart)
@@ -318,6 +322,11 @@ public partial class SettingsViewModel : ObservableRecipient
             AutostartMode = "Disabled".GetLocalized();
             AutostartPath = "None".GetLocalized();
         }
+    }
+
+    private async void OpenAutostartSettings()
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:startupapps"));
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -498,11 +507,12 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             ContentDialog contentDialog = new()
             {
-                Title = "AggressiveDwmRefresh_Title".GetLocalized(),
-                Content = "AlwaysRefreshDwm_Content".GetLocalized(),
+                Title = "AggressiveDwmRefreshMsg_Title".GetLocalized(),
+                Content = "AlwaysRefreshDwmMsg_Content".GetLocalized(),
                 XamlRoot = App.MainWindow.Content.XamlRoot,
                 CloseButtonText = "Cancel".GetLocalized(),
                 PrimaryButtonText = "Confirm".GetLocalized(),
+                PrimaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
             };
             _dispatcherQueue.TryEnqueue(async () =>
             {

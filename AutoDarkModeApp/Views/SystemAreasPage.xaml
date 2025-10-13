@@ -67,7 +67,7 @@
 
 
                 <!--  Touch Keyboard  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}">
+                <controls:SettingsCard Header="{helpers:ResourceString Name=SwitchTouchKeyboard}" HeaderIcon="{ui:FontIcon Glyph=&#xE92E;}" Visibility="{x:Bind ViewModel.TouchKeyboardSwitchCardVisibility, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsTouchKeyboardSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
@@ -76,8 +76,22 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorFilterSwitch, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
+                <!-- More info -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
-                <HyperlinkButton Click="WindowsColorsSetingHyperlinkButton_Click" Content="{helpers:ResourceString Name=WindowsColorsSetting}" />
+
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Description="{helpers:ResourceString Name=DarkModeForWebbrowserDescription}"
+                    Click="DarkReaderWebBrowserHyperlinkButton_Click"
+                    Header="{helpers:ResourceString Name=DarkModeForWebbrowser}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEA86;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="WindowsColorsSettingHyperlinkButton_Click"
+                    Header="{helpers:ResourceString Name=WindowsColorsSetting}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE713;}"
+                    IsClickEnabled="True" />
 
             </StackPanel>
         </Grid>

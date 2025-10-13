@@ -21,7 +21,7 @@ public sealed partial class DonationPage : Page
 
     private void GithubSponsorsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        StartProcessByProcessInfo("https://github.com/sponsors/Spiritreader");
+        StartProcessByProcessInfo("https://github.com/sponsors/AutoDarkMode");
     }
 
     private static void StartProcessByProcessInfo(string message)
