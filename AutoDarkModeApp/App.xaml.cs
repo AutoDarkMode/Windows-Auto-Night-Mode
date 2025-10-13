@@ -48,7 +48,7 @@ public partial class App : Application
         }
     }
 
-    public static Window MainWindow { get; set; } = null!;
+    public static Window MainWindow { get; set; } = Window.Current;
 
     public App()
     {
@@ -123,8 +123,7 @@ public partial class App : Application
         admConfigBuilder.Load();
         admConfigBuilder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // save before activation SVC (think of first-launch scenario)
 
-        var navigationService = App.GetService<INavigationService>();
-        MainWindow = new MainWindow(navigationService);
+        MainWindow = new MainWindow();
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

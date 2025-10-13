@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
@@ -111,5 +112,10 @@ public sealed partial class CursorsPage : Page
     private void DarkCursorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         DispatcherQueue.TryEnqueue(LoadCursorsPreview);
+    }
+
+    private void WindowsMousePointerSettingHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        Process.Start("control", "main.cpl,,1");
     }
 }

@@ -53,6 +53,16 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+                <!-- More info -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="WindowsMousePointerSettingHyperlinkButton_Click"
+                    Description="{helpers:ResourceString Name=WindowsMousePointerSettingDescription}"
+                    Header="{helpers:ResourceString Name=WindowsMousePointerSetting}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE713;}"
+                    IsClickEnabled="True" />
+
             </StackPanel>
         </Grid>
     </ScrollViewer>

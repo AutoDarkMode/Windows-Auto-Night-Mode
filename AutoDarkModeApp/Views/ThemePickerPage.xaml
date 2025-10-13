@@ -51,7 +51,10 @@
                 <!--  Ignore  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
 
-                <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
+
+                <InfoBar IsOpen="True" IsClosable="False" Message="{helpers:ResourceString Name=Msg_IgnoreDisabled}" />
+
+                <controls:SettingsCard ContentAlignment="Left"  IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">
                     <CheckBox Content="{helpers:ResourceString Name=IgnoreBackground}" IsChecked="{x:Bind ViewModel.IgnoreBackgroundEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
                 <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}">

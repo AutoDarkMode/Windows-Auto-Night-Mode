@@ -13,7 +13,12 @@ public sealed partial class SystemAreasPage : Page
         InitializeComponent();
     }
 
-    private async void WindowsColorsSetingHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void DarkReaderWebBrowserHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Dark-Mode-for-Webbrowser"));
+    }
+
+    private async void WindowsColorsSettingHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:colors"));
     }

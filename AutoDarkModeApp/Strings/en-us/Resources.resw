@@ -144,10 +144,11 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Always light</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch, similar to how it happened in Windows 10. 
+This may introduce slight to moderate lag on some systems during theme switch. 
+
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="Apply" xml:space="preserve">
@@ -215,10 +216,10 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Color</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Enable color filter during dark mode</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking</value>
+    <value>Customize the Windows system color scheme to your liking.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Conditions</value>
@@ -455,7 +456,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>Let Auto Dark Mode manage my theme (recommended)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -494,7 +495,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Download update</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>This option does not support default Windows themes</value>
+    <value>This option does not support the preinstalled default Windows themes</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>ADM needs access to your location</value>
@@ -884,7 +885,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Auto start has been disabled in Windows Settings. To enable Auto Dark Mode to start with Windows again, please go to Windows Settings &gt; Apps &gt; Startup and enable it.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -944,7 +945,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Windows mode</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Personalized color settings of Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
     <value>Delayed</value>
@@ -973,7 +974,7 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -981,5 +982,34 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
+  <data name="DarkModeForWebbrowser" xml:space="preserve">
+    <value>Dark mode for your web browser</value>
+  </data>
+  <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
+    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+  </data>
+  <data name="WindowsMousePointerSetting" xml:space="preserve">
+    <value>Open Windows mouse pointer settings</value>
+  </data>
+  <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+  </data>
+  <data name="FitMode_Center" xml:space="preserve">
+    <value>Center</value>
+    <comment>Windows Settings &gt; Personalization &gt; Wallpaper, copy these  translations</comment>
+  </data>
+  <data name="LogAndShell" xml:space="preserve">
+    <value>Log and Shell</value>
+    <comment>Log and Shell will be mostly not translated, only translate the "and" in your language</comment>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+  </data>
+  <data name="OpenWindowsSettings" xml:space="preserve">
+    <value>Open Windows settings</value>
   </data>
 </root>

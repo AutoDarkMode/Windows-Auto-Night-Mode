@@ -7,6 +7,7 @@ using AutoDarkModeApp.ViewModels;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml.Controls;
 using Windows.UI.StartScreen;
 
@@ -80,13 +81,12 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             loadingDialog.Hide();
         }
 
-        
         // Only run at first startup
         if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
         {
             Debug.WriteLine("first-run");
 
-         AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
+            AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
             await SystemTimeFormatAsync();
             await AddJumpListAsync();
             await localSettingsService.SaveSettingAsync("NotFirstRun", true);
@@ -110,7 +110,19 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         var top = await localSettingsService.ReadSettingAsync<int>("Y");
         var width = await localSettingsService.ReadSettingAsync<int>("Width");
         var height = await localSettingsService.ReadSettingAsync<int>("Height");
+        var windowState = await localSettingsService.ReadSettingAsync<int>("WindowState");
+
         App.MainWindow.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(left, top, width, height));
+
+        var presenter = App.MainWindow.AppWindow.Presenter as OverlappedPresenter;
+        if (presenter != null)
+        {
+            var state = (OverlappedPresenterState)windowState;
+            if (state == OverlappedPresenterState.Maximized)
+            {
+                presenter.Maximize();
+            }
+        }
     }
 
     private static async Task WaitForXamlRootAsync()
@@ -169,7 +181,8 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         for (int i = 0; i < maxRetries; i++)
         {
             response = await Task.Run(() => ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.Alive)));
-            if (response.StatusCode == StatusCode.Ok) break;
+            if (response.StatusCode == StatusCode.Ok)
+                break;
             await Task.Delay(1000);
         }
 

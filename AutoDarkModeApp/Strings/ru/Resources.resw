@@ -144,7 +144,7 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Всегда светлая</value>
   </data>
-  <data name="AlwaysRefreshDwm_Content" xml:space="preserve">
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Попытка снизить частоту появления неправильных цветов интерфейса в проводнике, панели задач и меню «Пуск». Если вы часто сталкиваетесь с этой проблемой или она вас беспокоит, попробуйте включить этот параметр.
 
 Это может привести к незначительным или умеренным задержкам при переключении тем на некоторых системах, подобно тому, как это было в Windows 10.
@@ -982,7 +982,7 @@
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefresh_Title" xml:space="preserve">
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
@@ -990,5 +990,32 @@
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
+  <data name="DarkModeForWebbrowser" xml:space="preserve">
+    <value>Dark mode for your web browser</value>
+  </data>
+  <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
+    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+  </data>
+  <data name="WindowsMousePointerSetting" xml:space="preserve">
+    <value>Open Windows mouse pointer settings</value>
+  </data>
+  <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+  </data>
+  <data name="FitMode_Center" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="LogAndShell" xml:space="preserve">
+    <value>Log and Shell</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+  </data>
+  <data name="OpenWindowsSettings" xml:space="preserve">
+    <value>Open Windows settings</value>
   </data>
 </root>

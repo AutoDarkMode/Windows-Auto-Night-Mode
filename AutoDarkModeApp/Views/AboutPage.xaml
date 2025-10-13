@@ -71,7 +71,7 @@
                 <!--  CopyVersionInfoButton TeachingTip  -->
                 <TeachingTip
                     x:Name="CopyButtonTeachingTip"
-                    Title="{helpers:ResourceString Name=Copy}"
+                    Title="{helpers:ResourceString Name=Copied}"
                     Subtitle="{helpers:ResourceString Name=Msg_VersionInfoCopied}"
                     Target="{x:Bind CopyVersionInfoButton}">
                     <TeachingTip.IconSource>
@@ -81,7 +81,7 @@
 
                 <!--  Log and Shell  -->
                 <controls:SettingsExpander 
-                    Header="Log and Shell" 
+                    Header="{helpers:ResourceString Name=LogAndShell}" 
                     HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>

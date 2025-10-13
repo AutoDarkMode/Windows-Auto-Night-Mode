@@ -139,7 +139,7 @@
                         <!--  Picture fit  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Position}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowFillingWaySettings, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <ComboBoxItem Content="Center" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Center}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Stretch}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fit}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=FitMode_Fill}" />
