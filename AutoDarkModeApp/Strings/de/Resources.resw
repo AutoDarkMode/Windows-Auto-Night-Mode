@@ -221,7 +221,7 @@ In einigen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während de
     <value>Passe die Windows Akzentfarbe nach deiner Präferenz an.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
-    <value>Modi</value>
+    <value>Bedingungen</value>
   </data>
   <data name="Configuration" xml:space="preserve">
     <value>Konfig</value>
@@ -752,7 +752,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>System</value>
   </data>
   <data name="SystemAreas" xml:space="preserve">
-    <value>Anwendungen</value>
+    <value>Systembereiche</value>
   </data>
   <data name="Task" xml:space="preserve">
     <value>Aufgabenplaner</value>
