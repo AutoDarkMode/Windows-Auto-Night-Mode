@@ -289,8 +289,8 @@ public partial class SettingsViewModel : ObservableRecipient
                         CloseButtonText = "Close".GetLocalized(),
                         IsSecondaryButtonEnabled = true,
                         SecondaryButtonText = "OpenWindowsSettings".GetLocalized(),
-                        SecondaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
-                        SecondaryButtonCommand = new RelayCommand(OpenAutostartSettings)
+                        SecondaryButtonCommand = new RelayCommand(OpenAutostartSettings),
+                        DefaultButton = ContentDialogButton.Secondary
                     };
 
                     if (IsAutostart)
@@ -512,7 +512,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 XamlRoot = App.MainWindow.Content.XamlRoot,
                 CloseButtonText = "Cancel".GetLocalized(),
                 PrimaryButtonText = "Confirm".GetLocalized(),
-                PrimaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
+                DefaultButton = ContentDialogButton.Primary
             };
             _dispatcherQueue.TryEnqueue(async () =>
             {
