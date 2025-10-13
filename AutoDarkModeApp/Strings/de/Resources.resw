@@ -991,17 +991,16 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="DarkModeForWebbrowser" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="DarkModeForWebbrowser" xml:space="preserve">
+    <value>Dark mode for your web browser</value>
   </data>
-  <data name="DarkModeForWebbrowserDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
+    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
   </data>
-  <data name="WindowsMousePointerSetting" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="WindowsMousePointerSetting" xml:space="preserve">
+    <value>Open Windows mouse pointer settings</value>
   </data>
-  <data name="WindowsMousePointerSettingDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
+    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
   </data>
 </root>
