@@ -992,4 +992,10 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="DarkModeForWebbrowserDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="WindowsMousePointerSetting" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="WindowsMousePointerSettingDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>

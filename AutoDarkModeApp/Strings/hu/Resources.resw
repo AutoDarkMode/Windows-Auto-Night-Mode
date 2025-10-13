@@ -992,4 +992,10 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="DarkModeForWebbrowserDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="WindowsMousePointerSetting" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="WindowsMousePointerSettingDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>

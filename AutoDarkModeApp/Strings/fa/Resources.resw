@@ -992,4 +992,10 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="DarkModeForWebbrowserDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <data name="WindowsMousePointerSetting" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="WindowsMousePointerSettingDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
 </root>
