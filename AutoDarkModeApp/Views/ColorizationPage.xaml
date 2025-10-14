@@ -1,13 +1,14 @@
-﻿<Page
-    x:Class="AutoDarkModeApp.Views.ColorizationPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="using:CommunityToolkit.WinUI"
-    mc:Ignorable="d">
+﻿<Page x:Class="AutoDarkModeApp.Views.ColorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:helpers="using:AutoDarkModeApp.Helpers"
+      xmlns:local="using:AutoDarkModeApp.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:usercontrols="using:AutoDarkModeApp.UserControls"
+      mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
     </Page.Resources>
@@ -16,77 +17,118 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
+                <!--  Desktop preview  -->
+                <usercontrols:DesktopPreview DesktopPreviewThemeMode="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}" />
+
                 <!--  Colorization  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationPick_Description}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAccentColorSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="{helpers:ResourceString Name=ColorizationPick_Description}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAccentColorSwitch}"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsColorizationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <!--  Light  -->
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=LightTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
-                    IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
-                    IsExpanded="True">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.LightThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
-                    </ComboBox>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.LightThemeColorizationSettingsCardEnabled, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <Border
-                                    Width="30"
-                                    Height="28"
-                                    Background="{x:Bind ViewModel.LightModeColorPreviewBorderBackground, Mode=OneWay}"
-                                    CornerRadius="{StaticResource ControlCornerRadius}" />
-                                <!--  TODO: Replace Content to Res  -->
-                                <Button
-                                    MinWidth="120"
-                                    Click="LightModeCheckColorButton_Click"
-                                    Content="{helpers:ResourceString Name=SelectColor}" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
+                <!--  Mode  -->
+                <controls:SettingsCard Header="{helpers:ResourceString Name=Theme}"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
+                                       IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}">
+                    <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectColorThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <controls:SegmentedItem Content="{helpers:ResourceString Name=Light}"
+                                                Icon="{ui:FontIcon Glyph=&#xE706;}" />
+                        <controls:SegmentedItem Content="{helpers:ResourceString Name=Dark}"
+                                                Icon="{ui:FontIcon Glyph=&#xE708;}" />
+                    </controls:Segmented>
+                </controls:SettingsCard>
 
-                <!--  Dark  -->
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=DarkTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
-                    IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
-                    IsExpanded="True">
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.DarkThemeMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
-                    </ComboBox>
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}" IsEnabled="{x:Bind ViewModel.DarkThemeColorizationSettingsCardEnabled, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <Border
-                                    Width="30"
-                                    Height="28"
-                                    Background="{x:Bind ViewModel.DarkModeColorPreviewBorderBackground, Mode=OneWay}"
-                                    CornerRadius="{StaticResource ControlCornerRadius}" />
-                                <!--  TODO: Replace Content to Res  -->
-                                <Button
-                                    MinWidth="120"
-                                    Click="DarkModeCheckColorButton_Click"
-                                    Content="{helpers:ResourceString Name=SelectColor}" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
+                <!--  Accent Color  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
+                    <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentColor}"
+                                               HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                                               IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
+                                               IsExpanded="True">
+                        <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                            <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                        </ComboBox>
+
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ContentAlignment="Left">
+                                <StackPanel Orientation="Vertical"
+                                            Spacing="8">
+                                    <!--  Currently selected color  -->
+                                    <TextBlock Text="{helpers:ResourceString Name=SelectedColor}"
+                                               Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}" />
+                                    <GridView SelectionMode="None"
+                                              Visibility="{x:Bind ViewModel.CurrentlySelectedColorGridViewVisibility, Mode=OneWay}">
+                                        <GridView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid MaximumRowsOrColumns="1"
+                                                               Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </GridView.ItemsPanel>
+                                        <GridView.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width"
+                                                        Value="44" />
+                                                <Setter Property="Height"
+                                                        Value="44" />
+                                                <Setter Property="RadiusX"
+                                                        Value="4" />
+                                                <Setter Property="RadiusY"
+                                                        Value="4" />
+                                            </Style>
+                                        </GridView.Resources>
+
+                                        <GridView.Items>
+                                            <Rectangle Fill="{x:Bind ViewModel.AccentColorPreviewBorderBackground, Mode=OneWay}" />
+                                        </GridView.Items>
+                                    </GridView>
+
+                                    <!--  Windows colors  -->
+                                    <TextBlock Text="{helpers:ResourceString Name=WindowsColors}" />
+                                    <GridView x:Name="WindowsColorGridView"
+                                              IsItemClickEnabled="True"
+                                              ItemClick="WindowsColorGridView_ItemClick">
+                                        <GridView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid MaximumRowsOrColumns="9"
+                                                               Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </GridView.ItemsPanel>
+
+                                        <GridView.Resources>
+                                            <Style TargetType="Rectangle">
+                                                <Setter Property="Width"
+                                                        Value="44" />
+                                                <Setter Property="Height"
+                                                        Value="44" />
+                                                <Setter Property="RadiusX"
+                                                        Value="4" />
+                                                <Setter Property="RadiusY"
+                                                        Value="4" />
+                                            </Style>
+                                        </GridView.Resources>
+
+                                    </GridView>
+                                </StackPanel>
+                            </controls:SettingsCard>
+
+                            <controls:SettingsCard Header="{helpers:ResourceString Name=PickAccentColor}">
+                                <Button Click="CheckColorButton_Click"
+                                        Content="{helpers:ResourceString Name=SelectColor}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
+                </StackPanel>
+
+                <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
+                <!--  TODO: Don't enable Dialog until it works properly  -->
+                <!--  Color Picker Dialog  -->
+                <ContentDialog x:Name="ColorPickerContentDialog"
+                               CloseButtonText="{helpers:ResourceString Name=Cancel}"
+                               DefaultButton="Primary"
+                               PrimaryButtonText="{helpers:ResourceString Name=Set}" />
             </StackPanel>
-
-            <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
-            <!--  TODO: Don't enable Dialog until it works properly  -->
-            <!--  Color Picker Dialog  -->
-            <ContentDialog
-                x:Name="ColorPickerContentDialog"
-                CloseButtonText="{helpers:ResourceString Name=Cancel}"
-                DefaultButton="Primary"
-                PrimaryButtonText="{helpers:ResourceString Name=Set}" />
         </Grid>
     </ScrollViewer>
 </Page>
