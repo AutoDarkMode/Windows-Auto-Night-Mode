@@ -17,6 +17,45 @@ const ERR_VERIFY: i32 = 13371;
 const ERR_INSTALL_SPAWN: i32 = 13372;
 const ERR_CLEANUP: i32 = 13373;
 
+// IMAGE_FILE_MACHINE constants
+const IMAGE_FILE_MACHINE_ARM64: u16 = 0xAA64;
+
+
+use windows::Win32::System::SystemInformation::{
+    GetNativeSystemInfo, SYSTEM_INFO,
+    PROCESSOR_ARCHITECTURE_AMD64, PROCESSOR_ARCHITECTURE_INTEL, PROCESSOR_ARCHITECTURE_ARM64
+};
+use windows::Win32::System::Threading::{IsWow64Process2, GetCurrentProcess};
+
+/// Returns "ARM64" or "x86" depending on the *native* system architecture.
+fn detect_native_arch() -> &'static str {
+    unsafe {
+        let mut process_machine: u16 = 0;
+        let mut native_machine: u16 = 0;
+
+        if IsWow64Process2(
+            GetCurrentProcess(),
+            &mut process_machine as *mut u16 as *mut _,
+            Some(&mut native_machine as *mut u16 as *mut _)
+        ).is_ok() {
+            if native_machine == IMAGE_FILE_MACHINE_ARM64 {
+                return "ARM64";
+            } else {
+                return "x86";
+            }
+        }
+
+        // Fallback for older Windows
+        let mut sysinfo = SYSTEM_INFO::default();
+        GetNativeSystemInfo(&mut sysinfo);
+
+        match sysinfo.Anonymous.Anonymous.wProcessorArchitecture {
+            PROCESSOR_ARCHITECTURE_ARM64 => "ARM64",
+            PROCESSOR_ARCHITECTURE_AMD64 | PROCESSOR_ARCHITECTURE_INTEL => "x86", // or differentiate
+            _ => "x86",
+        }
+    }
+}
 fn main() -> anyhow::Result<()> {
     let result = unsafe { AttachConsole(ATTACH_PARENT_PROCESS) };
     if let Err(e) = result {
@@ -31,16 +70,7 @@ fn main() -> anyhow::Result<()> {
         exit(0);
     }
     // detect runtime architecture to pick the correct asset (ARM64 or x86)
-    let arch_env = std::env::var("PROCESSOR_ARCHITEW6432")
-        .or_else(|_| std::env::var("PROCESSOR_ARCHITECTURE"))
-        .unwrap_or_default();
-    let arch_up = arch_env.to_uppercase();
-    // if the machine is ARM-based, pick ARM64; otherwise fall back to x86 asset.
-    let asset_arch = if arch_up.contains("ARM") {
-        "ARM64"
-    } else {
-        "x86"
-    };
+    let asset_arch = detect_native_arch();
 
     let base =
         "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/11.0.0.54/";
