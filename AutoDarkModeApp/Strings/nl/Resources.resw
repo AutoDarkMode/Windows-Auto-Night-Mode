@@ -991,7 +991,7 @@ Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van th
 Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Agressieve DWM gebruiken?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Dark mode voor uw webbrowser</value>
