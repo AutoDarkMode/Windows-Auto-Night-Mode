@@ -9,6 +9,7 @@ Cert/
 AutoDarkModeInstaller/
 compile.bat
 overrides.json
+adm-downloader-rs/target
 
 # User-specific files
 *.suo
