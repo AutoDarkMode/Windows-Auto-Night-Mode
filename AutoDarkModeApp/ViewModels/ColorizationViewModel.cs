@@ -3,9 +3,11 @@ using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
+using AutoDarkModeLib.Configs;
 using AutoDarkModeSvc.Communication;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.Helpers;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 
 namespace AutoDarkModeApp.ViewModels;
@@ -16,6 +18,7 @@ public partial class ColorizationViewModel : ObservableRecipient
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
     private bool _isInitializing;
+    private bool _skipConfigUpdate;
 
     public enum ThemeColorMode
     {
@@ -24,30 +27,63 @@ public partial class ColorizationViewModel : ObservableRecipient
     }
 
     [ObservableProperty]
+    public partial ElementTheme DesktopPreviewThemeMode { get; set; }
+
+    [ObservableProperty]
     public partial bool IsColorizationEnabled { get; set; }
 
     [ObservableProperty]
-    public partial ThemeColorMode LightThemeMode { get; set; }
+    public partial ApplicationTheme SelectColorThemeMode { get; set; }
 
     [ObservableProperty]
-    public partial ThemeColorMode DarkThemeMode { get; set; }
+    public partial ThemeColorMode AccentColorMode { get; set; }
 
     [ObservableProperty]
-    public partial bool LightThemeColorizationSettingsCardEnabled { get; set; }
+    public partial bool CurrentlySelectedColorGridViewVisibility { get; set; }
 
     [ObservableProperty]
-    public partial bool DarkThemeColorizationSettingsCardEnabled { get; set; }
+    public partial SolidColorBrush? AccentColorPreviewBorderBackground { get; set; }
 
-    [ObservableProperty]
-    public partial SolidColorBrush? LightModeColorPreviewBorderBackground { get; set; }
+    public AdmConfig GetAdmConfig()
+    {
+        return _builder.Config;
+    }
 
-    [ObservableProperty]
-    public partial SolidColorBrush? DarkModeColorPreviewBorderBackground { get; set; }
+    public void SafeSaveBuilder()
+    {
+        try
+        {
+            _skipConfigUpdate = true;
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
+        }
+    }
+
+    public async void RequestThemeSwitch()
+    {
+        try
+        {
+            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+            if (result != StatusCode.Ok)
+            {
+                throw new SwitchThemeException(result, "ColorizationViewModel");
+            }
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
+        }
+    }
 
     public ColorizationViewModel(IErrorService errorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+
+        SelectColorThemeMode = Application.Current.RequestedTheme;
 
         try
         {
@@ -58,6 +94,7 @@ public partial class ColorizationViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationPage");
         }
 
+        InitializeAccentColor();
         LoadSettings();
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
@@ -68,8 +105,34 @@ public partial class ColorizationViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        IsColorizationEnabled = _builder.Config.ColorizationSwitch.Enabled;
+        DesktopPreviewThemeMode = SelectColorThemeMode == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
 
+        IsColorizationEnabled = _builder.Config.ColorizationSwitch.Enabled;
+        CurrentlySelectedColorGridViewVisibility = _builder.Config.ColorizationSwitch.Enabled;
+
+        var config = _builder.Config.ColorizationSwitch.Component;
+        var isLightTheme = SelectColorThemeMode == ApplicationTheme.Light;
+        var isAutoColorization = isLightTheme ? config.LightAutoColorization : config.DarkAutoColorization;
+
+        if (isAutoColorization)
+        {
+            AccentColorMode = ThemeColorMode.Automatic;
+        }
+        else
+        {
+            AccentColorMode = ThemeColorMode.Manual;
+            var colorizationColor = isLightTheme ? config.LightHex.ToColor() : config.DarkHex.ToColor();
+            colorizationColor.A = 255;
+            AccentColorPreviewBorderBackground = new SolidColorBrush(colorizationColor);
+        }
+
+        CurrentlySelectedColorGridViewVisibility = AccentColorMode != ThemeColorMode.Automatic;
+
+        _isInitializing = false;
+    }
+
+    private void InitializeAccentColor()
+    {
         const string DEFAULT_HEX_COLOR = "#C40078D4";
 
         var messageRaw = MessageHandler.Client.SendMessageAndGetReply(Command.GetCurrentColorization);
@@ -133,85 +196,30 @@ public partial class ColorizationViewModel : ObservableRecipient
         {
             SafeSaveBuilder();
         }
-
-        if (_builder.Config.ColorizationSwitch.Component.LightAutoColorization)
-        {
-            LightThemeMode = ThemeColorMode.Automatic;
-            LightThemeColorizationSettingsCardEnabled = false;
-        }
-        else
-        {
-            LightThemeMode = ThemeColorMode.Manual;
-            LightThemeColorizationSettingsCardEnabled = true;
-        }
-        if (_builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
-        {
-            DarkThemeMode = ThemeColorMode.Automatic;
-            DarkThemeColorizationSettingsCardEnabled = false;
-        }
-        else
-        {
-            DarkThemeMode = ThemeColorMode.Manual;
-            DarkThemeColorizationSettingsCardEnabled = true;
-        }
-
-        var lightColorizationColor = _builder.Config.ColorizationSwitch.Component.LightHex.ToColor();
-        lightColorizationColor.A = 255;
-        var darkColorizationColor = _builder.Config.ColorizationSwitch.Component.DarkHex.ToColor();
-        darkColorizationColor.A = 255;
-
-        LightModeColorPreviewBorderBackground = new SolidColorBrush(lightColorizationColor);
-        DarkModeColorPreviewBorderBackground = new SolidColorBrush(darkColorizationColor);
-
-        _isInitializing = false;
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
     {
-        if (_isInitializing)
-            return;
-
         StateUpdateHandler.StopConfigWatcher();
-        _dispatcherQueue.TryEnqueue(() =>
+        if (_skipConfigUpdate)
+        {
+            _skipConfigUpdate = false;
+            StateUpdateHandler.StartConfigWatcher();
+        }
+        else
         {
             _builder.Load();
-            LoadSettings();
-        });
-        StateUpdateHandler.StartConfigWatcher();
-    }
-
-    private void SafeSaveBuilder()
-    {
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
-        }
-    }
-
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "ColorizationViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
+            _dispatcherQueue.TryEnqueue(() => LoadSettings());
+            StateUpdateHandler.StartConfigWatcher();
         }
     }
 
     private async Task WaitForColorizationChange(string initial, int timeout)
     {
         if (!_builder.Config.ColorizationSwitch.Enabled)
+        {
             return;
+        }
 
         for (int tries = 0; tries < timeout; tries++)
         {
@@ -231,82 +239,63 @@ public partial class ColorizationViewModel : ObservableRecipient
     partial void OnIsColorizationEnabledChanged(bool value)
     {
         if (_isInitializing)
+        {
             return;
+        }
 
         _builder.Config.ColorizationSwitch.Enabled = value;
 
         SafeSaveBuilder();
     }
 
-    partial void OnLightThemeModeChanged(ThemeColorMode value)
+    partial void OnSelectColorThemeModeChanged(ApplicationTheme value)
     {
         if (_isInitializing)
+        {
             return;
-
-        _isInitializing = true;
-
-        if (value == ThemeColorMode.Automatic)
-        {
-            _builder.Config.ColorizationSwitch.Component.LightAutoColorization = true;
-            LightThemeColorizationSettingsCardEnabled = false;
-        }
-        else
-        {
-            _builder.Config.ColorizationSwitch.Component.LightAutoColorization = false;
-            LightThemeColorizationSettingsCardEnabled = true;
         }
 
-        SafeSaveBuilder();
-        try
-        {
-            RequestThemeSwitch();
-            if (_builder.Config.ColorizationSwitch.Component.LightAutoColorization)
-            {
-                Task.Run(async () => await WaitForColorizationChange(_builder.Config.ColorizationSwitch.Component.LightHex.ToLower(), 5));
-                _dispatcherQueue.TryEnqueue(() => LoadSettings());
-            }
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
-        }
-
-        _isInitializing = false;
+        LoadSettings();
     }
 
-    partial void OnDarkThemeModeChanged(ThemeColorMode value)
+    partial void OnAccentColorModeChanged(ThemeColorMode value)
     {
         if (_isInitializing)
-            return;
-
-        _isInitializing = true;
-
-        if (value == ThemeColorMode.Automatic)
         {
-            _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = true;
-            DarkThemeColorizationSettingsCardEnabled = false;
+            return;
+        }
+
+        var isLightTheme = SelectColorThemeMode == ApplicationTheme.Light;
+        var config = _builder.Config.ColorizationSwitch.Component;
+        var isAutomatic = value == ThemeColorMode.Automatic;
+
+        if (isLightTheme)
+        {
+            config.LightAutoColorization = isAutomatic;
         }
         else
         {
-            _builder.Config.ColorizationSwitch.Component.DarkAutoColorization = false;
-            DarkThemeColorizationSettingsCardEnabled = true;
+            config.DarkAutoColorization = isAutomatic;
         }
 
         SafeSaveBuilder();
+
         try
         {
             RequestThemeSwitch();
-            if (_builder.Config.ColorizationSwitch.Component.DarkAutoColorization)
+
+            if (isAutomatic)
             {
-                Task.Run(async () => await WaitForColorizationChange(_builder.Config.ColorizationSwitch.Component.DarkHex.ToLower(), 5));
-                _dispatcherQueue.TryEnqueue(() => LoadSettings());
+                var hexColor = (isLightTheme ? config.LightHex : config.DarkHex).ToLower();
+                Task.Run(async () => await WaitForColorizationChange(hexColor, 5));
             }
+
+            InitializeAccentColor();
+            LoadSettings();
         }
         catch (Exception ex)
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
         }
-
-        _isInitializing = false;
     }
 }
