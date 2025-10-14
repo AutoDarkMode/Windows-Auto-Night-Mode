@@ -12,6 +12,7 @@ call dotnet publish AutoDarkModeShell\AutoDarkModeShell.csproj /p:PublishProfile
 REM RUST BUILD AND PUBLISH
 cargo build --release --manifest-path adm-updater-rs\Cargo.toml
 cargo build --release --manifest-path adm-updater-rs\Cargo.toml --target aarch64-pc-windows-msvc
+cargo build --release --manifest-path adm-downloader-rs\Cargo.toml
 
 if not exist bin\Publish\x86\adm-updater mkdir bin\Publish\x86\adm-updater
 if not exist bin\Publish\ARM64\adm-updater mkdir bin\Publish\ARM64\adm-updater
