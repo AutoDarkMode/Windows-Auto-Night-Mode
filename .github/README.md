@@ -5,12 +5,12 @@
 Switches between the dark and light theme of Windows at scheduled times.
 
 <p href="https://hosted.weblate.org/engage/auto-dark-mode/">
-<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
+  <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/svg-badge.svg" alt="Translation status" />
 </p>
 
-[Overview](#overview) • [Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
+[Features](#features) • [Download](#download) • [Release Notes](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases) • [Wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki) • [Telegram Group](https://t.me/autodarkmode)
 
-## Overview
+# Auto Dark Mode
 
 Tired of looking at dark content while the sun is shining brightly? But at night everything is suddenly too bright? Auto Dark Mode is the solution for you!
 
@@ -21,7 +21,7 @@ Auto Dark Mode helps you to be more productive. Because you shouldn't care about
 Because a simple design change would be too boring, Auto Dark Mode is packed with useful functions. For example, we can also change your desktop wallpaper or run custom scripts.
 
 ## Features
-![Screenshot showing the System areas page of Auto Dark Mode](https://raw.githubusercontent.com/AutoDarkMode/Windows-Auto-Night-Mode/refs/heads/winui3/.github/assets/screenshot_systemareas.png)
+![Screenshot showing the System areas page of Auto Dark Mode](./assets/screenshot_systemareas.png)
 - Compatible with Windows 10* and Windows 11.
 - Theme switch based on sunrise and sunset.
 - Postpone or delay the next switch as you like.
@@ -43,23 +43,23 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 
 ## Download
 
-#### Download from Microsoft Store
+### Download from Microsoft Store
 
 <a href="https://apps.microsoft.com/store/detail/auto-dark-mode/XP8JK4HZBVF435">
-  <img src="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/blob/master/Readme/GetItFromMicrosoftBadge.png?raw=true" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
+  <img src="./assets/GetItFromMicrosoftBadge.png" alt="Click here to download Auto Dark Mode from the Microsoft Store" width="200"/>
 </a>
 
-#### Download from GitHub
+### Download from GitHub
 
 [Click here to download the newest version of Auto Dark Mode!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/latest)
 
-#### Download from WinGet
+### Download from WinGet
 
 ```powershell
 winget install autodarkmode
 ```
 
-#### Even more download options
+### Even more download options
 
 <details>
   <summary>Click to expand</summary>
@@ -89,7 +89,7 @@ scoop install autodarkmode
 scoop bucket add nonportable
 scoop install auto-dark-mode-np
 ```
-
+<hr>
 </details>
 
 #### Installation
@@ -100,21 +100,22 @@ Sometimes Windows or web browsers will show a security notice while downloading 
 
 ## Translations
 
-We use Weblate's cool [free Libre plan](https://hosted.weblate.org/hosting/) that supports open source software projects!
+We use Weblate's cool [free Libre plan](https://hosted.weblate.org/hosting/) that supports open source software projects! <br>
 You can find our project here: <https://hosted.weblate.org/projects/auto-dark-mode/app/>
 <p align="left">
-
-<a href="https://hosted.weblate.org/engage/auto-dark-mode/">
-<img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/app/multi-auto.svg" alt="Translation status" />
-</a>
+  <a href="https://hosted.weblate.org/engage/auto-dark-mode/">
+    <img src="https://hosted.weblate.org/widgets/auto-dark-mode/-/app/multi-auto.svg" alt="Translation status" />
+  </a>
 </p>
 
 Alternatively, you can manually edit the translation files in `AutoDarkModeApp\Strings`.
 
 ## Awards
 
-[![Community Store Winner](./assets/msstore_award_banner.png)](https://blogs.windows.com/windowsdeveloper/2022/05/27/announcing-the-microsoft-store-app-awards-winners/)
+<a href="https://blogs.windows.com/windowsdeveloper/2022/05/27/announcing-the-microsoft-store-app-awards-winners/">
+  <img src="./assets/msstore_award_banner.png" alt="Microsoft App Store Awards 2022" width="600"/>
+</a>
 
 ## More information
 
-You still have open questions? [Check out our wiki!](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)
+Still have open questions? Check out [our wiki](https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki)!
