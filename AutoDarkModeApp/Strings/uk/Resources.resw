@@ -148,6 +148,7 @@
     <value>Спроба зменшити кількість неправильних кольорів інтерфейсу в провіднику, панелі завдань і меню "Пуск". Якщо це трапляється часто або вас це турбує, спробуйте ввімкнути цей параметр.
 
 Це може спричинити незначні або помірні затримки під час перемикання тем на деяких системах, подібно до того, як це сталося у Windows 10.
+
 У рідкісних випадках Windows може видавати звуковий сигнал при переміщенні миші під час оновлення DWM.</value>
   </data>
   <data name="Apply" xml:space="preserve">
@@ -163,7 +164,7 @@
     <value>Автоматично</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Автозміну тем перемкнути</value>
+    <value>Автоматичне перемикання теми</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Автозапуск</value>
@@ -214,10 +215,10 @@
     <value>Колір</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Кольоровий фільтр (сполучення Win + Ctrl + C)</value>
+    <value>Увімкнути кольоровий фільтр у темному режимі</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Налаштуйте кольорову схему системи Windows на свій смак</value>
+    <value>Налаштуйте колірну схему системи Windows на свій смак.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Умови</value>
@@ -253,10 +254,10 @@
     <value>Темна тема</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Затримки</value>
+    <value>Затримка</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>Заборонити</value>
+    <value>Вимкнено</value>
   </data>
   <data name="Disconnected" xml:space="preserve">
     <value>Відключено</value>
@@ -452,7 +453,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Довгота</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Дозволити Auto Dark Mode керувати моєю темою</value>
+    <value>Дозволити автоматичному темному режиму керувати моєю темою (рекомендовано)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Посібник</value>
@@ -491,7 +492,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Завантажити оновлення</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Цей параметр не підтримує стандартні теми Windows</value>
+    <value>Цей параметр не підтримує попередньо встановлені теми Windows за замовчуванням</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Застосунок потребує дозволу для визначення місцезнаходження</value>
@@ -535,7 +536,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Інформація про версію скопійована до буферу обміну</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Наступне оновлення: </value>
+    <value>Наступне оновлення</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Немає</value>
@@ -670,7 +671,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Не перемикайтеся під час виконання певних процесів</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Оновити автозапуск</value>
+    <value>Оновити</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Ключ реєстру</value>
@@ -818,7 +819,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Дозволити Windows керувати моєю темою</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Перевіряти наявність оновлень, коли запуститься Auto Dark Mode</value>
+    <value>Перевірте, коли запускається автоматичний темний режим</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Обрати канал оновлення</value>
@@ -830,7 +831,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Змінити частоту перевірки наявности оновлень</value>
   </data>
   <data name="Updates" xml:space="preserve">
-    <value>Оновлення</value>
+    <value>Оновленням</value>
   </data>
   <data name="UseLocationService" xml:space="preserve">
     <value>Використовувати службу місцезнаходження</value>
@@ -887,7 +888,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Шлях</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Автоматичний запуск вимкнено на вкладці «Програми автозавантаження» в диспетчері завдань. Якщо ви хочете, щоб автоматичний темний режим знову запускався разом із Windows, увімкніть його знову там.</value>
+    <value>Автоматичний запуск вимкнено в налаштуваннях Windows. Щоб знову ввімкнути автоматичний темний режим для запуску разом із Windows, перейдіть до Налаштування Windows &gt; Програми &gt; Автозавантаження та ввімкніть його.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Бета</value>
@@ -947,10 +948,10 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Режим Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Персоналізоване налаштування кольорів Windows</value>
+    <value>Персоналізовані налаштування кольорів Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Затримка</value>
+    <value>Затримки</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
     <value>Не затримується</value>
@@ -959,57 +960,57 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Ignore color</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Акцентні поверхні</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Виберіть, коли слід застосовувати акцентний колір</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
+    <value>Застосовувати під час</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar during dark mode</value>
+    <value>Акцентний колір для панелі завдань у темному режимі</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>Акцентний колір для рядків заголовків та меж вікон</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>Більш агресивне оновлення DWM</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Використовувати агресивне оновлення DWM?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Додатні значення пізніші, від'ємні значення раніше</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Темний режим для вашого веббраузера</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader – це розширення для браузера, яке дозволяє вебсайтам у Chrome, Edge та Firefox враховувати поточну тему оформлення вашої системи. Натисніть тут, щоб дізнатися більше</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Відкрийте параметри вказівника миші Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>Ви можете визначити нові схеми курсорів у налаштуваннях Windows, а потім вибрати їх тут</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>Центр</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Колода та оболонка</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Скопійовано</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Спроби зменшити неправильні кольори інтерфейсу користувача в провіднику, панелі завдань та меню «Пуск».</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Відкрийте параметри Windows</value>
   </data>
 </root>
