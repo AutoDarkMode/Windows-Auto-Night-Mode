@@ -4,5 +4,6 @@ accepted = [
     "BSD-3-Clause",
     "BSD-2-Clause",
     "NOASSERTION",
-    "Unicode-DFS-2016"
+    "Unicode-DFS-2016",
+    "Unicode-3.0"
 ]

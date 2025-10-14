@@ -1,0 +1,34 @@
+[package]
+name = "adm-downloader-rs"
+version = "1.0.2"
+authors = ["Sam <sam@spiritreader.eu>"]
+edition = "2024"
+license = "MIT"
+
+[build-dependencies]
+winres = "0.1.12"
+static_vcruntime = "2.0"
+
+[package.metadata.winres]
+OriginalFilename = "AutoDarkModeDownloader"
+LegalCopyright = "Copyright © 2025"
+FileVersion = "1.0.2"
+FileDescription = "Auto Dark Mode Downloader"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+
+[dependencies]
+reqwest = { version = "0.12", features = ["blocking"] }
+anyhow = "1.0"
+sha2 = "0.10"
+hex = "0.4"
+
+[dependencies.windows]
+version = "0.61.3"
+features = [
+    "Win32_System_Console",
+]
