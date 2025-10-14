@@ -1,6 +1,6 @@
 [package]
 name = "adm-downloader-rs"
-version = "1.0.2"
+version = "1.0.3"
 authors = ["Sam <sam@spiritreader.eu>"]
 edition = "2024"
 license = "MIT"
@@ -12,7 +12,7 @@ static_vcruntime = "2.0"
 [package.metadata.winres]
 OriginalFilename = "AutoDarkModeDownloader"
 LegalCopyright = "Copyright © 2025"
-FileVersion = "1.0.2"
+FileVersion = "1.0.3"
 FileDescription = "Auto Dark Mode Downloader"
 
 [profile.dev]
