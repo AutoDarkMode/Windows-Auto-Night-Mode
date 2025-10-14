@@ -25,4 +25,8 @@ jobs:
         stale-issue-label: 'no activity'
         stale-pr-label: 'no activity'
         days-before-pr-stale: -1
-        exempt-issue-labels: enhancement, pr-welcome, known issue, UX, good first issue, bug, wontfix, in progress
+        exempt-issue-labels: >
+            enhancement, pr-welcome, known issue, UX, good first issue, bug, wontfix, in progress,
+            area-app settings, area-cross integration, area-installation, area-internal,
+            area-localization, area-repository, area-script, area-store, area-UX,
+            area-windows bug, area-windows settings, area-windows themes, area-winui3
