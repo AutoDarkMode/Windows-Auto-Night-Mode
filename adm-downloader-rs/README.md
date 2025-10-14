@@ -11,12 +11,14 @@ Usage
 
 Exit codes
 ----------
-- 0  — Success (installer ran and returned 0, or nothing to do).
-- 13370 — Download failed (couldn't fetch the installer).
-- 13371 — SHA256 verification failed (download corrupted or mismatch).
-- 13372 — Failed to spawn the installer process.
-- 13373 — Failed to remove the temporary downloaded file during cleanup.
-- Any other non-zero code returned by the installer will be forwarded by this tool.
+| Exit Code | Description |
+|-----------|-------------|
+| 0 | Success (installer ran and returned 0, or nothing to do) |
+| 13370 | Download failed (couldn't fetch the installer) |
+| 13371 | SHA256 verification failed (download corrupted or mismatch) |
+| 13372 | Failed to spawn the installer process |
+| 13373 | Failed to remove the temporary downloaded file during cleanup |
+| Other | Any other non-zero code returned by the installer will be forwarded by this tool |
 
 Notes
 -----
