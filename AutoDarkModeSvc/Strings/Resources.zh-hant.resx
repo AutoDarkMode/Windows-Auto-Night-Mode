@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -154,7 +154,7 @@
     <value>主題切換已暫停一次！</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>您想立即切換還是繼續延遲？</value>
+    <value>你想立即切換還是繼續延遲？</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
     <value>自動主題切換已恢復</value>
