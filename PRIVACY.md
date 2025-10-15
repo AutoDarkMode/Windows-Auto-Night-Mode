@@ -2,13 +2,12 @@
 We (the Auto Dark Mode Team) don't collect any data about our users. This app does not use telemetry, all settings are saved offline and
 log files are only stored on the personal computer.
 
-Some features of this app use third party services which may collect data:
-By using Auto Dark Mode, you thus also agree to these services' privacy policies.
+Some features of this app use third party services which may collect data. By using Auto Dark Mode, you thus also agree to these services' privacy policies.
 
 ### Device Location
 On our end, the collected data is only processed locally for sunrise/sunset calculation and does not leave the machine, nor is it used for analytics.
 
-If you choose to automatically determine your sun times via "From sunset to sunrise", Microsoft Windows may collect some location data. For example, we use the Microsoft Bing API "MapLocationFinder" to get your current city name and the Windows location service to retrieve geographic coordinates.
+If you choose to automatically determine your sun times via "From sunset to sunrise", we use the location data service from Microsoft Windows. Microsoft Windows may collect some location data.
 
 Because of this, the Microsoft data privacy policy applies:
 
@@ -25,12 +24,14 @@ GitHub may collect some personal data while communicating with its servers. Beca
 [Github Privacy Statement](https://docs.github.com/en/github/site-policy/github-privacy-statement)
 
 ### This App can access following user data:
-* Picture folder (for choosing a Wallpaper that is saved locally)
-* File System (for choosing a Windows Theme that is saved locally)
+* Picture folder (for choosing a wallpaper that is saved locally)
+* File System (for choosing a windows Theme that is saved locally)
 * Location service (for calculating sun times)
 * Internet connection (for update checking)
+* Running processes (if the theme switch should be paused while certain apps are running)
+* Accent colors
 
 ### Changes to our Privacy Statement
 Auto Dark Mode may change our Privacy Statement from time to time.
 
-_Last updated: 20.11.2022_
+_Last updated: 15.10.2025_
