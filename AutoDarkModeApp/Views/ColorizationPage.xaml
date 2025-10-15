@@ -54,7 +54,7 @@
                             <InfoBar
                                 IsClosable="False"
                                 IsOpen="True"
-                                Message="Automatic accent color is selected. The color will be determined by the current wallpaper"
+                                Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
                                 Severity="Informational"
                                 Visibility="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}" />
 
