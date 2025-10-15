@@ -23,6 +23,19 @@ public sealed partial class ColorizationPage : Page
         PopulateColorGrid();
     }
 
+    private void SelectColorThemeModeSegmented_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        WindowsColorGridView.SelectedItem = null;
+    }
+
+    private void AccentColorModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ViewModel.AccentColorMode == ColorizationViewModel.ThemeColorMode.Automatic)
+        {
+            WindowsColorGridView.SelectedItem = null;
+        }
+    }
+
     private void WindowsColorGridView_ItemClick(object sender, ItemClickEventArgs e)
     {
         var rectangleItem = e.ClickedItem as Rectangle;
@@ -85,6 +98,7 @@ public sealed partial class ColorizationPage : Page
                 ViewModel.GetAdmConfig().ColorizationSwitch.Component.DarkHex = dialogContent.InternalColorPicker.Color.ToHex();
             }
             ViewModel.AccentColorMode = ColorizationViewModel.ThemeColorMode.Manual;
+            WindowsColorGridView.SelectedItem = null;
 
             ViewModel.SafeSaveBuilder();
             if (ViewModel.GetAdmConfig().ColorizationSwitch.Enabled)
