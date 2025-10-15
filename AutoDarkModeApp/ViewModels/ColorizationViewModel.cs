@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using AutoDarkModeApp.Contracts.Services;
+﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;

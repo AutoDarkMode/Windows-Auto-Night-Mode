@@ -19,7 +19,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Desktop preview  -->
-                <usercontrols:DesktopPreview DesktopPreviewThemeMode="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}" />
+                <usercontrols:DesktopPreview DesktopPreviewAutomaticPreviewEnable="True" DesktopPreviewThemeMode="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}" />
 
                 <!--  Colorization  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ColorizationPick_Description}" />
