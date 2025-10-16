@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -1027,5 +1027,14 @@ In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während d
   </data>
   <data name="WindowsColors" xml:space="preserve">
     <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
   </data>
 </root>

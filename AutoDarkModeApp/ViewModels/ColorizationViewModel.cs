@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using AutoDarkModeApp.Contracts.Services;
+﻿using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
@@ -39,7 +38,10 @@ public partial class ColorizationViewModel : ObservableRecipient
     public partial ThemeColorMode AccentColorMode { get; set; }
 
     [ObservableProperty]
-    public partial bool CurrentlySelectedColorGridViewVisibility { get; set; }
+    public partial bool ManualColorSelectionSettingsCardVisibility { get; set; }
+
+    [ObservableProperty]
+    public partial bool AutomaticColorPromptSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
     public partial SolidColorBrush? AccentColorPreviewBorderBackground { get; set; }
@@ -108,7 +110,6 @@ public partial class ColorizationViewModel : ObservableRecipient
         DesktopPreviewThemeMode = SelectColorThemeMode == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
 
         IsColorizationEnabled = _builder.Config.ColorizationSwitch.Enabled;
-        CurrentlySelectedColorGridViewVisibility = _builder.Config.ColorizationSwitch.Enabled;
 
         var config = _builder.Config.ColorizationSwitch.Component;
         var isLightTheme = SelectColorThemeMode == ApplicationTheme.Light;
@@ -126,7 +127,8 @@ public partial class ColorizationViewModel : ObservableRecipient
             AccentColorPreviewBorderBackground = new SolidColorBrush(colorizationColor);
         }
 
-        CurrentlySelectedColorGridViewVisibility = AccentColorMode != ThemeColorMode.Automatic;
+        AutomaticColorPromptSettingsCardVisibility = AccentColorMode == ThemeColorMode.Automatic;
+        ManualColorSelectionSettingsCardVisibility = AccentColorMode == ThemeColorMode.Manual;
 
         _isInitializing = false;
     }
@@ -228,7 +230,6 @@ public partial class ColorizationViewModel : ObservableRecipient
 
             if (response.StatusCode == StatusCode.Ok && !response.Message.Equals(initial, StringComparison.CurrentCultureIgnoreCase))
             {
-                Debug.WriteLine($"Colorization change detected, updating UI\n{response.Message}");
                 break;
             }
 

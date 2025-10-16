@@ -1,6 +1,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using AutoDarkModeLib;
+using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
@@ -12,49 +13,29 @@ namespace AutoDarkModeApp.UserControls;
 
 public sealed partial class DesktopPreview : UserControl
 {
-    public SolidColorBrush? DesktopPreviewBackground
+    [GeneratedDependencyProperty]
+    public partial SolidColorBrush? DesktopPreviewBackground { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial ImageSource? DesktopPreviewImageSource { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial ElementTheme DesktopPreviewThemeMode { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial bool DesktopPreviewAutomaticPreviewEnable { get; set; }
+
+    partial void OnDesktopPreviewAutomaticPreviewEnableChanged(bool newValue)
     {
-        get => (SolidColorBrush)GetValue(DesktopPreviewBackgroundProperty);
-        set => SetValue(DesktopPreviewBackgroundProperty, value);
+        if (newValue)
+        {
+            InitializePreview();
+        }
     }
-
-    public static readonly DependencyProperty DesktopPreviewBackgroundProperty = DependencyProperty.Register(
-        "DesktopPreviewBackground",
-        typeof(SolidColorBrush),
-        typeof(DesktopPreview),
-        new PropertyMetadata(null)
-    );
-
-    public ImageSource? DesktopPreviewImageSource
-    {
-        get => (ImageSource)GetValue(DesktopPreviewImageSourceProperty);
-        set => SetValue(DesktopPreviewImageSourceProperty, value);
-    }
-
-    public static readonly DependencyProperty DesktopPreviewImageSourceProperty = DependencyProperty.Register(
-        "DesktopPreviewImageSource",
-        typeof(ImageSource),
-        typeof(DesktopPreview),
-        new PropertyMetadata(null)
-    );
-
-    public ElementTheme DesktopPreviewThemeMode
-    {
-        get => (ElementTheme)GetValue(DesktopPreviewThemeModeProperty);
-        set => SetValue(DesktopPreviewThemeModeProperty, value);
-    }
-
-    public static readonly DependencyProperty DesktopPreviewThemeModeProperty = DependencyProperty.Register(
-        "DesktopPreviewThemeMode",
-        typeof(ElementTheme),
-        typeof(DesktopPreview),
-        new PropertyMetadata(ElementTheme.Default)
-    );
 
     public DesktopPreview()
     {
         InitializeComponent();
-        InitializePreview();
     }
 
     private void InitializePreview()
@@ -63,7 +44,7 @@ public sealed partial class DesktopPreview : UserControl
         DesktopPreviewThemeMode = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
     }
 
-    private ImageSource? GetCurrentWallpaper()
+    private BitmapImage? GetCurrentWallpaper()
     {
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern bool SystemParametersInfo(uint uAction, uint uParam, StringBuilder lpvParam, uint init);
