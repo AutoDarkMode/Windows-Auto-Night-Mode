@@ -1030,4 +1030,10 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
     <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
   </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
 </root>
