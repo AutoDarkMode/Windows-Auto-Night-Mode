@@ -53,10 +53,9 @@
                         <controls:SettingsExpander.Items>
                             <InfoBar
                                 IsClosable="False"
-                                IsOpen="True"
+                                IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
                                 Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
-                                Severity="Informational"
-                                Visibility="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}" />
+                                Severity="Informational" />
 
                             <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
                                 <StackPanel Orientation="Vertical" Spacing="8">
