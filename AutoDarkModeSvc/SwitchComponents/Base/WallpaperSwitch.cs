@@ -375,8 +375,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
         // global wallpaper enable state synchronization;
         string globalWallpaper = WallpaperHandler.GetGlobalWallpaper().ToLower();
-        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light.ToLower()) currentGlobalTheme = Theme.Light;
-        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark.ToLower()) currentGlobalTheme = Theme.Dark;
+        if (globalWallpaper == Settings.Component.GlobalWallpaper.Light?.ToLower()) currentGlobalTheme = Theme.Light;
+        else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark?.ToLower()) currentGlobalTheme = Theme.Dark;
 
         // solid color enable state synchronization
         if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 &&
