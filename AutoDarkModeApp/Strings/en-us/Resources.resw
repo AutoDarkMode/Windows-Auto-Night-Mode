@@ -585,7 +585,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Personalization</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Custom color</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Select mouse pointers</value>
