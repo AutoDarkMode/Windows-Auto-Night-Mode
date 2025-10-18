@@ -9,9 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:AutoDarkModeApp.Models"
     mc:Ignorable="d">
-    <Page.Resources>
-        <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
-    </Page.Resources>
 
     <ScrollViewer>
         <Grid x:Name="ContentArea">
@@ -52,7 +49,7 @@
 
                 <!--  Hotkeys  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=HotKeys}" />
-                <ItemsControl IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" ItemsSource="{x:Bind ViewModel.HotkeysCollection, Mode=OneWay}">
+                <ItemsControl ItemsSource="{x:Bind ViewModel.HotkeysCollection, Mode=OneWay}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate x:DataType="models:HotkeysDataObject">
 
