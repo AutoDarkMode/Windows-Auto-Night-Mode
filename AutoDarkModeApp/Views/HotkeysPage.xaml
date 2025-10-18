@@ -62,7 +62,7 @@
                                     <TextBox
                                         MinWidth="160"
                                         IsReadOnly="True"
-                                        Text="{x:Bind Keys, Mode=OneWay}" />
+                                        Text="{x:Bind DisplayKeys, Mode=OneWay}" />
                                     <Button
                                         Width="32"
                                         Height="32"

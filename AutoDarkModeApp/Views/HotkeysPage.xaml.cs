@@ -32,7 +32,7 @@ public sealed partial class HotkeysPage : Page
 
         if (keyString is not null)
         {
-            dialogContent.HotkeyCombination = keyString.Split(" + ").Select(key => new SingleHotkeyDataObject { Key = key }).ToList();
+            dialogContent.LoadFromConfig(keyString);
         }
 
         var shortcutDialog = new ContentDialog()
