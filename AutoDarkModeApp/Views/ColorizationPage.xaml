@@ -40,11 +40,33 @@
 
                 <!--  Accent Color  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
+
+                    <!--  Automatic color mode info  -->
+                    <InfoBar
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
+                        Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
+                        Severity="Informational" />
+
+                    <!--  Automatic color mode settingscard  -->
+                    <controls:SettingsCard
+                        Header="{helpers:ResourceString Name=AccentColor}"
+                        HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
+                        IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
+                        Visibility="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}">
+                        <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}" SelectionChanged="AccentColorModeComboBox_SelectionChanged">
+                            <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
+                            <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
+                        </ComboBox>
+                    </controls:SettingsCard>
+
+                    <!--  Manual color mode settingsexpander  -->
                     <controls:SettingsExpander
                         Header="{helpers:ResourceString Name=AccentColor}"
                         HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                         IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
-                        IsExpanded="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
+                        IsExpanded="True"
+                        Visibility="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
                         <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}" SelectionChanged="AccentColorModeComboBox_SelectionChanged">
                             <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                             <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
@@ -53,6 +75,7 @@
                         <controls:SettingsExpander.Items>
                             <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
                                 <StackPanel Orientation="Vertical" Spacing="8">
+
                                     <!--  Currently selected color  -->
                                     <TextBlock Text="{helpers:ResourceString Name=SelectedColor}" />
                                     <GridView SelectionMode="None">
@@ -106,10 +129,6 @@
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
 
-                    <InfoBar IsClosable="False"
-                             IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
-                             Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
-                             Severity="Informational" />
                 </StackPanel>
 
                 <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
