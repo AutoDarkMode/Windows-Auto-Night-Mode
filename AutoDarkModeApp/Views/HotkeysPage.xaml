@@ -14,13 +14,6 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  Info that can only be edited when hotkeys are disabled  -->
-                <InfoBar
-                    IsClosable="False"
-                    IsOpen="True"
-                    Message="{helpers:ResourceString Name=HotkeyInfoBarMessage}"
-                    Severity="Informational" />
-
                 <!--  Settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">

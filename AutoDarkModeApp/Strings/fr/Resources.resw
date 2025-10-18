@@ -1018,9 +1018,6 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>
