@@ -1,13 +1,13 @@
-<Page
+﻿<Page
     x:Class="AutoDarkModeApp.Views.HotkeysPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
-    xmlns:local="using:AutoDarkModeApp.Views"
-    xmlns:converters="using:CommunityToolkit.WinUI.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:AutoDarkModeApp.Models"
     mc:Ignorable="d">
     <Page.Resources>
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
@@ -17,11 +17,15 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <InfoBar Message="{helpers:ResourceString Name=HotkeyInfoBarMessage}" IsOpen="True" IsClosable="False" Severity="Informational"/>
+                <!--  Info that can only be edited when hotkeys are disabled  -->
+                <InfoBar
+                    IsClosable="False"
+                    IsOpen="True"
+                    Message="{helpers:ResourceString Name=HotkeyInfoBarMessage}"
+                    Severity="Informational" />
 
                 <!--  Settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
-
                 <controls:SettingsCard Header="{helpers:ResourceString Name=EnableHotkeys}">
                     <ToggleSwitch x:Name="HotkeysToggleSwitch" IsOn="{x:Bind ViewModel.HotkeysEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
@@ -31,6 +35,7 @@
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ShowNotificationPostponeToggled}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.HotkeyTogglePostponeNotificationEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
+                <!--  Force save settingscard  -->
                 <controls:SettingsCard Header="{helpers:ResourceString Name=Msg_HotkeyProblem}" IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay}">
                     <Button
                         x:Name="SaveSettingsButton"
@@ -47,14 +52,12 @@
 
                 <!--  Hotkeys  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=HotKeys}" />
+                <ItemsControl IsEnabled="{x:Bind ViewModel.HotkeysEnabled, Mode=OneWay, Converter={StaticResource BoolNegationConverter}}" ItemsSource="{x:Bind ViewModel.HotkeysCollection, Mode=OneWay}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:HotkeysDataObject">
 
-                <ItemsRepeater x:Name="HotkeysItemView">
-                    <ItemsRepeater.ItemTemplate>
-                        <DataTemplate x:DataType="local:HotkeysDataObject">
-                            <controls:SettingsCard
-                                Margin="0,0,0,4"
-                                Header="{x:Bind DisplayName}"
-                                IsEnabled="{Binding IsOn, ElementName=HotkeysToggleSwitch, Converter={StaticResource BoolNegationConverter}}">
+                            <!--  Hotkey editing and displays settingscard  -->
+                            <controls:SettingsCard Margin="0,0,0,4" Header="{x:Bind DisplayName}">
                                 <StackPanel Orientation="Horizontal" Spacing="8">
                                     <TextBox
                                         MinWidth="160"
@@ -73,9 +76,10 @@
                                     </Button>
                                 </StackPanel>
                             </controls:SettingsCard>
+
                         </DataTemplate>
-                    </ItemsRepeater.ItemTemplate>
-                </ItemsRepeater>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </StackPanel>
         </Grid>
