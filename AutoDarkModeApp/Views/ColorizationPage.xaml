@@ -44,19 +44,13 @@
                         Header="{helpers:ResourceString Name=AccentColor}"
                         HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                         IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}"
-                        IsExpanded="True">
+                        IsExpanded="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
                         <ComboBox SelectedIndex="{x:Bind ViewModel.AccentColorMode, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}" SelectionChanged="AccentColorModeComboBox_SelectionChanged">
                             <ComboBoxItem Content="{helpers:ResourceString Name=Automatic}" />
                             <ComboBoxItem Content="{helpers:ResourceString Name=Manual}" />
                         </ComboBox>
 
                         <controls:SettingsExpander.Items>
-                            <InfoBar
-                                IsClosable="False"
-                                IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
-                                Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
-                                Severity="Informational" />
-
                             <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.ManualColorSelectionSettingsCardVisibility, Mode=OneWay}">
                                 <StackPanel Orientation="Vertical" Spacing="8">
                                     <!--  Currently selected color  -->
@@ -111,6 +105,11 @@
                             </controls:SettingsCard>
                         </controls:SettingsExpander.Items>
                     </controls:SettingsExpander>
+
+                    <InfoBar IsClosable="False"
+                             IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
+                             Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
+                             Severity="Informational" />
                 </StackPanel>
 
                 <!--  TODO: Follow https://learn.microsoft.com/windows/apps/design/controls/dialogs-and-flyouts/dialogs  -->
