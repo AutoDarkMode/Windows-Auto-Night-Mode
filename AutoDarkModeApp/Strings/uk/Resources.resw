@@ -992,9 +992,6 @@ Auto Dark Mode робить ваше повсякдення приємнішим
 Це може спричинити незначні або помірні затримки під час перемикання тем на деяких системах, подібно до того, як це сталося у Windows 10.
 У рідкісних випадках Windows може видавати звуковий сигнал при переміщенні миші під час оновлення DWM.</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Темний режим для вашого веббраузера</value>
   </data>
