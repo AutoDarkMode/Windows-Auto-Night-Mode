@@ -981,12 +981,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positieve getallen zijn later, negatieve getallen zijn vroeger</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
-
-Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10.
-Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
-  </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Agressieve DWM gebruiken?</value>
   </data>

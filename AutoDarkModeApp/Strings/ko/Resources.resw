@@ -986,15 +986,6 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>양수 값은 더 늦고, 음수 값은 더 빠릅니다</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>탐색기, 작업 표시줄 및 시작 메뉴에서 잘못된 UI 색상이 발생하는 것을 줄이려고 시도합니다. 자주 경험하거나 귀찮으면 이 설정을 활성화하십시오.
-
-이로 인해 Windows 10에서 발생한 것과 유사하게 테마 전환 중에 일부 시스템에서 약간 또는 중간 정도의 지연이 발생할 수 있습니다.
-드물게 DWM을 새로 고치는 동안 마우스를 움직이면 Windows에서 삐 소리가 날 수 있습니다.</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>웹 브라우저를 위한 다크 모드</value>
   </data>
