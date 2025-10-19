@@ -122,6 +122,8 @@ public partial class HotkeysViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "HotkeysViewModel");
         }
 
+        MigrateWinFormsFormat();
+
         LoadSettings();
         LoadHotkeysList();
 
@@ -179,6 +181,53 @@ public partial class HotkeysViewModel : ObservableRecipient
             _builder.Load();
             _dispatcherQueue.TryEnqueue(() => LoadSettings());
             StateUpdateHandler.StartConfigWatcher();
+        }
+    }
+
+    private void MigrateWinFormsFormat()
+    {
+        bool needsSave = false;
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.ForceLight))
+        {
+            _builder.Config.Hotkeys.ForceLight = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.ForceLight);
+            needsSave = true;
+        }
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.ForceDark))
+        {
+            _builder.Config.Hotkeys.ForceDark = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.ForceDark);
+            needsSave = true;
+        }
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.NoForce))
+        {
+            _builder.Config.Hotkeys.NoForce = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.NoForce);
+            needsSave = true;
+        }
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.ToggleTheme))
+        {
+            _builder.Config.Hotkeys.ToggleTheme = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.ToggleTheme);
+            needsSave = true;
+        }
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.ToggleAutoThemeSwitch))
+        {
+            _builder.Config.Hotkeys.ToggleAutoThemeSwitch = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.ToggleAutoThemeSwitch);
+            needsSave = true;
+        }
+
+        if (HotkeyStringConverter.IsWinFormsFormat(_builder.Config.Hotkeys.TogglePostpone))
+        {
+            _builder.Config.Hotkeys.TogglePostpone = HotkeyStringConverter.ToDisplayFormat(_builder.Config.Hotkeys.TogglePostpone);
+            needsSave = true;
+        }
+
+        if (needsSave)
+        {
+            _skipConfigUpdate = true;
+            _builder.Save();
         }
     }
 

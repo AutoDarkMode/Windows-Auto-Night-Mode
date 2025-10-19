@@ -14,7 +14,7 @@ namespace AutoDarkModeSvc.Handlers;
 
 internal static class HotkeyHandler
 {
-    private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     public static Service Service { get; set; }
 
@@ -28,114 +28,81 @@ internal static class HotkeyHandler
 
     public static void RegisterAllHotkeys(AdmConfigBuilder builder)
     {
-        _logger.Debug("registering hotkeys");
+        Logger.Debug("registering hotkeys");
         try
         {
             GlobalState state = GlobalState.Instance();
 
-            if (builder.Config.Hotkeys.ForceDark != null)
+            if (builder.Config.Hotkeys.ForceDark != null) Register(builder.Config.Hotkeys.ForceDark, () =>
             {
-                Register(
-                    builder.Config.Hotkeys.ForceDark,
-                    () =>
-                    {
-                        _logger.Info("hotkey signal received: forcing dark theme");
-                        state.ForcedTheme = Theme.Dark;
-                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
-                        ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
-                    }
-                );
-            }
+                Logger.Info("hotkey signal received: forcing dark theme");
+                state.ForcedTheme = Theme.Dark;
+                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
+                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
+            });
 
-            if (builder.Config.Hotkeys.ForceLight != null)
+            if (builder.Config.Hotkeys.ForceLight != null) Register(builder.Config.Hotkeys.ForceLight, () =>
             {
-                Register(
-                    builder.Config.Hotkeys.ForceLight,
-                    () =>
-                    {
-                        _logger.Info("hotkey signal received: forcing light theme");
-                        state.ForcedTheme = Theme.Light;
-                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                        ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
-                    }
-                );
-            }
+                Logger.Info("hotkey signal received: forcing light theme");
+                state.ForcedTheme = Theme.Light;
+                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
+            });
 
-            if (builder.Config.Hotkeys.NoForce != null)
+            if (builder.Config.Hotkeys.NoForce != null) Register(builder.Config.Hotkeys.NoForce, () =>
             {
-                Register(
-                    builder.Config.Hotkeys.NoForce,
-                    () =>
-                    {
-                        _logger.Info("hotkey signal received: stop forcing specific theme");
-                        state.ForcedTheme = Theme.Unknown;
-                        ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
-                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
-                    }
-                );
-            }
+                Logger.Info("hotkey signal received: stop forcing specific theme");
+                state.ForcedTheme = Theme.Unknown;
+                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
+                ThemeManager.RequestSwitch(new(SwitchSource.Manual));
+            });
 
-            if (builder.Config.Hotkeys.ToggleTheme != null)
+            if (builder.Config.Hotkeys.ToggleTheme != null) Register(builder.Config.Hotkeys.ToggleTheme, () =>
             {
-                Register(
-                    builder.Config.Hotkeys.ToggleTheme,
-                    () =>
-                    {
-                        _logger.Info("hotkey signal received: toggle theme");
-                        ThemeManager.SwitchThemeAutoPauseAndNotify();
-                    }
-                );
-            }
+                Logger.Info("hotkey signal received: toggle theme");
+                ThemeManager.SwitchThemeAutoPauseAndNotify();
+            });
 
-            if (builder.Config.Hotkeys.ToggleAutoThemeSwitch != null)
-            {
-                Register(
-                    builder.Config.Hotkeys.ToggleAutoThemeSwitch,
-                    () =>
-                    {
-                        _logger.Info("hotkey signal received: toggle automatic theme switch");
-                        AdmConfig old = builder.Config;
-                        state.SkipConfigFileReload = true;
-                        builder.Config.AutoThemeSwitchingEnabled = !builder.Config.AutoThemeSwitchingEnabled;
-                        builder.Save();
-                        ToastHandler.InvokeAutoSwitchToggleToast();
-                    }
-                );
-            }
 
-            if (builder.Config.Hotkeys.TogglePostpone != null)
+            if (builder.Config.Hotkeys.ToggleAutoThemeSwitch != null) Register(builder.Config.Hotkeys.ToggleAutoThemeSwitch, () =>
             {
-                Register(
-                    builder.Config.Hotkeys.TogglePostpone,
-                    () =>
+                Logger.Info("hotkey signal received: toggle automatic theme switch");
+                AdmConfig old = builder.Config;
+                state.SkipConfigFileReload = true;
+                builder.Config.AutoThemeSwitchingEnabled = !builder.Config.AutoThemeSwitchingEnabled;
+                builder.Save();
+                ToastHandler.InvokeAutoSwitchToggleToast();
+            });
+
+
+            if (builder.Config.Hotkeys.TogglePostpone != null) Register(builder.Config.Hotkeys.TogglePostpone, () =>
+            {
+                if (builder.Config.AutoThemeSwitchingEnabled)
+                {
+                    if (state.PostponeManager.IsSkipNextSwitch)
                     {
-                        if (builder.Config.AutoThemeSwitchingEnabled)
-                        {
-                            if (state.PostponeManager.IsSkipNextSwitch)
-                            {
-                                state.PostponeManager.RemoveSkipNextSwitch();
-                                ToastHandler.InvokePauseAutoSwitchToast();
-                                Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
-                            }
-                            else
-                            {
-                                state.PostponeManager.AddSkipNextSwitch();
-                                ToastHandler.InvokePauseAutoSwitchToast();
-                            }
-                        }
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                        ToastHandler.InvokePauseAutoSwitchToast();
+                        Task.Delay(TimeSpan.FromSeconds(2)).ContinueWith(o => ThemeManager.RequestSwitch(new(SwitchSource.Manual)));
                     }
-                );
-            }
+                    else
+                    {
+                        state.PostponeManager.AddSkipNextSwitch();
+                        ToastHandler.InvokePauseAutoSwitchToast();
+                    }
+                }
+            });
+
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, "could not register hotkeys:");
+            Logger.Error(ex, "could not register hotkeys:");
         }
     }
 
     public static void UnregisterAllHotkeys()
     {
-        _logger.Debug("removing hotkeys");
+        Logger.Debug("removing hotkeys");
         Registered.ForEach(hk => Unregister(hk.Id));
         Registered.Clear();
     }
@@ -149,18 +116,20 @@ internal static class HotkeyHandler
     {
         if (Service == null)
         {
-            _logger.Error("service not instantiated while trying to register hotkey");
+            Logger.Error("service not instantiated while trying to register hotkey");
             return;
         }
 
         try
         {
-            var parts = hotkeyString.Split(',');
-            if (parts.Length != 2 || !uint.TryParse(parts[0], out uint modifiers) || !uint.TryParse(parts[1], out uint keyCode))
+            var parsed = HotkeyStringConverter.Parse(hotkeyString);
+            if (parsed == null)
             {
-                _logger.Error($"Invalid hotkey format: {hotkeyString}");
+                Logger.Error($"invalid hotkey format: {hotkeyString}");
                 return;
             }
+
+            var (modifiers, keyCode) = parsed.Value;
 
             HotkeyInternal mappedHotkey = new()
             {
@@ -176,7 +145,7 @@ internal static class HotkeyHandler
         }
         catch (Exception ex)
         {
-            _logger.Error(ex, $"Failed to register hotkey: {hotkeyString}");
+            Logger.Error(ex, $"Failed to register hotkey: {hotkeyString}");
         }
     }
 
@@ -184,7 +153,7 @@ internal static class HotkeyHandler
     {
         if (Service == null)
         {
-            _logger.Error("service not instantiated while trying to unregister hotkey");
+            Logger.Error("service not instantiated while trying to unregister hotkey");
         }
         HotkeyInternal mappedHotkey = Registered.Find(hk => hk.Id == id);
         if (mappedHotkey != null)
