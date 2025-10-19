@@ -27,12 +27,12 @@ public sealed partial class HotkeysPage : Page
             return;
         }
 
-        var keyString = ViewModel.GetHotkeyValue(hotkeyData.Tag);
+        var keyValue = ViewModel.GetHotkeyValue(hotkeyData.Tag);
         var dialogContent = new ShortcutDialogContentControl();
 
-        if (keyString is not null)
+        if (keyValue is not null)
         {
-            dialogContent.LoadFromConfig(keyString);
+            dialogContent.LoadFromKeyValue(keyValue);
         }
 
         var shortcutDialog = new ContentDialog()

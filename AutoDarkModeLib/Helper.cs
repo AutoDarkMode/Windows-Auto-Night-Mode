@@ -264,7 +264,6 @@ public static class HotkeyStringConverter
 
     private static readonly Dictionary<string, string> WinFormsKeyMap = new()
     {
-        { "Control", "Ctrl" },
         { "LWin", "Win" },
         { "RWin", "Win" },
         { "Back", "Backspace" },
@@ -272,6 +271,7 @@ public static class HotkeyStringConverter
         { "Prior", "PgUp" },
         { "Next", "PgDn" },
         { "Capital", "CapsLock" },
+        { "Apps", "Application" },
         { "Oemcomma", "," },
         { "OemPeriod", "." },
         { "OemQuestion", "/" },
@@ -282,7 +282,17 @@ public static class HotkeyStringConverter
         { "OemPipe", "\\" },
         { "OemSemicolon", ";" },
         { "OemQuotes", "'" },
-        { "Oemtilde", "`" }
+        { "Oemtilde", "`" },
+        { "D0", "Number0" },
+        { "D1", "Number1" },
+        { "D2", "Number2" },
+        { "D3", "Number3" },
+        { "D4", "Number4" },
+        { "D5", "Number5" },
+        { "D6", "Number6" },
+        { "D7", "Number7" },
+        { "D8", "Number8" },
+        { "D9", "Number9" }
     };
 
     private static readonly Dictionary<string, VirtualKey> SpecialKeyMap = new()
@@ -318,19 +328,34 @@ public static class HotkeyStringConverter
 
     private static readonly Dictionary<VirtualKey, string> ReverseSpecialKeyMap = SpecialKeyMap.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
 
-    public static bool IsWinFormsFormat(string? hotkeyString)
+    public static bool IsWinFormsFormat(string hotkeyString)
     {
         if (string.IsNullOrWhiteSpace(hotkeyString))
         {
             return false;
         }
 
-        return (hotkeyString.Contains("Control") ||
-                hotkeyString.Contains("LWin") ||
-                hotkeyString.Contains("RWin") ||
-                hotkeyString.Contains("Return") ||
-                hotkeyString.Contains("Oem")) &&
-               !hotkeyString.Contains(" + ");
+        var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
+
+        foreach (var part in parts)
+        {
+            if (part == "LWin"
+                || part == "RWin"
+                || part == "Return"
+                || part == "Prior"
+                || part == "Next"
+                || part == "Capital"
+                || part == "Back"
+                || part == "Apps"
+                || part.StartsWith("Oem")
+                || (part.Length == 2 && part[0] == 'D' && char.IsDigit(part[1]))
+            )
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static string NormalizeKeyName(string keyName)
@@ -476,17 +501,12 @@ public static class HotkeyStringConverter
             return (uint)upper;
         }
 
-        if (keyName.Length == 2 && keyName[0] == 'D' && char.IsDigit(keyName[1]))
-        {
-            return (uint)(VirtualKey.Number0 + (keyName[1] - '0'));
-        }
-
         return 0;
     }
 
     public static string GetKeyDisplayName(VirtualKey key)
     {
-        if (ReverseSpecialKeyMap.TryGetValue(key, out string? specialName))
+        if (ReverseSpecialKeyMap.TryGetValue(key, out string specialName))
         {
             return specialName;
         }

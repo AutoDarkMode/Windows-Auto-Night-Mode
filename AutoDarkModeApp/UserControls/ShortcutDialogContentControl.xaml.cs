@@ -15,47 +15,18 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     [GeneratedDependencyProperty]
     public partial string? CapturedHotkeys { get; set; }
 
-    public void LoadFromConfig(string? hotkeyString)
+    public void LoadFromKeyValue(string? hotkeyValue)
     {
-        if (string.IsNullOrEmpty(hotkeyString))
+        if (string.IsNullOrWhiteSpace(hotkeyValue))
         {
             HotkeyCombination = null;
             CapturedHotkeys = null;
             return;
         }
 
-        var parsed = HotkeyStringConverter.Parse(hotkeyString);
-        if (parsed == null)
-        {
-            HotkeyCombination = null;
-            CapturedHotkeys = null;
-            return;
-        }
-
-        var (modifiers, keyCode) = parsed.Value;
-
-        CapturedHotkeys = HotkeyStringConverter.ToDisplayFormat(hotkeyString);
-
-        List<string> displayParts = [];
-        if ((modifiers & 2) != 0)
-        {
-            displayParts.Add("Ctrl");
-        }
-        if ((modifiers & 4) != 0)
-        {
-            displayParts.Add("Shift");
-        }
-        if ((modifiers & 1) != 0)
-        {
-            displayParts.Add("Alt");
-        }
-        if ((modifiers & 8) != 0)
-        {
-            displayParts.Add("Win");
-        }
-        displayParts.Add(HotkeyStringConverter.GetKeyDisplayName((VirtualKey)keyCode));
-
-        HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
+        CapturedHotkeys = HotkeyStringConverter.ToDisplayFormat(hotkeyValue);
+        var displayParts = hotkeyValue.Split('+', StringSplitOptions.TrimEntries);
+        HotkeyCombination = displayParts.Select(part => new SingleHotkeyDataObject { Key = part }).ToList();
     }
 
     public ShortcutDialogContentControl()
