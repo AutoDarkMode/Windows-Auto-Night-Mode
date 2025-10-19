@@ -974,6 +974,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Meer agressief DWM vernieuwen</value>
+  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Stel het wisselen uit met een aantal minuten</value>
   </data>
