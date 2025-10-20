@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,40 +26,40 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>总是浅色</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
+
+这可能会在某些系统上引入轻到中度的主题切换延迟。
+
+在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
   </data>
@@ -208,10 +215,10 @@
     <value>颜色</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>颜色滤镜（发送 Win + Ctrl + C）</value>
+    <value>深色模式时启用颜色滤镜</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>根据您的喜好自定义 Windows 系统颜色方案</value>
+    <value>根据您的喜好自定义 Windows 系统颜色方案。</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>条件</value>
@@ -446,7 +453,7 @@
     <value>经度</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>让 Auto Dark Mode 管理我的主题</value>
+    <value>让 Auto Dark Mode 管理我的主题（推荐）</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>手动</value>
@@ -485,7 +492,7 @@
     <value>下载更新</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>此选项不支持默认 Windows 主题</value>
+    <value>此选项不支持预装的默认 Windows 主题</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>此应用需要使用您的位置信息</value>
@@ -529,7 +536,7 @@
     <value>版本信息已复制到剪贴板</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>下一次更新： </value>
+    <value>下一次更新</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>无</value>
@@ -664,7 +671,7 @@
     <value>当某些进程运行时不进行切换</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>刷新自启动</value>
+    <value>刷新</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>注册表键值</value>
@@ -802,7 +809,7 @@
     <value>让 Windows 管理我的主题</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>在 Auto Dark Mode 启动时检查更新</value>
+    <value>在 Auto Dark Mode 启动时检查</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>选择更新版本</value>
@@ -871,7 +878,7 @@
     <value>路径</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>自动启动已在任务管理器的“启动应用”标签页中禁用。如果您想重新让 Auto Dark Mode 随 Windows 启动，请在那里重新启用。</value>
+    <value>自动启动已在 Windows 设置中被禁用。 要使本程序再次随 Windows 系统一起启动,请前往Windows 设置 &gt; 应用 &gt; 启动并启用它。</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
@@ -931,7 +938,7 @@
     <value>Windows 模式</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Windows 个性化颜色</value>
+    <value>Windows 个性化颜色设置</value>
   </data>
   <data name="Delayed" xml:space="preserve">
     <value>已推迟</value>
@@ -943,64 +950,58 @@
     <value>Ignore color</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>强调色界面</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>选择何时应用强调色</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
+    <value>时段</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar during dark mode</value>
+    <value>深色模式下任务栏的强调色</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>标题栏和窗口边框的强调色</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>更激进的 DWM 刷新</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>使用激进的 DWM 刷新？</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色出现的频率。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
-
-这可能会在某些系统上引入轻到中度的主题切换延迟，类似于 Windows 10 上发生的情况。
-在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>正值代表延后，负值表示提前</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Web 浏览器深色模式</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader 是一款浏览器扩展程序,它使 Chrome、Edge 和 Firefox 中的网站和当前系统的主题保持一致。 单击此处了解更多信息</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>打开 Windows 鼠标指针设置</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>可以在 Windows 设置中定义新的光标方案，之后在此处选择</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>居中</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log 和 Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>已复制</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>尝试减少文件管理器、任务栏和开始菜单中错误的 UI 颜色。</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>打开 Windows 设置</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
