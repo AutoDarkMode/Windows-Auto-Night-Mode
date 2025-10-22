@@ -27,6 +27,16 @@
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
+                <InfoBar
+                    Title="{helpers:ResourceString Name=Info}"
+                    IsOpen="{x:Bind ViewModel.IsNoLocationAccessInfoBarOpen, Mode=OneWay}"
+                    Message="{helpers:ResourceString Name=Msg_LocPerm}"
+                    Severity="Warning">
+                    <InfoBar.ActionButton>
+                        <Button Click="NoLocationAccessInfoBar_ActionButtonClick" Content="{helpers:ResourceString Name=Confirm}" />
+                    </InfoBar.ActionButton>
+                </InfoBar>
+
                 <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">

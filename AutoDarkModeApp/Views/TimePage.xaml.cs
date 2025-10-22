@@ -14,6 +14,11 @@ public sealed partial class TimePage : Page
         InitializeComponent();
     }
 
+    private async void NoLocationAccessInfoBar_ActionButtonClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
+    }
+
     private void CoordinatesTextBox_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
     {
         var decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
