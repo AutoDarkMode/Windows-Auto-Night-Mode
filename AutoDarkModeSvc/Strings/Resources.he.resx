@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>החלפה אוטומטית של ערכת נושא</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>לאשר</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>تاریک</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
+    <value>לעכב</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>השבת החלפה אוטומטית</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>غیرفعال شده</value>
@@ -142,7 +142,7 @@
     <value>روشن</value>
   </data>
   <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>האם ברצונך להשבית את ההחלפה האוטומטית?</value>
   </data>
   <data name="Msg_PauseActionNotification" xml:space="preserve">
     <value>Automatic switching will also resume if you return to your previous theme.</value>
