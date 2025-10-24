@@ -468,7 +468,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
     {
-        var currentMonitorCount = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
+        var currentMonitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
+        int currentMonitorCount = currentMonitors.Count;
 
         WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
 
@@ -479,7 +480,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                 [
                     ..Settings.Component.Monitors
                         .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
-                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())
+                        .Where(m => currentMonitors.Select(c => c.DeviceId).ToList().Contains(m.Id))
+                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper)
+                        .ToLower())
                 ];
 
 
