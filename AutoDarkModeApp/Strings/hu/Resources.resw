@@ -986,9 +986,6 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Pozitív értékek később, negatív értékek korábban</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Sötét mód a böngészőjéhez</value>
   </data>
