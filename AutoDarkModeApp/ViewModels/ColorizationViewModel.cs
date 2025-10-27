@@ -85,8 +85,6 @@ public partial class ColorizationViewModel : ObservableRecipient
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
 
-        SelectColorThemeMode = Application.Current.RequestedTheme;
-
         try
         {
             _builder.Load();
@@ -97,6 +95,7 @@ public partial class ColorizationViewModel : ObservableRecipient
         }
 
         InitializeAccentColor();
+        SelectColorThemeMode = Application.Current.RequestedTheme;
         LoadSettings();
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
