@@ -55,8 +55,9 @@
                     Height="8"
                     Margin="0,26,0,0"
                     HorizontalAlignment="Right"
-                    Background="{ThemeResource AccentFillColorDefaultBrush}"
-                    CornerRadius="2" />
+                    Background="{x:Bind DesktopPreviewAccentColorBorderBackground, Mode=OneWay}"
+                    CornerRadius="2"
+                    Visibility="{x:Bind DesktopPreviewAccentColorBorderVisible, Mode=OneWay}" />
             </StackPanel>
         </Grid>
     </Border>

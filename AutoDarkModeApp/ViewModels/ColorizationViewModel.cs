@@ -29,6 +29,9 @@ public partial class ColorizationViewModel : ObservableRecipient
     public partial ElementTheme DesktopPreviewThemeMode { get; set; }
 
     [ObservableProperty]
+    public partial bool DesktopPreviewAccentColorBorderVisible { get; set; }
+
+    [ObservableProperty]
     public partial bool IsColorizationEnabled { get; set; }
 
     [ObservableProperty]
@@ -123,6 +126,7 @@ public partial class ColorizationViewModel : ObservableRecipient
             AccentColorMode = ThemeColorMode.Manual;
             var colorizationColor = isLightTheme ? config.LightHex.ToColor() : config.DarkHex.ToColor();
             colorizationColor.A = 255;
+            DesktopPreviewAccentColorBorderVisible = true;
             AccentColorPreviewBorderBackground = new SolidColorBrush(colorizationColor);
         }
 
@@ -268,6 +272,8 @@ public partial class ColorizationViewModel : ObservableRecipient
         var isLightTheme = SelectColorThemeMode == ApplicationTheme.Light;
         var config = _builder.Config.ColorizationSwitch.Component;
         var isAutomatic = value == ThemeColorMode.Automatic;
+
+        DesktopPreviewAccentColorBorderVisible = !isAutomatic;
 
         if (isLightTheme)
         {
