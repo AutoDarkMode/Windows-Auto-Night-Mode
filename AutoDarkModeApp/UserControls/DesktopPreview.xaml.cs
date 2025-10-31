@@ -25,13 +25,11 @@ public sealed partial class DesktopPreview : UserControl
     [GeneratedDependencyProperty]
     public partial bool DesktopPreviewAutomaticPreviewEnable { get; set; }
 
-    partial void OnDesktopPreviewAutomaticPreviewEnableChanged(bool newValue)
-    {
-        if (newValue)
-        {
-            InitializePreview();
-        }
-    }
+    [GeneratedDependencyProperty]
+    public partial bool DesktopPreviewAccentColorBorderVisible { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial SolidColorBrush? DesktopPreviewAccentColorBorderBackground { get; set; }
 
     public DesktopPreview()
     {
@@ -90,5 +88,13 @@ public sealed partial class DesktopPreview : UserControl
             }
         }
         return new BitmapImage();
+    }
+
+    partial void OnDesktopPreviewAutomaticPreviewEnableChanged(bool newValue)
+    {
+        if (newValue)
+        {
+            InitializePreview();
+        }
     }
 }
