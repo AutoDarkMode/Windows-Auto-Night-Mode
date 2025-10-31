@@ -516,7 +516,7 @@
     <value>正在檢查更新…</value>
   </data>
   <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>服務沒有回應。請檢查 AutoDarkModeSvc.exe 是否正在執行，並重試！</value>
+    <value>服務沒有回應。請檢查 AutoDarkModeSvc.exe 是否正在執行，並再試一次！</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>正在等待主題切換</value>
@@ -767,7 +767,7 @@
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="Theme10_WindowsLight" xml:space="preserve">
-    <value>Windows（淡）</value>
+    <value>Windows（淺色）</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="Theme11_CapturedMotion" xml:space="preserve">
@@ -779,7 +779,7 @@
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>流暢</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
@@ -819,7 +819,7 @@
     <value>以 Windows 管理我的主題</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>在 Auto Dark Mode 啟動時檢查</value>
+    <value>當 Auto Dark Mode 啟動時檢查</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>選擇更新通道</value>
@@ -879,7 +879,7 @@
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
+    <value>選擇色彩</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>停用 Windows 管理你的主題</value>
@@ -888,7 +888,7 @@
     <value>路徑</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Windows 設定中的自動啟動功能已被停用。若要再次於 Windows 啟動時自動啟動 Auto Dark Mode，請前往 Windows 設定 &gt; 應用程式 &gt; 啟動，並啟用它。</value>
+    <value>Windows 設定中的自動啟動功能已被停用。若要再次於 Windows 啟動時自動啟動 Auto Dark Mode，請前往 Windows 設定 &gt; 應用程式 &gt; 啟動，以再次啟用。</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>測試版</value>
@@ -897,7 +897,7 @@
     <value>偵錯模式</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>按 Enter 以套用</value>
+    <value>按下 Enter 以套用</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>語言</value>
@@ -921,7 +921,7 @@
     <value>選擇組合鍵。僅以 Windows 鍵、Ctrl、Alt 或 Shift 開頭的快捷鍵有效。</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>動作捷徑</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>儲存</value>
@@ -930,7 +930,7 @@
     <value>強制儲存</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>快捷鍵無法作用了？別擔心，我們再儲存一次</value>
+    <value>快捷鍵失效了？別擔心，我們再儲存一次</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
     <value>儲存成功</value>
@@ -960,7 +960,7 @@
     <value>忽略顏色</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>輔色介面</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>選擇何時套用輔色</value>
@@ -981,25 +981,25 @@
     <value>使用積極的 DWM 重新整理？</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Delay switching by a number minutes</value>
+    <value>延遲切換數分鐘</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>正值表示延後，負值表示提前</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>為你的網路瀏覽器套用深色模式</value>
+    <value>套用深色模式到您的網路瀏覽器</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader 是一個瀏覽器擴充功能，可以讓 Chrome、Edge 和 Firefox 中的網站跟隨系統目前主題。點擊此處以瞭解更多</value>
+    <value>Dark Reader 是一個瀏覽器擴充功能，可以讓 Chrome、Edge 和 Firefox 中的網站跟隨系統目前主題。按一下此處以進一步瞭解</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
     <value>開啟 Windows 滑鼠指標設定</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>你可以在 Windows 設定中定義新的游標方案，然後在此處選擇它們</value>
+    <value>您可以在 Windows 設定中定義新的游標樣式，並加以選擇</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>居中</value>
+    <value>置中</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
     <value>Log 和 Shell</value>
