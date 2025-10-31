@@ -19,7 +19,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -28,7 +27,6 @@ using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using NLog.Targets;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
@@ -468,7 +466,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
     {
-        var currentMonitorCount = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result.Count;
+        var currentMonitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
+        int currentMonitorCount = currentMonitors.Count;
 
         WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
 
@@ -479,22 +478,26 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
                 [
                     ..Settings.Component.Monitors
                         .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
-                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper).ToLower())
+                        .Where(m => currentMonitors.Select(c => c.DeviceId).ToList().Contains(m.Id))
+                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper)
+                        .ToLower())
                 ];
 
-
-                if (type == WallpaperType.Individual)
+                if (wallpapersTarget.Count == 0)
                 {
-                    var themeFileMonitorCount = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Count;
-                    if (themeFileMonitorCount > currentMonitorCount)
-                    {
-                        // if the managed theme file has more multi monitor wallpapers, then we truncate those extra monitors
-                        // otherwise we will potentially lose synchronization state
-                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Sort((a, b) => a.Item2.CompareTo(b.Item2));
-                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers =
-                            GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Where((a, b) => b < currentMonitorCount).ToList();
-                        Logger.Warn($"managed theme file contained more wallpapers than there are monitors, pruned wallpaper list from {themeFileMonitorCount} to {currentMonitorCount}");
-                    }
+                    Logger.Warn("wallpaper synchronization: no wallpapers selected");
+                    return true;
+                }
+
+                var themeFileMonitorCount = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Count;
+                if (themeFileMonitorCount > currentMonitorCount)
+                {
+                    // if the managed theme file has more multi monitor wallpapers, then we truncate those extra monitors
+                    // otherwise we will potentially lose synchronization state
+                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers =
+                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Where((a, b) => b < currentMonitorCount).ToList();
+                    Logger.Warn($"managed theme file contained more wallpapers than there are monitors, pruned wallpaper list from {themeFileMonitorCount} to {currentMonitorCount}");
                 }
 
                 var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers

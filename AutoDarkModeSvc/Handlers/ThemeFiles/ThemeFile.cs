@@ -391,16 +391,41 @@ public partial class ThemeFile
 
     private static (Encoding, List<string>) Read(string ThemeFilePath, int attempts = 5)
     {
-        List<string> themeFileContent = new();
-        Encoding encoding = Encoding.GetEncoding(1252);
+        List<string> themeFileContent = [];
+        Encoding encoding = Encoding.Unicode;
+
         try
         {
+            byte[] fileBytes = File.ReadAllBytes(ThemeFilePath);
+
+            if (fileBytes.Length >= 3 && fileBytes[0] == 0xEF && fileBytes[1] == 0xBB && fileBytes[2] == 0xBF)
+            {
+                encoding = Encoding.UTF8;
+            }
+            else if (fileBytes.Length >= 2 && fileBytes[0] == 0xFF && fileBytes[1] == 0xFE)
+            {
+                encoding = Encoding.Unicode;
+            }
+            else if (fileBytes.Length >= 2 && fileBytes[0] == 0xFE && fileBytes[1] == 0xFF)
+            {
+                encoding = Encoding.BigEndianUnicode;
+            }
+
+            else if(fileBytes.Length >=4 && fileBytes[0]==0xFF && fileBytes[1] == 0xFE && fileBytes[2] == 0x00 && fileBytes[3] == 0x00)
+            {
+                encoding = Encoding.UTF32;
+            }
+            else
+            {
+                encoding = Encoding.GetEncoding(0);
+            }
             themeFileContent = File.ReadAllLines(ThemeFilePath, encoding).ToList();
         }
         catch (Exception ex)
         {
             Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
         }
+
         return (encoding, themeFileContent);
     }
 
