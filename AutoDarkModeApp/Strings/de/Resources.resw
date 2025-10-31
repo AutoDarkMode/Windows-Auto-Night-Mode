@@ -157,7 +157,7 @@
     <value>Automatisch</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Auto-Wechsel an/ausschalten</value>
+    <value>Auto-Wechsel an-/ausschalten</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Autostart</value>
@@ -312,9 +312,8 @@ Bitte stelle sicher, dass:
 - der Service läuft
 - die config.yaml Datei korrekt ist
 
-Möchtest du eine Fehlermeldung in unserem GitHub Repo erstellen?
-Drücke "ja", um ein neues Browserfenster zu öffnen.
-</value>
+Möchtest du eine Fehlermeldung in unserem GitHub-Repository erstellen?
+Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Ein Fehler ist aufgetreten</value>
@@ -670,7 +669,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Designwechsel unterbinden, während bestimmte Apps ausgeführt werden</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Autostart aktualisieren</value>
+    <value>Aktualisieren</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Registrierungsschlüssel</value>
@@ -860,15 +859,15 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Autostart ist via Windows deaktiviert.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Gehe zu den Windows-Einstellungen &gt; Personalisierung &gt; Farben.
+2. Ändere den Modus für das helle Design auf „Hell”.
+3. Gehe zu den Windows-Einstellungen &gt; Personalisierung &gt; Designs.
+4. Wähle dein bevorzugtes Hintergrundbild, den Mauszeiger und die Akzentfarbe aus.
+5. Speichere dein Design.
+6. Wiederhole diesen Vorgang für das dunkle Design.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Tastenkürzel bearbeiten</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Nicht verbunden</value>
@@ -893,16 +892,16 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug Modus</value>
+    <value>Debug-Modus</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
     <value>Drücke Enter zum Anwenden</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprache</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Gehe zu den Windows Spotlight-Einstellungen</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
@@ -911,10 +910,10 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Wechseln</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Zeige Benachrichtigung bei Pausierung des automatischen Designwechsels</value>
+    <value>Zeige eine Benachrichtigung bei Pausierung des automatischen Designwechsels</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Zeige Benachrichtigung bei Auslöse des automatischen Designwechsels</value>
+    <value>Zeige Benachrichtigung bei Auslösung des automatischen Designwechsels</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
     <value>Drücke eine Kombination an Tasten. Es sind nur Tastenkürzel erlaubt, die mit der Windows-Taste, Strg, Alt oder Shift beginnen.</value>
@@ -929,7 +928,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Speichern</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>Die Tastenkürzel funktionieren nicht? Keine Sorge, hier kannst du sie nochmal speichern</value>
+    <value>Die Tastenkürzel funktionieren nicht? Keine Sorge, hier kannst du sie nochmal speichern.</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
     <value>Speicherung erfolgreich</value>
@@ -959,7 +958,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Akzentfarbe ignorieren</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Akzentfarbenflächen</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Wähle aus, wann die Akzentfarbe angewendet werden soll</value>
@@ -996,13 +995,13 @@ In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während d
     <value>Dark Mode für deinen Internetbrowser</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader ist eine Browsererweiterung für Chrome, Edge und Firefox, die Webseiten in den Dark Mode einfärbt. Klick hier, um mehr zu erfahren</value>
+    <value>Dark Reader ist eine Browsererweiterung für Chrome, Edge und Firefox, die Webseiten in den Dark Mode einfärbt. Klicke hier, um mehr zu erfahren.</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
     <value>Öffne die Windows Mauszeigereinstellungen</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>Definiere neue Mauszeigervorlagen in den Windows-Einstellungen, die anschließend hier zur Wahl stehen</value>
+    <value>Definiere neue Mauszeigervorlagen in den Windows-Einstellungen, die anschließend hier zur Wahl stehen.</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
     <value>Zentriert</value>

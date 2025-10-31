@@ -39,6 +39,9 @@ public partial class TimeViewModel : ObservableRecipient
     public partial string? LocationNextUpdateDateDescription { get; set; }
 
     [ObservableProperty]
+    public partial bool IsNoLocationAccessInfoBarOpen { get; set; }
+
+    [ObservableProperty]
     public partial string? LocationBlockText { get; set; }
 
     [ObservableProperty]
@@ -194,7 +197,11 @@ public partial class TimeViewModel : ObservableRecipient
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
+            {
+                IsNoLocationAccessInfoBarOpen = true;
+            }
+            else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }

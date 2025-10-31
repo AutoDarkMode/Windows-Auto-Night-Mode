@@ -121,16 +121,16 @@
     <value>حالت تاریک خوکار</value>
   </data>
   <data name="About" xml:space="preserve">
-    <value>درباره</value>
+    <value>Settings</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
-    <value>Accent color</value>
+    <value>رنگ تأکیدی</value>
   </data>
   <data name="AccentOnly" xml:space="preserve">
-    <value>Accent only</value>
+    <value>فقط تأکیدی</value>
   </data>
   <data name="ActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
+    <value>فعالسازی تأخیرها</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>همیشه روشن</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+
+This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>اعمال کردن</value>
   </data>
@@ -154,7 +161,7 @@
     <value>بار گیری و نصب خودکار ویرایش‌های جدید</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatic</value>
+    <value>خودکار</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
     <value>Toggle automatic theme switch</value>
@@ -208,7 +215,7 @@
     <value>رنگ</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>فیلتر رنگی (ارسال با Win + Ctrl + C)</value>
+    <value>فعالسازی فیلتر رنگی هنگام فعال بودن حالت تاریک</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Customize the Windows system color scheme to your liking.</value>
@@ -220,13 +227,13 @@
     <value>پیکربندی</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>تأیید</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>رونوشت</value>
   </data>
   <data name="CreateTheme" xml:space="preserve">
-    <value>نمایه‌ی خود را بسازید.</value>
+    <value>نمایه‌های خود را بسازید</value>
   </data>
   <data name="Cursors" xml:space="preserve">
     <value>Cursors</value>
@@ -247,7 +254,7 @@
     <value>نمایه تاریک</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
+    <value>تأخیر</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>غیرفعال شده</value>
@@ -264,8 +271,7 @@
   <data name="Donation_Description" xml:space="preserve">
     <value>سلام، سپاس برای استفاده شما از Auto Dark Mode! آیا تا کنون آن‌را دوست داشته اید؟
 
-این برنامه با کمک به مراقبت از چشمانتان روز لذت بخش‌تری را برایتان به ارمغان می‌آورد .
-من با این پروژه هیچ سودی بدست نمی آورم.
+این برنامه با کمک به مراقبت از چشمانتان روز لذت بخش‌تری را برایتان به ارمغان می‌آورد. من با این پروژه هیچ سودی بدست نمی آورم.
 
 به همین دلیل می‌توانید با یک کمک مالی داوطلبانه از من حمایت کنید. حتی مقدار کمی می‌تواند باعث خوشحالی من بشود. فقط به‌ اندازه‌ای که برای کار من ارزش قائلید کمک کنید.</value>
   </data>
@@ -312,12 +318,10 @@
 - سرویس برنامه در حال اجرا است
 - فایل config.yaml شما سالم است
 
-آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟
-برای باز کردن یک پنجره جدید در مرورگر روی «آری» کلید کنید.
-</value>
+آیا می‌خواهید یک تیکت در ریپوزیتوری Auto Dark Mode ایجاد کنید؟</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
-    <value>یک خطا رخ داده است.</value>
+    <value>یک خطا رخ داده است</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
     <value>هنگامی که Auto Dark Mode نمایه‌ی شما را مدیریت می‌کند، این ویژگی غیرفعال است.</value>
@@ -449,7 +453,7 @@
     <value>طول جغرافیایی</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Let Auto Dark Mode manage my theme</value>
+    <value>بگذارید Auto Dark Mode، پوسته من را مدیریت کند (توصیه می‌شود)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -497,7 +501,7 @@
     <value>سرویس برنامه هنوز اجرا نشده است، لطفا صبر کنید…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>هیچ بروزرسانی جدیدی در دسترس نیست.</value>
+    <value>هیچ بروزرسانی جدیدی در دسترس نیست</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>Theme switching is paused once!</value>
@@ -524,10 +528,7 @@
     <value>یک بروزرسانی جدید در دسترس است!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>از اینکه از نمایه تاریک خودکار استفاده میکنید متشکریم!
-
-نسخه جدیدی در گیت هاب با حل مشکلات و برخی بهبودها موجود است.
-آیا می خواهید دانلودش کنید؟
+    <value>نسخه جدیدی در گیت هاب با حل مشکلات و برخی بهبودها موجود است.
 
 در حال نصب نسخه:{0}، نسخه جدید:{1}</value>
   </data>
@@ -670,7 +671,7 @@
     <value>Don't switch while certain processes are running</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>تازه‌سازی جرای خودکار</value>
+    <value>تازه‌سازی</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Registry Key</value>
@@ -688,7 +689,7 @@
     <value>اجرای دوباره</value>
   </data>
   <data name="RestartNeeded" xml:space="preserve">
-    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است.</value>
+    <value>برای مشاهده تغییرات، نیاز به اجرای دوباره برنامه است</value>
   </data>
   <data name="RestoreThemeChanged" xml:space="preserve">
     <value>بازگردانی نمایه‌ها هنگامی که به صورت خارجی تغییر کرده‌اند</value>
@@ -818,7 +819,7 @@
     <value>Let Windows manage my theme</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>بررسی بروزرسانی همزمان با اجرای Auto Dark Mode</value>
+    <value>بررسی همزمان با اجرای Auto Dark Mode</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>انتخاب کانال بروزرسانی</value>
@@ -854,7 +855,7 @@
     <value>Windows spotlight</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
-    <value>این گزینه غیر فعال است؛ زیرا شما بروزرسانی  Windows 10 April 2019 را نصب نکرده اید.</value>
+    <value>این گزینه غیر فعال است؛ زیرا شما بروزرسانی Windows 10 April 2019 یا بالاتر را نصب نکرده اید.</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>شما اجرای خودکار با ویندوز را غیر فعال کرده اید.</value>
@@ -890,25 +891,25 @@
     <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
   <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>آزمایشی</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>حالت عیب یابی</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
     <value>Select Enter to apply</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>زبان</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
     <value>Go to Windows Spotlight settings</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>پایدار</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>جابجایی</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
     <value>Show notification when the automatic theme switch is paused</value>
@@ -981,12 +982,6 @@
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
-
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10.
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
