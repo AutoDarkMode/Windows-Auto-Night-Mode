@@ -214,7 +214,7 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>Color</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtro de color (usa Win + Ctrl + C)</value>
+    <value>Activar filtro de color en el modo oscuro</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Personaliza el esquema de colores del sistema de Windows a tu gusto.</value>
