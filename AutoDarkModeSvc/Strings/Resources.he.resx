@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>החלפה אוטומטית של ערכת נושא</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>לאשר</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>تاریک</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
+    <value>לעכב</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>השבת החלפה אוטומטית</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>غیرفعال شده</value>
@@ -142,122 +142,122 @@
     <value>روشن</value>
   </data>
   <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>האם ברצונך להשבית את ההחלפה האוטומטית?</value>
   </data>
   <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>ההחלפה האוטומטית תופעל מחדש גם אם תחזור לערכת הנושא הקודמת שלך.</value>
   </data>
   <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>Theme switching paused until</value>
+    <value>החלפת ערכות נושא הושהתה עד</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>החלפת ערכות נושא מושהית פעם אחת!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Would you like to switch now or delay further?</value>
+    <value>האם להחליף עכשיו או מאוחר יותר?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>ההחלפה האוטומטית בין ערכות הנושא חודשה</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Theme switch pending</value>
+    <value>החלפת ערכת נושא ממתינה</value>
   </data>
   <data name="Paused" xml:space="preserve">
-    <value>Paused</value>
+    <value>מושהה</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 hours</value>
+    <value>שעתיים</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
     <value>15 minutes</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 שעות</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
     <value>30 minutes</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 hours</value>
+    <value>6 שעות</value>
   </data>
   <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 hour</value>
+    <value>שעה אחת</value>
   </data>
   <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 hours</value>
+    <value>12 שעות</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
     <value>Hit confirm to request a theme switch immediately.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>בטל פעולה זו על ידי לחיצה על כפתור הביטול למטה.</value>
   </data>
   <data name="SwitchNow" xml:space="preserve">
-    <value>Switch now</value>
+    <value>החלף עכשיו</value>
   </data>
   <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;Automatic theme switch</value>
+    <value>&amp;החלפת ערכת נושא אוטומטית</value>
   </data>
   <data name="TrayMenuItem_Close" xml:space="preserve">
     <value>و بستن</value>
   </data>
   <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Force &amp;Dark Theme</value>
+    <value>כפה &amp;ערכת נושא כהה</value>
   </data>
   <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Force &amp;Light Theme</value>
+    <value>כפה &amp;ערכת נושא בהירה</value>
   </data>
   <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
-    <value>&amp;Open Config Directory</value>
+    <value>&amp;פתח את תיקיית התצורה</value>
   </data>
   <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;Pause auto switch</value>
+    <value>&amp;השהה את ההחלפה האוטומטית</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;Toggle theme</value>
+    <value>&amp;החלף בין ערכות הנושא</value>
   </data>
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
-    <value>Try to fix the theme</value>
+    <value>נסה לתקן את ערכת הנושא</value>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>Undo</value>
+    <value>לבטל</value>
   </data>
   <data name="Until" xml:space="preserve">
-    <value>until</value>
+    <value>עד</value>
   </data>
   <data name="UntilSunrise" xml:space="preserve">
-    <value>until next sunrise</value>
+    <value>עד הזריחה הבאה</value>
   </data>
   <data name="UntilSunset" xml:space="preserve">
-    <value>until next sunset</value>
+    <value>עד השקיעה הבאה</value>
   </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>An error occurred while patching.</value>
+    <value>אירעה שגיאה במהלך התיקון.</value>
   </data>
   <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>Downgrade</value>
+    <value>שדרוג לאחור</value>
   </data>
   <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
     <value>Open log directory</value>
   </data>
   <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
-    <value>Postpone</value>
+    <value>דחה</value>
   </data>
   <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
     <value>Update</value>
   </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
-    <value>Current Version</value>
+    <value>הגרסה הנוכחית</value>
   </data>
   <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>Downgrade {0} available</value>
+    <value>שדרוג לאחור של {0} זמין</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>Downgrading to</value>
+    <value>שדרוג לאחור ל</value>
   </data>
   <data name="UpdateToast_Downloading" xml:space="preserve">
-    <value>Downloading…</value>
+    <value>מוריד…</value>
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
     <value>Download in progress</value>
@@ -269,16 +269,16 @@
     <value>Message</value>
   </data>
   <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
-    <value>New version {0} available</value>
+    <value>גרסה חדשה {0} זמינה</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Patching failed</value>
+    <value>התיקון נכשל</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>אנא בדקו את service.log ו-updater.log לקבלת מידע</value>
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>Updating to</value>
+    <value>מעדכן ל</value>
   </data>
 </root>
