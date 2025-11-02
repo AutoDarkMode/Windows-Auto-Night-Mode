@@ -18,6 +18,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using Windows.System;
 using YamlDotNet.Serialization.NamingConventions;
 
 namespace AutoDarkModeLib;
@@ -247,5 +249,285 @@ public static class TimeZoneInfoExtensions
         var hours = Math.Abs(utcOffset.Hours).ToString("00");
         var minutes = Math.Abs(utcOffset.Minutes).ToString("00");
         return $"UTC{sign}{hours}:{minutes}";
+    }
+}
+
+public static class HotkeyStringConverter
+{
+    private static readonly Dictionary<string, uint> ModifierMap = new()
+    {
+        { "Alt", 1 },
+        { "Ctrl", 2 },
+        { "Shift", 4 },
+        { "Win", 8 }
+    };
+
+    private static readonly Dictionary<string, string> WinFormsKeyMap = new()
+    {
+        { "LWin", "Win" },
+        { "RWin", "Win" },
+        { "Back", "Backspace" },
+        { "Return", "Enter" },
+        { "Prior", "PgUp" },
+        { "Next", "PgDn" },
+        { "Capital", "CapsLock" },
+        { "Apps", "Application" },
+        { "Oemcomma", "," },
+        { "OemPeriod", "." },
+        { "OemQuestion", "/" },
+        { "Oemplus", "=" },
+        { "OemMinus", "-" },
+        { "OemOpenBrackets", "[" },
+        { "OemCloseBrackets", "]" },
+        { "OemPipe", "\\" },
+        { "OemSemicolon", ";" },
+        { "OemQuotes", "'" },
+        { "Oemtilde", "`" },
+        { "D0", "Number0" },
+        { "D1", "Number1" },
+        { "D2", "Number2" },
+        { "D3", "Number3" },
+        { "D4", "Number4" },
+        { "D5", "Number5" },
+        { "D6", "Number6" },
+        { "D7", "Number7" },
+        { "D8", "Number8" },
+        { "D9", "Number9" }
+    };
+
+    private static readonly Dictionary<string, VirtualKey> SpecialKeyMap = new()
+    {
+        { "Enter", VirtualKey.Enter },
+        { "Esc", VirtualKey.Escape },
+        { "Space", VirtualKey.Space },
+        { "Backspace", VirtualKey.Back },
+        { "Del", VirtualKey.Delete },
+        { "PgUp", VirtualKey.PageUp },
+        { "PgDn", VirtualKey.PageDown },
+        { "CapsLock", VirtualKey.CapitalLock },
+        { "Tab", VirtualKey.Tab },
+        { "Home", VirtualKey.Home },
+        { "End", VirtualKey.End },
+        { "Insert", VirtualKey.Insert },
+        { "Up", VirtualKey.Up },
+        { "Down", VirtualKey.Down },
+        { "Left", VirtualKey.Left },
+        { "Right", VirtualKey.Right },
+        { ",", (VirtualKey)188 },
+        { ".", (VirtualKey)190 },
+        { "/", (VirtualKey)191 },
+        { "=", (VirtualKey)187 },
+        { "-", (VirtualKey)189 },
+        { "[", (VirtualKey)219 },
+        { "]", (VirtualKey)221 },
+        { "\\", (VirtualKey)220 },
+        { ";", (VirtualKey)186 },
+        { "'", (VirtualKey)222 },
+        { "`", (VirtualKey)192 }
+    };
+
+    private static readonly Dictionary<VirtualKey, string> ReverseSpecialKeyMap = SpecialKeyMap.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+
+    public static bool IsWinFormsFormat(string hotkeyString)
+    {
+        if (string.IsNullOrWhiteSpace(hotkeyString))
+        {
+            return false;
+        }
+
+        var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
+
+        foreach (var part in parts)
+        {
+            if (part == "LWin"
+                || part == "RWin"
+                || part == "Return"
+                || part == "Prior"
+                || part == "Next"
+                || part == "Capital"
+                || part == "Back"
+                || part == "Apps"
+                || part.StartsWith("Oem")
+                || (part.Length == 2 && part[0] == 'D' && char.IsDigit(part[1]))
+            )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static string NormalizeKeyName(string keyName)
+    {
+        if (WinFormsKeyMap.TryGetValue(keyName, out string normalized))
+        {
+            return normalized;
+        }
+        return keyName;
+    }
+
+    public static string ToDisplayFormat(string hotkeyString)
+    {
+        if (string.IsNullOrWhiteSpace(hotkeyString))
+        {
+            return null;
+        }
+
+        try
+        {
+            var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
+            if (parts.Length == 0)
+            {
+                return null;
+            }
+
+            List<string> displayParts = [];
+            string mainKey = null;
+
+            foreach (var part in parts)
+            {
+                var normalizedPart = NormalizeKeyName(part);
+
+                if (ModifierMap.ContainsKey(normalizedPart))
+                {
+                    displayParts.Add(normalizedPart);
+                }
+                else
+                {
+                    mainKey = normalizedPart;
+                }
+            }
+
+            if (string.IsNullOrEmpty(mainKey))
+            {
+                return null;
+            }
+
+            var orderedModifiers = displayParts.Distinct().OrderBy(m => m switch
+            {
+                "Ctrl" => 0,
+                "Shift" => 1,
+                "Alt" => 2,
+                "Win" => 3,
+                _ => 4
+            });
+
+            var result = string.Join(" + ", orderedModifiers.Append(mainKey));
+            return result;
+        }
+        catch
+        {
+            return hotkeyString;
+        }
+    }
+
+    public static (uint modifiers, uint keyCode)? Parse(string hotkeyString)
+    {
+        if (string.IsNullOrWhiteSpace(hotkeyString))
+        {
+            return null;
+        }
+
+        try
+        {
+            var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
+            if (parts.Length == 0)
+            {
+                return null;
+            }
+
+            uint modifiers = 0;
+            string mainKey = null;
+
+            foreach (var part in parts)
+            {
+                var normalizedPart = NormalizeKeyName(part);
+
+                if (ModifierMap.TryGetValue(normalizedPart, out uint modifierValue))
+                {
+                    modifiers |= modifierValue;
+                }
+                else
+                {
+                    mainKey = normalizedPart;
+                }
+            }
+
+            if (string.IsNullOrEmpty(mainKey))
+            {
+                return null;
+            }
+
+            uint keyCode = GetKeyCode(mainKey);
+            if (keyCode == 0)
+            {
+                return null;
+            }
+
+            return (modifiers, keyCode);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    private static uint GetKeyCode(string keyName)
+    {
+        if (SpecialKeyMap.TryGetValue(keyName, out VirtualKey specialKey))
+        {
+            return (uint)specialKey;
+        }
+
+        if (keyName.StartsWith('F') && int.TryParse(keyName[1..], out int fNum) && fNum >= 1 && fNum <= 12)
+        {
+            return (uint)(VirtualKey.F1 + fNum - 1);
+        }
+
+        if (keyName.StartsWith("NumPad") && int.TryParse(keyName[6..], out int numPadNum) && numPadNum >= 0 && numPadNum <= 9)
+        {
+            return (uint)(VirtualKey.NumberPad0 + numPadNum);
+        }
+
+        if (keyName.StartsWith("Number") && int.TryParse(keyName[6..], out int numNum) && numNum >= 0 && numNum <= 9)
+        {
+            return (uint)(VirtualKey.Number0 + numNum);
+        }
+
+        if (keyName.Length == 1 && char.IsLetter(keyName[0]))
+        {
+            char upper = char.ToUpper(keyName[0]);
+            return (uint)upper;
+        }
+
+        return 0;
+    }
+
+    public static string GetKeyDisplayName(VirtualKey key)
+    {
+        if (ReverseSpecialKeyMap.TryGetValue(key, out string specialName))
+        {
+            return specialName;
+        }
+
+        if (key >= VirtualKey.F1 && key <= VirtualKey.F12)
+        {
+            return $"F{(int)key - (int)VirtualKey.F1 + 1}";
+        }
+
+        if (key >= VirtualKey.NumberPad0 && key <= VirtualKey.NumberPad9)
+        {
+            return $"NumPad{(int)key - (int)VirtualKey.NumberPad0}";
+        }
+
+        // Numbers 0-9 ToString() is Number+num
+
+        if (key >= VirtualKey.A && key <= VirtualKey.Z)
+        {
+            return key.ToString();
+        }
+
+        return key.ToString();
     }
 }

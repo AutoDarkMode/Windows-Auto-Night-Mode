@@ -1018,9 +1018,6 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

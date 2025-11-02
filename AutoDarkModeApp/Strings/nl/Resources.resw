@@ -1011,9 +1011,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows instellingen openen</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

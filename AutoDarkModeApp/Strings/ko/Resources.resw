@@ -1013,9 +1013,6 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows 설정 열기</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>
