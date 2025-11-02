@@ -12,9 +12,11 @@
     <ScrollViewer>
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
-                
-                <!-- Donation Picture -->
-                <Image Source="/Assets/DonationHeader.png" HorizontalAlignment="Left" />
+
+                <!--  Donation Picture  -->
+                <Border CornerRadius="{StaticResource ControlCornerRadius}">
+                    <Image HorizontalAlignment="Left" Source="/Assets/DonationHeader.png" />
+                </Border>
 
                 <!--  Donation Description  -->
                 <TextBlock Text="{helpers:ResourceString Name=Donation_Description}" TextWrapping="Wrap" />
@@ -23,14 +25,17 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=DonationPayPal_Description}"
-                    Header="Paypal">
+                    Header="Paypal"
+                    HeaderIcon="{ui:BitmapIcon Source=/Assets/DonationLogo_PayPal.png}">
                     <Button
                         Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}" />
                 </controls:SettingsCard>
-                <controls:SettingsCard 
-                    Header="GitHub Sponsors">
+                <controls:SettingsCard Header="GitHub Sponsors">
+                    <controls:SettingsCard.HeaderIcon>
+                        <ImageIcon Source="{ThemeResource GithubLogo}" />
+                    </controls:SettingsCard.HeaderIcon>
                     <Button
                         Click="GithubSponsorsButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
