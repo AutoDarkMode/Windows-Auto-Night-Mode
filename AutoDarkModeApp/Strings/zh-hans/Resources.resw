@@ -147,9 +147,9 @@
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
 
-这可能会在某些系统上引入轻到中度的主题切换延迟。
+在主题切换时，部分电脑可能会有轻到中度的卡顿。
 
-在极少数情况下，当鼠标在 DWM 刷新期间移动时，Windows 可能会发出蜂鸣声。</value>
+在极少数情况下，在 DWM 刷新期间移动鼠标时，Windows 可能会发出蜂鸣声。</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
@@ -182,7 +182,7 @@
     <value>自动检查更新</value>
   </data>
   <data name="BatteryDarkMode" xml:space="preserve">
-    <value>未充电时切换至深色模式</value>
+    <value>使用电池时切换至深色模式</value>
   </data>
   <data name="BatteryPowered" xml:space="preserve">
     <value>电池设备</value>
@@ -441,10 +441,10 @@
     <value>位置信息</value>
   </data>
   <data name="LocationGeoService" xml:space="preserve">
-    <value>日出至日落（根据地理坐标）</value>
+    <value>日出日落（指定坐标）</value>
   </data>
   <data name="LocationService" xml:space="preserve">
-    <value>从日落到日出（位置服务）</value>
+    <value>日出日落（定位服务）</value>
   </data>
   <data name="LogonTask" xml:space="preserve">
     <value>使用登录任务而非启动项</value>
@@ -569,7 +569,7 @@
     <value>打开脚本设置</value>
   </data>
   <data name="OpenShell" xml:space="preserve">
-    <value>打开 shell</value>
+    <value>打开命令行</value>
   </data>
   <data name="OpenUpdaterLog" xml:space="preserve">
     <value>打开更新程序日志</value>
@@ -740,7 +740,7 @@
     <value>切换当前主题</value>
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>切换触摸键盘和输入</value>
+    <value>强制切换触摸键盘主题</value>
   </data>
   <data name="System" xml:space="preserve">
     <value>系统</value>
@@ -749,7 +749,7 @@
     <value>应用程序</value>
   </data>
   <data name="Task" xml:space="preserve">
-    <value>任务</value>
+    <value>启动任务</value>
   </data>
   <data name="Theme" xml:space="preserve">
     <value>主题</value>
@@ -800,7 +800,7 @@
     <value>追踪模式</value>
   </data>
   <data name="Translator" xml:space="preserve">
-    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee、Kazuto Iris</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>类型</value>
@@ -878,7 +878,7 @@
     <value>路径</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>自动启动已在 Windows 设置中被禁用。 要使本程序再次随 Windows 系统一起启动,请前往Windows 设置 &gt; 应用 &gt; 启动并启用它。</value>
+    <value>自动启动已在 Windows 设置中被禁用。 要使本程序再次随 Windows 系统一起启动，请前往Windows 设置 &gt; 应用 &gt; 启动并启用它。</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>测试版</value>
@@ -947,7 +947,7 @@
     <value>未推迟</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>忽略颜色</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>强调色界面</value>
@@ -956,7 +956,7 @@
     <value>选择何时应用强调色</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>时段</value>
+    <value>在以下主题应用</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>深色模式下任务栏的强调色</value>
@@ -968,10 +968,10 @@
     <value>更激进的 DWM 刷新</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>使用激进的 DWM 刷新？</value>
+    <value>启用更激进的 DWM 刷新？</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Delay switching by a number minutes</value>
+    <value>延迟切换（分钟）</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>正值代表延后，负值表示提前</value>
@@ -980,7 +980,7 @@
     <value>Web 浏览器深色模式</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader 是一款浏览器扩展程序,它使 Chrome、Edge 和 Firefox 中的网站和当前系统的主题保持一致。 单击此处了解更多信息</value>
+    <value>Dark Reader 是一款浏览器扩展程序，它使 Chrome、Edge 和 Firefox 中的网站和当前系统的主题保持一致。 单击此处了解更多信息</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
     <value>打开 Windows 鼠标指针设置</value>
@@ -992,7 +992,7 @@
     <value>居中</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log 和 Shell</value>
+    <value>日志和命令行</value>
   </data>
   <data name="Copied" xml:space="preserve">
     <value>已复制</value>
