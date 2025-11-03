@@ -38,7 +38,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     private bool CanApplyLightAccentColor()
     {
-        return lightTaskbarAccentPermitted || (Settings.Component.Mode == Mode.DarkOnly || !Settings.Enabled);
+        return lightTaskbarAccentPermitted || (Settings.Component.Mode == Mode.DarkOnly);
     }
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
