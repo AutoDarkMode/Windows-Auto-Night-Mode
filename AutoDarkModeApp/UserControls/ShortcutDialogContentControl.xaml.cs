@@ -1,119 +1,127 @@
-using Microsoft.UI.Input;
-using Microsoft.UI.Xaml;
+﻿using AutoDarkModeApp.Utils;
+using AutoDarkModeLib;
+using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml.Controls;
 using Windows.System;
-using Windows.UI.Core;
 
 namespace AutoDarkModeApp.UserControls;
 
 public sealed partial class ShortcutDialogContentControl : UserControl
 {
-    public List<SingleHotkeyDataObject> HotkeyCombination
+    [GeneratedDependencyProperty]
+    public partial List<SingleHotkeyDataObject>? HotkeyCombination { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial string? CapturedHotkeys { get; set; }
+
+    private KeyboardHook? _keyboardHook;
+    private bool _isCapturing;
+
+    public void LoadFromKeyValue(string? hotkeyValue)
     {
-        get => (List<SingleHotkeyDataObject>)GetValue(HotkeyCombinationProperty);
-        set => SetValue(HotkeyCombinationProperty, value);
+        if (string.IsNullOrWhiteSpace(hotkeyValue))
+        {
+            HotkeyCombination = null;
+            CapturedHotkeys = null;
+            return;
+        }
+
+        CapturedHotkeys = HotkeyStringConverter.ToDisplayFormat(hotkeyValue);
+        var displayParts = hotkeyValue.Split('+', StringSplitOptions.TrimEntries);
+        HotkeyCombination = displayParts.Select(part => new SingleHotkeyDataObject { Key = part }).ToList();
     }
-
-    public static readonly DependencyProperty HotkeyCombinationProperty = DependencyProperty.Register(
-        "HotkeyCombination",
-        typeof(List<SingleHotkeyDataObject>),
-        typeof(ShortcutDialogContentControl),
-        new PropertyMetadata(default(string))
-    );
-
-    public string? CapturedHotkeys
-    {
-        get => (string?)GetValue(CapturedHotkeysProperty);
-        set => SetValue(CapturedHotkeysProperty, value);
-    }
-
-    public static readonly DependencyProperty CapturedHotkeysProperty = DependencyProperty.Register(
-        "CapturedHotkeys",
-        typeof(string),
-        typeof(ShortcutDialogContentControl),
-        new PropertyMetadata(default(string))
-    );
 
     public ShortcutDialogContentControl()
     {
         InitializeComponent();
+        Loaded += OnLoaded;
+        Unloaded += OnUnloaded;
     }
 
-    private void StackPanel_PreviewKeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
+    private void OnLoaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        if (IsKeyDown(VirtualKey.Tab))
+        StartCapturing();
+    }
+
+    private void OnUnloaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        StopCapturing();
+    }
+
+    private void StartCapturing()
+    {
+        if (_keyboardHook == null)
         {
-            e.Handled = false;
+            _keyboardHook = new KeyboardHook();
+            _keyboardHook.KeyEvent += OnKeyboardEvent;
+        }
+        _isCapturing = true;
+        _keyboardHook.Install();
+    }
+
+    private void StopCapturing()
+    {
+        _isCapturing = false;
+        _keyboardHook?.Uninstall();
+    }
+
+    private void OnKeyboardEvent(object? sender, KeyboardHookEventArgs e)
+    {
+        if (!_isCapturing || _keyboardHook is null)
+        {
             return;
         }
 
-        VirtualKey key = e.Key;
-        string keyString = GetKeyString(key);
+        if (e.VirtualKeyCode == (int)VirtualKey.Tab || e.IsKeyUp)
+        {
+            return;
+        }
 
-        var isCtrl = IsKeyDown(VirtualKey.Control);
-        var isShift = IsKeyDown(VirtualKey.Shift);
-        var isAlt = IsKeyDown(VirtualKey.Menu);
-        var isWin = IsKeyDown(VirtualKey.LeftWindows) || IsKeyDown(VirtualKey.RightWindows);
+        var isCtrl = _keyboardHook.IsKeyDown(VirtualKey.Control) || _keyboardHook.IsKeyDown(VirtualKey.LeftControl) || _keyboardHook.IsKeyDown(VirtualKey.RightControl);
+        var isShift = _keyboardHook.IsKeyDown(VirtualKey.Shift) || _keyboardHook.IsKeyDown(VirtualKey.LeftShift) || _keyboardHook.IsKeyDown(VirtualKey.RightShift);
+        var isAlt = _keyboardHook.IsKeyDown(VirtualKey.Menu) || _keyboardHook.IsKeyDown(VirtualKey.LeftMenu) || _keyboardHook.IsKeyDown(VirtualKey.RightMenu);
+        var isWin = _keyboardHook.IsKeyDown(VirtualKey.LeftWindows) || _keyboardHook.IsKeyDown(VirtualKey.RightWindows);
 
-        if (string.IsNullOrEmpty(keyString) || !(isCtrl || isShift || isAlt || isWin))
+        if (!(isCtrl || isShift || isAlt || isWin))
         {
             e.Handled = true;
             return;
         }
 
-        // Updated code to handle null values explicitly and avoid CS8604
-        List<string> modifiers = new List<string>
-        {
-            isCtrl ? "Ctrl" : string.Empty,
-            isShift ? "Shift" : string.Empty,
-            isAlt ? "Alt" : string.Empty,
-            isWin ? "Win" : string.Empty,
-            keyString
-        }.Where(modifier => !string.IsNullOrEmpty(modifier))
-        .ToList();
+        List<string> displayParts = [];
+        if (isCtrl) displayParts.Add("Ctrl");
+        if (isShift) displayParts.Add("Shift");
+        if (isAlt) displayParts.Add("Alt");
+        if (isWin) displayParts.Add("Win");
 
-        HotkeyCombination = modifiers.Select(mod => new SingleHotkeyDataObject { Key = mod }).ToList();
-        CapturedHotkeys = string.Join(" + ", modifiers);
+        var key = (VirtualKey)e.VirtualKeyCode;
+        if (!IsModifierKey(key))
+        {
+            displayParts.Add(HotkeyStringConverter.GetKeyDisplayName(key));
+        }
+
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            CapturedHotkeys = string.Join(" + ", displayParts);
+            HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
+        });
 
         e.Handled = true;
     }
 
-    private static bool IsKeyDown(VirtualKey key)
+    private static bool IsModifierKey(VirtualKey key)
     {
-        var keyboardState = InputKeyboardSource.GetKeyStateForCurrentThread(key);
-        return keyboardState.HasFlag(CoreVirtualKeyStates.Down);
-    }
-
-    private static string GetKeyString(VirtualKey key)
-    {
-        if (key is VirtualKey.Control or VirtualKey.Shift or VirtualKey.Menu or VirtualKey.LeftWindows or VirtualKey.RightWindows)
-            return "";
-
-        return key switch
-        {
-            VirtualKey.Enter => "Enter",
-            VirtualKey.Escape => "Esc",
-            VirtualKey.Space => "Space",
-
-            VirtualKey.Back => "Backspace",
-            VirtualKey.Delete => "Del",
-            VirtualKey.PageUp => "PgUp",
-            VirtualKey.PageDown => "PgDn",
-            VirtualKey.CapitalLock => "CapsLock",
-
-            (VirtualKey)188 => "OemComma", // ,
-            (VirtualKey)190 => "OemPeriod", // .
-            (VirtualKey)191 => "OemQuestion", // /
-            (VirtualKey)187 => "OemPlus", // =
-            (VirtualKey)189 => "OemMinus", // -
-            (VirtualKey)219 => "OemOpenBrackets", // [
-            (VirtualKey)221 => "OemCloseBrackets", // ]
-            (VirtualKey)220 => "OemPipe", // \
-            (VirtualKey)186 => "OemSemicolon", // ;
-            (VirtualKey)222 => "OemQuotes", // '
-            (VirtualKey)192 => "OemTilde", // `
-            _ => key.ToString(),
-        };
+        return key == VirtualKey.Control
+            || key == VirtualKey.LeftControl
+            || key == VirtualKey.RightControl
+            || key == VirtualKey.Shift
+            || key == VirtualKey.LeftShift
+            || key == VirtualKey.RightShift
+            || key == VirtualKey.Menu
+            || key == VirtualKey.LeftMenu
+            || key == VirtualKey.RightMenu
+            || key == VirtualKey.LeftWindows
+            || key == VirtualKey.RightWindows;
     }
 }
 

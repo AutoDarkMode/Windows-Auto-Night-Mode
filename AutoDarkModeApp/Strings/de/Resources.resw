@@ -1015,9 +1015,6 @@ In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während d
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows-Einstellungen öffnen</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

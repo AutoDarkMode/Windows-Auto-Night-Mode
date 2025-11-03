@@ -1008,9 +1008,6 @@ Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van th
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows instellingen openen</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>

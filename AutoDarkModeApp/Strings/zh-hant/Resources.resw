@@ -971,7 +971,7 @@
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>正值表示延後，負值表示提前</value>
+    <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果你經常遇到這種情況或受到困擾，請嘗試啟用此設定。
@@ -1008,25 +1008,7 @@
     <value>嘗試減少檔案總管、工作列和開始功能表中錯誤的介面顏色。</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>開啟 Windows 設定</value>
-  </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
-  </data>
-  <data name="SelectedColor" xml:space="preserve">
-    <value>Currently selected color</value>
-  </data>
-  <data name="WindowsColors" xml:space="preserve">
-    <value>Windows color</value>
-  </data>
-  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
-  </data>
-  <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
-  </data>
-  <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Open Windows settings</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
