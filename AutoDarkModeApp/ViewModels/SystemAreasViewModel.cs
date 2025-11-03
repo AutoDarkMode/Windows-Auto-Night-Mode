@@ -168,7 +168,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             TaskbarColorMode = 1;
         }
-        AllowTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.Mode != Mode.LightOnly;
+        AllowTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.Mode != Mode.LightOnly && _builder.Config.SystemSwitch.Enabled;
         AllowAllTaskbarColorModes = isPermittedModes;
     }
 
