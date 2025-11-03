@@ -220,12 +220,8 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "LightTheme".GetLocalized());
             lightJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
-            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "Reset".GetLocalized());
-            resetJumpTask.GroupName = "SwitchTheme".GetLocalized();
-
             jumpList.Items.Add(darkJumpTask);
             jumpList.Items.Add(lightJumpTask);
-            jumpList.Items.Add(resetJumpTask);
 
             jumpList.SystemGroupKind = JumpListSystemGroupKind.None;
 
