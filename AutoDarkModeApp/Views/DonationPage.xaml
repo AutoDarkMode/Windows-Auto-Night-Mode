@@ -14,7 +14,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Picture  -->
-                <Border CornerRadius="{StaticResource ControlCornerRadius}">
+                <Border CornerRadius="{StaticResource ControlCornerRadius}" PointerPressed="DonationPictureBorder_PointerPressed">
                     <Image HorizontalAlignment="Left" Source="/Assets/DonationHeader.png" />
                 </Border>
 
@@ -43,6 +43,14 @@
                 </controls:SettingsCard>
 
             </StackPanel>
+
+            <Canvas
+                x:Name="EffectCanvas"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                IsHitTestVisible="False" />
+
         </Grid>
     </ScrollViewer>
+
 </Page>
