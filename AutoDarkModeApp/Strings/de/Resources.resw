@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -966,9 +966,6 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Anwenden während</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Akzentfarbe auf der Taskleiste während des Dark Modes</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Akzentfarbe auf Titelleisten und Fensterrahmen</value>
   </data>
@@ -1035,5 +1032,8 @@ In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während d
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Accent color for the taskbar</value>
   </data>
 </root>
