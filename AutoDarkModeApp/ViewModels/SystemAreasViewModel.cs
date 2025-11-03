@@ -148,7 +148,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
 
     private void UpdateTaskbarColorModeSettings()
     {
-        var isPermittedModes = _builder.Config.SystemSwitch.Component.Mode == Mode.DarkOnly || !_builder.Config.SystemSwitch.Enabled;
+        var isPermittedModes = _builder.Config.SystemSwitch.Component.Mode == Mode.DarkOnly;
         if (!isPermittedModes && _builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
         {
             _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
