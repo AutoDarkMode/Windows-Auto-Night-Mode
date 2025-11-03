@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -144,12 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Mindig világos</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
-
-Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt. 
-Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Alkalmaz</value>
   </data>
@@ -163,7 +157,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Automatikus</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Az automatikus témaváltás kapcsolása</value>
+    <value>Automatikus témaváltás kapcsolása</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Autostart</value>
@@ -214,7 +208,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Color</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Színszűrő (Win + Ctrl + C)</value>
+    <value>Színszűrő engedélyezése sötét mód alatt</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Testreszabhatja a Windows rendszer színsémáját tetszés szerint.</value>
@@ -270,8 +264,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
   <data name="Donation_Description" xml:space="preserve">
     <value>Helló! Köszönjük, hogy az Auto Dark Mode alkalmazást használja. Hogy tetszik önnek eddig?
 
-Ez az alkalmazás kellemesebbé teszi mindennapjait, azáltal, hogy gondoskodik a szeméről. Ugyanakkor teljesen ingyenes, hirdetésmentes, nem gyűjt felhasználói adatokat és nyílt forráskódú.
-Ez a projekt nem hoz nekem semennyi hasznot.
+Ez az alkalmazás kellemesebbé teszi mindennapjait, azáltal, hogy gondoskodik a szeméről. Ugyanakkor teljesen ingyenes, hirdetésmentes, nem gyűjt felhasználói adatokat és nyílt forráskódú. Ez a projekt nem hoz nekem semennyi hasznot.
 
 Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis összegtől is boldogan ugrálnék a lakásomban. Csak annyit adományozzon, amennyire ön értékeli a munkámat.</value>
   </data>
@@ -294,7 +287,7 @@ Ebből kifolyólag támogathatna egy önkéntes adománnyal. Még egy kis össze
     <value>Témaszín kapcsoló engedélyezése</value>
   </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Automatikus téma változtatás engedélyezése</value>
+    <value>Automatikus témaváltás engedélyezése</value>
   </data>
   <data name="EnableCursorSwitch" xml:space="preserve">
     <value>Egérkurzor váltás engedélyezése</value>
@@ -318,9 +311,7 @@ Kérem ellenőrizze az alábbiakat:
 - a szolgáltatás fut
 - a config.yaml fájl megfelelő
 
-Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?
-Kattintson "Igen"-re egy új böngészőablak megnyitásához.
-</value>
+Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Hiba történt</value>
@@ -455,7 +446,7 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Hagyja, hogy az Auto Dark Mode kezelje a témámat</value>
+    <value>Hagyja, hogy az Auto Dark Mode kezelje a témámat (ajánlott)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Kézi</value>
@@ -494,7 +485,7 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
     <value>Frissítés letöltése</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Ez a beállítás nem támogatja az alapértelmezett Windows-témákat</value>
+    <value>Ez a beállítás nem támogatja az előre telepítettWindows-témákat</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Ennek az alkalmazásnak szüksége van az ön tartózkodási helyéhez</value>
@@ -503,7 +494,7 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
     <value>A szolgáltatás még nem fut, kérjük, várjon…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>Nincsenek új frissítések.</value>
+    <value>Nincsenek új frissítések</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>A témaváltás egyszer szünetel!</value>
@@ -530,10 +521,7 @@ Kattintson "Igen"-re egy új böngészőablak megnyitásához.
     <value>Új frissítés érhető el!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>Köszönjük, hogy az Auto Dark Mode alkalmazást használja!
-
-Egy új verzió érhető el a GitHub-on javításokkal és fejlesztésekkel.
-Szeretné letölteni?
+    <value>Egy új verzió érhető el a GitHub-on javításokkal és fejlesztésekkel.
 
 Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
@@ -541,7 +529,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>A verzióadatok a vágólapra másolva</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Next update at</value>
+    <value>Következő frissítés</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
@@ -676,7 +664,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Ne váltson, amíg bizonyos folyamatok futnak</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Automatikus indítás frissítése</value>
+    <value>Frissítés</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Registry Kulcs</value>
@@ -870,152 +858,177 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
 2. Change the system color to 'Light' for the light theme.
 3. Go to Windows Settings &gt; Personalization &gt; Themes.
 4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+5. Mentse el a témáját.
+6. Ismételje meg a folyamatot a sötét témával.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Gyorsbillentyű módosítása</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Nincs csatlakoztatva</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Háttér</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Windows témakezelésének letiltása</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Út</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
     <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
   </data>
   <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Béta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Debug mód</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Nyomjon Enter-t az alkalmazáshoz</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Nyelv</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Menjen a Windows Reflektorfény beállításokhoz</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Stab</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Váltás</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Értesítés megjelenítése az automatikus témaváltás szüneteltetésekor</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Értesítés megjelenítése az automatikus témaváltáskor</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Válasszon egy billentyűkombinációt. Csak azok a gyorsbillentyűk érvényesek, amelyek a Windows, Ctrl, Alt vagy Shift billentyűvel kezdődnek.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Aktiválási gyorsbillentyű</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Mentés</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Mentés kényszerítése</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Nem működött a gyorsbillentyű? Ne aggódjon, mentsük el újra</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Sikeres mentés</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Sikertelen mentés</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Kezdjen gépelni bármely alkalmazás hozzáadásához</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Alkalmazás mód</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Windows mód</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Windows személyre szabott színbeállításai</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Késleltetve</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Nincs késleltetve</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Szín figyelmen kívül hagyása</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Válassza ki, hogy mikor legyen alkalmazva a témaszín</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
-  </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar during dark mode</value>
+    <value>Alkalmazás ez alatt</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>Témaszín alkalmazása a fejléceken és ablakkereteken</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Agresszívebb DWM frissítés</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Pozitív értékek később, negatív értékek korábban</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
+
+Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt.
+
+Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Agresszív DWM frissítés alkalmazása?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Sötét mód a böngészőjéhez</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>A Dark Reader egy böngészőbővítmény, amely a Chrome, Edge és Firefox böngészőkben a weboldalakat a rendszer aktuális témájához igazítja. Kattintson ide, ha többet szeretne megtudni</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Windows egérkurzor beállítások megnyitása</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>Új kurzorsémákat a Windows beállításaiban hozhat létre, majd itt választhatja ki őket</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
     <value>Center</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log és Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Másolva</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Megpróbálja csökkenteni a hibás felhasználói felület színeket a Fájlkezelőben, a tálcán és a Start menüben.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Windows beállítások megnyitása</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
+  </data>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Accent color for the taskbar</value>
   </data>
 </root>

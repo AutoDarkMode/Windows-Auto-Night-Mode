@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -143,13 +143,6 @@
   </data>
   <data name="AlwaysLight" xml:space="preserve">
     <value>항상 밝게</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>탐색기, 작업 표시줄, 시작 메뉴에서 잘못된 UI 색상이 표시되는 문제를 해결합니다. 이런 문제가 자주 발생하거나 불편했면 이 설정을 활성화해 보세요.
-
-일부 시스템에서 테마 전환 시 약간의 지연이 발생할 수 있습니다.
-
-드물지만 DWM 새로 고침 중에 마우스를 움직이면 Windows에서 경고음이 발생할 수 있습니다.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>적용</value>
@@ -968,23 +961,27 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>다음 테마일 때 적용</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>다크 모드에서 작업 표시줄의 강조 색상</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>작업 표시줄과 창 테두리의 강조 색상</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>더욱 공격적으로 DWM 새로 고침</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>공격적인 DWM 새로 고침을 사용할까요?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>양수 값은 더 늦고, 음수 값은 더 빠릅니다</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>탐색기, 작업 표시줄, 시작 메뉴에서 잘못된 UI 색상이 표시되는 문제를 해결합니다. 이런 문제가 자주 발생하거나 불편했면 이 설정을 활성화해 보세요.
+
+일부 시스템에서 테마 전환 시 약간의 지연이 발생할 수 있습니다.
+
+드물지만 DWM 새로 고침 중에 마우스를 움직이면 Windows에서 경고음이 발생할 수 있습니다.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>공격적인 DWM 새로 고침을 사용할까요?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>웹 브라우저를 위한 다크 모드</value>
@@ -1012,5 +1009,26 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows 설정 열기</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
+  </data>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Accent color for the taskbar</value>
   </data>
 </root>

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -143,12 +143,6 @@
   </data>
   <data name="AlwaysLight" xml:space="preserve">
     <value>Zawsze jasny</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Próbuje ograniczyć występowanie złych kolorów UI w eksploratorze, pasku zadań i menu start. Jeśli zdarza się to często spróbuj włączyć to ustawienie.
-
-Może to spowodować delikatne lub średnie opóźnienie przy zmianie motywu w niektórych systemach, podobnie jak to się działo w Windows 10. 
-W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zostanie poruszona podczas odświeżania DWM.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Zastosuj</value>
@@ -973,23 +967,26 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar during dark mode</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Próbuje ograniczyć występowanie złych kolorów UI w eksploratorze, pasku zadań i menu start. Jeśli zdarza się to często spróbuj włączyć to ustawienie.
+
+Może to spowodować delikatne lub średnie opóźnienie przy zmianie motywu w niektórych systemach, podobnie jak to się działo w Windows 10.
+W rzadkich przypadkach, Windows może wyemitować dźwięk "beep" jeśli mysz zostanie poruszona podczas odświeżania DWM.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Dark mode for your web browser</value>
@@ -1017,5 +1014,26 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
+  </data>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Accent color for the taskbar</value>
   </data>
 </root>

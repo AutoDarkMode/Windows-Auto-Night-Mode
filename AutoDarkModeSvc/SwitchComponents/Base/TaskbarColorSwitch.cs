@@ -18,6 +18,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
     public override bool Enabled => Settings.Component.TaskbarColorSwitch;
     public override int DwmRefreshDelay => 1000;
     public bool useCallbackForDark = Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC;
+    private readonly bool lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int) WindowsBuilds.Win11_24H2) && false;
 
     private bool currentTaskbarColorActive;
 
@@ -35,13 +36,18 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         }
     }
 
+    private bool CanApplyLightAccentColor()
+    {
+        return lightTaskbarAccentPermitted || (Settings.Component.Mode == Mode.DarkOnly || !Settings.Enabled);
+    }
+
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (Settings.Component.Mode == Mode.DarkOnly && Settings.Component.TaskbarColorDuring == Theme.Dark && !currentTaskbarColorActive)
-        {
-            return true;
-        }
-        else if (e.Theme == Theme.Dark)
+        // allow the application of the accent color during light theme if
+        // we permit it for the specific windows build or
+        // mode is set to dark only
+
+        if (e.Theme == Theme.Dark)
         {
             if (Settings.Component.TaskbarColorDuring == Theme.Dark && !currentTaskbarColorActive)
             {
@@ -55,7 +61,11 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         else if (e.Theme == Theme.Light)
         {
             // change to !currentTaskbarColorActive here in the future
-            if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive)
+            if (Settings.Component.TaskbarColorDuring == Theme.Light && !currentTaskbarColorActive && CanApplyLightAccentColor())
+            {
+                return true;
+            }
+            else if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive && CanApplyLightAccentColor())
             {
                 return true;
             }
@@ -69,16 +79,10 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        if (Settings.Component.Mode == Mode.DarkOnly && Settings.Component.TaskbarColorDuring == Theme.Dark)
-        {
-            SwitchDark();
-            return;
-        }
-        // disable this option for now, may reserve for future windows builds
-        var lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2) && false;
         if (e.Theme == Theme.Light)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Light && lightTaskbarAccentPermitted)
+            var canApplyLightAccentColor = lightTaskbarAccentPermitted || Settings.Component.Mode == Mode.DarkOnly;
+            if (Settings.Component.TaskbarColorDuring == Theme.Light && canApplyLightAccentColor)
             {
                 RegistryHandler.SetTaskbarColorPrevalence(1);
                 currentTaskbarColorActive = true;

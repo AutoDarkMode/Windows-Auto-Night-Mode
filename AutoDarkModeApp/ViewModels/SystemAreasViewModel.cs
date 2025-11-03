@@ -13,6 +13,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
     private bool _isInitializing;
+    //private readonly bool windowsBuildAllowsTaskbarAccentDuringLightMode = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2) && false;
 
     public enum AppSwitchMode
     {
@@ -30,7 +31,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         Disabled,
     }
 
-    //public bool LightTaskbarAccentPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2);
     public bool TouchKeyboardSwitchPermitted => (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_22H2);
 
     [ObservableProperty]
@@ -43,10 +43,22 @@ public partial class SystemAreasViewModel : ObservableRecipient
     public partial bool IsTaskbarColorSwitch { get; set; }
 
     [ObservableProperty]
+    public partial bool IsAccentApplyTaskbarExpanded { get; set; }
+
+    [ObservableProperty]
+    public partial bool AllowTaskbarColorSwitch { get; set; }
+
+    [ObservableProperty]
+    public partial bool AllowAllTaskbarColorModes { get; set; }
+
+    [ObservableProperty]
     public partial bool IsDWMPrevalenceSwitch { get; set; }
 
     [ObservableProperty]
     public partial int DWMPrevalenceMode { get; set; }
+
+    [ObservableProperty]
+    public partial int TaskbarColorMode { get; set; }
 
     [ObservableProperty]
     public partial bool TouchKeyboardSwitchCardVisibility { get; set; }
@@ -112,9 +124,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
             SystemSwitchComponentMode = SystemSwitchMode.Disabled;
         }
 
-        IsTaskbarColorSwitch = (
-            _builder.Config.SystemSwitch.Component.TaskbarColorSwitch && !(_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
-        );
         IsDWMPrevalenceSwitch = _builder.Config.SystemSwitch.Component.DWMPrevalenceSwitch;
         if (_builder.Config.SystemSwitch.Component.DWMPrevalenceEnableTheme == Theme.Light)
         {
@@ -125,12 +134,42 @@ public partial class SystemAreasViewModel : ObservableRecipient
             DWMPrevalenceMode = 1;
         }
 
+
+        IsTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.TaskbarColorSwitch && AllowTaskbarColorSwitch;
+        UpdateTaskbarColorModeSettings();
+
         TouchKeyboardSwitchCardVisibility = TouchKeyboardSwitchPermitted;
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
 
         IsColorFilterSwitch = _builder.Config.ColorFilterSwitch.Enabled;
 
         _isInitializing = false;
+    }
+
+    private void UpdateTaskbarColorModeSettings()
+    {
+        var isPermittedModes = _builder.Config.SystemSwitch.Component.Mode == Mode.DarkOnly || !_builder.Config.SystemSwitch.Enabled;
+        if (!isPermittedModes && _builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
+        {
+            _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+            }
+        }
+        if (_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light) {
+            TaskbarColorMode = 0;
+        } 
+        else 
+        {
+            TaskbarColorMode = 1;
+        }
+        AllowTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.Mode != Mode.LightOnly;
+        AllowAllTaskbarColorModes = isPermittedModes;
     }
 
     private void HandleConfigUpdate(object sender, FileSystemEventArgs e)
@@ -214,6 +253,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _builder.Config.SystemSwitch.Enabled = false;
         }
+        UpdateTaskbarColorModeSettings();
 
         try
         {
@@ -227,13 +267,20 @@ public partial class SystemAreasViewModel : ObservableRecipient
         RequestThemeSwitch();
     }
 
+    partial void OnAllowTaskbarColorSwitchChanged(bool value)
+    {
+        if (value == false)
+        {
+            IsAccentApplyTaskbarExpanded = false;
+        }
+    }
+
     partial void OnIsTaskbarColorSwitchChanged(bool value)
     {
         if (_isInitializing)
             return;
 
         _builder.Config.SystemSwitch.Component.TaskbarColorSwitch = value;
-        _builder.Config.SystemSwitch.Component.TaskbarColorDuring = Theme.Dark;
 
         try
         {
@@ -263,6 +310,25 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
+        RequestThemeSwitch();
+    }
+
+    partial void OnTaskbarColorModeChanged(int value)
+    {
+        if (_isInitializing |!AllowTaskbarColorSwitch)
+        {
+            return;
+        }
+
+        _builder.Config.SystemSwitch.Component.TaskbarColorDuring = (value == 0) ? Theme.Light : Theme.Dark;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
+        }
         RequestThemeSwitch();
     }
 

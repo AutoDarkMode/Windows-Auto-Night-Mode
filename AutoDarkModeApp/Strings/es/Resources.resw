@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -144,12 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Siempre claro</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Intenta reducir la apariencia de colores de interfaz de usuario incorrectos en el administrador de archivos, la barra de tareas y el menú de inicio. Si experimenta este problema con frecuencia o le molesta, intente habilitar esta configuración.
-
-Esto puede introducir retrasos de cambio de tema leves a moderados en algunos sistemas, similar a lo que sucede en Windows 10.
-En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse durante una actualización de DWM.</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Aplicar</value>
   </data>
@@ -214,7 +208,7 @@ En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse 
     <value>Color</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtro de color (usa Win + Ctrl + C)</value>
+    <value>Activar filtro de color en el modo oscuro</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Personaliza el esquema de colores del sistema de Windows a tu gusto.</value>
@@ -973,23 +967,26 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar during dark mode</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Accent color for title bars and window borders</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>More aggressive DWM refresh</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive values are later, negative values are earlier</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Intenta reducir la apariencia de colores de interfaz de usuario incorrectos en el administrador de archivos, la barra de tareas y el menú de inicio. Si experimenta este problema con frecuencia o le molesta, intente habilitar esta configuración.
+
+Esto puede introducir retrasos de cambio de tema leves a moderados en algunos sistemas, similar a lo que sucede en Windows 10.
+En casos excepcionales, Windows puede emitir un pitido cuando se mueve el mouse durante una actualización de DWM.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Dark mode for your web browser</value>
@@ -1017,5 +1014,26 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>Hotkeys can only be changed while disabled</value>
+  </data>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Accent color for the taskbar</value>
   </data>
 </root>
