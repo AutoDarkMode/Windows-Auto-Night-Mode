@@ -131,8 +131,11 @@ abstract class BaseComponent<T> : ISwitchComponent
     /// </summary>
     public void RunCallback(SwitchEventArgs e)
     {
-        Logger.Trace($"running callback for {GetType().Name}");
-        Callback(e);
+        if (Initialized)
+        {
+            Logger.Trace($"running callback for {GetType().Name}");
+            Callback(e);
+        }
     }
 
     /// <summary>
