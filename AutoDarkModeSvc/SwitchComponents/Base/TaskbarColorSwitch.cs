@@ -111,7 +111,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected void SwitchDark()
     {
-        if (Settings.Component.TaskbarColorDuring == Theme.Dark || Settings.Component.Mode == Mode.DarkOnly)
+        if (Settings.Component.TaskbarColorDuring == Theme.Dark)
         {
             RegistryHandler.SetTaskbarColorPrevalence(1);
             currentTaskbarColorActive = true;
