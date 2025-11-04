@@ -73,7 +73,7 @@
                         <controls:SettingsCard Header="{helpers:ResourceString Name=ApplyDuring}"
                                                IsEnabled="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=OneWay}">
                             <ComboBox SelectedIndex="{x:Bind ViewModel.TaskbarColorMode, Mode=TwoWay}"
-                                      IsEnabled="{x:Bind ViewModel.AllowAllTaskbarColorModes, Mode=OneWay}">
+                                      IsEnabled="{x:Bind ViewModel.AllowAllTaskbarColorModes, Mode=TwoWay}">
                                 <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
                             </ComboBox>

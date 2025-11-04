@@ -134,9 +134,8 @@ public partial class SystemAreasViewModel : ObservableRecipient
             DWMPrevalenceMode = 1;
         }
 
-
-        IsTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.TaskbarColorSwitch && AllowTaskbarColorSwitch;
         UpdateTaskbarColorModeSettings();
+        IsTaskbarColorSwitch = _builder.Config.SystemSwitch.Component.TaskbarColorSwitch && AllowTaskbarColorSwitch;
 
         TouchKeyboardSwitchCardVisibility = TouchKeyboardSwitchPermitted;
         IsTouchKeyboardSwitch = _builder.Config.TouchKeyboardSwitch.Enabled;
