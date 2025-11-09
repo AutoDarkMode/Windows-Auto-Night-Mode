@@ -61,11 +61,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         else if (e.Theme == Theme.Light)
         {
             // change to !currentTaskbarColorActive here in the future
-            if (Settings.Component.TaskbarColorDuring == Theme.Light && !currentTaskbarColorActive && CanApplyLightAccentColor())
-            {
-                return true;
-            }
-            else if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive && CanApplyLightAccentColor())
+            if (Settings.Component.TaskbarColorDuring == Theme.Light && currentTaskbarColorActive != CanApplyLightAccentColor())
             {
                 return true;
             }
