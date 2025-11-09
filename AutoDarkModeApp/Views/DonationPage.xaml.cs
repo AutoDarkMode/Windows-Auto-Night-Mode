@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using AutoDarkModeApp.ViewModels;
-using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Animation;
+using Windows.Foundation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -20,17 +20,17 @@ public sealed partial class DonationPage : Page
         InitializeComponent();
     }
 
-    private void DonationPictureBorder_PointerPressed(object sender, Microsoft.UI.Xaml.Input.PointerRoutedEventArgs e)
+    private void DonationEffect_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
     {
         int heartCount = _random.Next(10, 16);
 
         for (int i = 0; i < heartCount; i++)
         {
-            CreateFloatingHeart(e.GetCurrentPoint(this));
+            CreateFloatingHeart(e.GetPosition(this));
         }
     }
 
-    private void CreateFloatingHeart(PointerPoint pointerPoint)
+    private void CreateFloatingHeart(Point pointerPoint)
     {
         var colors = new Windows.UI.Color[]
         {
@@ -54,9 +54,8 @@ public sealed partial class DonationPage : Page
             Foreground = new SolidColorBrush(randomColor),
         };
 
-        var mousePosition = pointerPoint.Position;
-        double startX = (mousePosition.X) + _random.Next(-100, 100);
-        double startY = (mousePosition.Y) + _random.Next(-50, 50);
+        double startX = (pointerPoint.X) + _random.Next(-100, 100);
+        double startY = (pointerPoint.Y) + _random.Next(-50, 50);
 
         Canvas.SetLeft(heart, startX);
         Canvas.SetTop(heart, startY);
@@ -117,13 +116,15 @@ public sealed partial class DonationPage : Page
         storyboard.Begin();
     }
 
-    private void DonationPayPalButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void DonationPayPalButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        await Task.Delay(500);
         StartProcessByProcessInfo("https://www.paypal.com/donate/?hosted_button_id=H65KZYMHKCB6E");
     }
 
-    private void GithubSponsorsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void GithubSponsorsButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
+        await Task.Delay(500);
         StartProcessByProcessInfo("https://github.com/sponsors/AutoDarkMode");
     }
 

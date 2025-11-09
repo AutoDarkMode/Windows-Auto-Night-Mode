@@ -14,7 +14,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Picture  -->
-                <Border CornerRadius="{StaticResource ControlCornerRadius}" PointerPressed="DonationPictureBorder_PointerPressed">
+                <Border CornerRadius="{StaticResource ControlCornerRadius}" Tapped="DonationEffect_Tapped">
                     <Image HorizontalAlignment="Left" Source="/Assets/DonationHeader.png" />
                 </Border>
 
@@ -30,7 +30,8 @@
                     <Button
                         Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
-                        Style="{ThemeResource AccentButtonStyle}" />
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Tapped="DonationEffect_Tapped" />
                 </controls:SettingsCard>
                 <controls:SettingsCard Header="GitHub Sponsors">
                     <controls:SettingsCard.HeaderIcon>
@@ -39,7 +40,8 @@
                     <Button
                         Click="GithubSponsorsButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
-                        Style="{ThemeResource AccentButtonStyle}" />
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Tapped="DonationEffect_Tapped" />
                 </controls:SettingsCard>
 
             </StackPanel>
