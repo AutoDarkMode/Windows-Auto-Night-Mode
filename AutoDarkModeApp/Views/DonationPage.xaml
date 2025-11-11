@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ui="using:CommunityToolkit.WinUI"
     mc:Ignorable="d">
 
     <ScrollViewer>
@@ -14,7 +13,7 @@
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
                 <!--  Donation Picture  -->
-                <Border CornerRadius="{StaticResource ControlCornerRadius}" Tapped="DonationEffect_Tapped">
+                <Border CornerRadius="{StaticResource OverlayCornerRadius}" Tapped="DonationEffect_Tapped">
                     <Image HorizontalAlignment="Left" Source="/Assets/DonationHeader.png" />
                 </Border>
 
@@ -23,16 +22,20 @@
 
                 <!--  How to donate  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DonationHowTo}" />
+
                 <controls:SettingsCard
                     Description="{helpers:ResourceString Name=DonationPayPal_Description}"
-                    Header="Paypal"
-                    HeaderIcon="{ui:BitmapIcon Source=/Assets/DonationLogo_PayPal.png}">
+                    Header="Paypal">
+                    <controls:SettingsCard.HeaderIcon>
+                        <ImageIcon Source="{ThemeResource PayPalLogo}" />
+                    </controls:SettingsCard.HeaderIcon>
                     <Button
                         Click="DonationPayPalButton_Click"
                         Content="{helpers:ResourceString Name=Donation}"
                         Style="{ThemeResource AccentButtonStyle}"
                         Tapped="DonationEffect_Tapped" />
                 </controls:SettingsCard>
+                
                 <controls:SettingsCard Header="GitHub Sponsors">
                     <controls:SettingsCard.HeaderIcon>
                         <ImageIcon Source="{ThemeResource GithubLogo}" />
