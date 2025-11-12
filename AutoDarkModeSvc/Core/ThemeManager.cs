@@ -25,7 +25,6 @@ using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
-using Windows.Devices.Sensors;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -221,9 +220,9 @@ static class ThemeManager
             else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
         }
 
-        (List<ISwitchComponent> componentsToUpdate, 
-         DwmRefreshType neededDwmRefresh, 
-         DwmRefreshType providedDwmRefresh, 
+        (List<ISwitchComponent> componentsToUpdate,
+         DwmRefreshType neededDwmRefresh,
+         DwmRefreshType providedDwmRefresh,
          int dwmRefreshDelay) = cm.GetComponentsToUpdate(e);
 
         if (neededDwmRefresh >= DwmRefreshType.Colorization)
@@ -291,7 +290,7 @@ static class ThemeManager
                             state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                             if (component.RunVerifyOperationIntegrity(e))
                             {
-                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i+1}/{maxRetries+1}");
+                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i + 1}/{maxRetries + 1}");
                                 break;
                             }
                             // early return because calling switch only makes sense if a sync call is performed.

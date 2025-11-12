@@ -185,7 +185,7 @@ abstract class BaseComponent<T> : ISwitchComponent
         return false;
     }
 
-    public bool RunVerifyOperationIntegrity(SwitchEventArgs e) 
+    public bool RunVerifyOperationIntegrity(SwitchEventArgs e)
     {
         Logger.Trace($"running integrity check for {GetType().Name}");
         return VerifyOperationIntegrity(e);
