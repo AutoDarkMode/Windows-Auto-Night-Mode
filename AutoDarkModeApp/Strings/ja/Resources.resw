@@ -745,7 +745,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>システム:</value>
   </data>
   <data name="SystemAreas" xml:space="preserve">
-    <value>アプリケーション:</value>
+    <value>アプリケーション</value>
   </data>
   <data name="Task" xml:space="preserve">
     <value>タスク</value>
