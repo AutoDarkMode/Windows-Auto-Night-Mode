@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatic theme switch</value>
+    <value>جابجایی پوسته خودکار</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>تأیید</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>تاریک</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
+    <value>تأخیر</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>غیرفعالسازی جابجایی خودکار</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>غیرفعال شده</value>

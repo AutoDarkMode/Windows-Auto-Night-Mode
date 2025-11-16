@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -154,7 +154,7 @@
     <value>테마 전환이 한 번 일시 중지됩니다!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>지금 전환하시겠습니까, 아니면 더 지연하시겠습니까?</value>
+    <value>지금 전환 할까요, 더 나중에 전환 할까요?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
     <value>자동 테마 전환이 재개되었습니다</value>
