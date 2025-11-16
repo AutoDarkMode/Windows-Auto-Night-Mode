@@ -31,7 +31,8 @@ public partial class ThemeFile
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private bool themeFixShouldAdd = false;
-    public ThemeFile(string path) {
+    public ThemeFile(string path)
+    {
         Random rnd = new Random();
         int val = rnd.Next(0, 2);
         if (val == 0) themeFixShouldAdd = true;
@@ -190,7 +191,7 @@ public partial class ThemeFile
             Desktop.MultimonWallpapers.ForEach(w => desktopSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(Desktop.Section.Item1, desktopSerialized);
 
-            List<string> desktopWSerialized = [ DesktopW.Section.Item1 ];
+            List<string> desktopWSerialized = [DesktopW.Section.Item1];
             if (DesktopW.Wallpaper.Length > 0)
             {
                 desktopWSerialized.Add($"{nameof(DesktopW.Wallpaper)}={DesktopW.Wallpaper}");
@@ -198,7 +199,7 @@ public partial class ThemeFile
             DesktopW.MultimonWallpapers.ForEach(w => desktopWSerialized.Add($"Wallpaper{w.Item2}={w.Item1}"));
             UpdateSection(DesktopW.Section.Item1, desktopWSerialized);
 
-            List<string> desktopASerialized =[ DesktopA.Section.Item1 ];
+            List<string> desktopASerialized = [DesktopA.Section.Item1];
             if (DesktopA.Wallpaper.Length > 0)
             {
                 desktopASerialized.Add($"{nameof(DesktopA.Wallpaper)}={DesktopA.Wallpaper}");
@@ -391,16 +392,41 @@ public partial class ThemeFile
 
     private static (Encoding, List<string>) Read(string ThemeFilePath, int attempts = 5)
     {
-        List<string> themeFileContent = new();
-        Encoding encoding = Encoding.GetEncoding(1252);
+        List<string> themeFileContent = [];
+        Encoding encoding = Encoding.Unicode;
+
         try
         {
+            byte[] fileBytes = File.ReadAllBytes(ThemeFilePath);
+
+            if (fileBytes.Length >= 3 && fileBytes[0] == 0xEF && fileBytes[1] == 0xBB && fileBytes[2] == 0xBF)
+            {
+                encoding = Encoding.UTF8;
+            }
+            else if (fileBytes.Length >= 2 && fileBytes[0] == 0xFF && fileBytes[1] == 0xFE)
+            {
+                encoding = Encoding.Unicode;
+            }
+            else if (fileBytes.Length >= 2 && fileBytes[0] == 0xFE && fileBytes[1] == 0xFF)
+            {
+                encoding = Encoding.BigEndianUnicode;
+            }
+
+            else if (fileBytes.Length >= 4 && fileBytes[0] == 0xFF && fileBytes[1] == 0xFE && fileBytes[2] == 0x00 && fileBytes[3] == 0x00)
+            {
+                encoding = Encoding.UTF32;
+            }
+            else
+            {
+                encoding = Encoding.GetEncoding(0);
+            }
             themeFileContent = File.ReadAllLines(ThemeFilePath, encoding).ToList();
         }
         catch (Exception ex)
         {
             Logger.Error(ex, $"could not read theme file at {ThemeFilePath}, using default values: ");
         }
+
         return (encoding, themeFileContent);
     }
 

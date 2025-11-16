@@ -180,9 +180,9 @@ class ComponentManager
     }
 
     private static void AddComponentAndGetDwmInfo(
-        ISwitchComponent c, 
-        List<ISwitchComponent> shouldUpdate, 
-        ref DwmRefreshType needsDwmRefresh, 
+        ISwitchComponent c,
+        List<ISwitchComponent> shouldUpdate,
+        ref DwmRefreshType needsDwmRefresh,
         ref DwmRefreshType dwmRefreshType,
         ref int dwmRefreshDelay)
     {
@@ -288,7 +288,7 @@ class ComponentManager
     /// <param name="hookPosition"></param>
     /// <returns></returns>
     [MethodImpl(MethodImplOptions.Synchronized)]
-    public List<(ISwitchComponent, bool)> RunIntegrityChecks(List<ISwitchComponent> components,SwitchEventArgs e, HookPosition hookPosition)
+    public List<(ISwitchComponent, bool)> RunIntegrityChecks(List<ISwitchComponent> components, SwitchEventArgs e, HookPosition hookPosition)
     {
         List<ISwitchComponent> filtered = [.. components.Where(c => c.HookPosition.Equals(hookPosition))];
         List<(ISwitchComponent, bool)> results = [];

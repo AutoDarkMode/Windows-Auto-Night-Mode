@@ -24,7 +24,7 @@
                     Header="{helpers:ResourceString Name=SelectLightCursor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE706;}"
                     IsExpanded="True"
-                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
+                    IsEnabled="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
                     <ComboBox
                         x:Name="LightCursorComboBox"
                         SelectedItem="{x:Bind ViewModel.SelectLightCursor, Mode=TwoWay}"
@@ -41,7 +41,7 @@
                     Header="{helpers:ResourceString Name=SelectDarkCursor}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE793;}"
                     IsExpanded="True"
-                    Visibility="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
+                    IsEnabled="{x:Bind ViewModel.CursorsEnabled, Mode=OneWay}">
                     <ComboBox
                         x:Name="DarkCursorComboBox"
                         SelectedItem="{x:Bind ViewModel.SelectDarkCursor, Mode=TwoWay}"

@@ -1000,7 +1000,19 @@
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>打开 Windows 设置</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Color preview</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
   </data>
 </root>
