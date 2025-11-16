@@ -225,12 +225,12 @@ static class RegistryHandler
         int colorNum = 0;
         for (int i = 0; i < binPalette.Length; i++)
         {
-            if (i == 0 || (i+1) % 4 != 0)
+            if (i == 0 || (i + 1) % 4 != 0)
             {
                 int value = binPalette[i];
                 hexString.Append(value.ToString("X2"));
             }
-            else if (i != 0 && (i+1) % 4 == 0)
+            else if (i != 0 && (i + 1) % 4 == 0)
             {
                 palette.Add(colorNum++, hexString.ToString());
                 hexString.Clear();
@@ -494,7 +494,7 @@ static class RegistryHandler
                 // quadratic runtime is okay here, but if one were to be pedantic it could be done in nlogn
                 for (i = 0; i < cursorsList.Length; i++)
                 {
-                    if (propValue.Item2 == i+1)
+                    if (propValue.Item2 == i + 1)
                     {
                         propValue.Item1 = cursorsList[i];
                         p.SetValue(cursors, propValue);

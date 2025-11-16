@@ -572,7 +572,7 @@ static class UpdateHandler
                     {
                         p.Dispose();
                     }
-                    Logger.Debug($"end blocking processes attempt: {i+1}/5");
+                    Logger.Debug($"end blocking processes attempt: {i + 1}/5");
                 }
                 catch (Exception ex)
                 {
