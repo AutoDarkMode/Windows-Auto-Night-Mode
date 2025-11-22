@@ -13,7 +13,6 @@ using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
-using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -163,6 +162,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         switch (CurrentDisplayMode)
         {
             case WallpaperDisplayMode.Picture:
+            {
                 if (SelectWallpaperThemeMode == ApplicationTheme.Light)
                 {
                     _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light = filePath;
@@ -173,28 +173,31 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                     _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark = filePath;
                     _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Global;
                 }
-
                 break;
+            }
             case WallpaperDisplayMode.PictureMM when SelectMonitor != null:
+            {
+                var selectedMonitor = (MonitorSettings)SelectMonitor;
+                var configMonitorSetting = _builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == selectedMonitor.Id);
+                if (configMonitorSetting == null)
                 {
-                    var selectedMonitor = (MonitorSettings)SelectMonitor;
-                    var configMonitorSetting = _builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == selectedMonitor.Id);
-                    if (configMonitorSetting == null) return;
-                    if (SelectWallpaperThemeMode == ApplicationTheme.Light)
-                    {
-                        configMonitorSetting.LightThemeWallpaper = filePath;
-                        selectedMonitor.LightThemeWallpaper = filePath;
-                        _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
-                    }
-                    else
-                    {
-                        configMonitorSetting.DarkThemeWallpaper = filePath;
-                        selectedMonitor.DarkThemeWallpaper = filePath;
-                        _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Individual;
-                    }
-
-                    break;
+                    return;
                 }
+
+                if (SelectWallpaperThemeMode == ApplicationTheme.Light)
+                {
+                    configMonitorSetting.LightThemeWallpaper = filePath;
+                    selectedMonitor.LightThemeWallpaper = filePath;
+                    _builder.Config.WallpaperSwitch.Component.TypeLight = WallpaperType.Individual;
+                }
+                else
+                {
+                    configMonitorSetting.DarkThemeWallpaper = filePath;
+                    selectedMonitor.DarkThemeWallpaper = filePath;
+                    _builder.Config.WallpaperSwitch.Component.TypeDark = WallpaperType.Individual;
+                }
+                break;
+            }
         }
     }
 
@@ -252,22 +255,28 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         switch (currentType)
         {
             case WallpaperType.Global:
+            {
                 DisplayWallpaperPath =
                     SelectWallpaperThemeMode == ApplicationTheme.Light
                         ? _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Light
                         : _builder.Config.WallpaperSwitch.Component.GlobalWallpaper.Dark;
-                DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : (ImageSource?)null;
+                DisplayWallpaperSource = !string.IsNullOrEmpty(DisplayWallpaperPath) ? new BitmapImage(new Uri(DisplayWallpaperPath)) : null;
                 break;
+            }
             case WallpaperType.Individual when SelectMonitor != null:
+            {
                 var monitorSettings = (MonitorSettings)SelectMonitor;
                 DisplayWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
-                DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : (ImageSource?)null;
-
+                DisplayWallpaperSource = !string.IsNullOrEmpty(DisplayWallpaperPath) ? new BitmapImage(new Uri(DisplayWallpaperPath)) : null;
                 break;
+            }
             case WallpaperType.SolidColor:
+            {
                 DisplayWallpaperSource = null;
                 break;
+            }
             case WallpaperType.Spotlight:
+            {
                 [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
                 static extern bool SystemParametersInfo(uint uAction, uint uParam, StringBuilder lpvParam, uint init);
 
@@ -287,16 +296,21 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                             @"SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\DesktopSpotlight\Assets\Images\image_1.jpg"
                         );
                         if (File.Exists(DisplayWallpaperPath))
+                        {
                             DisplayWallpaperSource = new BitmapImage(new Uri(DisplayWallpaperPath));
+                        }
                     }
                     else
                     {
                         DisplayWallpaperPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Microsoft\Windows\Themes\TranscodedWallpaper");
                         if (File.Exists(DisplayWallpaperPath))
+                        {
                             DisplayWallpaperSource = new BitmapImage(new Uri(DisplayWallpaperPath));
+                        }
                     }
                 }
                 break;
+            }
         }
 
         ColorPreviewBorderBackground =
@@ -337,7 +351,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     partial void OnIsWallpaperSwitchEnabledChanged(bool value)
     {
         if (_isInitializing)
+        {
             return;
+        }
 
         _builder.Config.WallpaperSwitch.Enabled = value;
 
@@ -347,7 +363,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     partial void OnSelectWallpaperThemeModeChanged(ApplicationTheme value)
     {
         if (_isInitializing)
+        {
             return;
+        }
 
         LoadSettings();
     }
@@ -355,7 +373,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     partial void OnCurrentDisplayModeChanged(WallpaperDisplayMode value)
     {
         if (_isInitializing)
+        {
             return;
+        }
 
         if (SelectWallpaperThemeMode == ApplicationTheme.Light)
         {
@@ -390,13 +410,15 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     partial void OnSelectMonitorChanged(object? value)
     {
         if (_isInitializing)
+        {
             return;
+        }
 
         if (CurrentDisplayMode == WallpaperDisplayMode.PictureMM && value != null)
         {
             MonitorSettings monitorSettings = (MonitorSettings)value;
             DisplayWallpaperPath = SelectWallpaperThemeMode == ApplicationTheme.Light ? monitorSettings.LightThemeWallpaper : monitorSettings.DarkThemeWallpaper;
-            DisplayWallpaperSource = DisplayWallpaperPath != null ? new BitmapImage(new Uri(DisplayWallpaperPath)) : null;
+            DisplayWallpaperSource = !string.IsNullOrEmpty(DisplayWallpaperPath) ? new BitmapImage(new Uri(DisplayWallpaperPath)) : null;
         }
     }
 
