@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeLib;
@@ -45,14 +46,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         PictureMMMode = ShowImageSettings | ShowMonitorSettings | ShowFillingWaySettings,
         SolidColorMode = ShowColorSettings,
         SpotlightMode = ShowSpotlight,
-    }
-
-    public enum WallpaperFillingMode
-    {
-        Center,
-        Stretch,
-        Fit,
-        Fill,
     }
 
     [ObservableProperty]

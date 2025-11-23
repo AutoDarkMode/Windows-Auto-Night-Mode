@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using AutoDarkModeApp.Helpers;
 using AutoDarkModeLib;
 using CommunityToolkit.WinUI;
 using Microsoft.UI.Xaml;
@@ -18,6 +19,9 @@ public sealed partial class DesktopPreview : UserControl
 
     [GeneratedDependencyProperty]
     public partial ImageSource? DesktopPreviewImageSource { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial WallpaperFillingMode DesktopPreviewImageStretch { get; set; }
 
     [GeneratedDependencyProperty]
     public partial ElementTheme DesktopPreviewThemeMode { get; set; }
@@ -39,6 +43,7 @@ public sealed partial class DesktopPreview : UserControl
     private void InitializePreview()
     {
         DesktopPreviewImageSource = GetCurrentWallpaper();
+        DesktopPreviewImageStretch = WallpaperFillingMode.Fill;
         DesktopPreviewThemeMode = Application.Current.RequestedTheme == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
     }
 
