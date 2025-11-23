@@ -1015,4 +1015,10 @@
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
   </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>深色模式下任务栏的强调色</value>
+  </data>
+  <data name="PickMode" xml:space="preserve">
+    <value>Select a mode</value>
+  </data>
 </root>

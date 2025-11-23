@@ -971,7 +971,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Pozitív értékek később, negatív értékek korábban</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
@@ -1008,9 +1008,12 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Megpróbálja csökkenteni a hibás felhasználói felület színeket a Fájlkezelőben, a tálcán és a Start menüben.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Windows beállítások megnyitása</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Témaszín alkalmazása a tálcán sötét módban</value>
+  </data>
+  <data name="PickMode" xml:space="preserve">
+    <value>Select a mode</value>
   </data>
 </root>
