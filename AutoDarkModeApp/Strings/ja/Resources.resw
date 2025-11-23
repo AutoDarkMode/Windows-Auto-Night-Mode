@@ -1023,4 +1023,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
   </data>
+  <data name="PickMode" xml:space="preserve">
+    <value>Select a mode</value>
+  </data>
 </root>

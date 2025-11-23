@@ -144,13 +144,6 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Sempre chiaro</value>
   </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Tenta di ridurre i colori errati dell'interfaccia utente in Explorer, nella barra delle applicazioni e nel menu Start. Se riscontri spesso questo problema o lo trovi fastidioso, prova ad abilitare questa impostazione.
-
-Questo potrebbe causare un ritardo da lieve a moderato su alcuni sistemi durante il cambio di tema.
-
-In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante gli aggiornamenti DWM.</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Applica</value>
   </data>
@@ -968,23 +961,27 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Applica durante</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Colore principale per la barra delle applicazioni durante la modalità scura</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Colore principale per le barre del titolo e i bordi delle finestre</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Aggiornamento DWM più aggressivo</value>
   </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Utilizzare un aggiornamento DWM aggressivo?</value>
-  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Ritarda la commutazione di alcuni minuti</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>I valori positivi indicano un ritardo, i valori negativi indicano un anticipo</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Tenta di ridurre i colori errati dell'interfaccia utente in Explorer, nella barra delle applicazioni e nel menu Start. Se riscontri spesso questo problema o lo trovi fastidioso, prova ad abilitare questa impostazione.
+
+Questo potrebbe causare un ritardo da lieve a moderato su alcuni sistemi durante il cambio di tema.
+
+In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante gli aggiornamenti DWM.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Utilizzare un aggiornamento DWM aggressivo?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Modalità scura per il tuo browser web</value>
@@ -1012,5 +1009,11 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Apri impostazioni di Windows</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Colore principale per la barra delle applicazioni durante la modalità scura</value>
+  </data>
+  <data name="PickMode" xml:space="preserve">
+    <value>Select a mode</value>
   </data>
 </root>
