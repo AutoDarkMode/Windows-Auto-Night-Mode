@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>همیشه روشن</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+
+This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>اعمال کردن</value>
   </data>
