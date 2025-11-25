@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>Mindig világos</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
+
+Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt.
+
+Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>Alkalmaz</value>
   </data>
@@ -961,27 +968,23 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Alkalmazás ez alatt</value>
   </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Témaszín alkalmazása a tálcán sötét módban</value>
+  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Témaszín alkalmazása a fejléceken és ablakkereteken</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Agresszívebb DWM frissítés</value>
   </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Agresszív DWM frissítés alkalmazása?</value>
+  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
-
-Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt.
-
-Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Agresszív DWM frissítés alkalmazása?</value>
+    <value>Pozitív értékek később, negatív értékek korábban</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Sötét mód a böngészőjéhez</value>
@@ -1008,9 +1011,6 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Megpróbálja csökkenteni a hibás felhasználói felület színeket a Fájlkezelőben, a tálcán és a Start menüben.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
-  </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Windows beállítások megnyitása</value>
   </data>
 </root>

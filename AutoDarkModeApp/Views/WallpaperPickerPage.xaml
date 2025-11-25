@@ -7,98 +7,59 @@
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:usercontrols="using:AutoDarkModeApp.UserControls"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:FlagsToVisibilityConverter x:Key="FlagsToVisibilityConverter" />
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
-        <helpers:EnumToStretchConverter x:Key="EnumToStretchConverter" />
     </Page.Resources>
 
     <ScrollViewer>
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
-                <!--  TODO: Get system display size (aspect ratio) and apply it to the border (width) ??  -->
-                <Border
-                    Margin="0,0,0,12"
-                    HorizontalAlignment="Left"
-                    Background="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
-                    BorderBrush="Black"
-                    BorderThickness="8"
-                    CornerRadius="{StaticResource OverlayCornerRadius}">
-                    <Grid>
-                        <Image
-                            x:Name="DesktopPreviewImage"
-                            Width="320"
-                            Height="180"
-                            Source="{x:Bind ViewModel.DisplayWallpaperSource, Mode=OneWay}"
-                            Stretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
 
-                        <StackPanel
-                            Width="98"
-                            Height="98"
-                            Margin="8"
-                            Padding="12"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
-                            CornerRadius="{StaticResource ControlCornerRadius}"
-                            RequestedTheme="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}">
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Height="1"
-                                Margin="0,0,0,8"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Width="42"
-                                Height="1"
-                                Margin="0,0,0,8"
-                                HorizontalAlignment="Left"
-                                Background="{ThemeResource SystemFillColorSolidNeutral}" />
-                            <Border
-                                Width="24"
-                                Height="8"
-                                Margin="0,26,0,0"
-                                HorizontalAlignment="Right"
-                                Background="{ThemeResource AccentFillColorDefaultBrush}"
-                                CornerRadius="2" />
-                        </StackPanel>
-                    </Grid>
-                </Border>
+                <!--  Desktop preview  -->
+                <usercontrols:DesktopPreview
+                    DesktopPreviewAccentColorBorderBackground="{ThemeResource AccentFillColorDefaultBrush}"
+                    DesktopPreviewAccentColorBorderVisible="True"
+                    DesktopPreviewAutomaticPreviewEnable="False"
+                    DesktopPreviewBackground="{x:Bind ViewModel.ColorPreviewBorderBackground, Mode=OneWay}"
+                    DesktopPreviewImageSource="{x:Bind ViewModel.DisplayWallpaperSource, Mode=OneWay}"
+                    DesktopPreviewImageStretch="{x:Bind ViewModel.SelectWallpaperFillingMode, Mode=OneWay}"
+                    DesktopPreviewThemeMode="{x:Bind ViewModel.DesktopPreviewThemeMode, Mode=OneWay}" />
 
                 <!--  Desktop background  -->
-                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableWallpaperSwitch}">
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PickWallpaper_Description}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableWallpaperSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE91B;}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=PickTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
-                    IsExpanded="True"
+                <!--  Wallpaper switch theme mode  -->
+                <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=Theme}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
                     IsEnabled="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
+                    <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <controls:SegmentedItem Content="{helpers:ResourceString Name=Light}" Icon="{ui:FontIcon Glyph=&#xE706;}" />
+                        <controls:SegmentedItem Content="{helpers:ResourceString Name=Dark}" Icon="{ui:FontIcon Glyph=&#xE708;}" />
+                    </controls:Segmented>
+                </controls:SettingsCard>
 
-                    <!--  Wallpaper Switch Theme  -->
-                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectWallpaperThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                        <ComboBoxItem Content="{helpers:ResourceString Name=LightTheme}" />
-                        <ComboBoxItem Content="{helpers:ResourceString Name=DarkTheme}" />
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=Mode}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8B9;}"
+                    IsEnabled="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}"
+                    IsExpanded="True">
+
+                    <!--  Background type  -->
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" IsEnabled="{x:Bind ViewModel.SpotlightEnabled}" />
                     </ComboBox>
 
                     <controls:SettingsExpander.Items>
-                        <!--  Background type  -->
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <RadioButtons SelectedIndex="{x:Bind ViewModel.CurrentDisplayMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Picture}" />
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_PictureMM}" />
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_SolidColor}" />
-                                <RadioButton Content="{helpers:ResourceString Name=WallpaperMode_Spotlight}" IsEnabled="{x:Bind ViewModel.SpotlightEnabled}" />
-                            </RadioButtons>
-                        </controls:SettingsCard>
 
                         <!--  Monitor  -->
                         <controls:SettingsCard Header="{helpers:ResourceString Name=Monitor}" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowMonitorSettings, Mode=OneWay}">
@@ -153,7 +114,10 @@
 
                         <!--  Windows Spotlight  -->
                         <controls:SettingsCard ContentAlignment="Left" Visibility="{x:Bind ViewModel.CurrentDisplayFlags, Converter={StaticResource FlagsToVisibilityConverter}, ConverterParameter=ShowSpotlight, Mode=OneWay}">
-                            <HyperlinkButton Click="WindowsSpotlightHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenWindowsSpotlight}" />
+                            <HyperlinkButton
+                                Margin="-12,0,0,0"
+                                Click="WindowsSpotlightHyperlinkButton_Click"
+                                Content="{helpers:ResourceString Name=OpenWindowsSpotlight}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
