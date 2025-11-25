@@ -46,7 +46,7 @@
                 </controls:SettingsCard>
 
                 <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=PickMode}"
+                    Header="{helpers:ResourceString Name=Mode}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8B9;}"
                     IsEnabled="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}"
                     IsExpanded="True">
