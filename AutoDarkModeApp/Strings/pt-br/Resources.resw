@@ -1033,7 +1033,4 @@ Em ocasiões raras, o Windows pode emitir um som de bipe quando o mouse for movi
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
   </data>
-  <data name="PickMode" xml:space="preserve">
-    <value>Select a mode</value>
-  </data>
 </root>

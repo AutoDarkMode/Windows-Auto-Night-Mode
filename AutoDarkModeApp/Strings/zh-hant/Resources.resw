@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>總是淺色</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果你經常遇到這種情況或受到困擾，請嘗試啟用此設定。
+
+這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
+
+在極少數情況下，當重新整理 DWM 期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>套用</value>
   </data>
@@ -961,27 +968,23 @@
   <data name="ApplyDuring" xml:space="preserve">
     <value>套用時段</value>
   </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>深色模式下工作列的輔色</value>
+  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>標題列和視窗邊框的輔色</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>更積極的 DWM 重新整理</value>
   </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>使用積極的 DWM 重新整理？</value>
+  </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>延遲切換數分鐘</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>正值表示延後，負值表示提前</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果你經常遇到這種情況或受到困擾，請嘗試啟用此設定。
-
-這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
-
-在極少數情況下，當重新整理 DWM 期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>使用積極的 DWM 重新整理？</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>套用深色模式到您的網路瀏覽器</value>
@@ -1009,11 +1012,5 @@
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>開啟 Windows 設定</value>
-  </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>深色模式下工作列的輔色</value>
-  </data>
-  <data name="PickMode" xml:space="preserve">
-    <value>Select a mode</value>
   </data>
 </root>

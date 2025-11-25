@@ -144,6 +144,13 @@
   <data name="AlwaysLight" xml:space="preserve">
     <value>总是浅色</value>
   </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
+
+在主题切换时，部分电脑可能会有轻到中度的卡顿。
+
+在极少数情况下，在 DWM 刷新期间移动鼠标时，Windows 可能会发出蜂鸣声。</value>
+  </data>
   <data name="Apply" xml:space="preserve">
     <value>应用</value>
   </data>
@@ -951,11 +958,17 @@
   <data name="ApplyDuring" xml:space="preserve">
     <value>在以下主题应用</value>
   </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>深色模式下任务栏的强调色</value>
+  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>标题栏和窗口边框的强调色</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>更激进的 DWM 刷新</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>启用更激进的 DWM 刷新？</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>延迟切换（分钟）</value>
@@ -1014,11 +1027,5 @@
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
-  </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>深色模式下任务栏的强调色</value>
-  </data>
-  <data name="PickMode" xml:space="preserve">
-    <value>Select a mode</value>
   </data>
 </root>
