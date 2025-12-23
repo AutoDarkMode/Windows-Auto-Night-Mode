@@ -169,13 +169,13 @@
     <value>2 óra</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 perc</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
     <value>3 óra</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 perc</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
     <value>6 óra</value>
@@ -238,13 +238,13 @@
     <value>Verziócsökkentés</value>
   </data>
   <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Log mappa megnyitása</value>
   </data>
   <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
     <value>Elhalaszt</value>
   </data>
   <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>Frissítés</value>
   </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>Jelenlegi verzió</value>
@@ -260,13 +260,13 @@
     <value>Letöltés…</value>
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>Letöltés folyamatban</value>
   </data>
   <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>Menjen a letöltési oldalra</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
+    <value>Üzenet</value>
   </data>
   <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
     <value>Új verzió {0} elérhető</value>
