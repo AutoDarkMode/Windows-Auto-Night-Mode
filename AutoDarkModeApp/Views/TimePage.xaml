@@ -239,8 +239,9 @@
                                     Text="{helpers:ResourceString Name=AmbientLightThresholds_Description}"
                                     TextWrapping="Wrap" />
 
-                                <Grid ColumnSpacing="12" RowSpacing="8">
+                                <Grid ColumnSpacing="8" RowSpacing="12">
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
@@ -251,24 +252,29 @@
                                     </Grid.RowDefinitions>
 
                                     <!--  Dark Threshold Slider  -->
-                                    <FontIcon
+                                    <TextBlock
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xe708;"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
-                                    <Slider
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
+                                    <FontIcon
                                         Grid.Row="0"
                                         Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xe708;" />
+                                    <Slider
+                                        Grid.Row="0"
+                                        Grid.Column="2"
                                         Maximum="500"
                                         Minimum="0"
                                         StepFrequency="5"
                                         Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
                                     <NumberBox
                                         Grid.Row="0"
-                                        Grid.Column="2"
+                                        Grid.Column="3"
                                         Width="100"
                                         Maximum="500"
                                         Minimum="0"
@@ -277,24 +283,29 @@
                                         Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
 
                                     <!--  Light Threshold Slider  -->
-                                    <FontIcon
+                                    <TextBlock
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE706;"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
-                                    <Slider
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
+                                    <FontIcon
                                         Grid.Row="1"
                                         Grid.Column="1"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;" />
+                                    <Slider
+                                        Grid.Row="1"
+                                        Grid.Column="2"
                                         Maximum="500"
                                         Minimum="0"
                                         StepFrequency="5"
                                         Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
                                     <NumberBox
                                         Grid.Row="1"
-                                        Grid.Column="2"
+                                        Grid.Column="3"
                                         Width="100"
                                         Maximum="500"
                                         Minimum="0"
@@ -303,23 +314,59 @@
                                         Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
                                 </Grid>
 
-                                <!--  Labels  -->
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock
-                                        Grid.Column="0"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
-                                </Grid>
+                                <!--  Lux Reference Guide  -->
+                                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                    <Expander.Header>
+                                        <Grid ColumnSpacing="8">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <FontIcon
+                                                FontSize="16"
+                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                Glyph="&#xE946;" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                Text="{helpers:ResourceString Name=AmbientLightReference}" />
+                                        </Grid>
+                                    </Expander.Header>
+                                    <Expander.Content>
+                                        <Grid ColumnSpacing="16" RowSpacing="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="&lt; 1 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Moonlight}" />
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="1 - 10 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_VeryDark}" />
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="10 - 50 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DimRoom}" />
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="50 - 150 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_LivingRoom}" />
+                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="150 - 400 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Office}" />
+                                            <TextBlock Grid.Row="5" Grid.Column="0" Text="400 - 1000 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Overcast}" />
+                                            <TextBlock Grid.Row="6" Grid.Column="0" Text="1000 - 10000 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DaylightShade}" />
+                                            <TextBlock Grid.Row="7" Grid.Column="0" Text="10000+ lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            <TextBlock Grid.Row="7" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DirectSun}" />
+                                        </Grid>
+                                    </Expander.Content>
+                                </Expander>
                             </StackPanel>
 
                         </StackPanel>
