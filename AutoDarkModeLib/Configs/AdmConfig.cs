@@ -38,6 +38,7 @@ public class AdmConfig
         IdleChecker = new();
         Notifications = new();
         AutoSwitchNotify = new();
+        AmbientLight = new();
 
         // New Component Settings;
         AppsSwitch = new();
@@ -71,6 +72,7 @@ public class AdmConfig
     public IdleChecker IdleChecker { get; set; }
     public BaseSettings<WallpaperSwitchSettings> WallpaperSwitch { get; set; }
     public Updater Updater { get; set; }
+    public AmbientLight AmbientLight { get; set; }
 }
 
 public class AutoSwitchNotify
@@ -89,6 +91,18 @@ public class IdleChecker
 {
     public bool Enabled { get; set; }
     public int Threshold { get; set; } = 5;
+}
+
+public class AmbientLight
+{
+    /// <summary>
+    /// Lux threshold below which dark mode is activated (default: 40 lux)
+    /// </summary>
+    public double DarkThreshold { get; set; } = 40;
+    /// <summary>
+    /// Lux threshold above which light mode is activated (default: 80 lux)
+    /// </summary>
+    public double LightThreshold { get; set; } = 80;
 }
 
 public class Hotkeys
@@ -154,7 +168,7 @@ public class Location
 public class Tunable
 {
     private int batterySliderDefaultValue = 25;
-    
+
     public int BatterySliderDefaultValue
     {
         get { return batterySliderDefaultValue; }

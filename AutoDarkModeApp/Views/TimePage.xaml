@@ -42,11 +42,12 @@
                 <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel Spacing="12">
-                            <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                            <RadioButtons SelectedIndex="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
                                 <RadioButton x:Name="RadioButtonCustomTimes" Content="{helpers:ResourceString Name=CustomHours}" />
                                 <RadioButton x:Name="RadioButtonLocationTimes" Content="{helpers:ResourceString Name=LocationService}" />
                                 <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{helpers:ResourceString Name=LocationGeoService}" />
                                 <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
+                                <RadioButton x:Name="RadioButtonAmbientLight" Content="{helpers:ResourceString Name=AmbientLightSensor}" IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
                             </RadioButtons>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
@@ -83,7 +84,7 @@
                                     Grid.Column="2"
                                     Margin="16,0,0,0"
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                    IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeLightStart, Mode=TwoWay}" />
                                 <!--  Dark  -->
                                 <FontIcon
@@ -101,7 +102,7 @@
                                     Grid.Column="2"
                                     Margin="16,0,0,0"
                                     ClockIdentifier="{x:Bind ViewModel.TimePickHourClock, Mode=OneWay}"
-                                    IsEnabled="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
+                                    IsEnabled="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
                             </Grid>
 
@@ -111,7 +112,7 @@
                             <Grid
                                 ColumnSpacing="8"
                                 RowSpacing="16"
-                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -141,7 +142,7 @@
 
 
                             <!--  Geo Coordinates  -->
-                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                                 <Grid ColumnSpacing="8" RowSpacing="16">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -202,7 +203,17 @@
                             <HyperlinkButton
                                 Click="WindowsNightLightHyperlinkButton_Click"
                                 Content="{helpers:ResourceString Name=OpenWindowsNightLight}"
-                                Visibility="{x:Bind ViewModel.SelectedTimeSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
+                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
+
+                            <!--  Ambient Light Sensor  -->
+                            <StackPanel
+                                Spacing="16"
+                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                                <TextBlock
+                                    Style="{StaticResource BodyTextBlockStyle}"
+                                    Text="{helpers:ResourceString Name=AmbientLightSensor_Description}"
+                                    TextWrapping="Wrap" />
+                            </StackPanel>
 
                         </StackPanel>
                     </controls:SettingsCard.Description>
@@ -236,6 +247,137 @@
                                 Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
                         </StackPanel>
                     </controls:SettingsCard>
+                </StackPanel>
+
+                <!--  Ambient Light Thresholds  -->
+                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.AmbientLightSettingsVisibility, Mode=OneWay}">
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AmbientLightThresholds}" />
+
+                    <!--  Current Lux Reading  -->
+                    <controls:SettingsCard Header="{helpers:ResourceString Name=AmbientLightCurrentReading}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
+                        <TextBlock
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                            Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
+                    </controls:SettingsCard>
+
+                    <!--  Threshold Configuration  -->
+                    <controls:SettingsCard Description="{helpers:ResourceString Name=AmbientLightThresholds_Description}" Header="{helpers:ResourceString Name=AmbientLightThresholds_Header}">
+                        <controls:SettingsCard.Content>
+                            <StackPanel Spacing="16">
+                                <!--  Visual Sliders  -->
+                                <Grid ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!--  Dark Threshold Slider  -->
+                                    <FontIcon
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xe708;" />
+                                    <Slider
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        StepFrequency="5"
+                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
+                                    <NumberBox
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Width="100"
+                                        Maximum="1000"
+                                        Minimum="0"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
+
+                                    <!--  Light Threshold Slider  -->
+                                    <FontIcon
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;" />
+                                    <Slider
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        StepFrequency="5"
+                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                                    <NumberBox
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Width="100"
+                                        Maximum="1000"
+                                        Minimum="0"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                                </Grid>
+
+                                <!--  Labels  -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
+                                </Grid>
+                            </StackPanel>
+                        </controls:SettingsCard.Content>
+                    </controls:SettingsCard>
+
+                    <!--  Reference Guide  -->
+                    <controls:SettingsExpander Header="{helpers:ResourceString Name=AmbientLightReference}" HeaderIcon="{ui:FontIcon Glyph=&#xE946;}">
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard Description="&lt; 1 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Moonlight}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="1 - 10 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_VeryDark}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="10 - 50 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DimRoom}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="50 - 150 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_LivingRoom}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="150 - 400 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Office}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="400 - 1000 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Overcast}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="1000 - 10000 lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DaylightShade}" />
+                            </controls:SettingsCard>
+                            <controls:SettingsCard Description="10000+ lux">
+                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DirectSun}" />
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </StackPanel>
 
                 <!--  Postpone  -->

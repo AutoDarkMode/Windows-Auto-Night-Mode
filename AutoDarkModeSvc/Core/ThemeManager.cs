@@ -103,6 +103,13 @@ static class ThemeManager
                 e.OverrideTheme(state.NightLight.Requested, ThemeOverrideSource.NightLight);
                 UpdateTheme(e);
             }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // Re-evaluate with current config (handles threshold changes from UI)
+                state.AmbientLight.ReEvaluateCallback();
+                e.OverrideTheme(state.AmbientLight.Requested, ThemeOverrideSource.AmbientLight);
+                UpdateTheme(e);
+            }
         }
         else
         {
@@ -484,7 +491,7 @@ public class TimedThemeState
     public DateTime NextSwitchTime { get; private set; }
 
     /// <summary>
-    /// Precise Time when the target theme entered its activation window <br/> 
+    /// Precise Time when the target theme entered its activation window <br/>
     /// (when the last switch occurred or should have occurred)
     /// </summary>
     public DateTime CurrentSwitchTime { get; private set; }
