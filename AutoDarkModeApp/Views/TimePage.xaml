@@ -213,6 +213,113 @@
                                     Style="{StaticResource BodyTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=AmbientLightSensor_Description}"
                                     TextWrapping="Wrap" />
+
+                                <!--  Current Lux Reading  -->
+                                <Grid ColumnSpacing="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <FontIcon
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Style="{StaticResource BodyTextBlockStyle}"
+                                        Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
+                                </Grid>
+
+                                <Border Style="{StaticResource DividerBorderStyle}" />
+
+                                <!--  Threshold Configuration  -->
+                                <TextBlock
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Text="{helpers:ResourceString Name=AmbientLightThresholds_Description}"
+                                    TextWrapping="Wrap" />
+
+                                <Grid ColumnSpacing="12" RowSpacing="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!--  Dark Threshold Slider  -->
+                                    <FontIcon
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xe708;"
+                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
+                                    <Slider
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        StepFrequency="5"
+                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
+                                    <NumberBox
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Width="100"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
+
+                                    <!--  Light Threshold Slider  -->
+                                    <FontIcon
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        VerticalAlignment="Center"
+                                        FontSize="16"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE706;"
+                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
+                                    <Slider
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        StepFrequency="5"
+                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                                    <NumberBox
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Width="100"
+                                        Maximum="500"
+                                        Minimum="0"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Compact"
+                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                                </Grid>
+
+                                <!--  Labels  -->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Column="0"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
+                                </Grid>
                             </StackPanel>
 
                         </StackPanel>
@@ -247,137 +354,6 @@
                                 Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
                         </StackPanel>
                     </controls:SettingsCard>
-                </StackPanel>
-
-                <!--  Ambient Light Thresholds  -->
-                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.AmbientLightSettingsVisibility, Mode=OneWay}">
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=AmbientLightThresholds}" />
-
-                    <!--  Current Lux Reading  -->
-                    <controls:SettingsCard Header="{helpers:ResourceString Name=AmbientLightCurrentReading}" HeaderIcon="{ui:FontIcon Glyph=&#xE706;}">
-                        <TextBlock
-                            Style="{StaticResource SubtitleTextBlockStyle}"
-                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                            Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
-                    </controls:SettingsCard>
-
-                    <!--  Threshold Configuration  -->
-                    <controls:SettingsCard Description="{helpers:ResourceString Name=AmbientLightThresholds_Description}" Header="{helpers:ResourceString Name=AmbientLightThresholds_Header}">
-                        <controls:SettingsCard.Content>
-                            <StackPanel Spacing="16">
-                                <!--  Visual Sliders  -->
-                                <Grid ColumnSpacing="12">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-
-                                    <!--  Dark Threshold Slider  -->
-                                    <FontIcon
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xe708;" />
-                                    <Slider
-                                        Grid.Row="0"
-                                        Grid.Column="1"
-                                        Maximum="500"
-                                        Minimum="0"
-                                        StepFrequency="5"
-                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
-                                    <NumberBox
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        Width="100"
-                                        Maximum="1000"
-                                        Minimum="0"
-                                        SmallChange="5"
-                                        SpinButtonPlacementMode="Compact"
-                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
-
-                                    <!--  Light Threshold Slider  -->
-                                    <FontIcon
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE706;" />
-                                    <Slider
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Maximum="500"
-                                        Minimum="0"
-                                        StepFrequency="5"
-                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
-                                    <NumberBox
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Width="100"
-                                        Maximum="1000"
-                                        Minimum="0"
-                                        SmallChange="5"
-                                        SpinButtonPlacementMode="Compact"
-                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
-                                </Grid>
-
-                                <!--  Labels  -->
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock
-                                        Grid.Column="0"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{helpers:ResourceString Name=AmbientLightDarkThreshold}" />
-                                    <TextBlock
-                                        Grid.Column="1"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Style="{StaticResource CaptionTextBlockStyle}"
-                                        Text="{helpers:ResourceString Name=AmbientLightLightThreshold}" />
-                                </Grid>
-                            </StackPanel>
-                        </controls:SettingsCard.Content>
-                    </controls:SettingsCard>
-
-                    <!--  Reference Guide  -->
-                    <controls:SettingsExpander Header="{helpers:ResourceString Name=AmbientLightReference}" HeaderIcon="{ui:FontIcon Glyph=&#xE946;}">
-                        <controls:SettingsExpander.Items>
-                            <controls:SettingsCard Description="&lt; 1 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Moonlight}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="1 - 10 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_VeryDark}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="10 - 50 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DimRoom}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="50 - 150 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_LivingRoom}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="150 - 400 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Office}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="400 - 1000 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_Overcast}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="1000 - 10000 lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DaylightShade}" />
-                            </controls:SettingsCard>
-                            <controls:SettingsCard Description="10000+ lux">
-                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightRef_DirectSun}" />
-                            </controls:SettingsCard>
-                        </controls:SettingsExpander.Items>
-                    </controls:SettingsExpander>
                 </StackPanel>
 
                 <!--  Postpone  -->

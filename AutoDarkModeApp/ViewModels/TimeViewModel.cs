@@ -94,9 +94,6 @@ public partial class TimeViewModel : ObservableRecipient
     public partial bool ResumeInfoBarEnabled { get; set; }
 
     [ObservableProperty]
-    public partial Visibility AmbientLightSettingsVisibility { get; set; }
-
-    [ObservableProperty]
     public partial double AmbientLightDarkThreshold { get; set; }
 
     [ObservableProperty]
@@ -186,7 +183,6 @@ public partial class TimeViewModel : ObservableRecipient
         _isInitializing = true;
 
         OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-        AmbientLightSettingsVisibility = Visibility.Collapsed;
 
         // Check ambient light sensor availability and set up monitoring
         try
@@ -204,10 +200,15 @@ public partial class TimeViewModel : ObservableRecipient
                     CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
                 }
             }
+            else
+            {
+                CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
+            }
         }
         catch
         {
             AmbientLightSensorAvailable = false;
+            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
         }
 
         // Load ambient light threshold settings
@@ -288,7 +289,6 @@ public partial class TimeViewModel : ObservableRecipient
     private void HandleAutoTheme(bool value)
     {
         AutoThemeSwitchingEnabled = value;
-        AmbientLightSettingsVisibility = Visibility.Collapsed;
 
         if (_builder.Config.Governor == Governor.NightLight)
         {
@@ -306,7 +306,6 @@ public partial class TimeViewModel : ObservableRecipient
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-            AmbientLightSettingsVisibility = Visibility.Visible;
             return;
         }
 
@@ -439,7 +438,6 @@ public partial class TimeViewModel : ObservableRecipient
                 TimePickerVisibility = Visibility.Visible;
                 DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                AmbientLightSettingsVisibility = Visibility.Collapsed;
                 break;
 
             case SwitchTriggerMode.LocationTimes:
@@ -450,7 +448,6 @@ public partial class TimeViewModel : ObservableRecipient
                 DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
-                AmbientLightSettingsVisibility = Visibility.Collapsed;
                 break;
 
             case SwitchTriggerMode.CoordinateTimes:
@@ -461,7 +458,6 @@ public partial class TimeViewModel : ObservableRecipient
                 DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
-                AmbientLightSettingsVisibility = Visibility.Collapsed;
                 break;
 
             case SwitchTriggerMode.WindowsNightLight:
@@ -473,7 +469,6 @@ public partial class TimeViewModel : ObservableRecipient
                 DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
-                AmbientLightSettingsVisibility = Visibility.Collapsed;
                 break;
 
             case SwitchTriggerMode.AmbientLight:
@@ -484,7 +479,6 @@ public partial class TimeViewModel : ObservableRecipient
                 TimePickerVisibility = Visibility.Collapsed;
                 DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                AmbientLightSettingsVisibility = Visibility.Visible;
                 break;
         }
 
