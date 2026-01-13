@@ -640,13 +640,11 @@ public partial class TimeViewModel : ObservableRecipient
         if (_isInitializing)
             return;
 
-        const double minGap = 5; // Minimum gap between thresholds
-
-        // Ensure dark threshold stays below light threshold with minimum gap
-        if (value >= AmbientLightLightThreshold - minGap)
+        // Ensure dark threshold stays below light threshold (light must be greater than dark)
+        if (value >= AmbientLightLightThreshold)
         {
             _isInitializing = true;
-            AmbientLightDarkThreshold = Math.Max(0, AmbientLightLightThreshold - minGap);
+            AmbientLightDarkThreshold = Math.Max(0, AmbientLightLightThreshold - 1);
             _isInitializing = false;
         }
 
@@ -662,13 +660,11 @@ public partial class TimeViewModel : ObservableRecipient
         if (_isInitializing)
             return;
 
-        const double minGap = 5; // Minimum gap between thresholds
-
-        // Ensure light threshold stays above dark threshold with minimum gap
-        if (value <= AmbientLightDarkThreshold + minGap)
+        // Ensure light threshold stays above dark threshold (light must be greater than dark)
+        if (value <= AmbientLightDarkThreshold)
         {
             _isInitializing = true;
-            AmbientLightLightThreshold = Math.Min(1000, AmbientLightDarkThreshold + minGap);
+            AmbientLightLightThreshold = Math.Min(10000, AmbientLightDarkThreshold + 1);
             _isInitializing = false;
         }
 
