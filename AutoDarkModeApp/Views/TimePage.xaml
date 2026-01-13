@@ -47,7 +47,10 @@
                                 <RadioButton x:Name="RadioButtonLocationTimes" Content="{helpers:ResourceString Name=LocationService}" />
                                 <RadioButton x:Name="RadioButtonCoordinateTimes" Content="{helpers:ResourceString Name=LocationGeoService}" />
                                 <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
-                                <RadioButton x:Name="RadioButtonAmbientLight" Content="{helpers:ResourceString Name=AmbientLightSensor}" IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                <RadioButton
+                                    x:Name="RadioButtonAmbientLight"
+                                    Content="{helpers:ResourceString Name=AmbientLightSensor}"
+                                    IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
                             </RadioButtons>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
@@ -206,11 +209,10 @@
                                 Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
 
                             <!--  Ambient Light Sensor  -->
-                            <StackPanel
-                                Spacing="16"
-                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
                                 <TextBlock
                                     Style="{StaticResource BodyTextBlockStyle}"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
                                     Text="{helpers:ResourceString Name=AmbientLightSensor_Description}"
                                     TextWrapping="Wrap" />
 
@@ -234,16 +236,16 @@
 
                                 <!--  Threshold Configuration  -->
                                 <TextBlock
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                    Style="{StaticResource BodyTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=AmbientLightThresholds_Description}"
                                     TextWrapping="Wrap" />
 
-                                <Grid ColumnSpacing="8" RowSpacing="12">
+                                <Grid ColumnSpacing="24" RowSpacing="16">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition MaxWidth="500" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
@@ -315,58 +317,54 @@
                                 </Grid>
 
                                 <!--  Lux Reference Guide  -->
-                                <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                                    <Expander.Header>
-                                        <Grid ColumnSpacing="8">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <FontIcon
-                                                FontSize="16"
-                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                Glyph="&#xE946;" />
-                                            <TextBlock
-                                                Grid.Column="1"
-                                                VerticalAlignment="Center"
-                                                Text="{helpers:ResourceString Name=AmbientLightReference}" />
-                                        </Grid>
-                                    </Expander.Header>
-                                    <Expander.Content>
-                                        <Grid ColumnSpacing="16" RowSpacing="4">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="&lt; 1 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Moonlight}" />
-                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="1 - 10 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_VeryDark}" />
-                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="10 - 50 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DimRoom}" />
-                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="50 - 150 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_LivingRoom}" />
-                                            <TextBlock Grid.Row="4" Grid.Column="0" Text="150 - 400 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Office}" />
-                                            <TextBlock Grid.Row="5" Grid.Column="0" Text="400 - 1000 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Overcast}" />
-                                            <TextBlock Grid.Row="6" Grid.Column="0" Text="1000 - 10000 lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="6" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DaylightShade}" />
-                                            <TextBlock Grid.Row="7" Grid.Column="0" Text="10000+ lux" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
-                                            <TextBlock Grid.Row="7" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DirectSun}" />
-                                        </Grid>
-                                    </Expander.Content>
-                                </Expander>
+                                <Button Style="{StaticResource SubtleButtonStyle}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <FontIcon
+                                            FontSize="{StaticResource BodyTextBlockFontSize}"
+                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                            Glyph="&#xE946;" />
+                                        <TextBlock Text="{helpers:ResourceString Name=AmbientLightReference}" />
+                                    </StackPanel>
+                                    <Button.Flyout>
+                                        <Flyout Placement="BottomEdgeAlignedLeft">
+                                            <Grid ColumnSpacing="8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="&lt; 1 lux" />
+                                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Moonlight}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="1 - 10 lux" />
+                                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_VeryDark}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="2" Grid.Column="0" Text="10 - 50 lux" />
+                                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DimRoom}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="3" Grid.Column="0" Text="50 - 150 lux" />
+                                                <TextBlock Grid.Row="3" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_LivingRoom}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="4" Grid.Column="0" Text="150 - 400 lux" />
+                                                <TextBlock Grid.Row="4" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Office}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="5" Grid.Column="0" Text="400 - 1000 lux" />
+                                                <TextBlock Grid.Row="5" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_Overcast}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="6" Grid.Column="0" Text="1000 - 10000 lux" />
+                                                <TextBlock Grid.Row="6" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DaylightShade}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                <TextBlock Grid.Row="7" Grid.Column="0" Text="&gt; 10000 lux" />
+                                                <TextBlock Grid.Row="7" Grid.Column="1" Text="{helpers:ResourceString Name=AmbientLightRef_DirectSun}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                            </Grid>
+                                        </Flyout>
+                                    </Button.Flyout>
+                                </Button>
+
                             </StackPanel>
 
                         </StackPanel>
