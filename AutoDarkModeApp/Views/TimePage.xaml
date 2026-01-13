@@ -319,19 +319,37 @@
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xe708;" />
 
-                                    <!--  Range Selector (logarithmic scale for fine control at low values)  -->
-                                    <controls:RangeSelector
-                                        x:Name="AmbientLightRangeSelector"
-                                        Grid.Row="0"
-                                        Grid.Column="2"
-                                        VerticalAlignment="Center"
-                                        Margin="0,24,0,0"
-                                        Maximum="1000"
-                                        Minimum="0"
-                                        RangeStart="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
-                                        RangeEnd="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
-                                        StepFrequency="1"
-                                        Loaded="AmbientLightRangeSelector_Loaded" />
+                                    <!--  Range Selector with colored gradient overlay  -->
+                                    <Grid Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="0,24,0,0">
+<!--  Gradient background showing dark-to-light transition  -->
+                                        <Border
+                                            x:Name="RangeGradientBackground"
+                                            Height="6"
+                                            VerticalAlignment="Center"
+                                            Margin="0"
+                                            CornerRadius="3"
+                                            IsHitTestVisible="False">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#1A1A2E" Offset="0.0" />
+                                                    <GradientStop Color="#16213E" Offset="0.15" />
+                                                    <GradientStop Color="#1F4068" Offset="0.35" />
+                                                    <GradientStop Color="#E8A87C" Offset="0.65" />
+                                                    <GradientStop Color="#F9D56E" Offset="0.85" />
+                                                    <GradientStop Color="#FFEB99" Offset="1.0" />
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <!--  Range Selector (logarithmic scale for fine control at low values)  -->
+                                        <controls:RangeSelector
+                                            x:Name="AmbientLightRangeSelector"
+                                            Maximum="1000"
+                                            Minimum="0"
+                                            RangeStart="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
+                                            RangeEnd="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
+                                            StepFrequency="1"
+                                            Loaded="AmbientLightRangeSelector_Loaded" />
+                                    </Grid>
 
                                     <!--  Tick marks with lux reference labels (logarithmic positions)  -->
                                     <!--  Positions: 10lux=26%, 50lux=43%, 150lux=55%, 400lux=65%, 1000lux=75%  -->
