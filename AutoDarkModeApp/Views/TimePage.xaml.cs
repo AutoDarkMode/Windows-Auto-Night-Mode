@@ -62,19 +62,32 @@ public sealed partial class TimePage : Page
 
     private void AmbientLightRangeSelector_Loaded(object sender, RoutedEventArgs e)
     {
-        // Hide the tooltip elements in the RangeSelector control
+        // Hide the tooltip elements in the RangeSelector control.
         if (sender is FrameworkElement element)
         {
+            // Initial attempt
             HideTooltipElements(element);
+
+            // Also schedule delayed attempts to catch lazy-loaded templates
+            DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
+            {
+                HideTooltipElements(element);
+            });
+        }
+
+        // Also attach to PointerEntered to ensure we catch any dynamic tooltip generation
+        if (sender is UIElement uiElement)
+        {
+            uiElement.PointerEntered += (s, args) =>
+            {
+                if (s is FrameworkElement fe) HideTooltipElements(fe);
+            };
         }
     }
 
     /// <summary>
     /// Recursively searches the visual tree to find and hide tooltip elements.
-    /// The RangeSelector control has built-in tooltips that show raw slider values (0-1000),
-    /// which don't correspond to actual lux values due to our logarithmic conversion.
-    /// We hide these by setting Opacity=0 (not Visibility=Collapsed) because Collapsed
-    /// leaves a thin black bar artifact from the tooltip's border/background.
+    /// The RangeSelector control has built-in tooltips that show raw slider values (0-1000).
     /// </summary>
     private static void HideTooltipElements(DependencyObject parent)
     {
@@ -83,10 +96,24 @@ public sealed partial class TimePage : Page
         {
             var child = VisualTreeHelper.GetChild(parent, i);
 
-            if (child is FrameworkElement fe && fe.Name == "ToolTip")
+            if (child is FrameworkElement fe)
             {
-                fe.Opacity = 0;
-                fe.IsHitTestVisible = false;
+                // Method 1: Check name for "ToolTip"
+                string name = fe.Name ?? string.Empty;
+                bool isToolTip = name.Contains("ToolTip", StringComparison.OrdinalIgnoreCase);
+
+                // Method 2: Check if it's the specific thumb parts (MinThumb/MaxThumb) and disable their ToolTipService
+                if (name.Contains("Thumb", StringComparison.OrdinalIgnoreCase))
+                {
+                    ToolTipService.SetToolTip(fe, null);
+                }
+
+                if (isToolTip)
+                {
+                    fe.Opacity = 0;
+                    fe.IsHitTestVisible = false;
+                    fe.Visibility = Visibility.Collapsed; // Try Collapsed too
+                }
             }
 
             HideTooltipElements(child);

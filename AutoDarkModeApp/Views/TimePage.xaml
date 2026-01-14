@@ -352,43 +352,46 @@
                                     </Grid>
 
                                     <!--  Tick marks with lux reference labels (logarithmic positions)  -->
-                                    <!--  Positions: 10lux=26%, 50lux=43%, 150lux=55%, 400lux=65%, 1000lux=75%  -->
-                                    <Grid Grid.Row="1" Grid.Column="2" Margin="0,2,0,0">
+                                    <!--  Positions: 10lux=26%, 50lux=42.7%, 150lux=54.5%, 400lux=65.1%, 1000lux=75%  -->
+                                    <!--  Margin accounts for RangeSelector thumb half-widths (~8px each side)  -->
+                                    <Grid Grid.Row="1" Grid.Column="2" Margin="8,2,8,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="26*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="17*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="12*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="10*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="10*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="25*" />
+                                            <ColumnDefinition Width="260*" />
+                                            <ColumnDefinition Width="167*" />
+                                            <ColumnDefinition Width="118*" />
+                                            <ColumnDefinition Width="106*" />
+                                            <ColumnDefinition Width="99*" />
+                                            <ColumnDefinition Width="250*" />
                                         </Grid.ColumnDefinitions>
-                                        <!--  10 lux tick  -->
-                                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Spacing="2">
+
+                                        <!--  10 lux tick (at 26.0%)  -->
+                                        <!--  Placed in Col 0, aligned right with negative margin to center  -->
+                                        <StackPanel Grid.Column="0" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
                                             <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                             <TextBlock Text="10" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                         </StackPanel>
-                                        <!--  50 lux tick  -->
-                                        <StackPanel Grid.Column="3" HorizontalAlignment="Center" Spacing="2">
+
+                                        <!--  50 lux tick (at 43%)  -->
+                                        <!--  Placed in Col 1, aligned right  -->
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
                                             <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                             <TextBlock Text="50" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                         </StackPanel>
-                                        <!--  150 lux tick  -->
-                                        <StackPanel Grid.Column="5" HorizontalAlignment="Center" Spacing="2">
+
+                                        <!--  150 lux tick (at 55%)  -->
+                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
                                             <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                             <TextBlock Text="150" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                         </StackPanel>
-                                        <!--  400 lux tick  -->
-                                        <StackPanel Grid.Column="7" HorizontalAlignment="Center" Spacing="2">
+
+                                        <!--  400 lux tick (at 65%)  -->
+                                        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
                                             <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                             <TextBlock Text="400" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                         </StackPanel>
-                                        <!--  1000 lux tick  -->
-                                        <StackPanel Grid.Column="9" HorizontalAlignment="Center" Spacing="2">
+
+                                        <!--  1000 lux tick (at 75%)  -->
+                                        <StackPanel Grid.Column="4" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
                                             <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                             <TextBlock Text="1k" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
                                         </StackPanel>
