@@ -1,3 +1,4 @@
+using System;
 using Microsoft.UI.Xaml.Data;
 
 namespace AutoDarkModeApp.Helpers;
@@ -10,11 +11,36 @@ namespace AutoDarkModeApp.Helpers;
 public partial class LogarithmicLuxConverter : IValueConverter
 {
     // Maximum lux value supported
-    private const double MaxLux = 10000.0;
+    public const double MaxLuxValue = 10000.0;
     // Slider range (0-1000 for finer precision)
-    private const double SliderMax = 1000.0;
+    public const double SliderMaxValue = 1000.0;
     // Precomputed log constant for performance
-    private static readonly double LogBase = Math.Log(MaxLux + 1);
+    private static readonly double LogBase = Math.Log(MaxLuxValue + 1);
+
+    /// <summary>
+    /// Static conversion from lux to slider position
+    /// </summary>
+    public static double LuxToSlider(double lux)
+    {
+        if (lux <= 0) return 0.0;
+        if (lux >= MaxLuxValue) return SliderMaxValue;
+        return Math.Log(lux + 1) / LogBase * SliderMaxValue;
+    }
+
+    /// <summary>
+    /// Static conversion from slider position to lux
+    /// </summary>
+    public static double SliderToLux(double sliderValue)
+    {
+        if (sliderValue <= 0) return 0.0;
+        if (sliderValue >= SliderMaxValue) return MaxLuxValue;
+        double lux = Math.Exp(sliderValue / SliderMaxValue * LogBase) - 1;
+
+        // Round to reasonable precision (whole numbers for most values)
+        if (lux < 100) return Math.Round(lux);
+        if (lux < 1000) return Math.Round(lux / 5) * 5;
+        return Math.Round(lux / 10) * 10;
+    }
 
     /// <summary>
     /// Convert lux value to slider position (logarithmic scale)
@@ -23,12 +49,7 @@ public partial class LogarithmicLuxConverter : IValueConverter
     {
         if (value is double lux)
         {
-            // Handle edge case
-            if (lux <= 0) return 0.0;
-            if (lux >= MaxLux) return SliderMax;
-
-            // Logarithmic conversion: slider = ln(lux + 1) / ln(maxLux + 1) * sliderMax
-            return Math.Log(lux + 1) / LogBase * SliderMax;
+            return LuxToSlider(lux);
         }
         return 0.0;
     }
@@ -40,17 +61,7 @@ public partial class LogarithmicLuxConverter : IValueConverter
     {
         if (value is double sliderValue)
         {
-            // Handle edge cases
-            if (sliderValue <= 0) return 0.0;
-            if (sliderValue >= SliderMax) return MaxLux;
-
-            // Exponential conversion: lux = e^(slider / sliderMax * ln(maxLux + 1)) - 1
-            double lux = Math.Exp(sliderValue / SliderMax * LogBase) - 1;
-
-            // Round to reasonable precision (whole numbers for most values)
-            if (lux < 100) return Math.Round(lux);
-            if (lux < 1000) return Math.Round(lux / 5) * 5;
-            return Math.Round(lux / 10) * 10;
+            return SliderToLux(sliderValue);
         }
         return 0.0;
     }

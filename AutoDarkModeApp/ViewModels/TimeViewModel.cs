@@ -100,6 +100,12 @@ public partial class TimeViewModel : ObservableRecipient
     public partial double AmbientLightLightThreshold { get; set; }
 
     [ObservableProperty]
+    public partial double CurrentLuxSliderPercentage { get; set; }
+
+    [ObservableProperty]
+    public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
+
+    [ObservableProperty]
     public partial bool AmbientLightSensorAvailable { get; set; }
 
     [ObservableProperty]
@@ -110,11 +116,15 @@ public partial class TimeViewModel : ObservableRecipient
 
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
+    public ICommand AutoConfigureCommand { get; }
+
     public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
         _geolocatorService = geolocatorService;
+
+        AutoConfigureCommand = new RelayCommand(AutoConfigure);
 
         try
         {
@@ -178,6 +188,44 @@ public partial class TimeViewModel : ObservableRecipient
         };
     }
 
+    private void AutoConfigure()
+    {
+        if (!AmbientLightSensorAvailable) return;
+
+        double currentLux = CurrentLuxReading;
+        // Use ±15% for the "Smart Gap" logic
+        double dark = Math.Round(currentLux * 0.85);
+        double light = Math.Round(currentLux * 1.15);
+
+        // Ensure minimum gap of 2 lux
+        if (light - dark < 2)
+        {
+            dark = Math.Max(0, currentLux - 1);
+            light = dark + 2;
+        }
+
+        // Clamp to valid range
+        AmbientLightDarkThreshold = Math.Max(0, Math.Min(dark, 9998));
+        AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
+
+        // Save immediately as this is a deliberate action or first-time setup
+        if (_ambientLightDebounceTimer != null)
+        {
+            _ambientLightDebounceTimer.Stop();
+            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
+            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            try
+            {
+                _builder.Save();
+                SafeApplyTheme();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+        }
+    }
+
     private void LoadSettings()
     {
         _isInitializing = true;
@@ -198,6 +246,8 @@ public partial class TimeViewModel : ObservableRecipient
                 {
                     CurrentLuxReading = reading.IlluminanceInLux;
                     CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
+                    CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+                    RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
                 }
             }
             else
@@ -472,6 +522,11 @@ public partial class TimeViewModel : ObservableRecipient
                 break;
 
             case SwitchTriggerMode.AmbientLight:
+                // Run auto-configure only if we are switching from another mode to Ambient Light for the first time
+                if (_builder.Config.Governor != Governor.AmbientLight)
+                {
+                    AutoConfigure();
+                }
                 _builder.Config.Governor = Governor.AmbientLight;
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
@@ -681,6 +736,8 @@ public partial class TimeViewModel : ObservableRecipient
         {
             CurrentLuxReading = args.Reading.IlluminanceInLux;
             CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
+            CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+            RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
         });
     }
 
