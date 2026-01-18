@@ -25,9 +25,12 @@
                     <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}" IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
+                <controls:SettingsCard Description="{helpers:ResourceString Name=AggressiveDwmRefreshDescription}">
+                    <controls:SettingsCard.Header>
+                        <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}" IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
+                    </controls:SettingsCard.Header>
                 </controls:SettingsCard>
+                
 
                 <controls:SettingsExpander>
                     <controls:SettingsExpander.Header>
