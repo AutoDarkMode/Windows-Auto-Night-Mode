@@ -103,6 +103,7 @@ public class AmbientLight
     /// Lux threshold above which light mode is activated (default: 80 lux)
     /// </summary>
     public double LightThreshold { get; set; } = 80;
+    public int DebounceDelayMs { get; set; } = 15000;
 }
 
 public class Hotkeys

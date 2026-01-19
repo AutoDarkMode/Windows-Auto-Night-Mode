@@ -16,6 +16,7 @@
 #endregion
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
@@ -35,6 +36,10 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private bool init = true;
     private Theme currentTheme = Theme.Unknown;
     private IAutoDarkModeModule Master { get; }
+    private Timer _debounceTimer;
+    private Theme _pendingTheme = Theme.Unknown;
+    private int _debounceDelayMs;
+    private readonly object _debounceLock = new object();
 
     public AmbientLightGovernor(IAutoDarkModeModule master)
     {
@@ -83,18 +88,84 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         if (currentTheme != Theme.Dark && lux <= darkThreshold)
         {
             newTheme = Theme.Dark;
-            Logger.Info($"ambient light at or below dark threshold ({lux:F1} lux <= {darkThreshold} lux), switching to dark mode");
         }
         else if (currentTheme != Theme.Light && lux >= lightThreshold)
         {
             newTheme = Theme.Light;
-            Logger.Info($"ambient light at or above light threshold ({lux:F1} lux >= {lightThreshold} lux), switching to light mode");
         }
 
         if (newTheme != currentTheme && newTheme != Theme.Unknown)
         {
+            _debounceDelayMs = builder.Config.AmbientLight.DebounceDelayMs;
+            ScheduleThemeChange(newTheme, lux, darkThreshold, lightThreshold);
+        }
+        else if (newTheme == currentTheme)
+        {
+            CancelPendingThemeChange();
+        }
+    }
+
+    private void ScheduleThemeChange(Theme newTheme, double lux, double darkThreshold, double lightThreshold)
+    {
+        lock (_debounceLock)
+        {
+            if (_pendingTheme == newTheme && _debounceTimer != null)
+            {
+                Logger.Debug($"resetting debounce timer for {newTheme} theme (lux: {lux:F1})");
+                _debounceTimer.Change(_debounceDelayMs, Timeout.Infinite);
+                return;
+            }
+
+            _debounceTimer?.Dispose();
+
+            _pendingTheme = newTheme;
+
+            string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux <= {lightThreshold} lux" : $"{lux:F1} lux >= {darkThreshold} lux";
+
+            Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {_debounceDelayMs / 1000} seconds");
+
+            _debounceTimer = new Timer(_ => ApplyThemeChange(newTheme, lux, thresholdInfo), null, _debounceDelayMs, Timeout.Infinite);
+        }
+    }
+
+    private void CancelPendingThemeChange()
+    {
+        lock (_debounceLock)
+        {
+            if (_pendingTheme != Theme.Unknown && _debounceTimer != null)
+            {
+                Logger.Debug($"cancelling pending theme change to {_pendingTheme} (lux returned to current theme range)");
+                _debounceTimer?.Dispose();
+                _debounceTimer = null;
+                _pendingTheme = Theme.Unknown;
+            }
+        }
+    }
+
+    private void ApplyThemeChange(Theme newTheme, double lux, string thresholdInfo)
+    {
+        lock (_debounceLock)
+        {
+            if (_pendingTheme != newTheme)
+            {
+                Logger.Debug($"theme change to {newTheme} cancelled during debounce period");
+                return;
+            }
+
+            Logger.Info($"applying theme change to {newTheme} mode after debounce verification ({thresholdInfo})");
+
+            Theme previousTheme = currentTheme;
             currentTheme = newTheme;
             state.AmbientLight.Requested = newTheme;
+
+            _pendingTheme = Theme.Unknown;
+            _debounceTimer?.Dispose();
+            _debounceTimer = null;
+
+            if (currentTheme != previousTheme)
+            {
+                Master.Fire(this);
+            }
         }
     }
 
@@ -115,14 +186,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     [MethodImpl(MethodImplOptions.Synchronized)]
     private void OnReadingChanged(LightSensor sender, LightSensorReadingChangedEventArgs args)
     {
-        Theme previousTheme = currentTheme;
         EvaluateLuxReading(args.Reading.IlluminanceInLux);
-
-        // Only fire if theme actually changed
-        if (currentTheme != previousTheme)
-        {
-            Master.Fire(this);
-        }
     }
 
 public void EnableHook()
@@ -180,6 +244,13 @@ public void EnableHook()
     {
         try
         {
+            lock (_debounceLock)
+            {
+                _debounceTimer?.Dispose();
+                _debounceTimer = null;
+                _pendingTheme = Theme.Unknown;
+            }
+
             if (_sensor != null)
             {
                 _sensor.ReadingChanged -= OnReadingChanged;
