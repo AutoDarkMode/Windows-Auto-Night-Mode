@@ -106,6 +106,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     }
 
     private CancellationTokenSource _debounceCts;
+    private DateTime _debounceStartTime;
 
     private async void ScheduleThemeChange(Theme newTheme, double lux, double darkThreshold, double lightThreshold)
     {
@@ -120,6 +121,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         _debounceCts?.Cancel();
         _debounceCts = new CancellationTokenSource();
         _pendingTheme = newTheme;
+        _debounceStartTime = DateTime.Now;
 
         string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
         int delay = Math.Max(15000, builder.Config.AmbientLight.DebounceDelayMs);
@@ -129,7 +131,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         try
         {
             await Task.Delay(delay, _debounceCts.Token);
-
+            
             // If we get here, task wasn't cancelled
             ApplyThemeChange(newTheme, lux, thresholdInfo);
         }
@@ -152,18 +154,34 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
     private void ApplyThemeChange(Theme newTheme, double lux, string thresholdInfo)
     {
-        Logger.Info($"applying theme change to {newTheme} mode after debounce verification ({thresholdInfo})");
-
-        Theme previousTheme = currentTheme;
-        currentTheme = newTheme;
-        state.AmbientLight.Requested = newTheme;
-
-        _pendingTheme = Theme.Unknown;
-        _debounceCts = null;
-
-        if (currentTheme != previousTheme)
+        // Double check duration to prevent early firing
+        if ((DateTime.Now - _debounceStartTime).TotalMilliseconds < 14000)
         {
-            Master.Fire(this);
+            Logger.Warn("debounce timer fired too early, ignoring");
+            return;
+        }
+
+        lock (_debounceLock)
+        {
+            if (_pendingTheme != newTheme)
+            {
+                Logger.Debug($"theme change to {newTheme} cancelled during debounce period");
+                return;
+            }
+
+            Logger.Info($"applying theme change to {newTheme} mode after debounce verification ({thresholdInfo})");
+
+            Theme previousTheme = currentTheme;
+            currentTheme = newTheme;
+            state.AmbientLight.Requested = newTheme;
+
+            _pendingTheme = Theme.Unknown;
+            _debounceCts = null;
+
+            if (currentTheme != previousTheme)
+            {
+                Master.Fire(this);
+            }
         }
     }
 
