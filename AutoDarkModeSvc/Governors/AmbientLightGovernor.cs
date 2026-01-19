@@ -94,7 +94,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
         if (newTheme != currentTheme && newTheme != Theme.Unknown)
         {
-            _debounceDelayMs = builder.Config.AmbientLight.DebounceDelayMs;
+            // Ensure at least 15s delay to prevent accidental switching
+            _debounceDelayMs = Math.Max(15000, builder.Config.AmbientLight.DebounceDelayMs);
             ScheduleThemeChange(newTheme, lux, darkThreshold, lightThreshold);
         }
         else if (newTheme == currentTheme)
@@ -109,7 +110,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         {
             if (_pendingTheme == newTheme && _debounceTimer != null)
             {
-                // Timer already running for this target theme, let it continue
+                // Timer already running for this target theme, let it continue without resetting
+                // This implements a fixed delay from the FIRST detection, rather than a continuous debounce
                 return;
             }
 

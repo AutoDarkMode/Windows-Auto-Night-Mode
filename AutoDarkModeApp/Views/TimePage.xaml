@@ -50,8 +50,16 @@
                                 <RadioButton x:Name="RadioButtonWindowsNightLight" Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
                                 <RadioButton
                                     x:Name="RadioButtonAmbientLight"
-                                    Content="{helpers:ResourceString Name=AmbientLightSensor}"
-                                    IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                    IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}"
+                                    ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightThresholds_Description}">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="{helpers:ResourceString Name=AmbientLightSensor}" />
+                                        <FontIcon
+                                            FontSize="12"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Glyph="&#xE946;" />
+                                    </StackPanel>
+                                </RadioButton>
                             </RadioButtons>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
@@ -234,7 +242,8 @@
                                         Grid.Column="1"
                                         VerticalAlignment="Center"
                                         Style="{StaticResource BodyTextBlockStyle}"
-                                        Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
+                                        Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_Description}" />
                                     <StackPanel
                                         Grid.Column="2"
                                         Orientation="Horizontal"
@@ -323,24 +332,20 @@
                                     </Grid.RowDefinitions>
 
                                     <!--  Indicator showing current lux level on the slider  -->
-                                    <!--  Uses same star-column logic as ticks for perfect alignment  -->
-                                    <Grid
+                                    <Canvas
+                                        x:Name="IndicatorCanvas"
                                         Grid.Row="1"
                                         Grid.Column="2"
                                         VerticalAlignment="Top"
-                                        Margin="8,10,8,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.CurrentLuxSliderPercentage), Mode=OneWay}" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.RemainingLuxSliderPercentage), Mode=OneWay}" />
-                                        </Grid.ColumnDefinitions>
+                                        Height="16"
+                                        Margin="8,10,8,0"
+                                        SizeChanged="IndicatorCanvas_SizeChanged">
                                         <FontIcon
-                                            Grid.Column="1"
-                                            HorizontalAlignment="Center"
+                                            x:Name="CurrentLuxIndicator"
                                             FontSize="12"
                                             Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                             Glyph="&#xE70D;" />
-                                    </Grid>
+                                    </Canvas>
 
                                     <!--  Dark threshold NumberBox  -->
                                     <NumberBox

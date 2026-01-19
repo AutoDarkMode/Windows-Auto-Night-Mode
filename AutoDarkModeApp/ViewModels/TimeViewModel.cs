@@ -101,11 +101,20 @@ public partial class TimeViewModel : ObservableRecipient
         set
         {
             value = Math.Round(value);
-            if (SetProperty(ref _ambientLightDarkThreshold, value) && !_isUpdating)
+            if (SetProperty(ref _ambientLightDarkThreshold, value))
             {
-                _isUpdating = true;
-                RangeStart = LuxToSlider(value);
-                _isUpdating = false;
+                if (!_isUpdating)
+                {
+                    _isUpdating = true;
+                    // Ensure Light stays above Dark
+                    if (_ambientLightLightThreshold <= value)
+                    {
+                        AmbientLightLightThreshold = Math.Min(10000, value + 1);
+                    }
+                    RangeStart = LuxToSlider(value);
+                    _isUpdating = false;
+                }
+                RestartAmbientLightDebounce();
             }
         }
     }
@@ -117,12 +126,30 @@ public partial class TimeViewModel : ObservableRecipient
         set
         {
             value = Math.Round(value);
-            if (SetProperty(ref _ambientLightLightThreshold, value) && !_isUpdating)
+            if (SetProperty(ref _ambientLightLightThreshold, value))
             {
-                _isUpdating = true;
-                RangeEnd = LuxToSlider(value);
-                _isUpdating = false;
+                if (!_isUpdating)
+                {
+                    _isUpdating = true;
+                    // Ensure Dark stays below Light
+                    if (_ambientLightDarkThreshold >= value)
+                    {
+                        AmbientLightDarkThreshold = Math.Max(1, value - 1);
+                    }
+                    RangeEnd = LuxToSlider(value);
+                    _isUpdating = false;
+                }
+                RestartAmbientLightDebounce();
             }
+        }
+    }
+
+    private void RestartAmbientLightDebounce()
+    {
+        if (_ambientLightDebounceTimer != null)
+        {
+            _ambientLightDebounceTimer.Stop();
+            _ambientLightDebounceTimer.Start();
         }
     }
 
@@ -292,7 +319,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         else
         {
-            dark = Math.Max(1, currentLux * 1.1);  // Anchor dark threshold just above current
+            dark = Math.Max(10, currentLux * 1.1);  // Anchor dark threshold just above current, min 10 lux
             light = Math.Max(dark + 2, dark * 3);  // Set light threshold significantly higher (1:3 ratio)
         }
 
@@ -331,6 +358,8 @@ public partial class TimeViewModel : ObservableRecipient
             AmbientLightSensorAvailable = _lightSensor != null;
             if (_lightSensor != null)
             {
+                // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
+                _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
                 _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
                 // Get initial reading
                 var reading = _lightSensor.GetCurrentReading();

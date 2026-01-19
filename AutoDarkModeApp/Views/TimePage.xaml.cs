@@ -3,6 +3,7 @@ using AutoDarkModeApp.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Animation;
 
 namespace AutoDarkModeApp.Views;
 
@@ -14,6 +15,53 @@ public sealed partial class TimePage : Page
     {
         ViewModel = App.GetService<TimeViewModel>();
         InitializeComponent();
+        ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+        Unloaded += (s, e) => ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+    }
+
+    private void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ViewModel.CurrentLuxSliderPercentage))
+        {
+            UpdateIndicatorPosition();
+        }
+    }
+
+    private void IndicatorCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        UpdateIndicatorPosition();
+    }
+
+    private void UpdateIndicatorPosition()
+    {
+        if (IndicatorCanvas == null || CurrentLuxIndicator == null) return;
+
+        double width = IndicatorCanvas.ActualWidth;
+        if (width <= 0) return;
+
+        // CurrentLuxSliderPercentage is 0-1000.
+        double normalized = Math.Clamp(ViewModel.CurrentLuxSliderPercentage / 1000.0, 0, 1);
+
+        // Calculate target X. Center of icon should be at percentage.
+        // Icon is 12px (FontSize 12). If ActualWidth is 0, assume 12.
+        double iconWidth = CurrentLuxIndicator.ActualWidth > 0 ? CurrentLuxIndicator.ActualWidth : 12;
+        double targetX = normalized * width - (iconWidth / 2);
+
+        // Animate
+        var anim = new DoubleAnimation
+        {
+            To = targetX,
+            Duration = new TimeSpan(0, 0, 0, 0, 300), // 300ms smooth
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut },
+            EnableDependentAnimation = true
+        };
+
+        var storyboard = new Storyboard();
+        storyboard.Children.Add(anim);
+        Storyboard.SetTarget(anim, CurrentLuxIndicator);
+        Storyboard.SetTargetProperty(anim, "(Canvas.Left)");
+
+        storyboard.Begin();
     }
 
     private async void NoLocationAccessInfoBar_ActionButtonClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
