@@ -15,8 +15,6 @@
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
         <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
-        <helpers:LogarithmicLuxConverter x:Key="LogarithmicLuxConverter" />
-        <helpers:StarWidthConverter x:Key="StarWidthConverter" />
     </Page.Resources>
 
     <ScrollViewer>
@@ -325,9 +323,9 @@
                                         VerticalAlignment="Top"
                                         Margin="8,10,8,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="{x:Bind ViewModel.CurrentLuxSliderPercentage, Mode=OneWay, Converter={StaticResource StarWidthConverter}}" />
+                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.CurrentLuxSliderPercentage), Mode=OneWay}" />
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="{x:Bind ViewModel.RemainingLuxSliderPercentage, Mode=OneWay, Converter={StaticResource StarWidthConverter}}" />
+                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.RemainingLuxSliderPercentage), Mode=OneWay}" />
                                         </Grid.ColumnDefinitions>
                                         <FontIcon
                                             Grid.Column="1"
@@ -388,8 +386,8 @@
                                             x:Name="AmbientLightRangeSelector"
                                             Maximum="1000"
                                             Minimum="0"
-                                            RangeStart="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
-                                            RangeEnd="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay, Converter={StaticResource LogarithmicLuxConverter}}"
+                                            RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
+                                            RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
                                             StepFrequency="1"
                                             Loaded="AmbientLightRangeSelector_Loaded" />
                                     </Grid>

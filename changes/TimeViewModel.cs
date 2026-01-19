@@ -42,9 +42,6 @@ public partial class TimeViewModel : ObservableRecipient
     public partial string? LocationNextUpdateDateDescription { get; set; }
 
     [ObservableProperty]
-    public partial bool IsNoLocationAccessInfoBarOpen { get; set; }
-
-    [ObservableProperty]
     public partial string? LocationBlockText { get; set; }
 
     [ObservableProperty]
@@ -130,67 +127,32 @@ public partial class TimeViewModel : ObservableRecipient
     public double RangeStart
     {
         get => _rangeStart;
-        set
-        {
-            if (SetProperty(ref _rangeStart, value) && !_isUpdating)
-            {
-                _isUpdating = true;
-                AmbientLightDarkThreshold = SliderToLux(value);
-                _isUpdating = false;
-            }
-        }
+        set => SetProperty(ref _rangeStart, value);
     }
-
     private double _rangeEnd;
     public double RangeEnd
     {
         get => _rangeEnd;
-        set
-        {
-            if (SetProperty(ref _rangeEnd, value) && !_isUpdating)
-            {
-                _isUpdating = true;
-                AmbientLightLightThreshold = SliderToLux(value);
-                _isUpdating = false;
-            }
-        }
+        set => SetProperty(ref _rangeEnd, value);
     }
-
-    // Maximum lux value supported (matching my previous logic)
-    private const double MaxLuxValue = 10000.0;
-    // Slider range (0-1000 for finer precision)
-    private const double SliderMaxValue = 1000.0;
-    // Precomputed log constant
-    private static readonly double LogBase = Math.Log(MaxLuxValue + 1);
 
     public double SliderToLux(double sliderValue)
     {
-        if (sliderValue <= 0) return 0.0;
-        if (sliderValue >= SliderMaxValue) return MaxLuxValue;
-        double lux = Math.Exp(sliderValue / SliderMaxValue * LogBase) - 1;
+        double minLux = 1;
+        double maxLux = 1000;
 
-        if (lux < 100) return Math.Round(lux);
-        if (lux < 1000) return Math.Round(lux / 5) * 5;
-        return Math.Round(lux / 10) * 10;
+        double t = sliderValue / 100.0;
+        return minLux * Math.Pow(maxLux / minLux, t);
     }
 
     public double LuxToSlider(double lux)
     {
-        if (lux <= 0) return 0.0;
-        if (lux >= MaxLuxValue) return SliderMaxValue;
-        return Math.Log(lux + 1) / LogBase * SliderMaxValue;
+        double minLux = 1;
+        double maxLux = 1000;
+
+        return 100.0 * Math.Log10(lux / minLux) / Math.Log10(maxLux / minLux);
     }
 
-    public Microsoft.UI.Xaml.GridLength GetStarWidth(double value)
-    {
-        return new Microsoft.UI.Xaml.GridLength(value, Microsoft.UI.Xaml.GridUnitType.Star);
-    }
-
-    [ObservableProperty]
-    public partial double CurrentLuxSliderPercentage { get; set; }
-
-    [ObservableProperty]
-    public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
 
     [ObservableProperty]
     public partial bool AmbientLightSensorAvailable { get; set; }
@@ -203,15 +165,11 @@ public partial class TimeViewModel : ObservableRecipient
 
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
-    public ICommand AutoConfigureCommand { get; }
-
     public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
         _geolocatorService = geolocatorService;
-
-        AutoConfigureCommand = new RelayCommand(AutoConfigure);
 
         try
         {
@@ -275,44 +233,6 @@ public partial class TimeViewModel : ObservableRecipient
         };
     }
 
-    private void AutoConfigure()
-    {
-        if (!AmbientLightSensorAvailable) return;
-
-        double currentLux = CurrentLuxReading;
-        // Use ±15% for the "Smart Gap" logic
-        double dark = Math.Round(currentLux * 0.85);
-        double light = Math.Round(currentLux * 1.15);
-
-        // Ensure minimum gap of 2 lux
-        if (light - dark < 2)
-        {
-            dark = Math.Max(0, currentLux - 1);
-            light = dark + 2;
-        }
-
-        // Clamp to valid range
-        AmbientLightDarkThreshold = Math.Max(0, Math.Min(dark, 9998));
-        AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
-
-        // Save immediately as this is a deliberate action or first-time setup
-        if (_ambientLightDebounceTimer != null)
-        {
-            _ambientLightDebounceTimer.Stop();
-            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
-            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
-            try
-            {
-                _builder.Save();
-                SafeApplyTheme();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-            }
-        }
-    }
-
     private void LoadSettings()
     {
         _isInitializing = true;
@@ -333,8 +253,6 @@ public partial class TimeViewModel : ObservableRecipient
                 {
                     CurrentLuxReading = reading.IlluminanceInLux;
                     CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-                    CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-                    RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
                 }
             }
             else
@@ -404,11 +322,7 @@ public partial class TimeViewModel : ObservableRecipient
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
-            {
-                IsNoLocationAccessInfoBarOpen = true;
-            }
-            else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
@@ -463,6 +377,7 @@ public partial class TimeViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.CoordinateTimes;
         }
 
+        OffsetTimeSettingsCardVisibility = value ? Visibility.Visible : Visibility.Collapsed;
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
@@ -609,11 +524,6 @@ public partial class TimeViewModel : ObservableRecipient
                 break;
 
             case SwitchTriggerMode.AmbientLight:
-                // Run auto-configure only if we are switching from another mode to Ambient Light for the first time
-                if (_builder.Config.Governor != Governor.AmbientLight)
-                {
-                    AutoConfigure();
-                }
                 _builder.Config.Governor = Governor.AmbientLight;
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
@@ -783,8 +693,6 @@ public partial class TimeViewModel : ObservableRecipient
         {
             CurrentLuxReading = args.Reading.IlluminanceInLux;
             CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-            CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-            RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
         });
     }
 
