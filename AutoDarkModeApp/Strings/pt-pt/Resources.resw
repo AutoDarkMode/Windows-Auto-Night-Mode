@@ -796,9 +796,6 @@ Versão instalada: {0}, Versão nova: {1}</value>
     <value>Nascer-do-sol</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Software de terceiros utilizado</value>
-  </data>
   <data name="Time" xml:space="preserve">
     <value>Tempo</value>
   </data>
@@ -1032,5 +1029,14 @@ Em raras ocasiões, o Windows pode emitir um sinal sonoro quando o rato é movid
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="DocumentationSocial" xml:space="preserve">
+    <value>Documentation &amp;; Social</value>
+  </data>
+  <data name="UsedSoftware" xml:space="preserve">
+    <value>Used software</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
   </data>
 </root>

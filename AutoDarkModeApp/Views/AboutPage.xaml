@@ -7,6 +7,7 @@
     xmlns:helpers="using:AutoDarkModeApp.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:viewmodels="using:AutoDarkModeApp.ViewModels"
     mc:Ignorable="d">
 
     <ScrollViewer>
@@ -25,27 +26,33 @@
                             x:Name="AppNameTextBlock"
                             Style="{StaticResource TitleTextBlockStyle}"
                             Text="Auto Dark Mode" />
-                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2025 Armin Osaj &amp; Samuel Schiegg" />
+                        <TextBlock Style="{StaticResource CaptionTextBlockStyle}" Text="© 2026 Armin Osaj &amp; Samuel Schiegg" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                     </StackPanel>
                 </StackPanel>
 
+
                 <!--  Version information  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=About}" />
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=Version}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xe946;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xe946;}" IsExpanded="True">
+                    <controls:SettingsExpander.Header>
+                        <TextBlock>
+                            <Run Text="{helpers:ResourceString Name=Version}" />
+                            <Run Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind ViewModel.SvcVersionText, Mode=OneWay}" />
+                        </TextBlock>
+                    </controls:SettingsExpander.Header>
                     <Button
                         x:Name="CopyVersionInfoButton"
                         Click="CopyVersionInfoButton_Click"
                         Content="{helpers:ResourceString Name=Copy}" />
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <StackPanel
-                                Padding="0,6,0,6"
-                                Orientation="Horizontal"
-                                Spacing="20">
+                            <StackPanel Orientation="Horizontal" Spacing="24">
                                 <StackPanel Orientation="Vertical" Spacing="8">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
+                                        </Style>
+                                    </StackPanel.Resources>
                                     <TextBlock Text="Commit" />
                                     <TextBlock Text="App/Service" />
                                     <TextBlock Text="Updater" />
@@ -68,6 +75,7 @@
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
+
                 <!--  CopyVersionInfoButton TeachingTip  -->
                 <TeachingTip
                     x:Name="CopyButtonTeachingTip"
@@ -79,103 +87,118 @@
                     </TeachingTip.IconSource>
                 </TeachingTip>
 
-                <!--  Log and Shell  -->
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=LogAndShell}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
-                    IsExpanded="True">
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <!--  Margin: -12 Maintain visual balance  -->
-                            <StackPanel
-                                Margin="-12,0,0,0"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <HyperlinkButton Click="OpenLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenLog}" />
-                                <HyperlinkButton Click="OpenUpdaterLogHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenUpdaterLog}" />
-                                <HyperlinkButton Click="OpenShellHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenShell}" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
 
-                <!--  SpecialThanks  -->
+                <!--  Diagnostics  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Diagnostics}" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="OpenLog_Click"
+                    Header="{helpers:ResourceString Name=OpenLog}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="OpenUpdaterLog_Click"
+                    Header="{helpers:ResourceString Name=OpenUpdaterLog}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}"
+                    IsClickEnabled="True" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="OpenShell_Click"
+                    Header="{helpers:ResourceString Name=OpenShell}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE756;}"
+                    IsClickEnabled="True" />
+
+
+                <!--  Documentation & Social  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DocumentationSocial}" />
+                <controls:SettingsCard
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    Click="GoToDocumentation_Click"
+                    Header="Go to Auto Dark Mode Documentation"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE82D;}"
+                    IsClickEnabled="True" />
+
+                <controls:SettingsCard Header="{helpers:ResourceString Name=FollowUs}" HeaderIcon="{ui:FontIcon Glyph=&#xED15;}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <ImageIcon
+                                    Width="24"
+                                    Height="24"
+                                    Source="{ThemeResource GithubLogo}" />
+                                <TextBlock VerticalAlignment="Center" Text="GitHub" />
+                            </StackPanel>
+                        </HyperlinkButton>
+
+                        <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <ImageIcon
+                                    Width="24"
+                                    Height="24"
+                                    Source="{ThemeResource TelegramLogo}" />
+                                <TextBlock VerticalAlignment="Center" Text="Telegram" />
+                            </StackPanel>
+                        </HyperlinkButton>
+                    </StackPanel>
+                </controls:SettingsCard>
+
+
+                <!--  Special Thanks  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
                 <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=SpecialThanks}"
+                    Header="Contributors"
                     HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
-                            <StackPanel
-                                Margin="-12,0,0,0"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <HyperlinkButton
-                                    Content="namazso"
-                                    NavigateUri="https://github.com/namazso"
-                                    ToolTipService.ToolTip="https://github.com/namazso" />
-                                <HyperlinkButton
-                                    Content="Jay-o-Way"
-                                    NavigateUri="https://github.com/Jay-o-Way"
-                                    ToolTipService.ToolTip="https://github.com/Jay-o-Way" />
-                                <HyperlinkButton
-                                    Content="ChenYiLins"
-                                    NavigateUri="https://github.com/ChenYiLins"
-                                    ToolTipService.ToolTip="https://github.com/ChenYiLins" />
+                            <StackPanel Orientation="Vertical" Spacing="8">
+                                <TextBlock>
+                                    <Run>•</Run>
+                                    <Hyperlink NavigateUri="https://github.com/namazso" ToolTipService.ToolTip="https://github.com/namazso">namazso</Hyperlink>
+                                    <Run>did something</Run>
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run>•</Run>
+                                    <Hyperlink NavigateUri="https://github.com/Jay-o-Way" ToolTipService.ToolTip="https://github.com/Jay-o-Way">Jay-o-Way</Hyperlink>
+                                    <Run>did something</Run>
+                                </TextBlock>
+                                <TextBlock>
+                                    <Run>•</Run>
+                                    <Hyperlink NavigateUri="https://github.com/ChenYiLins" ToolTipService.ToolTip="https://github.com/ChenYiLins">ChenYiLins</Hyperlink>
+                                    <Run>did something</Run>
+                                </TextBlock>
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                 </controls:SettingsExpander>
 
-                <!--  Follow us  -->
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=FollowUs}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xED15;}"
-                    IsExpanded="True">
-                    <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left">
-                            <StackPanel
-                                Margin="-12,0,0,0"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <ImageIcon Source="{ThemeResource GithubLogo}" Width="24" Height="24" />
-                                        <TextBlock VerticalAlignment="Center" Text="GitHub" />
-                                    </StackPanel>
-                                </HyperlinkButton>
 
-                                <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
-                                    <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <ImageIcon Source="{ThemeResource TelegramLogo}" Width="24" Height="24" />
-                                        <TextBlock VerticalAlignment="Center" Text="Telegram" />
-                                    </StackPanel>
-                                </HyperlinkButton>
-                            </StackPanel>
-                        </controls:SettingsCard>
-                    </controls:SettingsExpander.Items>
-                </controls:SettingsExpander>
-
-                <!--  Third Party  -->
+                <!--  Used software  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=UsedSoftware}" />
                 <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=ThirdParty}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}"
+                    Header="{helpers:ResourceString Name=UsedSoftware}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xEC7A;}"
                     IsExpanded="False">
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard ContentAlignment="Left">
                             <StackPanel Margin="-12,0,0,0">
                                 <HyperlinkButton
-                                    Content="WinUI"
-                                    NavigateUri="https://github.com/microsoft/WindowsAppSDK"
-                                    ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
-                                <HyperlinkButton
-                                    Content=".NET Community Toolkit"
+                                    Content="Community Toolkit / Windows"
                                     NavigateUri="https://github.com/CommunityToolkit/dotnet"
                                     ToolTipService.ToolTip="https://github.com/CommunityToolkit/dotnet" />
+                                <HyperlinkButton
+                                    Content="Natural Earth Data"
+                                    NavigateUri="https://www.naturalearthdata.com/"
+                                    ToolTipService.ToolTip="https://www.naturalearthdata.com/" />
                                 <HyperlinkButton
                                     Content="NLog"
                                     NavigateUri="https://nlog-project.org/"
                                     ToolTipService.ToolTip="https://nlog-project.org/" />
+                                <HyperlinkButton
+                                    Content="NetTopologySuite"
+                                    NavigateUri="https://github.com/NetTopologySuite/NetTopologySuite"
+                                    ToolTipService.ToolTip="https://github.com/NetTopologySuite/NetTopologySuite" />
                                 <HyperlinkButton
                                     Content="Sharprompt"
                                     NavigateUri="https://github.com/shibayan/Sharprompt"
@@ -185,17 +208,13 @@
                                     NavigateUri="https://github.com/dahall/taskscheduler"
                                     ToolTipService.ToolTip="https://github.com/dahall/taskscheduler" />
                                 <HyperlinkButton
+                                    Content="WinUI"
+                                    NavigateUri="https://github.com/microsoft/WindowsAppSDK"
+                                    ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
+                                <HyperlinkButton
                                     Content="YamlDotNet"
                                     NavigateUri="https://github.com/aaubry/YamlDotNet"
                                     ToolTipService.ToolTip="https://github.com/aaubry/YamlDotNet" />
-                                <HyperlinkButton
-                                    Content="Natural Earth Data"
-                                    NavigateUri="https://www.naturalearthdata.com/"
-                                    ToolTipService.ToolTip="https://www.naturalearthdata.com/" />
-                                <HyperlinkButton
-                                    Content="NetTopologySuite"
-                                    NavigateUri="https://github.com/NetTopologySuite/NetTopologySuite"
-                                    ToolTipService.ToolTip="https://github.com/NetTopologySuite/NetTopologySuite" />
                             </StackPanel>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

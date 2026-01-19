@@ -790,9 +790,6 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Zonsopkomst</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Gebruikte software</value>
-  </data>
   <data name="Time" xml:space="preserve">
     <value>Tijd</value>
   </data>
@@ -1025,5 +1022,14 @@ Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van th
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="DocumentationSocial" xml:space="preserve">
+    <value>Documentation &amp;; Social</value>
+  </data>
+  <data name="UsedSoftware" xml:space="preserve">
+    <value>Used software</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
   </data>
 </root>

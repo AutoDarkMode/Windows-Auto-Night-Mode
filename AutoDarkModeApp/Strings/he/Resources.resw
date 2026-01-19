@@ -796,9 +796,6 @@ Click "Yes" to open a new browser window.
     <value>Sunrise</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>از برنامه شخص ثالث استفاده شده</value>
-  </data>
   <data name="Time" xml:space="preserve">
     <value>زمان</value>
   </data>
@@ -1032,5 +1029,14 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="DocumentationSocial" xml:space="preserve">
+    <value>Documentation &amp;; Social</value>
+  </data>
+  <data name="UsedSoftware" xml:space="preserve">
+    <value>Used software</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
   </data>
 </root>

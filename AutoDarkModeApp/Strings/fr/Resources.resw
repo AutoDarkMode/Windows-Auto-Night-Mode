@@ -796,9 +796,6 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Lever du soleil</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Logiciels tiers utilisés</value>
-  </data>
   <data name="Time" xml:space="preserve">
     <value>Heure</value>
   </data>
@@ -1032,5 +1029,14 @@ Dans de rares cas, Windows peut émettre un bip sonore lorsque la souris est dé
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="DocumentationSocial" xml:space="preserve">
+    <value>Documentation &amp;; Social</value>
+  </data>
+  <data name="UsedSoftware" xml:space="preserve">
+    <value>Used software</value>
+  </data>
+  <data name="Diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
   </data>
 </root>
