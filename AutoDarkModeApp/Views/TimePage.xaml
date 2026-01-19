@@ -323,9 +323,9 @@
                                         VerticalAlignment="Top"
                                         Margin="8,10,8,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.CurrentLuxSliderPercentage), Mode=OneWay}" />
+                                            <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.RemainingLuxSliderPercentage), Mode=OneWay}" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <FontIcon
                                             Grid.Column="1"
