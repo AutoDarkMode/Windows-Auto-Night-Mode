@@ -315,12 +315,12 @@ public partial class TimeViewModel : ObservableRecipient
         if (Application.Current.RequestedTheme == ApplicationTheme.Light)
         {
             light = Math.Max(1, currentLux * 0.9); // Anchor light threshold just below current
-            dark = Math.Max(0, light / 3);         // Set dark threshold significantly lower (1:3 ratio)
+            dark = Math.Max(0, light / 1.3);       // Set dark threshold closer (1:1.3 ratio) for tighter control
         }
         else
         {
             dark = Math.Max(10, currentLux * 1.1);  // Anchor dark threshold just above current, min 10 lux
-            light = Math.Max(dark + 2, dark * 3);  // Set light threshold significantly higher (1:3 ratio)
+            light = Math.Max(dark + 2, dark * 1.3); // Set light threshold slightly higher (1:1.3 ratio)
         }
 
         // Clamp to valid range
