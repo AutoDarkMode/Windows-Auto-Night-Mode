@@ -45,7 +45,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial bool IsDwmRefreshViaColorization { get; set; }
 
     [ObservableProperty]
-    public partial bool IsHideTray { get; set; }
+    public partial bool IsShowTrayIcon { get; set; }
 
     [ObservableProperty]
     public partial bool IsTunableDebug { get; set; }
@@ -196,7 +196,7 @@ public partial class SettingsViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
+        IsShowTrayIcon = _builder.Config.Tunable.ShowTrayIcon;
         IsDwmRefreshViaColorization = _builder.Config.Tunable.DwmRefreshViaColorization;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
@@ -341,12 +341,12 @@ public partial class SettingsViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
-    partial void OnIsHideTrayChanged(bool value)
+    partial void OnIsShowTrayIconChanged(bool value)
     {
         if (_isInitializing)
             return;
 
-        _builder.Config.Tunable.ShowTrayIcon = !value;
+        _builder.Config.Tunable.ShowTrayIcon = value;
 
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));

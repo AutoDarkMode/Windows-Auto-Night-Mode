@@ -367,9 +367,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="Hex code" xml:space="preserve">
     <value>Hex code</value>
   </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Hide tray icon (not recommended)</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
@@ -1026,5 +1023,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="ShowTrayIcon" xml:space="preserve">
+    <value>Show tray icon (recommended)</value>
   </data>
 </root>
