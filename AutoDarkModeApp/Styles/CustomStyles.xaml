@@ -42,16 +42,22 @@
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
-            <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/DonationLogo_PayPal64.png" />
-            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/DonationLogo_Github64.png" />
+            <!-- Theme sensitive icons -->
+            <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/PayPal_Logo64.png" />
+            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_Dark_Logo64.png" />
+            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png"/>
         </ResourceDictionary>
+        
         <ResourceDictionary x:Key="Dark">
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
-            <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/DonationLogo_PayPal64.png" />
-            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/DonationLogo_Github_White64.png" />
+            <!-- Theme sensitive icons -->
+            <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/PayPal_Logo64.png" />
+            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_White_Logo64.png" />
+            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png"/>
         </ResourceDictionary>
+        
         <ResourceDictionary x:Key="HighContrast">
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
