@@ -77,8 +77,6 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         // Store the last reading for re-evaluation on config change
         state.AmbientLight.LastLuxReading = lux;
 
-        // Reload config to get latest threshold values
-        builder.Load();
         double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
         double lightThreshold = builder.Config.AmbientLight.LightThreshold;
 
@@ -111,8 +109,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         {
             if (_pendingTheme == newTheme && _debounceTimer != null)
             {
-                Logger.Debug($"resetting debounce timer for {newTheme} theme (lux: {lux:F1})");
-                _debounceTimer.Change(_debounceDelayMs, Timeout.Infinite);
+                // Timer already running for this target theme, let it continue
                 return;
             }
 
@@ -120,7 +117,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
             _pendingTheme = newTheme;
 
-            string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux <= {lightThreshold} lux" : $"{lux:F1} lux >= {darkThreshold} lux";
+            string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
 
             Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {_debounceDelayMs / 1000} seconds");
 
@@ -175,6 +172,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     /// </summary>
     public void ReEvaluateWithCurrentConfig()
     {
+        // Force reload config as this is triggered by a config change
+        builder.Load();
         if (state.AmbientLight.LastLuxReading >= 0)
         {
             Logger.Debug("re-evaluating ambient light with updated config");

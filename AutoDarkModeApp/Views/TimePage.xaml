@@ -12,6 +12,7 @@
     <Page.Resources>
         <!--  These are converters for different controls  -->
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
         <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
@@ -241,7 +242,8 @@
                                         <Button
                                             Command="{x:Bind ViewModel.AutoConfigureCommand}"
                                             Style="{StaticResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightAutoConfigure_ToolTip}">
+                                            ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightAutoConfigure_ToolTip}"
+                                            Visibility="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
                                             <StackPanel Orientation="Horizontal" Spacing="8">
                                                 <FontIcon
                                                     FontSize="{StaticResource BodyTextBlockFontSize}"
@@ -301,7 +303,12 @@
                                 <Border Style="{StaticResource DividerBorderStyle}" />
 
                                 <!--  Range Selector with Thresholds  -->
-                                <Grid ColumnSpacing="8" RowSpacing="0" HorizontalAlignment="Stretch" Margin="0,0,-32,0">
+                                <Grid
+                                    ColumnSpacing="8"
+                                    RowSpacing="0"
+                                    HorizontalAlignment="Stretch"
+                                    Margin="0,0,-32,0"
+                                    Visibility="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -323,9 +330,9 @@
                                         VerticalAlignment="Top"
                                         Margin="8,10,8,0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.CurrentLuxSliderPercentage), Mode=OneWay}" />
                                             <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="{x:Bind ViewModel.GetStarWidth(ViewModel.RemainingLuxSliderPercentage), Mode=OneWay}" />
                                         </Grid.ColumnDefinitions>
                                         <FontIcon
                                             Grid.Column="1"
@@ -342,7 +349,7 @@
                                         Width="100"
                                         Header="{helpers:ResourceString Name=AmbientLightDarkThreshold}"
                                         Maximum="10000"
-                                        Minimum="0"
+                                        Minimum="1"
                                         SmallChange="1"
                                         SpinButtonPlacementMode="Compact"
                                         Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
@@ -458,7 +465,7 @@
                                         Margin="0,0,12,0"
                                         Header="{helpers:ResourceString Name=AmbientLightLightThreshold}"
                                         Maximum="10000"
-                                        Minimum="0"
+                                        Minimum="1"
                                         SmallChange="1"
                                         SpinButtonPlacementMode="Compact"
                                         Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
@@ -501,65 +508,65 @@
                 </StackPanel>
 
                 <!--  Postpone  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
+                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
                 <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Description>
-                        <Grid ColumnSpacing="8" RowSpacing="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <ComboBox
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                MinWidth="120"
-                                IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
-                            </ComboBox>
-                            <ToggleSwitch
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Margin="0,0,-24,0"
-                                IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                OffContent="{helpers:ResourceString Name=NotDelayed}"
-                                OnContent="{helpers:ResourceString Name=Delayed}" />
+                        <controls:SettingsCard.Description>
+                            <Grid ColumnSpacing="8" RowSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <ComboBox
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    MinWidth="120"
+                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                                </ComboBox>
+                                <ToggleSwitch
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,-24,0"
+                                    IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
+                                    OffContent="{helpers:ResourceString Name=NotDelayed}"
+                                    OnContent="{helpers:ResourceString Name=Delayed}" />
 
-                            <Border
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                Style="{StaticResource DividerBorderStyle}" />
+                                <Border
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    Style="{StaticResource DividerBorderStyle}" />
 
-                            <StackPanel
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <FontIcon
-                                    FontSize="{StaticResource BodyTextBlockFontSize}"
-                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                    Glyph="&#xECC5;" />
-                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
-                            </StackPanel>
-                        </Grid>
-                    </controls:SettingsCard.Description>
-                </controls:SettingsCard>
-                <InfoBar
-                    Content="{helpers:ResourceString Name=ResumeInfo_Content}"
-                    IsClosable="False"
-                    IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <FontIcon
+                                        FontSize="{StaticResource BodyTextBlockFontSize}"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xECC5;" />
+                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
+                                </StackPanel>
+                            </Grid>
+                        </controls:SettingsCard.Description>
+                    </controls:SettingsCard>
+                    <InfoBar
+                        Content="{helpers:ResourceString Name=ResumeInfo_Content}"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
 
             </StackPanel>
         </Grid>

@@ -356,7 +356,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>Configure light thresholds</value>
   </data>
   <data name="AmbientLightThresholds_Description" xml:space="preserve">
-    <value>Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
+    <value>This feature automatically switches the theme based on the brightness of your environment. Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
   </data>
   <data name="AmbientLightDarkThreshold" xml:space="preserve">
     <value>Dark below (lux)</value>

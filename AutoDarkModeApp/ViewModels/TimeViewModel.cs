@@ -280,19 +280,24 @@ public partial class TimeViewModel : ObservableRecipient
         if (!AmbientLightSensorAvailable) return;
 
         double currentLux = CurrentLuxReading;
-        // Use ±15% for the "Smart Gap" logic
-        double dark = Math.Round(currentLux * 0.85);
-        double light = Math.Round(currentLux * 1.15);
+        double dark, light;
 
-        // Ensure minimum gap of 2 lux
-        if (light - dark < 2)
+        // "Shifted Window" logic: anchor the threshold based on current active theme
+        // If Light: Current lux is "Nominal Light", so set Light threshold slightly below it.
+        // If Dark: Current lux is "Nominal Dark", so set Dark threshold slightly above it.
+        if (Application.Current.RequestedTheme == ApplicationTheme.Light)
         {
-            dark = Math.Max(0, currentLux - 1);
-            light = dark + 2;
+            light = Math.Max(1, currentLux * 0.9); // Anchor light threshold just below current
+            dark = Math.Max(0, light / 3);         // Set dark threshold significantly lower (1:3 ratio)
+        }
+        else
+        {
+            dark = Math.Max(1, currentLux * 1.1);  // Anchor dark threshold just above current
+            light = Math.Max(dark + 2, dark * 3);  // Set light threshold significantly higher (1:3 ratio)
         }
 
         // Clamp to valid range
-        AmbientLightDarkThreshold = Math.Max(0, Math.Min(dark, 9998));
+        AmbientLightDarkThreshold = Math.Max(1, Math.Min(dark, 9998));
         AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
 
         // Save immediately as this is a deliberate action or first-time setup
@@ -609,8 +614,9 @@ public partial class TimeViewModel : ObservableRecipient
                 break;
 
             case SwitchTriggerMode.AmbientLight:
-                // Run auto-configure only if we are switching from another mode to Ambient Light for the first time
-                if (_builder.Config.Governor != Governor.AmbientLight)
+                // Run auto-configure only if we are switching to Ambient Light and values are still defaults
+                // This prevents overwriting user's custom settings when switching modes
+                if (_builder.Config.AmbientLight.DarkThreshold == 40 && _builder.Config.AmbientLight.LightThreshold == 80)
                 {
                     AutoConfigure();
                 }
