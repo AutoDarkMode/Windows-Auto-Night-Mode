@@ -84,7 +84,7 @@
                                     <Border
                                         Grid.Column="1"
                                         Background="Transparent"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightThresholds_Description}">
+                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_ToolTip}">
                                         <FontIcon
                                             FontSize="12"
                                             VerticalAlignment="Center"
