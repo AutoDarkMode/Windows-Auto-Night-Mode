@@ -44,7 +44,7 @@
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
             <!-- Theme sensitive icons -->
             <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/PayPal_Logo64.png" />
-            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_Logo64.png" />
+            <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_Dark_Logo64.png" />
             <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png"/>
         </ResourceDictionary>
         
