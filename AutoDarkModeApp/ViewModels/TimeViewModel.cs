@@ -231,6 +231,7 @@ public partial class TimeViewModel : ObservableRecipient
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
     public ICommand AutoConfigureCommand { get; }
+    public ICommand SetTriggerModeCommand { get; }
 
     public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
@@ -239,6 +240,13 @@ public partial class TimeViewModel : ObservableRecipient
         _geolocatorService = geolocatorService;
 
         AutoConfigureCommand = new RelayCommand(AutoConfigure);
+        SetTriggerModeCommand = new RelayCommand<string>((mode) =>
+        {
+            if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
+            {
+                SelectedTriggerMode = result;
+            }
+        });
 
         try
         {

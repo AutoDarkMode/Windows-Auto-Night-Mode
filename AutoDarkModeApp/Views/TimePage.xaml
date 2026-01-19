@@ -46,19 +46,27 @@
                             <StackPanel Spacing="4">
                                 <RadioButton
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=TwoWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                    CommandParameter="CustomTimes"
                                     Content="{helpers:ResourceString Name=CustomHours}" />
                                 <RadioButton
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocationTimes, Mode=TwoWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocationTimes, Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                    CommandParameter="LocationTimes"
                                     Content="{helpers:ResourceString Name=LocationService}" />
                                 <RadioButton
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CoordinateTimes, Mode=TwoWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                    CommandParameter="CoordinateTimes"
                                     Content="{helpers:ResourceString Name=LocationGeoService}" />
                                 <RadioButton
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=TwoWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}"
+                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                    CommandParameter="WindowsNightLight"
                                     Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
                                 <Grid ColumnSpacing="8">
                                     <Grid.ColumnDefinitions>
@@ -67,16 +75,22 @@
                                     </Grid.ColumnDefinitions>
                                     <RadioButton
                                         GroupName="TriggerMode"
-                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=TwoWay}"
+                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
+                                        Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                        CommandParameter="AmbientLight"
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
-                                    <FontIcon
+                                    <!--  Wrap Icon in Border for better hit testing  -->
+                                    <Border
                                         Grid.Column="1"
-                                        FontSize="12"
-                                        VerticalAlignment="Center"
-                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                        Glyph="&#xE946;"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightThresholds_Description}" />
+                                        Background="Transparent"
+                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightThresholds_Description}">
+                                        <FontIcon
+                                            FontSize="12"
+                                            VerticalAlignment="Center"
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Glyph="&#xE946;" />
+                                    </Border>
                                 </Grid>
                             </StackPanel>
 

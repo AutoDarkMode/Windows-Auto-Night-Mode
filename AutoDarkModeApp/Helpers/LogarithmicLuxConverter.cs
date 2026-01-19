@@ -22,7 +22,7 @@ public partial class LogarithmicLuxConverter : IValueConverter
     /// </summary>
     public static double LuxToSlider(double lux)
     {
-        if (lux <= 1) return 0.0;
+        if (double.IsNaN(lux) || double.IsInfinity(lux) || lux <= 1) return 0.0;
         if (lux >= MaxLuxValue) return SliderMaxValue;
 
         // Log10 conversion: slider = log10(lux) / 4 * 1000
@@ -35,7 +35,7 @@ public partial class LogarithmicLuxConverter : IValueConverter
     /// </summary>
     public static double SliderToLux(double sliderValue)
     {
-        if (sliderValue <= 0) return 1.0; // Minimum is 1
+        if (double.IsNaN(sliderValue) || double.IsInfinity(sliderValue) || sliderValue <= 0) return 1.0; // Minimum is 1
         if (sliderValue >= SliderMaxValue) return MaxLuxValue;
 
         // Exponential conversion: lux = 10 ^ (slider / 1000 * 4)

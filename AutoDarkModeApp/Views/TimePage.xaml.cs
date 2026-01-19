@@ -110,25 +110,33 @@ public sealed partial class TimePage : Page
 
     private void AmbientLightRangeSelector_Loaded(object sender, RoutedEventArgs e)
     {
-        // Hide the tooltip elements in the RangeSelector control.
-        if (sender is FrameworkElement element)
+        try
         {
-            // Initial attempt
-            HideTooltipElements(element);
-
-            // Also schedule delayed attempts to catch lazy-loaded templates
-            DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
+            // Hide the tooltip elements in the RangeSelector control.
+            if (sender is FrameworkElement element)
             {
+                // Try immediately first
                 HideTooltipElements(element);
-            });
+
+                // Also schedule delayed attempts to catch lazy-loaded templates
+                DispatcherQueue.TryEnqueue(Microsoft.UI.Dispatching.DispatcherQueuePriority.Low, () =>
+                {
+                    try { HideTooltipElements(element); } catch { }
+                });
+            }
         }
+        catch { }
 
         // Also attach to PointerEntered to ensure we catch any dynamic tooltip generation
         if (sender is UIElement uiElement)
         {
             uiElement.PointerEntered += (s, args) =>
             {
-                if (s is FrameworkElement fe) HideTooltipElements(fe);
+                try
+                {
+                    if (s is FrameworkElement fe) HideTooltipElements(fe);
+                }
+                catch { }
             };
         }
     }
@@ -139,32 +147,37 @@ public sealed partial class TimePage : Page
     /// </summary>
     private static void HideTooltipElements(DependencyObject parent)
     {
-        int childCount = VisualTreeHelper.GetChildrenCount(parent);
-        for (int i = 0; i < childCount; i++)
+        if (parent == null) return;
+        try
         {
-            var child = VisualTreeHelper.GetChild(parent, i);
-
-            if (child is FrameworkElement fe)
+            int childCount = VisualTreeHelper.GetChildrenCount(parent);
+            for (int i = 0; i < childCount; i++)
             {
-                // Method 1: Check name for "ToolTip"
-                string name = fe.Name ?? string.Empty;
-                bool isToolTip = name.Contains("ToolTip", StringComparison.OrdinalIgnoreCase);
+                var child = VisualTreeHelper.GetChild(parent, i);
 
-                // Method 2: Check if it's the specific thumb parts (MinThumb/MaxThumb) and disable their ToolTipService
-                if (name.Contains("Thumb", StringComparison.OrdinalIgnoreCase))
+                if (child is FrameworkElement fe)
                 {
-                    ToolTipService.SetToolTip(fe, null);
+                    // Method 1: Check name for "ToolTip"
+                    string name = fe.Name ?? string.Empty;
+                    bool isToolTip = name.Contains("ToolTip", StringComparison.OrdinalIgnoreCase);
+
+                    // Method 2: Check if it's the specific thumb parts (MinThumb/MaxThumb) and disable their ToolTipService
+                    if (name.Contains("Thumb", StringComparison.OrdinalIgnoreCase))
+                    {
+                        ToolTipService.SetToolTip(fe, null);
+                    }
+
+                    if (isToolTip)
+                    {
+                        fe.Opacity = 0;
+                        fe.IsHitTestVisible = false;
+                        // fe.Visibility = Visibility.Collapsed; // Collapsed causes artifacts
+                    }
                 }
 
-                if (isToolTip)
-                {
-                    fe.Opacity = 0;
-                    fe.IsHitTestVisible = false;
-                    fe.Visibility = Visibility.Collapsed; // Try Collapsed too
-                }
+                HideTooltipElements(child);
             }
-
-            HideTooltipElements(child);
         }
+        catch { }
     }
 }
