@@ -12,7 +12,6 @@
     <Page.Resources>
         <!--  These are converters for different controls  -->
         <converters:BoolNegationConverter x:Key="BoolNegationConverter" />
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
         <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
@@ -40,54 +39,50 @@
                 </InfoBar>
 
                 <!--  About time  -->
-                <controls:SettingsCard Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}" ContentAlignment="Vertical">
+                <controls:SettingsCard ContentAlignment="Vertical" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
-                        <StackPanel Spacing="12" HorizontalAlignment="Stretch">
-                            <StackPanel Spacing="4">
+                        <StackPanel HorizontalAlignment="Stretch" Spacing="12">
+                            <StackPanel Spacing="{StaticResource RadioButtonsRowSpacing}">
                                 <RadioButton
-                                    GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                     CommandParameter="CustomTimes"
-                                    Content="{helpers:ResourceString Name=CustomHours}" />
-                                <RadioButton
+                                    Content="{helpers:ResourceString Name=CustomHours}"
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocationTimes, Mode=OneWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}" />
+                                <RadioButton
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                     CommandParameter="LocationTimes"
-                                    Content="{helpers:ResourceString Name=LocationService}" />
-                                <RadioButton
+                                    Content="{helpers:ResourceString Name=LocationService}"
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=LocationTimes, Mode=OneWay}" />
+                                <RadioButton
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                     CommandParameter="CoordinateTimes"
-                                    Content="{helpers:ResourceString Name=LocationGeoService}" />
-                                <RadioButton
+                                    Content="{helpers:ResourceString Name=LocationGeoService}"
                                     GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}" />
+                                <RadioButton
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                     CommandParameter="WindowsNightLight"
-                                    Content="{helpers:ResourceString Name=FollowWindowsNightLight}" />
+                                    Content="{helpers:ResourceString Name=FollowWindowsNightLight}"
+                                    GroupName="TriggerMode"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
                                 <Grid ColumnSpacing="8">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <RadioButton
-                                        GroupName="TriggerMode"
-                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
                                         Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                         CommandParameter="AmbientLight"
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
+                                        GroupName="TriggerMode"
+                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
                                         IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
                                     <!--  Wrap Icon in Border for better hit testing  -->
-                                    <Border
-                                        Grid.Column="1"
-                                        Background="Transparent"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_ToolTip}">
+                                    <Border Grid.Column="1" ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_ToolTip}">
                                         <FontIcon
                                             FontSize="12"
-                                            VerticalAlignment="Center"
                                             Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                             Glyph="&#xE946;" />
                                     </Border>
@@ -250,32 +245,33 @@
                                 Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
 
                             <!--  Ambient Light Sensor  -->
-                            <StackPanel Spacing="16" HorizontalAlignment="Stretch" Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                            <StackPanel
+                                HorizontalAlignment="Stretch"
+                                Spacing="16"
+                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
                                 <!--  Description  -->
                                 <TextBlock
-                                    Margin="0,0,-32,0"
                                     Style="{StaticResource BodyTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=AmbientLightThresholds_Description}"
                                     TextWrapping="Wrap" />
 
                                 <!--  Current Lux Reading and Reference Guide  -->
-                                <Grid ColumnSpacing="8" HorizontalAlignment="Stretch" Margin="0,0,-32,0">
+                                <Grid HorizontalAlignment="Stretch" ColumnSpacing="8">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <FontIcon
-                                        FontSize="16"
                                         VerticalAlignment="Center"
+                                        FontSize="16"
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xE706;" />
                                     <TextBlock
                                         Grid.Column="1"
                                         VerticalAlignment="Center"
                                         Style="{StaticResource BodyTextBlockStyle}"
-                                        Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}"
-                                        ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_Description}" />
+                                        Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
                                     <StackPanel
                                         Grid.Column="2"
                                         Orientation="Horizontal"
@@ -283,8 +279,7 @@
                                         <Button
                                             Command="{x:Bind ViewModel.AutoConfigureCommand}"
                                             Style="{StaticResource SubtleButtonStyle}"
-                                            ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightAutoConfigure_ToolTip}"
-                                            Visibility="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                                            ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightAutoConfigure_ToolTip}">
                                             <StackPanel Orientation="Horizontal" Spacing="8">
                                                 <FontIcon
                                                     FontSize="{StaticResource BodyTextBlockFontSize}"
@@ -293,20 +288,20 @@
                                                 <TextBlock Text="{helpers:ResourceString Name=AmbientLightAutoConfigure}" />
                                             </StackPanel>
                                         </Button>
-                                        <Button Style="{StaticResource SubtleButtonStyle}" Padding="8,4">
+                                        <Button Style="{StaticResource SubtleButtonStyle}">
                                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightReference}" />
                                                 <FontIcon
                                                     FontSize="{StaticResource BodyTextBlockFontSize}"
                                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                                     Glyph="&#xE946;" />
+                                                <TextBlock Text="{helpers:ResourceString Name=AmbientLightReference}" />
                                             </StackPanel>
                                             <Button.Flyout>
                                                 <Flyout Placement="BottomEdgeAlignedRight">
                                                     <Grid ColumnSpacing="16" RowSpacing="4">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="Auto" />
@@ -344,12 +339,7 @@
                                 <Border Style="{StaticResource DividerBorderStyle}" />
 
                                 <!--  Range Selector with Thresholds  -->
-                                <Grid
-                                    ColumnSpacing="8"
-                                    RowSpacing="0"
-                                    HorizontalAlignment="Stretch"
-                                    Margin="0,0,-32,0"
-                                    Visibility="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -368,22 +358,20 @@
                                         x:Name="IndicatorCanvas"
                                         Grid.Row="1"
                                         Grid.Column="2"
+                                        Margin="10,12,10,0"
                                         VerticalAlignment="Top"
-                                        Height="16"
-                                        Margin="8,10,8,0"
                                         SizeChanged="IndicatorCanvas_SizeChanged">
                                         <FontIcon
                                             x:Name="CurrentLuxIndicator"
                                             FontSize="12"
                                             Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                            Glyph="&#xE70D;" />
+                                            Glyph="&#xE96E;" />
                                     </Canvas>
 
                                     <!--  Dark threshold NumberBox  -->
                                     <NumberBox
                                         Grid.Row="1"
                                         Grid.Column="0"
-                                        Width="100"
                                         Header="{helpers:ResourceString Name=AmbientLightDarkThreshold}"
                                         Maximum="10000"
                                         Minimum="1"
@@ -394,8 +382,8 @@
                                     <FontIcon
                                         Grid.Row="1"
                                         Grid.Column="1"
-                                        VerticalAlignment="Center"
                                         Margin="0,24,0,0"
+                                        VerticalAlignment="Center"
                                         FontSize="16"
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xe708;" />
@@ -404,45 +392,46 @@
                                     <Grid
                                         Grid.Row="1"
                                         Grid.Column="2"
-                                        VerticalAlignment="Center"
-                                        Margin="0,24,0,0">
+                                        Margin="0,24,0,0"
+                                        VerticalAlignment="Center">
                                         <!--  Gradient background showing dark-to-light transition  -->
                                         <Border
                                             x:Name="RangeGradientBackground"
-                                            Height="6"
-                                            VerticalAlignment="Center"
-                                            Margin="0"
-                                            CornerRadius="3"
+                                            Height="{StaticResource SliderTrackThemeHeight}"
+                                            CornerRadius="{StaticResource SliderTrackCornerRadius}"
                                             IsHitTestVisible="False">
                                             <Border.Background>
                                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Color="#1A1A2E" Offset="0.0" />
-                                                    <GradientStop Color="#16213E" Offset="0.15" />
-                                                    <GradientStop Color="#1F4068" Offset="0.35" />
-                                                    <GradientStop Color="#E8A87C" Offset="0.65" />
-                                                    <GradientStop Color="#F9D56E" Offset="0.85" />
-                                                    <GradientStop Color="#FFEB99" Offset="1.0" />
+                                                    <GradientStop Offset="0.0" Color="#1A1A2E" />
+                                                    <GradientStop Offset="0.15" Color="#16213E" />
+                                                    <GradientStop Offset="0.35" Color="#1F4068" />
+                                                    <GradientStop Offset="0.65" Color="#E8A87C" />
+                                                    <GradientStop Offset="0.85" Color="#F9D56E" />
+                                                    <GradientStop Offset="1.0" Color="#FFEB99" />
                                                 </LinearGradientBrush>
                                             </Border.Background>
                                         </Border>
+
                                         <!--  Range Selector (logarithmic scale for fine control at low values)  -->
                                         <controls:RangeSelector
                                             x:Name="AmbientLightRangeSelector"
+                                            Background="Transparent"
+                                            Foreground="Transparent"
+                                            Loaded="AmbientLightRangeSelector_Loaded"
                                             Maximum="1000"
                                             Minimum="0"
-                                            RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
                                             RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
-                                            StepFrequency="1"
-                                            Loaded="AmbientLightRangeSelector_Loaded" />
+                                            RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
+                                            StepFrequency="1" />
                                     </Grid>
 
                                     <!--  Tick marks with lux reference labels (logarithmic positions)  -->
                                     <!--  Positions: 10lux=26%, 50lux=42.7%, 150lux=54.5%, 400lux=65.1%, 1000lux=75%  -->
-                                    <!--  Margin accounts for RangeSelector thumb half-widths (~8px each side)  -->
+                                    <!--  Margin accounts for RangeSelector thumb half-widths (20/2=10px each side)  -->
                                     <Grid
                                         Grid.Row="2"
                                         Grid.Column="2"
-                                        Margin="8,2,8,0">
+                                        Margin="10,2,10,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="260*" />
                                             <ColumnDefinition Width="167*" />
@@ -454,34 +443,99 @@
 
                                         <!--  10 lux tick (at 26.0%)  -->
                                         <!--  Placed in Col 0, aligned right with negative margin to center  -->
-                                        <StackPanel Grid.Column="0" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
-                                            <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
-                                            <TextBlock Text="10" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+                                        <StackPanel
+                                            Grid.Column="0"
+                                            Width="24"
+                                            Margin="0,0,-12,0"
+                                            HorizontalAlignment="Right"
+                                            Spacing="2">
+                                            <Border
+                                                Width="1"
+                                                Height="6"
+                                                HorizontalAlignment="Center"
+                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                Text="10" />
                                         </StackPanel>
 
                                         <!--  50 lux tick (at 43%)  -->
                                         <!--  Placed in Col 1, aligned right  -->
-                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
-                                            <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
-                                            <TextBlock Text="50" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+                                        <StackPanel
+                                            Grid.Column="1"
+                                            Width="24"
+                                            Margin="0,0,-12,0"
+                                            HorizontalAlignment="Right"
+                                            Spacing="2">
+                                            <Border
+                                                Width="1"
+                                                Height="6"
+                                                HorizontalAlignment="Center"
+                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                Text="50" />
                                         </StackPanel>
 
                                         <!--  150 lux tick (at 55%)  -->
-                                        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
-                                            <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
-                                            <TextBlock Text="150" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+                                        <StackPanel
+                                            Grid.Column="2"
+                                            Width="24"
+                                            Margin="0,0,-12,0"
+                                            HorizontalAlignment="Right"
+                                            Spacing="2">
+                                            <Border
+                                                Width="1"
+                                                Height="6"
+                                                HorizontalAlignment="Center"
+                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                Text="150" />
                                         </StackPanel>
 
                                         <!--  400 lux tick (at 65%)  -->
-                                        <StackPanel Grid.Column="3" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
-                                            <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
-                                            <TextBlock Text="400" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+                                        <StackPanel
+                                            Grid.Column="3"
+                                            Width="24"
+                                            Margin="0,0,-12,0"
+                                            HorizontalAlignment="Right"
+                                            Spacing="2">
+                                            <Border
+                                                Width="1"
+                                                Height="6"
+                                                HorizontalAlignment="Center"
+                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                Text="400" />
                                         </StackPanel>
 
                                         <!--  1000 lux tick (at 75%)  -->
-                                        <StackPanel Grid.Column="4" HorizontalAlignment="Right" Spacing="2" Margin="0,0,-12,0" Width="24">
-                                            <Border Width="1" Height="6" Background="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
-                                            <TextBlock Text="1k" FontSize="10" Foreground="{ThemeResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" />
+                                        <StackPanel
+                                            Grid.Column="4"
+                                            Width="24"
+                                            Margin="0,0,-12,0"
+                                            HorizontalAlignment="Right"
+                                            Spacing="2">
+                                            <Border
+                                                Width="1"
+                                                Height="6"
+                                                HorizontalAlignment="Center"
+                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                FontSize="10"
+                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
+                                                Text="1k" />
                                         </StackPanel>
                                     </Grid>
 
@@ -489,8 +543,8 @@
                                     <FontIcon
                                         Grid.Row="1"
                                         Grid.Column="3"
-                                        VerticalAlignment="Center"
                                         Margin="0,24,0,0"
+                                        VerticalAlignment="Center"
                                         FontSize="16"
                                         Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
                                         Glyph="&#xE706;" />
@@ -498,12 +552,11 @@
                                     <NumberBox
                                         Grid.Row="1"
                                         Grid.Column="4"
-                                        Width="100"
                                         Margin="0,0,12,0"
                                         Header="{helpers:ResourceString Name=AmbientLightLightThreshold}"
                                         Maximum="10000"
                                         Minimum="1"
-                                        SmallChange="1"
+                                        SmallChange="10"
                                         SpinButtonPlacementMode="Compact"
                                         Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
                                 </Grid>
@@ -545,65 +598,65 @@
                 </StackPanel>
 
                 <!--  Postpone  -->
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
                 <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                        <controls:SettingsCard.Description>
-                            <Grid ColumnSpacing="8" RowSpacing="16">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <ComboBox
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    MinWidth="120"
-                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
-                                </ComboBox>
-                                <ToggleSwitch
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="0,0,-24,0"
-                                    IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                    OffContent="{helpers:ResourceString Name=NotDelayed}"
-                                    OnContent="{helpers:ResourceString Name=Delayed}" />
+                    <controls:SettingsCard.Description>
+                        <Grid ColumnSpacing="8" RowSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ComboBox
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                MinWidth="120"
+                                IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                            </ComboBox>
+                            <ToggleSwitch
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,-24,0"
+                                IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
+                                OffContent="{helpers:ResourceString Name=NotDelayed}"
+                                OnContent="{helpers:ResourceString Name=Delayed}" />
 
-                                <Border
-                                    Grid.Row="1"
-                                    Grid.ColumnSpan="2"
-                                    Style="{StaticResource DividerBorderStyle}" />
+                            <Border
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Style="{StaticResource DividerBorderStyle}" />
 
-                                <StackPanel
-                                    Grid.Row="2"
-                                    Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    Spacing="8">
-                                    <FontIcon
-                                        FontSize="{StaticResource BodyTextBlockFontSize}"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xECC5;" />
-                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
-                                </StackPanel>
-                            </Grid>
-                        </controls:SettingsCard.Description>
-                    </controls:SettingsCard>
-                    <InfoBar
-                        Content="{helpers:ResourceString Name=ResumeInfo_Content}"
-                        IsClosable="False"
-                        IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
+                            <StackPanel
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                Spacing="8">
+                                <FontIcon
+                                    FontSize="{StaticResource BodyTextBlockFontSize}"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xECC5;" />
+                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
+                            </StackPanel>
+                        </Grid>
+                    </controls:SettingsCard.Description>
+                </controls:SettingsCard>
+                <InfoBar
+                    Content="{helpers:ResourceString Name=ResumeInfo_Content}"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
 
             </StackPanel>
         </Grid>
