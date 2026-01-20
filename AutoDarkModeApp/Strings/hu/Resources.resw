@@ -133,7 +133,7 @@
     <value>Aktív halasztások</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Használja a Tálca kiemelő színét</value>
+    <value>Használja a Tálca kiemelőszínét</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
