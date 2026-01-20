@@ -86,21 +86,27 @@
                                     Content="{helpers:ResourceString Name=FollowWindowsNightLight}"
                                     GroupName="TriggerMode"
                                     IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
-                                <RadioButton
-                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
-                                    CommandParameter="AmbientLight"
-                                    GroupName="TriggerMode"
-                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
-                                    IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}"
+                                <!--  Wrap in Border to show tooltip even when RadioButton is disabled  -->
+                                <Border
+                                    Margin="-4"
+                                    Padding="4"
+                                    Background="Transparent"
                                     ToolTipService.ToolTip="{x:Bind ViewModel.AmbientLightSensorTooltip, Mode=OneWay}">
-                                    <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <TextBlock Text="{helpers:ResourceString Name=AmbientLightSensor}" />
-                                        <FontIcon
-                                            FontSize="12"
-                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                            Glyph="&#xE946;" />
-                                    </StackPanel>
-                                </RadioButton>
+                                    <RadioButton
+                                        Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                        CommandParameter="AmbientLight"
+                                        GroupName="TriggerMode"
+                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
+                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}">
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <TextBlock Text="{helpers:ResourceString Name=AmbientLightSensor}" />
+                                            <FontIcon
+                                                FontSize="12"
+                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                Glyph="&#xE946;" />
+                                        </StackPanel>
+                                    </RadioButton>
+                                </Border>
                             </StackPanel>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
