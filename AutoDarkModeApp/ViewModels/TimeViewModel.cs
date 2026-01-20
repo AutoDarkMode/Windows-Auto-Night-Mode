@@ -106,7 +106,11 @@ public partial class TimeViewModel : ObservableRecipient
                 if (!_isUpdating)
                 {
                     _isUpdating = true;
-                    // Ensure Light stays above Dark
+                    // Ensure Light stays strictly above Dark (not equal).
+                    // While the RangeSelector control allows thumbs to overlap at the same value,
+                    // having identical thresholds creates an ambiguous zone where it's unclear
+                    // which theme should apply. Enforcing a minimum gap of 1 lux provides clear
+                    // hysteresis for the theme switching logic.
                     if (_ambientLightLightThreshold <= value)
                     {
                         AmbientLightLightThreshold = Math.Min(10000, value + 1);
@@ -131,7 +135,7 @@ public partial class TimeViewModel : ObservableRecipient
                 if (!_isUpdating)
                 {
                     _isUpdating = true;
-                    // Ensure Dark stays below Light
+                    // Ensure Dark stays strictly below Light (see comment in AmbientLightDarkThreshold)
                     if (_ambientLightDarkThreshold >= value)
                     {
                         AmbientLightDarkThreshold = Math.Max(1, value - 1);
@@ -508,6 +512,7 @@ public partial class TimeViewModel : ObservableRecipient
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
+        OffsetTimeSettingsCardVisibility = Visibility.Visible;
     }
 
     private void LoadPostponeTimer(object? sender, EventArgs e)

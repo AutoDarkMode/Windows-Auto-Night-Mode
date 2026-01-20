@@ -15,6 +15,25 @@
         <helpers:EnumToIndexConverter x:Key="EnumToIndexConverter" />
         <helpers:EnumToVisibilityConverter x:Key="EnumToVisibilityConverter" />
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
+
+        <!--  Styles for ambient light slider tick marks  -->
+        <Style x:Key="TickMarkStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Spacing" Value="2" />
+            <Setter Property="Margin" Value="0,0,-12,0" />
+            <Setter Property="Width" Value="24" />
+        </Style>
+        <Style x:Key="TickMarkBorderStyle" TargetType="Border">
+            <Setter Property="Width" Value="1" />
+            <Setter Property="Height" Value="6" />
+            <Setter Property="Background" Value="{ThemeResource TextFillColorTertiaryBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="TickMarkTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
     </Page.Resources>
 
     <ScrollViewer>
@@ -442,100 +461,33 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!--  10 lux tick (at 26.0%)  -->
-                                        <!--  Placed in Col 0, aligned right with negative margin to center  -->
-                                        <StackPanel
-                                            Grid.Column="0"
-                                            Width="24"
-                                            Margin="0,0,-12,0"
-                                            HorizontalAlignment="Right"
-                                            Spacing="2">
-                                            <Border
-                                                Width="1"
-                                                Height="6"
-                                                HorizontalAlignment="Center"
-                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                                Text="10" />
+                                        <StackPanel Grid.Column="0" Style="{StaticResource TickMarkStackPanelStyle}">
+                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="10" />
                                         </StackPanel>
 
                                         <!--  50 lux tick (at 43%)  -->
-                                        <!--  Placed in Col 1, aligned right  -->
-                                        <StackPanel
-                                            Grid.Column="1"
-                                            Width="24"
-                                            Margin="0,0,-12,0"
-                                            HorizontalAlignment="Right"
-                                            Spacing="2">
-                                            <Border
-                                                Width="1"
-                                                Height="6"
-                                                HorizontalAlignment="Center"
-                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                                Text="50" />
+                                        <StackPanel Grid.Column="1" Style="{StaticResource TickMarkStackPanelStyle}">
+                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="50" />
                                         </StackPanel>
 
                                         <!--  150 lux tick (at 55%)  -->
-                                        <StackPanel
-                                            Grid.Column="2"
-                                            Width="24"
-                                            Margin="0,0,-12,0"
-                                            HorizontalAlignment="Right"
-                                            Spacing="2">
-                                            <Border
-                                                Width="1"
-                                                Height="6"
-                                                HorizontalAlignment="Center"
-                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                                Text="150" />
+                                        <StackPanel Grid.Column="2" Style="{StaticResource TickMarkStackPanelStyle}">
+                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="150" />
                                         </StackPanel>
 
                                         <!--  400 lux tick (at 65%)  -->
-                                        <StackPanel
-                                            Grid.Column="3"
-                                            Width="24"
-                                            Margin="0,0,-12,0"
-                                            HorizontalAlignment="Right"
-                                            Spacing="2">
-                                            <Border
-                                                Width="1"
-                                                Height="6"
-                                                HorizontalAlignment="Center"
-                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                                Text="400" />
+                                        <StackPanel Grid.Column="3" Style="{StaticResource TickMarkStackPanelStyle}">
+                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="400" />
                                         </StackPanel>
 
                                         <!--  1000 lux tick (at 75%)  -->
-                                        <StackPanel
-                                            Grid.Column="4"
-                                            Width="24"
-                                            Margin="0,0,-12,0"
-                                            HorizontalAlignment="Right"
-                                            Spacing="2">
-                                            <Border
-                                                Width="1"
-                                                Height="6"
-                                                HorizontalAlignment="Center"
-                                                Background="{ThemeResource TextFillColorTertiaryBrush}" />
-                                            <TextBlock
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-                                                Text="1k" />
+                                        <StackPanel Grid.Column="4" Style="{StaticResource TickMarkStackPanelStyle}">
+                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="1k" />
                                         </StackPanel>
                                     </Grid>
 

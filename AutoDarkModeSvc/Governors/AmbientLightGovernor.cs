@@ -35,12 +35,12 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     /// This prevents accidental switching when briefly covering the sensor.
     /// </summary>
     private const int SensorDebounceDelayMs = 10000;
-    
+
     /// <summary>
     /// Tolerance in milliseconds for the debounce timer safety check.
     /// </summary>
     private const int DebounceToleranceMs = 1000;
-    
+
     public Governor Type => Governor.AmbientLight;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private LightSensor _sensor;
