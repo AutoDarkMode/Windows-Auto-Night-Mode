@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -1088,5 +1088,11 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="AmbientLightSensor_ToolTip" xml:space="preserve">
     <value>Automatically switches the theme based on environment lighting</value>
+  </data>
+  <data name="AmbientLightSensor_Unavailable_ToolTip" xml:space="preserve">
+    <value>This feature isn't available on your device because no ambient light sensor was detected</value>
+  </data>
+  <data name="AmbientLightCurrent" xml:space="preserve">
+    <value>Current:</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -224,7 +224,12 @@ public partial class TimeViewModel : ObservableRecipient
     public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightSensorTooltip))]
     public partial bool AmbientLightSensorAvailable { get; set; }
+
+    public string AmbientLightSensorTooltip => AmbientLightSensorAvailable
+        ? "AmbientLightSensor_ToolTip".GetLocalized()
+        : "AmbientLightSensor_Unavailable_ToolTip".GetLocalized();
 
     [ObservableProperty]
     public partial double CurrentLuxReading { get; set; }

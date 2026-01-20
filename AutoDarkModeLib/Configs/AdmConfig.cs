@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -103,7 +103,11 @@ public class AmbientLight
     /// Lux threshold above which light mode is activated (default: 80 lux)
     /// </summary>
     public double LightThreshold { get; set; } = 80;
-    public int DebounceDelayMs { get; set; } = 15000;
+    /// <summary>
+    /// Delay in milliseconds before applying a sensor-triggered theme change (default: 10000ms / 10 seconds).
+    /// This prevents accidental switching when briefly covering the sensor.
+    /// </summary>
+    public int DebounceDelayMs { get; set; } = 10000;
 }
 
 public class Hotkeys
