@@ -30,6 +30,17 @@ namespace AutoDarkModeSvc.Governors;
 
 public class AmbientLightGovernor : IAutoDarkModeGovernor
 {
+    /// <summary>
+    /// Delay in milliseconds before applying a sensor-triggered theme change.
+    /// This prevents accidental switching when briefly covering the sensor.
+    /// </summary>
+    private const int SensorDebounceDelayMs = 10000;
+    
+    /// <summary>
+    /// Tolerance in milliseconds for the debounce timer safety check.
+    /// </summary>
+    private const int DebounceToleranceMs = 1000;
+    
     public Governor Type => Governor.AmbientLight;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private LightSensor _sensor;
@@ -132,7 +143,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         _debounceStartTime = DateTime.Now;
 
         string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
-        int delay = 10000; // Fixed 10 second delay for sensor-triggered changes
+        int delay = SensorDebounceDelayMs;
 
         Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {delay / 1000} seconds");
 
@@ -163,7 +174,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private void ApplyThemeChange(Theme newTheme, double lux, string thresholdInfo)
     {
         // Double check duration to prevent early firing
-        if ((DateTime.Now - _debounceStartTime).TotalMilliseconds < 14000)
+        if ((DateTime.Now - _debounceStartTime).TotalMilliseconds < SensorDebounceDelayMs - DebounceToleranceMs)
         {
             Logger.Warn("debounce timer fired too early, ignoring");
             return;
