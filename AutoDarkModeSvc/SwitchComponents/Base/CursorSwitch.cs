@@ -27,7 +27,6 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
 {
     private Theme currentTheme = Theme.Unknown;
-    private const string WindowsCurrentVersionThemePath = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes";
     public override bool ThemeHandlerCompatibility => false;
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
@@ -53,9 +52,9 @@ internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
             cursorSchemeNew = Settings.Component.CursorsDark;
         }
 
-        if (Registry.GetValue(WindowsCurrentVersionThemePath, "ThemeChangesMousePointers", 0).ToString() == "0")
+        if (RegistryHandler.EnableThemeChangesMousePointers())
         {
-            Registry.SetValue(WindowsCurrentVersionThemePath, "ThemeChangesMousePointers", 1);
+            Logger.Warn("cursor theme changes were disabled in registry. Auto Dark Mode re-enabled this option. If this happens again, contact your system administrator.");
         }
 
         if (cursorSchemeNew != null && cursorSchemeNew.Length > 0)
