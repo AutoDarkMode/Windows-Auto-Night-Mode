@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="AutoDarkModeApp.Views.TimePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -395,7 +395,7 @@
                                         Maximum="10000"
                                         Minimum="1"
                                         SmallChange="1"
-                                        SpinButtonPlacementMode="Compact"
+                                        SpinButtonPlacementMode="Hidden"
                                         Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
                                     <!--  Dark icon  -->
                                     <FontIcon
@@ -508,8 +508,8 @@
                                         Header="{helpers:ResourceString Name=AmbientLightLightThreshold}"
                                         Maximum="10000"
                                         Minimum="1"
-                                        SmallChange="10"
-                                        SpinButtonPlacementMode="Compact"
+                                        SmallChange="1"
+                                        SpinButtonPlacementMode="Hidden"
                                         Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
                                 </Grid>
 
