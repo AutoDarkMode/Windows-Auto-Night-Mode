@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -488,7 +488,7 @@
     <value>此選項不支援預先安裝的預設 Windows 佈景主題</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>此程式需要存取你的位置</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>服務尚未啟動，請稍候…</value>
@@ -580,7 +580,7 @@
     <value>個人化</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>選擇輔色</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>選擇游標</value>
@@ -974,11 +974,11 @@
     <value>正值表示延後，負值表示提前</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>嘗試減少在檔案總管、工作列和開始功能表中出現錯誤介面顏色的頻率。 如果你經常遇到這種情況或受到困擾，請嘗試啟用此設定。
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-這可能會導致切換主題期間在系統造成部分輕微至中度的延遲，類似於在 Windows 10 中發生的情況。
+This may introduce slight to moderate lag on some systems during theme switch.
 
-在極少數情況下，當重新整理 DWM 期間移動滑鼠時，Windows 可能會發出蜂鳴聲。</value>
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>使用積極的 DWM 重新整理？</value>

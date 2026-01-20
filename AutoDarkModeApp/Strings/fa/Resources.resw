@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -488,7 +488,7 @@
     <value>This option does not support default Windows themes</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>این برنامه نیاز به دسترسی مکان شما دارد</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>سرویس برنامه هنوز اجرا نشده است، لطفا صبر کنید…</value>
@@ -974,9 +974,9 @@
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce the occurrence of wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch similar to how it happened in Windows 10.
+This may introduce slight to moderate lag on some systems during theme switch.
 
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>

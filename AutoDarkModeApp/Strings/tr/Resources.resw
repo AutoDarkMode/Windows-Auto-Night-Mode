@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -491,7 +491,7 @@ Yeni bir tarayıcı penceresi açmak için "Evet"i tıklayın.
     <value>Bu seçenek varsayılan Windows temalarını desteklemez</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Bu uygulamanın konumunuza erişmesi gerekiyor</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Hizmet henüz çalışmıyor, lütfen bekleyin…</value>
@@ -586,7 +586,7 @@ Bunu indirmek istiyor musunuz?
     <value>Kişiselleştirme</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Bir vurgu rengi seç</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Fare imleçlerini seç</value>
@@ -980,10 +980,11 @@ Bunu indirmek istiyor musunuz?
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Dosya gezgininde, görev çubuğunda ve başlat menüsünde yanlış ara yüz renklerinin oluşumunu azaltmaya çalışır. Bunu sık sık yaşıyorsanız ya da bundan rahatsızsanız bu ayarı etkinleştirmeyi deneyin.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Bu, Windows 10'da olduğu gibi tema değişimi sırasında bazı sistemlerde hafif ila orta düzeyde gecikmeye neden olabilir.
-Nadir durumlarda, DWM yenilemeleri sırasında fare hareket ettirildiğinde Windows bir bip sesi çıkarabilir.</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>

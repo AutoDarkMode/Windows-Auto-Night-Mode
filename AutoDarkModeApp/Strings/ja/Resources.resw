@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -491,7 +491,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>このオプションは標準のWindowsテーマには対応していません</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>位置情報の使用許可が必要</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>サービスはまだ実行されていません。お待ちください…</value>
@@ -586,7 +586,7 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>個人設定</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>アクセントカラーを選択</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>マウスカーソルを選択</value>
@@ -970,10 +970,11 @@ Auto Dark Mode のリポジトリに issue (問題) を投稿しますか？
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>エクスプローラー、タスクバー、スタートメニュー内の間違ったUIの色の発生を抑えようと試みます。この現象がよく起きたり気になるなら、有効にしてみてください。
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-設定により Windows 10 で起きていたのと同様に、一部のシステムでのテーマ切り替え時に、極小から中等度の遅延が起こることがあります。
-まれに、DWM の再描画中にマウスを動かすと、Windows からビープ音が鳴ることがあります。</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -133,7 +133,7 @@
     <value>Aktív halasztások</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Használja a Tálca kiemelő színét</value>
+    <value>Használja a Tálca kiemelőszínét</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
@@ -488,7 +488,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Ez a beállítás nem támogatja az előre telepítettWindows-témákat</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Ennek az alkalmazásnak szüksége van az ön tartózkodási helyéhez</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>A szolgáltatás még nem fut, kérjük, várjon…</value>
@@ -580,7 +580,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Személyre szabás</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Válasszon kiemelőszínt</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Egérkurzorok kiválasztása</value>
@@ -974,11 +974,11 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Pozitív értékek később, negatív értékek korábban</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt.
+This may introduce slight to moderate lag on some systems during theme switch.
 
-Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Agresszív DWM frissítés alkalmazása?</value>
