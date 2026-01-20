@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -491,7 +491,7 @@ Premi il pulsante "Sì" per aprire una nuova finestra del browser.
     <value>Questa opzione non supporta i temi predefiniti di Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>L'app richiede il permesso di accedere alla tua posizione</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Il servizio non è ancora in esecuzione, attendere…</value>
@@ -586,7 +586,7 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
     <value>Personalizzazione</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Scegli un colore principale</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Seleziona puntatori del mouse</value>
@@ -980,10 +980,11 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Tenta di ridurre il verificarsi di colori errati dell'interfaccia utente in: esplora risorse, barra delle applicazioni e menu di avvio. Se il problema si verifica spesso o è fastidioso, provate ad attivare questa impostazione.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-In alcuni sistemi potrebbe verificarsi un leggero o moderato ritardo durante il passaggio da un tema all'altro, come accade in Windows 10.
-In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante l'aggiornamento del DWM.</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -488,7 +488,7 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
     <value>이 옵션은 사전 설정된 기본 Windows 테마를 지원하지 않습니다</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>이 앱은 사용자 위치에 액세스해야 합니다</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>아직 서비스가 실행되지 않았습니다. 잠시만 기다려 주세요…</value>
@@ -580,7 +580,7 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
     <value>개인 설정</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>강조 색상 선택</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>마우스 커서 선택</value>
@@ -974,11 +974,11 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
     <value>양수 값은 더 늦고, 음수 값은 더 빠릅니다</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>탐색기, 작업 표시줄, 시작 메뉴에서 잘못된 UI 색상이 표시되는 문제를 해결합니다. 이런 문제가 자주 발생하거나 불편했면 이 설정을 활성화해 보세요.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-일부 시스템에서 테마 전환 시 약간의 지연이 발생할 수 있습니다.
+This may introduce slight to moderate lag on some systems during theme switch.
 
-드물지만 DWM 새로 고침 중에 마우스를 움직이면 Windows에서 경고음이 발생할 수 있습니다.</value>
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>공격적인 DWM 새로 고침을 사용할까요?</value>

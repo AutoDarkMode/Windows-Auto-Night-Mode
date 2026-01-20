@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -488,7 +488,7 @@ Wilt u een probleem melden in de Auto Dark Mode-repository?</value>
     <value>Deze optie ondersteunt geen standaardthema's van Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>ADM heeft toegang tot uw locatie nodig</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Service wordt niet uitgevoerd. Even geduld…</value>
@@ -580,7 +580,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Persoonlijke instellingen</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Accentkleur selecteren</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Muisaanwijzers selecteren</value>
@@ -974,9 +974,11 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Positieve getallen zijn later, negatieve getallen zijn vroeger</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Probeert de frequentie van foute interfacekleuren in Verkenner, de taakbalk en menu Start te verminderen. Schakel dit in als u hier veel last van heeft.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Op sommige systemen kan dit vertragingen veroorzaken tijdens het wisselen van thema, vergelijkbaar aan het wisselen in Windows 10. Heel soms kan Windows een piepgeluid afspelen wanneer de muis wordt bewogen tijdens het vernieuwen van DWM.</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Agressieve DWM gebruiken?</value>
