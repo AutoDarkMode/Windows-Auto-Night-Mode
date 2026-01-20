@@ -326,18 +326,23 @@ public partial class TimeViewModel : ObservableRecipient
         double currentLux = CurrentLuxReading;
         double dark, light;
 
-        // "Shifted Window" logic: anchor the threshold based on current active theme
-        // If Light: Current lux is "Nominal Light", so set Light threshold slightly below it.
-        // If Dark: Current lux is "Nominal Dark", so set Dark threshold slightly above it.
+        // Calculate gap using exponential scaling: smaller lux values get smaller gaps,
+        // larger values get proportionally larger gaps (non-linear growth)
+        // Examples: 10 lux → 5 gap, 41 lux → 13 gap, 100 lux → 25 gap, 1000 lux → 126 gap
+        double gap = Math.Pow(Math.Max(1, currentLux), 0.7);
+
+        // Anchor threshold based on current active theme
         if (Application.Current.RequestedTheme == ApplicationTheme.Light)
         {
-            light = Math.Max(1, currentLux * 0.9); // Anchor light threshold just below current
-            dark = Math.Max(0, light / 1.3);       // Set dark threshold closer (1:1.3 ratio) for tighter control
+            // Light theme: current lux is "nominal light", anchor light threshold near it
+            light = Math.Max(1, currentLux * 0.95);
+            dark = Math.Max(1, light - gap);
         }
         else
         {
-            dark = Math.Max(10, currentLux * 1.1);  // Anchor dark threshold just above current, min 10 lux
-            light = Math.Max(dark + 2, dark * 1.3); // Set light threshold slightly higher (1:1.3 ratio)
+            // Dark theme: current lux is "nominal dark", anchor dark threshold near it
+            dark = Math.Max(1, currentLux * 1.05);
+            light = dark + gap;
         }
 
         // Clamp to valid range
