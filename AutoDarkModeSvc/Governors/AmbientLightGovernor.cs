@@ -22,6 +22,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Interfaces;
+using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Modules;
 using Windows.Devices.Sensors;
 
@@ -37,7 +38,6 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private bool init = true;
     private Theme currentTheme = Theme.Unknown;
     private IAutoDarkModeModule Master { get; }
-    private Timer _debounceTimer;
     private Theme _pendingTheme = Theme.Unknown;
     private int _debounceDelayMs;
     private readonly object _debounceLock = new object();
@@ -70,6 +70,14 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         {
             init = false;
         }
+
+        // If we're in a debounce period, don't trigger any switch from the timer
+        // The actual switch will happen when ApplyThemeChange calls Master.Fire
+        if (_pendingTheme != Theme.Unknown)
+        {
+            return new(false, null);
+        }
+
         return new(false, new(SwitchSource.AmbientLightSensorModule, state.AmbientLight.Requested));
     }
 
@@ -124,14 +132,14 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         _debounceStartTime = DateTime.Now;
 
         string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
-        int delay = Math.Max(15000, builder.Config.AmbientLight.DebounceDelayMs);
+        int delay = 10000; // Fixed 10 second delay for sensor-triggered changes
 
         Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {delay / 1000} seconds");
 
         try
         {
             await Task.Delay(delay, _debounceCts.Token);
-            
+
             // If we get here, task wasn't cancelled
             ApplyThemeChange(newTheme, lux, thresholdInfo);
         }
@@ -187,7 +195,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
     /// <summary>
     /// Re-evaluates the last known lux reading against current config thresholds.
-    /// Called when config changes to trigger immediate theme update.
+    /// Called when config changes (e.g., slider adjustments) to trigger IMMEDIATE theme update.
+    /// This bypasses the debounce since the user explicitly changed settings.
     /// </summary>
     public void ReEvaluateWithCurrentConfig()
     {
@@ -195,9 +204,33 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         builder.Load();
         if (state.AmbientLight.LastLuxReading >= 0)
         {
-            Logger.Debug("re-evaluating ambient light with updated config");
-            Theme previousTheme = currentTheme;
-            EvaluateLuxReading(state.AmbientLight.LastLuxReading);
+            Logger.Debug("re-evaluating ambient light with updated config (immediate mode)");
+
+            // Cancel any pending debounced change - user's config change takes priority
+            CancelPendingThemeChange();
+
+            double lux = state.AmbientLight.LastLuxReading;
+            double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
+            double lightThreshold = builder.Config.AmbientLight.LightThreshold;
+
+            Theme newTheme = currentTheme;
+            if (lux <= darkThreshold)
+            {
+                newTheme = Theme.Dark;
+            }
+            else if (lux >= lightThreshold)
+            {
+                newTheme = Theme.Light;
+            }
+
+            // Apply immediately without debounce - this is a user-initiated config change
+            if (newTheme != currentTheme && newTheme != Theme.Unknown)
+            {
+                Logger.Info($"config change triggered immediate switch to {newTheme} (lux: {lux:F1}, thresholds: {darkThreshold}/{lightThreshold})");
+                currentTheme = newTheme;
+                state.AmbientLight.Requested = newTheme;
+                Master.Fire(this);
+            }
         }
     }
 
@@ -230,21 +263,43 @@ public void EnableHook()
                     double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
                     double lightThreshold = builder.Config.AmbientLight.LightThreshold;
 
+                    // Determine what theme the sensor suggests
+                    Theme sensorSuggestedTheme;
                     if (lux <= darkThreshold)
                     {
-                        currentTheme = Theme.Dark;
+                        sensorSuggestedTheme = Theme.Dark;
                     }
                     else if (lux >= lightThreshold)
                     {
-                        currentTheme = Theme.Light;
+                        sensorSuggestedTheme = Theme.Light;
                     }
                     else
                     {
-                        // In the hysteresis zone, default to current system theme or light
-                        currentTheme = Theme.Light;
+                        // In the hysteresis zone, default to light
+                        sensorSuggestedTheme = Theme.Light;
                     }
+
+                    // CRITICAL: Use the ACTUAL current system theme as baseline, NOT what the sensor suggests
+                    // This ensures we don't immediately switch themes on startup - we respect debounce
+                    currentTheme = state.InternalTheme;
+                    if (currentTheme == Theme.Unknown)
+                    {
+                        // Fallback: read from registry if InternalTheme not yet set
+                        currentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                    }
+
+                    // Set Requested to match current system state
                     state.AmbientLight.Requested = currentTheme;
-                    Logger.Info($"ambient light sensor initialized, current reading: {lux:F1} lux, initial theme: {currentTheme}");
+
+                    Logger.Info($"ambient light sensor initialized, current reading: {lux:F1} lux, sensor suggests: {sensorSuggestedTheme}, system theme: {currentTheme}");
+
+                    // If the sensor suggests a different theme than the current system theme,
+                    // schedule a DELAYED switch (respecting the debounce)
+                    if (sensorSuggestedTheme != currentTheme)
+                    {
+                        _debounceDelayMs = Math.Max(15000, builder.Config.AmbientLight.DebounceDelayMs);
+                        ScheduleThemeChange(sensorSuggestedTheme, lux, darkThreshold, lightThreshold);
+                    }
                 }
             }
             else
@@ -262,12 +317,10 @@ public void EnableHook()
     {
         try
         {
-            lock (_debounceLock)
-            {
-                _debounceTimer?.Dispose();
-                _debounceTimer = null;
-                _pendingTheme = Theme.Unknown;
-            }
+            // Cancel any pending theme change
+            _debounceCts?.Cancel();
+            _debounceCts = null;
+            _pendingTheme = Theme.Unknown;
 
             if (_sensor != null)
             {
