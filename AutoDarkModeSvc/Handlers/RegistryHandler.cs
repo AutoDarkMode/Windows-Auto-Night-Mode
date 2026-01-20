@@ -281,6 +281,26 @@ static class RegistryHandler
         return key;
     }
 
+    private static RegistryKey GetThemesKey()
+    {
+        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes");
+        return key;
+    }
+
+    /// <summary>
+    /// Enables the ThemeChangesMousePointers option in the registry
+    /// </summary>
+    /// <returns>True if an action was performed and the setting was enabled, false otherwise</returns>
+    public static bool EnableThemeChangesMousePointers()
+    {
+        using RegistryKey themesKey = GetThemesKey();
+        if (themesKey.GetValue("ThemeChangesMousePointers").Equals(0)) {
+            themesKey.SetValue("ThemeChangesMousePointers", 1, RegistryValueKind.DWord);
+            return true;
+        }
+        return false;
+    }
+
 
     /// <summary>
     /// Adds the application to Windows autostart
