@@ -87,26 +87,23 @@
                                     GroupName="TriggerMode"
                                     IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
                                 <!--  Wrap in Border to show tooltip even when RadioButton is disabled  -->
-                                <Border
-                                    Margin="-4"
-                                    Padding="4"
-                                    Background="Transparent"
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Spacing="8"
                                     ToolTipService.ToolTip="{x:Bind ViewModel.AmbientLightSensorTooltip, Mode=OneWay}">
                                     <RadioButton
                                         Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                         CommandParameter="AmbientLight"
+                                        Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         GroupName="TriggerMode"
                                         IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
-                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}">
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <TextBlock Text="{helpers:ResourceString Name=AmbientLightSensor}" />
-                                            <FontIcon
-                                                FontSize="12"
-                                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                                Glyph="&#xE946;" />
-                                        </StackPanel>
-                                    </RadioButton>
-                                </Border>
+                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                    <FontIcon
+                                        Margin="0,4,0,0"
+                                        FontSize="12"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Glyph="&#xE946;" />
+                                </StackPanel>
                             </StackPanel>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
