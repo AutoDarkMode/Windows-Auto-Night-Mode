@@ -143,7 +143,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         _debounceStartTime = DateTime.Now;
 
         string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
-        int delay = SensorDebounceDelayMs;
+        int delay = _debounceDelayMs;
 
         Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {delay / 1000} seconds");
 
@@ -174,7 +174,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private void ApplyThemeChange(Theme newTheme, double lux, string thresholdInfo)
     {
         // Double check duration to prevent early firing
-        if ((DateTime.Now - _debounceStartTime).TotalMilliseconds < SensorDebounceDelayMs - DebounceToleranceMs)
+        if ((DateTime.Now - _debounceStartTime).TotalMilliseconds < _debounceDelayMs - DebounceToleranceMs)
         {
             Logger.Warn("debounce timer fired too early, ignoring");
             return;

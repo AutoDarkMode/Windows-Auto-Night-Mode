@@ -378,10 +378,12 @@
                                     </Grid.RowDefinitions>
 
                                     <!--  Indicator showing current lux level on the slider  -->
+                                    <!--  Height constrained to prevent overlapping touch area of RangeSelector  -->
                                     <Canvas
                                         x:Name="IndicatorCanvas"
                                         Grid.Row="1"
                                         Grid.Column="2"
+                                        Height="16"
                                         Margin="10,12,10,0"
                                         VerticalAlignment="Top"
                                         IsHitTestVisible="False"

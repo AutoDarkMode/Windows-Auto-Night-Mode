@@ -422,12 +422,9 @@ public partial class TimeViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            if (SelectedTriggerMode == SwitchTriggerMode.CustomTimes)
-            {
-                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-            }
-            else
+            // Only load geolocation data for location-based modes
+            if (SelectedTriggerMode == SwitchTriggerMode.LocationTimes ||
+                SelectedTriggerMode == SwitchTriggerMode.CoordinateTimes)
             {
                 await LoadGeolocationData();
 
@@ -435,6 +432,12 @@ public partial class TimeViewModel : ObservableRecipient
                 TimeLightStart = SunriseWithOffset.TimeOfDay;
                 TimeDarkStart = SunsetWithOffset.TimeOfDay;
             }
+            else if (SelectedTriggerMode == SwitchTriggerMode.CustomTimes)
+            {
+                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+            }
+            // AmbientLight and WindowsNightLight modes don't need time/location data
         });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
