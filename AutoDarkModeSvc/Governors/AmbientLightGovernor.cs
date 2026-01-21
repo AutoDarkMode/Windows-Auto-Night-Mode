@@ -60,6 +60,9 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
     public GovernorEventArgs Run()
     {
+        // Reload config to pick up any changes made directly to the config file
+        builder.Load();
+
         // Re-evaluate current lux against thresholds (handles config changes)
         if (_sensor != null)
         {
@@ -96,6 +99,19 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     {
         // Store the last reading for re-evaluation on config change
         state.AmbientLight.LastLuxReading = lux;
+
+        // Don't process if auto theme switching is disabled
+        if (!builder.Config.AutoThemeSwitchingEnabled)
+        {
+            CancelPendingThemeChange();
+            return;
+        }
+
+        // Don't process while postpone is active (user delayed the switch)
+        if (state.PostponeManager.IsPostponed)
+        {
+            return;
+        }
 
         double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
         double lightThreshold = builder.Config.AmbientLight.LightThreshold;

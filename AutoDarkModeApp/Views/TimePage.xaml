@@ -377,24 +377,6 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
-                                    <!--  Indicator showing current lux level on the slider  -->
-                                    <!--  Height constrained to prevent overlapping touch area of RangeSelector  -->
-                                    <Canvas
-                                        x:Name="IndicatorCanvas"
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Height="16"
-                                        Margin="10,12,10,0"
-                                        VerticalAlignment="Top"
-                                        IsHitTestVisible="False"
-                                        SizeChanged="IndicatorCanvas_SizeChanged">
-                                        <FontIcon
-                                            x:Name="CurrentLuxIndicator"
-                                            FontSize="12"
-                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                            Glyph="&#xE96E;" />
-                                    </Canvas>
-
                                     <!--  Dark threshold NumberBox  -->
                                     <NumberBox
                                         Grid.Row="1"
@@ -450,6 +432,22 @@
                                             RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
                                             RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
                                             StepFrequency="1" />
+
+                                        <!--  Indicator showing current lux level on the slider  -->
+                                        <!--  Positioned after RangeSelector to render on top, but IsHitTestVisible=False allows touch passthrough  -->
+                                        <Canvas
+                                            x:Name="IndicatorCanvas"
+                                            Height="16"
+                                            Margin="0,-28,0,0"
+                                            VerticalAlignment="Top"
+                                            IsHitTestVisible="False"
+                                            SizeChanged="IndicatorCanvas_SizeChanged">
+                                            <FontIcon
+                                                x:Name="CurrentLuxIndicator"
+                                                FontSize="12"
+                                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                                Glyph="&#xE96E;" />
+                                        </Canvas>
                                     </Grid>
 
                                     <!--  Tick marks with lux reference labels (logarithmic positions)  -->
