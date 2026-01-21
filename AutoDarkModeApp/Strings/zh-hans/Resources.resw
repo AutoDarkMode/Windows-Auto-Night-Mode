@@ -488,7 +488,7 @@
     <value>此选项不支持预装的默认 Windows 主题</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>Auto Dark Mode 需要访问位置的权限</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>服务尚未运行，请稍候…</value>
@@ -580,7 +580,7 @@
     <value>个性化</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>选择主题色</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>选择鼠标光标</value>
@@ -964,11 +964,11 @@
     <value>正值代表延后，负值表示提前</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>尝试减少资源管理器、任务栏和开始菜单中错误 UI 颜色。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
 
-This may introduce slight to moderate lag on some systems during theme switch.
+在主题切换时，部分电脑可能会有轻到中度的卡顿。
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+在极少数情况下，在 DWM 刷新期间移动鼠标时，Windows 可能会发出蜂鸣声。</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>启用更激进的 DWM 刷新？</value>
@@ -1001,24 +1001,24 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>打开 Windows 设置</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>任务栏主题色</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>快捷键只能在禁用状态下进行更改</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
-    <value>Selected color</value>
+    <value>选择的颜色</value>
   </data>
   <data name="WindowsColors" xml:space="preserve">
-    <value>Windows colors</value>
+    <value>Windows 颜色</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>已选择自动主题色。颜色将根据当前壁纸确定</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>颜色预览</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>预览</value>
   </data>
 </root>
