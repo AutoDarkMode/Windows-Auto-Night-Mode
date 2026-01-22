@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -491,7 +491,7 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Opsi ini tidak mendukung tema Windows bawaan</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Aplikasi ini membutuhkan izin untuk menemukan lokasi</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Layanan sedang memulai, harap tunggu…</value>
@@ -586,7 +586,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Personalisasi</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pilih aksen warna</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Pilih kursor tetikus</value>
@@ -980,10 +980,11 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Berupaya untuk mengurangi terjadinya warna UI yang salah di penjelajah, bilah tugas, dan menu mulai. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Hal ini dapat menyebabkan sedikit hingga sedang jeda pada beberapa sistem selama pergantian tema yang mirip dengan yang terjadi pada Windows 10.
-Pada kesempatan yang jarang terjadi, Windows dapat mengeluarkan suara bip ketika mouse digerakkan selama penyegaran DWM.</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>

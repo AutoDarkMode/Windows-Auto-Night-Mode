@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -491,7 +491,7 @@
     <value>Эта опция не поддерживает стандартные темы Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Необходимо разрешение на использование местоположения</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Служба ещё не запущена. Пожалуйста, подождите…</value>
@@ -586,7 +586,7 @@
     <value>Персонализация</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Выберите акцентный цвет</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Выбрать указатели мыши</value>
@@ -980,10 +980,11 @@
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Попытка снизить частоту появления неправильных цветов интерфейса в проводнике, панели задач и меню «Пуск». Если вы часто сталкиваетесь с этой проблемой или она вас беспокоит, попробуйте включить этот параметр.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Это может привести к незначительным или умеренным задержкам при переключении тем на некоторых системах, подобно тому, как это было в Windows 10.
-В редких случаях Windows может издавать звуковой сигнал при перемещении мыши во время перезапуска DWM.</value>
+This may introduce slight to moderate lag on some systems during theme switch.
+
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>

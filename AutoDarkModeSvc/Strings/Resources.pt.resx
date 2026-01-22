@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -58,4 +58,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AutomaticThemeSwitch" xml:space="preserve">
+    <value>Troca de tema automática</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Atraso</value>
+  </data>
+  <data name="DisableAutomaticSwitch" xml:space="preserve">
+    <value>Desativar troca automática</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Desativado</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Ativado</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
+    <value>Você gostaria de desativar a troca automática?</value>
+  </data>
+  <data name="Msg_PauseActionNotification" xml:space="preserve">
+    <value>A troca automática também irá continuar se você voltar para o tema antigo.</value>
+  </data>
+  <data name="Msg_PauseHeader" xml:space="preserve">
+    <value>Troca automática pausada até</value>
+  </data>
+  <data name="Msg_PauseOnce" xml:space="preserve">
+    <value>Troca de tema pausada uma vez!</value>
+  </data>
+  <data name="Msg_PendingQuestion" xml:space="preserve">
+    <value>Você gostaria de trocar agora ou adiar?</value>
+  </data>
+  <data name="Msg_ResumeHeader" xml:space="preserve">
+    <value>Troca automática retomada</value>
+  </data>
+  <data name="Msg_SwitchPending" xml:space="preserve">
+    <value>Troca de tema pendente</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>Pausado</value>
+  </data>
+  <data name="PostponeTime_120" xml:space="preserve">
+    <value>2 horas</value>
+  </data>
+  <data name="PostponeTime_15" xml:space="preserve">
+    <value>15 minutos</value>
+  </data>
+  <data name="PostponeTime_360" xml:space="preserve">
+    <value>6 horas</value>
+  </data>
+  <data name="PostponeTime_30" xml:space="preserve">
+    <value>30 minutos</value>
+  </data>
+  <data name="PostponeTime_180" xml:space="preserve">
+    <value>3 horas</value>
+  </data>
+  <data name="PostponeTime_60" xml:space="preserve">
+    <value>1 hora</value>
+  </data>
+  <data name="PostponeTime_720" xml:space="preserve">
+    <value>12 horas</value>
+  </data>
+  <data name="RequestSwitchAction" xml:space="preserve">
+    <value>Confirme para trocar o tema imediatamente.</value>
+  </data>
+  <data name="RevertAction" xml:space="preserve">
+    <value>Reverta esta ação clicando no botão desfazer abaixo.</value>
+  </data>
+  <data name="SwitchNow" xml:space="preserve">
+    <value>Trocar agora</value>
+  </data>
+  <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
+    <value>&amp;Troca automática de tema</value>
+  </data>
+  <data name="TrayMenuItem_Close" xml:space="preserve">
+    <value>&amp;Fechar</value>
+  </data>
+  <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
+    <value>Forçar &amp;Tema Escuro</value>
+  </data>
+  <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
+    <value>Forçar &amp;Tema Claro</value>
+  </data>
+  <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
+    <value>&amp;Abrir pasta de configurações</value>
+  </data>
+  <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
+    <value>&amp;Pausar troca automática</value>
+  </data>
+  <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
+    <value>&amp;Alternar tema</value>
+  </data>
+  <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
+    <value>Tenta arrumar o tema</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Desfazer</value>
+  </data>
+  <data name="Until" xml:space="preserve">
+    <value>até</value>
+  </data>
+  <data name="UntilSunrise" xml:space="preserve">
+    <value>até o próximo nascer do sol</value>
+  </data>
+  <data name="UntilSunset" xml:space="preserve">
+    <value>até o próximo pôr do sol</value>
+  </data>
+  <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
+    <value>Ocorreu um erro no patch.</value>
+  </data>
+  <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
+    <value>Downgrade</value>
+  </data>
+  <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
+    <value>Abrir pasta de logs</value>
+  </data>
+  <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
+    <value>Adiar</value>
+  </data>
+  <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="UpdateToast_CurrentVersion" xml:space="preserve">
+    <value>Versão Atual</value>
+  </data>
+  <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
+    <value>Downgrade {0} disponível</value>
+  </data>
+  <data name="UpdateToast_Downloading" xml:space="preserve">
+    <value>Baixando…</value>
+  </data>
+  <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
+    <value>Download em progresso...</value>
+  </data>
+  <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
+    <value>Ir à pagina de download</value>
+  </data>
+  <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
+    <value>Nova versão {0} disponível</value>
+  </data>
+  <data name="UpdateToast_SeeLogs" xml:space="preserve">
+    <value>Cheque service.log e updater.log para informações</value>
+  </data>
+  <data name="UpdateToast_DowngradingTo" xml:space="preserve">
+    <value>Fazendo downgrade para</value>
+  </data>
+  <data name="UpdateToast_UpgradingTo" xml:space="preserve">
+    <value>Atualizando para</value>
+  </data>
+  <data name="UpdateToast_Message" xml:space="preserve">
+    <value>Mensagem</value>
+  </data>
+  <data name="UpdateToast_PatchingFailed" xml:space="preserve">
+    <value>Falha no patch</value>
+  </data>
 </root>

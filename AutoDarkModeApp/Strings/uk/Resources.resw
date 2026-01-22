@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -488,7 +488,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Цей параметр не підтримує попередньо встановлені теми Windows за замовчуванням</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Застосунок потребує дозволу для визначення місцезнаходження</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Служба ще не працює, зачекайте…</value>
@@ -580,7 +580,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Персоналізація</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Виберіть акцентний колір</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Виберіть курсори миші</value>
@@ -974,11 +974,11 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Додатні значення пізніші, від'ємні значення раніше</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Спроба зменшити кількість неправильних кольорів інтерфейсу в провіднику, панелі завдань і меню "Пуск". Якщо це трапляється часто або вас це турбує, спробуйте ввімкнути цей параметр.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Це може спричинити незначні або помірні затримки під час перемикання тем на деяких системах, подібно до того, як це сталося у Windows 10.
+This may introduce slight to moderate lag on some systems during theme switch.
 
-У рідкісних випадках Windows може видавати звуковий сигнал при переміщенні миші під час оновлення DWM.</value>
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Використовувати агресивне оновлення DWM?</value>

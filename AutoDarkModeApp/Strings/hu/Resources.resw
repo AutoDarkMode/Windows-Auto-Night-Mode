@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -133,7 +133,7 @@
     <value>Aktív halasztások</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Használja a Tálca kiemelő színét</value>
+    <value>Használja a Tálca kiemelőszínét</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
@@ -167,7 +167,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Automatikus témaváltás kapcsolása</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
-    <value>Autostart</value>
+    <value>Automatikus indítás</value>
   </data>
   <data name="AutoSwitchGracePeriod" xml:space="preserve">
     <value>Az értesítés várakozási ideje nyugtázásra percekben</value>
@@ -212,7 +212,7 @@ Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissít
     <value>Bezárás</value>
   </data>
   <data name="Color" xml:space="preserve">
-    <value>Color</value>
+    <value>Szín</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
     <value>Színszűrő engedélyezése sötét mód alatt</value>
@@ -369,7 +369,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Segítség</value>
   </data>
   <data name="Hex code" xml:space="preserve">
-    <value>Hex code</value>
+    <value>Hex kód</value>
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
     <value>Tálca ikon elrejtése</value>
@@ -387,13 +387,13 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Kurzor figyelmen kívül hagyása</value>
   </data>
   <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>Asztali ikonok figyelmen kívül hagyása</value>
   </data>
   <data name="IgnoreSettings" xml:space="preserve">
     <value>Beállítások figyelmen kívül hagyása</value>
   </data>
   <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>Hangok figyelmen kívül hagyása</value>
   </data>
   <data name="ImagePath" xml:space="preserve">
     <value>Kép elérési útja</value>
@@ -423,7 +423,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Utoljára ellenőrizve</value>
   </data>
   <data name="Latitude" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Szélesség</value>
   </data>
   <data name="LaunchingService" xml:space="preserve">
     <value>Szolgáltatás indítása</value>
@@ -450,7 +450,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Használjon bejelentkezési feladatot indítási bejegyzés helyett</value>
   </data>
   <data name="Longitude" xml:space="preserve">
-    <value>Longitude</value>
+    <value>Hosszúság</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
     <value>Hagyja, hogy az Auto Dark Mode kezelje a témámat (ajánlott)</value>
@@ -465,13 +465,13 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Minimális GPU-használat % a váltás késleltetéséhez</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>perc</value>
   </data>
   <data name="Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Mód</value>
   </data>
   <data name="ModeAt" xml:space="preserve">
-    <value>Mode:</value>
+    <value>Mód:</value>
   </data>
   <data name="Monitor" xml:space="preserve">
     <value>Monitor</value>
@@ -495,7 +495,7 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
     <value>Ez a beállítás nem támogatja az előre telepítettWindows-témákat</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Ennek az alkalmazásnak szüksége van az ön tartózkodási helyéhez</value>
+    <value>Auto Dark Mode hozzáférést igényel a helyzetéhez</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>A szolgáltatás még nem fut, kérjük, várjon…</value>
@@ -539,7 +539,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Következő frissítés</value>
   </data>
   <data name="None" xml:space="preserve">
-    <value>None</value>
+    <value>Semelyik</value>
   </data>
   <data name="NotFound" xml:space="preserve">
     <value>Nem található</value>
@@ -557,7 +557,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Konfigurációs mappa megnyitása</value>
   </data>
   <data name="OpenLog" xml:space="preserve">
-    <value>Open log file</value>
+    <value>Logfájl megnyitása</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
     <value>Mappa megnyitása</value>
@@ -587,7 +587,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Személyre szabás</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Válasszon kiemelőszínt</value>
+    <value>Válasszon egy témaszínt</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Egérkurzorok kiválasztása</value>
@@ -608,7 +608,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Testreszabhatja az asztali háttérképet az összes monitorra, az egyes monitorokra, beállíthatja a háttérszínt vagy engedélyezheti a reflektorfényt.</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Position</value>
+    <value>Pozíció</value>
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Elhalasztás beállítása</value>
@@ -647,13 +647,13 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>2 óra</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 perc</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
     <value>3 óra</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 perc</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
     <value>6 óra</value>
@@ -710,7 +710,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Lassú (3 minta)</value>
   </data>
   <data name="Scripts" xml:space="preserve">
-    <value>Scripts</value>
+    <value>Szkriptek</value>
   </data>
   <data name="SelectDarkCursor" xml:space="preserve">
     <value>Sötét egérmutató kiválasztása</value>
@@ -728,7 +728,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Külön köszönet</value>
   </data>
   <data name="StartWithWindows" xml:space="preserve">
-    <value>Start Auto Dark Mode with Windows</value>
+    <value>Az Auto Dark Mode indítása a Windowszal</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
     <value>A téma kényszerítésének leállítása</value>
@@ -752,7 +752,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Feladat</value>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Theme</value>
+    <value>Téma</value>
   </data>
   <data name="Theme10_Flowers" xml:space="preserve">
     <value>Virágok</value>
@@ -771,7 +771,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="Theme11_CapturedMotion" xml:space="preserve">
-    <value>Captured Motion</value>
+    <value>Rögzített mozgás</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Dark" xml:space="preserve">
@@ -837,7 +837,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Használja a Helyszolgáltatást</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version</value>
+    <value>Verzió</value>
   </data>
   <data name="Wallpaper" xml:space="preserve">
     <value>Háttérkép</value>
@@ -861,9 +861,9 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Letiltotta az automatikus indítási bejegyzést a Windows-on keresztül.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
+    <value>1. Lépjen a Windows Gépház &gt; Személyre szabás &gt; Színek menüpontra.
+2. Állítsa a át a rendszer színmódját 'Világosra' a világos témához.
+3. Lépjen a Windows Gépház &gt; Személyre szabás &gt; Témák menüpontra.
 4. Select your favorite wallpaper, mouse pointers and accent color.
 5. Mentse el a témáját.
 6. Ismételje meg a folyamatot a sötét témával.</value>
@@ -879,7 +879,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
+    <value>Szín kiválasztása</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
     <value>Windows témakezelésének letiltása</value>
@@ -888,7 +888,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Út</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Azt automatikus indítás le van tiltva a Windows Gépházban. Ha újra engedélyezni szeretné, hogy az Auto Dark mode a Windowszal együtt induljon, lépjen a Windows Gépház &gt; Alkalmazások &gt; Indítópult menüpontra és engedélyezze ott.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Béta</value>
@@ -906,7 +906,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Menjen a Windows Reflektorfény beállításokhoz</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stab</value>
+    <value>Stabil</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Váltás</value>
@@ -981,10 +981,20 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Agresszív DWM frissítés alkalmazása?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Delay switching by a number minutes</value>
+    <value>Váltás elhalasztása valahány perccel</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Pozitív értékek később, negatív értékek korábban</value>
+  </data>
+  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
+    <value>Megkísérli korrigálni a hibás felületi színeket a Fájlkezelőben, a tálcán és a Start menüben. Ha gyakran tapasztalja ezt a problémát, vagy zavarja a jelenség, próbálja meg bekapcsolni ezt a beállítást.
+
+Bizonyos rendszereken enyhe vagy közepes lassulást okozhat témaváltás közben.
+
+Ritka esetekben előfordulhat, hogy a Windows sípoló hangot ad ki az egér mozgatásakor amíg a DWM frissül.</value>
+  </data>
+  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
+    <value>Agresszív DWM frissítés alkalmazása?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
     <value>Sötét mód a böngészőjéhez</value>
@@ -999,7 +1009,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Új kurzorsémákat a Windows beállításaiban hozhat létre, majd itt választhatja ki őket</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>Középre</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
     <value>Log és Shell</value>
@@ -1012,5 +1022,26 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows beállítások megnyitása</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>A gyorsbillentyűk csak letiltva szerkeszthetők</value>
+  </data>
+  <data name="SelectedColor" xml:space="preserve">
+    <value>Currently selected color</value>
+  </data>
+  <data name="WindowsColors" xml:space="preserve">
+    <value>Windows color</value>
+  </data>
+  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
+    <value>Automatikus témaszín kiválasztva. A színt az aktuális háttérkép határozza meg</value>
+  </data>
+  <data name="ColorPreview" xml:space="preserve">
+    <value>Szín előnézet</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Előnézet</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>Témaszín a tálcán</value>
   </data>
 </root>

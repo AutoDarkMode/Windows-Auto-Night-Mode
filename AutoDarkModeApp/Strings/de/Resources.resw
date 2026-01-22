@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -490,7 +490,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Diese Option wird von den vorinstallierten Standard-Windows-Themes nicht unterstützt</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Die Anwendung benötigt Zugriff auf die Standortdienste von Windows</value>
+    <value>Auto Dark Mode needs the permission to access your location</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Service läuft noch nicht, bitte warten…</value>
@@ -585,7 +585,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Personalisierung</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Wähle eine Akzentfarbe</value>
+    <value>Pick an accent color</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Wähle Mauszeiger-Designs</value>
@@ -979,11 +979,11 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Positive Zahlen sind später, negative Zahlen sind früher</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren. Wenn dies oft auftritt und stört, bitte diese Einstellung ausprobieren.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
 
-Beim Designwechsel kann es hierbei zu leichtem Stocken kommen. 
+This may introduce slight to moderate lag on some systems during theme switch.
 
-In seltenen Fällen kann sogar ein Piepston auftauchen, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
+On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
