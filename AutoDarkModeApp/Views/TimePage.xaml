@@ -425,7 +425,6 @@
                                         <controls:RangeSelector
                                             x:Name="AmbientLightRangeSelector"
                                             Background="Transparent"
-                                            Foreground="Transparent"
                                             Loaded="AmbientLightRangeSelector_Loaded"
                                             Maximum="1000"
                                             Minimum="0"
@@ -435,14 +434,13 @@
                                     </Grid>
 
                                     <!--  Indicator showing current lux level on the slider  -->
-                                    <!--  In Row 0 to avoid overlapping RangeSelector touch area  -->
+                                    <!--  Same cell as RangeSelector but positioned above via margins; renders behind due to XAML order  -->
                                     <Canvas
                                         x:Name="IndicatorCanvas"
-                                        Grid.Row="0"
+                                        Grid.Row="1"
                                         Grid.Column="2"
-                                        Height="20"
-                                        Margin="10,0,10,0"
-                                        VerticalAlignment="Bottom"
+                                        Margin="10,12,10,0"
+                                        VerticalAlignment="Top"
                                         IsHitTestVisible="False"
                                         SizeChanged="IndicatorCanvas_SizeChanged">
                                         <FontIcon
