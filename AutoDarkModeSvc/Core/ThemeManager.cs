@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -188,6 +188,23 @@ static class ThemeManager
                         state.PostponeManager.AddSkipNextSwitch();
                     else
                         state.PostponeManager.RemoveSkipNextSwitch();
+                }
+            }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // For ambient light mode, add a time-based postpone since we have no day/night concept
+                // This prevents the ambient light sensor from immediately switching back after manual toggle
+                if (!state.PostponeManager.IsUserDelayed)
+                {
+                    if (state.AmbientLight.Requested != newTheme)
+                    {
+                        // Postpone ambient light switching for 1 hour after manual toggle
+                        state.PostponeManager.Add(new PostponeItem(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified));
+                    }
+                    else
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                    }
                 }
             }
         }

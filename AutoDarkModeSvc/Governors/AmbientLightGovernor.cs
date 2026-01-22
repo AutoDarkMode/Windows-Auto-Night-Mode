@@ -130,8 +130,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
         if (newTheme != currentTheme && newTheme != Theme.Unknown)
         {
-            // Use configured delay or minimum of SensorDebounceDelayMs to prevent accidental switching
-            _debounceDelayMs = Math.Max(SensorDebounceDelayMs, builder.Config.AmbientLight.DebounceDelayMs);
+            // Use configured delay with 1-second minimum floor for safety
+            _debounceDelayMs = Math.Max(1000, builder.Config.AmbientLight.DebounceDelayMs);
             ScheduleThemeChange(newTheme, lux, darkThreshold, lightThreshold);
         }
         else if (newTheme == currentTheme)
@@ -324,7 +324,7 @@ public void EnableHook()
                     // schedule a DELAYED switch (respecting the debounce)
                     if (sensorSuggestedTheme != currentTheme)
                     {
-                        _debounceDelayMs = Math.Max(SensorDebounceDelayMs, builder.Config.AmbientLight.DebounceDelayMs);
+                        _debounceDelayMs = Math.Max(1000, builder.Config.AmbientLight.DebounceDelayMs);
                         ScheduleThemeChange(sensorSuggestedTheme, lux, darkThreshold, lightThreshold);
                     }
                 }
