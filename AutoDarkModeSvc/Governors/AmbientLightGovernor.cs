@@ -21,8 +21,8 @@ using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
-using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Handlers;
+using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
 using Windows.Devices.Sensors;
 
@@ -34,7 +34,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     /// Delay in milliseconds before applying a sensor-triggered theme change.
     /// This prevents accidental switching when briefly covering the sensor.
     /// </summary>
-    private const int SensorDebounceDelayMs = 10000;
+    private const int SensorDebounceDelayMs = 1000;
 
     /// <summary>
     /// Tolerance in milliseconds for the debounce timer safety check.
@@ -51,7 +51,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private IAutoDarkModeModule Master { get; }
     private Theme _pendingTheme = Theme.Unknown;
     private int _debounceDelayMs;
-    private readonly object _debounceLock = new object();
+    private readonly object _debounceLock = new();
 
     public AmbientLightGovernor(IAutoDarkModeModule master)
     {
@@ -159,13 +159,12 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         _debounceStartTime = DateTime.Now;
 
         string thresholdInfo = newTheme == Theme.Light ? $"{lux:F1} lux >= {lightThreshold} lux" : $"{lux:F1} lux <= {darkThreshold} lux";
-        int delay = _debounceDelayMs;
 
-        Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {delay / 1000} seconds");
+        Logger.Info($"ambient light threshold crossed ({thresholdInfo}), scheduling switch to {newTheme} mode in {_debounceDelayMs / 1000} seconds");
 
         try
         {
-            await Task.Delay(delay, _debounceCts.Token);
+            await Task.Delay(_debounceDelayMs, _debounceCts.Token);
 
             // If we get here, task wasn't cancelled
             ApplyThemeChange(newTheme, lux, thresholdInfo);
@@ -267,7 +266,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         EvaluateLuxReading(args.Reading.IlluminanceInLux);
     }
 
-public void EnableHook()
+    public void EnableHook()
     {
         Logger.Info("ambient light governor selected");
 
@@ -324,7 +323,7 @@ public void EnableHook()
                     // schedule a DELAYED switch (respecting the debounce)
                     if (sensorSuggestedTheme != currentTheme)
                     {
-                        _debounceDelayMs = Math.Max(1000, builder.Config.AmbientLight.DebounceDelayMs);
+                        _debounceDelayMs = Math.Max(SensorDebounceDelayMs, builder.Config.AmbientLight.DebounceDelayMs);
                         ScheduleThemeChange(sensorSuggestedTheme, lux, darkThreshold, lightThreshold);
                     }
                 }
