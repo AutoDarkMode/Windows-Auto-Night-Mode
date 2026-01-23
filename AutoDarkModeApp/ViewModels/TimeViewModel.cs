@@ -166,7 +166,15 @@ public partial class TimeViewModel : ObservableRecipient
             if (SetProperty(ref _rangeStart, value) && !_isUpdating)
             {
                 _isUpdating = true;
-                AmbientLightDarkThreshold = SliderToLux(value);
+                double lux = SliderToLux(value);
+                AmbientLightDarkThreshold = lux;
+                // Snap slider to canonical position for rounded lux value
+                // This ensures the thumb position matches the displayed value
+                double canonicalSlider = LuxToSlider(lux);
+                if (Math.Abs(_rangeStart - canonicalSlider) > 0.5)
+                {
+                    SetProperty(ref _rangeStart, canonicalSlider);
+                }
                 _isUpdating = false;
             }
         }
@@ -181,7 +189,15 @@ public partial class TimeViewModel : ObservableRecipient
             if (SetProperty(ref _rangeEnd, value) && !_isUpdating)
             {
                 _isUpdating = true;
-                AmbientLightLightThreshold = SliderToLux(value);
+                double lux = SliderToLux(value);
+                AmbientLightLightThreshold = lux;
+                // Snap slider to canonical position for rounded lux value
+                // This ensures the thumb position matches the displayed value
+                double canonicalSlider = LuxToSlider(lux);
+                if (Math.Abs(_rangeEnd - canonicalSlider) > 0.5)
+                {
+                    SetProperty(ref _rangeEnd, canonicalSlider);
+                }
                 _isUpdating = false;
             }
         }
