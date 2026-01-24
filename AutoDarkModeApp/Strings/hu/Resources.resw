@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -143,13 +143,6 @@
   </data>
   <data name="AlwaysLight" xml:space="preserve">
     <value>Mindig világos</value>
-  </data>
-  <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Megpróbálja csökkenteni a helytelen felhasználói felületi színek előfordulását a fájlkezelőben, a tálcán és a Start menüben. Ha ezt gyakran tapasztalja, vagy zavarja, próbálja meg engedélyezni ezt a beállítást.
-
-Ez enyhe vagy közepes késést okozhat egyes rendszereken a témaváltás során, hasonlóan ahhoz, ahogy a Windows 10 rendszerben történt.
-
-Ritka esetekben a Windows sípoló hangot adhat, amikor az egeret a DWM frissítése közben mozgatják.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Alkalmaz</value>
@@ -370,9 +363,6 @@ Szeretne egy hibabejelentést tenni az Auto Dark Mode repository-n?</value>
   </data>
   <data name="Hex code" xml:space="preserve">
     <value>Hex kód</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Tálca ikon elrejtése</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Gyorsbillentyűk</value>
@@ -968,17 +958,11 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Alkalmazás ez alatt</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Témaszín alkalmazása a tálcán sötét módban</value>
-  </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
     <value>Témaszín alkalmazása a fejléceken és ablakkereteken</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
     <value>Agresszívebb DWM frissítés</value>
-  </data>
-  <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Agresszív DWM frissítés alkalmazása?</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Váltás elhalasztása valahány perccel</value>
@@ -1023,9 +1007,6 @@ Ritka esetekben előfordulhat, hogy a Windows sípoló hangot ad ki az egér moz
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows beállítások megnyitása</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>A gyorsbillentyűk csak letiltva szerkeszthetők</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>
@@ -1043,5 +1024,11 @@ Ritka esetekben előfordulhat, hogy a Windows sípoló hangot ad ki az egér moz
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Témaszín a tálcán</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>A gyorsbillentyűk csak letiltva szerkeszthetők</value>
+  </data>
+  <data name="ShowTrayIcon" xml:space="preserve">
+    <value>Show tray icon (recommended)</value>
   </data>
 </root>

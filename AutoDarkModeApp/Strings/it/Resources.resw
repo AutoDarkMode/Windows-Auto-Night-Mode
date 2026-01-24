@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -363,9 +363,6 @@
   </data>
   <data name="Hex code" xml:space="preserve">
     <value>十六进制颜色代码</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>隐藏托盘图标</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>快捷键</value>
@@ -1000,12 +997,6 @@
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>打开 Windows 设置</value>
   </data>
-  <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>任务栏主题色</value>
-  </data>  
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>快捷键只能在禁用状态下进行更改</value>
-  </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>选择的颜色</value>
   </data>
@@ -1020,5 +1011,14 @@
   </data>
   <data name="Preview" xml:space="preserve">
     <value>预览</value>
+  </data>
+  <data name="AccentApplyTaskbar" xml:space="preserve">
+    <value>任务栏主题色</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>快捷键只能在禁用状态下进行更改</value>
+  </data>
+  <data name="ShowTrayIcon" xml:space="preserve">
+    <value>Show tray icon (recommended)</value>
   </data>
 </root>
