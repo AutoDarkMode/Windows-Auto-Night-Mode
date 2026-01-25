@@ -952,7 +952,7 @@
     <value>标题栏和窗口边框的强调色</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>更激进的 DWM 刷新</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>延迟切换（分钟）</value>
@@ -961,11 +961,11 @@
     <value>正值代表延后，负值表示提前</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>尝试减少文件管理器、任务栏和开始菜单中错误 UI 颜色。如果你经常遇到这个问题或者被其困扰，请试着启用这个设置。
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-在主题切换时，部分电脑可能会有轻到中度的卡顿。
+This option works by executing the "try to fix the theme" option after each change.
 
-在极少数情况下，在 DWM 刷新期间移动鼠标时，Windows 可能会发出蜂鸣声。</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>启用更激进的 DWM 刷新？</value>
@@ -992,7 +992,7 @@
     <value>已复制</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>尝试减少文件管理器、任务栏和开始菜单中错误的 UI 颜色。</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>打开 Windows 设置</value>
@@ -1015,10 +1015,10 @@
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>任务栏主题色</value>
   </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>快捷键只能在禁用状态下进行更改</value>
-  </data>
   <data name="ShowTrayIcon" xml:space="preserve">
     <value>Show tray icon (recommended)</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>快捷键只能在禁用状态下进行更改</value>
   </data>
 </root>

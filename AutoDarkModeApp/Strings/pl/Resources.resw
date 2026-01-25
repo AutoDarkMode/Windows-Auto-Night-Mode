@@ -968,7 +968,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Accent color for title bars and window borders</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
@@ -977,11 +977,11 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Positive values are later, negative values are earlier</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+This option works by executing the "try to fix the theme" option after each change.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
@@ -1008,7 +1008,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Copied</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>

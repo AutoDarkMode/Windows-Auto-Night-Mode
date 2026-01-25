@@ -505,7 +505,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Standort suchen…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
-    <value>Updates suchen…</value>
+    <value>Sucht Update…</value>
   </data>
   <data name="Msg_ServiceUnresponsive" xml:space="preserve">
     <value>Der Dienst antwortet nicht. Prüfe, ob AutoDarkModeSvc.exe läuft und versuche es erneut!</value>
@@ -817,7 +817,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Beim Start von Auto Dark Mode nach Updates suchen</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
-    <value>Wähle Update-Kanal</value>
+    <value>Update-Kanal</value>
   </data>
   <data name="UpdateColorization" xml:space="preserve">
     <value>Farbwahl aktualisieren</value>
@@ -967,7 +967,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Akzentfarbe auf Titelleisten und Fensterrahmen</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>Aggressivere DWM-Aktualisierung</value>
+    <value>Aggressiver Design-Wechsel</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Verzögere den Designwechsel um eine Anzahl an Minuten</value>
@@ -976,11 +976,11 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Positive Zahlen sind später, negative Zahlen sind früher</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Versucht falsche Farben in jeglichen Bereichen der Benutzeroberfläche zu vermeiden, etwa im Explorer, im Startmenü oder auf der Taskleiste. Wenn bei dir regelmäßig falsche Farben auftreten, aktiviere diese Option.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Sie führt nach jedem Designwechsel automatisch eine Designreparatur durch.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Bitte beachte: Auf manchen Systemen könnte diese Option zu leichten bis mittleren Rucklern führen. In äußerst seltenen Fällen kann beim Bewegen der Maus während des Designwechsels ein kurzer Signalton (Beep) auftreten.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
@@ -1007,7 +1007,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Kopiert</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Versucht das Auftreten falscher Benutzeroberflächenfarben im Explorer, der Taskleiste und dem Startmenü zu reduzieren.</value>
+    <value>Versucht falsche Farben auf der Benutzeroberfläche zu vermeiden, indem das Design nach jedem Wechsel repariert wird.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows-Einstellungen öffnen</value>

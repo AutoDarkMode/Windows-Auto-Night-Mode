@@ -962,7 +962,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Акцентний колір для рядків заголовків та меж вікон</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>Більш агресивне оновлення DWM</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
@@ -971,11 +971,11 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Додатні значення пізніші, від'ємні значення раніше</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+This option works by executing the "try to fix the theme" option after each change.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Використовувати агресивне оновлення DWM?</value>
@@ -1002,7 +1002,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Скопійовано</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Спроби зменшити неправильні кольори інтерфейсу користувача в провіднику, панелі завдань та меню «Пуск».</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Відкрийте параметри Windows</value>

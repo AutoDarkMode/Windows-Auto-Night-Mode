@@ -962,7 +962,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Accentkleur weergeven op titelbalken en vensterranden</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>Meer agressief DWM vernieuwen</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Stel het wisselen uit met een aantal minuten</value>
@@ -971,11 +971,11 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Positieve getallen zijn later, negatieve getallen zijn vroeger</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+This option works by executing the "try to fix the theme" option after each change.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Agressieve DWM gebruiken?</value>
@@ -1002,7 +1002,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Gekopieerd</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Probeert verkeerde kleuren the herstellen in Verkenner, taakbalk en Start-menu</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows instellingen openen</value>
