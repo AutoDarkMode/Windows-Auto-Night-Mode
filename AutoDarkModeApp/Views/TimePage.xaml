@@ -36,7 +36,7 @@
         </Style>
     </Page.Resources>
 
-    <ScrollViewer>
+    <ScrollViewer x:Name="PageScrollViewer">
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
@@ -430,6 +430,8 @@
                                             Minimum="0"
                                             RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
                                             RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
+                                            ThumbDragStarted="AmbientLightRangeSelector_ThumbDragStarted"
+                                            ThumbDragCompleted="AmbientLightRangeSelector_ThumbDragCompleted"
                                             StepFrequency="1" />
                                     </Grid>
 

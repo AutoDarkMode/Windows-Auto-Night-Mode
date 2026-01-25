@@ -180,4 +180,16 @@ public sealed partial class TimePage : Page
         }
         catch { }
     }
+
+    private void AmbientLightRangeSelector_ThumbDragStarted(object sender, Microsoft.UI.Xaml.Controls.Primitives.DragStartedEventArgs e)
+    {
+        PageScrollViewer.HorizontalScrollMode = ScrollMode.Disabled;
+        PageScrollViewer.VerticalScrollMode = ScrollMode.Disabled;
+    }
+
+    private void AmbientLightRangeSelector_ThumbDragCompleted(object sender, Microsoft.UI.Xaml.Controls.Primitives.DragCompletedEventArgs e)
+    {
+        PageScrollViewer.HorizontalScrollMode = ScrollMode.Auto;
+        PageScrollViewer.VerticalScrollMode = ScrollMode.Auto;
+    }
 }
