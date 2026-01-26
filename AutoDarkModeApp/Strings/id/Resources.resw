@@ -208,10 +208,10 @@
     <value>Warna</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Aktifkan filter warna saat mode gelap</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
+    <value>Sesuaikan skema warna sistem Windows sesuai selera Anda.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Kondisi</value>
@@ -449,7 +449,7 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Garis bujur</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
+    <value>Biarkan Mode Gelap Otomatis mengelola tema saya (disarankan)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -488,7 +488,7 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Unduh pembaruan</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Opsi ini tidak mendukung tema Windows bawaan</value>
+    <value>Opsi ini tidak mendukung tema default Windows yang sudah terpasang sebelumnya</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Auto Dark Mode needs the permission to access your location</value>
@@ -535,7 +535,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Info versi disalin ke papan klip</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Pembaruan selanjutnya pada</value>
+    <value>Pembaruan berikutnya</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Tidak ada</value>
@@ -670,7 +670,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Jangan beralih ketika proses tertentu berjalan</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Segarkan Mulai Otomatis</value>
+    <value>Segarkan</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Kunci Registry</value>
@@ -818,7 +818,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Biarkan Windows yang mengatur tema saya</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+    <value>Periksa kapan Mode Gelap Otomatis dimulai</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Pilih saluran pembaruan</value>
@@ -860,12 +860,12 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Buka Pengaturan Windows &gt; Personalisasi &gt; Warna.
+2. Ubah warna sistem menjadi ‘Terang’ untuk tema terang.
+3. Buka Pengaturan Windows &gt; Personalisasi &gt; Tema.
+4. Pilih wallpaper favorit Anda, penunjuk mouse, dan warna aksen.
+5. Simpan tema Anda.
+6. Ulangi proses ini untuk tema gelap.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
     <value>Edit hotkey</value>
@@ -887,7 +887,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Fitur Auto Start telah dinonaktifkan di Pengaturan Windows. Untuk mengaktifkan kembali Auto Dark Mode agar berjalan bersama Windows, silakan buka Pengaturan Windows &gt; Aplikasi &gt; Startup dan aktifkan fitur tersebut.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -899,10 +899,10 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Select Enter to apply</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Bahasa</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Buka pengaturan Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
@@ -923,7 +923,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Activation shortcut</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Simpan</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
     <value>Force save</value>
@@ -932,10 +932,10 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>The hotkey didn't work? Don't worry, let's save it again</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Simpan berhasil</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Simpan gagal</value>
   </data>
   <data name="AddApps" xml:space="preserve">
     <value>Start typing to add any apps</value>
@@ -977,14 +977,14 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Nilai positif berada di belakang, nilai negatif berada di depan</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Upaya untuk mengurangi warna antarmuka pengguna (UI) yang salah di Explorer, Taskbar, dan Start Menu. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Hal ini mungkin menyebabkan lag ringan hingga sedang pada beberapa sistem saat mengganti tema.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Pada kesempatan yang sangat jarang, Windows mungkin mengeluarkan suara bip saat mouse digerakkan selama proses penyegaran DWM.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Use aggressive DWM refresh?</value>
@@ -993,7 +993,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Dark mode for your web browser</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader adalah ekstensi browser yang membuat situs web di Chrome, Edge dan Firefox menyesuaikan dengan tema sistem Anda saat ini. Klik di sini untuk informasi lebih lanjut</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
     <value>Open Windows mouse pointer settings</value>
