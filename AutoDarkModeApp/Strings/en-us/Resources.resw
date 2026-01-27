@@ -1077,6 +1077,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="ShowTrayIcon" xml:space="preserve">
     <value>Show tray icon (recommended)</value>
+  </data>
   <data name="AmbientLightNoSensor" xml:space="preserve">
     <value>No sensor detected</value>
   </data>
