@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -151,13 +151,13 @@
     <value>Designwechsel pausiert bis</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Auto-Wechsel ist einmalig pausiert!</value>
+    <value>Automatischer Designwechsel ist einmalig pausiert!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Soll der Designwechsel jetzt erfolgen oder später?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Automatischer Wechsel fortgesetzt</value>
+    <value>Automatischer Designwechsel fortgesetzt</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>Ausstehender Designwechsel</value>
@@ -273,7 +273,7 @@
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Update Anwenden fehlgeschlagen</value>
+    <value>Update fehlgeschlagen</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
     <value>Weitere Informationen findest du im service.log und updater.log</value>
