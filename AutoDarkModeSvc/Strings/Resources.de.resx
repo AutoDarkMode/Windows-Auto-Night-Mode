@@ -157,7 +157,7 @@
     <value>Soll der Designwechsel jetzt erfolgen oder später?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Automatischer Wechsel fortgesetzt</value>
+    <value>Automatischer Designwechsel fortgesetzt</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>Ausstehender Designwechsel</value>
@@ -273,7 +273,7 @@
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>Update Anwenden fehlgeschlagen</value>
+    <value>Update fehlgeschlagen</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
     <value>Weitere Informationen findest du im service.log und updater.log</value>
