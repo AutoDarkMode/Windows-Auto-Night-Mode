@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Interfaces;
 
 namespace AutoDarkModeSvc.SwitchComponents;
 
-abstract class BaseComponent<T> : ISwitchComponent
+abstract class BaseComponent<T> : ISwitchComponent where T : class
 {
     protected NLog.Logger Logger { get; private set; }
     protected GlobalState GlobalState { get; } = GlobalState.Instance();
