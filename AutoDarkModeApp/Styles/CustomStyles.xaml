@@ -20,6 +20,25 @@
         <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
     </Style>
 
+    <!--  Styles for ambient light slider tick marks  -->
+    <Style x:Key="TickMarkStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Spacing" Value="2" />
+        <Setter Property="Margin" Value="0,0,-12,0" />
+        <Setter Property="Width" Value="24" />
+    </Style>
+    <Style x:Key="TickMarkBorderStyle" TargetType="Border">
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="6" />
+        <Setter Property="Background" Value="{ThemeResource TextFillColorTertiaryBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="TickMarkTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
     <!--  Style of a section header  -->
     <Style
         x:Key="SettingsSectionHeaderTextBlockStyle"
@@ -42,22 +61,22 @@
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
-            <!-- Theme sensitive icons -->
+            <!--  Theme sensitive icons  -->
             <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/PayPal_Logo64.png" />
             <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_Dark_Logo64.png" />
-            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png"/>
+            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png" />
         </ResourceDictionary>
-        
+
         <ResourceDictionary x:Key="Dark">
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="BreadcrumbBarHoverForegroundBrush" ResourceKey="TextFillColorPrimaryBrush" />
-            <!-- Theme sensitive icons -->
+            <!--  Theme sensitive icons  -->
             <BitmapImage x:Key="PayPalLogo" UriSource="/Assets/PayPal_Logo64.png" />
             <BitmapImage x:Key="GithubLogo" UriSource="/Assets/Github_White_Logo64.png" />
-            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png"/>
+            <BitmapImage x:Key="TelegramLogo" UriSource="/Assets/Telegram_Logo24.png" />
         </ResourceDictionary>
-        
+
         <ResourceDictionary x:Key="HighContrast">
             <!--  BreadcrumbBar style like Win.11 Settings  -->
             <StaticResource x:Key="BreadcrumbBarForegroundBrush" ResourceKey="TextFillColorSecondaryBrush" />

@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Windows.Input;
 using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Helpers;
@@ -19,21 +19,24 @@ public partial class TimeViewModel : ObservableRecipient
     private readonly IErrorService _errorService;
     private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
     private bool _isInitializing;
+    private bool _isUpdating;
 
-    public enum TimeSourceMode
+    public enum SwitchTriggerMode
     {
         CustomTimes,
         LocationTimes,
         CoordinateTimes,
         WindowsNightLight,
+        AmbientLight,
     }
 
     [ObservableProperty]
     public partial bool AutoThemeSwitchingEnabled { get; set; }
 
     [ObservableProperty]
-    public partial TimeSourceMode SelectedTimeSource { get; set; }
+    public partial SwitchTriggerMode SelectedTriggerMode { get; set; }
 
     [ObservableProperty]
     public partial string? LocationNextUpdateDateDescription { get; set; }
@@ -91,11 +94,184 @@ public partial class TimeViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool ResumeInfoBarEnabled { get; set; }
 
+    private double _ambientLightDarkThreshold;
+    public double AmbientLightDarkThreshold
+    {
+        get => _ambientLightDarkThreshold;
+        set
+        {
+            value = Math.Round(value);
+            if (SetProperty(ref _ambientLightDarkThreshold, value))
+            {
+                if (!_isUpdating)
+                {
+                    _isUpdating = true;
+                    // Ensure Light stays strictly above Dark (not equal).
+                    // While the RangeSelector control allows thumbs to overlap at the same value,
+                    // having identical thresholds creates an ambiguous zone where it's unclear
+                    // which theme should apply. Enforcing a minimum gap of 1 lux provides clear
+                    // hysteresis for the theme switching logic.
+                    if (_ambientLightLightThreshold <= value)
+                    {
+                        AmbientLightLightThreshold = Math.Min(10000, value + 1);
+                    }
+                    RangeStart = LuxToSlider(value);
+                    _isUpdating = false;
+                }
+                RestartAmbientLightDebounce();
+            }
+        }
+    }
+
+    private double _ambientLightLightThreshold;
+    public double AmbientLightLightThreshold
+    {
+        get => _ambientLightLightThreshold;
+        set
+        {
+            value = Math.Round(value);
+            if (SetProperty(ref _ambientLightLightThreshold, value))
+            {
+                if (!_isUpdating)
+                {
+                    _isUpdating = true;
+                    // Ensure Dark stays strictly below Light (see comment in AmbientLightDarkThreshold)
+                    if (_ambientLightDarkThreshold >= value)
+                    {
+                        AmbientLightDarkThreshold = Math.Max(1, value - 1);
+                    }
+                    RangeEnd = LuxToSlider(value);
+                    _isUpdating = false;
+                }
+                RestartAmbientLightDebounce();
+            }
+        }
+    }
+
+    private void RestartAmbientLightDebounce()
+    {
+        if (_ambientLightDebounceTimer != null)
+        {
+            _ambientLightDebounceTimer.Stop();
+            _ambientLightDebounceTimer.Start();
+        }
+    }
+
+    private double _rangeStart;
+    public double RangeStart
+    {
+        get => _rangeStart;
+        set
+        {
+            if (SetProperty(ref _rangeStart, value) && !_isUpdating)
+            {
+                _isUpdating = true;
+                double lux = SliderToLux(value);
+                AmbientLightDarkThreshold = lux;
+                // Snap slider to canonical position for rounded lux value
+                // This ensures the thumb position matches the displayed value
+                double canonicalSlider = LuxToSlider(lux);
+                if (Math.Abs(_rangeStart - canonicalSlider) > 0.5)
+                {
+                    SetProperty(ref _rangeStart, canonicalSlider);
+                }
+                _isUpdating = false;
+            }
+        }
+    }
+
+    private double _rangeEnd;
+    public double RangeEnd
+    {
+        get => _rangeEnd;
+        set
+        {
+            if (SetProperty(ref _rangeEnd, value) && !_isUpdating)
+            {
+                _isUpdating = true;
+                double lux = SliderToLux(value);
+                AmbientLightLightThreshold = lux;
+                // Snap slider to canonical position for rounded lux value
+                // This ensures the thumb position matches the displayed value
+                double canonicalSlider = LuxToSlider(lux);
+                if (Math.Abs(_rangeEnd - canonicalSlider) > 0.5)
+                {
+                    SetProperty(ref _rangeEnd, canonicalSlider);
+                }
+                _isUpdating = false;
+            }
+        }
+    }
+
+    // Maximum lux value supported (matching my previous logic)
+    private const double MaxLuxValue = 10000.0;
+    // Slider range (0-1000 for finer precision)
+    private const double SliderMaxValue = 1000.0;
+    // Precomputed log constant
+    private static readonly double LogBase = Math.Log(MaxLuxValue + 1);
+
+    public double SliderToLux(double sliderValue)
+    {
+        if (sliderValue <= 0) return 0.0;
+        if (sliderValue >= SliderMaxValue) return MaxLuxValue;
+        double lux = Math.Exp(sliderValue / SliderMaxValue * LogBase) - 1;
+
+        if (lux < 100) return Math.Round(lux);
+        if (lux < 1000) return Math.Round(lux / 5) * 5;
+        return Math.Round(lux / 10) * 10;
+    }
+
+    public double LuxToSlider(double lux)
+    {
+        if (lux <= 0) return 0.0;
+        if (lux >= MaxLuxValue) return SliderMaxValue;
+        return Math.Log(lux + 1) / LogBase * SliderMaxValue;
+    }
+
+    public Microsoft.UI.Xaml.GridLength GetStarWidth(double value)
+    {
+        return new Microsoft.UI.Xaml.GridLength(value, Microsoft.UI.Xaml.GridUnitType.Star);
+    }
+
+    [ObservableProperty]
+    public partial double CurrentLuxSliderPercentage { get; set; }
+
+    [ObservableProperty]
+    public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightSensorTooltip))]
+    public partial bool AmbientLightSensorAvailable { get; set; }
+
+    public string AmbientLightSensorTooltip => AmbientLightSensorAvailable
+        ? "AmbientLightSensor_ToolTip".GetLocalized()
+        : "AmbientLightSensor_Unavailable_ToolTip".GetLocalized();
+
+    [ObservableProperty]
+    public partial double CurrentLuxReading { get; set; }
+
+    [ObservableProperty]
+    public partial string? CurrentLuxDescription { get; set; }
+
+    private Windows.Devices.Sensors.LightSensor? _lightSensor;
+
+    public ICommand AutoConfigureCommand { get; }
+    public ICommand SetTriggerModeCommand { get; }
+
     public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
         _geolocatorService = geolocatorService;
+
+        AutoConfigureCommand = new RelayCommand(AutoConfigure);
+        SetTriggerModeCommand = new RelayCommand<string>((mode) =>
+        {
+            if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
+            {
+                SelectedTriggerMode = result;
+            }
+        });
 
         try
         {
@@ -137,6 +313,74 @@ public partial class TimeViewModel : ObservableRecipient
             }
             _debounceTimer.Stop();
         };
+
+        _ambientLightDebounceTimer = _dispatcherQueue.CreateTimer();
+        _ambientLightDebounceTimer.Interval = TimeSpan.FromMilliseconds(500);
+        _ambientLightDebounceTimer.Tick += (s, e) =>
+        {
+            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
+            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+            _ambientLightDebounceTimer.Stop();
+
+            // Trigger theme re-evaluation with new thresholds
+            SafeApplyTheme();
+        };
+    }
+
+    private void AutoConfigure()
+    {
+        if (!AmbientLightSensorAvailable) return;
+
+        double currentLux = CurrentLuxReading;
+        double dark, light;
+
+        // Calculate gap using exponential scaling: smaller lux values get smaller gaps,
+        // larger values get proportionally larger gaps (non-linear growth)
+        // Examples: 10 lux → 5 gap, 41 lux → 13 gap, 100 lux → 25 gap, 1000 lux → 126 gap
+        double gap = Math.Pow(Math.Max(1, currentLux), 0.7);
+
+        // Anchor threshold based on current active theme
+        if (Application.Current.RequestedTheme == ApplicationTheme.Light)
+        {
+            // Light theme: current lux is "nominal light", anchor light threshold near it
+            light = Math.Max(1, currentLux * 0.95);
+            dark = Math.Max(1, light - gap);
+        }
+        else
+        {
+            // Dark theme: current lux is "nominal dark", anchor dark threshold near it
+            dark = Math.Max(1, currentLux * 1.05);
+            light = dark + gap;
+        }
+
+        // Clamp to valid range
+        AmbientLightDarkThreshold = Math.Max(1, Math.Min(dark, 9998));
+        AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
+
+        // Save immediately as this is a deliberate action or first-time setup
+        if (_ambientLightDebounceTimer != null)
+        {
+            _ambientLightDebounceTimer.Stop();
+            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
+            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            try
+            {
+                _builder.Save();
+                SafeApplyTheme();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+        }
     }
 
     private void LoadSettings()
@@ -144,6 +388,41 @@ public partial class TimeViewModel : ObservableRecipient
         _isInitializing = true;
 
         OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+
+        // Check ambient light sensor availability and set up monitoring
+        try
+        {
+            _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
+            AmbientLightSensorAvailable = _lightSensor != null;
+            if (_lightSensor != null)
+            {
+                // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
+                _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
+                _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
+                // Get initial reading
+                var reading = _lightSensor.GetCurrentReading();
+                if (reading != null)
+                {
+                    CurrentLuxReading = reading.IlluminanceInLux;
+                    CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
+                    CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+                    RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
+                }
+            }
+            else
+            {
+                CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
+            }
+        }
+        catch
+        {
+            AmbientLightSensorAvailable = false;
+            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
+        }
+
+        // Load ambient light threshold settings
+        AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
+        AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
 
         HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
 
@@ -159,12 +438,9 @@ public partial class TimeViewModel : ObservableRecipient
 
         _dispatcherQueue.TryEnqueue(async () =>
         {
-            if (SelectedTimeSource == TimeSourceMode.CustomTimes)
-            {
-                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-            }
-            else
+            // Only load geolocation data for location-based modes
+            if (SelectedTriggerMode == SwitchTriggerMode.LocationTimes ||
+                SelectedTriggerMode == SwitchTriggerMode.CoordinateTimes)
             {
                 await LoadGeolocationData();
 
@@ -172,6 +448,12 @@ public partial class TimeViewModel : ObservableRecipient
                 TimeLightStart = SunriseWithOffset.TimeOfDay;
                 TimeDarkStart = SunsetWithOffset.TimeOfDay;
             }
+            else if (SelectedTriggerMode == SwitchTriggerMode.CustomTimes)
+            {
+                TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+                TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+            }
+            // AmbientLight and WindowsNightLight modes don't need time/location data
         });
 
         DateTime nextUpdate = _builder.LocationData.LastUpdate.Add(_builder.Config.Location.PollingCooldownTimeSpan);
@@ -222,7 +504,7 @@ public partial class TimeViewModel : ObservableRecipient
 
         if (_builder.Config.Governor == Governor.NightLight)
         {
-            SelectedTimeSource = TimeSourceMode.WindowsNightLight;
+            SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
@@ -230,9 +512,18 @@ public partial class TimeViewModel : ObservableRecipient
             return;
         }
 
+        if (_builder.Config.Governor == Governor.AmbientLight)
+        {
+            SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
+            TimePickerVisibility = Visibility.Collapsed;
+            DividerBorderVisibility = Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            return;
+        }
+
         if (!_builder.Config.Location.Enabled)
         {
-            SelectedTimeSource = TimeSourceMode.CustomTimes;
+            SelectedTriggerMode = SwitchTriggerMode.CustomTimes;
             TimePickerVisibility = Visibility.Visible;
             DividerBorderVisibility = Visibility.Collapsed;
             return;
@@ -240,18 +531,17 @@ public partial class TimeViewModel : ObservableRecipient
 
         if (_builder.Config.Location.UseGeolocatorService)
         {
-            SelectedTimeSource = TimeSourceMode.LocationTimes;
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            SelectedTriggerMode = SwitchTriggerMode.LocationTimes;
         }
         else
         {
-            SelectedTimeSource = TimeSourceMode.CoordinateTimes;
-            OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            SelectedTriggerMode = SwitchTriggerMode.CoordinateTimes;
         }
 
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
+        OffsetTimeSettingsCardVisibility = Visibility.Visible;
     }
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
@@ -346,45 +636,68 @@ public partial class TimeViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectedTimeSourceChanged(TimeSourceMode value)
+    partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
         if (_isInitializing)
             return;
 
-        HandleAutoTheme(AutoThemeSwitchingEnabled);
-
+        // Each case fully controls all visibility states to prevent flickering
         switch (value)
         {
-            case TimeSourceMode.CustomTimes:
+            case SwitchTriggerMode.CustomTimes:
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
+                TimePickerVisibility = Visibility.Visible;
+                DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
 
-            case TimeSourceMode.LocationTimes:
+            case SwitchTriggerMode.LocationTimes:
+                _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = true;
-                _builder.Config.Governor = Governor.Default;
+                TimePickerVisibility = Visibility.Visible;
+                DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
 
-            case TimeSourceMode.CoordinateTimes:
+            case SwitchTriggerMode.CoordinateTimes:
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
+                TimePickerVisibility = Visibility.Visible;
+                DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
 
-            case TimeSourceMode.WindowsNightLight:
+            case SwitchTriggerMode.WindowsNightLight:
                 _builder.Config.Governor = Governor.NightLight;
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
+                TimePickerVisibility = Visibility.Collapsed;
+                DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
+                break;
+
+            case SwitchTriggerMode.AmbientLight:
+                // Run auto-configure only if we are switching to Ambient Light and values are still defaults
+                // This prevents overwriting user's custom settings when switching modes
+                if (_builder.Config.AmbientLight.DarkThreshold == 40 && _builder.Config.AmbientLight.LightThreshold == 80)
+                {
+                    AutoConfigure();
+                }
+                _builder.Config.Governor = Governor.AmbientLight;
+                _builder.Config.AutoThemeSwitchingEnabled = true;
+                _builder.Config.Location.Enabled = false;
+                _builder.Config.Location.UseGeolocatorService = false;
+                TimePickerVisibility = Visibility.Collapsed;
+                DividerBorderVisibility = Visibility.Collapsed;
+                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
         }
 
@@ -402,7 +715,7 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnTimeLightStartChanged(TimeSpan value)
     {
-        if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes)
             return;
 
         _builder.Config.Sunrise = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
@@ -420,7 +733,7 @@ public partial class TimeViewModel : ObservableRecipient
 
     partial void OnTimeDarkStartChanged(TimeSpan value)
     {
-        if (_isInitializing || SelectedTimeSource != TimeSourceMode.CustomTimes)
+        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes)
             return;
 
         _builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
@@ -539,5 +852,32 @@ public partial class TimeViewModel : ObservableRecipient
         }
 
         LoadPostponeTimer(null, new());
+    }
+
+    private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
+    {
+        _dispatcherQueue.TryEnqueue(() =>
+        {
+            CurrentLuxReading = args.Reading.IlluminanceInLux;
+            CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
+            CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+            RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
+        });
+    }
+
+    private static string GetLuxDescription(double lux)
+    {
+        return lux switch
+        {
+            < 1 => $"{lux:F0} lux — Moonlight",
+            < 10 => $"{lux:F0} lux — Very dark",
+            < 50 => $"{lux:F0} lux — Dimly lit room",
+            < 150 => $"{lux:F0} lux — Living room",
+            < 400 => $"{lux:F0} lux — Office lighting",
+            < 1000 => $"{lux:F0} lux — Overcast day",
+            < 10000 => $"{lux:F0} lux — Daylight (shade)",
+            < 30000 => $"{lux:F0} lux — Full daylight",
+            _ => $"{lux:F0} lux — Direct sunlight"
+        };
     }
 }

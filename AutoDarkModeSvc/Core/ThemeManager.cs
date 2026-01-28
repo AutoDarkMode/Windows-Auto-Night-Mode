@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -103,6 +103,13 @@ static class ThemeManager
                 e.OverrideTheme(state.NightLight.Requested, ThemeOverrideSource.NightLight);
                 UpdateTheme(e);
             }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // Re-evaluate with current config (handles threshold changes from UI)
+                state.AmbientLight.ReEvaluateCallback();
+                e.OverrideTheme(state.AmbientLight.Requested, ThemeOverrideSource.AmbientLight);
+                UpdateTheme(e);
+            }
         }
         else
         {
@@ -181,6 +188,23 @@ static class ThemeManager
                         state.PostponeManager.AddSkipNextSwitch();
                     else
                         state.PostponeManager.RemoveSkipNextSwitch();
+                }
+            }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // For ambient light mode, add a time-based postpone since we have no day/night concept
+                // This prevents the ambient light sensor from immediately switching back after manual toggle
+                if (!state.PostponeManager.IsUserDelayed)
+                {
+                    if (state.AmbientLight.Requested != newTheme)
+                    {
+                        // Postpone ambient light switching for 1 hour after manual toggle
+                        state.PostponeManager.Add(new PostponeItem(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified));
+                    }
+                    else
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                    }
                 }
             }
         }
@@ -484,7 +508,7 @@ public class TimedThemeState
     public DateTime NextSwitchTime { get; private set; }
 
     /// <summary>
-    /// Precise Time when the target theme entered its activation window <br/> 
+    /// Precise Time when the target theme entered its activation window <br/>
     /// (when the last switch occurred or should have occurred)
     /// </summary>
     public DateTime CurrentSwitchTime { get; private set; }
