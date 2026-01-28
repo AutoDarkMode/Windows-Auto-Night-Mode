@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Interfaces;
 
 namespace AutoDarkModeSvc.SwitchComponents;
 
-abstract class BaseComponent<T> : ISwitchComponent
+abstract class BaseComponent<T> : ISwitchComponent where T : class
 {
     protected NLog.Logger Logger { get; private set; }
     protected GlobalState GlobalState { get; } = GlobalState.Instance();
@@ -185,7 +185,7 @@ abstract class BaseComponent<T> : ISwitchComponent
         return false;
     }
 
-    public bool RunVerifyOperationIntegrity(SwitchEventArgs e) 
+    public bool RunVerifyOperationIntegrity(SwitchEventArgs e)
     {
         Logger.Trace($"running integrity check for {GetType().Name}");
         return VerifyOperationIntegrity(e);

@@ -225,12 +225,12 @@ static class RegistryHandler
         int colorNum = 0;
         for (int i = 0; i < binPalette.Length; i++)
         {
-            if (i == 0 || (i+1) % 4 != 0)
+            if (i == 0 || (i + 1) % 4 != 0)
             {
                 int value = binPalette[i];
                 hexString.Append(value.ToString("X2"));
             }
-            else if (i != 0 && (i+1) % 4 == 0)
+            else if (i != 0 && (i + 1) % 4 == 0)
             {
                 palette.Add(colorNum++, hexString.ToString());
                 hexString.Clear();
@@ -279,6 +279,26 @@ static class RegistryHandler
     {
         RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate");
         return key;
+    }
+
+    private static RegistryKey GetThemesKey()
+    {
+        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes");
+        return key;
+    }
+
+    /// <summary>
+    /// Enables the ThemeChangesMousePointers option in the registry
+    /// </summary>
+    /// <returns>True if an action was performed and the setting was enabled, false otherwise</returns>
+    public static bool EnableThemeChangesMousePointers()
+    {
+        using RegistryKey themesKey = GetThemesKey();
+        if (themesKey.GetValue("ThemeChangesMousePointers").Equals(0)) {
+            themesKey.SetValue("ThemeChangesMousePointers", 1, RegistryValueKind.DWord);
+            return true;
+        }
+        return false;
     }
 
 
@@ -494,7 +514,7 @@ static class RegistryHandler
                 // quadratic runtime is okay here, but if one were to be pedantic it could be done in nlogn
                 for (i = 0; i < cursorsList.Length; i++)
                 {
-                    if (propValue.Item2 == i+1)
+                    if (propValue.Item2 == i + 1)
                     {
                         propValue.Item1 = cursorsList[i];
                         p.SetValue(cursors, propValue);

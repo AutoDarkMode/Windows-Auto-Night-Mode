@@ -67,7 +67,7 @@ public class MonitorSettings
     [YamlIgnore]
     public string MonitorString { get; set; }
     [YamlIgnore]
-    public bool Connected { get; private set; } = false;
+    public bool Connected { get; set; } = false;
     public string LightThemeWallpaper { get; set; }
     public string DarkThemeWallpaper { get; set; }
 

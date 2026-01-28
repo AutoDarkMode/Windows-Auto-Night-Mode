@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -363,9 +363,6 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
   </data>
   <data name="Hex code" xml:space="preserve">
     <value>Hex 코드</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>트레이 아이콘 숨기기 (권장하지 않음)</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>단축키</value>
@@ -965,7 +962,7 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
     <value>작업 표시줄과 창 테두리의 강조 색상</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>더욱 공격적으로 DWM 새로 고침</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
@@ -974,11 +971,11 @@ Auto Dark Mode 레포지토리에 문제를 등록할까요?</value>
     <value>양수 값은 더 늦고, 음수 값은 더 빠릅니다</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+This option works by executing the "try to fix the theme" option after each change.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>공격적인 DWM 새로 고침을 사용할까요?</value>
@@ -1005,13 +1002,10 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>복사됨</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>탐색기, 작업 표시줄 및 시작 메뉴에서 잘못된 UI 색상을 줄이려고 시도합니다.</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows 설정 열기</value>
-  </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1030,5 +1024,8 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="ShowTrayIcon" xml:space="preserve">
+    <value>Show tray icon (recommended)</value>
   </data>
 </root>

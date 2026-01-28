@@ -213,8 +213,6 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var jumpList = await JumpList.LoadCurrentAsync();
 
             jumpList.Items.Clear();
-            Debug.WriteLine("Adding jumplist items");
-            Debug.WriteLine($"Current override: {Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride}");
 
             var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "DarkTheme".GetLocalized());
             darkJumpTask.GroupName = "SwitchTheme".GetLocalized();
@@ -222,12 +220,8 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "LightTheme".GetLocalized());
             lightJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
-            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "Reset".GetLocalized());
-            resetJumpTask.GroupName = "SwitchTheme".GetLocalized();
-
             jumpList.Items.Add(darkJumpTask);
             jumpList.Items.Add(lightJumpTask);
-            jumpList.Items.Add(resetJumpTask);
 
             jumpList.SystemGroupKind = JumpListSystemGroupKind.None;
 

@@ -1,0 +1,69 @@
+<UserControl
+    x:Class="AutoDarkModeApp.UserControls.DesktopPreview"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:helpers="using:AutoDarkModeApp.Helpers"
+    xmlns:local="using:AutoDarkModeApp.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <helpers:EnumToStretchConverter x:Key="EnumToStretchConverter" />
+    </UserControl.Resources>
+
+    <Border
+        Margin="0,0,0,-16"
+        HorizontalAlignment="Left"
+        Background="{x:Bind DesktopPreviewBackground}"
+        BorderBrush="Black"
+        BorderThickness="8"
+        CornerRadius="{StaticResource OverlayCornerRadius}">
+        <Grid>
+            <Image
+                x:Name="DesktopPreviewImage"
+                Width="320"
+                Height="180"
+                Source="{x:Bind DesktopPreviewImageSource, Mode=OneWay}"
+                Stretch="{x:Bind DesktopPreviewImageStretch, Converter={StaticResource EnumToStretchConverter}, Mode=OneWay}" />
+
+            <StackPanel
+                Width="98"
+                Height="98"
+                Margin="8"
+                Padding="12"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Background="{ThemeResource AcrylicInAppFillColorDefaultBrush}"
+                CornerRadius="{StaticResource ControlCornerRadius}"
+                RequestedTheme="{x:Bind DesktopPreviewThemeMode, Mode=OneWay}">
+                <Border
+                    Height="1"
+                    Margin="0,0,0,8"
+                    Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                <Border
+                    Height="1"
+                    Margin="0,0,0,8"
+                    Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                <Border
+                    Height="1"
+                    Margin="0,0,0,8"
+                    Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                <Border
+                    Width="42"
+                    Height="1"
+                    Margin="0,0,0,8"
+                    HorizontalAlignment="Left"
+                    Background="{ThemeResource SystemFillColorSolidNeutral}" />
+                <Border
+                    Width="24"
+                    Height="8"
+                    Margin="0,26,0,0"
+                    HorizontalAlignment="Right"
+                    Background="{x:Bind DesktopPreviewAccentColorBorderBackground, Mode=OneWay}"
+                    CornerRadius="2"
+                    Visibility="{x:Bind DesktopPreviewAccentColorBorderVisible, Mode=OneWay}" />
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</UserControl>

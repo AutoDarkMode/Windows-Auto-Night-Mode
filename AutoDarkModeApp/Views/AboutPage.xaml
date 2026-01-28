@@ -80,8 +80,8 @@
                 </TeachingTip>
 
                 <!--  Log and Shell  -->
-                <controls:SettingsExpander 
-                    Header="{helpers:ResourceString Name=LogAndShell}" 
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=LogAndShell}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xF000;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
@@ -100,8 +100,8 @@
                 </controls:SettingsExpander>
 
                 <!--  SpecialThanks  -->
-                <controls:SettingsExpander 
-                    Header="{helpers:ResourceString Name=SpecialThanks}" 
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=SpecialThanks}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
@@ -128,8 +128,8 @@
                 </controls:SettingsExpander>
 
                 <!--  Follow us  -->
-                <controls:SettingsExpander 
-                    Header="{helpers:ResourceString Name=FollowUs}" 
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=FollowUs}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xED15;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
@@ -140,21 +140,14 @@
                                 Spacing="8">
                                 <HyperlinkButton NavigateUri="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode" ToolTipService.ToolTip="https://github.com/AutoDarkMode/Windows-Auto-Night-Mode">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <FontIcon
-                                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                                            FontSize="24"
-                                            Glyph="&#xE902;" />
+                                        <ImageIcon Source="{ThemeResource GithubLogo}" Width="24" Height="24" />
                                         <TextBlock VerticalAlignment="Center" Text="GitHub" />
                                     </StackPanel>
                                 </HyperlinkButton>
 
                                 <HyperlinkButton NavigateUri="https://t.me/autodarkmode" ToolTipService.ToolTip="https://t.me/autodarkmode">
                                     <StackPanel Orientation="Horizontal" Spacing="8">
-                                        <FontIcon
-                                            FontFamily="/Assets/AutoDarkModeIconFont.ttf#icomoon"
-                                            FontSize="24"
-                                            Foreground="#26A5E4"
-                                            Glyph="&#xE901;" />
+                                        <ImageIcon Source="{ThemeResource TelegramLogo}" Width="24" Height="24" />
                                         <TextBlock VerticalAlignment="Center" Text="Telegram" />
                                     </StackPanel>
                                 </HyperlinkButton>
@@ -164,8 +157,8 @@
                 </controls:SettingsExpander>
 
                 <!--  Third Party  -->
-                <controls:SettingsExpander 
-                    Header="{helpers:ResourceString Name=ThirdParty}" 
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=ThirdParty}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE90F;}"
                     IsExpanded="False">
                     <controls:SettingsExpander.Items>

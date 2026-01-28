@@ -19,25 +19,20 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  Some settings  -->
+                <!--  App settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
-                <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=HideTrayIcon}" IsChecked="{x:Bind ViewModel.IsHideTray, Mode=TwoWay}" />
+                <controls:SettingsCard Header="{helpers:ResourceString Name=ShowTrayIcon}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsShowTrayIcon, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsCard ContentAlignment="Left">
-                    <CheckBox Content="{helpers:ResourceString Name=AggressiveDwmRefresh}" IsChecked="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
+                <controls:SettingsCard Description="{helpers:ResourceString Name=AggressiveDwmRefreshDescription}" Header="{helpers:ResourceString Name=AggressiveDwmRefresh}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
-                <controls:SettingsExpander>
-                    <controls:SettingsExpander.Header>
-                        <CheckBox
-                            x:Name="DebugModeCheckBox"
-                            Content="{helpers:ResourceString Name=DebugMode}"
-                            IsChecked="{x:Bind ViewModel.IsTunableDebug, Mode=TwoWay}" />
-                    </controls:SettingsExpander.Header>
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=DebugMode}">
+                    <ToggleSwitch IsOn="{x:Bind ViewModel.IsTunableDebug, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
-                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind DebugModeCheckBox.IsChecked, Converter={StaticResource NullableBoolToBoolConverter}, Mode=OneWay}">
+                        <controls:SettingsCard ContentAlignment="Left" IsEnabled="{x:Bind ViewModel.IsTunableDebug, Mode=OneWay}">
                             <CheckBox Content="{helpers:ResourceString Name=TraceMode}" IsChecked="{x:Bind ViewModel.IsTunableTrace, Mode=TwoWay}" />
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>

@@ -69,6 +69,7 @@ public class GlobalState
     public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
     public PostponeManager PostponeManager { get; }
     public NightLight NightLight { get; } = new();
+    public AmbientLightState AmbientLight { get; } = new();
     public SystemIdleModuleState SystemIdleModuleState { get; } = new();
     public bool InitSyncSwitchPerformed { get; set; } = false;
     private NotifyIcon NotifyIcon { get; set; }
@@ -238,6 +239,24 @@ public class NightLight
     /// The theme that Windows night light is currently requesting to bet set
     /// </summary>
     public Theme Requested { get; set; } = Theme.Unknown;
+}
+
+public class AmbientLightState
+{
+    /// <summary>
+    /// The theme that the ambient light sensor is currently requesting to be set
+    /// </summary>
+    public Theme Requested { get; set; } = Theme.Unknown;
+
+    /// <summary>
+    /// The last lux reading from the ambient light sensor (for re-evaluation on config change)
+    /// </summary>
+    public double LastLuxReading { get; set; } = -1;
+
+    /// <summary>
+    /// Callback to trigger re-evaluation of lux against current thresholds
+    /// </summary>
+    public Action ReEvaluateCallback { get; set; } = () => { };
 }
 
 public class SystemIdleModuleState

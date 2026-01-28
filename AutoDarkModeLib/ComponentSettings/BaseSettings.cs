@@ -19,12 +19,13 @@ using AutoDarkModeLib.Interfaces;
 
 namespace AutoDarkModeLib.ComponentSettings;
 
-public class BaseSettings<T> : ISwitchComponentSettings<T>
+public class BaseSettings<T> : ISwitchComponentSettings<T> where T : class
 {
     public virtual bool Enabled { get; set; }
-    public T Component { get; set; }
+    public T? Component { get; set; }
     public BaseSettings()
     {
-        Component = (T)Activator.CreateInstance(typeof(T));
+        if (typeof(T) == typeof(object)) Component = null;
+        else Component = (T)Activator.CreateInstance(typeof(T));
     }
 }
