@@ -194,6 +194,7 @@ public class Tunable
         }
     }
     public bool DwmRefreshViaColorization { get; set; } = false;
+    public int DwmRefreshViaColorizationDelay { get; set; } = 2500;
     public bool UseLogonTask { get; set; }
     public bool Debug { get; set; }
     public bool Trace { get; set; }

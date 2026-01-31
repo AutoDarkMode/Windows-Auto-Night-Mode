@@ -402,6 +402,10 @@ static class ThemeManager
             // enforce dwm refresh via colorization if user has that configured
             if ((builder.Config.Tunable.DwmRefreshViaColorization && neededDwmRefresh != DwmRefreshType.None) || refreshDwmViaColorizationRequested)
             {
+                if (builder.Config.Tunable.DwmRefreshViaColorization && builder.Config.Tunable.DwmRefreshViaColorizationDelay > dwmRefreshDelay)
+                {
+                    dwmRefreshDelay = builder.Config.Tunable.DwmRefreshViaColorizationDelay;
+                }
                 neededDwmRefresh = DwmRefreshType.Colorization;
             }
 
