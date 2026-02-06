@@ -151,10 +151,10 @@
     <value>Cambio tema in pausa fino a</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Il cambio tema viene messo in pausa una volta!</value>
+    <value>Il cambio del tema viene messo in pausa una volta!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Vorresti cambiare adesso o rimandare ulteriormente?</value>
+    <value>Desideri cambiare ora o rimandare ulteriormente?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
     <value>Ripristino del cambio automatico del tema</value>
