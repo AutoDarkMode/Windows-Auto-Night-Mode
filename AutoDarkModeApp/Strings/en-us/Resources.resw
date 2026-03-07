@@ -1102,4 +1102,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <data name="Diagnostics" xml:space="preserve">
     <value>Diagnostics</value>
   </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
 </root>

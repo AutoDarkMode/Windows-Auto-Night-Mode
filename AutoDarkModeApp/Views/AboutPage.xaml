@@ -151,7 +151,7 @@
                 <!--  Special Thanks  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SpecialThanks}" />
                 <controls:SettingsExpander
-                    Header="Contributors"
+                    Header="{helpers:ResourceString Name=Contributors}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xEB51;}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
