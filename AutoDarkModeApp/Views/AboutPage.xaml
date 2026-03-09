@@ -212,9 +212,13 @@
                                     NavigateUri="https://github.com/dahall/taskscheduler"
                                     ToolTipService.ToolTip="https://github.com/dahall/taskscheduler" />
                                 <HyperlinkButton
-                                    Content="WinUI"
-                                    NavigateUri="https://github.com/microsoft/WindowsAppSDK"
-                                    ToolTipService.ToolTip="https://github.com/microsoft/WindowsAppSDK" />
+                                    Content="Windows App SDK"
+                                    NavigateUri="https://aka.ms/windowsappsdk"
+                                    ToolTipService.ToolTip="https://aka.ms/windowsappsdk" />
+                                <HyperlinkButton
+                                    Content="WinUI 3"
+                                    NavigateUri="https://aka.ms/winui3"
+                                    ToolTipService.ToolTip="https://aka.ms/winui3" />
                                 <HyperlinkButton
                                     Content="YamlDotNet"
                                     NavigateUri="https://github.com/aaubry/YamlDotNet"
