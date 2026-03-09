@@ -833,9 +833,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
   </data>
-  <data name="ThirdParty" xml:space="preserve">
-    <value>Used software</value>
-  </data>
   <data name="Time" xml:space="preserve">
     <value>Time</value>
   </data>
@@ -1095,5 +1092,17 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="AmbientLightCurrent" xml:space="preserve">
     <value>Current:</value>
+  </data>
+    <data name="DocumentationSocial" xml:space="preserve">
+    <value>Documentation &amp; Social</value>
+  </data>
+    <data name="UsedSoftware" xml:space="preserve">
+    <value>Used software</value>
+  </data>
+    <data name="Diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data>
+  <data name="Contributors" xml:space="preserve">
+    <value>Contributors</value>
   </data>
 </root>
