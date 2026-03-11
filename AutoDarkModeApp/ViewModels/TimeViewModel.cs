@@ -68,7 +68,50 @@ public partial class TimeViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? LonValue { get; set; }
 
-    public ICommand SaveCoordinatesCommand { get; set; }
+    [RelayCommand]
+    private void SaveCoordinates()
+    {
+        if (double.TryParse(LatValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lat))
+        {
+            if (lat > 90)
+                lat = 90.000000;
+            if (lat < -90)
+                lat = -90.000000;
+
+            LatValue = lat.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LatValue = "0";
+        }
+        if (double.TryParse(LonValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lon))
+        {
+            if (lon > 180)
+                lon = 180.000000;
+            if (lon < -180)
+                lon = -180.000000;
+
+            LonValue = lon.ToString("0.######", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            LonValue = "0";
+        }
+
+        _builder.Config.Location.CustomLat = lat;
+        _builder.Config.Location.CustomLon = lon;
+
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+        }
+
+        SafeApplyTheme();
+    }
 
     [ObservableProperty]
     public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
@@ -255,86 +298,7 @@ public partial class TimeViewModel : ObservableRecipient
 
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
-    public ICommand AutoConfigureCommand { get; }
-    public ICommand SetTriggerModeCommand { get; }
-
-    public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
-    {
-        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-        _errorService = errorService;
-        _geolocatorService = geolocatorService;
-
-        AutoConfigureCommand = new RelayCommand(AutoConfigure);
-        SetTriggerModeCommand = new RelayCommand<string>((mode) =>
-        {
-            if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
-            {
-                SelectedTriggerMode = result;
-            }
-        });
-
-        try
-        {
-            _builder.Load();
-            _builder.LoadLocationData();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
-
-        LoadSettings();
-        Task.Run(() => LoadPostponeTimer(null, new()));
-
-        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
-        StateUpdateHandler.StartConfigWatcher();
-
-        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
-        StateUpdateHandler.StartPostponeTimer();
-
-        SaveCoordinatesCommand = new RelayCommand(() =>
-        {
-            UpdateCoordinates();
-        });
-
-        _debounceTimer = _dispatcherQueue.CreateTimer();
-        _debounceTimer.Interval = TimeSpan.FromMilliseconds(500);
-        _debounceTimer.Tick += (s, e) =>
-        {
-            _builder.Config.Location.SunriseOffsetMin = OffsetLight;
-            _builder.Config.Location.SunsetOffsetMin = OffsetDark;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-            }
-            _debounceTimer.Stop();
-        };
-
-        _ambientLightDebounceTimer = _dispatcherQueue.CreateTimer();
-        _ambientLightDebounceTimer.Interval = TimeSpan.FromMilliseconds(500);
-        _ambientLightDebounceTimer.Tick += (s, e) =>
-        {
-            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
-            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-            }
-            _ambientLightDebounceTimer.Stop();
-
-            // Trigger theme re-evaluation with new thresholds
-            SafeApplyTheme();
-        };
-    }
-
+    [RelayCommand]
     private void AutoConfigure()
     {
         if (!AmbientLightSensorAvailable) return;
@@ -381,6 +345,78 @@ public partial class TimeViewModel : ObservableRecipient
                 _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
             }
         }
+    }
+
+    [RelayCommand]
+    private void SetTriggerMode(string mode)
+    {
+        if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
+        {
+            SelectedTriggerMode = result;
+        }
+    }
+
+    public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
+    {
+        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        _errorService = errorService;
+        _geolocatorService = geolocatorService;
+
+        try
+        {
+            _builder.Load();
+            _builder.LoadLocationData();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+        }
+
+        LoadSettings();
+        Task.Run(() => LoadPostponeTimer(null, new()));
+
+        StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
+        StateUpdateHandler.StartConfigWatcher();
+
+        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
+        StateUpdateHandler.StartPostponeTimer();
+
+        _debounceTimer = _dispatcherQueue.CreateTimer();
+        _debounceTimer.Interval = TimeSpan.FromMilliseconds(500);
+        _debounceTimer.Tick += (s, e) =>
+        {
+            _builder.Config.Location.SunriseOffsetMin = OffsetLight;
+            _builder.Config.Location.SunsetOffsetMin = OffsetDark;
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+            _debounceTimer.Stop();
+        };
+
+        _ambientLightDebounceTimer = _dispatcherQueue.CreateTimer();
+        _ambientLightDebounceTimer.Interval = TimeSpan.FromMilliseconds(500);
+        _ambientLightDebounceTimer.Tick += (s, e) =>
+        {
+            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
+            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            try
+            {
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            }
+            _ambientLightDebounceTimer.Stop();
+
+            // Trigger theme re-evaluation with new thresholds
+            SafeApplyTheme();
+        };
     }
 
     private void LoadSettings()
@@ -737,50 +773,6 @@ public partial class TimeViewModel : ObservableRecipient
             return;
 
         _builder.Config.Sunset = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, value.Hours, value.Minutes, 0);
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
-        }
-
-        SafeApplyTheme();
-    }
-
-    private void UpdateCoordinates()
-    {
-        if (double.TryParse(LatValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lat))
-        {
-            if (lat > 90)
-                lat = 90.000000;
-            if (lat < -90)
-                lat = -90.000000;
-
-            LatValue = lat.ToString("0.######", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            LatValue = "0";
-        }
-        if (double.TryParse(LonValue!.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double lon))
-        {
-            if (lon > 180)
-                lon = 180.000000;
-            if (lon < -180)
-                lon = -180.000000;
-
-            LonValue = lon.ToString("0.######", CultureInfo.InvariantCulture);
-        }
-        else
-        {
-            LonValue = "0";
-        }
-
-        _builder.Config.Location.CustomLat = lat;
-        _builder.Config.Location.CustomLon = lon;
-
         try
         {
             _builder.Save();

@@ -98,11 +98,57 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial Visibility GridAutostartVisibility { get; set; }
 
-    public ICommand RestartCommand { get; }
+    [RelayCommand]
+    private void Restart()
+    {
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+        }
 
-    public ICommand CheckUpdateCommand { get; }
+        MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
+        Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
+        Microsoft.UI.Xaml.Application.Current.Exit();
+    }
 
-    public ICommand AutostartRefreshCommand { get; }
+    [RelayCommand]
+    private void CheckUpdate()
+    {
+        UpdatesDate = "Msg_SearchUpdate".GetLocalized();
+        Task.Run(() =>
+        {
+            _updater.CheckNewVersion();
+            _dispatcherQueue.TryEnqueue(() =>
+            {
+                UpdatesDate = _updater.UpdateAvailable() ? "Msg_UpdateAvailable".GetLocalized() : "Msg_NoUpdate".GetLocalized();
+            });
+        });
+    }
+
+    [RelayCommand]
+    private async Task AutostartRefresh()
+    {
+        SetAutostartDetailsVisibility(false);
+        try
+        {
+            var response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
+            if (response.StatusCode == StatusCode.Err)
+            {
+                throw new AddAutoStartException();
+            }
+            await GetAutostartInfo();
+        }
+        catch (Exception)
+        {
+            throw new AddAutoStartException($"Could not validate autostart", "ValidateAutostart");
+        }
+        await Task.Delay(fakeResponsiveUIDelay);
+        SetAutostartDetailsVisibility(true);
+    }
 
     public SettingsViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
@@ -141,40 +187,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
-
-        RestartCommand = new RelayCommand(() =>
-        {
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
-            }
-
-            MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
-            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
-            Microsoft.UI.Xaml.Application.Current.Exit();
-        });
-
-        CheckUpdateCommand = new RelayCommand(() =>
-        {
-            UpdatesDate = "Msg_SearchUpdate".GetLocalized();
-            Task.Run(() =>
-            {
-                _updater.CheckNewVersion();
-                _dispatcherQueue.TryEnqueue(() =>
-                {
-                    UpdatesDate = _updater.UpdateAvailable() ? "Msg_UpdateAvailable".GetLocalized() : "Msg_NoUpdate".GetLocalized();
-                });
-            });
-        });
-
-        AutostartRefreshCommand = new RelayCommand(async () =>
-        {
-            await ValidateAutostart();
-        });
     }
 
     private void SetAutostartDetailsVisibility(bool visible)
@@ -240,27 +252,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         _isInitializing = false;
     }
-
-    private async Task ValidateAutostart()
-    {
-        SetAutostartDetailsVisibility(false);
-        try
-        {
-            var response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
-            if (response.StatusCode == StatusCode.Err)
-            {
-                throw new AddAutoStartException();
-            }
-            await GetAutostartInfo();
-        }
-        catch (Exception)
-        {
-            throw new AddAutoStartException($"Could not validate autostart", "ValidateAutostart");
-        }
-        await Task.Delay(fakeResponsiveUIDelay);
-        SetAutostartDetailsVisibility(true);
-    }
-
 
     private async Task GetAutostartInfo(bool toggleVisibility = true)
     {

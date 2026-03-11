@@ -81,36 +81,14 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     [ObservableProperty]
     public partial SolidColorBrush? ColorPreviewBorderBackground { get; set; }
 
-    public ICommand PickFileCommand { get; }
-
-    public WallpaperPickerViewModel(IErrorService errorService)
+    [RelayCommand]
+    private async Task PickFile()
     {
-        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
-        _errorService = errorService;
-
-        SelectWallpaperThemeMode = Application.Current.RequestedTheme;
-
-        try
+        var openPicker = new Windows.Storage.Pickers.FileOpenPicker()
         {
-            _builder.Load();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerViewModel");
-        }
-
-        LoadSettings();
-
-        StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
-        StateUpdateHandler.StartConfigWatcher();
-
-        PickFileCommand = new RelayCommand(async () =>
-        {
-            var openPicker = new Windows.Storage.Pickers.FileOpenPicker()
-            {
-                ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary,
-                FileTypeFilter =
+            ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail,
+            SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary,
+            FileTypeFilter =
                 {
                     ".avci",
                     ".avcs",
@@ -135,19 +113,40 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
                     ".tiff",
                     ".wdp",
                 },
-            };
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
-            WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
-            var file = await openPicker.PickSingleFileAsync();
-            if (file != null)
-            {
-                SetWallpaperFromFileDialog(file.Path);
-                SafeSaveBuilder();
-                LoadSettings();
-                DisplayWallpaperPath = file.Path;
-                _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
-            }
-        });
+        };
+        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
+        WinRT.Interop.InitializeWithWindow.Initialize(openPicker, hWnd);
+        var file = await openPicker.PickSingleFileAsync();
+        if (file != null)
+        {
+            SetWallpaperFromFileDialog(file.Path);
+            SafeSaveBuilder();
+            LoadSettings();
+            DisplayWallpaperPath = file.Path;
+            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+        }
+    }
+
+    public WallpaperPickerViewModel(IErrorService errorService)
+    {
+        _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
+        _errorService = errorService;
+
+        SelectWallpaperThemeMode = Application.Current.RequestedTheme;
+
+        try
+        {
+            _builder.Load();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerViewModel");
+        }
+
+        LoadSettings();
+
+        StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
+        StateUpdateHandler.StartConfigWatcher();
     }
 
     private void SetWallpaperFromFileDialog(string filePath)
