@@ -12,14 +12,11 @@ public sealed partial class MainWindow : Window
 {
     private readonly INavigationService _navigationService;
 
-    public MainWindow()
+    public MainWindow(INavigationService navigationService)
     {
-        _navigationService = App.GetService<INavigationService>();
+        _navigationService = navigationService;
         InitializeComponent();
 
-        // TODO: Set the title bar icon by updating /Assets/WindowIcon.ico.
-        // A custom title bar is required for full window theme and Mica support.
-        // https://docs.microsoft.com/windows/apps/develop/title-bar?tabs=winui3#full-customization
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         TitleBar.Subtitle = Debugger.IsAttached ? "Debug" : "";
@@ -49,10 +46,7 @@ public sealed partial class MainWindow : Window
 
         _navigationService.Frame = NavigationFrame;
         _navigationService.InitializeNavigationView(NavigationViewControl);
-
         _navigationService.InitializeBreadcrumbBar(BreadcrumBarControl);
-
-        Closed += MainWindow_Closed;
     }
 
     private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
@@ -72,38 +66,5 @@ public sealed partial class MainWindow : Window
     {
         var backgroundHoverColor = TitleBar.ActualTheme == ElementTheme.Dark ? Color.FromArgb(20, 255, 255, 255) : Color.FromArgb(40, 0, 0, 0);
         AppWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
-    }
-
-    private async void MainWindow_Closed(object sender, WindowEventArgs args)
-    {
-        var presenter = AppWindow.Presenter as OverlappedPresenter;
-        var position = AppWindow.Position;
-        var size = AppWindow.Size;
-        var localSettings = App.GetService<ILocalSettingsService>();
-        await Task.Run(async () =>
-        {
-            if (presenter != null)
-            {
-                await localSettings.SaveSettingAsync("WindowState", (int)presenter.State);
-
-                if (presenter.State == OverlappedPresenterState.Restored)
-                {
-                    await localSettings.SaveSettingAsync("X", position.X);
-                    await localSettings.SaveSettingAsync("Y", position.Y);
-                    await localSettings.SaveSettingAsync("Width", size.Width);
-                    await localSettings.SaveSettingAsync("Height", size.Height);
-                }
-            }
-
-            //TODO: MapLocationFinder will make WinUI app hang on exit, more information on https://github.com/microsoft/microsoft-ui-xaml/issues/10229
-            try
-            {
-                Process.GetCurrentProcess().Kill();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-        });
     }
 }

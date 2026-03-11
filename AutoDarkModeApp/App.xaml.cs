@@ -67,11 +67,15 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
+            services.AddSingleton<ICloseService, CloseService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
 
             services.AddSingleton<IErrorService, ErrorService>();
             services.AddSingleton<IGeolocatorService, GeolocatorService>();
+
+            // Window
+            services.AddSingleton<MainWindow>();
 
             // Views and ViewModels
             services.AddTransient<ThemePickerViewModel>();
@@ -142,7 +146,8 @@ public partial class App : Application
             //await App.GetService<IErrorService>().ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Startup", "Failed to force-set Svc language");
         }
 
-        MainWindow = new MainWindow();
+        MainWindow = App.GetService<MainWindow>();
+        MainWindow.Closed += async (s, e) => await App.GetService<ICloseService>().CloseAsync();
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
