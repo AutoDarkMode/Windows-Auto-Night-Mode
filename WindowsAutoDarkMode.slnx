@@ -3,38 +3,32 @@
     <Platform Name="Any CPU" />
     <Platform Name="ARM64" />
     <Platform Name="x64" />
-    <Platform Name="x86" />
   </Configurations>
   <Project Path="AutoDarkModeApp/AutoDarkModeApp.csproj">
     <BuildDependency Project="AutoDarkModeLib/AutoDarkModeLib.csproj" />
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x64" />
   </Project>
   <Project Path="AutoDarkModeComms/AutoDarkModeComms.csproj">
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x64" />
   </Project>
   <Project Path="AutoDarkModeLib/AutoDarkModeLib.csproj">
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x64" />
   </Project>
   <Project Path="AutoDarkModeShell/AutoDarkModeShell.csproj">
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x64" />
   </Project>
   <Project Path="AutoDarkModeSvc/AutoDarkModeSvc.csproj">
     <BuildDependency Project="AutoDarkModeLib/AutoDarkModeLib.csproj" />
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="arm64" />
     <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x64" />
   </Project>
 </Solution>
