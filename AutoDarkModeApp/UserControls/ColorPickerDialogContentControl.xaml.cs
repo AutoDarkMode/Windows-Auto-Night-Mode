@@ -1,5 +1,4 @@
 using CommunityToolkit.WinUI;
-using Microsoft.UI.Xaml.Controls;
 using Windows.UI;
 
 namespace AutoDarkModeApp.UserControls;

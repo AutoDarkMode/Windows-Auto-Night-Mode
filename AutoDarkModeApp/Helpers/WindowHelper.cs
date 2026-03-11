@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace AutoDarkModeApp.Helpers;
+
 public static class WindowHelper
 {
     public static void BringProcessToFront(Process process)

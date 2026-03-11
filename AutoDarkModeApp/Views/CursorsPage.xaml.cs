@@ -1,10 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
 

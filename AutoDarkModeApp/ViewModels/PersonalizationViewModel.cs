@@ -1,11 +1,4 @@
-﻿using System.Windows.Input;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
-namespace AutoDarkModeApp.ViewModels;
+﻿namespace AutoDarkModeApp.ViewModels;
 
 public partial class PersonalizationViewModel : ObservableRecipient
 {

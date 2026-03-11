@@ -1,8 +1,5 @@
 using System.Diagnostics;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
 

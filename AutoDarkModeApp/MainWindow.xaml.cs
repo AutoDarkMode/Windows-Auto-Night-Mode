@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using AutoDarkModeApp.Contracts.Services;
 using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml;
 using Windows.UI;
 using Windows.UI.WindowManagement;
 

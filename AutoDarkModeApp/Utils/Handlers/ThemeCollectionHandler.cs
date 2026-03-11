@@ -5,8 +5,6 @@
 #endregion
 using System.Runtime.InteropServices;
 using System.Text;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeLib;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 

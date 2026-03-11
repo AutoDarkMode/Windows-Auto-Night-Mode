@@ -5,7 +5,6 @@
 
 using System.Security.Principal;
 using System.Timers;
-using AutoDarkModeLib;
 using Microsoft.UI.Dispatching;
 
 namespace AutoDarkModeApp.Utils.Handlers;
@@ -202,7 +201,7 @@ internal static class StateUpdateHandler
 
     public static void AddDebounceEventOnConfigUpdate(Action action)
     {
-        if(_debounceTimer == null)
+        if (_debounceTimer == null)
         {
             return;
         }

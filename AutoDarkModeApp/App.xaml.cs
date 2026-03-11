@@ -1,15 +1,10 @@
 ﻿using System.Diagnostics;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
 using AutoDarkModeComms;
-using AutoDarkModeLib;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.UI.Xaml;
 
 namespace AutoDarkModeApp;
 

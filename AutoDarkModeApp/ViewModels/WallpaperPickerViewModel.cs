@@ -1,17 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
-using System.Windows.Input;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Communication;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI.Helpers;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 

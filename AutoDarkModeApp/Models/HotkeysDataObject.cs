@@ -1,7 +1,4 @@
-﻿using AutoDarkModeLib;
-using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace AutoDarkModeApp.Models;
+﻿namespace AutoDarkModeApp.Models;
 
 public partial class HotkeysDataObject : ObservableObject
 {
