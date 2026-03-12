@@ -12,6 +12,9 @@ public sealed partial class MainWindow : Window
 {
     private readonly INavigationService _navigationService;
 
+    [DllImport("user32.dll")]
+    private static extern uint GetDpiForWindow(IntPtr hWnd);
+
     public MainWindow(INavigationService navigationService)
     {
         _navigationService = navigationService;
@@ -30,18 +33,14 @@ public sealed partial class MainWindow : Window
 
         Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
 
-        // TODO: No one knows what the correct way to use it is. Waiting for official examples.
-        [DllImport("user32.dll")]
-        static extern uint GetDpiForWindow([In] IntPtr hwnd);
-        IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        var dpiForWindow = GetDpiForWindow(hWnd);
-        double scaleFactor = dpiForWindow / 96.0;
+        IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        uint dpi = GetDpiForWindow(hwnd);
+        double scaleFactor = dpi / 96.0;
+
         if (AppWindow.Presenter is OverlappedPresenter presenter)
         {
-            presenter.PreferredMinimumWidth = (int)(870 * scaleFactor);
+            presenter.PreferredMinimumWidth = (int)(860 * scaleFactor);
             presenter.PreferredMinimumHeight = (int)(600 * scaleFactor);
-            presenter.PreferredMaximumHeight = 10000;
-            presenter.PreferredMaximumWidth = 10000;
         }
 
         _navigationService.Frame = NavigationFrame;
@@ -67,4 +66,5 @@ public sealed partial class MainWindow : Window
         var backgroundHoverColor = TitleBar.ActualTheme == ElementTheme.Dark ? Color.FromArgb(20, 255, 255, 255) : Color.FromArgb(40, 0, 0, 0);
         AppWindow.TitleBar.ButtonHoverBackgroundColor = backgroundHoverColor;
     }
+
 }

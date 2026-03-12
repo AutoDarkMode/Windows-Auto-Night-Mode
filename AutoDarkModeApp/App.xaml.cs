@@ -44,12 +44,12 @@ public partial class App : Application
             if (processes.Count > 0)
             {
                 Helpers.WindowHelper.BringProcessToFront(processes[0]);
-                Environment.Exit(-1);
+                App.Current.Exit();
             }
         }
     }
 
-    public static Window MainWindow { get; set; } = Window.Current;
+    public static Window? MainWindow { get; set; }
 
     public App()
     {
@@ -130,7 +130,7 @@ public partial class App : Application
         if (arguments.Length > 1)
         {
             new PipeClient().SendMessageAndGetReply(arguments[1]);
-            Environment.Exit(-1);
+            App.Current.Exit();
         }
 
         // Set App and Svc language
