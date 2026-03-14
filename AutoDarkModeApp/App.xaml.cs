@@ -25,6 +25,8 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/logging
     public IHost Host { get; }
 
+    // TODO: Avoid static GetService<T>(); prefer constructor injection.
+
     public static T GetService<T>()
         where T : class
     {
@@ -36,32 +38,21 @@ public partial class App : Application
         return service;
     }
 
-    public static void CheckAppMutex()
-    {
-        if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false) && !Debugger.IsAttached)
-        {
-            List<Process> processes = [.. Process.GetProcessesByName("AutoDarkModeApp")];
-            if (processes.Count > 0)
-            {
-                Helpers.WindowHelper.BringProcessToFront(processes[0]);
-                App.Current.Exit();
-            }
-        }
-    }
-
-    public static Window? MainWindow { get; set; }
+    // Expose the DI-created MainWindow for legacy call sites.
+    // This preserves compatibility with existing App.MainWindow usages.
+    // Consider refactoring callers to use dependency injection directly.
+    public static MainWindow MainWindow =>
+        (Current as App)!.Host.Services.GetRequiredService<MainWindow>();
 
     public App()
     {
         CheckAppMutex();
-
         InitializeComponent();
 
-        Host = Microsoft
-            .Extensions.Hosting.Host.CreateDefaultBuilder()
+        Host = Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder()
             .UseContentRoot(AppContext.BaseDirectory)
-            .ConfigureServices(
-                (context, services) =>
+            .ConfigureServices((context, services) =>
                 {
                     // Services
                     services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
@@ -115,6 +106,20 @@ public partial class App : Application
         UnhandledException += App_UnhandledException;
     }
 
+    public static void CheckAppMutex()
+    {
+        if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false) && !Debugger.IsAttached)
+        {
+            var processes = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.Id != Environment.ProcessId).ToList();
+            if (processes.Count > 0)
+            {
+                Helpers.WindowHelper.BringProcessToFront(processes[0]);
+                App.Current.Exit();
+            }
+        }
+    }
+
+
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
         // TODO: Log and handle exceptions as appropriate.
@@ -131,21 +136,23 @@ public partial class App : Application
         {
             new PipeClient().SendMessageAndGetReply(arguments[1]);
             App.Current.Exit();
+            return;
         }
 
-        // Set App and Svc language
+        // Set App and SVC language
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
         await Task.Run(() =>
         {
             var builder = AdmConfigBuilder.Instance();
             builder.Load();
-            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode;
+            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // For SVC and other services that need to know the UI culture
             builder.Save();
         });
 
-        MainWindow = App.GetService<MainWindow>();
-        MainWindow.Closed += async (s, e) => await App.GetService<ICloseService>().CloseAsync();
+        var mainWindow = Host.Services.GetRequiredService<MainWindow>();
+        mainWindow.Closed += async (s, e) => await Host.Services.GetRequiredService<ICloseService>().CloseAsync();
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        await Host.Services.GetRequiredService<IActivationService>().ActivateAsync(args);
+        mainWindow.Activate();
     }
 }

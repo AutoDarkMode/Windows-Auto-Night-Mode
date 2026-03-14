@@ -20,6 +20,8 @@ public sealed partial class MainWindow : Window
         _navigationService = navigationService;
         InitializeComponent();
 
+        Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
+
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         TitleBar.Subtitle = Debugger.IsAttached ? "Debug" : "";
@@ -27,11 +29,10 @@ public sealed partial class MainWindow : Window
 
         ApplySystemThemeToCaptionButtons();
 
-        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
-        AppWindow.SetTaskbarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
-        AppWindow.SetTitleBarIcon(Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico"));
-
-        Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
+        var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets/AutoDarkModeIcon.ico");
+        AppWindow.SetIcon(iconPath);
+        AppWindow.SetTaskbarIcon(iconPath);
+        AppWindow.SetTitleBarIcon(iconPath);
 
         IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
         uint dpi = GetDpiForWindow(hwnd);
