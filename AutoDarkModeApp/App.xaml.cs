@@ -25,24 +25,29 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/logging
     public IHost Host { get; }
 
-    // TODO: Avoid static GetService<T>(); prefer constructor injection.
-
+    /// <summary>
+    /// Retrieves a registered service of the specified type from the application's dependency injection container.
+    /// </summary>
+    /// <remarks>Use this method to access services configured in the application's dependency injection
+    /// container. Ensure that the service type is registered in the ConfigureServices method of App.xaml.cs before
+    /// calling this method.</remarks>
+    /// <typeparam name="T">The type of service to retrieve. Must be a reference type and registered in the application's service
+    /// collection.</typeparam>
+    /// <returns>An instance of the requested service type <typeparamref name="T"/>.</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the requested service type <typeparamref name="T"/> is not registered in the application's service
+    /// collection.</exception>
     public static T GetService<T>()
         where T : class
     {
         if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
-            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            throw new InvalidOperationException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
 
         return service;
     }
 
-    // Expose the DI-created MainWindow for legacy call sites.
-    // This preserves compatibility with existing App.MainWindow usages.
-    // Consider refactoring callers to use dependency injection directly.
-    public static MainWindow MainWindow =>
-        (Current as App)!.Host.Services.GetRequiredService<MainWindow>();
+    public static MainWindow MainWindow { get; private set; } = null!;
 
     public App()
     {
@@ -67,6 +72,7 @@ public partial class App : Application
                     services.AddSingleton<IGeolocatorService, GeolocatorService>();
 
                     // Window
+                    // NOTE: The MainWindow is registered as a singleton because we only need one instance.
                     services.AddSingleton<MainWindow>();
 
                     // Views and ViewModels
@@ -119,7 +125,6 @@ public partial class App : Application
         }
     }
 
-
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
         // TODO: Log and handle exceptions as appropriate.
@@ -139,20 +144,22 @@ public partial class App : Application
             return;
         }
 
-        // Set App and SVC language
+        // Set App and Svc language
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
         await Task.Run(() =>
         {
             var builder = AdmConfigBuilder.Instance();
             builder.Load();
-            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // For SVC and other services that need to know the UI culture
+            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // For Svc and other services that need to know the UI culture
             builder.Save();
         });
 
-        var mainWindow = Host.Services.GetRequiredService<MainWindow>();
-        mainWindow.Closed += async (s, e) => await Host.Services.GetRequiredService<ICloseService>().CloseAsync();
+        // NOTE: Here we use the DI container to get the MainWindow and set it as a static property, which not only conforms to the standard, but also facilitates other places to access the MainWindow.
+        MainWindow = GetService<MainWindow>();
+        MainWindow.Closed += async (s, e) => await GetService<ICloseService>().CloseAsync();
 
-        await Host.Services.GetRequiredService<IActivationService>().ActivateAsync(args);
-        mainWindow.Activate();
+        await GetService<IActivationService>().ActivateAsync(args);
+
+        // NOTE: The MainWindow must be activated (i.e. made visible) in the ActivationService, not here in App.xaml.cs, because there are navigation events and adjustment of window position and size.
     }
 }
