@@ -15,15 +15,35 @@ public static class ThemeCollectionHandler
     public static readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
     public static readonly string WindowsPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
 
+    // friendly names for built-in Windows themes (because Windows does NOT store these anywhere)
+    private static readonly Dictionary<string, string> WindowsThemeNameOverrides = new()
+    {
+        // Windows 11
+        { "aero", "Theme11_Light".GetLocalized() },
+        { "dark", "Theme11_Dark".GetLocalized() },
+        { "themeA", "Theme11_Glow".GetLocalized() },
+        { "themeB", "Theme11_CapturedMotion".GetLocalized() },
+        { "themeC", "Theme11_Sunrise".GetLocalized() },
+        { "themeD", "Theme11_Flow".GetLocalized() },
+        { "spotlight", "Theme11_Spotlight".GetLocalized() },
+
+        // Windows 10
+        { "aero_Win10", "Theme10_Windows".GetLocalized() },          // same filename as Win11, different meaning
+        { "light", "Theme10_WindowsLight".GetLocalized() },
+        { "theme1", "Theme10_Windows10".GetLocalized() },
+        { "theme2", "Theme10_Flowers".GetLocalized() }
+    };
+
     //  Get a list of all files the theme folder contains. If there is no theme-folder, create one.
     public static List<ThemeFile> GetUserThemes()
     {
         try
         {
-            var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList();
-            files = files.Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
+            var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
+            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
 
             var themeFiles = new List<ThemeFile>();
+
             foreach (var file in files)
             {
                 string displayName = GetThemeDisplayName(file);
@@ -40,9 +60,14 @@ public static class ThemeCollectionHandler
         }
     }
 
-    // Thanks Jay and Copilot
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
-    private static extern int GetPrivateProfileString(string section, string key, string defaultValue, StringBuilder retVal, int size, string filePath);
+    private static extern int GetPrivateProfileString(
+        string section,
+        string key,
+        string defaultValue,
+        StringBuilder retVal,
+        int size,
+        string filePath);
 
     private static string GetThemeDisplayName(string themePath)
     {
@@ -50,7 +75,13 @@ public static class ThemeCollectionHandler
         {
             StringBuilder displayName = new StringBuilder(255);
             _ = GetPrivateProfileString("Theme", "DisplayName", "", displayName, displayName.Capacity, themePath);
-            return displayName.ToString();
+
+            string name = displayName.ToString();
+            if (!string.IsNullOrEmpty(name))
+                return name;
+
+            // fallback: filename
+            return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
         }
         catch
         {
@@ -60,26 +91,47 @@ public static class ThemeCollectionHandler
 
     private static void InjectWindowsThemes(List<ThemeFile> themeFiles)
     {
-        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC)
+        string themeFolder = Path.Combine(WindowsPath, @"Resources\Themes");
+
+        if (!Directory.Exists(themeFolder))
         {
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "Theme11_Light".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\dark.theme"), "Theme11_Dark".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeA.theme"), "Theme11_Glow".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeB.theme"), "Theme11_CapturedMotion".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeC.theme"), "Theme11_Sunrise".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\themeD.theme"), "Theme11_Flow".GetLocalized()));
-            ThemeFile spotlight = new(Path.Combine(WindowsPath, @"Resources\Themes\spotlight.theme"), "Theme11_Spotlight".GetLocalized());
-            if (File.Exists(spotlight.Path))
-            {
-                themeFiles.Add(spotlight);
-            }
+            return;
         }
-        else
+
+        var files = Directory.EnumerateFiles(themeFolder, "*.theme", SearchOption.TopDirectoryOnly);
+
+        foreach (var file in files)
         {
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\aero.theme"), "Theme10_Windows".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\Light.theme"), "Theme10_WindowsLight".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme1.theme"), "Theme10_Windows10".GetLocalized()));
-            themeFiles.Add(new ThemeFile(Path.Combine(WindowsPath, @"Resources\Themes\theme2.theme"), "Theme10_Flowers".GetLocalized()));
+            string displayName = GetThemeDisplayName(file).Trim();
+            string fileName = Path.GetFileNameWithoutExtension(file);
+            //string key = fileName.ToLowerInvariant();
+            bool isWin11 = Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC;
+            string lookupKey = fileName;
+
+            // skip ADM-managed themes
+            if (file.Contains(Helper.PathUnmanagedDarkTheme) ||
+                file.Contains(Helper.PathUnmanagedLightTheme) ||
+                file.Contains(Helper.PathManagedTheme)) continue;
+
+            // Microsoft doesn’t store friendly names inside the .theme files
+            // The problem is DisplayName inside the .theme file is not a friendly name
+            // If Windows stored a resource reference instead of a real name, ignore it
+            if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
+                displayName = "";
+
+            if (!isWin11 && fileName == "aero")
+            {
+                lookupKey = "aero_Win10"; // rename for Windows 10
+            }
+
+            // fallback to filename if display name is empty
+            if (string.IsNullOrEmpty(displayName) && WindowsThemeNameOverrides.TryGetValue(lookupKey, out string friendly))
+                displayName = friendly;
+
+            if (string.IsNullOrEmpty(displayName))
+                displayName = fileName;
+
+            themeFiles.Add(new ThemeFile(file, displayName));
         }
     }
 }
@@ -97,18 +149,12 @@ public class ThemeFile(string path)
     public string Name { get; } = System.IO.Path.GetFileNameWithoutExtension(path) ?? "Undefined";
     public bool IsWindowsTheme { get; }
 
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override string ToString() => Name;
 
     public override bool Equals(object? obj)
     {
         return obj is string name ? Name.Equals(name, StringComparison.Ordinal) : base.Equals(obj);
     }
 
-    public override int GetHashCode()
-    {
-        return Name.GetHashCode();
-    }
+    public override int GetHashCode() => Name.GetHashCode();
 }
