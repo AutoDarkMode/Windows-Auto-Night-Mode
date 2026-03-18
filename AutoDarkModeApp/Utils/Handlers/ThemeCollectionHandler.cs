@@ -12,8 +12,10 @@ namespace AutoDarkModeApp.Utils.Handlers;
 
 public static class ThemeCollectionHandler
 {
-    public static readonly string ThemeFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Microsoft\Windows\Themes";
-    public static readonly string WindowsPath = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+    public static readonly string UserThemesFolderPath =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
+    public static readonly string WindowsThemesFolderPath =
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Resources", "Themes");
 
     // friendly names for built-in Windows themes (because Windows does NOT store these anywhere)
     private static readonly Dictionary<string, string> WindowsThemeNameOverrides = new()
@@ -39,7 +41,7 @@ public static class ThemeCollectionHandler
     {
         try
         {
-            var files = Directory.EnumerateFiles(ThemeFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
+            var files = Directory.EnumerateFiles(UserThemesFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
             .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
 
             var themeFiles = new List<ThemeFile>();
@@ -57,12 +59,10 @@ public static class ThemeCollectionHandler
             // ---------------------------------------------------------
             // Built‑in Windows themes (Win10 + Win11)
             // ---------------------------------------------------------
-            string themeFolder = Path.Combine(WindowsPath, @"Resources\Themes");
-
-            if (Directory.Exists(themeFolder))
+            if (Directory.Exists(WindowsThemesFolderPath))
             {
 
-                foreach (var file in Directory.EnumerateFiles(themeFolder, "*.theme", SearchOption.TopDirectoryOnly))
+                foreach (var file in Directory.EnumerateFiles(WindowsThemesFolderPath, "*.theme", SearchOption.TopDirectoryOnly))
                 {
                     string displayName = GetThemeDisplayName(file).Trim();
                     string fileName = Path.GetFileNameWithoutExtension(file);
@@ -100,7 +100,7 @@ public static class ThemeCollectionHandler
         }
         catch
         {
-            Directory.CreateDirectory(ThemeFolderPath);
+            Directory.CreateDirectory(UserThemesFolderPath);
             return GetUserThemes();
         }
     }
