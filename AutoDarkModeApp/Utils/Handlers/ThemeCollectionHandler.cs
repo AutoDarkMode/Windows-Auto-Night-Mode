@@ -47,12 +47,19 @@ public static class ThemeCollectionHandler
             // User themes
             // ---------------------------------------------------------
             var userThemeFiles = Directory.EnumerateFiles(UserThemesFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
-            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
+            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.PathUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
 
             foreach (var file in userThemeFiles)
             {
                 string displayName = GetThemeDisplayName(file);
-                themeFiles.Add(new ThemeFile(file, displayName));
+                if (!string.IsNullOrEmpty(displayName))
+                {
+                    themeFiles.Add(new ThemeFile(file, displayName));
+                }
+                else
+                {
+                    themeFiles.Add(new ThemeFile(file)); // fallback to filename if display name is empty
+                }
             }
 
             // ---------------------------------------------------------
@@ -71,7 +78,8 @@ public static class ThemeCollectionHandler
                     // skip ADM-managed themes
                     if (file.Contains(Helper.PathUnmanagedDarkTheme) ||
                         file.Contains(Helper.PathUnmanagedLightTheme) ||
-                        file.Contains(Helper.PathManagedTheme)) continue;
+                        file.Contains(Helper.PathManagedTheme))
+                        continue;
 
                     // Microsoft doesn’t store friendly names inside the .theme userThemeFiles
                     // "DisplayName" inside the .theme file is not a friendly name
@@ -79,7 +87,7 @@ public static class ThemeCollectionHandler
                     if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
                         displayName = "";
 
-                    if (!isWin11 && fileName == "aero")
+                    if (!isWin11 && fileName.Equals("aero", StringComparison.OrdinalIgnoreCase))
                     {
                         lookupKey = "aero_Win10"; // rename for Windows 10
                     }
@@ -123,35 +131,35 @@ public static class ThemeCollectionHandler
             if (!string.IsNullOrEmpty(name))
                 return name;
 
-            // fallback: filename
-            return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
+            // return empty so caller can decide fallback
+            return "";
         }
         catch
         {
-            return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
+            return "";
         }
     }
 }
 
-public class ThemeFile(string path)
+public class ThemeFile
 {
-    public ThemeFile(string path, string name)
-        : this(path)
+    public ThemeFile(string path)
     {
+        Path = path;
+        Name = System.IO.Path.GetFileNameWithoutExtension(path);
+        IsBuiltInWindowsTheme = false;
+    }
+
+    public ThemeFile(string path, string name)
+    {
+        Path = path;
         Name = name;
         IsBuiltInWindowsTheme = true;
     }
 
-    public string Path { get; } = path;
-    public string Name { get; } = System.IO.Path.GetFileNameWithoutExtension(path) ?? "Undefined";
+    public string Path { get; }
+    public string Name { get; }
     public bool IsBuiltInWindowsTheme { get; }
 
     public override string ToString() => Name;
-
-    public override bool Equals(object? obj)
-    {
-        return obj is string name ? Name.Equals(name, StringComparison.Ordinal) : base.Equals(obj);
-    }
-
-    public override int GetHashCode() => Name.GetHashCode();
 }
