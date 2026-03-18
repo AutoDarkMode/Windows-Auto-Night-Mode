@@ -44,13 +44,58 @@ public static class ThemeCollectionHandler
 
             var themeFiles = new List<ThemeFile>();
 
+            // ---------------------------------------------------------
+            // User themes
+            // ---------------------------------------------------------
+
             foreach (var file in files)
             {
                 string displayName = GetThemeDisplayName(file);
                 themeFiles.Add(new ThemeFile(file, displayName));
             }
 
-            InjectWindowsThemes(themeFiles);
+            // ---------------------------------------------------------
+            // Built‑in Windows themes (Win10 + Win11)
+            // ---------------------------------------------------------
+            string themeFolder = Path.Combine(WindowsPath, @"Resources\Themes");
+
+            if (Directory.Exists(themeFolder))
+            {
+
+                foreach (var file in Directory.EnumerateFiles(themeFolder, "*.theme", SearchOption.TopDirectoryOnly))
+                {
+                    string displayName = GetThemeDisplayName(file).Trim();
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+
+                    bool isWin11 = Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC;
+                    string lookupKey = fileName;
+
+                    // skip ADM-managed themes
+                    if (file.Contains(Helper.PathUnmanagedDarkTheme) ||
+                        file.Contains(Helper.PathUnmanagedLightTheme) ||
+                        file.Contains(Helper.PathManagedTheme)) continue;
+
+                    // Microsoft doesn’t store friendly names inside the .theme files
+                    // "DisplayName" inside the .theme file is not a friendly name
+                    // If Windows stored a resource reference instead of a real name, ignore it
+                    if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
+                        displayName = "";
+
+                    if (!isWin11 && fileName == "aero")
+                    {
+                        lookupKey = "aero_Win10"; // rename for Windows 10
+                    }
+
+                    if (string.IsNullOrEmpty(displayName) && WindowsThemeNameOverrides.TryGetValue(lookupKey, out string friendly))
+                        displayName = friendly;
+
+                    // fallback to filename if display name is empty
+                    if (string.IsNullOrEmpty(displayName))
+                        displayName = fileName;
+
+                    themeFiles.Add(new ThemeFile(file, displayName));
+                }
+            }
             return themeFiles;
         }
         catch
@@ -86,52 +131,6 @@ public static class ThemeCollectionHandler
         catch
         {
             return Path.GetFileNameWithoutExtension(themePath) ?? "Undefined";
-        }
-    }
-
-    private static void InjectWindowsThemes(List<ThemeFile> themeFiles)
-    {
-        string themeFolder = Path.Combine(WindowsPath, @"Resources\Themes");
-
-        if (!Directory.Exists(themeFolder))
-        {
-            return;
-        }
-
-        var files = Directory.EnumerateFiles(themeFolder, "*.theme", SearchOption.TopDirectoryOnly);
-
-        foreach (var file in files)
-        {
-            string displayName = GetThemeDisplayName(file).Trim();
-            string fileName = Path.GetFileNameWithoutExtension(file);
-            //string key = fileName.ToLowerInvariant();
-            bool isWin11 = Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC;
-            string lookupKey = fileName;
-
-            // skip ADM-managed themes
-            if (file.Contains(Helper.PathUnmanagedDarkTheme) ||
-                file.Contains(Helper.PathUnmanagedLightTheme) ||
-                file.Contains(Helper.PathManagedTheme)) continue;
-
-            // Microsoft doesn’t store friendly names inside the .theme files
-            // The problem is DisplayName inside the .theme file is not a friendly name
-            // If Windows stored a resource reference instead of a real name, ignore it
-            if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
-                displayName = "";
-
-            if (!isWin11 && fileName == "aero")
-            {
-                lookupKey = "aero_Win10"; // rename for Windows 10
-            }
-
-            // fallback to filename if display name is empty
-            if (string.IsNullOrEmpty(displayName) && WindowsThemeNameOverrides.TryGetValue(lookupKey, out string friendly))
-                displayName = friendly;
-
-            if (string.IsNullOrEmpty(displayName))
-                displayName = fileName;
-
-            themeFiles.Add(new ThemeFile(file, displayName));
         }
     }
 }
