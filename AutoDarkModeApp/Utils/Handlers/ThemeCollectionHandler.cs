@@ -36,21 +36,20 @@ public static class ThemeCollectionHandler
         { "theme2", "Theme10_Flowers".GetLocalized() }
     };
 
-    //  Get a list of all files the theme folder contains. If there is no theme-folder, create one.
+    //  Get a list of all userThemeFiles the theme folder contains. If there is no theme-folder, create one.
     public static List<ThemeFile> GetUserThemes()
     {
         try
         {
-            var files = Directory.EnumerateFiles(UserThemesFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
-            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
-
             var themeFiles = new List<ThemeFile>();
 
             // ---------------------------------------------------------
             // User themes
             // ---------------------------------------------------------
+            var userThemeFiles = Directory.EnumerateFiles(UserThemesFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
+            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.NameUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
 
-            foreach (var file in files)
+            foreach (var file in userThemeFiles)
             {
                 string displayName = GetThemeDisplayName(file);
                 themeFiles.Add(new ThemeFile(file, displayName));
@@ -61,7 +60,6 @@ public static class ThemeCollectionHandler
             // ---------------------------------------------------------
             if (Directory.Exists(WindowsThemesFolderPath))
             {
-
                 foreach (var file in Directory.EnumerateFiles(WindowsThemesFolderPath, "*.theme", SearchOption.TopDirectoryOnly))
                 {
                     string displayName = GetThemeDisplayName(file).Trim();
@@ -75,7 +73,7 @@ public static class ThemeCollectionHandler
                         file.Contains(Helper.PathUnmanagedLightTheme) ||
                         file.Contains(Helper.PathManagedTheme)) continue;
 
-                    // Microsoft doesn’t store friendly names inside the .theme files
+                    // Microsoft doesn’t store friendly names inside the .theme userThemeFiles
                     // "DisplayName" inside the .theme file is not a friendly name
                     // If Windows stored a resource reference instead of a real name, ignore it
                     if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
@@ -141,12 +139,12 @@ public class ThemeFile(string path)
         : this(path)
     {
         Name = name;
-        IsWindowsTheme = true;
+        IsBuiltInWindowsTheme = true;
     }
 
     public string Path { get; } = path;
     public string Name { get; } = System.IO.Path.GetFileNameWithoutExtension(path) ?? "Undefined";
-    public bool IsWindowsTheme { get; }
+    public bool IsBuiltInWindowsTheme { get; }
 
     public override string ToString() => Name;
 
