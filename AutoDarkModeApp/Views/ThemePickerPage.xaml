@@ -49,6 +49,7 @@
                     Click="OpenThemeFolderSettingsCard_Click"
                     Header="{helpers:ResourceString Name=OpenPath}"
                     IsClickEnabled="True"
+                    ToolTipService.ToolTip="{x:Bind UserThemesFolderPath}"
                     IsEnabled="{x:Bind ViewModel.ThemeSwitchEnabled, Mode=OneWay}" />
 
                 <!--  Ignore  -->
