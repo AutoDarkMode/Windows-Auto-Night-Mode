@@ -12,11 +12,6 @@ namespace AutoDarkModeApp.Utils.Handlers;
 
 public static class ThemeCollectionHandler
 {
-    public static readonly string UserThemesFolderPath =
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
-    public static readonly string WindowsThemesFolderPath =
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Resources", "Themes");
-
     // friendly names for built-in Windows themes (because Windows does NOT store these anywhere)
     private static readonly Dictionary<string, string> WindowsThemeNameOverrides = new()
     {
@@ -36,7 +31,7 @@ public static class ThemeCollectionHandler
         { "theme2", "Theme10_Flowers".GetLocalized() }
     };
 
-    //  Get a list of all userThemeFiles the theme folder contains. If there is no theme-folder, create one.
+    //  Get a list of all theme files the theme folder contains. If there is no theme-folder, create one.
     public static List<ThemeFile> GetUserThemes()
     {
         try
@@ -46,8 +41,11 @@ public static class ThemeCollectionHandler
             // ---------------------------------------------------------
             // User themes
             // ---------------------------------------------------------
-            var userThemeFiles = Directory.EnumerateFiles(UserThemesFolderPath, "*.theme", SearchOption.AllDirectories).ToList()
-            .Where(f => !f.Contains(Helper.PathUnmanagedDarkTheme) && !f.Contains(Helper.PathUnmanagedLightTheme) && !f.Contains(Helper.PathManagedTheme)).ToList();
+            var userThemeFiles = Directory.EnumerateFiles(Helper.UserThemesFolderPath, "*.theme", SearchOption.AllDirectories)
+                .Where(f => !f.Equals(Helper.UnmanagedDarkThemePath, StringComparison.OrdinalIgnoreCase) &&
+                    !f.Equals(Helper.UnmanagedLightThemePath, StringComparison.OrdinalIgnoreCase) &&
+                    !f.Equals(Helper.ManagedThemePath, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
             foreach (var file in userThemeFiles)
             {
@@ -65,23 +63,23 @@ public static class ThemeCollectionHandler
             // ---------------------------------------------------------
             // Built‑in Windows themes (Win10 + Win11)
             // ---------------------------------------------------------
-            if (Directory.Exists(WindowsThemesFolderPath))
+            if (Directory.Exists(Helper.WindowsThemesFolderPath))
             {
-                foreach (var file in Directory.EnumerateFiles(WindowsThemesFolderPath, "*.theme", SearchOption.TopDirectoryOnly))
+                foreach (var file in Directory.EnumerateFiles(Helper.WindowsThemesFolderPath, "*.theme", SearchOption.TopDirectoryOnly))
                 {
+                    // skip ADM-managed themes
+                    if (file.Contains(Helper.UnmanagedDarkThemePath) ||
+                        file.Contains(Helper.UnmanagedLightThemePath) ||
+                        file.Contains(Helper.ManagedThemePath))
+                        continue;
+
                     string displayName = GetThemeDisplayName(file).Trim();
                     string fileName = Path.GetFileNameWithoutExtension(file);
 
                     bool isWin11 = Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_RC;
                     string lookupKey = fileName;
 
-                    // skip ADM-managed themes
-                    if (file.Contains(Helper.PathUnmanagedDarkTheme) ||
-                        file.Contains(Helper.PathUnmanagedLightTheme) ||
-                        file.Contains(Helper.PathManagedTheme))
-                        continue;
-
-                    // Microsoft doesn’t store friendly names inside the .theme userThemeFiles
+                    // Microsoft doesn’t store friendly names inside the .theme theme files
                     // "DisplayName" inside the .theme file is not a friendly name
                     // If Windows stored a resource reference instead of a real name, ignore it
                     if (displayName.StartsWith("@%SystemRoot%", StringComparison.OrdinalIgnoreCase))
@@ -106,7 +104,7 @@ public static class ThemeCollectionHandler
         }
         catch
         {
-            Directory.CreateDirectory(UserThemesFolderPath);
+            Directory.CreateDirectory(Helper.UserThemesFolderPath);
             return GetUserThemes();
         }
     }

@@ -66,7 +66,7 @@ public class GlobalState
     }
     public Theme ForcedTheme { get; set; } = Theme.Unknown;
     public string UnmanagedActiveThemePath { get; set; } = "";
-    public ThemeFile ManagedThemeFile { get; } = new(Helper.PathManagedTheme);
+    public ThemeFile ManagedThemeFile { get; } = new(Helper.ManagedThemePath);
     public PostponeManager PostponeManager { get; }
     public NightLight NightLight { get; } = new();
     public AmbientLightState AmbientLight { get; } = new();
@@ -122,7 +122,7 @@ public class GlobalState
                 // persists because we have set it originally when applying the theme, so if we read that then we are aware of the origin theme
                 if (config.WindowsThemeMode.ApplyFlags != null && config.WindowsThemeMode.ApplyFlags.Count > 0)
                 {
-                    string customPath = Path.Combine(Helper.PathThemeFolder, "Custom.theme");
+                    string customPath = Path.Combine(Helper.UserThemesFolderPath, "Custom.theme");
                     bool unmanagedCustom = UnmanagedActiveThemePath.Equals(customPath);
                     if (unmanagedCustom)
                     {
@@ -133,11 +133,11 @@ public class GlobalState
                         string sourceThemeNameCustom = ThemeFile.GetOriginalNameFromRaw(customPath);
                         if (sourceThemeNameCustom == displayNameDark)
                         {
-                            UnmanagedActiveThemePath = Helper.PathUnmanagedDarkTheme;
+                            UnmanagedActiveThemePath = Helper.UnmanagedDarkThemePath;
                         }
                         else if (sourceThemeNameCustom == displayNameLight)
                         {
-                            UnmanagedActiveThemePath = Helper.PathUnmanagedLightTheme;
+                            UnmanagedActiveThemePath = Helper.UnmanagedLightThemePath;
                         }
                         Logger.Debug($"refresh theme state with apply flags enabled, active theme: {(UnmanagedActiveThemePath == "" ? "undefined" : UnmanagedActiveThemePath)}");
                     }
@@ -145,14 +145,14 @@ public class GlobalState
                 // for unmanaged without applyflags
                 else
                 {
-                    bool unmanagedLight = UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedLightTheme);
-                    bool unmanagedDark = UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme);
+                    bool unmanagedLight = UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath);
+                    bool unmanagedDark = UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath);
 
                     // check if an unmanaged theme is active. If so, extract the original name from the theme path
                     // This way, we know which origin theme is active and don't have to switch
                     if (unmanagedLight)
                     {
-                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedLightTheme);
+                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedLightThemePath);
                         (_, _, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.LightThemePath);
                         if (displayNameUnmanaged != displayNameSource)
                         {
@@ -162,7 +162,7 @@ public class GlobalState
                     }
                     if (unmanagedDark)
                     {
-                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.PathUnmanagedDarkTheme);
+                        string displayNameUnmanaged = ThemeFile.GetOriginalNameFromRaw(Helper.UnmanagedDarkThemePath);
                         (_, _, string displayNameSource) = ThemeFile.GetDisplayNameFromRaw(config.WindowsThemeMode.DarkThemePath);
                         if (displayNameUnmanaged != displayNameSource)
                         {

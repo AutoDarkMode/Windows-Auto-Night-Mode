@@ -8,7 +8,7 @@ namespace AutoDarkModeApp.Views;
 
 public sealed partial class ThemePickerPage : Page
 {
-    public string UserThemesFolderPath => ThemeCollectionHandler.UserThemesFolderPath;
+    public string UserThemesFolderPath => Helper.UserThemesFolderPath;
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
     public ThemePickerViewModel ViewModel { get; }
@@ -24,7 +24,6 @@ public sealed partial class ThemePickerPage : Page
     private void LoadThemes()
     {
         List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
-        //IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString()).ToList();
         LightThemeComboBox.ItemsSource = themeCollection;
         DarkThemeComboBox.ItemsSource = themeCollection;
         ThemeFile? lightSelected = themeCollection.FirstOrDefault(t => t.Path == _builder.Config.WindowsThemeMode.LightThemePath);
@@ -42,7 +41,7 @@ public sealed partial class ThemePickerPage : Page
 
     private void OpenThemeFolderSettingsCard_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        var themeFolderPath = ThemeCollectionHandler.UserThemesFolderPath;
+        var themeFolderPath = Helper.UserThemesFolderPath;
         Directory.CreateDirectory(themeFolderPath);
         Process.Start(new ProcessStartInfo(themeFolderPath) { UseShellExecute = true, Verb = "open" });
     }
