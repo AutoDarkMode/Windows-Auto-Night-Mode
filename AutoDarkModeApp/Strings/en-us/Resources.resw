@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -342,57 +342,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   </data>
   <data name="FollowWindowsNightLight" xml:space="preserve">
     <value>Follow Windows night light</value>
-  </data>
-  <data name="AmbientLightSensor" xml:space="preserve">
-    <value>Ambient light sensor</value>
-  </data>
-  <data name="AmbientLightSensor_Description" xml:space="preserve">
-    <value>Automatically switch themes based on ambient light levels detected by your device's light sensor.</value>
-  </data>
-  <data name="AmbientLightThresholds" xml:space="preserve">
-    <value>Light thresholds</value>
-  </data>
-  <data name="AmbientLightThresholds_Header" xml:space="preserve">
-    <value>Configure light thresholds</value>
-  </data>
-  <data name="AmbientLightThresholds_Description" xml:space="preserve">
-    <value>This feature automatically switches the theme based on the brightness of your environment. Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
-  </data>
-  <data name="AmbientLightDarkThreshold" xml:space="preserve">
-    <value>Dark below (lux)</value>
-  </data>
-  <data name="AmbientLightLightThreshold" xml:space="preserve">
-    <value>Light above (lux)</value>
-  </data>
-  <data name="AmbientLightCurrentReading" xml:space="preserve">
-    <value>Current light level</value>
-  </data>
-  <data name="AmbientLightReference" xml:space="preserve">
-    <value>Light level reference guide</value>
-  </data>
-  <data name="AmbientLightRef_Moonlight" xml:space="preserve">
-    <value>Moonlight</value>
-  </data>
-  <data name="AmbientLightRef_VeryDark" xml:space="preserve">
-    <value>Very dark room</value>
-  </data>
-  <data name="AmbientLightRef_DimRoom" xml:space="preserve">
-    <value>Dimly lit room</value>
-  </data>
-  <data name="AmbientLightRef_LivingRoom" xml:space="preserve">
-    <value>Living room / bedroom</value>
-  </data>
-  <data name="AmbientLightRef_Office" xml:space="preserve">
-    <value>Office lighting</value>
-  </data>
-  <data name="AmbientLightRef_Overcast" xml:space="preserve">
-    <value>Overcast day indoors</value>
-  </data>
-  <data name="AmbientLightRef_DaylightShade" xml:space="preserve">
-    <value>Daylight (shade)</value>
-  </data>
-  <data name="AmbientLightRef_DirectSun" xml:space="preserve">
-    <value>Direct sunlight</value>
   </data>
   <data name="ForceDark" xml:space="preserve">
     <value>Force dark mode</value>
@@ -802,6 +751,7 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Theme10_Flowers" xml:space="preserve">
     <value>Flowers</value>
+    <comment>Must match Windows theme name</comment>
   </data>
   <data name="Theme10_Windows" xml:space="preserve">
     <value>Windows</value>
@@ -814,15 +764,18 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Theme11_CapturedMotion" xml:space="preserve">
     <value>Captured Motion</value>
+    <comment>Must match Win.11 theme name. File: themeB.theme</comment>
   </data>
   <data name="Theme11_Dark" xml:space="preserve">
     <value>Windows (Dark)</value>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
     <value>Flow</value>
+    <comment>Must match Win.11 theme name. File: themeD.theme</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
     <value>Glow</value>
+    <comment>Must match Win.11 theme name. File: themeA.theme</comment>
   </data>
   <data name="Theme11_Light" xml:space="preserve">
     <value>Windows (Light)</value>
@@ -832,6 +785,7 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
+    <comment>Must match Win.11 theme name. File: themeC.theme</comment>
   </data>
   <data name="Time" xml:space="preserve">
     <value>Time</value>
@@ -1075,6 +1029,57 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="ShowTrayIcon" xml:space="preserve">
     <value>Show tray icon (recommended)</value>
   </data>
+  <data name="AmbientLightSensor" xml:space="preserve">
+    <value>Ambient light sensor</value>
+  </data>
+  <data name="AmbientLightSensor_Description" xml:space="preserve">
+    <value>Automatically switch themes based on ambient light levels detected by your device's light sensor.</value>
+  </data>
+  <data name="AmbientLightThresholds" xml:space="preserve">
+    <value>Light thresholds</value>
+  </data>
+  <data name="AmbientLightThresholds_Header" xml:space="preserve">
+    <value>Configure light thresholds</value>
+  </data>
+  <data name="AmbientLightThresholds_Description" xml:space="preserve">
+    <value>This feature automatically switches the theme based on the brightness of your environment. Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
+  </data>
+  <data name="AmbientLightDarkThreshold" xml:space="preserve">
+    <value>Dark below (lux)</value>
+  </data>
+  <data name="AmbientLightLightThreshold" xml:space="preserve">
+    <value>Light above (lux)</value>
+  </data>
+  <data name="AmbientLightCurrentReading" xml:space="preserve">
+    <value>Current light level</value>
+  </data>
+  <data name="AmbientLightReference" xml:space="preserve">
+    <value>Light level reference guide</value>
+  </data>
+  <data name="AmbientLightRef_Moonlight" xml:space="preserve">
+    <value>Moonlight</value>
+  </data>
+  <data name="AmbientLightRef_VeryDark" xml:space="preserve">
+    <value>Very dark room</value>
+  </data>
+  <data name="AmbientLightRef_DimRoom" xml:space="preserve">
+    <value>Dimly lit room</value>
+  </data>
+  <data name="AmbientLightRef_LivingRoom" xml:space="preserve">
+    <value>Living room / bedroom</value>
+  </data>
+  <data name="AmbientLightRef_Office" xml:space="preserve">
+    <value>Office lighting</value>
+  </data>
+  <data name="AmbientLightRef_Overcast" xml:space="preserve">
+    <value>Overcast day indoors</value>
+  </data>
+  <data name="AmbientLightRef_DaylightShade" xml:space="preserve">
+    <value>Daylight (shade)</value>
+  </data>
+  <data name="AmbientLightRef_DirectSun" xml:space="preserve">
+    <value>Direct sunlight</value>
+  </data>
   <data name="AmbientLightNoSensor" xml:space="preserve">
     <value>No sensor detected</value>
   </data>
@@ -1093,13 +1098,13 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="AmbientLightCurrent" xml:space="preserve">
     <value>Current:</value>
   </data>
-    <data name="DocumentationSocial" xml:space="preserve">
+  <data name="DocumentationSocial" xml:space="preserve">
     <value>Documentation &amp; Social</value>
   </data>
-    <data name="UsedSoftware" xml:space="preserve">
+  <data name="UsedSoftware" xml:space="preserve">
     <value>Used software</value>
   </data>
-    <data name="Diagnostics" xml:space="preserve">
+  <data name="Diagnostics" xml:space="preserve">
     <value>Diagnostics</value>
   </data>
   <data name="Contributors" xml:space="preserve">
