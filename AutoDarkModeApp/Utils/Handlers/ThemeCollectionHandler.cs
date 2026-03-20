@@ -100,7 +100,8 @@ public static class ThemeCollectionHandler
                     themeFiles.Add(new ThemeFile(file, displayName));
                 }
             }
-            return themeFiles;
+
+            return themeFiles.OrderBy(t => t.Name).ToList();
         }
         catch
         {
