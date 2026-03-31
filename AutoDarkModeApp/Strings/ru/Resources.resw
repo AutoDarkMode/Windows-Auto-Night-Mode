@@ -862,7 +862,7 @@
 6. Повторите этот процесс для темной темы.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Изменить горячие клавиши</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Отключено</value>
