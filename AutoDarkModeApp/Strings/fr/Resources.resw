@@ -208,7 +208,7 @@
     <value>Couleur</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtre de couleur (envoie Win + Ctrl + C)</value>
+    <value>Activer le filtre de couleur en mode sombre</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Choisissez le thème de couleur pour Windows en fonction de vos goûts.</value>
@@ -449,7 +449,7 @@ Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Laisser Auto Dark Mode gérer mon thème</value>
+    <value>Laisser Auto Dark Mode gérer mon thème (recommandé)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manuel</value>
@@ -488,7 +488,7 @@ Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Télécharger la mise à jour</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Cette option ne prend pas en charge les thèmes Windows par défaut</value>
+    <value>Cette option ne prend pas en charge les thèmes Windows préinstallés par défaut</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Auto Dark Mode needs the permission to access your location</value>
@@ -535,7 +535,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Information de version copiée dans le presse-papier</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Prochaine mise à jour le</value>
+    <value>Prochaine mise à jour</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Aucun</value>
@@ -670,7 +670,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Ne pas changer de thème quand certains processus sont en cours</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Actualiser le démarrage automatique</value>
+    <value>Actualiser</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Clé du registre</value>
@@ -818,7 +818,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Laisser Windows gérer mon thème</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Vérifier les mises à jour au démarrage d'Auto Dark Mode</value>
+    <value>Vérifier quand Auto Dark Mode démarre</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Sélectionner le canal de mise à jour</value>
@@ -868,7 +868,7 @@ Version installée : {0}, nouvelle version : {1}</value>
 6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Modifier le raccourci clavier</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Déconnecté</value>
