@@ -787,7 +787,7 @@
     <value>时间</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>启用主题</value>
+    <value>切换主题</value>
   </data>
   <data name="TraceMode" xml:space="preserve">
     <value>追踪模式</value>

@@ -157,7 +157,7 @@
     <value>Automatico</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Gestisci il cambio automatico del tema</value>
+    <value>Attiva/disattiva il cambio automatico del tema</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Avvio automatico</value>
@@ -497,10 +497,10 @@ Vuoi aprire un resoconto del problema nell'archvio di Auto Dark Mode?</value>
     <value>Nessun nuovo aggiornamento trovato</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Il cambio del tema è in pausa per il prossimo cambio!</value>
+    <value>Il cambio del tema viene messo in pausa una volta!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Vorresti cambiare ora o posticipare ulteriormente?</value>
+    <value>Desideri cambiare ora o rimandare ulteriormente?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Ricerca della posizione…</value>
@@ -833,7 +833,7 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
     <value>Versione</value>
   </data>
   <data name="Wallpaper" xml:space="preserve">
-    <value>Sfondo</value>
+    <value>Sfondo del desktop</value>
   </data>
   <data name="WallpaperMode_Picture" xml:space="preserve">
     <value>Immagine</value>
@@ -868,7 +868,7 @@ Versione attualmente installata: {0}, nuova versione: {1}</value>
     <value>Scollegato</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Sfondo</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">

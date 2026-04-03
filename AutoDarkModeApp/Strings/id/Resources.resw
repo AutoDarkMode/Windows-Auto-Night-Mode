@@ -157,7 +157,7 @@
     <value>Otomatis</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Alihkan pergantian tema otomatis</value>
+    <value>Alihkan pengalihan tema otomatis</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Mulai Otomatis</value>
@@ -175,7 +175,7 @@
     <value>Mencari update di latar belakang</value>
   </data>
   <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Switch to dark mode when device is unplugged</value>
+    <value>Beralih ke mode gelap saat perangkat tidak tersambung ke daya</value>
   </data>
   <data name="BatteryPowered" xml:space="preserve">
     <value>Perangkat dengan tenaga baterai</value>
@@ -208,10 +208,10 @@
     <value>Warna</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Color filter (sends Win + Ctrl + C)</value>
+    <value>Aktifkan filter warna saat mode gelap</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Sesuaikan skema warna sistem Windows sesuai keinginan Anda.</value>
+    <value>Sesuaikan skema warna sistem Windows sesuai selera Anda.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Kondisi</value>
@@ -262,12 +262,11 @@
     <value>Donasi</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>Halo! Terima kasih telah menggunakan Auto Dark Mode Apakah Anda menyukainya?
+    <value>Terima kasih telah menggunakan Auto Dark Mode! Apakah Anda menyukainya sejauh ini?
 
-Aplikasi ini membuat hari Anda lebih menyenangkan, dengan membantu merawat mata Anda. Dan juga aplikasi ini gratis, tanpa iklan, tidak mengumpulkan data pengguna dan bersifat open source.
-Kami tidak mengambil keuntungan apa pun dari proyek ini.
+Aplikasi ini membuat hari-hari Anda lebih menyenangkan dengan membantu Anda menjaga kesehatan mata. Di saat yang sama, aplikasi ini sepenuhnya gratis, tanpa iklan, tidak mengumpulkan data pengguna, dan bersifat sumber terbuka. Saya tidak menghasilkan keuntungan apa pun dari proyek ini.
 
-Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan membuat kami senang.</value>
+Oleh karena itu, Anda dapat mendukung saya dengan donasi sukarela. Bahkan jumlah yang kecil pun membuat saya sangat bahagia. Donasikan saja sebanyak nilai yang Anda berikan untuk karya saya.</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
     <value>Bagaimana cara mendonasi?</value>
@@ -306,15 +305,13 @@ Karena itu Anda dapat memberi sumbangan secara sukarela. Sumbangan kecil bahkan 
     <value>Aktifkan perubahan layar</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Ada masalah dengan UI.
+    <value>Terjadi masalah dengan antarmuka pengguna (UI).
 
 Pastikan:
-- layanan berjalan
-- berkas config.yaml anda sudah benar
+- layanan sedang berjalan
+- berkas config.yaml sudah benar
 
-Apakah Anda ingin membuat masalah pada repositori Mode Gelap Otomatis?
-Klik "Ya" untuk membuka jendela peramban baru.
-</value>
+Apakah Anda ingin membuat laporan masalah pada repositori Auto Dark Mode?</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Masalah terjadi</value>
@@ -449,7 +446,7 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Garis bujur</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Biarkan Auto Dark Mode yang mengatur tema saya</value>
+    <value>Biarkan Mode Gelap Otomatis mengelola tema saya (disarankan)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -488,16 +485,16 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Unduh pembaruan</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Opsi ini tidak mendukung tema Windows bawaan</value>
+    <value>Opsi ini tidak mendukung tema default Windows yang sudah terpasang sebelumnya</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>Auto Dark Mode memerlukan izin untuk mengakses lokasi Anda</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Layanan sedang memulai, harap tunggu…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>Pembaruan tidak tersedia.</value>
+    <value>Tidak ada pembaruan baru yang ditemukan</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
     <value>Pergantian tema tertunda sekali!</value>
@@ -524,18 +521,15 @@ Klik "Ya" untuk membuka jendela peramban baru.
     <value>Pembaruan tersedia!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>Terima kasih untuk menggunakan Auto Dark Mode
+    <value>Versi baru tersedia di GitHub dengan perbaikan dan peningkatan.
 
-Pembaruan tersedia di GitHub dengan perbaikan dan peningkatan.
-Apakah Anda mau memasang?
-
-Versi saat ini: {0}, Versi terbaru: {1}</value>
+Versi yang terinstal saat ini: {0}, versi baru: {1}</value>
   </data>
   <data name="Msg_VersionInfoCopied" xml:space="preserve">
     <value>Info versi disalin ke papan klip</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Pembaruan selanjutnya pada</value>
+    <value>Pembaruan berikutnya</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Tidak ada</value>
@@ -586,7 +580,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Personalisasi</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Pilih warna aksen</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Pilih kursor tetikus</value>
@@ -670,7 +664,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Jangan beralih ketika proses tertentu berjalan</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Segarkan Mulai Otomatis</value>
+    <value>Segarkan</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Kunci Registry</value>
@@ -790,7 +784,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Spotlight</value>
+    <value>Sorotan</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Matahari Terbit</value>
@@ -818,7 +812,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Biarkan Windows yang mengatur tema saya</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Periksa pembaruan saat Auto Dark Mode dimulai</value>
+    <value>Periksa kapan Mode Gelap Otomatis dimulai</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Pilih saluran pembaruan</value>
@@ -851,7 +845,7 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Warna solid</value>
   </data>
   <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows spotlight</value>
+    <value>Sorotan Windows</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
     <value>Opsi ini tidak tersedia, karena Anda belum memasang pembaruan Windows 10 April 2019 di komputer Anda.</value>
@@ -860,164 +854,164 @@ Versi saat ini: {0}, Versi terbaru: {1}</value>
     <value>Anda telah menonaktifkan entri otomatis melalui Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Buka Pengaturan Windows &gt; Personalisasi &gt; Warna.
+2. Ubah warna sistem menjadi ‘Terang’ untuk tema terang.
+3. Buka Pengaturan Windows &gt; Personalisasi &gt; Tema.
+4. Pilih wallpaper favorit Anda, penunjuk mouse, dan warna aksen.
+5. Simpan tema Anda.
+6. Ulangi proses ini untuk tema gelap.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Edit kunci pintas</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Terputus</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Latar belakang</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Nonaktifkan Windows mengelola tema Anda</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Jalur</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Fitur Auto Start telah dinonaktifkan di Pengaturan Windows. Untuk mengaktifkan kembali Auto Dark Mode agar berjalan bersama Windows, silakan buka Pengaturan Windows &gt; Aplikasi &gt; Startup dan aktifkan fitur tersebut.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Mode debug</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Pilih Enter untuk menerapkan</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Bahasa</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Buka pengaturan Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Stabil</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Beralih</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Tampilkan notifikasi saat pengalihan tema otomatis dijeda</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Tampilkan notifikasi saat beralih pengalihan tema otomatis</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Pilih kombinasi tombol. Hanya pintasan yang dimulai dengan tombol Windows, Ctrl, Alt, atau Shift yang valid.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Pintasan aktivasi</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Simpan</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Paksa simpan</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Kunci pintas tidak berfungsi? Jangan khawatir, mari simpan lagi</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Simpan berhasil</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Simpan gagal</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Mulai mengetik untuk menambahkan aplikasi apa pun</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Mode aplikasi</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Mode Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Pengaturan warna yang dipersonalisasi dari Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Ditunda</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Tidak Ditunda</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Abaikan warna</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Permukaan Aksen</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Pilih kapan warna aksen harus diterapkan</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
+    <value>Terapkan selama</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>Warna aksen untuk bilah judul dan batas jendela</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>Penyegaran DWM yang lebih agresif</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Nilai positif berada di belakang, nilai negatif berada di depan</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Upaya untuk mengurangi warna antarmuka pengguna (UI) yang salah di Explorer, Taskbar, dan Start Menu. Jika Anda sering mengalami hal ini atau merasa terganggu, coba aktifkan pengaturan ini.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Hal ini mungkin menyebabkan lag ringan hingga sedang pada beberapa sistem saat mengganti tema.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Pada kesempatan yang sangat jarang, Windows mungkin mengeluarkan suara bip saat mouse digerakkan selama proses penyegaran DWM.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Gunakan penyegaran DWM yang agresif?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Mode gelap untuk peramban web Anda</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader adalah ekstensi browser yang membuat situs web di Chrome, Edge dan Firefox menyesuaikan dengan tema sistem Anda saat ini. Klik di sini untuk informasi lebih lanjut</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Buka pengaturan penunjuk tetikus Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>Anda dapat menentukan skema kursor baru di pengaturan Windows dan kemudian memilihnya di sini setelahnya</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>Tengah</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log dan Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Disalin</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Upaya untuk mengurangi warna UI yang salah di penjelajah, bilah tugas, dan menu mulai.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Buka pengaturan Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Kunci pintas hanya dapat diubah saat dinonaktifkan</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1026,15 +1020,15 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows color</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>Warna aksen otomatis dipilih. Warna akan ditentukan oleh wallpaper saat ini</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Pratinjau warna</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Pratinjau</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Warna aksen untuk bilah tugas</value>
   </data>
 </root>

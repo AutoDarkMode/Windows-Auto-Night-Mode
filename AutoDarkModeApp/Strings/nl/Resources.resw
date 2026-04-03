@@ -488,7 +488,7 @@ Wilt u een probleem melden in de Auto Dark Mode-repository?</value>
     <value>Deze optie ondersteunt geen standaardthema's van Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>Auto Dark Mode heeft toestemming nodig om je locatie te bepalen</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Service wordt niet uitgevoerd. Even geduld…</value>
@@ -580,7 +580,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Persoonlijke instellingen</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Selecteer een accentkleur</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Muisaanwijzers selecteren</value>
@@ -772,11 +772,11 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
-    <value>Vloeiend</value>
+    <value>Flow</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
-    <value>Bloesem</value>
+    <value>Gloed</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Light" xml:space="preserve">
@@ -787,7 +787,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Spotlight</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
-    <value>Zonsopkomst</value>
+    <value>Zonsopgang</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThirdParty" xml:space="preserve">
@@ -899,7 +899,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Ga naar Windows Spotlight instellingen</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Stabiel</value>
   </data>
   <data name="Switch" xml:space="preserve">
     <value>Wisselen</value>
@@ -974,11 +974,11 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Positieve getallen zijn later, negatieve getallen zijn vroeger</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Probeert verkeerde kleuren in Verkenner, taakbalk en Start menu te verminderen. Als je hier vaak last van hebt, probeer dan deze instelling.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Tijdens het omschakelen kan dit een kleine vertraging introduceren.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+In zeldzame gevallen kan Windows een piepgeluid geven bij het bewegen van de muis.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Agressieve DWM gebruiken?</value>
@@ -1005,13 +1005,13 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Gekopieerd</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Probeert verkeerde kleuren the herstellen in Verkenner, taakbalk en Start-menu</value>
+    <value>Probeert verkeerde kleuren te herstellen in Verkenner, taakbalk en Start-menu</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Windows instellingen openen</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Snelkoppelingen kunnen alleen gewijzigd worden wanneer uitgeschakeld</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1020,15 +1020,15 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows color</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>Automatische accentkleur is geselecteerd. De kleur wordt bepaald door de huidige achtergrond.</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Voorbeeld van kleur</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Voorbeeld</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Accentkleur voor de taakbalk</value>
   </data>
 </root>
