@@ -5,6 +5,7 @@ using AutoDarkModeApp.Models;
 using AutoDarkModeApp.Services;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
+using AutoDarkModeComms;
 using AutoDarkModeLib;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -118,10 +119,28 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
+        // Handle JumpListCommand
+        var arguments = Environment.GetCommandLineArgs();
+        if (arguments.Length > 1)
+        {
+            new PipeClient().SendMessageAndGetReply(arguments[1]);
+            Environment.Exit(-1);
+        }
+
+        // Set App and Svc language
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
-        var admConfigBuilder = AdmConfigBuilder.Instance();
-        admConfigBuilder.Load();
-        admConfigBuilder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // save before activation SVC (think of first-launch scenario)
+        var builder = AdmConfigBuilder.Instance();
+        builder.Load();
+        try
+        {
+            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // save before activation SVC (think of first-launch scenario)
+            builder.Save();
+        }
+        catch (Exception)
+        {
+            // We can't show a dialog here 
+            //await App.GetService<IErrorService>().ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Startup", "Failed to force-set Svc language");
+        }
 
         MainWindow = new MainWindow();
 

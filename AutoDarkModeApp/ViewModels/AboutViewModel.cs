@@ -42,4 +42,5 @@ public partial class AboutViewModel : ObservableRecipient
         WindowsVersionText = versionInfo.WindowsVersion;
         ArchText = versionInfo.Arch;
     }
+
 }

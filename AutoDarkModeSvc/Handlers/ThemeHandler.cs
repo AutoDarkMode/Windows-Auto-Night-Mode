@@ -17,15 +17,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using AutoDarkModeSvc.Monitors;
-using Microsoft.VisualBasic.Logging;
-using YamlDotNet.Core;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.IThemeManager.TmHandler;
 
@@ -71,9 +68,9 @@ public static class ThemeHandler
 
         if (newTheme == Theme.Light)
         {
-            ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.PathUnmanagedLightTheme);
+            ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.UnmanagedLightThemePath);
             light.UnmanagedOriginalName = light.DisplayName;
-            light.DisplayName = Helper.NameUnmanagedLightTheme;
+            light.DisplayName = Helper.UnmanagedLightThemeName;
             if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
             {
                 ThemeFile.PatchColorsWin11AndSave(light);
@@ -86,9 +83,9 @@ public static class ThemeHandler
         }
         else if (newTheme == Theme.Dark)
         {
-            ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.PathUnmanagedDarkTheme);
+            ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.UnmanagedDarkThemePath);
             dark.UnmanagedOriginalName = dark.DisplayName;
-            dark.DisplayName = Helper.NameUnmanagedDarkTheme;
+            dark.DisplayName = Helper.UnmanagedDarkThemeName;
             if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
             {
                 ThemeFile.PatchColorsWin11AndSave(dark);
@@ -120,11 +117,11 @@ public static class ThemeHandler
         switch (theme)
         {
             case Theme.Light:
-                themePath = Helper.PathUnmanagedLightTheme;
+                themePath = Helper.UnmanagedLightThemePath;
                 break;
 
             case Theme.Dark:
-                themePath = Helper.PathUnmanagedDarkTheme;
+                themePath = Helper.UnmanagedDarkThemePath;
                 break;
         }
         if (builder.Config.WindowsThemeMode.Enabled
@@ -197,12 +194,12 @@ public static class ThemeHandler
 
         // TODO: change tracking when having active theme monitor disabled
         if (newTheme == Theme.Dark && (skipCheck ||
-            (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedDarkTheme))))
+            (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath))))
         {
             return true;
         }
         else if (newTheme == Theme.Light && (skipCheck ||
-            (!state.UnmanagedActiveThemePath.Equals(Helper.PathUnmanagedLightTheme))))
+            (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath))))
         {
             return true;
         }

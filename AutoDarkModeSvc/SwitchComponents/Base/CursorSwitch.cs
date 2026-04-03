@@ -20,6 +20,7 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
+using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
@@ -49,6 +50,11 @@ internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
         else if (e.Theme == Theme.Dark)
         {
             cursorSchemeNew = Settings.Component.CursorsDark;
+        }
+
+        if (RegistryHandler.EnableThemeChangesMousePointers())
+        {
+            Logger.Warn("cursor theme changes were disabled in registry. Auto Dark Mode re-enabled this option. If this happens again, contact your system administrator.");
         }
 
         if (cursorSchemeNew != null && cursorSchemeNew.Length > 0)

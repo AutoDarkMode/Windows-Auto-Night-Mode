@@ -235,7 +235,7 @@ class Service : Form
             if (expiry.Year != 1)
             {
                 if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ({Strings.Resources.Until} {expiry:HH:mm})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
@@ -245,7 +245,7 @@ class Service : Form
                 }
                 else if (skipType == SkipType.UntilSunrise)
                 {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause}  ({Strings.Resources.UntilSunset})";
+                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunrise})";
                 }
                 else
                 {
@@ -472,24 +472,11 @@ class Service : Form
     {
         if (m.Msg == WM_HOTKEY && m.WParam == (IntPtr)0)
         {
-            int modifiers = (int)m.LParam & 0xFFFF;
-            Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
-            List<Keys> modifiersPressed = new();
-            if ((modifiers & (int)HotkeyHandler.ModifierKeys.Alt) != 0) modifiersPressed.Add(Keys.Alt);
-            if ((modifiers & (int)HotkeyHandler.ModifierKeys.Shift) != 0) modifiersPressed.Add(Keys.Shift);
-            if ((modifiers & (int)HotkeyHandler.ModifierKeys.Control) != 0) modifiersPressed.Add(Keys.Control);
-            if ((modifiers & (int)HotkeyHandler.ModifierKeys.Win) != 0) modifiersPressed.Add(Keys.LWin);
+            uint modifiers = (uint)((int)m.LParam & 0xFFFF);
+            uint keyCode = (uint)(((int)m.LParam >> 16) & 0xFFFF);
 
-            var match = HotkeyHandler.GetRegistered(modifiersPressed, key);
-            if (match == null)
-            {
-                if (modifiersPressed.Contains(Keys.LWin))
-                {
-                    modifiersPressed.Remove(Keys.LWin);
-                    modifiersPressed.Add(Keys.RWin);
-                }
-                match = HotkeyHandler.GetRegistered(modifiersPressed, key);
-            }
+            var match = HotkeyHandler.GetRegistered(modifiers, keyCode);
+
             if (match != null)
             {
                 try
