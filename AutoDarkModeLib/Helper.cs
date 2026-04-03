@@ -42,13 +42,14 @@ public static class Helper
     public static readonly string ExecutionDirUpdater = GetExecutionDirUpdater();
     public static readonly string ExecutionPathService = GetExecutionPathService();
     public static readonly string UpdateDataDir = GetUpdateDataDir();
-    public static string PathThemeFolder { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
-    public static string PathManagedTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMTheme.theme");
-    public static string PathDwmRefreshTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "DwmRefreshTheme.theme");
-    public static string PathUnmanagedDarkTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedDark.theme");
-    public static string PathUnmanagedLightTheme { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes", "ADMUnmanagedLight.theme");
-    public static string NameUnmanagedLightTheme { get; } = "ADMUnmanagedLight";
-    public static string NameUnmanagedDarkTheme { get; } = "ADMUnmanagedDark";
+    public static string UnmanagedLightThemeName { get; } = "ADMUnmanagedLight";
+    public static string UnmanagedDarkThemeName { get; } = "ADMUnmanagedDark";
+    public static string UserThemesFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Microsoft", "Windows", "Themes");
+    public static string ManagedThemePath { get; } = Path.Combine(UserThemesFolderPath, "ADMTheme.theme");
+    public static string DwmRefreshThemePath { get; } = Path.Combine(UserThemesFolderPath, "DwmRefreshTheme.theme");
+    public static string UnmanagedLightThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedLightThemeName}.theme");
+    public static string UnmanagedDarkThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedDarkThemeName}.theme");
+    public static string WindowsThemesFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Resources", "Themes");
     public static string Hegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
 
     public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)

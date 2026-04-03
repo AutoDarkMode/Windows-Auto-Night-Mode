@@ -259,7 +259,7 @@ public partial class ThemeFile
     {
         try
         {
-            string customPath = Path.Combine(Helper.PathThemeFolder, "Custom.theme");
+            string customPath = Path.Combine(Helper.UserThemesFolderPath, "Custom.theme");
 
             // call first becaues it refreshes the regkey
             (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();

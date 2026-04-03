@@ -151,7 +151,7 @@ internal sealed partial class DwmRefreshHandler
         try
         {
             // prepare theme
-            ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
+            ThemeFile dwmRefreshTheme = new(Helper.DwmRefreshThemePath);
             bool managed = !builder.Config.WindowsThemeMode.Enabled;
             if (!managed)
             {

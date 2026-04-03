@@ -151,7 +151,7 @@ static class RegistryHandler
         // call first becaues it refreshes the regkey
         (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
         using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
-        string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
+        string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.UserThemesFolderPath, "Custom.theme"));
 
         ThemeFile tempTheme = null;
         if (themePath.Length > 0)
@@ -177,7 +177,7 @@ static class RegistryHandler
         {
             // if the name of the retrieved theme doesn't match, we will just select the custom theme as fallback
             Logger.Debug($"expected name: {activeThemeName} different from display name: {tempTheme.DisplayName} with path: {themePath}");
-            themePath = new(Path.Combine(Helper.PathThemeFolder, "Custom.theme"));
+            themePath = new(Path.Combine(Helper.UserThemesFolderPath, "Custom.theme"));
         }
         else
         {
