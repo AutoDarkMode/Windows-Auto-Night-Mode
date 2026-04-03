@@ -1,9 +1,4 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoDarkModeApp.Services;
 
 using static AutoDarkModeLib.IThemeManager2.Flags;
 

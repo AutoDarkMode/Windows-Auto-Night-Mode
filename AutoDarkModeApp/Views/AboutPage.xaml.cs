@@ -1,9 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.ViewModels;
-using Microsoft.UI.Xaml.Controls;
 
 using AdmExtensions = AutoDarkModeLib.Helper;
 

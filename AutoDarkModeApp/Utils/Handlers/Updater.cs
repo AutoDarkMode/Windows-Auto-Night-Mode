@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 

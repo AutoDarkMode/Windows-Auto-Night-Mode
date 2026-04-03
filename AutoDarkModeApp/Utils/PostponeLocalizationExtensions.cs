@@ -1,7 +1,4 @@
-﻿using AutoDarkModeApp.Helpers;
-using AutoDarkModeLib;
-
-namespace AutoDarkModeApp.Utils;
+﻿namespace AutoDarkModeApp.Utils;
 
 public static class PostponeLocalizationExtensions
 {

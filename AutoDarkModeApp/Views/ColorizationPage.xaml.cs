@@ -1,10 +1,7 @@
-﻿using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.UserControls;
+﻿using AutoDarkModeApp.UserControls;
 using AutoDarkModeApp.ViewModels;
 using CommunityToolkit.WinUI.Helpers;
-using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.UI;

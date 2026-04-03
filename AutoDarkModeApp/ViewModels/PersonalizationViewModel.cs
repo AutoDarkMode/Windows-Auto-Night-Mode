@@ -1,11 +1,4 @@
-﻿using System.Windows.Input;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-
-namespace AutoDarkModeApp.ViewModels;
+﻿namespace AutoDarkModeApp.ViewModels;
 
 public partial class PersonalizationViewModel : ObservableRecipient
 {
@@ -25,7 +18,19 @@ public partial class PersonalizationViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool UnmanagedModeSettingsCardEnabled { get; set; }
 
-    public ICommand ThemeSwitchDisabledCommand { get; }
+    [RelayCommand]
+    private void ThemeSwitchDisabled()
+    {
+        _builder.Config.WindowsThemeMode.Enabled = false;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "PersonalizationPage");
+        }
+    }
 
     public PersonalizationViewModel(IErrorService errorService)
     {
@@ -45,19 +50,6 @@ public partial class PersonalizationViewModel : ObservableRecipient
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
-
-        ThemeSwitchDisabledCommand = new RelayCommand(() =>
-        {
-            _builder.Config.WindowsThemeMode.Enabled = false;
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "PersonalizationPage");
-            }
-        });
     }
 
     private void LoadSettings()
