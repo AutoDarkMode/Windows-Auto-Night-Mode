@@ -23,7 +23,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Handlers;
 

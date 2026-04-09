@@ -16,7 +16,7 @@
 #endregion
 namespace AutoDarkModeLib.ComponentSettings;
 
-public class BaseSettingsEnabled<T> : BaseSettings<T>
+public class BaseSettingsEnabled<T> : BaseSettings<T> where T : class
 {
     public override bool Enabled { get; set; } = true;
 }

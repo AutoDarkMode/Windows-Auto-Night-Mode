@@ -16,8 +16,8 @@
 #endregion
 namespace AutoDarkModeLib.Interfaces;
 
-public interface ISwitchComponentSettings<T>
+public interface ISwitchComponentSettings<T> where T : class
 {
     public bool Enabled { get; set; }
-    public T Component { get; set; }
+    public T? Component { get; set; }
 }

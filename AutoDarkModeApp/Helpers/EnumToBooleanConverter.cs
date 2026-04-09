@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Data;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Data;
 
 namespace AutoDarkModeApp.Helpers;
 
@@ -22,6 +23,6 @@ public partial class EnumToBooleanConverter : IValueConverter
         {
             return Enum.Parse(targetType, parameter.ToString()!);
         }
-        return null;
+        return DependencyProperty.UnsetValue;
     }
 }
