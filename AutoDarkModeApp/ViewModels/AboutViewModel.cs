@@ -1,7 +1,4 @@
-﻿using AutoDarkModeApp.Utils;
-using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace AutoDarkModeApp.ViewModels;
+﻿namespace AutoDarkModeApp.ViewModels;
 
 public partial class AboutViewModel : ObservableRecipient
 {

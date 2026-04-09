@@ -1,6 +1,4 @@
 using System.Globalization;
-using System.Reflection;
-using AutoDarkModeApp.Contracts.Services;
 using Microsoft.Windows.Globalization;
 
 namespace AutoDarkModeApp.Helpers;

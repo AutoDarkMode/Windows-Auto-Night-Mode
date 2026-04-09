@@ -1,7 +1,4 @@
-﻿using AutoDarkModeApp.Utils;
-using AutoDarkModeLib;
-using CommunityToolkit.WinUI;
-using Microsoft.UI.Xaml.Controls;
+﻿using CommunityToolkit.WinUI;
 using Windows.System;
 
 namespace AutoDarkModeApp.UserControls;

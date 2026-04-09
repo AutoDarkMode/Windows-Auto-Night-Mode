@@ -3,7 +3,6 @@
 // Copyright (C) 2025 Auto Dark Mode
 // This program is free software under GNU GPL v3.0
 #endregion
-using AutoDarkModeApp.Contracts.Services;
 using Microsoft.Win32;
 
 namespace AutoDarkModeApp.Utils.Handlers;
@@ -37,7 +36,7 @@ internal static class CursorCollectionHandler
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex,App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.GetCursors");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorCollectionHandler.GetCursors");
         }
 
         try

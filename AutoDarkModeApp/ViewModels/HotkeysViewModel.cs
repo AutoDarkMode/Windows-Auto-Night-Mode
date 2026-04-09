@@ -1,11 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Models;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
 using AutoDarkModeLib.Configs;
-using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AutoDarkModeApp.ViewModels;
 

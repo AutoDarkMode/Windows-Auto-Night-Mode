@@ -1,5 +1,4 @@
 ﻿using AutoDarkModeApp.Services;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Contracts.Services;
 

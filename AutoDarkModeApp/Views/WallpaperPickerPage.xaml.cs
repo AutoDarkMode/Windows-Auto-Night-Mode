@@ -1,15 +1,8 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Services;
+﻿using AutoDarkModeApp.Services;
 using AutoDarkModeApp.UserControls;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
 

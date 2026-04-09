@@ -1,10 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeLib;
 using CommunityToolkit.WinUI;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Win32;
