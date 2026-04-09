@@ -19,7 +19,7 @@ using AutoDarkModeLib.Interfaces;
 
 namespace AutoDarkModeLib.ComponentSettings;
 
-public class BaseSettings<T> : ISwitchComponentSettings<T> where T : new()
+public class BaseSettings<T> : ISwitchComponentSettings<T> where T : class, new()
 {
     public virtual bool Enabled { get; set; }
     public T? Component { get; set; }
