@@ -62,6 +62,14 @@ static class ThemeManager
             return;
         }
 
+
+        // process switches with a requested theme
+        if (e.Theme != Theme.Resolve)
+        {
+            UpdateTheme(e);
+            return;
+        }
+
         // battery switch if the initial event was missed
         if (builder.Config.Events.DarkThemeOnBattery)
         {
@@ -79,13 +87,6 @@ static class ThemeManager
                 UpdateTheme(e);
                 return;
             }
-        }
-
-        // process switches with a requested theme
-        if (e.Theme != Theme.Resolve)
-        {
-            UpdateTheme(e);
-            return;
         }
 
         // recalculate timed theme state on every call
