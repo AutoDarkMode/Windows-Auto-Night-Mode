@@ -17,8 +17,13 @@ public sealed partial class WallpaperPickerPage : Page
     {
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
-        Task.Run(DetectMonitorsAsync).Wait();
-        DispatcherQueue.TryEnqueue(LoadMonitors);
+        Loaded += WallpaperPickerPage_Loaded;
+    }
+
+    private async void WallpaperPickerPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        await DetectMonitorsAsync();
+        LoadMonitors();
     }
 
 
