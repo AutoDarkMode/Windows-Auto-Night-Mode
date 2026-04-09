@@ -20,88 +20,104 @@ public partial class App : Application
     // https://docs.microsoft.com/dotnet/core/extensions/logging
     public IHost Host { get; }
 
+    /// <summary>
+    /// Retrieves a registered service of the specified type from the application's dependency injection container.
+    /// </summary>
+    /// <remarks>Use this method to access services configured in the application's dependency injection
+    /// container. Ensure that the service type is registered in the ConfigureServices method of App.xaml.cs before
+    /// calling this method.</remarks>
+    /// <typeparam name="T">The type of service to retrieve. Must be a reference type and registered in the application's service
+    /// collection.</typeparam>
+    /// <returns>An instance of the requested service type <typeparamref name="T"/>.</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the requested service type <typeparamref name="T"/> is not registered in the application's service
+    /// collection.</exception>
     public static T GetService<T>()
         where T : class
     {
         if ((Current as App)!.Host.Services.GetService(typeof(T)) is not T service)
         {
-            throw new ArgumentException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
+            throw new InvalidOperationException($"{typeof(T)} needs to be registered in ConfigureServices within App.xaml.cs.");
         }
 
         return service;
+    }
+
+    public static MainWindow MainWindow { get; private set; } = null!;
+
+    public App()
+    {
+        CheckAppMutex();
+        InitializeComponent();
+
+        Host = Microsoft.Extensions.Hosting.Host
+            .CreateDefaultBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .ConfigureServices((context, services) =>
+                {
+                    // Services
+                    services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+                    services.AddSingleton<IFileService, FileService>();
+
+                    services.AddSingleton<IActivationService, ActivationService>();
+                    services.AddSingleton<ICloseService, CloseService>();
+                    services.AddSingleton<IPageService, PageService>();
+                    services.AddSingleton<INavigationService, NavigationService>();
+
+                    services.AddSingleton<IErrorService, ErrorService>();
+                    services.AddSingleton<IGeolocatorService, GeolocatorService>();
+
+                    // Window
+                    // NOTE: The MainWindow is registered as a singleton because we only need one instance.
+                    services.AddSingleton<MainWindow>();
+
+                    // Views and ViewModels
+                    services.AddTransient<ThemePickerViewModel>();
+                    services.AddTransient<ThemePickerPage>();
+                    services.AddTransient<CursorsViewModel>();
+                    services.AddTransient<CursorsPage>();
+                    services.AddTransient<ColorizationViewModel>();
+                    services.AddTransient<ColorizationPage>();
+                    services.AddTransient<SettingsViewModel>();
+                    services.AddTransient<SettingsPage>();
+                    services.AddTransient<AboutViewModel>();
+                    services.AddTransient<AboutPage>();
+                    services.AddTransient<DonationViewModel>();
+                    services.AddTransient<DonationPage>();
+                    services.AddTransient<ScriptsViewModel>();
+                    services.AddTransient<ScriptsPage>();
+                    services.AddTransient<PersonalizationViewModel>();
+                    services.AddTransient<PersonalizationPage>();
+                    services.AddTransient<SystemAreasViewModel>();
+                    services.AddTransient<SystemAreasPage>();
+                    services.AddTransient<ConditionsViewModel>();
+                    services.AddTransient<ConditionsPage>();
+                    services.AddTransient<HotkeysViewModel>();
+                    services.AddTransient<HotkeysPage>();
+                    services.AddTransient<WallpaperPickerViewModel>();
+                    services.AddTransient<WallpaperPickerPage>();
+                    services.AddTransient<TimeViewModel>();
+                    services.AddTransient<TimePage>();
+
+                    // Configuration
+                    services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+                }
+            )
+            .Build();
+
+        UnhandledException += App_UnhandledException;
     }
 
     public static void CheckAppMutex()
     {
         if (!Mutex.WaitOne(TimeSpan.FromMilliseconds(50), false) && !Debugger.IsAttached)
         {
-            List<Process> processes = [.. Process.GetProcessesByName("AutoDarkModeApp")];
+            var processes = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.Id != Environment.ProcessId).ToList();
             if (processes.Count > 0)
             {
                 Helpers.WindowHelper.BringProcessToFront(processes[0]);
-                Environment.Exit(-1);
+                App.Current.Exit();
             }
         }
-    }
-
-    public static Window MainWindow { get; set; } = Window.Current;
-
-    public App()
-    {
-        CheckAppMutex();
-
-        InitializeComponent();
-
-        Host = Microsoft.Extensions.Hosting.Host.
-        CreateDefaultBuilder().
-        UseContentRoot(AppContext.BaseDirectory).
-        ConfigureServices((context, services) =>
-        {
-            // Services
-            services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-            services.AddSingleton<IFileService, FileService>();
-
-            services.AddSingleton<IActivationService, ActivationService>();
-            services.AddSingleton<IPageService, PageService>();
-            services.AddSingleton<INavigationService, NavigationService>();
-
-            services.AddSingleton<IErrorService, ErrorService>();
-            services.AddSingleton<IGeolocatorService, GeolocatorService>();
-
-            // Views and ViewModels
-            services.AddTransient<ThemePickerViewModel>();
-            services.AddTransient<ThemePickerPage>();
-            services.AddTransient<CursorsViewModel>();
-            services.AddTransient<CursorsPage>();
-            services.AddTransient<ColorizationViewModel>();
-            services.AddTransient<ColorizationPage>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<SettingsPage>();
-            services.AddTransient<AboutViewModel>();
-            services.AddTransient<AboutPage>();
-            services.AddTransient<DonationViewModel>();
-            services.AddTransient<DonationPage>();
-            services.AddTransient<ScriptsViewModel>();
-            services.AddTransient<ScriptsPage>();
-            services.AddTransient<PersonalizationViewModel>();
-            services.AddTransient<PersonalizationPage>();
-            services.AddTransient<SystemAreasViewModel>();
-            services.AddTransient<SystemAreasPage>();
-            services.AddTransient<ConditionsViewModel>();
-            services.AddTransient<ConditionsPage>();
-            services.AddTransient<HotkeysViewModel>();
-            services.AddTransient<HotkeysPage>();
-            services.AddTransient<WallpaperPickerViewModel>();
-            services.AddTransient<WallpaperPickerPage>();
-            services.AddTransient<TimeViewModel>();
-            services.AddTransient<TimePage>();
-
-            // Configuration
-            services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        }).
-        Build();
-
-        UnhandledException += App_UnhandledException;
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
@@ -119,26 +135,26 @@ public partial class App : Application
         if (arguments.Length > 1)
         {
             new PipeClient().SendMessageAndGetReply(arguments[1]);
-            Environment.Exit(-1);
+            App.Current.Exit();
+            return;
         }
 
         // Set App and Svc language
         Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
-        var builder = AdmConfigBuilder.Instance();
-        builder.Load();
-        try
+        await Task.Run(() =>
         {
-            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // save before activation SVC (think of first-launch scenario)
+            var builder = AdmConfigBuilder.Instance();
+            builder.Load();
+            builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // For Svc and other services that need to know the UI culture
             builder.Save();
-        }
-        catch (Exception)
-        {
-            // We can't show a dialog here 
-            //await App.GetService<IErrorService>().ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "Startup", "Failed to force-set Svc language");
-        }
+        });
 
-        MainWindow = new MainWindow();
+        // NOTE: Here we use the DI container to get the MainWindow and set it as a static property, which not only conforms to the standard, but also facilitates other places to access the MainWindow.
+        MainWindow = GetService<MainWindow>();
+        MainWindow.Closed += async (s, e) => await GetService<ICloseService>().CloseAsync();
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        await GetService<IActivationService>().ActivateAsync(args);
+
+        // NOTE: The MainWindow must be activated (i.e. made visible) in the ActivationService, not here in App.xaml.cs, because there are navigation events and adjustment of window position and size.
     }
 }
