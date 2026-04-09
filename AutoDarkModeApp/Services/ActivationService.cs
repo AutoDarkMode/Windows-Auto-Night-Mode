@@ -1,14 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
-using Microsoft.UI.Xaml.Controls;
 using Windows.UI.StartScreen;
 
 namespace AutoDarkModeApp.Services;
@@ -213,8 +207,6 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var jumpList = await JumpList.LoadCurrentAsync();
 
             jumpList.Items.Clear();
-            Debug.WriteLine("Adding jumplist items");
-            Debug.WriteLine($"Current override: {Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride}");
 
             var darkJumpTask = JumpListItem.CreateWithArguments(Command.Dark, "DarkTheme".GetLocalized());
             darkJumpTask.GroupName = "SwitchTheme".GetLocalized();
@@ -222,12 +214,8 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
             var lightJumpTask = JumpListItem.CreateWithArguments(Command.Light, "LightTheme".GetLocalized());
             lightJumpTask.GroupName = "SwitchTheme".GetLocalized();
 
-            var resetJumpTask = JumpListItem.CreateWithArguments(Command.NoForce, "Reset".GetLocalized());
-            resetJumpTask.GroupName = "SwitchTheme".GetLocalized();
-
             jumpList.Items.Add(darkJumpTask);
             jumpList.Items.Add(lightJumpTask);
-            jumpList.Items.Add(resetJumpTask);
 
             jumpList.SystemGroupKind = JumpListSystemGroupKind.None;
 

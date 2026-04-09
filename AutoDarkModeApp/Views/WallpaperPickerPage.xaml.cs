@@ -1,15 +1,8 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Services;
+﻿using AutoDarkModeApp.Services;
 using AutoDarkModeApp.UserControls;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
-using AutoDarkModeSvc.Communication;
 using CommunityToolkit.WinUI.Helpers;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
 
@@ -24,8 +17,13 @@ public sealed partial class WallpaperPickerPage : Page
     {
         ViewModel = App.GetService<WallpaperPickerViewModel>();
         InitializeComponent();
-        Task.Run(DetectMonitorsAsync).Wait();
-        DispatcherQueue.TryEnqueue(LoadMonitors);
+        Loaded += WallpaperPickerPage_Loaded;
+    }
+
+    private async void WallpaperPickerPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        await DetectMonitorsAsync();
+        LoadMonitors();
     }
 
 

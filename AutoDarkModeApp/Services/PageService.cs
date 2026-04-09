@@ -1,8 +1,5 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.ViewModels;
+﻿using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Services;
 

@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@ using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.SwitchComponents.Base;
-using Windows.Devices.Sensors;
 using Windows.System.Power;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 using static AutoDarkModeSvc.Handlers.WallpaperHandler;
@@ -63,6 +62,14 @@ static class ThemeManager
             return;
         }
 
+
+        // process switches with a requested theme
+        if (e.Theme != Theme.Resolve)
+        {
+            UpdateTheme(e);
+            return;
+        }
+
         // battery switch if the initial event was missed
         if (builder.Config.Events.DarkThemeOnBattery)
         {
@@ -82,13 +89,6 @@ static class ThemeManager
             }
         }
 
-        // process switches with a requested theme
-        if (e.Theme != Theme.Resolve)
-        {
-            UpdateTheme(e);
-            return;
-        }
-
         // recalculate timed theme state on every call
         if (builder.Config.AutoThemeSwitchingEnabled)
         {
@@ -102,6 +102,13 @@ static class ThemeManager
             else if (builder.Config.Governor == Governor.NightLight)
             {
                 e.OverrideTheme(state.NightLight.Requested, ThemeOverrideSource.NightLight);
+                UpdateTheme(e);
+            }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // Re-evaluate with current config (handles threshold changes from UI)
+                state.AmbientLight.ReEvaluateCallback();
+                e.OverrideTheme(state.AmbientLight.Requested, ThemeOverrideSource.AmbientLight);
                 UpdateTheme(e);
             }
         }
@@ -184,6 +191,23 @@ static class ThemeManager
                         state.PostponeManager.RemoveSkipNextSwitch();
                 }
             }
+            else if (builder.Config.Governor == Governor.AmbientLight)
+            {
+                // For ambient light mode, add a time-based postpone since we have no day/night concept
+                // This prevents the ambient light sensor from immediately switching back after manual toggle
+                if (!state.PostponeManager.IsUserDelayed)
+                {
+                    if (state.AmbientLight.Requested != newTheme)
+                    {
+                        // Postpone ambient light switching for 1 hour after manual toggle
+                        state.PostponeManager.Add(new PostponeItem(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified));
+                    }
+                    else
+                    {
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                    }
+                }
+            }
         }
         return newTheme;
     }
@@ -221,9 +245,9 @@ static class ThemeManager
             else themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
         }
 
-        (List<ISwitchComponent> componentsToUpdate, 
-         DwmRefreshType neededDwmRefresh, 
-         DwmRefreshType providedDwmRefresh, 
+        (List<ISwitchComponent> componentsToUpdate,
+         DwmRefreshType neededDwmRefresh,
+         DwmRefreshType providedDwmRefresh,
          int dwmRefreshDelay) = cm.GetComponentsToUpdate(e);
 
         if (neededDwmRefresh >= DwmRefreshType.Colorization)
@@ -291,7 +315,7 @@ static class ThemeManager
                             state.ManagedThemeFile.SyncWithActiveTheme(patch: false, keepDisplayNameAndGuid: false, logging: false);
                             if (component.RunVerifyOperationIntegrity(e))
                             {
-                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i+1}/{maxRetries+1}");
+                                Logger.Info($"successfully restored integrity for {component.GetType().Name}, sync calls: {i + 1}/{maxRetries + 1}");
                                 break;
                             }
                             // early return because calling switch only makes sense if a sync call is performed.
@@ -379,6 +403,10 @@ static class ThemeManager
             // enforce dwm refresh via colorization if user has that configured
             if ((builder.Config.Tunable.DwmRefreshViaColorization && neededDwmRefresh != DwmRefreshType.None) || refreshDwmViaColorizationRequested)
             {
+                if (builder.Config.Tunable.DwmRefreshViaColorization && builder.Config.Tunable.DwmRefreshViaColorizationDelay > dwmRefreshDelay)
+                {
+                    dwmRefreshDelay = builder.Config.Tunable.DwmRefreshViaColorizationDelay;
+                }
                 neededDwmRefresh = DwmRefreshType.Colorization;
             }
 
@@ -485,7 +513,7 @@ public class TimedThemeState
     public DateTime NextSwitchTime { get; private set; }
 
     /// <summary>
-    /// Precise Time when the target theme entered its activation window <br/> 
+    /// Precise Time when the target theme entered its activation window <br/>
     /// (when the last switch occurred or should have occurred)
     /// </summary>
     public DateTime CurrentSwitchTime { get; private set; }

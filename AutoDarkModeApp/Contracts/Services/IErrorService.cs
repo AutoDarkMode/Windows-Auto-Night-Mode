@@ -1,7 +1,4 @@
-﻿using AutoDarkModeSvc.Communication;
-using Microsoft.UI.Xaml;
-
-namespace AutoDarkModeApp.Contracts.Services;
+﻿namespace AutoDarkModeApp.Contracts.Services;
 
 public interface IErrorService
 {

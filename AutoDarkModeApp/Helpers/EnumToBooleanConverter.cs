@@ -22,6 +22,6 @@ public partial class EnumToBooleanConverter : IValueConverter
         {
             return Enum.Parse(targetType, parameter.ToString()!);
         }
-        return null;
+        return DependencyProperty.UnsetValue;
     }
 }

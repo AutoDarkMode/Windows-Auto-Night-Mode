@@ -1,7 +1,4 @@
-﻿using AutoDarkModeApp.Utils;
-using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace AutoDarkModeApp.ViewModels;
+﻿namespace AutoDarkModeApp.ViewModels;
 
 public partial class AboutViewModel : ObservableRecipient
 {
@@ -42,4 +39,5 @@ public partial class AboutViewModel : ObservableRecipient
         WindowsVersionText = versionInfo.WindowsVersion;
         ArchText = versionInfo.Arch;
     }
+
 }

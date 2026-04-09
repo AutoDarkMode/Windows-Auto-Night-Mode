@@ -1,17 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
-using System.Windows.Input;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -45,7 +35,7 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial bool IsDwmRefreshViaColorization { get; set; }
 
     [ObservableProperty]
-    public partial bool IsHideTray { get; set; }
+    public partial bool IsShowTrayIcon { get; set; }
 
     [ObservableProperty]
     public partial bool IsTunableDebug { get; set; }
@@ -98,11 +88,57 @@ public partial class SettingsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial Visibility GridAutostartVisibility { get; set; }
 
-    public ICommand RestartCommand { get; }
+    [RelayCommand]
+    private void Restart()
+    {
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
+        }
 
-    public ICommand CheckUpdateCommand { get; }
+        MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
+        Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
+        Microsoft.UI.Xaml.Application.Current.Exit();
+    }
 
-    public ICommand AutostartRefreshCommand { get; }
+    [RelayCommand]
+    private void CheckUpdate()
+    {
+        UpdatesDate = "Msg_SearchUpdate".GetLocalized();
+        Task.Run(() =>
+        {
+            _updater.CheckNewVersion();
+            _dispatcherQueue.TryEnqueue(() =>
+            {
+                UpdatesDate = _updater.UpdateAvailable() ? "Msg_UpdateAvailable".GetLocalized() : "Msg_NoUpdate".GetLocalized();
+            });
+        });
+    }
+
+    [RelayCommand]
+    private async Task AutostartRefresh()
+    {
+        SetAutostartDetailsVisibility(false);
+        try
+        {
+            var response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
+            if (response.StatusCode == StatusCode.Err)
+            {
+                throw new AddAutoStartException();
+            }
+            await GetAutostartInfo();
+        }
+        catch (Exception)
+        {
+            throw new AddAutoStartException($"Could not validate autostart", "ValidateAutostart");
+        }
+        await Task.Delay(fakeResponsiveUIDelay);
+        SetAutostartDetailsVisibility(true);
+    }
 
     public SettingsViewModel(IErrorService errorService, ILocalSettingsService localSettingsService)
     {
@@ -141,40 +177,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         StateUpdateHandler.OnConfigUpdate += HandleConfigUpdate;
         StateUpdateHandler.StartConfigWatcher();
-
-        RestartCommand = new RelayCommand(() =>
-        {
-            try
-            {
-                _builder.Save();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SettingsViewModel");
-            }
-
-            MessageHandler.Client.SendMessageAndGetReply(Command.Restart);
-            Process.Start(new ProcessStartInfo(Helper.ExecutionPathApp) { UseShellExecute = false, Verb = "open" });
-            Microsoft.UI.Xaml.Application.Current.Exit();
-        });
-
-        CheckUpdateCommand = new RelayCommand(() =>
-        {
-            UpdatesDate = "Msg_SearchUpdate".GetLocalized();
-            Task.Run(() =>
-            {
-                _updater.CheckNewVersion();
-                _dispatcherQueue.TryEnqueue(() =>
-                {
-                    UpdatesDate = _updater.UpdateAvailable() ? "Msg_UpdateAvailable".GetLocalized() : "Msg_NoUpdate".GetLocalized();
-                });
-            });
-        });
-
-        AutostartRefreshCommand = new RelayCommand(async () =>
-        {
-            await ValidateAutostart();
-        });
     }
 
     private void SetAutostartDetailsVisibility(bool visible)
@@ -196,7 +198,7 @@ public partial class SettingsViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        IsHideTray = !_builder.Config.Tunable.ShowTrayIcon;
+        IsShowTrayIcon = _builder.Config.Tunable.ShowTrayIcon;
         IsDwmRefreshViaColorization = _builder.Config.Tunable.DwmRefreshViaColorization;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
@@ -240,27 +242,6 @@ public partial class SettingsViewModel : ObservableRecipient
 
         _isInitializing = false;
     }
-
-    private async Task ValidateAutostart()
-    {
-        SetAutostartDetailsVisibility(false);
-        try
-        {
-            var response = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync($"{Command.ValidateAutostart} true", 2));
-            if (response.StatusCode == StatusCode.Err)
-            {
-                throw new AddAutoStartException();
-            }
-            await GetAutostartInfo();
-        }
-        catch (Exception)
-        {
-            throw new AddAutoStartException($"Could not validate autostart", "ValidateAutostart");
-        }
-        await Task.Delay(fakeResponsiveUIDelay);
-        SetAutostartDetailsVisibility(true);
-    }
-
 
     private async Task GetAutostartInfo(bool toggleVisibility = true)
     {
@@ -341,12 +322,12 @@ public partial class SettingsViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
-    partial void OnIsHideTrayChanged(bool value)
+    partial void OnIsShowTrayIconChanged(bool value)
     {
         if (_isInitializing)
             return;
 
-        _builder.Config.Tunable.ShowTrayIcon = !value;
+        _builder.Config.Tunable.ShowTrayIcon = value;
 
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));

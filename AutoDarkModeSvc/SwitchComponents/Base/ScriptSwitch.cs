@@ -40,35 +40,35 @@ class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
         return false;
     }
 
-        protected override async void HandleSwitch(SwitchEventArgs e)
+    protected override async void HandleSwitch(SwitchEventArgs e)
+    {
+        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        switchTask = Task.Run(() =>
         {
-            string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
-            switchTask = Task.Run(() =>
+            if (e.Theme == Theme.Light)
             {
-                if (e.Theme == Theme.Light)
+                currentComponentTheme = Theme.Light;
+                Settings.Component.Scripts.ForEach(s =>
                 {
-                    currentComponentTheme = Theme.Light;
-                    Settings.Component.Scripts.ForEach(s =>
-                    {
-                        if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
-                    });
-                    
-                }
-                else
+                    if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
+                        ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
+                });
+
+            }
+            else
+            {
+                currentComponentTheme = Theme.Dark;
+                Settings.Component.Scripts.ForEach(s =>
                 {
-                    currentComponentTheme = Theme.Dark;
-                    Settings.Component.Scripts.ForEach(s =>
-                    {
-                        if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
-                    });
-                    
-                }
-            });
-            await switchTask;           
-            Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
-        }
+                    if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
+                        ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
+                });
+
+            }
+        });
+        await switchTask;
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
+    }
 
     protected override void EnableHook()
     {

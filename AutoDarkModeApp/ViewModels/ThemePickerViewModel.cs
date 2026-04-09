@@ -1,9 +1,4 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoDarkModeApp.Services;
 
 using static AutoDarkModeLib.IThemeManager2.Flags;
 
@@ -24,10 +19,11 @@ public partial class ThemePickerViewModel : ObservableRecipient
     public partial bool ThemeKeepActiveEnabled { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectedLightTheme { get; set; }
+    public partial ThemeFile? SelectedLightTheme { get; set; }
 
     [ObservableProperty]
-    public partial object? SelectedDarkTheme { get; set; }
+    public partial ThemeFile? SelectedDarkTheme { get; set; }
+
 
     [ObservableProperty]
     public partial bool IgnoreBackgroundEnabled { get; set; }
@@ -155,26 +151,14 @@ public partial class ThemePickerViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectedLightThemeChanged(object? value)
+    partial void OnSelectedLightThemeChanged(ThemeFile? value)
     {
-        if (_isInitializing)
+        if (_isInitializing || value == null)
             return;
 
-        List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
-        IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
-        try
-        {
-            if (value != null)
-            {
-                ThemeFile? selected = themeCollection.FirstOrDefault(t => t.ToString().Contains(value.ToString()!));
-                if (selected != null)
-                    _builder.Config.WindowsThemeMode.LightThemePath = selected.Path;
-            }
-        }
-        catch
-        {
-            SelectedLightTheme = null;
-        }
+        _builder.Config.WindowsThemeMode.LightThemePath = value.Path;
+        //List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
+        //IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
 
         if (ThemeSwitchEnabled)
         {
@@ -193,26 +177,14 @@ public partial class ThemePickerViewModel : ObservableRecipient
         RequestThemeSwitch();
     }
 
-    partial void OnSelectedDarkThemeChanged(object? value)
+    partial void OnSelectedDarkThemeChanged(ThemeFile? value)
     {
-        if (_isInitializing)
+        if (_isInitializing || value == null)
             return;
 
-        List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
-        IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
-        try
-        {
-            if (value != null)
-            {
-                ThemeFile? selected = themeCollection.FirstOrDefault(t => t.ToString().Contains(value.ToString()!));
-                if (selected != null)
-                    _builder.Config.WindowsThemeMode.DarkThemePath = selected.Path;
-            }
-        }
-        catch
-        {
-            SelectedDarkTheme = null;
-        }
+        _builder.Config.WindowsThemeMode.DarkThemePath = value.Path;
+        //List<ThemeFile> themeCollection = ThemeCollectionHandler.GetUserThemes();
+        //IEnumerable<string> themeNames = themeCollection.Select(t => t.ToString());
 
         if (ThemeSwitchEnabled)
         {
