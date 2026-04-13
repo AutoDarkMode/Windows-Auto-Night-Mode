@@ -44,8 +44,7 @@
 
 
                 <!--  Accent Mode for title bars and window borders  -->
-                <controls:SettingsExpander Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
-                                           Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentApplyTitlebarAndBorders}"
                                            HeaderIcon="{ui:FontIcon Glyph=&#xE737;}">
 
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsDWMPrevalenceSwitch, Mode=TwoWay}"/>
@@ -64,7 +63,6 @@
                 <!--  Accent mode for the taskbar  -->
                 <controls:SettingsExpander Header="{helpers:ResourceString Name=AccentApplyTaskbar}"
                                            HeaderIcon="{ui:FontIcon Glyph=&#xE90E;}"
-                                           Description="{helpers:ResourceString Name=AccentSurfacesChoose}"
                                            IsEnabled="{x:Bind ViewModel.AllowTaskbarColorSwitch, Mode=OneWay}"
                                            IsExpanded="{x:Bind ViewModel.IsAccentApplyTaskbarExpanded, Mode=TwoWay}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsTaskbarColorSwitch, Mode=TwoWay}"/>

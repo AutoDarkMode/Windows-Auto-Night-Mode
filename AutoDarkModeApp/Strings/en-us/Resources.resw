@@ -133,7 +133,7 @@
     <value>Active delays</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use Taskbar Accent Color during</value>
+    <value>Use taskbar accent color during</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adapt to system</value>
@@ -212,7 +212,7 @@
     <value>Enable color filter during dark mode</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Customize the Windows system color scheme to your liking.</value>
+    <value>Customize the Windows system color scheme to your liking</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Conditions</value>
@@ -468,15 +468,10 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   </data>
   <data name="Monitor" xml:space="preserve">
     <value>Monitor</value>
+    <comment>noun (device)</comment>
   </data>
   <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
     <value>Auto theme switching is enabled</value>
-  </data>
-  <data name="Msg_ChangedsSaved" xml:space="preserve">
-    <value>Your changes have been saved!</value>
-  </data>
-  <data name="Msg_ClickApply" xml:space="preserve">
-    <value>Your changes will be saved automatically.</value>
   </data>
   <data name="Msg_DowngradeAvailable" xml:space="preserve">
     <value>A downgrade is available</value>
@@ -514,17 +509,13 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>Theme switch pending</value>
   </data>
-  <data name="Msg_ThemeError" xml:space="preserve">
-    <value>Warning: We couldn't read your current theme.</value>
-  </data>
   <data name="Msg_UpdateAvailable" xml:space="preserve">
     <value>An update is available!</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>A new version is available on GitHub with fixes and enhancements.
+    <value>A new version with fixes and enhancements is available on GitHub.
 
-Currently installed version: {0}, new version: {1}</value>
-    <comment>This should be handled with discrete ("Update" or "Dismiss") buttons</comment>
+Currently installed: {0}, new: {1}</value>
   </data>
   <data name="Msg_VersionInfoCopied" xml:space="preserve">
     <value>Version info copied to clipboard</value>
@@ -546,7 +537,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
     <value>Open configuration file</value>
-    <comment>Don't use unnessecary abbreviations</comment>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
     <value>Open configuration folder</value>
@@ -588,19 +578,19 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Select mouse pointers</value>
   </data>
   <data name="PickCursor_Description" xml:space="preserve">
-    <value>Configure different mouse pointers for dark and light modes.</value>
+    <value>Configure mouse pointers for dark and light modes</value>
   </data>
   <data name="PickTheme" xml:space="preserve">
     <value>Select a theme</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
-    <value>Select a different Windows theme for dark and light mode respectively. Allows full theme customization, but requires you to set up .theme files.</value>
+    <value>Select a Windows theme for light and dark mode</value>
   </data>
   <data name="PickWallpaper" xml:space="preserve">
     <value>Personalize your background</value>
   </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
-    <value>Customize your desktop for all monitors, individual monitors, set a background color or enable spotlight.</value>
+    <value>Customize your desktop for all monitors, individual monitors, set a background color or enable spotlight</value>
   </data>
   <data name="Position" xml:space="preserve">
     <value>Position</value>
@@ -679,9 +669,11 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
+    <comment>verb</comment>
   </data>
   <data name="Restart" xml:space="preserve">
     <value>Restart</value>
+    <comment>verb</comment>
   </data>
   <data name="RestartNeeded" xml:space="preserve">
     <value>Restart to apply changes</value>
@@ -806,7 +798,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Let Windows manage my theme</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Check when Auto Dark Mode starts</value>
+    <value>Search when Auto Dark Mode starts</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Update channel</value>
@@ -816,13 +808,14 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Update colorization</value>
   </data>
   <data name="UpdateInterval" xml:space="preserve">
-    <value>Frequency to check</value>
+    <value>Frequency to search</value>
   </data>
   <data name="Updates" xml:space="preserve">
     <value>Updates</value>
+    <comment>noun, plural</comment>
   </data>
   <data name="UseLocationService" xml:space="preserve">
-    <value>Use Location Service</value>
+    <value>Use location service</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
@@ -841,10 +834,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="WallpaperMode_Spotlight" xml:space="preserve">
     <value>Windows spotlight</value>
-  </data>
-  <data name="Warning1903" xml:space="preserve">
-    <value>This option is disabled. Need to run on Windows 10 April 2019 or later.</value>
-    <comment>Don't blame a user directly!</comment>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
     <value>You have disabled the auto start entry via Windows.</value>
@@ -877,7 +866,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled in Windows Settings. To enable Auto Dark Mode to start with Windows again, please go to Windows Settings &gt; Apps &gt; Startup and enable it.</value>
+    <value>Auto start has been disabled in Windows Settings. To enable Auto Dark Mode to start with Windows, go to Windows Settings &gt; Apps &gt; Startup.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -922,13 +911,13 @@ Currently installed version: {0}, new version: {1}</value>
     <value>The hotkey didn't work? Don't worry, let's save it again</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Save successfull</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
     <value>Save failed</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Start typing to add apps</value>
   </data>
   <data name="AppMode" xml:space="preserve">
     <value>App mode</value>
@@ -950,9 +939,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
-  </data>
-  <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
@@ -983,7 +969,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Dark mode for your web browser</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more.</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
     <value>Open Windows mouse pointer settings</value>
@@ -1003,7 +989,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Copied</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
     <value>Open Windows settings</value>
@@ -1014,14 +1000,12 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="WindowsColors" xml:space="preserve">
     <value>Windows colors</value>
   </data>
-  <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
-  </data>
   <data name="ColorPreview" xml:space="preserve">
     <value>Color preview</value>
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
+    <comment>noun</comment>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
@@ -1033,7 +1017,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Ambient light sensor</value>
   </data>
   <data name="AmbientLightSensor_Description" xml:space="preserve">
-    <value>Automatically switch themes based on ambient light levels detected by your device's light sensor.</value>
+    <value>Automatically switch themes based on ambient light levels detected by your device's light sensor</value>
   </data>
   <data name="AmbientLightThresholds" xml:space="preserve">
     <value>Light thresholds</value>
@@ -1042,7 +1026,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Configure light thresholds</value>
   </data>
   <data name="AmbientLightThresholds_Description" xml:space="preserve">
-    <value>This feature automatically switches the theme based on the brightness of your environment. Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
+    <value>Automatically switch the theme based on the brightness of your environment. Set the light levels (in lux) at which the theme should switch. Use different thresholds to prevent rapid switching.</value>
   </data>
   <data name="AmbientLightDarkThreshold" xml:space="preserve">
     <value>Dark below (lux)</value>
@@ -1066,7 +1050,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Dimly lit room</value>
   </data>
   <data name="AmbientLightRef_LivingRoom" xml:space="preserve">
-    <value>Living room / bedroom</value>
+    <value>Livingroom / bedroom</value>
   </data>
   <data name="AmbientLightRef_Office" xml:space="preserve">
     <value>Office lighting</value>
@@ -1093,7 +1077,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Automatically switches the theme based on environment lighting</value>
   </data>
   <data name="AmbientLightSensor_Unavailable_ToolTip" xml:space="preserve">
-    <value>This feature isn't available on your device because no ambient light sensor was detected</value>
+    <value>This feature isn't available because no ambient light sensor was detected</value>
   </data>
   <data name="AmbientLightCurrent" xml:space="preserve">
     <value>Current:</value>

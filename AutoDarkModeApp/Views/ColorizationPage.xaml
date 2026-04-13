@@ -45,13 +45,6 @@
                 <!--  Accent Color  -->
                 <StackPanel Spacing="{StaticResource SettingsCardSpacing}">
 
-                    <!--  Automatic color mode info  -->
-                    <InfoBar
-                        IsClosable="False"
-                        IsOpen="{x:Bind ViewModel.AutomaticColorPromptSettingsCardVisibility, Mode=OneWay}"
-                        Message="{helpers:ResourceString Name=Msg_AutomaticColorModeDescription}"
-                        Severity="Informational" />
-
                     <!--  Automatic color mode settingscard  -->
                     <controls:SettingsCard
                         Header="{helpers:ResourceString Name=AccentColor}"
