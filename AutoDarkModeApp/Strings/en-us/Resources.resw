@@ -133,7 +133,7 @@
     <value>Active delays</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Use taskbar accent color during</value>
+    <value>Use Taskbar accent color during</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Adapt to system</value>
@@ -560,7 +560,7 @@ Currently installed: {0}, new: {1}</value>
     <value>Open updater log</value>
   </data>
   <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Go to Night light settings</value>
+    <value>Open Night light settings</value>
   </data>
   <data name="PathAt" xml:space="preserve">
     <value>Path:</value>
@@ -798,7 +798,7 @@ Currently installed: {0}, new: {1}</value>
     <value>Let Windows manage my theme</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Search when Auto Dark Mode starts</value>
+    <value>Check when Auto Dark Mode starts</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Update channel</value>
@@ -808,7 +808,7 @@ Currently installed: {0}, new: {1}</value>
     <value>Update colorization</value>
   </data>
   <data name="UpdateInterval" xml:space="preserve">
-    <value>Frequency to search</value>
+    <value>Frequency to check</value>
   </data>
   <data name="Updates" xml:space="preserve">
     <value>Updates</value>
@@ -839,7 +839,7 @@ Currently installed: {0}, new: {1}</value>
     <value>You have disabled the auto start entry via Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
+    <value>1. Open Windows Settings &gt; Personalization &gt; Colors.
 2. Change the system color to 'Light' for the light theme.
 3. Go to Windows Settings &gt; Personalization &gt; Themes.
 4. Select your favorite wallpaper, mouse pointers and accent color.
@@ -866,7 +866,7 @@ Currently installed: {0}, new: {1}</value>
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled in Windows Settings. To enable Auto Dark Mode to start with Windows, go to Windows Settings &gt; Apps &gt; Startup.</value>
+    <value>Auto start is disabled in Windows Settings.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -881,7 +881,7 @@ Currently installed: {0}, new: {1}</value>
     <value>Language</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Open Windows Spotlight settings</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
@@ -992,7 +992,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Open Windows Settings</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Selected color</value>
