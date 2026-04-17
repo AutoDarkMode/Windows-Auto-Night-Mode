@@ -267,11 +267,10 @@ public partial class SettingsViewModel : ObservableRecipient
                         Title = "StartWithWindows".GetLocalized(),
                         Content = "StartWithWindowsFailed_Content".GetLocalized(),
                         XamlRoot = App.MainWindow.Content.XamlRoot,
+                        PrimaryButtonText = "OpenWindowsSettings".GetLocalized(),
+                        PrimaryButtonCommand = new RelayCommand(OpenAutostartSettings),
+                        PrimaryButtonStyle = (Style)App.Current.Resources["AccentButtonStyle"],
                         CloseButtonText = "Close".GetLocalized(),
-                        IsSecondaryButtonEnabled = true,
-                        SecondaryButtonText = "OpenWindowsSettings".GetLocalized(),
-                        SecondaryButtonCommand = new RelayCommand(OpenAutostartSettings),
-                        DefaultButton = ContentDialogButton.Secondary
                     };
 
                     if (IsAutostart)

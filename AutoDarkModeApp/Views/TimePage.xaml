@@ -39,7 +39,7 @@
                 </InfoBar>
 
                 <!--  About time  -->
-                <controls:SettingsCard ContentAlignment="Vertical" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
+                <controls:SettingsCard ContentAlignment="Vertical" IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                     <controls:SettingsCard.Description>
                         <StackPanel HorizontalAlignment="Stretch" Spacing="12">
                             <StackPanel Spacing="{StaticResource RadioButtonsRowSpacing}">
@@ -67,7 +67,7 @@
                                     Content="{helpers:ResourceString Name=FollowWindowsNightLight}"
                                     GroupName="TriggerMode"
                                     IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
-                                <!--  Wrap in Border to show tooltip even when RadioButton is disabled  -->
+                                <!--  Wrap in StackPanel to show tooltip even when RadioButton is disabled  -->
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Spacing="8"
