@@ -124,16 +124,16 @@
     <value>Rólunk</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
-    <value>Kiemelőszín</value>
+    <value>Témaszín</value>
   </data>
   <data name="AccentOnly" xml:space="preserve">
-    <value>Csak Kiemelőszín</value>
+    <value>Csak Témaszín</value>
   </data>
   <data name="ActiveDelays" xml:space="preserve">
     <value>Aktív halasztások</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Használja a Tálca kiemelőszínét</value>
+    <value>Használja a Tálca témaszínét</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Alkalmazkodjon a rendszerhez</value>
@@ -953,7 +953,7 @@ Jelenleg telepített verzió: {0}, új verzió: {1}</value>
     <value>Szín figyelmen kívül hagyása</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Témaszínű elemek</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>Válassza ki, hogy mikor legyen alkalmazva a témaszín</value>
