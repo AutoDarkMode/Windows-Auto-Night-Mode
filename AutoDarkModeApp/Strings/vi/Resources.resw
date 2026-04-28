@@ -208,7 +208,7 @@
     <value>Màu</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Bộ lọc màu (tổ hợp phím Win + Ctrl + C)</value>
+    <value>Bật bộ lọc màu trong chế độ tối</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
@@ -449,7 +449,7 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Để Chế độ tối tự động quản lý chủ đề của tôi</value>
+    <value>Để chế độ tối tự động quản lý chủ đề của tôi (khuyến khích)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Thủ công</value>
@@ -670,7 +670,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Làm mới Tự khởi động</value>
+    <value>Làm mới</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Khóa Registry</value>
@@ -818,7 +818,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Để Windows quản lý chủ đề của tôi</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Kiểm tra cập nhật khi Auto Dark Mode khởi động</value>
+    <value>Kiểm tra khi Auto Dark Mode khởi động</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Chọn kênh cập nhật</value>
@@ -868,7 +868,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
 6. Repeat this process for the dark theme.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Chỉnh sửa hotkey</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Ngắt kết nối</value>
@@ -917,52 +917,52 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Show notification when toggling the automatic theme switch</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Chọn một tổ hợp phím. Chỉ những tổ hợp phím bắt đầu bằng phím Windows, Ctrl, Alt hoặc Shift mới hợp lệ.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Kích hoạt phím tắt</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Lưu</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Buộc lưu</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Hotkey không hoạt động? Hãy lưu lại lần nữa</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Lưu thành công</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Lưu thất bại</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Bắt đầu nhập để thêm bất kỳ ứng dụng nào</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Chế độ ứng dụng</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Chế độ cửa sổ</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Cài đặt màu sắc cá nhân hóa của Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Bị trì hoãn</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Không bị trì hoãn</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Bỏ qua màu</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Chọn khi nào màu điểm nhấn được áp dụng</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
@@ -977,7 +977,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Giá trị dương xuất hiện sau, giá trị âm xuất hiện trước</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
@@ -990,13 +990,13 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Chế độ tối cho trình duyệt của bạn</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader là extension của trình duyệt giúp web trên Chrome, Edge và Firefox tuân thủ chủ đề hiện tại của hệ thống. Ấn vào đây để tìm hiểu thêm</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Mở cài đặt con trỏ chuột Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
@@ -1005,19 +1005,19 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Center</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log và Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Đã sao chép</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Mở cài đặt Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Hotkeys chỉ có thể chỉnh sửa khi đang tắt</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1029,10 +1029,10 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Xem trước màu sắc</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Xem trước</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
