@@ -1037,4 +1037,10 @@ Dans de rares cas, Windows peut émettre un bip lorsque vous déplacez la souris
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Couleur d'accentuation de la barre des tâches</value>
   </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
+  </data>
 </root>
