@@ -1032,9 +1032,9 @@ In rare occasioni, Windows potrebbe emettere un segnale acustico quando si spost
     <value>Colore principale per la barra delle applicazioni</value>
   </data>
   <data name="PowerToysConflict_Content" xml:space="preserve">
-    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+    <value>L'Interruttore modalità di PowerToys è attivo e potrebbe entrare in conflitto con Auto Dark Mode. Disattivalo nelle impostazioni di PowerToys per evitare cambi di tema imprevisti.</value>
   </data>
   <data name="PowerToysConflict_Title" xml:space="preserve">
-    <value>PowerToys Light Switch detected</value>
+    <value>Interruttore modalità di PowerToys rilevato</value>
   </data>
 </root>
