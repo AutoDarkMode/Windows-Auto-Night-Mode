@@ -133,7 +133,7 @@
     <value>Ενεργές καθυστερήσεις</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Χρήση Xρώματος Eμφασης Γραμμής Εργασιών όταν χρησιμοποιειται</value>
+    <value>Χρήση χρώματος έμφασης γραμμής εργασιών όταν χρησιμοποιειται</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
     <value>Προσαρμογή στο σύστημα</value>
@@ -208,10 +208,10 @@
     <value>Χρώμα</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Φίλτρο χρώματος (αποστολή Win + Ctrl + C)</value>
+    <value>Ενεργοποίηση χρωματικού φίλτρου στη σκοτεινή λειτουργία</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Προσαρμόστε τον συνδυασμό χρωμάτων του συστήματος των Windows σύμφωνα με τις προτιμήσεις σας</value>
+    <value>Προσαρμόστε τον χρωματικό συδυασμό των Windows σύμφωνα με τις προτιμήσεις σας.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Συνθήκες</value>
@@ -428,7 +428,7 @@
     <value>Φωτεινό θέμα</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Σύνδεσμου\ι</value>
+    <value>Περισσότερες πληροφορίες</value>
   </data>
   <data name="LocationData" xml:space="preserve">
     <value>Δεδομένα τοποθεσίας</value>
@@ -446,7 +446,7 @@
     <value>Γεωγραφικό μήκος</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Να επιτρέπεται στο Auto Dark Mode να διαχειρίζεται το θέμα μου</value>
+    <value>Να επιτρέπεται στο Auto Dark Mode να διαχειρίζεται το θέμα μου (προτείνεται)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Χειροκίνητα</value>
@@ -485,7 +485,7 @@
     <value>Λήψη ενημέρωσης</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Αυτή η ρύθμιση δεν υποστηρίζει προεπιλεγμένα θέματα των Windows</value>
+    <value>Αυτή η επιλογή δεν υποστηρίζει τα προεπιλεγμένα θέματα των Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Auto Dark Mode needs the permission to access your location</value>
@@ -529,7 +529,7 @@
     <value>Οι πληροφορίες έκδοσης αντιγράφηκαν στο πρόχειρο</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Επόμενη ενημέρωση στις </value>
+    <value>Επόμενη ενημέρωση:</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Καμία</value>
@@ -661,10 +661,10 @@
     <value>Παράλειψη αυτόματης εναλλαγής μία φορά</value>
   </data>
   <data name="ProcessBlockList" xml:space="preserve">
-    <value>Να μην γίνεται εναλλαγή όταν εκτελούνται συγκεκριμένες διαδικασίες</value>
+    <value>Να μην γίνεται εναλλαγή του θέματος όταν εκτελούνται συγκεκριμένες εφαρμογές</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Ανανέωση αυτόματης εκκίνησης</value>
+    <value>Ανανέωση</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Κλειδί Μητρώου</value>
@@ -739,7 +739,7 @@
     <value>Σύστημα</value>
   </data>
   <data name="SystemAreas" xml:space="preserve">
-    <value>Εφαρμογές</value>
+    <value>Ρυθμίσεις συστήματος</value>
   </data>
   <data name="Task" xml:space="preserve">
     <value>Διεργασία</value>
@@ -812,7 +812,7 @@
     <value>Να επιτρέπεται στα Windows να διαχειρίζονται το θέμα μου</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Ελεγχος για νέα έκδοση κατά την εκκίνηση του Auto Dark Mode</value>
+    <value>Ελεγχος κατά την εκκίνηση του Auto Dark Mode</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Επιλέξτε κανάλι ενημερώσεων</value>
@@ -881,7 +881,7 @@
     <value>Διαδρομή</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Η αυτόματη εκκίνηση έχει απενεργοποιηθεί μέσω της καρτέλας "Εκκίνηση εφαρμογών" της Διαχείρισης Εργασιών. Εάν θέλετε το Auto Dark Mode να ξεκινήσει ξανά με τα Windows, παρακαλώ ενεργοποιήστε την ξανά από εκεί.</value>
+    <value>Η αυτόματη εκκίνηση έχει απενεργοποιηθεί στις ρυθμίσεις των Windows. Εάν θέλετε το Auto Dark Mode να ξεκινάει με την ενεργοποίηση του υπολογιστή, παρακαλώ επιλέξτε την αντίστοιχη επιλογή πηγαίνοντας: Ρυθμίσεις των Windows &gt; Εφαρμογές &gt; Εκκίνηση.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
@@ -950,28 +950,28 @@
     <value>Χωρίς καθυστέρηση</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Αγνόηση χρώματος</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Επιφάνειες με χρώμα έμφασης</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Επιλέξτε πότε να εφαρμόζεται το χρώμα έμφασης</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
+    <value>Εφαρμογή κατα τη διάρκεια</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>Χρώμα έμφασης για γραμμές τίτλων και περίγραμμα παραθύρων</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>Επιθετικότερη DWM ανανέωση</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Οι θετικές τιμές αντιστοιχούν σε αλλαγή με καθυστέρηση, ενώ οι αρνητικές τιμές σε πρόωρη.</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
@@ -981,37 +981,37 @@ This may introduce slight to moderate lag on some systems during theme switch.
 On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Χρήση επιθετικής DWM ανανέωσης;</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Νυχτερινό θέμα για το πρόγραμμα περίηγησης σας</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Το Dark Reader είναι μια επέκταση για το πρόγραμμα περιήγησης σας (διαθέσιμο για Chrome, Edge και Firefox) που εφαρμόζει το θέμα του συστήματος Windows στο πρόγραμμα περιήγησης. Κάντε κλικ εδώ για να μάθετε περισσότερα</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Άνοιγμα ιδιότητων δείκτη ποντικιού στις ρυθμίσεις Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>Μπορείτε να προσθέσετε νέα σχέδια για τον δείκτη σας στις ιδιότητες ποντικιού των Windows και στη συνέχεια να τα επιλέξετε από εδώ</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>Κεντράρισμα</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log και Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>✔ Αντιγράφηκε</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Προσπάθεια μείωσης λανθασμένης εμφάνισης χρωμάτων στην εξερεύνηση, στη γραμμή εργασιών και στο μενού έναρξης των Windows</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Άνοιγμα ρυθμίσεων των Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Οι συντομεύσεις πληκτρολογίου μπορούν να αλλάξουν μόνο όταν είναι απενεργοποιημένη η χρήση τους</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1020,15 +1020,21 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows color</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>Έχει επιλεγεί η αυτόματη επιλογή χρώματος έμφασης. Το χρώμα θα καθοριστεί με βάση την τρέχουσα ταπετσαρία</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Προεπισκόπηση χρώματος</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Προεπισκόπηση</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
   </data>
 </root>

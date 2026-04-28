@@ -449,7 +449,7 @@ Pulse "Sí" para abrir una nueva ventana del navegador.
     <value>Longitud</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Permitir que Auto Dark Mode gestione mi tema</value>
+    <value>Permitir que Auto Dark Mode gestione mi tema (recomendado)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manual</value>
@@ -488,7 +488,7 @@ Pulse "Sí" para abrir una nueva ventana del navegador.
     <value>Descargar actualización</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Esta opción no soporta los temas por defecto de Windows</value>
+    <value>Esta opción no soporta los temas por defecto preinstalados de Windows</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Auto Dark Mode needs the permission to access your location</value>
@@ -535,7 +535,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Información sobre la versión copiada al portapapeles</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Siguiente actualización a las</value>
+    <value>Siguiente actualización</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Ninguno</value>
@@ -670,7 +670,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>No cambiar mientras se ejecutan determinados procesos</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Refrescar inicio automático</value>
+    <value>Refrescar</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Clave de registro</value>
@@ -818,7 +818,7 @@ Versión instalada actualmente: {0}, nueva versión: {1}</value>
     <value>Permitir que Windows gestione mi tema</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Comprobar si hay actualizaciones cuando Auto Dark Mode se inicia</value>
+    <value>Comprobar cuando Auto Dark Mode se inicia</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Seleccionar canal de notificaciones</value>
@@ -1036,5 +1036,11 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
   </data>
 </root>

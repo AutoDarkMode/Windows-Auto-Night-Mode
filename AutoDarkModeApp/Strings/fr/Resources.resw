@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>Thème sombre automatique</value>
+    <value>Auto Dark Mode</value>
   </data>
   <data name="About" xml:space="preserve">
     <value>À propos</value>
@@ -208,7 +208,7 @@
     <value>Couleur</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtre de couleur (envoie Win + Ctrl + C)</value>
+    <value>Activer le filtre de couleur en mode sombre</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Choisissez le thème de couleur pour Windows en fonction de vos goûts.</value>
@@ -449,7 +449,7 @@ Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Laisser Auto Dark Mode gérer mon thème</value>
+    <value>Laisser Auto Dark Mode gérer mon thème (recommandé)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manuel</value>
@@ -488,7 +488,7 @@ Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
     <value>Télécharger la mise à jour</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Cette option ne prend pas en charge les thèmes Windows par défaut</value>
+    <value>Cette option ne prend pas en charge les thèmes Windows préinstallés par défaut</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
     <value>Auto Dark Mode needs the permission to access your location</value>
@@ -535,7 +535,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Information de version copiée dans le presse-papier</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Prochaine mise à jour le</value>
+    <value>Prochaine mise à jour</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Aucun</value>
@@ -670,7 +670,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Ne pas changer de thème quand certains processus sont en cours</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Actualiser le démarrage automatique</value>
+    <value>Actualiser</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Clé du registre</value>
@@ -818,7 +818,7 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Laisser Windows gérer mon thème</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Vérifier les mises à jour au démarrage d'Auto Dark Mode</value>
+    <value>Vérifier quand Auto Dark Mode démarre</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Sélectionner le canal de mise à jour</value>
@@ -860,181 +860,187 @@ Version installée : {0}, nouvelle version : {1}</value>
     <value>Vous avez désactivé l'entrée du démarrage automatique dans Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Accédez à Paramètres Windows &gt; Personnalisation &gt; Couleurs.
+2. Modifiez la couleur du système en « Clair » pour le thème clair.
+3. Accédez à Paramètres Windows &gt; Personnalisation &gt; Thèmes.
+4. Sélectionnez votre fond d'écran, vos pointeurs de souris et votre couleur d'accentuation préférés.
+5. Enregistrez votre thème.
+6. Répétez cette procédure pour le thème sombre.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Modifier le raccourci clavier</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Déconnecté</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Arrière-plan</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
+    <value>Sélectionner une couleur</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Désactiver la gestion du thème par Windows</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Path</value>
+    <value>Chemin</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Le démarrage automatique a été désactivé dans les Paramètres Windows. Pour réactiver le mode sombre automatique au démarrage de Windows, rendez-vous dans Paramètres Windows &gt; Applications &gt; Démarrage et activez-le.</value>
   </data>
   <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Bêta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Mode débogage</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Appuyez sur Entrée pour valider</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Langue</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Accéder aux paramètres de Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Switch</value>
+    <value>Changer</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Show notification when the automatic theme switch is paused</value>
+    <value>Afficher une notification lorsque le changement automatique de thème est suspendu</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Show notification when toggling the automatic theme switch</value>
+    <value>Afficher une notification lors de l'activation ou la désactivation du changement automatique de thème</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Sélectionnez une combinaison de touches. Seuls les raccourcis commençant par la touche Windows, Ctrl, Alt ou Maj sont valides.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Raccourci d'activation</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Sauvegarder</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Enregistrer de force</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Le raccourci clavier n'a pas fonctionné ? Pas de souci, enregistrons-le à nouveau</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Enregistrement effectué</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Échec de l'enregistrement</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Commencez à taper pour ajouter des applications</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Mode de l'application</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Mode Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Personnalisation des couleurs de Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Retardé</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Non retardé</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Ignorer la couleur</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>Surfaces d'accent</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Choisissez à quel moment la couleur d'accent doit être appliquée</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Apply during</value>
+    <value>Appliquez pendant</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Accent color for title bars and window borders</value>
+    <value>Couleur d'accentuation pour les barres de titre et les bordures de fenêtre</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>More aggressive DWM refresh</value>
+    <value>Actualisation plus fréquente du DWM</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Delay switching by a number minutes</value>
+    <value>Décaler la commutation de quelques minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Les valeurs positives correspondent à une date ultérieure, les valeurs négatives à une date antérieure</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Cette option vise à réduire les anomalies de couleur dans l'Explorateur, la barre des tâches et le menu Démarrer. Si vous rencontrez souvent ce problème ou s'il vous dérange, essayez d'activer ce paramètre.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Cela peut entraîner un léger à modéré ralentissement sur certains systèmes lors du changement de thème.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+Dans de rares cas, Windows peut émettre un bip lorsque vous déplacez la souris pendant les actualisations du DWM.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Use aggressive DWM refresh?</value>
+    <value>Utiliser un rafraîchissement DWM agressif ?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Mode sombre pour votre navigateur Web</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader est une extension de navigateur qui permet aux sites web sur Chrome, Edge et Firefox de s'adapter au thème actuel de votre système. Cliquez ici pour en savoir plus</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Ouvrir les paramètres du pointeur de souris de Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
+    <value>Vous pouvez définir de nouveaux schémas de curseur dans les paramètres Windows, puis les sélectionner ici par la suite</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Center</value>
+    <value>Centre</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log et Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Copié</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
+    <value>Essais visant à réduire les erreurs de couleur dans l'Explorateur, la barre des tâches et le menu Démarrer.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Ouvrir les paramètres de Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Les raccourcis clavier ne peuvent être modifiés que lorsqu'ils sont désactivés</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
-    <value>Currently selected color</value>
+    <value>Couleur actuellement sélectionnée</value>
   </data>
   <data name="WindowsColors" xml:space="preserve">
-    <value>Windows color</value>
+    <value>Couleur des fenêtres</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>La couleur d'accent est sélectionnée automatiquement. La couleur sera déterminée par le fond d'écran actuel</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Aperçu de la couleur</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Aperçu</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Couleur d'accentuation de la barre des tâches</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
   </data>
 </root>

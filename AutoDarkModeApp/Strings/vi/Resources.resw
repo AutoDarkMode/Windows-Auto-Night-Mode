@@ -208,10 +208,10 @@
     <value>Màu</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Bộ lọc màu (tổ hợp phím Win + Ctrl + C)</value>
+    <value>Bật bộ lọc màu trong chế độ tối</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
+    <value>Tùy chỉnh bảng màu hệ thống Windows theo sở thích của bạn.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Điều kiện</value>
@@ -262,10 +262,9 @@
     <value>Đóng góp</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
+    <value>Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
 
-Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
-Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
+Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở. Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
 
 Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
   </data>
@@ -449,7 +448,7 @@ Nhấp vào "Có" để mở một cửa sổ trình duyệt mới.
     <value>Longitude</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Để Chế độ tối tự động quản lý chủ đề của tôi</value>
+    <value>Để chế độ tối tự động quản lý chủ đề của tôi (khuyến khích)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Thủ công</value>
@@ -535,7 +534,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Cập nhật tiếp theo vào</value>
+    <value>Cập nhật tiếp theo</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Chưa cấu hình</value>
@@ -670,7 +669,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Không chuyển đổi trong khi các quy trình nhất định đang chạy</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Làm mới Tự khởi động</value>
+    <value>Làm mới</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Khóa Registry</value>
@@ -818,7 +817,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Để Windows quản lý chủ đề của tôi</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Kiểm tra cập nhật khi Auto Dark Mode khởi động</value>
+    <value>Kiểm tra khi Auto Dark Mode khởi động</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Chọn kênh cập nhật</value>
@@ -860,15 +859,15 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Vào Windows Settings &gt; Personalization &gt; Colors.
+2. Hãy đổi màu hệ thống thành 'Light' để sử dụng chủ đề sáng.
+3. Vào Windows Settings &gt; Personalization &gt; Themes.
+4. Chọn hình nền, con trỏ chuột và màu nhấn yêu thích của bạn.
+5. Lưu giao diện của bạn.
+6. Lặp lại quy trình này cho chủ đề tối.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Chỉnh sửa hotkey</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
     <value>Ngắt kết nối</value>
@@ -881,28 +880,28 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Tắt Windows quản lý giao diện của bạn</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Chức năng tự khởi động đã bị vô hiệu hóa thông qua tab "Startup Apps" trong Trình quản lý tác vụ. Nếu bạn muốn Chế độ tối tự động khởi động cùng Windows một lần nữa, vui lòng kích hoạt lại chức năng này ở đó.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Chế độ gỡ lỗi</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Chọn Enter để áp dụng</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Ngôn ngữ</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Vào cài đặt Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
@@ -917,52 +916,52 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Show notification when toggling the automatic theme switch</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Chọn một tổ hợp phím. Chỉ những tổ hợp phím bắt đầu bằng phím Windows, Ctrl, Alt hoặc Shift mới hợp lệ.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Kích hoạt phím tắt</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Lưu</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Buộc lưu</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Hotkey không hoạt động? Hãy lưu lại lần nữa</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Lưu thành công</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Lưu thất bại</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Bắt đầu nhập để thêm bất kỳ ứng dụng nào</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Chế độ ứng dụng</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Chế độ cửa sổ</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Cài đặt màu sắc cá nhân hóa của Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Bị trì hoãn</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Không bị trì hoãn</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Bỏ qua màu</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Chọn khi nào màu điểm nhấn được áp dụng</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
@@ -977,7 +976,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Delay switching by a number minutes</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>Positive values are later, negative values are earlier</value>
+    <value>Giá trị dương xuất hiện sau, giá trị âm xuất hiện trước</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
@@ -990,13 +989,13 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Use aggressive DWM refresh?</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Dark mode for your web browser</value>
+    <value>Chế độ tối cho trình duyệt của bạn</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader is a browser extension which makes websites in Chrome, Edge and Firefox respect the current theme of your system. Click here to learn more</value>
+    <value>Dark Reader là extension của trình duyệt giúp web trên Chrome, Edge và Firefox tuân thủ chủ đề hiện tại của hệ thống. Ấn vào đây để tìm hiểu thêm</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Open Windows mouse pointer settings</value>
+    <value>Mở cài đặt con trỏ chuột Windows</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>You can define new cursor schemes in the Windows settings and then select them here afterwards</value>
@@ -1005,19 +1004,19 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Center</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log and Shell</value>
+    <value>Log và Shell</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
+    <value>Đã sao chép</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
     <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Open Windows settings</value>
+    <value>Mở cài đặt Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Hotkeys chỉ có thể chỉnh sửa khi đang tắt</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1029,12 +1028,18 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Xem trước màu sắc</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Xem trước</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
   </data>
 </root>
