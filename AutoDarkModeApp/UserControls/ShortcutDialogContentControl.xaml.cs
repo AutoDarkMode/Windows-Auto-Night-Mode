@@ -11,8 +11,26 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     [GeneratedDependencyProperty]
     public partial string? CapturedHotkeys { get; set; }
 
+    [GeneratedDependencyProperty]
+    public partial bool IsErrorVisible { get; set; }
+
+    [GeneratedDependencyProperty]
+    public partial string? ErrorMessage { get; set; }
+
     private KeyboardHook? _keyboardHook;
     private bool _isCapturing;
+
+    public void ShowError(string message)
+    {
+        ErrorMessage = message;
+        IsErrorVisible = true;
+    }
+
+    public void HideError()
+    {
+        IsErrorVisible = false;
+        ErrorMessage = null;
+    }
 
     public void LoadFromKeyValue(string? hotkeyValue)
     {
@@ -101,6 +119,8 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         {
             CapturedHotkeys = string.Join(" + ", displayParts);
             HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
+
+            HideError();
         });
 
         e.Handled = true;

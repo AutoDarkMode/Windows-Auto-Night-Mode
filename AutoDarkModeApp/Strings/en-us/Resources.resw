@@ -370,6 +370,12 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
+  <data name="HotkeyDuplicateErrorTitle" xml:space="preserve">
+    <value>Duplicate Hotkey</value>
+  </data>
+  <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
+    <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
+  </data>
   <data name="IdleTime" xml:space="preserve">
     <value>Time in minutes before the system is considered idle</value>
   </data>

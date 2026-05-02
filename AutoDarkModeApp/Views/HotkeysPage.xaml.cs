@@ -42,18 +42,30 @@ public sealed partial class HotkeysPage : Page
             Content = dialogContent,
         };
 
+        shortcutDialog.Closing += (dialog, args) =>
+        {
+            if (args.Result == ContentDialogResult.Primary)
+            {
+                var (isDuplicate, conflictingName) = ViewModel.IsDuplicateHotkey(hotkeyData.Tag, dialogContent.CapturedHotkeys);
+                if (isDuplicate)
+                {
+                    dialogContent.ShowError(string.Format("HotkeyDuplicateErrorMessage".GetLocalized(), conflictingName));
+                    args.Cancel = true;
+                }
+            }
+        };
+
         var result = await shortcutDialog.ShowAsync();
         if (result == ContentDialogResult.Secondary)
         {
             dialogContent.HotkeyCombination?.Clear();
             dialogContent.CapturedHotkeys = null;
         }
-        else if (result != ContentDialogResult.Primary)
-        {
-            return;
-        }
 
-        ViewModel.UpdateHotkeyValue(hotkeyData.Tag, dialogContent.CapturedHotkeys);
+        if (result == ContentDialogResult.Primary || result == ContentDialogResult.Secondary)
+        {
+            ViewModel.UpdateHotkeyValue(hotkeyData.Tag, dialogContent.CapturedHotkeys);
+        }
     }
 
     private async void SaveSettingsButton_Click(object sender, RoutedEventArgs e)

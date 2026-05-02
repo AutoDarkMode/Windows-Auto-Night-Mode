@@ -10,6 +10,13 @@
 
     <StackPanel Orientation="Vertical" Spacing="16">
 
+        <InfoBar
+            x:Name="ErrorInfoBar"
+            IsClosable="False"
+            IsOpen="{x:Bind IsErrorVisible, Mode=OneWay}"
+            Message="{x:Bind ErrorMessage, Mode=OneWay}"
+            Severity="Error" />
+
         <TextBlock Text="{helpers:ResourceString Name=SelectTheKeyCombination}" TextWrapping="Wrap" />
 
         <ItemsControl
