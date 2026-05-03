@@ -24,6 +24,7 @@ public sealed partial class HotkeysPage : Page
 
         var keyValue = ViewModel.GetHotkeyValue(hotkeyData.Tag);
         var dialogContent = new ShortcutDialogContentControl();
+        dialogContent.ValidateHotkey = (newKeys) => ViewModel.IsDuplicateHotkey(hotkeyData.Tag, newKeys);
 
         if (keyValue is not null)
         {
@@ -46,10 +47,8 @@ public sealed partial class HotkeysPage : Page
         {
             if (args.Result == ContentDialogResult.Primary)
             {
-                var (isDuplicate, conflictingName) = ViewModel.IsDuplicateHotkey(hotkeyData.Tag, dialogContent.CapturedHotkeys);
-                if (isDuplicate)
+                if (dialogContent.IsErrorVisible)
                 {
-                    dialogContent.ShowError(string.Format("HotkeyDuplicateErrorMessage".GetLocalized(), conflictingName));
                     args.Cancel = true;
                 }
             }

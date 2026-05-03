@@ -17,6 +17,8 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     [GeneratedDependencyProperty]
     public partial string? ErrorMessage { get; set; }
 
+    public Func<string?, (bool isDuplicate, string? conflictingName)>? ValidateHotkey { get; set; }
+
     private KeyboardHook? _keyboardHook;
     private bool _isCapturing;
 
@@ -104,10 +106,14 @@ public sealed partial class ShortcutDialogContentControl : UserControl
         }
 
         List<string> displayParts = [];
-        if (isCtrl) displayParts.Add("Ctrl");
-        if (isShift) displayParts.Add("Shift");
-        if (isAlt) displayParts.Add("Alt");
-        if (isWin) displayParts.Add("Win");
+        if (isCtrl)
+            displayParts.Add("Ctrl");
+        if (isShift)
+            displayParts.Add("Shift");
+        if (isAlt)
+            displayParts.Add("Alt");
+        if (isWin)
+            displayParts.Add("Win");
 
         var key = (VirtualKey)e.VirtualKeyCode;
         if (!IsModifierKey(key))
@@ -120,7 +126,22 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             CapturedHotkeys = string.Join(" + ", displayParts);
             HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
 
-            HideError();
+            if (ValidateHotkey is not null)
+            {
+                var (isDuplicate, conflictingName) = ValidateHotkey(CapturedHotkeys);
+                if (isDuplicate)
+                {
+                    ShowError(string.Format(ResourceExtensions.GetLocalized("HotkeyDuplicateErrorMessage"), conflictingName));
+                }
+                else
+                {
+                    HideError();
+                }
+            }
+            else
+            {
+                HideError();
+            }
         });
 
         e.Handled = true;
