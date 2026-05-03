@@ -376,6 +376,9 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
     <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
   </data>
+  <data name="HotkeyInvalidErrorMessage" xml:space="preserve">
+    <value>Invalid hotkey combination. Please include at least one non-modifier key (e.g., a letter, number, or function key).</value>
+  </data>
   <data name="IdleTime" xml:space="preserve">
     <value>Time in minutes before the system is considered idle</value>
   </data>

@@ -116,7 +116,9 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             displayParts.Add("Win");
 
         var key = (VirtualKey)e.VirtualKeyCode;
-        if (!IsModifierKey(key))
+        var hasNonModifierKey = !IsModifierKey(key);
+
+        if (hasNonModifierKey)
         {
             displayParts.Add(HotkeyStringConverter.GetKeyDisplayName(key));
         }
@@ -126,12 +128,19 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             CapturedHotkeys = string.Join(" + ", displayParts);
             HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
 
-            if (ValidateHotkey is not null)
+            if (hasNonModifierKey)
             {
-                var (isDuplicate, conflictingName) = ValidateHotkey(CapturedHotkeys);
-                if (isDuplicate)
+                if (ValidateHotkey is not null)
                 {
-                    ShowError(string.Format(ResourceExtensions.GetLocalized("HotkeyDuplicateErrorMessage"), conflictingName));
+                    var (isDuplicate, conflictingName) = ValidateHotkey(CapturedHotkeys);
+                    if (isDuplicate)
+                    {
+                        ShowError(string.Format(ResourceExtensions.GetLocalized("HotkeyDuplicateErrorMessage"), conflictingName));
+                    }
+                    else
+                    {
+                        HideError();
+                    }
                 }
                 else
                 {
@@ -140,7 +149,7 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             }
             else
             {
-                HideError();
+                ShowError(ResourceExtensions.GetLocalized("HotkeyInvalidErrorMessage"));
             }
         });
 
