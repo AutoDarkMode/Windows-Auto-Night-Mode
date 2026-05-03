@@ -125,6 +125,9 @@ public partial class TimeViewModel : ObservableRecipient
     public partial string? PostponeInfoText { get; set; }
 
     [ObservableProperty]
+    public partial Visibility PostponeOptionsSkipOnceVisibility { get; set; }
+
+    [ObservableProperty]
     public partial bool ResumeInfoBarEnabled { get; set; }
 
     private double _ambientLightDarkThreshold;
@@ -534,6 +537,7 @@ public partial class TimeViewModel : ObservableRecipient
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
+            PostponeOptionsSkipOnceVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
             return;
         }
@@ -544,6 +548,7 @@ public partial class TimeViewModel : ObservableRecipient
             TimePickerVisibility = Visibility.Collapsed;
             DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
             return;
         }
 
@@ -568,6 +573,7 @@ public partial class TimeViewModel : ObservableRecipient
         TimePickerVisibility = Visibility.Visible;
         DividerBorderVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
+        PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
