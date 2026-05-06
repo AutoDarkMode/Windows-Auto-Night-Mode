@@ -12,6 +12,9 @@ public sealed partial class ShortcutDialogContentControl : UserControl
     public partial string? CapturedHotkeys { get; set; }
 
     [GeneratedDependencyProperty]
+    public partial bool HasNonModifierKey { get; set; }
+
+    [GeneratedDependencyProperty]
     public partial bool IsErrorVisible { get; set; }
 
     [GeneratedDependencyProperty]
@@ -116,9 +119,9 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             displayParts.Add("Win");
 
         var key = (VirtualKey)e.VirtualKeyCode;
-        var hasNonModifierKey = !IsModifierKey(key);
+        HasNonModifierKey = !IsModifierKey(key);
 
-        if (hasNonModifierKey)
+        if (HasNonModifierKey)
         {
             displayParts.Add(HotkeyStringConverter.GetKeyDisplayName(key));
         }
@@ -128,19 +131,12 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             CapturedHotkeys = string.Join(" + ", displayParts);
             HotkeyCombination = displayParts.Select(p => new SingleHotkeyDataObject { Key = p }).ToList();
 
-            if (hasNonModifierKey)
+            if (ValidateHotkey is not null)
             {
-                if (ValidateHotkey is not null)
+                var (isDuplicate, conflictingName) = ValidateHotkey(CapturedHotkeys);
+                if (isDuplicate)
                 {
-                    var (isDuplicate, conflictingName) = ValidateHotkey(CapturedHotkeys);
-                    if (isDuplicate)
-                    {
-                        ShowError(string.Format(ResourceExtensions.GetLocalized("HotkeyDuplicateErrorMessage"), conflictingName));
-                    }
-                    else
-                    {
-                        HideError();
-                    }
+                    ShowError(string.Format(ResourceExtensions.GetLocalized("HotkeyDuplicateErrorMessage"), conflictingName));
                 }
                 else
                 {
@@ -149,7 +145,7 @@ public sealed partial class ShortcutDialogContentControl : UserControl
             }
             else
             {
-                ShowError(ResourceExtensions.GetLocalized("HotkeyInvalidErrorMessage"));
+                HideError();
             }
         });
 

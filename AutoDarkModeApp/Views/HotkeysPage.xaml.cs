@@ -47,6 +47,10 @@ public sealed partial class HotkeysPage : Page
         {
             if (args.Result == ContentDialogResult.Primary)
             {
+                if (!dialogContent.HasNonModifierKey)
+                {
+                    dialogContent.ShowError("HotkeyInvalidErrorMessage".GetLocalized());
+                }
                 if (dialogContent.IsErrorVisible)
                 {
                     args.Cancel = true;
