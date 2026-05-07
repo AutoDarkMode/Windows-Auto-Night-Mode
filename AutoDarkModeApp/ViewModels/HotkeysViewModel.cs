@@ -102,6 +102,47 @@ public partial class HotkeysViewModel : ObservableRecipient
         SafeSaveBuilder();
     }
 
+    public (bool isDuplicate, string? conflictingName) IsDuplicateHotkey(string currentTag, string? newKeys)
+    {
+        if (string.IsNullOrWhiteSpace(newKeys))
+        {
+            return (false, null);
+        }
+
+        var normalizedNewKeys = newKeys.Trim();
+
+        var allHotkeys = new[]
+        {
+            (Tag: "ForceLight", Keys: _builder.Config.Hotkeys.ForceLight, Name: "ForceLight"),
+            (Tag: "ForceDark", Keys: _builder.Config.Hotkeys.ForceDark, Name: "ForceDark"),
+            (Tag: "StopForcing", Keys: _builder.Config.Hotkeys.NoForce, Name: "StopForcing"),
+            (Tag: "ToggleTheme", Keys: _builder.Config.Hotkeys.ToggleTheme, Name: "ToggleTheme"),
+            (Tag: "AutomaticThemeSwitch", Keys: _builder.Config.Hotkeys.ToggleAutoThemeSwitch, Name: "AutomaticThemeSwitch"),
+            (Tag: "PauseAutoThemeSwitching", Keys: _builder.Config.Hotkeys.TogglePostpone, Name: "PauseAutoThemeSwitching"),
+        };
+
+        foreach (var hotkey in allHotkeys)
+        {
+            if (hotkey.Tag == currentTag)
+            {
+                continue;
+            }
+
+            if (string.IsNullOrWhiteSpace(hotkey.Keys))
+            {
+                continue;
+            }
+
+            if (hotkey.Keys.Trim().Equals(normalizedNewKeys, StringComparison.OrdinalIgnoreCase))
+            {
+                var displayName = HotkeysCollection?.FirstOrDefault(h => h.Tag == hotkey.Tag)?.DisplayName ?? hotkey.Name;
+                return (true, displayName);
+            }
+        }
+
+        return (false, null);
+    }
+
     public HotkeysViewModel(IErrorService errorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
