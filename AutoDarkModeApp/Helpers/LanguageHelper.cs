@@ -7,7 +7,6 @@ public static class LanguageHelper
 {
     public static string SelectedLanguageCode { get; set; } = "en-US"; // equal to <DefaultLanguage>
 
-    private static readonly ILocalSettingsService _localSettingsService = App.GetService<ILocalSettingsService>()!;
     public static readonly string[] SupportedCultures =
     [
         // Left-to-Right (LTR) languages
@@ -21,7 +20,8 @@ public static class LanguageHelper
 
     public static async Task<string> GetDefaultLanguageAsync()
     {
-        var language = await _localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
+        var localSettingsService = App.GetService<ILocalSettingsService>();
+        var language = await localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
         if (!string.IsNullOrEmpty(language) && SupportedCultures.Contains(language))
         {
             SelectedLanguageCode = language;
@@ -54,7 +54,7 @@ public static class LanguageHelper
                 }
                 // else keep the default "en-US"
             }
-            await _localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
+            await localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
         }
         return SelectedLanguageCode;
     }
