@@ -262,10 +262,9 @@
     <value>Faire un don</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
+    <value>Salut ! Merci d'utiliser Auto Dark Mode ! Est-ce que vous aimez l'application jusqu'à présent ?
 
-Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source.
-Je ne génère aucun profit avec ce projet.
+Cette application rend votre quotidien plus agréable, en vous aidant à prendre soin de vos yeux. En même temps, elle est complètement gratuite, sans publicité, ne collecte pas les données des utilisateurs et est open source. Je ne génère aucun profit avec ce projet.
 
 C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant me fait sauter de joie dans mon appartement. Faites un don dans la mesure où vous appréciez mon travail.</value>
   </data>
@@ -309,12 +308,10 @@ C'est pourquoi vous pouvez me soutenir avec un don libre. Même un petit montant
     <value>Il y a eu un problème avec l'interface utilisateur.
 
 Veuillez vous assurer :
-- le service est en exécution ;
+- le service est en exécution ;
 - le fichier config.yaml est correct.
 
-Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?
-Cliquez sur « Oui » pour ouvrir une nouvelle fenêtre du navigateur.
-</value>
+Voulez-vous créer un problème sur le dépôt Auto Dark Mode ?</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Une erreur est survenue</value>
