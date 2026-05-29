@@ -157,7 +157,7 @@
     <value>Automatisch</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Auto-Wechsel an-/ausschalten</value>
+    <value>Automatischen Designwechsel an-/ausschalten</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
     <value>Autostart</value>
@@ -166,10 +166,10 @@
     <value>Die Benachrichtigung soll so viele Minuten aktiv sein</value>
   </data>
   <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Benachrichtigen bei Auto-Designwechsel</value>
+    <value>Benachrichtigung bei automatischem Designwechsel</value>
   </data>
   <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Automatischer Wechsel fortgesetzt</value>
+    <value>Automatischer Designwechsel fortgesetzt</value>
   </data>
   <data name="BackgroundUpdate" xml:space="preserve">
     <value>Im Hintergrund nach Updates suchen</value>
@@ -208,7 +208,7 @@
     <value>Farbe</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Aktiviere Farbfilter während des Dark Modes</value>
+    <value>Aktiviere Farbfilter während des dunklen Modus</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Passe die Windows Akzentfarbe nach deiner Präferenz an.</value>
@@ -217,7 +217,7 @@
     <value>Bedingungen</value>
   </data>
   <data name="Configuration" xml:space="preserve">
-    <value>Konfig</value>
+    <value>Konfiguration</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
@@ -276,10 +276,10 @@ Aus diesem Grund hast du die Möglichkeit, mir eine kleine Spende dazulassen. Se
     <value>Akzeptiert werden Spenden über PayPal. Diese sind freiwillig und es kommt zu keinerlei Gegenleistung.</value>
   </data>
   <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Kein Designwechsel beim Spielen</value>
+    <value>Kein Designwechsel während des Spielens</value>
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Design nur wechseln, wenn das System nicht in Verwendung ist</value>
+    <value>Kein Designwechsel, wenn das System beschäftigt ist</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>Edge (alte Version)</value>
@@ -319,10 +319,10 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Ein Fehler ist aufgetreten</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Diese Funktion ist nicht verfügbar, wenn Auto Dark Mode das Theme verwaltet.</value>
+    <value>Diese Funktion ist nicht verfügbar, wenn Auto Dark Mode das Design verwaltet.</value>
   </data>
   <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Diese Funktion ist nicht verfügbar wenn Windows das Theme verwaltet.</value>
+    <value>Diese Funktion ist nicht verfügbar, wenn Windows das Design verwaltet.</value>
   </data>
   <data name="FitMode_Fill" xml:space="preserve">
     <value>Ausfüllen</value>
@@ -367,13 +367,13 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Hex Code</value>
   </data>
   <data name="HideTrayIcon" xml:space="preserve">
-    <value>Systemtray-Icon verstecken (nicht empfohlen)</value>
+    <value>Infobereich-Symbol verstecken (nicht empfohlen)</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Tastenkürzel</value>
   </data>
   <data name="IdleTime" xml:space="preserve">
-    <value>Minuten, bis das System als nicht beschäftigt angesehen wird</value>
+    <value>Zeit in Minuten, bis das System als nicht beschäftigt angesehen wird</value>
   </data>
   <data name="IgnoreBackground" xml:space="preserve">
     <value>Hintergrundbild ignorieren</value>
@@ -382,10 +382,10 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Mauszeiger ignorieren</value>
   </data>
   <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Desktop Symbole ignorieren</value>
+    <value>Desktop-Symbole ignorieren</value>
   </data>
   <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ausschlussoptionen</value>
+    <value>Einstellungen ignorieren</value>
   </data>
   <data name="IgnoreSound" xml:space="preserve">
     <value>Sounds ignorieren</value>
@@ -397,7 +397,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Info</value>
   </data>
   <data name="InstallSilent" xml:space="preserve">
-    <value>Zeige keine Benachrichtigungen zur Updateinstallation</value>
+    <value>Keine Benachrichtigungen zur Updateinstallation anzeigen</value>
   </data>
   <data name="Interval1" xml:space="preserve">
     <value>Jeden Tag</value>
@@ -415,7 +415,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>nie</value>
   </data>
   <data name="LastCheckedTime" xml:space="preserve">
-    <value>Zuletzt überprüft</value>
+    <value>Zuletzt überprüft:</value>
   </data>
   <data name="Latitude" xml:space="preserve">
     <value>Breitengrad</value>
@@ -430,7 +430,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Helles Design</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Links</value>
+    <value>Mehr Informationen</value>
   </data>
   <data name="LocationData" xml:space="preserve">
     <value>Positionsdaten</value>
@@ -448,7 +448,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Längengrad</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Auto Dark Mode verwaltet das Theme (empfohlen)</value>
+    <value>Auto Dark Mode verwaltet das Design (empfohlen)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Manuell</value>
@@ -472,7 +472,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Monitor</value>
   </data>
   <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Auto-Wechsel ist aktiviert</value>
+    <value>Automatischer Designwechsel ist aktiviert</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
     <value>Änderungen gespeichert!</value>
@@ -487,10 +487,10 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Update herunterladen</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Diese Option wird von den vorinstallierten Standard-Windows-Themes nicht unterstützt</value>
+    <value>Diese Option unterstützt nicht die vorinstallierten Standard-Windows-Designs.</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>Auto Dark Mode benötigt die Berechtigung, auf Ihren Standort zuzugreifen.</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Service läuft noch nicht, bitte warten…</value>
@@ -499,7 +499,7 @@ Drücke "ja", um ein neues Browserfenster zu öffnen.</value>
     <value>Keine Updates verfügbar.</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Auto-Wechsel ist einmalig pausiert!</value>
+    <value>Automatischer Designwechsel ist einmalig pausiert!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Soll der Designwechsel jetzt erfolgen oder später?</value>
@@ -561,10 +561,10 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Ordner öffnen</value>
   </data>
   <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Windows Mauseinstellungen öffnen</value>
+    <value>Windows-Mauseinstellungen öffnen</value>
   </data>
   <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Skript-Konfig öffnen</value>
+    <value>Skript-Konfiguration öffnen</value>
   </data>
   <data name="OpenShell" xml:space="preserve">
     <value>Eingabeaufforderung öffnen</value>
@@ -585,7 +585,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Personalisierung</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Wähle eine Akzentfarbe</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Wähle Mauszeiger-Designs</value>
@@ -594,31 +594,31 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Setze unterschiedliche Mauszeiger für dunkle und helle Designs.</value>
   </data>
   <data name="PickTheme" xml:space="preserve">
-    <value>Wähle ein Theme</value>
+    <value>Wähle ein Design</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
-    <value>Konfiguriere unterschiedliche Windows Themes für das dunkle und das helle Design. Dies erlaubt vollständige Anpassbarkeit, erfordert allerdings, eine .theme-Datei vorher selbst zu erstellen.</value>
+    <value>Konfiguriere unterschiedliche Windows-Designs für das dunkle und das helle Design. Dies erlaubt vollständige Anpassbarkeit, erfordert allerdings, eine .theme-Datei vorher selbst zu erstellen.</value>
   </data>
   <data name="PickWallpaper" xml:space="preserve">
     <value>Wähle ein Hintergrundbild</value>
   </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
-    <value>Passe das Hintergrundbild für alle oder einzelne Monitore an, setze eine Hintergrundfarbe oder aktiviere Spotlight.</value>
+    <value>Passe das Hintergrundbild für alle oder einzelne Monitore an, wähle eine Hintergrundfarbe oder aktiviere Windows Spotlight.</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Standort</value>
+    <value>Position</value>
   </data>
   <data name="PostponeControl" xml:space="preserve">
     <value>Designwechsel verzögern oder pausieren</value>
   </data>
   <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Der Auto-Wechsel ist zurzeit wegen diesen Modulen pausiert:</value>
+    <value>Der automatische Designwechsel ist zurzeit wegen dieser Module pausiert:</value>
   </data>
   <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
     <value>Verzögerungsmodul</value>
   </data>
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>GPU Überwachungsmodul</value>
+    <value>GPU-Überwachungsmodul</value>
   </data>
   <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
     <value>Auto-Pause Modul</value>
@@ -633,7 +633,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Benachrichtigung bei Designwechsel</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>System Inaktivitätschecker</value>
+    <value>System-Inaktivitätschecker</value>
   </data>
   <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
     <value>pausiert bis zum nächsten Sonnenaufgang</value>
@@ -663,10 +663,10 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>12 Stunden</value>
   </data>
   <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Auto-Wechsel einmalig aussetzen</value>
+    <value>Automatischen Wechsel einmalig aussetzen</value>
   </data>
   <data name="ProcessBlockList" xml:space="preserve">
-    <value>Designwechsel unterbinden, während bestimmte Apps ausgeführt werden</value>
+    <value>Kein Designwechsel, wenn bestimmte Apps ausgeführt werden</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
     <value>Aktualisieren</value>
@@ -726,7 +726,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Besonderer Dank gebührt</value>
   </data>
   <data name="StartWithWindows" xml:space="preserve">
-    <value>Auto Dark Mode bei Systemstart ausführen</value>
+    <value>Auto Dark Mode mit Windows starten</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
     <value>Design erzwingen beenden</value>
@@ -789,7 +789,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Blickpunkt</value>
+    <value>Spotlight</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sonnenaufgang</value>
@@ -805,7 +805,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Design umschalten</value>
   </data>
   <data name="TraceMode" xml:space="preserve">
-    <value>Trace Modus</value>
+    <value>Verfolgungsmodus</value>
   </data>
   <data name="Translator" xml:space="preserve">
     <value>Übersetzer: Armin Osaj &amp; Samuel Schiegg</value>
@@ -814,13 +814,13 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Typ</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
-    <value>Windows verwaltet das Theme</value>
+    <value>Windows verwaltet das Design</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
     <value>Beim Start von Auto Dark Mode nach Updates suchen</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
-    <value>Wähle Update-Kanal</value>
+    <value>Update-Kanal wählen</value>
   </data>
   <data name="UpdateColorization" xml:space="preserve">
     <value>Farbwahl aktualisieren</value>
@@ -850,7 +850,7 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Farbe</value>
   </data>
   <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Windows-Blickpunkt</value>
+    <value>Windows Spotlight</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
     <value>Du benötigst das Windows 10. April 2019 Update, um diese Einstellung ändern zu können.</value>
@@ -910,10 +910,10 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Wechseln</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Zeige eine Benachrichtigung bei Pausierung des automatischen Designwechsels</value>
+    <value>Benachrichtigung bei Pausierung des automatischen Designwechsels anzeigen</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Zeige Benachrichtigung bei Auslösung des automatischen Designwechsels</value>
+    <value>Benachrichtigung beim Umschalten des automatischen Designs anzeigen</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
     <value>Drücke eine Kombination an Tasten. Es sind nur Tastenkürzel erlaubt, die mit der Windows-Taste, Strg, Alt oder Shift beginnen.</value>
@@ -973,17 +973,17 @@ Aktuell installierte Version: {0}, neue Version: {1}</value>
     <value>Aggressivere DWM-Aktualisierung</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Verzögere den Designwechsel um eine Anzahl an Minuten</value>
+    <value>Den Designwechsel um eine bestimmte Anzahl von Minuten verzögern</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
     <value>Positive Zahlen sind später, negative Zahlen sind früher</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Versucht, falsche UI-Farben im Explorer, in der Taskleiste und im Startmenü zu reduzieren. Wenn dieses Problem häufig auftritt oder dich stört, aktiviere diese Einstellung.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Dies kann auf einigen Systemen zu leichten bis mäßigen Verzögerungen beim Wechseln des Designs führen.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+In seltenen Fällen kann Windows einen Piepton ausgeben, wenn die Maus während der DWM-Aktualisierung bewegt wird.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Möchtest du die aggressive DWM-Aktualisierung verwenden?</value>
@@ -995,7 +995,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Dark Reader ist eine Browsererweiterung für Chrome, Edge und Firefox, die Webseiten in den Dark Mode einfärbt. Klicke hier, um mehr zu erfahren.</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Öffne die Windows Mauszeigereinstellungen</value>
+    <value>Windows-Mauszeigereinstellungen öffnen</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
     <value>Definiere neue Mauszeigervorlagen in den Windows-Einstellungen, die anschließend hier zur Wahl stehen.</value>
@@ -1016,24 +1016,24 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows-Einstellungen öffnen</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Tastenkürzel können nur geändert werden, wenn sie deaktiviert sind.</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
   </data>
   <data name="WindowsColors" xml:space="preserve">
-    <value>Windows color</value>
+    <value>Windows-Farben</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>Die Akzentfarbe wird automatisch ausgewählt. Die Farbe wird durch das aktuelle Hintergrundbild bestimmt.</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Farbvorschau</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Vorschau</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Akzentfarbe für die Taskleiste</value>
   </data>
 </root>
