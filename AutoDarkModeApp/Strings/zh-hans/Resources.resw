@@ -787,7 +787,7 @@
     <value>时间</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>启用主题</value>
+    <value>切换主题</value>
   </data>
   <data name="TraceMode" xml:space="preserve">
     <value>追踪模式</value>
@@ -1020,5 +1020,11 @@
   </data>
   <data name="Preview" xml:space="preserve">
     <value>预览</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch 处于活跃状态可能和 Auto Dark Mode 冲突。在 PowerToys 设置中禁用它避免意外的主题切换。</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>检测到 PowerToys Light Switch</value>
   </data>
 </root>

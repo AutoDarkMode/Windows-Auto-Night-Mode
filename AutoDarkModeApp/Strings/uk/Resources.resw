@@ -488,7 +488,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Цей параметр не підтримує попередньо встановлені теми Windows за замовчуванням</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>Для роботи Auto Dark Mode потрібен доступ до вашого розташування</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>Служба ще не працює, зачекайте…</value>
@@ -580,7 +580,7 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Персоналізація</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Оберіть акцентний колір</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Виберіть курсори миші</value>
@@ -974,11 +974,11 @@ Auto Dark Mode робить ваше повсякдення приємнішим
     <value>Додатні значення пізніші, від'ємні значення раніше</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>Спроби зменшити кількість некоректних кольорів інтерфейсу в провіднику, панелі завдань та меню «Пуск». Якщо ви часто стикаєтеся з цією проблемою або вона вас турбує, спробуйте ввімкнути це налаштування.
 
-This may introduce slight to moderate lag on some systems during theme switch.
+Це може призвести до незначних або помірних затримок на деяких системах під час зміни теми.
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+У рідкісних випадках Windows може видавати звуковий сигнал при переміщенні миші під час оновлення DWM.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>Використовувати агресивне оновлення DWM?</value>
@@ -1011,7 +1011,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Відкрийте параметри Windows</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>Гарячі клавіші можна змінити лише тоді, коли вони вимкнені</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1020,15 +1020,21 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows color</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>Вибрано автоматичний вибір акцентного кольору. Колір буде визначено на основі поточних шпалер.</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>Передперегляд кольору</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Передперегляд</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>Акцентний колір для панелі завдань</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch активний і може конфліктувати з автоматичним темним режимом. Вимкніть його в налаштуваннях PowerToys, щоб уникнути неочікуваної зміни теми.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>Виявлено PowerToys Light Switch</value>
   </data>
 </root>
