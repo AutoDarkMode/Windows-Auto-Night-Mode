@@ -488,7 +488,7 @@
     <value>此選項不支援預先安裝的預設 Windows 佈景主題</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode needs the permission to access your location</value>
+    <value>自動深色模式需要存取您的位置的權限</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
     <value>服務尚未啟動，請稍候…</value>
@@ -580,7 +580,7 @@
     <value>個人化</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>選擇輔助色</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>選擇游標</value>
@@ -772,7 +772,7 @@
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
-    <value>Flow</value>
+    <value>流動</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
@@ -914,7 +914,7 @@
     <value>選擇組合鍵。僅以 Windows 鍵、Ctrl、Alt 或 Shift 開頭的快捷鍵有效。</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>啟動快速鍵</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>儲存</value>
@@ -953,7 +953,7 @@
     <value>忽略顏色</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Accent Surfaces</value>
+    <value>輔助色表面</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
     <value>選擇何時套用輔色</value>
@@ -974,11 +974,11 @@
     <value>正值表示延後，負值表示提前</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often or are bothered by it, try enabling this setting.
+    <value>嘗試減少檔案總管、工作列和開始功能表中錯誤的 UI 顏色。如果您經常遇到這種情況或對此感到困擾，請嘗試啟用此設定。
 
-This may introduce slight to moderate lag on some systems during theme switch.
+在某些系統上，切換佈景主題時可能會造成輕微到中度的延遲。
 
-On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
+在極少數情況下，當 DWM 重新整理期間移動滑鼠時，Windows 可能會發出嗶嗶聲。</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
     <value>使用積極的 DWM 重新整理？</value>
@@ -1011,7 +1011,7 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>開啟 Windows 設定</value>
   </data>
   <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>Hotkeys can only be changed while disabled</value>
+    <value>熱鍵只能在停用時更改</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
     <value>Currently selected color</value>
@@ -1020,21 +1020,21 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Windows color</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>Automatic accent color is selected. The color will be determined by the current wallpaper</value>
+    <value>自動選用點綴色。顏色會由目前的壁紙決定</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Color preview</value>
+    <value>顏色預覽</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>預覽</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Accent color for the taskbar</value>
+    <value>工作列的輔助色</value>
   </data>
   <data name="PowerToysConflict_Content" xml:space="preserve">
-    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+    <value>PowerToys 燈光開關處於活動狀態，可能與自動黑暗模式衝突。在 PowerToys 設定中停用它以避免意外的主題切換。</value>
   </data>
   <data name="PowerToysConflict_Title" xml:space="preserve">
-    <value>PowerToys Light Switch detected</value>
+    <value>偵測到 PowerToys 燈開關</value>
   </data>
 </root>
