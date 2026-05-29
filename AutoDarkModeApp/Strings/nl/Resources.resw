@@ -772,11 +772,11 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
-    <value>Vloeiend</value>
+    <value>Flow</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
-    <value>Bloesem</value>
+    <value>Gloed</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Theme11_Light" xml:space="preserve">
@@ -787,7 +787,7 @@ Momenteel geïnstalleerde versie: {0}, nieuwe versie: {1}</value>
     <value>Spotlight</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
-    <value>Zonsopkomst</value>
+    <value>Zonsopgang</value>
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="ThirdParty" xml:space="preserve">
