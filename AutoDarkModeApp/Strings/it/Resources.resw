@@ -497,10 +497,10 @@ Vuoi aprire un resoconto del problema nell'archvio di Auto Dark Mode?</value>
     <value>Nessun nuovo aggiornamento trovato</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Il cambio del tema è in pausa per il prossimo cambio!</value>
+    <value>Il cambio del tema viene messo in pausa una volta!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Vorresti cambiare ora o posticipare ulteriormente?</value>
+    <value>Desideri cambiare ora o rimandare ulteriormente?</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
     <value>Ricerca della posizione…</value>
