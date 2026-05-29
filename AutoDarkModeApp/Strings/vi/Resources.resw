@@ -211,7 +211,7 @@
     <value>Bật bộ lọc màu trong chế độ tối</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Tùy chỉnh bảng màu hệ thống Windows theo ý thích của bạn.</value>
+    <value>Tùy chỉnh bảng màu hệ thống Windows theo sở thích của bạn.</value>
   </data>
   <data name="Conditions" xml:space="preserve">
     <value>Điều kiện</value>
@@ -262,10 +262,9 @@
     <value>Đóng góp</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>Xin chào! Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
+    <value>Cảm ơn bạn đã sử dụng Auto Dark Mode! Trong quá trình sử dụng, bạn có thích nó chứ?
 
-Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở.
-Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
+Ứng dụng này làm cho việc sử dụng máy tính trở nên dễ chịu hơn, bằng cách giúp bạn chăm sóc đôi mắt của mình. Đồng thời nó hoàn toàn miễn phí, không có quảng cáo, không thu thập dữ liệu người dùng và là mã nguồn mở. Tôi không tạo ra bất kỳ lợi nhuận nào từ dự án này.
 
 Vì lý do đó, bạn có thể ủng hộ tôi bằng một khoản đóng góp tự nguyện. Ngay cả một khoản tiền nhỏ cũng khiến tôi ngập trong vui sướng. Hãy đóng góp một mức mà bạn nghĩ là xứng đáng với lợi ích mà ứng dụng này mang đến cho bạn.</value>
   </data>
@@ -535,7 +534,7 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Thông tin phiên bản đã được lưu vào bảng tạm</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Cập nhật tiếp theo vào</value>
+    <value>Cập nhật tiếp theo</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>Chưa cấu hình</value>
@@ -860,12 +859,12 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Bạn đã tắt cài đặt tự khởi động từ Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Vào Windows Settings &gt; Personalization &gt; Colors.
+2. Hãy đổi màu hệ thống thành 'Light' để sử dụng chủ đề sáng.
+3. Vào Windows Settings &gt; Personalization &gt; Themes.
+4. Chọn hình nền, con trỏ chuột và màu nhấn yêu thích của bạn.
+5. Lưu giao diện của bạn.
+6. Lặp lại quy trình này cho chủ đề tối.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
     <value>Chỉnh sửa hotkey</value>
@@ -881,28 +880,28 @@ Phiên bản hiện tại của bạn: {0}, phiên bản mới: {1}</value>
     <value>Select color</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disable Windows manages your theme</value>
+    <value>Tắt Windows quản lý giao diện của bạn</value>
   </data>
   <data name="Path" xml:space="preserve">
     <value>Path</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>Chức năng tự khởi động đã bị vô hiệu hóa thông qua tab "Startup Apps" trong Trình quản lý tác vụ. Nếu bạn muốn Chế độ tối tự động khởi động cùng Windows một lần nữa, vui lòng kích hoạt lại chức năng này ở đó.</value>
   </data>
   <data name="Beta" xml:space="preserve">
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Chế độ gỡ lỗi</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Select Enter to apply</value>
+    <value>Chọn Enter để áp dụng</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Ngôn ngữ</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Go to Windows Spotlight settings</value>
+    <value>Vào cài đặt Windows Spotlight</value>
   </data>
   <data name="Stable" xml:space="preserve">
     <value>Stable</value>
