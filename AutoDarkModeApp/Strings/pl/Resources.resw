@@ -175,7 +175,7 @@
     <value>Szukaj aktualizacji w tle</value>
   </data>
   <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Przełącz w tryb ciemny po odłączeniu zasilania</value>
+    <value>Przełącz na ciemny motyw po odłączeniu zasilania</value>
   </data>
   <data name="BatteryPowered" xml:space="preserve">
     <value>Urządzenia zasilane akumulatorem</value>
@@ -208,7 +208,7 @@
     <value>Kolor</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtr kolorów (wysyła Win + Ctrl + C)</value>
+    <value>Włącz filtr kolorów w ciemnym motywie</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
     <value>Dostosuj kolor akcentu systemu Windows do swoich upodobań.</value>
@@ -313,8 +313,7 @@ Upewnij się, że:
 - twój plik config.yaml jest prawidłowy
 
 Czy chcesz zgłosić problem w repozytorium Auto Dark Mode?
-Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
-</value>
+Kliknij "Tak", aby otworzyć nowe okno przeglądarki.</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
     <value>Wystąpił błąd</value>
@@ -449,7 +448,7 @@ Kliknij "Tak", aby otworzyć nowe okno przeglądarki.
     <value>Długość</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Pozwól aplikacji Auto Dark Mode zarządzać moim motywem</value>
+    <value>Pozwól aplikacji Auto Dark Mode zarządzać moim motywem (zalecane)</value>
   </data>
   <data name="Manual" xml:space="preserve">
     <value>Ręcznie</value>
@@ -586,7 +585,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Personalizacja</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Pick an accent color</value>
+    <value>Wybierz kolor akcentu</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
     <value>Wybierz kursory myszy</value>
@@ -670,7 +669,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Nie przełączaj, gdy określone procesy są uruchomione</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Odśwież autostart</value>
+    <value>Odśwież</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
     <value>Klucz rejestru</value>
@@ -818,7 +817,7 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Pozwól systemowi Windows zarządzać moim motywem</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Szukaj aktualizacji przy uruchamianiu</value>
+    <value>Szukaj przy uruchamianiu</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
     <value>Kanał aktualizacji</value>
@@ -860,12 +859,12 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Autostart został wyłączony w ustawieniach systemu Windows.</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Go to Windows Settings &gt; Personalization &gt; Colors.
-2. Change the system color to 'Light' for the light theme.
-3. Go to Windows Settings &gt; Personalization &gt; Themes.
-4. Select your favorite wallpaper, mouse pointers and accent color.
-5. Save your theme.
-6. Repeat this process for the dark theme.</value>
+    <value>1. Przejdź do Ustawień systemu Windows &gt; Personalizacja &gt; Kolory.
+2. Zmień kolor systemu na „Jasny” dla jasnego motywu.
+3. Przejdź do Ustawień systemu Windows &gt; Personalizacja &gt; Kompozycje.
+4. Wybierz ulubione tło, kursor myszy i kolor wiodący.
+5. Zapisz kompozycję.
+6. Powtórz ten proces dla ciemnego motywu.</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
     <value>Edit hotkey</value>
@@ -893,13 +892,13 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Beta</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>Tryb debugowania</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
     <value>Select Enter to apply</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Language</value>
+    <value>Język</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
     <value>Go to Windows Spotlight settings</value>
@@ -917,52 +916,52 @@ Obecnie zainstalowana wersja: {0}, nowa wersja: {1}</value>
     <value>Show notification when toggling the automatic theme switch</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Select a combination of keys. Only shortcuts that start with Windows key, Ctrl, Alt or Shift are valid.</value>
+    <value>Wybierz kombinację klawiszy. Prawidłowe są tylko skróty zaczynające się od klawisza Windows, Ctrl, Alt lub Shift.</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Activation shortcut</value>
+    <value>Skrót aktywacji</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Save</value>
+    <value>Zapisz</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Force save</value>
+    <value>Wymuś zapis</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>The hotkey didn't work? Don't worry, let's save it again</value>
+    <value>Skrót klawiszowy nie zadziałał? Bez obaw, zapiszmy go ponownie</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Save successfully</value>
+    <value>Zapisano pomyślnie</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Save failed</value>
+    <value>Zapisywanie nie powiodło się</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Start typing to add any apps</value>
+    <value>Zacznij wpisywać, aby dodać aplikacje</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>App mode</value>
+    <value>Motyw aplikacji</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Windows mode</value>
+    <value>Motyw systemu Windows</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Personalized colors setting of Windows</value>
+    <value>Ustawienia kolorów systemu Windows</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Delayed</value>
+    <value>Opóźnione</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Brak opóźnienia</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignore color</value>
+    <value>Ignoruj kolor</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
     <value>Accent Surfaces</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Choose when the accent color should be applied</value>
+    <value>Wybierz, kiedy ma być stosowany kolor akcentu</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
     <value>Apply during</value>
