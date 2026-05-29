@@ -1032,9 +1032,9 @@ On rare occasions, Windows may emit a beeping sound when the mouse is moved duri
     <value>Accent color for the taskbar</value>
   </data>
   <data name="PowerToysConflict_Content" xml:space="preserve">
-    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+    <value>Το PowerToys Light Switch είναι ενεργό και ενδέχεται να έρχεται σε σύγκρουση με το Auto Dark Mode. Απενεργοποιήστε το στις ρυθμίσεις του PowerToys για να αποφύγετε την απροσδόκητη εναλλαγή θέματος.</value>
   </data>
   <data name="PowerToysConflict_Title" xml:space="preserve">
-    <value>PowerToys Light Switch detected</value>
+    <value>PowerToys Light Switch ανιχνεύτηκε</value>
   </data>
 </root>
