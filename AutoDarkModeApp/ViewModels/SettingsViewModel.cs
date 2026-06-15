@@ -56,6 +56,9 @@ public partial class SettingsViewModel : ObservableRecipient
     public partial bool IsLanguageChangedInfoBarOpen { get; set; }
 
     [ObservableProperty]
+    public partial bool IsPowerToysConflictBarOpen { get; set; }
+
+    [ObservableProperty]
     public partial DaysBetweenUpdateCheck SelectedDaysBetweenUpdateCheck { get; set; }
 
     [ObservableProperty]
@@ -172,6 +175,7 @@ public partial class SettingsViewModel : ObservableRecipient
         );
 
         LoadSettings();
+        IsPowerToysConflictBarOpen = Process.GetProcessesByName("PowerToys.LightSwitchService").Length > 0;
         _dispatcherQueue.TryEnqueue(async () => await GetAutostartInfo());
         SetAutostartDetailsVisibility(true);
 

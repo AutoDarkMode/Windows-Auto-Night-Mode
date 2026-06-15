@@ -19,7 +19,15 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  App settings  -->
+                <!--  Compatibility warnings  -->
+                <InfoBar
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.IsPowerToysConflictBarOpen, Mode=OneWay}"
+                    Message="{helpers:ResourceString Name=PowerToysConflict_Content}"
+                    Severity="Warning"
+                    Title="{helpers:ResourceString Name=PowerToysConflict_Title}" />
+
+                <!--  Some settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />
                 <controls:SettingsCard Header="{helpers:ResourceString Name=ShowTrayIcon}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsShowTrayIcon, Mode=TwoWay}" />
