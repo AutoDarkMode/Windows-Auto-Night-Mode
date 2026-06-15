@@ -621,7 +621,10 @@
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}" IsSelected="True" />
+                                <ComboBoxItem
+                                    Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}"
+                                    IsSelected="True"
+                                    Visibility="{x:Bind ViewModel.PostponeOptionsSkipOnceVisibility, Mode=OneWay}" />
                             </ComboBox>
                             <ToggleSwitch
                                 Grid.Row="0"

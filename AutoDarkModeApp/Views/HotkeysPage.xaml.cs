@@ -24,6 +24,7 @@ public sealed partial class HotkeysPage : Page
 
         var keyValue = ViewModel.GetHotkeyValue(hotkeyData.Tag);
         var dialogContent = new ShortcutDialogContentControl();
+        dialogContent.ValidateHotkey = (newKeys) => ViewModel.IsDuplicateHotkey(hotkeyData.Tag, newKeys);
 
         if (keyValue is not null)
         {
@@ -42,18 +43,32 @@ public sealed partial class HotkeysPage : Page
             Content = dialogContent,
         };
 
+        shortcutDialog.Closing += (dialog, args) =>
+        {
+            if (args.Result == ContentDialogResult.Primary)
+            {
+                if (!dialogContent.HasNonModifierKey)
+                {
+                    dialogContent.ShowError("HotkeyInvalidErrorMessage".GetLocalized());
+                }
+                if (dialogContent.IsErrorVisible)
+                {
+                    args.Cancel = true;
+                }
+            }
+        };
+
         var result = await shortcutDialog.ShowAsync();
         if (result == ContentDialogResult.Secondary)
         {
             dialogContent.HotkeyCombination?.Clear();
             dialogContent.CapturedHotkeys = null;
         }
-        else if (result != ContentDialogResult.Primary)
-        {
-            return;
-        }
 
-        ViewModel.UpdateHotkeyValue(hotkeyData.Tag, dialogContent.CapturedHotkeys);
+        if (result == ContentDialogResult.Primary || result == ContentDialogResult.Secondary)
+        {
+            ViewModel.UpdateHotkeyValue(hotkeyData.Tag, dialogContent.CapturedHotkeys);
+        }
     }
 
     private async void SaveSettingsButton_Click(object sender, RoutedEventArgs e)
