@@ -228,6 +228,22 @@ class Service : Form
             if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
             else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
         }
+        else if (Builder.Config.Governor == Governor.AmbientLight)
+        {
+            pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;
+            PostponeItem pauseItem = state.PostponeManager.GetSkipNextSwitchItem();
+            if (pauseItem != null && pauseItem.Expiry.HasValue)
+            {
+                DateTime expiry = pauseItem.Expiry.Value;
+                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
+                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
+            }
+            else
+            {
+                // ambient light pause has no day/night concept and lasts a fixed hour
+                pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.ForOneHour})";
+            }
+        }
         else
         {
             pauseThemeSwitchItem.Checked = state.PostponeManager.IsSkipNextSwitch;

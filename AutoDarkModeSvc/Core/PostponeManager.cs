@@ -255,6 +255,12 @@ public class PostponeManager
             item.SkipType = skipType;
             Add(item);
         }
+        else if (builder.Config.Governor == Governor.AmbientLight)
+        {
+            // Ambient light has no day/night concept, so pause for a fixed hour after a manual pause
+            PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified);
+            Add(item);
+        }
     }
 
     /// <summary>
