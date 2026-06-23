@@ -83,6 +83,32 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
     protected override void HandleSwitch(SwitchEventArgs e)
     {
         SwitchSystemTheme(e.Theme);
+        EnsureTaskbarColorDisabledInLight();
+    }
+
+    private void EnsureTaskbarColorDisabledInLight()
+    {
+        // when the taskbar color switch is enabled it manages color prevalence itself
+        if (Settings.Component.TaskbarColorSwitch)
+        {
+            return;
+        }
+        if (currentComponentTheme != Theme.Light)
+        {
+            return;
+        }
+        try
+        {
+            if (RegistryHandler.IsTaskbarColor())
+            {
+                RegistryHandler.SetTaskbarColorPrevalence(0);
+                Logger.Info("disabled taskbar color prevalence in light mode (taskbar color switch is off)");
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "could not disable taskbar color prevalence in light mode: ");
+        }
     }
 
     protected virtual void SwitchSystemTheme(Theme newTheme)
