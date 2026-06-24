@@ -281,6 +281,7 @@ class Service : Form
         ConfigMonitor.Dispose();
         DwmRefreshHandler.Shutdown();
         WindowsThemeMonitor.StopThemeMonitor();
+        SystemEventHandler.ShutdownSwitchWorker();
         Timers.ForEach(t => t.Stop());
         Timers.ForEach(t => t.Dispose());
         try

@@ -96,6 +96,18 @@ public class PostponeManager
     }
 
     /// <summary>
+    /// Checks if any postpone other than the given reasons is currently queued. <br/>
+    /// Used to let certain events (such as resume/unlock) bypass specific postpones without
+    /// removing them from the queue, so the owning module keeps managing its own state.
+    /// </summary>
+    /// <param name="reasons">the postpone reasons to ignore</param>
+    /// <returns>True if a postpone that is not in <paramref name="reasons"/> is queued; false otherwise</returns>
+    public bool IsPostponedExcept(params string[] reasons)
+    {
+        return PostponeQueue.Any(x => !reasons.Contains(x.Reason));
+    }
+
+    /// <summary>
     /// Adds a new blocking reason to the postpone queue
     /// </summary>
     /// <param name="item">the postpone item (to be identified by its reason)</param>

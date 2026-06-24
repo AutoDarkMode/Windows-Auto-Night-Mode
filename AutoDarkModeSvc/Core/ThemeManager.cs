@@ -54,8 +54,19 @@ static class ThemeManager
             return;
         }
 
-        // apply last requested theme if switch is postponed
-        if (state.PostponeManager.IsPostponed)
+        // apply last requested theme if switch is postponed.
+        // resume and unlock events bypass the system idle postpone (without removing it, so the idle
+        // module keeps managing its own state) to correct the theme immediately after waking (#1155)
+        bool postponed;
+        if (e.Source == SwitchSource.SystemResume || e.Source == SwitchSource.SystemUnlock)
+        {
+            postponed = state.PostponeManager.IsPostponedExcept(Helper.PostponeItemSystemIdle);
+        }
+        else
+        {
+            postponed = state.PostponeManager.IsPostponed;
+        }
+        if (postponed)
         {
             e.OverrideTheme(state.InternalTheme, ThemeOverrideSource.PostponeManager);
             UpdateTheme(e);

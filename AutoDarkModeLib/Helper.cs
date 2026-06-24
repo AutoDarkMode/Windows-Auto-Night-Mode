@@ -33,6 +33,8 @@ public static class Helper
     public const string PostponeItemDelayAutoSwitch = "DelayAutoSwitch";
     public const string PostponeItemDelayGracePeriod = "SwitchNotification";
     public const string PostponeItemSessionLock = "SessionLock";
+    // must match the type name of SystemIdleCheckModule, which is used as its postpone reason
+    public const string PostponeItemSystemIdle = "SystemIdleCheckModule";
     public static readonly string ExecutionPath = GetExecutionPathService();
     public static readonly string ExecutionDir = GetExecutionDir();
     public static readonly string ExecutionPathApp = GetExecutionPathApp();

@@ -15,9 +15,13 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
+using AutoDarkModeSvc.Events;
 using Microsoft.Win32;
 using Windows.System.Power;
 
@@ -29,8 +33,91 @@ static class SystemEventHandler
     private static bool darkThemeOnBatteryEnabled;
     private static bool resumeEventEnabled;
     private static DateTime lastSystemTimeChange;
-    private static GlobalState state = GlobalState.Instance();
+    private static readonly GlobalState state = GlobalState.Instance();
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+
+    // Win32 SystemEvents handlers run on a single shared message-pump thread and must not block,
+    // otherwise the queue backs up and subsequent system notifications are delayed. Theme switches
+    // are therefore offloaded onto a dedicated worker thread that drains this queue sequentially,
+    // which keeps the pump responsive while preserving the guarantee that switches never overlap.
+    private static readonly BlockingCollection<SwitchEventArgs> switchQueue = new();
+    private static readonly HashSet<SwitchSource> pendingSwitchSources = new();
+    private static readonly Lock switchQueueLock = new();
+    private static Thread switchWorker;
+
+    /// <summary>
+    /// Enqueues a theme switch to be processed sequentially on a dedicated background thread so the
+    /// calling SystemEvents handler returns immediately. A switch that only resolves the current
+    /// target theme (<see cref="Theme.Resolve"/>) is coalesced with an already-pending switch from
+    /// the same source, since one execution covers them both.
+    /// </summary>
+    private static void EnqueueSwitch(SwitchEventArgs e)
+    {
+        EnsureSwitchWorkerRunning();
+        lock (switchQueueLock)
+        {
+            if (e.Theme == Theme.Resolve && !pendingSwitchSources.Add(e.Source))
+            {
+                Logger.Debug($"coalescing redundant queued theme switch from source {e.Source}");
+                return;
+            }
+        }
+        switchQueue.Add(e);
+    }
+
+    private static void EnsureSwitchWorkerRunning()
+    {
+        if (switchWorker != null) return;
+        lock (switchQueueLock)
+        {
+            if (switchWorker != null) return;
+            switchWorker = new Thread(SwitchWorkerLoop)
+            {
+                Name = "SystemEventSwitchWorker",
+                IsBackground = true
+            };
+            switchWorker.Start();
+        }
+    }
+
+    private static void SwitchWorkerLoop()
+    {
+        foreach (SwitchEventArgs e in switchQueue.GetConsumingEnumerable())
+        {
+            lock (switchQueueLock)
+            {
+                pendingSwitchSources.Remove(e.Source);
+            }
+            try
+            {
+                ThemeManager.RequestSwitch(e);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"error while processing queued theme switch from source {e.Source}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Stops the switch worker as part of service shutdown. Marks the queue complete so the worker
+    /// drains any pending switches and exits its loop, then waits a bounded amount of time for an
+    /// in-flight switch to finish. The timeout ensures a stuck switch can never hang service exit.
+    /// </summary>
+    public static void ShutdownSwitchWorker()
+    {
+        Thread worker;
+        lock (switchQueueLock)
+        {
+            worker = switchWorker;
+            if (worker == null) return;
+        }
+        switchQueue.CompleteAdding();
+        if (!worker.Join(TimeSpan.FromSeconds(5)))
+        {
+            Logger.Warn("switch worker did not finish within timeout during shutdown");
+        }
+    }
 
     public static void RegisterThemeEvent()
     {
@@ -161,7 +248,7 @@ static class SystemEventHandler
                 if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
                 {
                     Logger.Info("system unlocked, refreshing theme");
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                    EnqueueSwitch(new(SwitchSource.SystemUnlock));
                 }
                 else
                 {
@@ -206,7 +293,7 @@ static class SystemEventHandler
                 if (!state.PostponeManager.IsSkipNextSwitch && !state.PostponeManager.IsUserDelayed)
                 {
                     Logger.Info("system resuming from suspended state, refreshing theme");
-                    ThemeManager.RequestSwitch(new(SwitchSource.SystemUnlock));
+                    EnqueueSwitch(new(SwitchSource.SystemUnlock));
                 }
                 else
                 {
