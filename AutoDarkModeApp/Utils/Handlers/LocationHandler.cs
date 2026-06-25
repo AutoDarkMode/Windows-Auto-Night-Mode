@@ -1,6 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeLib;
 using Windows.Devices.Geolocation;
 using Windows.Services.Maps;
 

@@ -56,6 +56,7 @@ public enum SwitchSource
     Any,
     TimeSwitchModule,
     NightLightTrackerModule,
+    AmbientLightSensorModule,
     BatteryStatusChanged,
     SystemResume,
     Manual,
@@ -79,6 +80,7 @@ public enum ThemeOverrideSource
     Default = 0,
     TimedThemeState,
     NightLight,
+    AmbientLight,
     ForceFlag,
     BatteryStatus,
     PostponeManager
@@ -87,7 +89,8 @@ public enum ThemeOverrideSource
 public enum Governor
 {
     Default,
-    NightLight
+    NightLight,
+    AmbientLight
 }
 
 public enum SkipType

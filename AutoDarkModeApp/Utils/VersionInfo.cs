@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using AutoDarkModeApp.Utils.Handlers;
 using AdmExtensions = AutoDarkModeLib.Helper;
 
 namespace AutoDarkModeApp.Utils;

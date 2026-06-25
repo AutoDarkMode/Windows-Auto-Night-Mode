@@ -33,7 +33,7 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
         {
             if (State.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMilliseconds(2*TimerFrequency.Main).TimeOfDay))
+                if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMilliseconds(2 * TimerFrequency.Main).TimeOfDay))
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     return new(true);

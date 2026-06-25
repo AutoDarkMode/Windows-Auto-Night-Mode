@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -121,914 +121,904 @@
     <value>Auto Dark Mode</value>
   </data>
   <data name="About" xml:space="preserve">
-    <value>Info</value>
+    <value>关于</value>
   </data>
   <data name="AccentColor" xml:space="preserve">
-    <value>Colore principale</value>
+    <value>主题色</value>
   </data>
   <data name="AccentOnly" xml:space="preserve">
-    <value>Solo il colore principale</value>
+    <value>仅主题色</value>
   </data>
   <data name="ActiveDelays" xml:space="preserve">
-    <value>Ritardi attivi</value>
+    <value>生效的推迟</value>
   </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
-    <value>Usa il colore principale per la barra delle applicazioni durante</value>
+    <value>使用任务栏主题色</value>
   </data>
   <data name="AdaptToSystem" xml:space="preserve">
-    <value>Adatta al sistema</value>
+    <value>跟随系统</value>
   </data>
   <data name="AlwaysDark" xml:space="preserve">
-    <value>Sempre scuro</value>
+    <value>总是深色</value>
   </data>
   <data name="AlwaysLight" xml:space="preserve">
-    <value>Sempre chiaro</value>
+    <value>总是浅色</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Applica</value>
+    <value>应用</value>
   </data>
   <data name="ApplyGeo" xml:space="preserve">
-    <value>Applica coordinate</value>
+    <value>应用坐标</value>
   </data>
   <data name="AutoInstall" xml:space="preserve">
-    <value>Scarica e installa automaticamente le nuove versioni</value>
+    <value>自动下载并安装新版本</value>
   </data>
   <data name="Automatic" xml:space="preserve">
-    <value>Automatico</value>
+    <value>自动</value>
   </data>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Gestisci il cambio automatico del tema</value>
+    <value>启用自动主题切换</value>
   </data>
   <data name="AutoStart" xml:space="preserve">
-    <value>Avvio automatico</value>
+    <value>自启动</value>
   </data>
   <data name="AutoSwitchGracePeriod" xml:space="preserve">
-    <value>Minuti di attesa della notifica per l'inserimento dell'utente</value>
+    <value>通知等待用户输入的时间（分钟）</value>
   </data>
   <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Notifica prima di cambiare automaticamente tema</value>
+    <value>在自动切换主题时提醒</value>
   </data>
   <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Cambio automatico del tema ripreso</value>
+    <value>自动主题切换已恢复</value>
   </data>
   <data name="BackgroundUpdate" xml:space="preserve">
-    <value>Cerca aggiornamenti in background</value>
+    <value>自动检查更新</value>
   </data>
   <data name="BatteryDarkMode" xml:space="preserve">
-    <value>Passa alla modalità scura quando il dispositivo è scollegato</value>
+    <value>使用电池时切换至深色模式</value>
   </data>
   <data name="BatteryPowered" xml:space="preserve">
-    <value>Dispositivi a batteria</value>
+    <value>电池设备</value>
   </data>
   <data name="BlockedProcesses" xml:space="preserve">
-    <value>Processi che bloccano il cambio</value>
+    <value>阻塞进程</value>
   </data>
   <data name="BrowsePhotos" xml:space="preserve">
-    <value>Scegli il file</value>
+    <value>选择文件</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Annulla</value>
+    <value>取消</value>
   </data>
   <data name="CheckUpdate" xml:space="preserve">
-    <value>Controlla aggiornamenti</value>
+    <value>检查更新</value>
   </data>
   <data name="ChooseAFitForImage" xml:space="preserve">
-    <value>Scegli adattamento per l'immagine desktop</value>
+    <value>为您的桌面图片选择一种适应方式</value>
   </data>
   <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Scegli sfondo</value>
+    <value>选择您的壁纸</value>
   </data>
   <data name="City" xml:space="preserve">
-    <value>Città</value>
+    <value>城市</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Chiudi</value>
+    <value>关闭</value>
   </data>
   <data name="Color" xml:space="preserve">
-    <value>Colore</value>
+    <value>颜色</value>
   </data>
   <data name="ColorFilter" xml:space="preserve">
-    <value>Filtro colore (invia Win + Ctrl + C)</value>
+    <value>深色模式时启用颜色滤镜</value>
   </data>
   <data name="ColorizationPick_Description" xml:space="preserve">
-    <value>Personalizza lo schema di colori di sistema di Windows secondo i tuoi gusti.</value>
+    <value>根据您的喜好自定义 Windows 系统颜色方案。</value>
   </data>
   <data name="Conditions" xml:space="preserve">
-    <value>Condizioni</value>
+    <value>条件</value>
   </data>
   <data name="Configuration" xml:space="preserve">
-    <value>Configura</value>
+    <value>配置</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Conferma</value>
+    <value>确认</value>
   </data>
   <data name="Copy" xml:space="preserve">
-    <value>Copia</value>
+    <value>复制</value>
   </data>
   <data name="CreateTheme" xml:space="preserve">
-    <value>Crea i tuoi temi</value>
+    <value>创建您的主题</value>
   </data>
   <data name="Cursors" xml:space="preserve">
-    <value>Puntatori</value>
+    <value>光标</value>
   </data>
   <data name="CustomHours" xml:space="preserve">
-    <value>Imposta un orario personalizzato</value>
+    <value>自定义时间</value>
   </data>
   <data name="CustomScriptUserRepository" xml:space="preserve">
-    <value>Deposito di script personalizzati degli utenti</value>
+    <value>自定义脚本的用户仓库</value>
   </data>
   <data name="CustomStartTime" xml:space="preserve">
-    <value>Orari di inizio personalizzati</value>
+    <value>自定义起始时间</value>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>Scuro</value>
+    <value>深色</value>
   </data>
   <data name="DarkTheme" xml:space="preserve">
-    <value>Tema scuro</value>
+    <value>深色主题</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>Ritardo</value>
+    <value>推迟</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>Disabilitato</value>
+    <value>已禁用</value>
   </data>
   <data name="Disconnected" xml:space="preserve">
-    <value>Scollegato</value>
+    <value>已断开</value>
   </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
-    <value>Documentazione per script personalizzati</value>
+    <value>自定义脚本的文档</value>
   </data>
   <data name="Donation" xml:space="preserve">
-    <value>Dona</value>
+    <value>捐赠</value>
   </data>
   <data name="Donation_Description" xml:space="preserve">
-    <value>Ciao! Grazie per usare Auto Dark Mode! Sei soddisfatto finora?
+    <value>感谢您使用 Auto Dark Mode！到现在为止，您还喜欢这个应用吗？
 
-Questa app rende la tua vita quotidiana più piacevole, aiutandoti a prenderti cura dei tuoi occhi. Allo stesso tempo è completamente gratuita, senza pubblicità, non raccoglie dati utente ed è open source. Non guadagno nulla da questo progetto.
+这个应用保护您的眼睛，让您每天的心情更加愉悦。同时它也是一个完全免费、无广告、不收集用户数据的开源项目。我并不靠本项目盈利。
 
-Per questo motivo potresti sostenermi con una donazione volontaria. Anche una piccola cifra mi fa saltare felice per casa. Dona solo quanto apprezzi il mio lavoro.</value>
+如上所述，您可以通过自愿捐赠支持我，甚至一笔小钱都能让我开心得一蹦三尺高。您认为我的工作值得多少，就捐赠多少吧。</value>
   </data>
   <data name="DonationHowTo" xml:space="preserve">
-    <value>Come donare?</value>
+    <value>如何捐赠？</value>
   </data>
   <data name="DonationPayPal_Description" xml:space="preserve">
-    <value>Puoi inviarmi denaro tramite PayPal. La donazione è volontaria, e non comporta alcun bonus.</value>
+    <value>您可以通过 PayPal 自愿且无偿地向我汇款。</value>
   </data>
   <data name="DonotSwitchGPUMonitoring" xml:space="preserve">
-    <value>Non cambiare mentre un videogioco è in esecuzione</value>
+    <value>玩游戏时不进行切换</value>
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Non cambiare tema finché il sistema è inattivo</value>
+    <value>系统非空闲状态时不进行切换</value>
   </data>
   <data name="Edge" xml:space="preserve">
-    <value>Edge (vecchia versione)</value>
+    <value>Edge（旧版）</value>
   </data>
   <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Abilita il cambio del colore principale</value>
+    <value>启用主题色切换</value>
   </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
-    <value>Abilita cambio automatico del tema</value>
+    <value>启用自动主题切换</value>
   </data>
   <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Abilita cambio del puntatore del mouse</value>
+    <value>启用鼠标光标切换</value>
   </data>
   <data name="EnableCustomScripts" xml:space="preserve">
-    <value>Abilita script personalizzati</value>
+    <value>启用自定义脚本</value>
   </data>
   <data name="Enabled" xml:space="preserve">
-    <value>Abilitato</value>
+    <value>启用</value>
   </data>
   <data name="EnableHotkeys" xml:space="preserve">
-    <value>Abilita le scorciatoie</value>
+    <value>启用快捷键</value>
   </data>
   <data name="EnableWallpaperSwitch" xml:space="preserve">
-    <value>Abilita cambio dello sfondo</value>
+    <value>启用壁纸切换</value>
   </data>
   <data name="ErrorMessageBox_Content" xml:space="preserve">
-    <value>Spiacente, c'è stato un errore con la UI.
+    <value>用户界面出现了问题。
 
-Assicurati che:
-- Il servizio di Auto Dark Mode sia in esecuzione
-- La tua configurazione (config.yaml) sia corretta
+请确保：
+- 服务正在运行
+- config.yaml 文件无误
 
-Vuoi aprire un resoconto del problema nell'archvio di Auto Dark Mode?</value>
+您想在 Auto Dark Mode 的存储库中创建一个 issue 吗？</value>
   </data>
   <data name="ErrorOccurred_Title" xml:space="preserve">
-    <value>Si è verificato un errore</value>
+    <value>发生错误</value>
   </data>
   <data name="FeatureDisabled_WhileManagedMode" xml:space="preserve">
-    <value>Questa funzionalità è disabilitata mentre la modalità scura automatica gestisce il tuo tema.</value>
+    <value>当 Auto Dark Mode 管理您的主题时，此功能不可用。</value>
   </data>
   <data name="FeatureDisabled_WhileThemeMode" xml:space="preserve">
-    <value>Questa funzionalità è disabilitata mentre Windows gestisce il tuo tema.</value>
+    <value>当 Windows 管理您的主题时，此功能不可用。</value>
   </data>
   <data name="FitMode_Fill" xml:space="preserve">
-    <value>Riempi</value>
+    <value>填充</value>
   </data>
   <data name="FitMode_Fit" xml:space="preserve">
-    <value>Adatta</value>
+    <value>适应</value>
   </data>
   <data name="FitMode_Stretch" xml:space="preserve">
-    <value>Allunga</value>
+    <value>拉伸</value>
   </data>
   <data name="FollowApp" xml:space="preserve">
-    <value>Lascia decidere alla app</value>
+    <value>由应用决定</value>
   </data>
   <data name="FollowUs" xml:space="preserve">
-    <value>Seguici</value>
+    <value>关注我们</value>
   </data>
   <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Segui le impostazioni della luce notturna di Windows</value>
+    <value>跟随 Windows 夜间模式设置</value>
   </data>
   <data name="ForceDark" xml:space="preserve">
-    <value>Forza modalità scura</value>
+    <value>强制深色模式</value>
   </data>
   <data name="ForceLight" xml:space="preserve">
-    <value>Forza modalità chiara</value>
+    <value>强制浅色模式</value>
   </data>
   <data name="General" xml:space="preserve">
-    <value>Impostazioni</value>
+    <value>设置</value>
   </data>
   <data name="GeoCoordinates" xml:space="preserve">
-    <value>Coordinate geografiche</value>
+    <value>地理坐标</value>
   </data>
   <data name="GetCoordinates" xml:space="preserve">
-    <value>Coordinate geografiche per la tua posizione</value>
+    <value>了解所处位置的坐标</value>
   </data>
   <data name="GpuUsageDetectionSpeed" xml:space="preserve">
-    <value>Velocità di rilevazione dell'utilizzo della GPU</value>
+    <value>GPU 使用率检测速度</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Aiuto</value>
+    <value>帮助</value>
   </data>
   <data name="Hex code" xml:space="preserve">
-    <value>Codice esadecimale</value>
-  </data>
-  <data name="HideTrayIcon" xml:space="preserve">
-    <value>Nascondi icona dell'area di notifica</value>
+    <value>十六进制颜色代码</value>
   </data>
   <data name="Hotkeys" xml:space="preserve">
-    <value>Scorciatoie</value>
+    <value>快捷键</value>
   </data>
   <data name="IdleTime" xml:space="preserve">
-    <value>Minuti prima che il sistema sia considerato inattivo</value>
+    <value>系统空闲状态判断时间（分钟）</value>
   </data>
   <data name="IgnoreBackground" xml:space="preserve">
-    <value>Ignora lo sfondo</value>
+    <value>忽略背景</value>
   </data>
   <data name="IgnoreCursor" xml:space="preserve">
-    <value>Ignora il puntatore</value>
+    <value>忽略光标</value>
   </data>
   <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignora le icone del desktop</value>
+    <value>忽略桌面图标</value>
   </data>
   <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ignora le impostazioni</value>
+    <value>忽略设置</value>
   </data>
   <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignora i suoni</value>
+    <value>忽略声音</value>
   </data>
   <data name="ImagePath" xml:space="preserve">
-    <value>Percorso immagine</value>
+    <value>图片路径</value>
   </data>
   <data name="Info" xml:space="preserve">
-    <value>Informazioni</value>
+    <value>信息</value>
   </data>
   <data name="InstallSilent" xml:space="preserve">
-    <value>Non mostrare notifiche</value>
+    <value>不显示通知</value>
   </data>
   <data name="Interval1" xml:space="preserve">
-    <value>Ogni giorno</value>
+    <value>每天</value>
   </data>
   <data name="Interval14" xml:space="preserve">
-    <value>14 giorni</value>
+    <value>14 天</value>
   </data>
   <data name="Interval3" xml:space="preserve">
-    <value>3 giorni</value>
+    <value>3 天</value>
   </data>
   <data name="Interval7" xml:space="preserve">
-    <value>7 giorni</value>
+    <value>7 天</value>
   </data>
   <data name="LastCheckedNever" xml:space="preserve">
-    <value>mai</value>
+    <value>尚未检查过更新</value>
   </data>
   <data name="LastCheckedTime" xml:space="preserve">
-    <value>Ultimo controllo</value>
+    <value>上次检查时间</value>
   </data>
   <data name="Latitude" xml:space="preserve">
-    <value>Latitudine</value>
+    <value>纬度</value>
   </data>
   <data name="LaunchingService" xml:space="preserve">
-    <value>Avvio del servizio in corso</value>
+    <value>正在启动服务</value>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>Chiaro</value>
+    <value>浅色</value>
   </data>
   <data name="LightTheme" xml:space="preserve">
-    <value>Tema chiaro</value>
+    <value>浅色主题</value>
   </data>
   <data name="Links" xml:space="preserve">
-    <value>Collegamenti</value>
+    <value>链接</value>
   </data>
   <data name="LocationData" xml:space="preserve">
-    <value>Dati sulla posizione</value>
+    <value>位置信息</value>
   </data>
   <data name="LocationGeoService" xml:space="preserve">
-    <value>Dall'alba al tramonto (coordinate geografiche)</value>
+    <value>日出日落（指定坐标）</value>
   </data>
   <data name="LocationService" xml:space="preserve">
-    <value>Dal tramonto all'alba (servizio di localizzazione)</value>
+    <value>日出日落（定位服务）</value>
   </data>
   <data name="LogonTask" xml:space="preserve">
-    <value>Usa una attività di accesso invece di una voce di avvio</value>
+    <value>使用登录任务而非启动项</value>
   </data>
   <data name="Longitude" xml:space="preserve">
-    <value>Longitudine</value>
+    <value>经度</value>
   </data>
   <data name="ManagedMode" xml:space="preserve">
-    <value>Lascia che la modalità scura automatica gestisca il mio tema</value>
+    <value>让 Auto Dark Mode 管理我的主题（推荐）</value>
   </data>
   <data name="Manual" xml:space="preserve">
-    <value>Manuale</value>
+    <value>手动</value>
   </data>
   <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
+    <value>菜单</value>
   </data>
   <data name="MinimumUsage" xml:space="preserve">
-    <value>Utilizzo minimo della GPU per posticipare il cambio</value>
+    <value>GPU 使用率大于此值时，不切换主题</value>
   </data>
   <data name="Minutes" xml:space="preserve">
-    <value>minuti</value>
+    <value>分钟</value>
   </data>
   <data name="Mode" xml:space="preserve">
-    <value>Modalità</value>
+    <value>模式</value>
   </data>
   <data name="ModeAt" xml:space="preserve">
-    <value>Modalità:</value>
+    <value>模式：</value>
   </data>
   <data name="Monitor" xml:space="preserve">
-    <value>Schermo</value>
+    <value>显示器</value>
   </data>
   <data name="Msg_AutoSwitchEnabled" xml:space="preserve">
-    <value>Il cambio automatico del tema è abilitato</value>
+    <value>自动主题切换已启用</value>
   </data>
   <data name="Msg_ChangedsSaved" xml:space="preserve">
-    <value>I tuoi cambiamenti sono stati salvati!</value>
+    <value>更改已保存！</value>
   </data>
   <data name="Msg_ClickApply" xml:space="preserve">
-    <value>I tuoi cambiamenti effettuati saranno salvati automaticamente.</value>
+    <value>您的更改会被自动保存。</value>
   </data>
   <data name="Msg_DowngradeAvailable" xml:space="preserve">
-    <value>Una versione precedente è disponibile</value>
+    <value>有降级可用</value>
   </data>
   <data name="Msg_DownloadUpdate" xml:space="preserve">
-    <value>Scarica aggiornamento</value>
+    <value>下载更新</value>
   </data>
   <data name="Msg_IgnoreDisabled" xml:space="preserve">
-    <value>Questa opzione non supporta i temi predefiniti di Windows</value>
+    <value>此选项不支持预装的默认 Windows 主题</value>
   </data>
   <data name="Msg_LocPerm" xml:space="preserve">
-    <value>Auto Dark Mode ha bisogno dell'autorizzazione per accedere alla tua posizione</value>
+    <value>Auto Dark Mode 需要访问位置的权限</value>
   </data>
   <data name="Msg_NoService" xml:space="preserve">
-    <value>Il servizio non è ancora in esecuzione, attendere…</value>
+    <value>服务尚未运行，请稍候…</value>
   </data>
   <data name="Msg_NoUpdate" xml:space="preserve">
-    <value>Nessun nuovo aggiornamento trovato</value>
+    <value>暂无更新</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Il cambio del tema è in pausa per il prossimo cambio!</value>
+    <value>主题切换已暂停一次！</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>Vorresti cambiare ora o posticipare ulteriormente?</value>
+    <value>您想现在切换还是继续推迟？</value>
   </data>
   <data name="Msg_SearchLoc" xml:space="preserve">
-    <value>Ricerca della posizione…</value>
+    <value>正在定位…</value>
   </data>
   <data name="Msg_SearchUpdate" xml:space="preserve">
-    <value>Ricerca di aggiornamenti…</value>
+    <value>正在获取更新…</value>
   </data>
   <data name="Msg_ServiceUnresponsive" xml:space="preserve">
-    <value>Il servizio non risponde. Controlla che AutoDarkModeSvc.exe sia in esecuzione e riprova!</value>
+    <value>服务无响应。请检查 AutoDarkModeSvc.exe 的运行状态并重试！</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
-    <value>Cambio del tema in attesa</value>
+    <value>主题切换等待中</value>
   </data>
   <data name="Msg_ThemeError" xml:space="preserve">
-    <value>Attenzione: impossibile individuare il tema in uso.</value>
+    <value>警告：无法读取您当前的主题。</value>
   </data>
   <data name="Msg_UpdateAvailable" xml:space="preserve">
-    <value>Un nuovo aggiornamento è disponibile!</value>
+    <value>有新版本可用！</value>
   </data>
   <data name="Msg_UpdaterText" xml:space="preserve">
-    <value>Una nuova versione è disponibile su GitHub con correzioni e miglioramenti.
+    <value>GitHub 上发布的新版本包含一些漏洞修复和改进。
 
-Versione attualmente installata: {0}, nuova versione: {1}</value>
+当前版本：{0}，新版本：{1}</value>
   </data>
   <data name="Msg_VersionInfoCopied" xml:space="preserve">
-    <value>Le informazioni sulla versione sono state copiate negli appunti</value>
+    <value>版本信息已复制到剪贴板</value>
   </data>
   <data name="NextUpdateAt" xml:space="preserve">
-    <value>Prossimo aggiornamento</value>
+    <value>下一次更新</value>
   </data>
   <data name="None" xml:space="preserve">
-    <value>Nessuno</value>
+    <value>无</value>
   </data>
   <data name="NotFound" xml:space="preserve">
-    <value>Non trovato</value>
+    <value>未找到</value>
   </data>
   <data name="Offset" xml:space="preserve">
-    <value>Scostamento</value>
+    <value>调整</value>
   </data>
   <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>好</value>
   </data>
   <data name="OpenConfigFile" xml:space="preserve">
-    <value>Apri file di configurazione</value>
+    <value>打开配置文件</value>
   </data>
   <data name="OpenConfigFolder" xml:space="preserve">
-    <value>Apri cartella di configurazione</value>
+    <value>打开配置文件夹</value>
   </data>
   <data name="OpenLog" xml:space="preserve">
-    <value>Apri file di log</value>
+    <value>打开日志文件</value>
   </data>
   <data name="OpenPath" xml:space="preserve">
-    <value>Apri cartella</value>
+    <value>打开文件夹</value>
   </data>
   <data name="OpenPointerSettings" xml:space="preserve">
-    <value>Apri impostazioni di Windows del puntatore</value>
+    <value>打开 Windows 指针设置</value>
   </data>
   <data name="OpenScriptConfig" xml:space="preserve">
-    <value>Apri configurazione degli script</value>
+    <value>打开脚本设置</value>
   </data>
   <data name="OpenShell" xml:space="preserve">
-    <value>Apri shell</value>
+    <value>打开命令行</value>
   </data>
   <data name="OpenUpdaterLog" xml:space="preserve">
-    <value>Apri log di aggiornamento</value>
+    <value>打开更新程序日志</value>
   </data>
   <data name="OpenWindowsNightLight" xml:space="preserve">
-    <value>Apri impostazioni luce notturna</value>
+    <value>打开夜间模式设置</value>
   </data>
   <data name="PathAt" xml:space="preserve">
-    <value>Percorso:</value>
+    <value>路径：</value>
   </data>
   <data name="PauseAutoThemeSwitching" xml:space="preserve">
-    <value>Attiva/Disattiva interruttore di pausa tema automatico</value>
+    <value>暂停自动主题切换</value>
   </data>
   <data name="Personalization" xml:space="preserve">
-    <value>Personalizzazione</value>
+    <value>个性化</value>
   </data>
   <data name="PickAccentColor" xml:space="preserve">
-    <value>Scegli un colore principale</value>
+    <value>选择主题色</value>
   </data>
   <data name="PickCursor" xml:space="preserve">
-    <value>Seleziona puntatori del mouse</value>
+    <value>选择鼠标光标</value>
   </data>
   <data name="PickCursor_Description" xml:space="preserve">
-    <value>Configura puntatori del mouse differenti per modalità scura e chiara.</value>
+    <value>为深色和浅色模式配置不同的鼠标光标。</value>
   </data>
   <data name="PickTheme" xml:space="preserve">
-    <value>Scegli un tema</value>
+    <value>选择主题</value>
   </data>
   <data name="PickTheme_Description" xml:space="preserve">
-    <value>Seleziona un tema di Windows diverso per la modalità scura e quella chiara, rispettivamente. Consente la personalizzazione completa del tema, ma richiede la creazione di file .theme da parte dell'utente.</value>
+    <value>分别为深色和浅色模式选择不同的 Windows 主题。允许完全自定义主题，但需要您自行设置 .theme 文件。</value>
   </data>
   <data name="PickWallpaper" xml:space="preserve">
-    <value>Scegli uno sfondo</value>
+    <value>选择壁纸</value>
   </data>
   <data name="PickWallpaper_Description" xml:space="preserve">
-    <value>Personalizza lo sfondo del desktop per tutti i monitor, per i singoli monitor, imposta un colore di sfondo, o attiva contenuti in evidenza.</value>
+    <value>为所有显示器或单个显示器自定义您的桌面壁纸，设置背景颜色或启用 Windows 聚焦。</value>
   </data>
   <data name="Position" xml:space="preserve">
-    <value>Posizione</value>
+    <value>位置</value>
   </data>
   <data name="PostponeControl" xml:space="preserve">
-    <value>Posticipa controllo</value>
+    <value>推迟控制</value>
   </data>
   <data name="PostponeInfoAt" xml:space="preserve">
-    <value>Il cambio automatico del tema è in pausa a causa dei seguenti moduli:</value>
+    <value>由于下列模块自动主题切换目前处于暂停状态：</value>
   </data>
   <data name="PostponeReason_DelayAutoSwitch" xml:space="preserve">
-    <value>Modulo del ritardo</value>
+    <value>推迟模块</value>
   </data>
   <data name="PostponeReason_GpuMonitorModule" xml:space="preserve">
-    <value>Modulo per monitoraggio GPU</value>
+    <value>GPU 监视模块</value>
   </data>
   <data name="PostponeReason_PauseAutoSwitch" xml:space="preserve">
-    <value>Metti in pausa il modulo del cambio automatico</value>
+    <value>暂停自动切换模块</value>
   </data>
   <data name="PostponeReason_PostponesUntil" xml:space="preserve">
-    <value>posticipa fino a</value>
+    <value>推迟到</value>
   </data>
   <data name="PostponeReason_PostponesUntilCondition" xml:space="preserve">
-    <value>posticipa fino al verificarsi della condizione</value>
+    <value>推迟到条件满足为止</value>
   </data>
   <data name="PostponeReason_SwitchNotification" xml:space="preserve">
-    <value>Notifica del cambio</value>
+    <value>切换的通知</value>
   </data>
   <data name="PostponeReason_SystemIdleCheckModule" xml:space="preserve">
-    <value>Controllo dell'inattività del sistema</value>
+    <value>系统闲置检查</value>
   </data>
   <data name="PostponeReason_UntilNextSunrise" xml:space="preserve">
-    <value>posticipa fino alla prossima alba</value>
+    <value>推迟到下一次日出</value>
   </data>
   <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
-    <value>posticipa fino al prossimo tramonto</value>
+    <value>推迟到下一次日落</value>
   </data>
   <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 ore</value>
+    <value>2 小时</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minuti</value>
+    <value>15 分钟</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 ore</value>
+    <value>3 小时</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minuti</value>
+    <value>30 分钟</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 ore</value>
+    <value>6 小时</value>
   </data>
   <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 ora</value>
+    <value>1 小时</value>
   </data>
   <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 ore</value>
+    <value>12 小时</value>
   </data>
   <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Salta un cambio automatico</value>
+    <value>跳过一次自动切换</value>
   </data>
   <data name="ProcessBlockList" xml:space="preserve">
-    <value>Non cambiare mentre sono in esecuzione alcuni processi</value>
+    <value>当某些进程运行时不进行切换</value>
   </data>
   <data name="RefreshAutostart" xml:space="preserve">
-    <value>Reimposta avvio automatico</value>
+    <value>刷新</value>
   </data>
   <data name="RegistryKey" xml:space="preserve">
-    <value>Chiave di registro</value>
+    <value>注册表键值</value>
   </data>
   <data name="RemoveApps" xml:space="preserve">
-    <value>Rimuovi</value>
+    <value>删除</value>
   </data>
   <data name="RemoveDisconnected" xml:space="preserve">
-    <value>Rimuovi schermi disconnessi</value>
+    <value>删除未连接的显示器</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Resetta</value>
+    <value>重置</value>
   </data>
   <data name="Restart" xml:space="preserve">
-    <value>Riavvia</value>
+    <value>重启</value>
   </data>
   <data name="RestartNeeded" xml:space="preserve">
-    <value>Riavvio dell'app richiesto per vedere i cambiamenti</value>
+    <value>重启后生效</value>
   </data>
   <data name="RestoreThemeChanged" xml:space="preserve">
-    <value>Ripristina i temi quando vengono cambiati esternamente</value>
+    <value>主题被外部修改时改回原定主题</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>Riprendi</value>
+    <value>恢复</value>
   </data>
   <data name="ResumeInfo_Content" xml:space="preserve">
-    <value>La ripresa funzionerà solo per i rinvii che hanno un tempo di scadenza</value>
+    <value>恢复将只会对有失效期限的推迟有效</value>
   </data>
   <data name="SamplesFast" xml:space="preserve">
-    <value>Veloce (1 campione)</value>
+    <value>快（单采样）</value>
   </data>
   <data name="SamplesMedium" xml:space="preserve">
-    <value>Medio (2 campioni)</value>
+    <value>中（双采样）</value>
   </data>
   <data name="SamplesSlow" xml:space="preserve">
-    <value>Lento (3 campioni)</value>
+    <value>慢（三采样）</value>
   </data>
   <data name="Scripts" xml:space="preserve">
-    <value>Script</value>
+    <value>脚本</value>
   </data>
   <data name="SelectDarkCursor" xml:space="preserve">
-    <value>Seleziona il puntatore scuro</value>
+    <value>选择深色光标</value>
   </data>
   <data name="SelectLightCursor" xml:space="preserve">
-    <value>Seleziona il puntatore chiaro</value>
+    <value>选择浅色光标</value>
   </data>
   <data name="Set" xml:space="preserve">
-    <value>Imposta</value>
+    <value>设定</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Impostazioni</value>
+    <value>设置</value>
   </data>
   <data name="SpecialThanks" xml:space="preserve">
-    <value>Ringraziamenti speciali</value>
+    <value>特别感谢</value>
   </data>
   <data name="StartWithWindows" xml:space="preserve">
-    <value>Avvia Auto Dark Mode con Windows</value>
+    <value>开机启动 Auto Dark Mode</value>
   </data>
   <data name="StopForcing" xml:space="preserve">
-    <value>Interrompi forzatura del tema</value>
+    <value>停止强制使用主题</value>
   </data>
   <data name="SwitchWindowsTheme" xml:space="preserve">
-    <value>Abilita il cambio di tema di Windows</value>
+    <value>切换 Windows 主题</value>
   </data>
   <data name="SwitchTheme" xml:space="preserve">
-    <value>Cambia il tema attuale</value>
+    <value>切换当前主题</value>
   </data>
   <data name="SwitchTouchKeyboard" xml:space="preserve">
-    <value>Cambia tastiera virtuale e inserimento</value>
+    <value>强制切换触摸键盘主题</value>
   </data>
   <data name="System" xml:space="preserve">
-    <value>Sistema</value>
+    <value>系统</value>
   </data>
   <data name="SystemAreas" xml:space="preserve">
-    <value>Applicazioni</value>
+    <value>应用程序</value>
   </data>
   <data name="Task" xml:space="preserve">
-    <value>Processo</value>
+    <value>启动任务</value>
   </data>
   <data name="Theme" xml:space="preserve">
-    <value>Tema</value>
+    <value>主题</value>
   </data>
   <data name="Theme10_Flowers" xml:space="preserve">
-    <value>Fiori</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>鲜花</value>
   </data>
   <data name="Theme10_Windows" xml:space="preserve">
     <value>Windows</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="Theme10_Windows10" xml:space="preserve">
     <value>Windows 10</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
   </data>
   <data name="Theme10_WindowsLight" xml:space="preserve">
-    <value>Windows (chiaro)</value>
-    <comment>Info for Translators: Use name from the Win10 settings (go to personlization -&gt; themes and copy the name)</comment>
+    <value>Windows（浅色主题）</value>
   </data>
   <data name="Theme11_CapturedMotion" xml:space="preserve">
-    <value>Movimento acquisito</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>捕获的动作</value>
   </data>
   <data name="Theme11_Dark" xml:space="preserve">
-    <value>Windows (scuro)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows（深色主题）</value>
   </data>
   <data name="Theme11_Flow" xml:space="preserve">
-    <value>Flusso</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>流畅</value>
   </data>
   <data name="Theme11_Glow" xml:space="preserve">
-    <value>Bagliore</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>发光</value>
   </data>
   <data name="Theme11_Light" xml:space="preserve">
-    <value>Windows (chiaro)</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>Windows（浅色主题）</value>
   </data>
   <data name="Theme11_Spotlight" xml:space="preserve">
-    <value>Contenuti in evidenza</value>
+    <value>Windows 聚焦</value>
   </data>
   <data name="Theme11_Sunrise" xml:space="preserve">
-    <value>Alba</value>
-    <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
+    <value>日出</value>
   </data>
   <data name="ThirdParty" xml:space="preserve">
-    <value>Software di terze parti usato</value>
+    <value>本程序所使用的第三方软件</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Pianifica</value>
+    <value>时间</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
-    <value>Gestisci tema</value>
+    <value>启用主题</value>
   </data>
   <data name="TraceMode" xml:space="preserve">
-    <value>Modalità tracciamento</value>
+    <value>追踪模式</value>
   </data>
   <data name="Translator" xml:space="preserve">
-    <value>Traduttore: balzabalza &amp; albertopasqualetto &amp; LightDestory &amp; Hexaae</value>
+    <value>翻译者: zheolls、没有字的回音、ThrRip、shenzhiming88、Bill Lee、Kazuto Iris</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value>Tipo</value>
+    <value>类型</value>
   </data>
   <data name="UnManagedMode" xml:space="preserve">
-    <value>Lascia che Windows gestisca il mio tema</value>
+    <value>让 Windows 管理我的主题</value>
   </data>
   <data name="UpdateAtStart" xml:space="preserve">
-    <value>Cerca aggiornamenti all'avvio di Auto Dark Mode</value>
+    <value>在 Auto Dark Mode 启动时检查</value>
   </data>
   <data name="UpdateChannel" xml:space="preserve">
-    <value>Scegli il canale di aggiornamento</value>
+    <value>选择更新版本</value>
   </data>
   <data name="UpdateColorization" xml:space="preserve">
-    <value>Aggiorna colorazione</value>
+    <value>更新颜色</value>
   </data>
   <data name="UpdateInterval" xml:space="preserve">
-    <value>Intervallo di tempo per controllare la disponibilità di aggiornamenti</value>
+    <value>更改检查更新的频率</value>
   </data>
   <data name="Updates" xml:space="preserve">
-    <value>Aggiornamenti</value>
+    <value>更新</value>
   </data>
   <data name="UseLocationService" xml:space="preserve">
-    <value>Usa servizio di localizzazione</value>
+    <value>使用定位服务</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Versione</value>
+    <value>版本</value>
   </data>
   <data name="Wallpaper" xml:space="preserve">
-    <value>Sfondo</value>
+    <value>壁纸</value>
   </data>
   <data name="WallpaperMode_Picture" xml:space="preserve">
-    <value>Immagine</value>
+    <value>图片</value>
   </data>
   <data name="WallpaperMode_PictureMM" xml:space="preserve">
-    <value>Immagine (schermi multipli)</value>
+    <value>图片（多显示器）</value>
   </data>
   <data name="WallpaperMode_SolidColor" xml:space="preserve">
-    <value>Colore solido</value>
+    <value>纯色</value>
   </data>
   <data name="WallpaperMode_Spotlight" xml:space="preserve">
-    <value>Contenuti in evidenza di Windows</value>
+    <value>Windows 聚焦</value>
   </data>
   <data name="Warning1903" xml:space="preserve">
-    <value>Questa opzione è disabilitata perché non hai installato l'aggiornamento di Windows 10 datato Aprile 2019 sulla tua macchina.</value>
+    <value>您未安装 Windows 10 2019 年 4月更新，故此选项不可用。</value>
   </data>
   <data name="WindowsAutostartDisabled" xml:space="preserve">
-    <value>Hai disabilitato l'avvio automatico attraverso Windows.</value>
+    <value>您在 Windows 中禁用了启动项。</value>
   </data>
   <data name="ThemeTutorialDescription" xml:space="preserve">
-    <value>1. Vai su Impostazioni di Windows &gt; Personalizzazione &gt; Colori.
-2. Cambia il colore di sistema in "Chiaro" per il tema chiaro.
-3. Vai su Impostazioni di Windows &gt; Personalizzazione &gt; Temi.
-4. Seleziona lo sfondo, i puntatori del mouse e il colore principale.
-5. Salva il tema.
-6. Ripeti questa procedura per il tema scuro.</value>
+    <value>1. 前往 Windows 设置 &gt; 个性化 &gt; 颜色。
+2. 将浅色主题的系统颜色改为“浅色”。
+3. 前往 Windows 设置 &gt; 个性化 &gt; 主题。
+4. 选择您喜欢的壁纸、鼠标指针和强调色。
+5. 保存您的主题。
+6. 为深色主题重复此过程。</value>
   </data>
   <data name="EditHotkey" xml:space="preserve">
-    <value>Modifica tasto di scelta rapida</value>
+    <value>编辑快捷键</value>
   </data>
   <data name="DisplayMonitorDisconnected" xml:space="preserve">
-    <value>Scollegato</value>
+    <value>已断开</value>
   </data>
   <data name="Background" xml:space="preserve">
-    <value>Background</value>
+    <value>背景</value>
     <comment>match Windows Settings</comment>
   </data>
   <data name="SelectColor" xml:space="preserve">
-    <value>Select color</value>
+    <value>选择颜色</value>
   </data>
   <data name="DisableWindowsManagesTheme" xml:space="preserve">
-    <value>Disabilita gestione del tema da parte di Windows</value>
+    <value>停用 Windows 管理您的主题</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>Percorso</value>
+    <value>路径</value>
   </data>
   <data name="StartWithWindowsFailed_Content" xml:space="preserve">
-    <value>Auto start has been disabled via the Task Manager "Startup Apps" tab. If you would like Auto Dark Mode to start with Windows again, please re-enable it there.</value>
+    <value>自动启动已在 Windows 设置中被禁用。 要使本程序再次随 Windows 系统一起启动，请前往Windows 设置 &gt; 应用 &gt; 启动并启用它。</value>
   </data>
   <data name="Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>测试版</value>
   </data>
   <data name="DebugMode" xml:space="preserve">
-    <value>Debug mode</value>
+    <value>调试模式</value>
   </data>
   <data name="EnterToApply" xml:space="preserve">
-    <value>Seleziona Invio per applicare</value>
+    <value>按Enter应用坐标</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>Lingua</value>
+    <value>语言</value>
   </data>
   <data name="OpenWindowsSpotlight" xml:space="preserve">
-    <value>Vai alle impostazioni di Raccolta in evidenza di Windows</value>
+    <value>前往 Windows 聚焦设置</value>
   </data>
   <data name="Stable" xml:space="preserve">
-    <value>Stabile</value>
+    <value>稳定版</value>
   </data>
   <data name="Switch" xml:space="preserve">
-    <value>Cambia</value>
+    <value>切换</value>
   </data>
   <data name="ShowNotificationPostponeToggled" xml:space="preserve">
-    <value>Mostra notifica quando il cambio automatico del tema è in pausa</value>
+    <value>自动主题切换暂停时显示通知</value>
   </data>
   <data name="ShowNotificationAutomaticThemeToggled" xml:space="preserve">
-    <value>Mostra notifica quando si attiva il cambio automatico del tema</value>
+    <value>自动主题切换开启或关闭时显示通知</value>
   </data>
   <data name="SelectTheKeyCombination" xml:space="preserve">
-    <value>Seleziona una combinazione di tasti. Sono valide solo le scorciatoie che iniziano con il tasto Windows, Ctrl, Alt o Maiusc.</value>
+    <value>选择一个按键组合。只有以 Windows 键、Ctrl、Alt 或 Shift 开始的快捷键有效。</value>
   </data>
   <data name="ActivationShortcut" xml:space="preserve">
-    <value>Scorciatoia di attivazione</value>
+    <value>激活快捷键</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Salva</value>
+    <value>保存</value>
   </data>
   <data name="ForceSaveSettings" xml:space="preserve">
-    <value>Salvataggio forzato</value>
+    <value>强制保存</value>
   </data>
   <data name="Msg_HotkeyProblem" xml:space="preserve">
-    <value>Il tasto di scelta rapida non ha funzionato? Non preoccuparti, salviamolo di nuovo</value>
+    <value>快捷键不起作用？别担心，我们再保存一次</value>
   </data>
   <data name="SaveSuccessfully" xml:space="preserve">
-    <value>Salvataggio effettuato correttamente</value>
+    <value>保存成功</value>
   </data>
   <data name="SaveFailed" xml:space="preserve">
-    <value>Salvataggio non riuscito</value>
+    <value>保存失败</value>
   </data>
   <data name="AddApps" xml:space="preserve">
-    <value>Inizia a digitare per aggiungere qualsiasi app</value>
+    <value>键入以添加任何应用</value>
   </data>
   <data name="AppMode" xml:space="preserve">
-    <value>Modalità app</value>
+    <value>应用模式</value>
   </data>
   <data name="WindowsMode" xml:space="preserve">
-    <value>Modalità Windows</value>
+    <value>Windows 模式</value>
   </data>
   <data name="WindowsColorsSetting" xml:space="preserve">
-    <value>Impostazioni colore personalizzate di Windows</value>
+    <value>Windows 个性化颜色设置</value>
   </data>
   <data name="Delayed" xml:space="preserve">
-    <value>Ritardato</value>
+    <value>已推迟</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Non ritardato</value>
+    <value>未推迟</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
-    <value>Ignora colore</value>
+    <value>忽略颜色</value>
   </data>
   <data name="AccentSurfaces" xml:space="preserve">
-    <value>Superfici con colore principale</value>
+    <value>强调色界面</value>
   </data>
   <data name="AccentSurfacesChoose" xml:space="preserve">
-    <value>Scegli quando applicare il colore principale</value>
+    <value>选择何时应用强调色</value>
   </data>
   <data name="ApplyDuring" xml:space="preserve">
-    <value>Applica durante</value>
+    <value>在以下主题应用</value>
   </data>
   <data name="AccentApplyTitlebarAndBorders" xml:space="preserve">
-    <value>Colore principale per le barre del titolo e i bordi delle finestre</value>
+    <value>标题栏和窗口边框的强调色</value>
   </data>
   <data name="AggressiveDwmRefresh" xml:space="preserve">
-    <value>Aggiornamento DWM più aggressivo</value>
+    <value>More aggressive theme switch</value>
   </data>
   <data name="OffsetTime_Header" xml:space="preserve">
-    <value>Ritarda la commutazione di alcuni minuti</value>
+    <value>延迟切换（分钟）</value>
   </data>
   <data name="OffsetTime_Description" xml:space="preserve">
-    <value>I valori positivi indicano un ritardo, i valori negativi indicano un anticipo</value>
+    <value>正值代表延后，负值表示提前</value>
   </data>
   <data name="AlwaysRefreshDwmMsg_Content" xml:space="preserve">
-    <value>Tenta di ridurre i colori errati dell'interfaccia utente in Explorer, nella barra delle applicazioni e nel menu Start. Se riscontri spesso questo problema o lo trovi fastidioso, prova ad abilitare questa impostazione.
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu. If you experience this often, try to enable this setting.
 
-Questo potrebbe causare un ritardo da lieve a moderato su alcuni sistemi durante il cambio di tema.
+This option works by executing the "try to fix the theme" option after each change.
 
-In rare occasioni, Windows potrebbe emettere un segnale acustico quando si sposta il mouse durante gli aggiornamenti DWM.</value>
+Please note: This may introduce slight to moderate lag on some systems during theme switch. On rare occasions, Windows may emit a beeping sound when the mouse is moved during DWM refreshes.</value>
   </data>
   <data name="AggressiveDwmRefreshMsg_Title" xml:space="preserve">
-    <value>Utilizzare un aggiornamento DWM aggressivo?</value>
+    <value>启用更激进的 DWM 刷新？</value>
   </data>
   <data name="DarkModeForWebbrowser" xml:space="preserve">
-    <value>Modalità scura per il tuo browser web</value>
+    <value>Web 浏览器深色模式</value>
   </data>
   <data name="DarkModeForWebbrowserDescription" xml:space="preserve">
-    <value>Dark Reader è un'estensione del browser che fa sì che i siti web in Chrome, Edge e Firefox rispettino il tema corrente del tuo sistema. Clicca qui per saperne di più</value>
+    <value>Dark Reader 是一款浏览器扩展程序，它使 Chrome、Edge 和 Firefox 中的网站和当前系统的主题保持一致。 单击此处了解更多信息</value>
   </data>
   <data name="WindowsMousePointerSetting" xml:space="preserve">
-    <value>Apri le impostazioni del puntatore del mouse di Windows</value>
+    <value>打开 Windows 鼠标指针设置</value>
   </data>
   <data name="WindowsMousePointerSettingDescription" xml:space="preserve">
-    <value>È possibile definire nuovi schemi di cursore nelle impostazioni di Windows e quindi selezionarli qui in seguito</value>
+    <value>可以在 Windows 设置中定义新的光标方案，之后在此处选择</value>
   </data>
   <data name="FitMode_Center" xml:space="preserve">
-    <value>Centro</value>
+    <value>居中</value>
   </data>
   <data name="LogAndShell" xml:space="preserve">
-    <value>Log e Shell</value>
+    <value>日志和命令行</value>
   </data>
   <data name="Copied" xml:space="preserve">
-    <value>Copiato</value>
+    <value>已复制</value>
   </data>
   <data name="AggressiveDWMRefreshDescription" xml:space="preserve">
-    <value>Tenta di ridurre i colori errati dell'interfaccia utente in Explorer, nella barra delle applicazioni e nel menu Start.</value>
+    <value>Attempts to reduce wrong UI colors in the explorer, taskbar and start menu by fixing the theme after every switch.</value>
   </data>
   <data name="OpenWindowsSettings" xml:space="preserve">
-    <value>Apri impostazioni di Windows</value>
-  </data>
-  <data name="HotkeyInfoBarMessage" xml:space="preserve">
-    <value>I tasti di scelta rapida possono essere modificati solo se disabilitati</value>
+    <value>打开 Windows 设置</value>
   </data>
   <data name="SelectedColor" xml:space="preserve">
-    <value>Currently selected color</value>
+    <value>选择的颜色</value>
   </data>
   <data name="WindowsColors" xml:space="preserve">
-    <value>Windows color</value>
+    <value>Windows 颜色</value>
   </data>
   <data name="Msg_AutomaticColorModeDescription" xml:space="preserve">
-    <value>È selezionato il colore principale automatico. Il colore sarà determinato dallo sfondo corrente</value>
+    <value>已选择自动主题色。颜色将根据当前壁纸确定</value>
   </data>
   <data name="ColorPreview" xml:space="preserve">
-    <value>Anteprima colore</value>
+    <value>颜色预览</value>
   </data>
   <data name="Preview" xml:space="preserve">
-    <value>Anteprima</value>
+    <value>预览</value>
   </data>
   <data name="AccentApplyTaskbar" xml:space="preserve">
-    <value>Colore principale per la barra delle applicazioni</value>
+    <value>任务栏主题色</value>
+  </data>
+  <data name="ShowTrayIcon" xml:space="preserve">
+    <value>Show tray icon (recommended)</value>
+  </data>
+  <data name="HotkeyInfoBarMessage" xml:space="preserve">
+    <value>快捷键只能在禁用状态下进行更改</value>
   </data>
 </root>

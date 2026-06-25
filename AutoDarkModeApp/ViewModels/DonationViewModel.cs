@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace AutoDarkModeApp.ViewModels;
+﻿namespace AutoDarkModeApp.ViewModels;
 
 public partial class DonationViewModel : ObservableRecipient
 {

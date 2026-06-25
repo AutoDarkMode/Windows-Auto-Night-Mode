@@ -12,10 +12,28 @@
     <PackageReference Include="YamlDotNet" Version="16.3.0" />
   </ItemGroup>
 
+  <Target Name="GetGitDescribe" BeforeTargets="BeforeBuild">
+    <!-- Run git describe but do not make the build fail if git is not available -->
+    <Exec Command="git describe --all --long" ConsoleToMSBuild="true" ContinueOnError="true">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitDescribe" />
+    </Exec>
+
+    <!-- Provide a stable fallback when git produced no output -->
+    <PropertyGroup>
+      <GitDescribe Condition="'$(GitDescribe)' == ''">v0.0.0-unknown</GitDescribe>
+    </PropertyGroup>
+  </Target>
+
   <Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
-    <Exec Command="git describe --all --long" ConsoleToMSBuild="True" IgnoreExitCode="False">
+    <!-- Run git describe but do not fail the build if git is missing; capture output into SourceRevisionId -->
+    <Exec Command="git describe --all --long" ConsoleToMSBuild="true" ContinueOnError="true">
       <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
     </Exec>
+
+    <!-- Provide a fallback when git produced no output -->
+    <PropertyGroup>
+      <SourceRevisionId Condition="'$(SourceRevisionId)' == ''">v0.0.0-unknown</SourceRevisionId>
+    </PropertyGroup>
   </Target>
 
 </Project>

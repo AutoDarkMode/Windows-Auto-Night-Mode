@@ -122,7 +122,16 @@ namespace AutoDarkModeSvc.Strings {
                 return ResourceManager.GetString("Enabled", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to for one hour.
+        /// </summary>
+        public static string ForOneHour {
+            get {
+                return ResourceManager.GetString("ForOneHour", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>

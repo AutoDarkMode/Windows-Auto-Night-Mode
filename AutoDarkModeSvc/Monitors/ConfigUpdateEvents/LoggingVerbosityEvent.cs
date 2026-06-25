@@ -25,6 +25,6 @@ internal class LoggingVerbosityEvent : ConfigUpdateEvent<AdmConfig>
     {
         bool debugToggled = newConfig.Tunable.Debug != oldConfig.Tunable.Debug;
         bool traceToggled = newConfig.Tunable.Trace != oldConfig.Tunable.Trace;
-        if (debugToggled || traceToggled) LoggerSetup.UpdateLogmanConfig();
+        if (debugToggled || traceToggled) LoggerSetup.UpdateLoggingFromConfig();
     }
 }

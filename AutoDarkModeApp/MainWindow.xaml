@@ -19,19 +19,16 @@
         </Grid.RowDefinitions>
         <TitleBar
             x:Name="TitleBar"
-            Title="        Auto Dark Mode"
+            Title="Auto Dark Mode"
             BackRequested="NavViewTitleBar_BackRequested"
             IsBackButtonEnabled="{x:Bind NavigationFrame.CanGoBack, Mode=OneWay}"
             IsBackButtonVisible="True"
             IsPaneToggleButtonVisible="True"
             PaneToggleRequested="NavViewTitleBar_PaneToggleRequested">
-            <!--  This is a workaround for https://github.com/microsoft/microsoft-ui-xaml/issues/10374, once fixed we should just be using IconSource  -->
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="/Assets/AutoDarkModeIcon.ico" />
+            </TitleBar.IconSource>
         </TitleBar>
-        <ImageIcon
-            Height="16"
-            Margin="100,0,0,0"
-            HorizontalAlignment="Left"
-            Source="/Assets/AutoDarkModeIcon.ico" />
 
         <NavigationView
             x:Name="NavigationViewControl"

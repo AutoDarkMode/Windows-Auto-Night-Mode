@@ -1,8 +1,6 @@
 ﻿using System.Globalization;
 using System.Text.Json;
 using AutoDarkModeApp;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Index.Strtree;

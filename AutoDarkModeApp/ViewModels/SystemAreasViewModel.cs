@@ -1,9 +1,4 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoDarkModeApp.Services;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -160,10 +155,11 @@ public partial class SystemAreasViewModel : ObservableRecipient
                 _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
             }
         }
-        if (_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light) {
+        if (_builder.Config.SystemSwitch.Component.TaskbarColorDuring == Theme.Light)
+        {
             TaskbarColorMode = 0;
-        } 
-        else 
+        }
+        else
         {
             TaskbarColorMode = 1;
         }
@@ -314,7 +310,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
 
     partial void OnTaskbarColorModeChanged(int value)
     {
-        if (_isInitializing |!AllowTaskbarColorSwitch)
+        if (_isInitializing | !AllowTaskbarColorSwitch)
         {
             return;
         }

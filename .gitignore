@@ -175,6 +175,7 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignoreable files
 *.nuget.props
 *.nuget.targets
+/nuget.config
 
 # Microsoft Azure Build Output
 csx/
@@ -274,6 +275,3 @@ __pycache__/
 *.pyc
 /desktop.ini
 /MigrationBackup/61f0cc4e/AutoThemeChanger
-
-# wpf package
-!nuget/FluentWPF.0.10.0.nupkg

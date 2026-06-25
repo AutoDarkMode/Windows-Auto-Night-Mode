@@ -55,25 +55,8 @@ static class Program
         List<string> argsList = args.Length > 0 ? new List<string>(args) : new List<string>();
         string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
 
-        //Set up Logger
-        NLog.Config.LoggingConfiguration config = new();
-
-        // Rules for mapping loggers to targets
-        config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logconsole);
-        if (argsList.Contains("/debug"))
-        {
-            config.AddRule(LogLevel.Debug, LogLevel.Fatal, LoggerSetup.Logfile);
-        }
-        else if (argsList.Contains("/trace"))
-        {
-            config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logfile);
-        }
-        else
-        {
-            config.AddRule(LogLevel.Info, LogLevel.Fatal, LoggerSetup.Logfile);
-        }
-        // Apply config
-        LogManager.Configuration = config;
+        // Set up Logger based on command line arguments
+        LoggerSetup.InitializeLogging(argsList);
 
         try { _ = Directory.CreateDirectory(configDir); }
         catch (Exception e) { Logger.Fatal(e, "could not create config directory"); }
@@ -154,20 +137,10 @@ static class Program
                 Logger.Error(ex, "could not load location data:");
             }
 
-            // modify config if debug flag is set in config
-            if (!argsList.Contains("/debug") && !argsList.Contains("/trace") && (builder.Config.Tunable.Debug || builder.Config.Tunable.Trace))
+            // Update logging based on config file settings (if not overridden by command line)
+            if (!argsList.Contains("/debug") && !argsList.Contains("/trace"))
             {
-                config = new NLog.Config.LoggingConfiguration();
-                config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logconsole);
-                if (builder.Config.Tunable.Trace)
-                {
-                    config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logfile);
-                }
-                else if (builder.Config.Tunable.Debug)
-                {
-                    config.AddRule(LogLevel.Debug, LogLevel.Fatal, LoggerSetup.Logfile);
-                }
-                LogManager.Configuration = config;
+                LoggerSetup.UpdateLoggingFromConfig();
             }
 
             Logger.Debug("config file loaded");

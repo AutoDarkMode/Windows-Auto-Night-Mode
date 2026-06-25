@@ -94,7 +94,7 @@ public class AdmConfigBuilder
 
     public void Save()
     {
-        SaveConfig(ConfigFilePath, Config);
+        SaveConfig(ConfigFilePath, Config, omitNull: true);
     }
 
     public void SaveLocationData()
@@ -109,7 +109,7 @@ public class AdmConfigBuilder
 
     public void SaveScripts()
     {
-        SaveConfig(ScriptConfigPath, ScriptConfig, true, true);
+        SaveConfig(ScriptConfigPath, ScriptConfig, true, true, true);
     }
 
     public void SavePostponeData()
@@ -124,17 +124,20 @@ public class AdmConfigBuilder
         File.Copy(ConfigFilePath, backupPath, true);
     }
 
-    private static void SaveConfig(string path, object obj, bool useFlowStyleList = false, bool omitEmpty = false)
+    private static void SaveConfig(string path, object obj, bool useFlowStyleList = false, bool omitNull = false, bool omitEmpty = false)
     {
         Directory.CreateDirectory(ConfigDir);
         //string jsonConfig = JsonConvert.SerializeObject(obj, Formatting.Indented);
         SerializerBuilder yamlBuilder;
         yamlBuilder = new SerializerBuilder().WithNamingConvention(PascalCaseNamingConvention.Instance);
         if (useFlowStyleList) yamlBuilder.WithEventEmitter(next => new FlowStyleStringListEmitter(next));
-        if (omitEmpty)
-        {
-            yamlBuilder.ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitNull | DefaultValuesHandling.OmitEmptyCollections);
-        }
+
+        var option = DefaultValuesHandling.Preserve;
+        if (omitNull) option |= DefaultValuesHandling.OmitNull;
+        if (omitEmpty) option |= DefaultValuesHandling.OmitEmptyCollections;
+
+        yamlBuilder.ConfigureDefaultValuesHandling(option);
+
         ISerializer yamlSerializer = yamlBuilder.Build();
 
         string yamlConfig = yamlSerializer.Serialize(obj);

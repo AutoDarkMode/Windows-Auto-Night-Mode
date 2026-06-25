@@ -8,10 +8,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel
-        Orientation="Vertical"
-        PreviewKeyDown="StackPanel_PreviewKeyDown"
-        Spacing="16">
+    <StackPanel Orientation="Vertical" Spacing="16">
+
+        <InfoBar
+            x:Name="ErrorInfoBar"
+            IsClosable="False"
+            IsOpen="{x:Bind IsErrorVisible, Mode=OneWay}"
+            Message="{x:Bind ErrorMessage, Mode=OneWay}"
+            Severity="Error" />
+
         <TextBlock Text="{helpers:ResourceString Name=SelectTheKeyCombination}" TextWrapping="Wrap" />
 
         <ItemsControl
@@ -45,6 +50,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
     </StackPanel>
 
 </UserControl>

@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using NLog;
-using static System.Windows.Forms.AxHost;
 using static AutoDarkModeLib.IThemeManager2.Flags;
 
 namespace AutoDarkModeSvc.Handlers;
+
 internal sealed partial class DwmRefreshHandler
 {
     private static readonly DwmRefreshHandler _instance = new();
@@ -154,7 +151,7 @@ internal sealed partial class DwmRefreshHandler
         try
         {
             // prepare theme
-            ThemeFile dwmRefreshTheme = new(Helper.PathDwmRefreshTheme);
+            ThemeFile dwmRefreshTheme = new(Helper.DwmRefreshThemePath);
             bool managed = !builder.Config.WindowsThemeMode.Enabled;
             if (!managed)
             {

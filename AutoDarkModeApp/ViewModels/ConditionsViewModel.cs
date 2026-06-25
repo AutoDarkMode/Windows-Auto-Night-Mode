@@ -1,8 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils.Handlers;
-using AutoDarkModeLib;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Dispatching;
 using Microsoft.Windows.System.Power;
 

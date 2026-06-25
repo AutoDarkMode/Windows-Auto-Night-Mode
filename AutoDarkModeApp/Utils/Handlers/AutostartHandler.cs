@@ -14,11 +14,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
-using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.Services;
-using AutoDarkModeLib;
-using AutoDarkModeSvc.Communication;
-using Microsoft.UI.Xaml;
 
 namespace AutoDarkModeApp.Utils.Handlers;
 

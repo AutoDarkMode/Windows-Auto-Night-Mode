@@ -1,9 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils.Handlers;
 using AutoDarkModeApp.ViewModels;
 using AutoDarkModeApp.Views;
-using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Navigation;
 using Windows.System;

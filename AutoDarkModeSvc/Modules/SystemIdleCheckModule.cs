@@ -51,9 +51,9 @@ public class SystemIdleCheckModule : AutoDarkModeModule
         {
             State.SystemIdleModuleState.SystemIsIdle = true;
             Logger.Info($"allow theme switch, system idle since {lastInputTime}, which is longer than {builder.Config.IdleChecker.Threshold} minute(s)");
-            State.PostponeManager.Remove(Name);
+            State.PostponeManager.Remove(Helper.PostponeItemSystemIdle);
         }
-        else if (State.PostponeManager.Add(new(Name, isUserClearable: false)))
+        else if (State.PostponeManager.Add(new(Helper.PostponeItemSystemIdle, isUserClearable: false)))
         {
             State.SystemIdleModuleState.SystemIsIdle = false;
             Logger.Info("postponing theme switch due to system idle timer");
@@ -65,7 +65,7 @@ public class SystemIdleCheckModule : AutoDarkModeModule
     {
         base.DisableHook();
         State.SystemIdleModuleState.SystemIsIdle = false;
-        State.PostponeManager.Remove(Name);
+        State.PostponeManager.Remove(Helper.PostponeItemSystemIdle);
     }
 
     [DllImport("User32.dll")]

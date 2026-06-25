@@ -1,9 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Text;
-using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Utils;
 using AutoDarkModeApp.ViewModels;
-using Microsoft.UI.Xaml.Controls;
 
 using AdmExtensions = AutoDarkModeLib.Helper;
 
@@ -72,7 +69,7 @@ public sealed partial class AboutPage : Page
         AppNameTextBlock.Foreground = new Microsoft.UI.Xaml.Media.SolidColorBrush(randomColor);
     }
 
-    private void OpenLogHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OpenLog_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "service.log");
         try
@@ -91,7 +88,7 @@ public sealed partial class AboutPage : Page
         }
     }
 
-    private void OpenUpdaterLogHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OpenUpdaterLog_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode", "updater.log");
         try
@@ -110,7 +107,7 @@ public sealed partial class AboutPage : Page
         }
     }
 
-    private void OpenShellHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void OpenShell_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         var filepath = AdmExtensions.ExecutionPathShell;
         try
@@ -126,6 +123,25 @@ public sealed partial class AboutPage : Page
         catch (Exception ex)
         {
             errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AboutPage");
+        }
+    }
+
+    private void GoToDocumentation_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        var uri = new Uri("https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/wiki/Troubleshooting");
+        try
+        {
+            new Process
+            {
+                StartInfo = new ProcessStartInfo(uri.AbsoluteUri)
+                {
+                    UseShellExecute = true
+                }
+            }.Start();
+        }
+        catch (Exception ex)
+        {
+            errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AboutPage_GoToDocumentation");
         }
     }
 }

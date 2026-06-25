@@ -1,8 +1,4 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using AutoDarkModeApp.Helpers;
-using AutoDarkModeApp.Models;
-
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 
 namespace AutoDarkModeApp.Services;
 

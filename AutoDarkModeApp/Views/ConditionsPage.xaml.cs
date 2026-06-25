@@ -1,9 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using AutoDarkModeApp.Contracts.Services;
 using AutoDarkModeApp.ViewModels;
-using AutoDarkModeLib;
-using Microsoft.UI.Xaml.Controls;
 
 namespace AutoDarkModeApp.Views;
 

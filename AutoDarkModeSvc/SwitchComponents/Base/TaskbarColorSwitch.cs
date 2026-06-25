@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
@@ -11,6 +7,7 @@ using AutoDarkModeSvc.Handlers;
 using NLog;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
+
 internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 {
     public override bool ThemeHandlerCompatibility => true;
@@ -18,7 +15,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
     public override bool Enabled => Settings.Component.TaskbarColorSwitch;
     public override int DwmRefreshDelay => 1000;
     public bool useCallbackForDark = Environment.OSVersion.Version.Build < (int)WindowsBuilds.Win11_RC;
-    private readonly bool lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int) WindowsBuilds.Win11_24H2) && false;
+    private readonly bool lightTaskbarAccentPermitted = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2) && false;
 
     private bool currentTaskbarColorActive;
 
@@ -88,7 +85,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
                 RegistryHandler.SetTaskbarColorPrevalence(0);
                 currentTaskbarColorActive = false;
             }
-        } 
+        }
         else if (e.Theme == Theme.Dark && !useCallbackForDark)
         {
             SwitchDark();
@@ -125,7 +122,7 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         {
             RegistryHandler.SetTaskbarColorPrevalence(0);
             DwmRefreshHandler.Enqueue(new(DwmRefreshSource.TaskbarColorSwitchComponent, DwmRefreshDelay));
-        } 
+        }
         else
         {
             // default this for now

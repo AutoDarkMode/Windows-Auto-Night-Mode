@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #endregion
 using System;
+using System.Collections.Generic;
 using System.IO;
 using AutoDarkModeLib;
 using NLog;
@@ -44,29 +45,57 @@ public static class LoggerSetup
         "cleanNamesOfAsyncContinuations=true}: ${message} ${exception}"
     };
 
-    public static void UpdateLogmanConfig()
+    /// <summary>
+    /// Initialize logging based on command line arguments
+    /// </summary>
+    public static void InitializeLogging(List<string> args)
+    {
+        //Set up Logger
+        NLog.Config.LoggingConfiguration config = new();
+
+        // Rules for mapping loggers to targets
+        config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logconsole);
+        if (args.Contains("/debug"))
+        {
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, LoggerSetup.Logfile);
+        }
+        else if (args.Contains("/trace"))
+        {
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, LoggerSetup.Logfile);
+        }
+        else
+        {
+            config.AddRule(LogLevel.Info, LogLevel.Fatal, LoggerSetup.Logfile);
+        }
+        // Apply config
+        LogManager.Configuration = config;
+    }
+
+    /// <summary>
+    /// Update logging configuration based on config file settings
+    /// </summary>
+    public static void UpdateLoggingFromConfig()
     {
         AdmConfigBuilder builder = AdmConfigBuilder.Instance();
         var config = new NLog.Config.LoggingConfiguration();
         config.AddRule(LogLevel.Trace, LogLevel.Fatal, Logconsole);
-        if (builder.Config.Tunable.Debug)
+
+        if (builder.Config.Tunable.Trace)
         {
-            if (builder.Config.Tunable.Trace)
-            {
-                Logger.Info("enabling trace logs");
-                config.AddRule(LogLevel.Trace, LogLevel.Fatal, Logfile);
-            }
-            else
-            {
-                Logger.Info("enabling debug logs");
-                config.AddRule(LogLevel.Debug, LogLevel.Fatal, Logfile);
-            }
+            Logger.Info("enabling trace logs");
+            config.AddRule(LogLevel.Trace, LogLevel.Fatal, Logfile);
+        }
+        else if (builder.Config.Tunable.Debug)
+        {
+            Logger.Info("enabling debug logs");
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, Logfile);
         }
         else
         {
             Logger.Info("enabling standard logging");
             config.AddRule(LogLevel.Info, LogLevel.Fatal, Logfile);
         }
+
         LogManager.Configuration = config;
     }
 }

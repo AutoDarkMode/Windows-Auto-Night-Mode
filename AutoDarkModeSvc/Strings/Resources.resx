@@ -138,6 +138,9 @@
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>for one hour</value>
+  </data>
   <data name="Light" xml:space="preserve">
     <value>Light</value>
   </data>

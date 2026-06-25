@@ -101,6 +101,10 @@ internal class GovernorModule : AutoDarkModeModule
             {
                 ActiveGovernor = new NightLightGovernor(this);
             }
+            else if (newGovernor == Governor.AmbientLight)
+            {
+                ActiveGovernor = new AmbientLightGovernor(this);
+            }
             ActiveGovernor.EnableHook();
         }
     }
