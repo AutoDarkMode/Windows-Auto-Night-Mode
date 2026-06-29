@@ -281,4 +281,7 @@
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Оновлюється до</value>
   </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>на одну годину</value>
+  </data>
 </root>
