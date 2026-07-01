@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>Basculement automatique du thème</value>
+    <value>Changement automatique du thème</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmer</value>
@@ -202,10 +202,10 @@
     <value>&amp;Fermer</value>
   </data>
   <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Forcer le thème sombre</value>
+    <value>Forcer le thème &amp;sombre</value>
   </data>
   <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Forcer le thème clair</value>
+    <value>Forcer le thème &amp;clair</value>
   </data>
   <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
     <value>&amp;Ouvrir le dossier de configuration</value>

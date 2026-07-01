@@ -279,4 +279,7 @@
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>正在更新到</value>
   </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
 </root>
