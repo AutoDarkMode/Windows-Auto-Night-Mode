@@ -41,13 +41,15 @@
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}"
-                    IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                     IsExpanded="True">
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
 
                         <!--  Selection  -->
-                        <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
                             <StackPanel HorizontalAlignment="Left" Spacing="{StaticResource RadioButtonsRowSpacing}">
                                 <RadioButton
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
@@ -98,6 +100,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.TimePickerVisibility, Mode=OneWay}">
                             <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
@@ -154,6 +157,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
                             <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
@@ -189,6 +193,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                             <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
@@ -223,6 +228,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="24">
                                 <TextBox
@@ -247,6 +253,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                             <HyperlinkButton
                                 Content="{helpers:ResourceString Name=GetCoordinates}"
@@ -258,6 +265,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}">
                             <HyperlinkButton Click="WindowsNightLightHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenWindowsNightLight}" />
                         </controls:SettingsCard>
@@ -266,6 +274,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
                             <StackPanel HorizontalAlignment="Stretch" Spacing="16">
                                 <!--  Description  -->
@@ -425,6 +434,7 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
+                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
                             <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
                                 <Grid.ColumnDefinitions>
@@ -598,8 +608,10 @@
                     <controls:SettingsExpander.Items>
 
                         <!--  Offset time  -->
-                        <controls:SettingsCard Description="{helpers:ResourceString Name=OffsetTime_Description}" Header="{helpers:ResourceString Name=OffsetTime_Header}"
-                                               Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
+                        <controls:SettingsCard
+                            Description="{helpers:ResourceString Name=OffsetTime_Description}"
+                            Header="{helpers:ResourceString Name=OffsetTime_Header}"
+                            Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
                             <StackPanel Orientation="Horizontal" Spacing="24">
                                 <NumberBox
                                     MinWidth="120"
@@ -651,7 +663,7 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
-                        <TextBlock Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}"/>
+                        <TextBlock Margin="16" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 

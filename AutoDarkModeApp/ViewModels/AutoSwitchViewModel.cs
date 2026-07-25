@@ -50,9 +50,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public partial Visibility TimePickerVisibility { get; set; }
 
     [ObservableProperty]
-    public partial Visibility DividerBorderVisibility { get; set; }
-
-    [ObservableProperty]
     public partial string? LatValue { get; set; }
 
     [ObservableProperty]
@@ -535,7 +532,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
-            DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
             PostponeOptionsSkipOnceVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
@@ -546,7 +542,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
             TimePickerVisibility = Visibility.Collapsed;
-            DividerBorderVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
             PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
             return;
@@ -556,7 +551,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             SelectedTriggerMode = SwitchTriggerMode.CustomTimes;
             TimePickerVisibility = Visibility.Visible;
-            DividerBorderVisibility = Visibility.Collapsed;
             return;
         }
 
@@ -571,7 +565,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
-        DividerBorderVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
         PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
@@ -681,7 +674,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
                 TimePickerVisibility = Visibility.Visible;
-                DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
 
@@ -690,7 +682,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = true;
                 TimePickerVisibility = Visibility.Visible;
-                DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
@@ -700,7 +691,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
                 TimePickerVisibility = Visibility.Visible;
-                DividerBorderVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
@@ -711,7 +701,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
                 TimePickerVisibility = Visibility.Collapsed;
-                DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
                 break;
@@ -728,7 +717,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
                 TimePickerVisibility = Visibility.Collapsed;
-                DividerBorderVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
         }

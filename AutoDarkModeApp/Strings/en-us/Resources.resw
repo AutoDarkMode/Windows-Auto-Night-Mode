@@ -943,7 +943,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Delayed</value>
   </data>
   <data name="NotDelayed" xml:space="preserve">
-    <value>Not Delayed</value>
+    <value>Not delayed</value>
   </data>
   <data name="IgnoreColor" xml:space="preserve">
     <value>Ignore color</value>
