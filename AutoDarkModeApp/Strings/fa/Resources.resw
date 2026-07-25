@@ -166,10 +166,10 @@
     <value>Time the notification waits for user input in minutes</value>
   </data>
   <data name="AutoSwitchNotification" xml:space="preserve">
-    <value>Notify before automatically switching themes</value>
+    <value>به طور خودکار قبل از تعویض نمایه اطلاع دادن</value>
   </data>
   <data name="AutoThemeSwitchingResumed" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>تغییر نمایۀ خودکار از سر گرفته شد</value>
   </data>
   <data name="BackgroundUpdate" xml:space="preserve">
     <value>بررسی خودکار بروزرسانی</value>
@@ -181,7 +181,7 @@
     <value>دستگاه‌های مجهز به باتری</value>
   </data>
   <data name="BlockedProcesses" xml:space="preserve">
-    <value>Blocking Processes</value>
+    <value>برنامه های مسدود شده</value>
   </data>
   <data name="BrowsePhotos" xml:space="preserve">
     <value>انتخاب پرونده</value>
@@ -196,7 +196,7 @@
     <value>Choose a fit for your desktop image</value>
   </data>
   <data name="ChooseWallpaper" xml:space="preserve">
-    <value>Choose your wallpaper</value>
+    <value>عکس کاغذ دیواری خود را انتخاب کنید</value>
   </data>
   <data name="City" xml:space="preserve">
     <value>شهر</value>
@@ -229,7 +229,7 @@
     <value>نمایه‌های خود را بسازید</value>
   </data>
   <data name="Cursors" xml:space="preserve">
-    <value>Cursors</value>
+    <value>مکان نماها</value>
   </data>
   <data name="CustomHours" xml:space="preserve">
     <value>تنظیم ساعت سفارشی</value>
@@ -253,7 +253,7 @@
     <value>غیرفعال شده</value>
   </data>
   <data name="Disconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>متصل نیست</value>
   </data>
   <data name="DocumentationForCustomScripts" xml:space="preserve">
     <value>Documentation for custom scripts</value>
@@ -278,19 +278,19 @@
     <value>عدم تغییر حالت در هنگام پخش ویدئو</value>
   </data>
   <data name="DonotSwitchIdleTimer" xml:space="preserve">
-    <value>Don't switch themes unless the system is idle</value>
+    <value>نمایه ها را مگر سیستم بیکار باشد تغییر نده</value>
   </data>
   <data name="Edge" xml:space="preserve">
     <value>گوشه (قدیمی)</value>
   </data>
   <data name="EnableAccentColorSwitch" xml:space="preserve">
-    <value>Enable Accent color switch</value>
+    <value>فعال سازی تغییر دادن رنگ تاکیدی</value>
   </data>
   <data name="EnableAutoThemeSwitch" xml:space="preserve">
     <value>فعال کردن تغییر خودکار نمایه</value>
   </data>
   <data name="EnableCursorSwitch" xml:space="preserve">
-    <value>Enable mouse cursor switch</value>
+    <value>فعال سازی تغییر مکان نمای موشواره</value>
   </data>
   <data name="EnableCustomScripts" xml:space="preserve">
     <value>Enable custom scripts</value>
@@ -332,13 +332,13 @@
     <value>Stretch</value>
   </data>
   <data name="FollowApp" xml:space="preserve">
-    <value>Let the app decide</value>
+    <value>بگذار برنامه تصمیم بگیرد</value>
   </data>
   <data name="FollowUs" xml:space="preserve">
     <value>ما را دنبال کنید</value>
   </data>
   <data name="FollowWindowsNightLight" xml:space="preserve">
-    <value>Follow Windows night light</value>
+    <value>دنبال کردن Night light ویندوز</value>
   </data>
   <data name="ForceDark" xml:space="preserve">
     <value>حالت تاریک اجباری</value>
@@ -368,25 +368,25 @@
     <value>میانبرها</value>
   </data>
   <data name="IdleTime" xml:space="preserve">
-    <value>Minutes until the system is considered idle</value>
+    <value>دقایق سپری شده تا بیکار حساب شدن سیستم</value>
   </data>
   <data name="IgnoreBackground" xml:space="preserve">
-    <value>Ignore background</value>
+    <value>نادیده گیری پس زمینه</value>
   </data>
   <data name="IgnoreCursor" xml:space="preserve">
-    <value>Ignore cursor</value>
+    <value>نادیده گیری مکان نما</value>
   </data>
   <data name="IgnoreDesktopIcons" xml:space="preserve">
-    <value>Ignore desktop icons</value>
+    <value>نادیده گیری آیکون دسکتاپ</value>
   </data>
   <data name="IgnoreSettings" xml:space="preserve">
-    <value>Ignore settings</value>
+    <value>نادیده گیری تنظیمات</value>
   </data>
   <data name="IgnoreSound" xml:space="preserve">
-    <value>Ignore sound</value>
+    <value>نادیده گیری صدا</value>
   </data>
   <data name="ImagePath" xml:space="preserve">
-    <value>Image path</value>
+    <value>مسیر تصویر</value>
   </data>
   <data name="Info" xml:space="preserve">
     <value>اطلاعات</value>
