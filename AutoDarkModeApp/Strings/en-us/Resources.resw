@@ -370,15 +370,6 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
   </data>
-  <data name="HotkeyDuplicateErrorTitle" xml:space="preserve">
-    <value>Duplicate Hotkey</value>
-  </data>
-  <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
-    <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
-  </data>
-  <data name="HotkeyInvalidErrorMessage" xml:space="preserve">
-    <value>Invalid hotkey combination. Please include at least one non-modifier key (e.g., a letter, number, or function key).</value>
-  </data>
   <data name="IdleTime" xml:space="preserve">
     <value>Time in minutes before the system is considered idle</value>
   </data>
@@ -670,12 +661,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="PostponeTime_SkipOnce" xml:space="preserve">
     <value>Skip auto switch once</value>
-  </data>
-  <data name="PowerToysConflict_Content" xml:space="preserve">
-    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
-  </data>
-  <data name="PowerToysConflict_Title" xml:space="preserve">
-    <value>PowerToys Light Switch detected</value>
   </data>
   <data name="ProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain apps are running</value>
@@ -1044,6 +1029,21 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="ShowTrayIcon" xml:space="preserve">
     <value>Show tray icon (recommended)</value>
   </data>
+  <data name="HotkeyDuplicateErrorTitle" xml:space="preserve">
+    <value>Duplicate Hotkey</value>
+  </data>
+  <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
+    <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
+  </data>
+  <data name="HotkeyInvalidErrorMessage" xml:space="preserve">
+    <value>Invalid hotkey combination. Please include at least one non-modifier key (e.g., a letter, number, or function key).</value>
+  </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
+  </data>
   <data name="AmbientLightSensor" xml:space="preserve">
     <value>Ambient light sensor</value>
   </data>
@@ -1124,5 +1124,9 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="Contributors" xml:space="preserve">
     <value>Contributors</value>
+  </data>
+  <data name="SwitchBehavior" xml:space="preserve">
+    <value>Switch behavior</value>
+    <comment>header for settings, noun</comment>
   </data>
 </root>

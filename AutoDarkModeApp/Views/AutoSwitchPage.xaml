@@ -21,11 +21,9 @@
         <Grid x:Name="ContentArea">
             <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
 
-                <!--  AutoThemeSwitching  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Switch}" />
-                <controls:SettingsCard Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}">
-                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
-                </controls:SettingsCard>
+                <!--  =========================  -->
+                <!--  1. SWITCH SOURCE GROUP  -->
+                <!--  =========================  -->
 
                 <!--  Info about can't access loaction  -->
                 <InfoBar
@@ -38,11 +36,19 @@
                     </InfoBar.ActionButton>
                 </InfoBar>
 
-                <!--  About time  -->
-                <controls:SettingsCard ContentAlignment="Vertical" Visibility="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Description>
-                        <StackPanel HorizontalAlignment="Stretch" Spacing="12">
-                            <StackPanel Spacing="{StaticResource RadioButtonsRowSpacing}">
+                <!--  AutoThemeSwitching  -->
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Switch}" />
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}"
+                    IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
+                    IsExpanded="True">
+                    <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
+                    <controls:SettingsExpander.Items>
+
+                        <!--  Selection  -->
+                        <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
+                            <StackPanel HorizontalAlignment="Left" Spacing="{StaticResource RadioButtonsRowSpacing}">
                                 <RadioButton
                                     Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                     CommandParameter="CustomTimes"
@@ -78,7 +84,7 @@
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         GroupName="TriggerMode"
                                         IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
-                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                        IsEnabled="True" />
                                     <FontIcon
                                         Margin="0,4,0,0"
                                         FontSize="12"
@@ -86,15 +92,14 @@
                                         Glyph="&#xE946;" />
                                 </StackPanel>
                             </StackPanel>
+                        </controls:SettingsCard>
 
-                            <Border Style="{StaticResource DividerBorderStyle}" />
-
-                            <!--  Custom Time  -->
-                            <Grid
-                                Grid.Column="0"
-                                ColumnSpacing="8"
-                                RowSpacing="16"
-                                Visibility="{x:Bind ViewModel.TimePickerVisibility, Mode=OneWay}">
+                        <!--  Custom Time  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.TimePickerVisibility, Mode=OneWay}">
+                            <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
@@ -142,14 +147,15 @@
                                     IsEnabled="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=CustomTimes, Mode=OneWay}"
                                     Time="{x:Bind ViewModel.TimeDarkStart, Mode=TwoWay}" />
                             </Grid>
+                        </controls:SettingsCard>
 
-                            <Border Style="{StaticResource DividerBorderStyle}" Visibility="{x:Bind ViewModel.DividerBorderVisibility, Mode=OneWay}" />
 
-                            <!--  Location  -->
-                            <Grid
-                                ColumnSpacing="8"
-                                RowSpacing="16"
-                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                        <!--  Location  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                            <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -176,77 +182,92 @@
                                     Grid.Column="1"
                                     Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
                             </Grid>
+                        </controls:SettingsCard>
 
 
-                            <!--  Geo Coordinates  -->
-                            <StackPanel Spacing="16" Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
-                                <Grid ColumnSpacing="8" RowSpacing="16">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.Resources>
-                                        <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
-                                        <Style TargetType="FontIcon">
-                                            <Setter Property="FontSize" Value="16" />
-                                        </Style>
-                                    </Grid.Resources>
+                        <!--  Geo Coordinates  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                            <Grid ColumnSpacing="8" RowSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
+                                    <Style TargetType="FontIcon">
+                                        <Setter Property="FontSize" Value="16" />
+                                    </Style>
+                                </Grid.Resources>
 
-                                    <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
-                                    <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
-                                    <FontIcon
-                                        Grid.Row="1"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE895;" />
-                                    <TextBlock
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
-                                </Grid>
+                                <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
+                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE895;" />
+                                <TextBlock
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
+                            </Grid>
+                        </controls:SettingsCard>
 
 
-                                <Border Style="{StaticResource DividerBorderStyle}" />
-
-                                <StackPanel Orientation="Horizontal" Spacing="24">
-                                    <TextBox
-                                        MinWidth="120"
-                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                        Header="{helpers:ResourceString Name=Latitude}"
-                                        InputScope="Number"
-                                        Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
-                                    <TextBox
-                                        MinWidth="120"
-                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                        Header="{helpers:ResourceString Name=Longitude}"
-                                        InputScope="Number"
-                                        Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
-                                    <Button
-                                        VerticalAlignment="Bottom"
-                                        Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
-                                        Content="{helpers:ResourceString Name=ApplyGeo}" />
-                                </StackPanel>
-
-                                <HyperlinkButton
-                                    Content="{helpers:ResourceString Name=GetCoordinates}"
-                                    NavigateUri="https://www.latlong.net/"
-                                    ToolTipService.ToolTip="latlong.net" />
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                <TextBox
+                                    MinWidth="120"
+                                    BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                    Header="{helpers:ResourceString Name=Latitude}"
+                                    InputScope="Number"
+                                    Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                <TextBox
+                                    MinWidth="120"
+                                    BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                    Header="{helpers:ResourceString Name=Longitude}"
+                                    InputScope="Number"
+                                    Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                <Button
+                                    VerticalAlignment="Bottom"
+                                    Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
+                                    Content="{helpers:ResourceString Name=ApplyGeo}" />
                             </StackPanel>
+                        </controls:SettingsCard>
 
-                            <!--  Follow Windows Night Light  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
                             <HyperlinkButton
-                                Click="WindowsNightLightHyperlinkButton_Click"
-                                Content="{helpers:ResourceString Name=OpenWindowsNightLight}"
-                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
+                                Content="{helpers:ResourceString Name=GetCoordinates}"
+                                NavigateUri="https://www.latlong.net/"
+                                ToolTipService.ToolTip="latlong.net" />
+                        </controls:SettingsCard>
 
-                            <!--  Ambient Light Sensor  -->
-                            <StackPanel
-                                HorizontalAlignment="Stretch"
-                                Spacing="16"
-                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                        <!--  Follow Windows Night Light  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}">
+                            <HyperlinkButton Click="WindowsNightLightHyperlinkButton_Click" Content="{helpers:ResourceString Name=OpenWindowsNightLight}" />
+                        </controls:SettingsCard>
+
+                        <!--  Ambient Light Sensor  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                            <StackPanel HorizontalAlignment="Stretch" Spacing="16">
                                 <!--  Description  -->
                                 <TextBlock
                                     Style="{StaticResource BodyTextBlockStyle}"
@@ -396,263 +417,244 @@
                                         </Button>
                                     </StackPanel>
                                 </Grid>
+                            </StackPanel>
+                        </controls:SettingsCard>
 
-                                <Border Style="{StaticResource DividerBorderStyle}" />
 
-                                <!--  Range Selector with Thresholds  -->
-                                <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
+                        <!--  Range Selector with Thresholds  -->
+                        <controls:SettingsCard
+                            HorizontalContentAlignment="Stretch"
+                            ContentAlignment="Vertical"
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=AmbientLight, Mode=OneWay}">
+                            <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
 
-                                    <!--  Dark threshold NumberBox  -->
-                                    <NumberBox
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Header="{helpers:ResourceString Name=AmbientLightDarkThreshold}"
-                                        Maximum="10000"
-                                        Minimum="1"
-                                        SmallChange="1"
-                                        SpinButtonPlacementMode="Hidden"
-                                        Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
-                                    <!--  Dark icon  -->
-                                    <FontIcon
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Margin="0,24,0,0"
-                                        VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xe708;" />
+                                <!--  Dark threshold NumberBox  -->
+                                <NumberBox
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Header="{helpers:ResourceString Name=AmbientLightDarkThreshold}"
+                                    Maximum="10000"
+                                    Minimum="1"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Hidden"
+                                    Value="{x:Bind ViewModel.AmbientLightDarkThreshold, Mode=TwoWay}" />
+                                <!--  Dark icon  -->
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,24,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xe708;" />
 
-                                    <!--  Range Selector with colored gradient overlay  -->
-                                    <Grid
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Margin="0,24,0,0"
-                                        VerticalAlignment="Center">
-                                        <!--  Gradient background showing dark-to-light transition  -->
-                                        <Border
-                                            x:Name="RangeGradientBackground"
-                                            Height="{StaticResource SliderTrackThemeHeight}"
-                                            CornerRadius="{StaticResource SliderTrackCornerRadius}"
-                                            IsHitTestVisible="False">
-                                            <Border.Background>
-                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                    <GradientStop Offset="0.0" Color="#1A1A2E" />
-                                                    <GradientStop Offset="0.15" Color="#16213E" />
-                                                    <GradientStop Offset="0.35" Color="#1F4068" />
-                                                    <GradientStop Offset="0.65" Color="#E8A87C" />
-                                                    <GradientStop Offset="0.85" Color="#F9D56E" />
-                                                    <GradientStop Offset="1.0" Color="#FFEB99" />
-                                                </LinearGradientBrush>
-                                            </Border.Background>
-                                        </Border>
+                                <!--  Range Selector with colored gradient overlay  -->
+                                <Grid
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="0,24,0,0"
+                                    VerticalAlignment="Center">
+                                    <!--  Gradient background showing dark-to-light transition  -->
+                                    <Border
+                                        x:Name="RangeGradientBackground"
+                                        Height="{StaticResource SliderTrackThemeHeight}"
+                                        CornerRadius="{StaticResource SliderTrackCornerRadius}"
+                                        IsHitTestVisible="False">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                <GradientStop Offset="0.0" Color="#1A1A2E" />
+                                                <GradientStop Offset="0.15" Color="#16213E" />
+                                                <GradientStop Offset="0.35" Color="#1F4068" />
+                                                <GradientStop Offset="0.65" Color="#E8A87C" />
+                                                <GradientStop Offset="0.85" Color="#F9D56E" />
+                                                <GradientStop Offset="1.0" Color="#FFEB99" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
 
-                                        <!--  Range Selector (logarithmic scale for fine control at low values)  -->
-                                        <controls:RangeSelector
-                                            x:Name="AmbientLightRangeSelector"
-                                            Background="Transparent"
-                                            Loaded="AmbientLightRangeSelector_Loaded"
-                                            Maximum="1000"
-                                            Minimum="0"
-                                            RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
-                                            RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
-                                            StepFrequency="1"
-                                            ThumbDragCompleted="AmbientLightRangeSelector_ThumbDragCompleted"
-                                            ThumbDragStarted="AmbientLightRangeSelector_ThumbDragStarted" />
-                                    </Grid>
-
-                                    <!--  Indicator showing current lux level on the slider  -->
-                                    <!--  Same cell as RangeSelector but positioned above via margins; renders behind due to XAML order  -->
-                                    <Canvas
-                                        x:Name="IndicatorCanvas"
-                                        Grid.Row="1"
-                                        Grid.Column="2"
-                                        Margin="10,12,10,0"
-                                        VerticalAlignment="Top"
-                                        IsHitTestVisible="False"
-                                        SizeChanged="IndicatorCanvas_SizeChanged">
-                                        <FontIcon
-                                            x:Name="CurrentLuxIndicator"
-                                            FontSize="12"
-                                            Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                            Glyph="&#xE96E;" />
-                                    </Canvas>
-
-                                    <!--  Tick marks with lux reference labels (logarithmic positions)  -->
-                                    <!--  Positions: 10lux=26%, 50lux=42.7%, 150lux=54.5%, 400lux=65.1%, 1000lux=75%  -->
-                                    <!--  Margin accounts for RangeSelector thumb half-widths (20/2=10px each side)  -->
-                                    <Grid
-                                        Grid.Row="2"
-                                        Grid.Column="2"
-                                        Margin="10,2,10,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="260*" />
-                                            <ColumnDefinition Width="167*" />
-                                            <ColumnDefinition Width="118*" />
-                                            <ColumnDefinition Width="106*" />
-                                            <ColumnDefinition Width="99*" />
-                                            <ColumnDefinition Width="250*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <!--  10 lux tick (at 26.0%)  -->
-                                        <StackPanel Grid.Column="0" Style="{StaticResource TickMarkStackPanelStyle}">
-                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
-                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="10" />
-                                        </StackPanel>
-
-                                        <!--  50 lux tick (at 43%)  -->
-                                        <StackPanel Grid.Column="1" Style="{StaticResource TickMarkStackPanelStyle}">
-                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
-                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="50" />
-                                        </StackPanel>
-
-                                        <!--  150 lux tick (at 55%)  -->
-                                        <StackPanel Grid.Column="2" Style="{StaticResource TickMarkStackPanelStyle}">
-                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
-                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="150" />
-                                        </StackPanel>
-
-                                        <!--  400 lux tick (at 65%)  -->
-                                        <StackPanel Grid.Column="3" Style="{StaticResource TickMarkStackPanelStyle}">
-                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
-                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="400" />
-                                        </StackPanel>
-
-                                        <!--  1000 lux tick (at 75%)  -->
-                                        <StackPanel Grid.Column="4" Style="{StaticResource TickMarkStackPanelStyle}">
-                                            <Border Style="{StaticResource TickMarkBorderStyle}" />
-                                            <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="1k" />
-                                        </StackPanel>
-                                    </Grid>
-
-                                    <!--  Light icon  -->
-                                    <FontIcon
-                                        Grid.Row="1"
-                                        Grid.Column="3"
-                                        Margin="0,24,0,0"
-                                        VerticalAlignment="Center"
-                                        FontSize="16"
-                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                        Glyph="&#xE706;" />
-                                    <!--  Light threshold NumberBox  -->
-                                    <NumberBox
-                                        Grid.Row="1"
-                                        Grid.Column="4"
-                                        Margin="0,0,12,0"
-                                        Header="{helpers:ResourceString Name=AmbientLightLightThreshold}"
-                                        Maximum="10000"
-                                        Minimum="1"
-                                        SmallChange="1"
-                                        SpinButtonPlacementMode="Hidden"
-                                        Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                                    <!--  Range Selector (logarithmic scale for fine control at low values)  -->
+                                    <controls:RangeSelector
+                                        x:Name="AmbientLightRangeSelector"
+                                        Background="Transparent"
+                                        Loaded="AmbientLightRangeSelector_Loaded"
+                                        Maximum="1000"
+                                        Minimum="0"
+                                        RangeEnd="{x:Bind ViewModel.RangeEnd, Mode=TwoWay}"
+                                        RangeStart="{x:Bind ViewModel.RangeStart, Mode=TwoWay}"
+                                        StepFrequency="1"
+                                        ThumbDragCompleted="AmbientLightRangeSelector_ThumbDragCompleted"
+                                        ThumbDragStarted="AmbientLightRangeSelector_ThumbDragStarted" />
                                 </Grid>
 
+                                <!--  Indicator showing current lux level on the slider  -->
+                                <!--  Same cell as RangeSelector but positioned above via margins; renders behind due to XAML order  -->
+                                <Canvas
+                                    x:Name="IndicatorCanvas"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    Margin="10,12,10,0"
+                                    VerticalAlignment="Top"
+                                    IsHitTestVisible="False"
+                                    SizeChanged="IndicatorCanvas_SizeChanged">
+                                    <FontIcon
+                                        x:Name="CurrentLuxIndicator"
+                                        FontSize="12"
+                                        Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                        Glyph="&#xE96E;" />
+                                </Canvas>
+
+                                <!--  Tick marks with lux reference labels (logarithmic positions)  -->
+                                <!--  Positions: 10lux=26%, 50lux=42.7%, 150lux=54.5%, 400lux=65.1%, 1000lux=75%  -->
+                                <!--  Margin accounts for RangeSelector thumb half-widths (20/2=10px each side)  -->
+                                <Grid
+                                    Grid.Row="2"
+                                    Grid.Column="2"
+                                    Margin="10,2,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="260*" />
+                                        <ColumnDefinition Width="167*" />
+                                        <ColumnDefinition Width="118*" />
+                                        <ColumnDefinition Width="106*" />
+                                        <ColumnDefinition Width="99*" />
+                                        <ColumnDefinition Width="250*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--  10 lux tick (at 26.0%)  -->
+                                    <StackPanel Grid.Column="0" Style="{StaticResource TickMarkStackPanelStyle}">
+                                        <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                        <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="10" />
+                                    </StackPanel>
+
+                                    <!--  50 lux tick (at 43%)  -->
+                                    <StackPanel Grid.Column="1" Style="{StaticResource TickMarkStackPanelStyle}">
+                                        <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                        <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="50" />
+                                    </StackPanel>
+
+                                    <!--  150 lux tick (at 55%)  -->
+                                    <StackPanel Grid.Column="2" Style="{StaticResource TickMarkStackPanelStyle}">
+                                        <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                        <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="150" />
+                                    </StackPanel>
+
+                                    <!--  400 lux tick (at 65%)  -->
+                                    <StackPanel Grid.Column="3" Style="{StaticResource TickMarkStackPanelStyle}">
+                                        <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                        <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="400" />
+                                    </StackPanel>
+
+                                    <!--  1000 lux tick (at 75%)  -->
+                                    <StackPanel Grid.Column="4" Style="{StaticResource TickMarkStackPanelStyle}">
+                                        <Border Style="{StaticResource TickMarkBorderStyle}" />
+                                        <TextBlock Style="{StaticResource TickMarkTextBlockStyle}" Text="1k" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <!--  Light icon  -->
+                                <FontIcon
+                                    Grid.Row="1"
+                                    Grid.Column="3"
+                                    Margin="0,24,0,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
+                                    Glyph="&#xE706;" />
+                                <!--  Light threshold NumberBox  -->
+                                <NumberBox
+                                    Grid.Row="1"
+                                    Grid.Column="4"
+                                    Margin="0,0,12,0"
+                                    Header="{helpers:ResourceString Name=AmbientLightLightThreshold}"
+                                    Maximum="10000"
+                                    Minimum="1"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Hidden"
+                                    Value="{x:Bind ViewModel.AmbientLightLightThreshold, Mode=TwoWay}" />
+                            </Grid>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <!--  =========================  -->
+                <!--  2. SWITCH BEHAVIOR GROUP  -->
+                <!--  =========================  -->
+
+                <controls:SettingsExpander
+                    Header="{helpers:ResourceString Name=SwitchBehavior}"
+                    IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
+                    IsExpanded="True">
+                    <controls:SettingsExpander.Items>
+
+                        <!--  Offset time  -->
+                        <controls:SettingsCard Description="{helpers:ResourceString Name=OffsetTime_Description}" Header="{helpers:ResourceString Name=OffsetTime_Header}"
+                                               Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
+                            <StackPanel Orientation="Horizontal" Spacing="24">
+                                <NumberBox
+                                    MinWidth="120"
+                                    Header="{helpers:ResourceString Name=Light}"
+                                    LargeChange="10"
+                                    Maximum="720"
+                                    Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Inline"
+                                    Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
+                                <NumberBox
+                                    MinWidth="120"
+                                    Header="{helpers:ResourceString Name=Dark}"
+                                    LargeChange="10"
+                                    Maximum="720"
+                                    Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
+                                    SmallChange="1"
+                                    SpinButtonPlacementMode="Inline"
+                                    Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
                             </StackPanel>
+                        </controls:SettingsCard>
 
-                        </StackPanel>
-                    </controls:SettingsCard.Description>
-                </controls:SettingsCard>
-
-                <!--  Offset time  -->
-                <StackPanel Spacing="{StaticResource SettingsCardSpacing}" Visibility="{x:Bind ViewModel.OffsetTimeSettingsCardVisibility, Mode=OneWay}">
-                    <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Offset}" />
-                    <controls:SettingsCard
-                        Description="{helpers:ResourceString Name=OffsetTime_Description}"
-                        Header="{helpers:ResourceString Name=OffsetTime_Header}"
-                        IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                        <StackPanel Orientation="Horizontal" Spacing="24">
-                            <NumberBox
-                                MinWidth="120"
-                                Header="{helpers:ResourceString Name=Light}"
-                                LargeChange="10"
-                                Maximum="720"
-                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
-                                SmallChange="1"
-                                SpinButtonPlacementMode="Inline"
-                                Value="{x:Bind ViewModel.OffsetLight, Mode=TwoWay}" />
-                            <NumberBox
-                                MinWidth="120"
-                                Header="{helpers:ResourceString Name=Dark}"
-                                LargeChange="10"
-                                Maximum="720"
-                                Minimum="{x:Bind ViewModel.OffsetTimesMinimum, Mode=OneWay}"
-                                SmallChange="1"
-                                SpinButtonPlacementMode="Inline"
-                                Value="{x:Bind ViewModel.OffsetDark, Mode=TwoWay}" />
-                        </StackPanel>
-                    </controls:SettingsCard>
-                </StackPanel>
-
-                <!--  Postpone  -->
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=PostponeControl}" />
-                <controls:SettingsCard IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}">
-                    <controls:SettingsCard.Description>
-                        <Grid ColumnSpacing="8" RowSpacing="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <ComboBox
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                MinWidth="120"
-                                IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                <ComboBoxItem
-                                    Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}"
-                                    IsSelected="True"
-                                    Visibility="{x:Bind ViewModel.PostponeOptionsSkipOnceVisibility, Mode=OneWay}" />
-                            </ComboBox>
+                        <!--  Postpone  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=PostponeControl}">
                             <ToggleSwitch
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Margin="0,0,-24,0"
                                 IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
                                 OffContent="{helpers:ResourceString Name=NotDelayed}"
                                 OnContent="{helpers:ResourceString Name=Delayed}" />
+                            <controls:SettingsCard.Description>
+                                <ComboBox
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    MinWidth="120"
+                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
+                                    <ComboBoxItem
+                                        Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}"
+                                        IsSelected="True"
+                                        Visibility="{x:Bind ViewModel.PostponeOptionsSkipOnceVisibility, Mode=OneWay}" />
+                                </ComboBox>
+                            </controls:SettingsCard.Description>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                    <controls:SettingsExpander.ItemsFooter>
+                        <TextBlock Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}"/>
+                    </controls:SettingsExpander.ItemsFooter>
+                </controls:SettingsExpander>
 
-                            <Border
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                Style="{StaticResource DividerBorderStyle}" />
-
-                            <StackPanel
-                                Grid.Row="2"
-                                Grid.Column="0"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <FontIcon
-                                    FontSize="{StaticResource BodyTextBlockFontSize}"
-                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                    Glyph="&#xECC5;" />
-                                <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
-                            </StackPanel>
-                        </Grid>
-                    </controls:SettingsCard.Description>
-                </controls:SettingsCard>
                 <InfoBar
                     Content="{helpers:ResourceString Name=ResumeInfo_Content}"
                     IsClosable="False"
