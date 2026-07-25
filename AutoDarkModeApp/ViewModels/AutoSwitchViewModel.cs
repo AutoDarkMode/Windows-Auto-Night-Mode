@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace AutoDarkModeApp.ViewModels;
 
-public partial class TimeViewModel : ObservableRecipient
+public partial class AutoSwitchViewModel : ObservableRecipient
 {
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
@@ -97,7 +97,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
         SafeApplyTheme();
@@ -335,7 +335,7 @@ public partial class TimeViewModel : ObservableRecipient
             }
             catch (Exception ex)
             {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
             }
         }
     }
@@ -349,7 +349,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
     }
 
-    public TimeViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
+    public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
@@ -362,7 +362,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
         LoadSettings();
@@ -386,7 +386,7 @@ public partial class TimeViewModel : ObservableRecipient
             }
             catch (Exception ex)
             {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
             }
             _debounceTimer.Stop();
         };
@@ -403,7 +403,7 @@ public partial class TimeViewModel : ObservableRecipient
             }
             catch (Exception ex)
             {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
             }
             _ambientLightDebounceTimer.Stop();
 
@@ -664,7 +664,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
     }
 
@@ -739,7 +739,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
         SafeApplyTheme();
@@ -757,7 +757,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
         SafeApplyTheme();
@@ -775,7 +775,7 @@ public partial class TimeViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "TimeViewModel");
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
         SafeApplyTheme();
