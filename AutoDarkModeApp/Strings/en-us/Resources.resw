@@ -1129,4 +1129,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>Switch behavior</value>
     <comment>header for settings, noun</comment>
   </data>
+  <data name="AutoSwitch" xml:space="preserve">
+    <value>Auto switch</value>
+  </data>
 </root>

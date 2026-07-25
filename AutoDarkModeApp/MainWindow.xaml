@@ -64,7 +64,7 @@
               https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
                 <NavigationViewItem
-                    Content="{helpers:ResourceString Name=Time}"
+                    Content="{helpers:ResourceString Name=AutoSwitch}"
                     Icon="{ui:FontIcon Glyph=&#xE823;}"
                     Tag="AutoSwitch" />
                 <NavigationViewItem

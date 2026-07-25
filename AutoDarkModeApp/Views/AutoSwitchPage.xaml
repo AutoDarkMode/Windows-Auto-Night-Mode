@@ -600,6 +600,9 @@
                 <!--  =========================  -->
                 <!--  2. SWITCH BEHAVIOR GROUP  -->
                 <!--  =========================  -->
+                
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
+                           Text="{helpers:ResourceString Name=SwitchBehavior}" />
 
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=SwitchBehavior}"

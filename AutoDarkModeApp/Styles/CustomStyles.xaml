@@ -47,7 +47,6 @@
         <Setter Property="Margin" Value="0,28,0,4" />
     </Style>
 
-
     <!--  ThemeDictionaries  -->
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
