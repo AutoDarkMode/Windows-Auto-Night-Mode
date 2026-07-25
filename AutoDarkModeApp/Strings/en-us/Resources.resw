@@ -1099,7 +1099,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>No sensor detected</value>
   </data>
   <data name="AmbientLightAutoConfigure" xml:space="preserve">
-    <value>Calibrate</value>
+    <value>Auto-set thresholds</value>
   </data>
   <data name="AmbientLightAutoConfigure_ToolTip" xml:space="preserve">
     <value>Automatically set thresholds based on current light level (±15% smart gap)</value>

@@ -319,7 +319,7 @@
                                                 <FontIcon
                                                     FontSize="{StaticResource BodyTextBlockFontSize}"
                                                     Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                                    Glyph="&#xE945;" />
+                                                    Glyph="&#xF4A5;" />
                                                 <TextBlock Text="{helpers:ResourceString Name=AmbientLightAutoConfigure}" />
                                             </StackPanel>
                                         </Button>
