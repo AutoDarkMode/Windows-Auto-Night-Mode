@@ -638,12 +638,12 @@
                         <controls:SettingsCard Header="{helpers:ResourceString Name=PauseAutoSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE769;}">
                             <ComboBox
                                 MinWidth="120"
-                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                                SelectedIndex="{x:Bind ViewModel.SelectedPauseModeIndex, Mode=TwoWay}">
                             </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
-                        <InfoBar IsClosable="False" Message="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}"/>
+                        <InfoBar IsClosable="False" Message="{x:Bind ViewModel.PauseInfoText, Mode=OneWay}"/>
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 
