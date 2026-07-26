@@ -497,7 +497,7 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
     <value>No new update found</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Theme switching is paused once.</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Would you like to switch now or delay further?</value>
@@ -637,30 +637,6 @@ Currently installed version: {0}, new version: {1}</value>
   </data>
   <data name="PostponeReason_UntilNextSunset" xml:space="preserve">
     <value>postpones until next sunset</value>
-  </data>
-  <data name="PostponeTime_120" xml:space="preserve">
-    <value>2 hours</value>
-  </data>
-  <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
-  </data>
-  <data name="PostponeTime_180" xml:space="preserve">
-    <value>3 hours</value>
-  </data>
-  <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
-  </data>
-  <data name="PostponeTime_360" xml:space="preserve">
-    <value>6 hours</value>
-  </data>
-  <data name="PostponeTime_60" xml:space="preserve">
-    <value>1 hour</value>
-  </data>
-  <data name="PostponeTime_720" xml:space="preserve">
-    <value>12 hours</value>
-  </data>
-  <data name="PostponeTime_SkipOnce" xml:space="preserve">
-    <value>Skip auto switch once</value>
   </data>
   <data name="ProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain apps are running</value>
@@ -1131,5 +1107,8 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="AutoSwitch" xml:space="preserve">
     <value>Auto switch</value>
+  </data>
+  <data name="PauseAutoSwitch" xml:space="preserve">
+    <value>Pause automatic switching</value>
   </data>
 </root>

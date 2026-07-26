@@ -38,10 +38,7 @@
 
                 <!--  AutoThemeSwitching  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Switch}" />
-                <controls:SettingsExpander
-                    Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE8AB;}"
-                    IsExpanded="True">
+                <controls:SettingsExpander Header="{helpers:ResourceString Name=EnableAutoThemeSwitch}" IsExpanded="True">
                     <ToggleSwitch x:Name="ToggleAutoSwitchEnabled" IsOn="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=TwoWay}" />
                     <controls:SettingsExpander.Items>
 
@@ -600,12 +597,12 @@
                 <!--  =========================  -->
                 <!--  2. SWITCH BEHAVIOR GROUP  -->
                 <!--  =========================  -->
-                
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
-                           Text="{helpers:ResourceString Name=SwitchBehavior}" />
+
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchBehavior}" />
 
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=SwitchBehavior}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE916;}"
                     IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                     IsExpanded="True">
                     <controls:SettingsExpander.Items>
@@ -637,36 +634,16 @@
                             </StackPanel>
                         </controls:SettingsCard>
 
-                        <!--  Postpone  -->
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=PostponeControl}">
-                            <ToggleSwitch
-                                IsOn="{x:Bind ViewModel.IsPostponed, Mode=TwoWay}"
-                                OffContent="{helpers:ResourceString Name=NotDelayed}"
-                                OnContent="{helpers:ResourceString Name=Delayed}" />
-                            <controls:SettingsCard.Description>
-                                <ComboBox
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    MinWidth="120"
-                                    IsEnabled="{x:Bind ViewModel.IsPostponed, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-                                    SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_15}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_30}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_60}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_120}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_180}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_360}" />
-                                    <ComboBoxItem Content="{helpers:ResourceString Name=PostponeTime_720}" />
-                                    <ComboBoxItem
-                                        Content="{helpers:ResourceString Name=PostponeTime_SkipOnce}"
-                                        IsSelected="True"
-                                        Visibility="{x:Bind ViewModel.PostponeOptionsSkipOnceVisibility, Mode=OneWay}" />
-                                </ComboBox>
-                            </controls:SettingsCard.Description>
+                        <!--  Pause automatic switching  -->
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=PauseAutoSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE769;}">
+                            <ComboBox
+                                MinWidth="120"
+                                SelectedIndex="{x:Bind ViewModel.SelectedPostponeIndex, Mode=TwoWay}">
+                            </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
-                        <TextBlock Margin="16" Text="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}" />
+                        <InfoBar IsClosable="False" Message="{x:Bind ViewModel.PostponeInfoText, Mode=OneWay}"/>
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 

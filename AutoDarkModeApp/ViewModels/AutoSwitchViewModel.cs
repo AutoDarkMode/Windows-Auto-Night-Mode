@@ -113,18 +113,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public partial int OffsetDark { get; set; }
 
     [ObservableProperty]
-    public partial bool IsPostponed { get; set; }
-
-    [ObservableProperty]
-    public partial int SelectedPostponeIndex { get; set; }
-
-    [ObservableProperty]
-    public partial string? PostponeInfoText { get; set; }
-
-    [ObservableProperty]
-    public partial Visibility PostponeOptionsSkipOnceVisibility { get; set; }
-
-    [ObservableProperty]
     public partial bool ResumeInfoBarEnabled { get; set; }
 
     private double _ambientLightDarkThreshold;
@@ -236,7 +224,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    // Maximum lux value supported (matching my previous logic)
+    // Maximum lux value supported
     private const double MaxLuxValue = 10000.0;
     // Slider range (0-1000 for finer precision)
     private const double SliderMaxValue = 1000.0;
@@ -533,7 +521,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
-            PostponeOptionsSkipOnceVisibility = Visibility.Visible;
+            //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
             return;
         }
@@ -543,7 +531,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-            PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+            //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
             return;
         }
 
@@ -566,7 +554,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
-        PostponeOptionsSkipOnceVisibility = Visibility.Visible;
+        //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
 
     private void LoadPostponeTimer(object? sender, EventArgs e)
@@ -604,7 +592,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                             _isInitializing = true;
 
                             ResumeInfoBarEnabled = anyNoExpiry && !canResume;
-                            IsPostponed = canResume;
+                            //IsSwitchPaused = canResume;
                             PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + string.Join('\n', localizedItems);
 
                             _isInitializing = false;
@@ -614,7 +602,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     {
                         _dispatcherQueue.TryEnqueue(() =>
                         {
-                            IsPostponed = false;
+                            //IsSwitchPaused = false;
                             PostponeInfoText = "ActiveDelays".GetLocalized() + ": " + "Msg_AutoSwitchEnabled".GetLocalized();
                             ResumeInfoBarEnabled = false;
                         });
@@ -793,42 +781,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    partial void OnIsPostponedChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        var postponeMinutes = (SelectedPostponeIndex) switch
-        {
-            0 => 15,
-            1 => 30,
-            2 => 60,
-            3 => 120,
-            4 => 180,
-            5 => 360,
-            6 => 720,
-            7 => 0,
-            _ => 0,
-        };
-
-        if (postponeMinutes != 0 && value)
-        {
-            MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {postponeMinutes}");
-        }
-        else if (postponeMinutes == 0 && value)
-        {
-            MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
-            if (!value)
-                MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
-        }
-        else
-        {
-            MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
-            MessageHandler.Client.SendMessageAndGetReply(Command.RequestSwitch);
-        }
-
-        LoadPostponeTimer(null, new());
-    }
 
     private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
     {
