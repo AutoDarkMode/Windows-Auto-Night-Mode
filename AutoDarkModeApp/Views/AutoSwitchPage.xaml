@@ -25,7 +25,7 @@
                 <!--  1. SWITCH SOURCE GROUP  -->
                 <!--  =========================  -->
 
-                <!--  Info about can't access loaction  -->
+                <!--  can't access location  -->
                 <InfoBar
                     Title="{helpers:ResourceString Name=Info}"
                     IsOpen="{x:Bind ViewModel.IsNoLocationAccessInfoBarOpen, Mode=OneWay}"
@@ -83,7 +83,7 @@
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         GroupName="TriggerMode"
                                         IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
-                                        IsEnabled="True" />
+                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
                                     <FontIcon
                                         Margin="0,4,0,0"
                                         FontSize="12"
@@ -635,15 +635,28 @@
                         </controls:SettingsCard>
 
                         <!--  Pause automatic switching  -->
-                        <controls:SettingsCard Header="{helpers:ResourceString Name=PauseAutoSwitch}" HeaderIcon="{ui:FontIcon Glyph=&#xE769;}">
-                            <ComboBox
-                                MinWidth="120"
-                                SelectedIndex="{x:Bind ViewModel.SelectedPauseModeIndex, Mode=TwoWay}">
+                        <controls:SettingsCard Header="{helpers:ResourceString Name=PauseAutoSwitch}">
+                            <ComboBox MinWidth="160" SelectedIndex="{x:Bind ViewModel.SelectedPauseIndex, Mode=TwoWay}">
+                                <!--  off  -->
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_Off}" />
+                                <!--  once  -->
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_Once}" Visibility="{x:Bind ViewModel.PauseOptionsOnceVisibility, Mode=OneWay}" />
+                                <!--  timed  -->
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_15m}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_30m}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_1h}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_2h}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_4h}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_8h}" />
+                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_12h}" />
                             </ComboBox>
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
-                        <InfoBar IsClosable="False" Message="{x:Bind ViewModel.PauseInfoText, Mode=OneWay}"/>
+                        <InfoBar
+                            IsClosable="False"
+                            IsOpen="True"
+                            Message="{x:Bind ViewModel.PauseInfoText, Mode=OneWay}" />
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 

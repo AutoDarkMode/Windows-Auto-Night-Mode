@@ -129,9 +129,6 @@
   <data name="AccentOnly" xml:space="preserve">
     <value>Accent only</value>
   </data>
-  <data name="ActiveDelays" xml:space="preserve">
-    <value>Active delays</value>
-  </data>
   <data name="AdaptiveTaskbarAccent" xml:space="preserve">
     <value>Use Taskbar Accent Color during</value>
   </data>
@@ -1110,5 +1107,38 @@ Please note: This may introduce slight to moderate lag on some systems during th
   </data>
   <data name="PauseAutoSwitch" xml:space="preserve">
     <value>Pause automatic switching</value>
+  </data>
+  <data name="PauseMode_15m" xml:space="preserve">
+    <value>15 minutes</value>
+  </data>
+  <data name="PauseMode_30m" xml:space="preserve">
+    <value>30 minutes</value>
+  </data>
+  <data name="PauseMode_1h" xml:space="preserve">
+    <value>1 hour</value>
+  </data>
+  <data name="PauseMode_2h" xml:space="preserve">
+    <value>2 hours</value>
+  </data>
+  <data name="PauseMode_4h" xml:space="preserve">
+    <value>4 hours</value>
+  </data>
+  <data name="PauseMode_8h" xml:space="preserve">
+    <value>8 hours</value>
+  </data>
+  <data name="PauseMode_12h" xml:space="preserve">
+    <value>12 hours</value>
+  </data>
+  <data name="PauseMode_Once" xml:space="preserve">
+    <value>Once</value>
+  </data>
+  <data name="PauseMode_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ActivePauses" xml:space="preserve">
+    <value>Active pauses</value>
+  </data>
+  <data name="PauseMode_Timed" xml:space="preserve">
+    <value>Timed</value>
   </data>
 </root>

@@ -1,5 +1,4 @@
 using System.Globalization;
-using YamlDotNet.Core.Tokens;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -290,6 +289,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial string PauseInfoText { get; set; }
+    [ObservableProperty]
+    public partial int SelectedPauseIndex { get; set; }
+    [ObservableProperty]
+    public partial Visibility PauseOptionsOnceVisibility { get; set; }
 
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
@@ -368,12 +371,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        Task.Run(() => LoadPostponeTimer(null, new()));
+        Task.Run(() => LoadPauseTimer(null, new()));
 
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
         StateUpdateHandler.StartConfigWatcher();
 
-        StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
+        StateUpdateHandler.OnPostponeTimerTick += LoadPauseTimer;
         StateUpdateHandler.StartPostponeTimer();
 
         _debounceTimer = _dispatcherQueue.CreateTimer();
@@ -494,8 +497,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             PauseOptionsOnceVisibility = Visibility.Collapsed;
 
-            if (SelectedPauseModeIndex == 1) // Once
-                SelectedPauseModeIndex = 0; // Off
+            if (SelectedPauseIndex == 1) // Once
+                SelectedPauseIndex = 0; // Off
         }
         else
         {
@@ -629,7 +632,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     if (item.Expiry == null)
                     {
                         anyNoExpiry = true;
-                        //return "PauseInfoText_Once".GetLocalized();
+                        //return "PauseMode_Once".GetLocalized();
                     }
                     if (item.IsUserClearable)
                     {
@@ -649,7 +652,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     ResumeInfoBarEnabled = anyNoExpiry && !canResume;
 
                     // Determine PauseMode based on the items in the queue
-                    if (dto.Items.Any(i => i.IsSkipOnce))
+                    if (dto.Items.Any(i => i.Expiry == null))
                     {
                         CurrentPauseMode = PauseMode.Once;
                         CurrentPauseMinutes = null;
@@ -793,11 +796,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 break;
         }
 
-        if (value == SwitchTriggerMode.AmbientLight) {
+        if (value == SwitchTriggerMode.AmbientLight)
+        {
             PauseOptionsOnceVisibility = Visibility.Collapsed;
 
-            if (SelectedPauseModeIndex ==1) // Once
-                SelectedPauseModeIndex = 0; // Off
+            if (SelectedPauseIndex == 1) // Once
+                SelectedPauseIndex = 0; // Off
         }
         else
         {
@@ -876,7 +880,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectedPauseModeIndexChanged(int value)
+    partial void OnSelectedPauseIndexChanged(int value)
     {
         if (_isInitializing)
             return;
@@ -899,7 +903,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 SendPauseOnce();
                 break;
             case 2: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 15; SendPauseTimed(15); break;
-                // etc.
+            case 3: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 30; SendPauseTimed(30); break;
+            case 4: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 60; SendPauseTimed(60); break;
+            case 5: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 120; SendPauseTimed(120); break;
+            case 6: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 240; SendPauseTimed(240); break;
+            case 7: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 480; SendPauseTimed(480); break;
+            case 8: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
         }
 
         UpdateInfoText();
@@ -907,7 +916,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void SendPauseOff()
     {
-        MessageHandler.Client.SendMessageAndGetReply(Command.ClearDelays);
+        MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
     }
 
     private void SendPauseOnce()
@@ -921,16 +930,16 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     }
     private void UpdateInfoText()
     {
-        switch(CurrentPauseMode)
+        switch (CurrentPauseMode)
         {
             case PauseMode.Off:
                 PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
                 break;
             case PauseMode.Once:
-                PauseInfoText = "PauseInfoText_Once".GetLocalized();
+                PauseInfoText = "PauseMode_Once".GetLocalized();
                 break;
             case PauseMode.Timed:
-                PauseInfoText = string.Format("PauseInfoText_Timed".GetLocalized(), CurrentPauseMinutes);
+                PauseInfoText = string.Format("PauseMode_Timed".GetLocalized(), CurrentPauseMinutes);
                 break;
         }
     }
