@@ -4,6 +4,9 @@ namespace AutoDarkModeApp.ViewModels;
 
 public partial class AutoSwitchViewModel : ObservableRecipient
 {
+    // =========================================================
+    // Dependencies & Private Fields
+    // =========================================================
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
@@ -13,6 +16,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private bool _isInitializing;
     private bool _isUpdating;
 
+    // =========================================================
+    // Enums
+    // =========================================================
     public enum SwitchTriggerMode
     {
         CustomTimes,
@@ -29,6 +35,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         Timed
     }
 
+    // =========================================================
+    // Observable Properties (auto-generated backing via SourceGen)
+    // =========================================================
     [ObservableProperty]
     public partial bool AutoThemeSwitchingEnabled { get; set; }
 
@@ -62,6 +71,62 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? LonValue { get; set; }
 
+    [ObservableProperty]
+    public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
+
+    [ObservableProperty]
+    public partial int OffsetTimesMinimum { get; set; }
+
+    [ObservableProperty]
+    public partial int OffsetLight { get; set; }
+
+    [ObservableProperty]
+    public partial int OffsetDark { get; set; }
+
+    [ObservableProperty]
+    public partial PauseMode CurrentPauseMode { get; set; }
+
+    [ObservableProperty]
+    public partial int? CurrentPauseMinutes { get; set; }
+
+    [ObservableProperty]
+    public partial bool ResumeInfoBarEnabled { get; set; }
+
+    [ObservableProperty]
+    public partial double CurrentLuxSliderPercentage { get; set; }
+
+    [ObservableProperty]
+    public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightSensorTooltip))]
+    public partial bool AmbientLightSensorAvailable { get; set; }
+
+    [ObservableProperty]
+    public partial double CurrentLuxReading { get; set; }
+
+    [ObservableProperty]
+    public partial string? CurrentLuxDescription { get; set; }
+
+    [ObservableProperty]
+    public partial string PauseInfoText { get; set; }
+    [ObservableProperty]
+    public partial int SelectedPauseIndex { get; set; }
+    [ObservableProperty]
+    public partial Visibility PauseOptionsOnceVisibility { get; set; }
+
+    private Windows.Devices.Sensors.LightSensor? _lightSensor;
+
+    // =========================================================
+    // UI-only computed properties
+    // =========================================================
+    public string AmbientLightSensorTooltip => AmbientLightSensorAvailable
+        ? "AmbientLightSensor_ToolTip".GetLocalized()
+        : "AmbientLightSensor_Unavailable_ToolTip".GetLocalized();
+
+    // =========================================================
+    // Commands
+    // =========================================================
     [RelayCommand]
     private void SaveCoordinates()
     {
@@ -107,27 +172,67 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         SafeApplyTheme();
     }
 
-    [ObservableProperty]
-    public partial Visibility OffsetTimeSettingsCardVisibility { get; set; }
+    [RelayCommand]
+    private void AutoConfigure()
+    {
+        if (!AmbientLightSensorAvailable) return;
 
-    [ObservableProperty]
-    public partial int OffsetTimesMinimum { get; set; }
+        double currentLux = CurrentLuxReading;
+        double dark, light;
 
-    [ObservableProperty]
-    public partial int OffsetLight { get; set; }
+        // Calculate gap using exponential scaling: smaller lux values get smaller gaps,
+        // larger values get proportionally larger gaps (non-linear growth)
+        // Examples: 10 lux → 5 gap, 41 lux → 13 gap, 100 lux → 25 gap, 1000 lux → 126 gap
+        double gap = Math.Pow(Math.Max(1, currentLux), 0.7);
 
-    [ObservableProperty]
-    public partial int OffsetDark { get; set; }
+        // Anchor threshold based on current active theme
+        if (Application.Current.RequestedTheme == ApplicationTheme.Light)
+        {
+            // Light theme: current lux is "nominal light", anchor light threshold near it
+            light = Math.Max(1, currentLux * 0.95);
+            dark = Math.Max(1, light - gap);
+        }
+        else
+        {
+            // Dark theme: current lux is "nominal dark", anchor dark threshold near it
+            dark = Math.Max(1, currentLux * 1.05);
+            light = dark + gap;
+        }
 
-    [ObservableProperty]
-    public partial PauseMode CurrentPauseMode { get; set; }
+        // Clamp to valid range
+        AmbientLightDarkThreshold = Math.Max(1, Math.Min(dark, 9998));
+        AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
 
-    [ObservableProperty]
-    public partial int? CurrentPauseMinutes { get; set; }
+        // Save immediately as this is a deliberate action or first-time setup
+        if (_ambientLightDebounceTimer != null)
+        {
+            _ambientLightDebounceTimer.Stop();
+            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
+            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            try
+            {
+                _builder.Save();
+                SafeApplyTheme();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+            }
+        }
+    }
 
-    [ObservableProperty]
-    public partial bool ResumeInfoBarEnabled { get; set; }
+    [RelayCommand]
+    private void SetTriggerMode(string mode)
+    {
+        if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
+        {
+            SelectedTriggerMode = result;
+        }
+    }
 
+    // =========================================================
+    // Ambient light threshold properties & slider mapping
+    // =========================================================
     private double _ambientLightDarkThreshold;
     public double AmbientLightDarkThreshold
     {
@@ -267,93 +372,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         return new Microsoft.UI.Xaml.GridLength(value, Microsoft.UI.Xaml.GridUnitType.Star);
     }
 
-    [ObservableProperty]
-    public partial double CurrentLuxSliderPercentage { get; set; }
-
-    [ObservableProperty]
-    public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
-
-    [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(AmbientLightSensorTooltip))]
-    public partial bool AmbientLightSensorAvailable { get; set; }
-
-    public string AmbientLightSensorTooltip => AmbientLightSensorAvailable
-        ? "AmbientLightSensor_ToolTip".GetLocalized()
-        : "AmbientLightSensor_Unavailable_ToolTip".GetLocalized();
-
-    [ObservableProperty]
-    public partial double CurrentLuxReading { get; set; }
-
-    [ObservableProperty]
-    public partial string? CurrentLuxDescription { get; set; }
-
-    [ObservableProperty]
-    public partial string PauseInfoText { get; set; }
-    [ObservableProperty]
-    public partial int SelectedPauseIndex { get; set; }
-    [ObservableProperty]
-    public partial Visibility PauseOptionsOnceVisibility { get; set; }
-
-    private Windows.Devices.Sensors.LightSensor? _lightSensor;
-
-    [RelayCommand]
-    private void AutoConfigure()
-    {
-        if (!AmbientLightSensorAvailable) return;
-
-        double currentLux = CurrentLuxReading;
-        double dark, light;
-
-        // Calculate gap using exponential scaling: smaller lux values get smaller gaps,
-        // larger values get proportionally larger gaps (non-linear growth)
-        // Examples: 10 lux → 5 gap, 41 lux → 13 gap, 100 lux → 25 gap, 1000 lux → 126 gap
-        double gap = Math.Pow(Math.Max(1, currentLux), 0.7);
-
-        // Anchor threshold based on current active theme
-        if (Application.Current.RequestedTheme == ApplicationTheme.Light)
-        {
-            // Light theme: current lux is "nominal light", anchor light threshold near it
-            light = Math.Max(1, currentLux * 0.95);
-            dark = Math.Max(1, light - gap);
-        }
-        else
-        {
-            // Dark theme: current lux is "nominal dark", anchor dark threshold near it
-            dark = Math.Max(1, currentLux * 1.05);
-            light = dark + gap;
-        }
-
-        // Clamp to valid range
-        AmbientLightDarkThreshold = Math.Max(1, Math.Min(dark, 9998));
-        AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
-
-        // Save immediately as this is a deliberate action or first-time setup
-        if (_ambientLightDebounceTimer != null)
-        {
-            _ambientLightDebounceTimer.Stop();
-            _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
-            _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
-            try
-            {
-                _builder.Save();
-                SafeApplyTheme();
-            }
-            catch (Exception ex)
-            {
-                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
-            }
-        }
-    }
-
-    [RelayCommand]
-    private void SetTriggerMode(string mode)
-    {
-        if (Enum.TryParse<SwitchTriggerMode>(mode, out var result))
-        {
-            SelectedTriggerMode = result;
-        }
-    }
-
+    // =========================================================
+    // Constructor & Initialization
+    // =========================================================
     public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -417,6 +438,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         };
     }
 
+    // =========================================================
+    // Settings load & geolocation
+    // =========================================================
     private void LoadSettings()
     {
         _isInitializing = true;
@@ -544,6 +568,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
+    // =========================================================
+    // Handling modes, config updates & pause queue
+    // =========================================================
     private void HandleAutoTheme(bool value)
     {
         AutoThemeSwitchingEnabled = value;
@@ -730,88 +757,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
-    }
-
-    partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
-    {
-        if (_isInitializing)
-            return;
-
-        // Each case fully controls all visibility states to prevent flickering
-        switch (value)
-        {
-            case SwitchTriggerMode.CustomTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                break;
-
-            case SwitchTriggerMode.LocationTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = true;
-                TimePickerVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
-                break;
-
-            case SwitchTriggerMode.CoordinateTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
-                break;
-
-            case SwitchTriggerMode.WindowsNightLight:
-                _builder.Config.Governor = Governor.NightLight;
-                _builder.Config.AutoThemeSwitchingEnabled = true;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = 0;
-                break;
-
-            case SwitchTriggerMode.AmbientLight:
-                // Run auto-configure only if we are switching to Ambient Light and values are still defaults
-                // This prevents overwriting user's custom settings when switching modes
-                if (_builder.Config.AmbientLight.DarkThreshold == 40 && _builder.Config.AmbientLight.LightThreshold == 80)
-                {
-                    AutoConfigure();
-                }
-                _builder.Config.Governor = Governor.AmbientLight;
-                _builder.Config.AutoThemeSwitchingEnabled = true;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                break;
-        }
-
-        if (value == SwitchTriggerMode.AmbientLight)
-        {
-            PauseOptionsOnceVisibility = Visibility.Collapsed;
-
-            if (SelectedPauseIndex == 1) // Once
-                SelectedPauseIndex = 0; // Off
-        }
-        else
-        {
-            PauseOptionsOnceVisibility = Visibility.Visible;
-        }
-
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
-        }
 
         SafeApplyTheme();
     }
@@ -934,6 +879,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {minutes}");
     }
 
+    // =========================================================
+    // Sensor event handlers & helpers
+    // =========================================================
     private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
     {
         _dispatcherQueue.TryEnqueue(() =>
