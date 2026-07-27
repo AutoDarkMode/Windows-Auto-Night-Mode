@@ -613,65 +613,66 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
     }
 
+    // Ensure UI-thread safety: execute DoWork() directly when we already have thread access,
+    // otherwise dispatch via DispatcherQueue to avoid cross-thread UI updates.
     private void LoadPauseTimer(object? sender, EventArgs e)
     {
-        _isInitializing = true;
-
-        ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
-
-        // Time-out
-        if (reply.StatusCode == StatusCode.Timeout)
+        void DoWork()
         {
-            CurrentPauseMode = PauseMode.Off;
-            CurrentPauseMinutes = null;
-            PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
-            _isInitializing = false;
-            return;
-        }
+            _isInitializing = true;
 
-        // Disabled
-        if (reply.StatusCode == StatusCode.Disabled)
-        {
-            CurrentPauseMode = PauseMode.Off;
-            CurrentPauseMinutes = null;
-            PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
-            _isInitializing = false;
-            return;
-        }
+            ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
 
-        try
-        {
-            // reply.Message == "True" means: there are active delays
-            if (reply.Message == "True")
+            // Time-out
+            if (reply.StatusCode == StatusCode.Timeout)
             {
-                bool anyNoExpiry = false;
-                bool canResume = false;
+                CurrentPauseMode = PauseMode.Off;
+                CurrentPauseMinutes = null;
+                PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
+                _isInitializing = false;
+                return;
+            }
 
-                PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+            // Disabled
+            if (reply.StatusCode == StatusCode.Disabled)
+            {
+                CurrentPauseMode = PauseMode.Off;
+                CurrentPauseMinutes = null;
+                PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
+                _isInitializing = false;
+                return;
+            }
 
-                // build list
-                List<string> localisedItems = dto.Items.Select(item =>
+            try
+            {
+                // reply.Message == "True" means: there are active delays
+                if (reply.Message == "True")
                 {
-                    if (item.Expiry == null)
+                    bool anyNoExpiry = false;
+                    bool canResume = false;
+
+                    PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+
+                    // build list
+                    List<string> localisedItems = dto.Items.Select(item =>
                     {
-                        anyNoExpiry = true;
-                        return "PauseMode_Once".GetLocalized();
-                    }
-                    if (item.IsUserClearable)
-                    {
-                        canResume = true;
-                    }
+                        if (item.Expiry == null)
+                        {
+                            anyNoExpiry = true;
+                            return "PauseMode_Once".GetLocalized();
+                        }
+                        if (item.IsUserClearable)
+                        {
+                            canResume = true;
+                        }
 
-                    item.SetCulture(new CultureInfo(
-                        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
+                        item.SetCulture(new CultureInfo(
+                            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
-                    return item.GetLocalizationData().BuildLocalizedString();
-                }).ToList();
+                        return item.GetLocalizationData().BuildLocalizedString();
+                    }).ToList();
 
-                // UI update
-
-                _dispatcherQueue.TryEnqueue(() =>
-                {
+                    // UI update
                     ResumeInfoBarEnabled = anyNoExpiry && !canResume;
 
                     // Determine PauseMode based on the items in the queue
@@ -697,32 +698,35 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
                     // InfoText
                     PauseInfoText = "ActivePauses".GetLocalized() + ": " + string.Join(", ", localisedItems);
-                });
-            }
-            else
-            {
-                // no delays
-                _dispatcherQueue.TryEnqueue(() =>
+                }
+                else
                 {
+                    // no delays
                     CurrentPauseMode = PauseMode.Off;
                     CurrentPauseMinutes = null;
                     PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
                     ResumeInfoBarEnabled = false;
-                });
+                }
             }
-        }
-        catch
-        {
-            _dispatcherQueue.TryEnqueue(() =>
+            catch
             {
                 CurrentPauseMode = PauseMode.Off;
                 CurrentPauseMinutes = null;
                 PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
                 ResumeInfoBarEnabled = false;
-            });
+            }
+
+            _isInitializing = false;
         }
 
-        _isInitializing = false;
+        if (_dispatcherQueue.HasThreadAccess)
+        {
+            DoWork();
+        }
+        else
+        {
+            _dispatcherQueue.TryEnqueue(DoWork);
+        }
     }
 
     private static async void SafeApplyTheme()
