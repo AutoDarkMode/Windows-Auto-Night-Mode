@@ -553,7 +553,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
-            //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
             return;
         }
@@ -563,7 +562,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-            //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
             return;
         }
 
@@ -586,7 +584,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
-        //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
 
     private void LoadPauseTimer(object? sender, EventArgs e)
@@ -600,7 +597,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             CurrentPauseMode = PauseMode.Off;
             CurrentPauseMinutes = null;
-            UpdateInfoText();
+            PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
             _isInitializing = false;
             return;
         }
@@ -611,7 +608,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             CurrentPauseMode = PauseMode.Off;
             CurrentPauseMinutes = null;
             PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
-            UpdateInfoText();
             _isInitializing = false;
             return;
         }
@@ -632,7 +628,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     if (item.Expiry == null)
                     {
                         anyNoExpiry = true;
-                        //return "PauseMode_Once".GetLocalized();
+                        return "PauseMode_Once".GetLocalized();
                     }
                     if (item.IsUserClearable)
                     {
@@ -664,7 +660,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                         .Where(i => i.Expiry != null)
                         .Select(i => (int)(i.Expiry!.Value - DateTime.Now).TotalMinutes)
                         .Where(minutes => minutes > 0)
-                        .FirstOrDefault();
+                        .Max();
                     }
                     else
                     {
@@ -880,16 +876,11 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    partial void OnSelectedPauseIndexChanged(int value)
+    partial void OnSelectedPauseIndexChanged(int index)
     {
         if (_isInitializing)
             return;
 
-        UpdatePauseState(value);
-    }
-
-    private void UpdatePauseState(int index)
-    {
         switch (index)
         {
             case 0: // Off
@@ -911,25 +902,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             case 8: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
         }
 
-        UpdateInfoText();
-    }
-
-    private void SendPauseOff()
-    {
-        MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
-    }
-
-    private void SendPauseOnce()
-    {
-        MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
-    }
-
-    private void SendPauseTimed(int minutes)
-    {
-        MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {minutes}");
-    }
-    private void UpdateInfoText()
-    {
+        //UpdateInfoText();
         switch (CurrentPauseMode)
         {
             case PauseMode.Off:
@@ -942,6 +915,23 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 PauseInfoText = string.Format("PauseMode_Timed".GetLocalized(), CurrentPauseMinutes);
                 break;
         }
+    }
+
+    private void SendPauseOff()
+    {
+        MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
+    }
+
+    private void SendPauseOnce()
+    {
+        SendPauseOff(); // Clear any existing postpones before adding a new "once" delay
+        MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+    }
+
+    private void SendPauseTimed(int minutes)
+    {
+        SendPauseOff(); // Clear any existing postpones before adding a new timed delay
+        MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {minutes}");
     }
 
     private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
