@@ -119,6 +119,32 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     CurrentPauseMode = result.Mode;
                     CurrentPauseMinutes = result.Minutes;
                     PauseInfoText = result.InfoText ?? "error @ TryEnqueue, LoadPauseTimer";
+
+                    // Update the SelectedPauseIndex based on the current pause mode and minutes (page load)
+                    int MapMinutesToIndex(int? minutes)
+                    {
+                        if (minutes == null) return 0; //fallback
+                        int[] options = { 15, 30, 60, 120, 240, 480, 720 };
+                        for (int i = 0; i < options.Length; i++)
+                        {
+                            if (minutes <= options[i]) return i + 2; // +2 because Off and Once are indices 0 and 1
+                        }
+                        return options.Length + 1; // If greater than all options, return the last index (8)
+                    }
+
+                    int desiredIndex = result.Mode switch
+                    {
+                        PauseMode.Off => 0,
+                        PauseMode.Once => 1,
+                        PauseMode.Timed => MapMinutesToIndex(result.Minutes),
+                        _ => 0
+                    };
+
+                    if (SelectedPauseIndex != desiredIndex)
+                    {
+                        //_isInitializing = true; // Prevent triggering OnSelectedPauseIndexChanged
+                        SelectedPauseIndex = desiredIndex;
+                    }
                 }
                 finally
                 {
