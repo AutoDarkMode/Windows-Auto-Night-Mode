@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Diagnostics;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -30,7 +31,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 if (reply.StatusCode == StatusCode.Timeout)
                 {
                     result.Mode = PauseMode.Off;
-                    result.Minutes= null;
+                    result.Minutes = null;
                     //UpdateInfoText();
                     result.InfoText = "Statuscode: Timeout";
                     _isInitializing = false;
@@ -82,13 +83,14 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                                 .Select(i => (int)(i.Expiry!.Value - DateTime.Now).TotalMinutes)
                                 .Where(minutes => minutes > 0)
                                 .FirstOrDefault();
+                            // TODO: Use DateTime.UtcNow to avoid timezone issues, but ensure that the Expiry is also in UTC.
                         }
                         else
                         {
                             result.Mode = PauseMode.Off;
                             result.Minutes = null;
                         }
-                            result.InfoText = "ActivePauses".GetLocalized() + ": " + string.Join(", ", localisedItems);
+                        result.InfoText = "ActivePauses".GetLocalized() + ": " + string.Join(", ", localisedItems);
                         result.ResumeEnabled = anyNoExpiry && !canResume;
                     }
                     else
@@ -144,12 +146,15 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     {
                         //_isInitializing = true; // Prevent triggering OnSelectedPauseIndexChanged
                         SelectedPauseIndex = desiredIndex;
+                        Debug.WriteLine($"desiredIndex: {desiredIndex}, SelectedPauseIndex: {SelectedPauseIndex}");
                     }
                 }
                 finally
                 {
                     // End initialization on UI thread after all UI properties are set
                     _isInitializing = false;
+                    Debug.WriteLine($"[{DateTime.UtcNow}] CurrentPauseMinutes: {CurrentPauseMinutes}, SelectedPauseIndex: {SelectedPauseIndex}, CurrentPauseMode: {CurrentPauseMode}");
+                    Debug.WriteLine($"[{DateTime.UtcNow}] PauseInfoText: {PauseInfoText}");
                 }
             });
         });
@@ -157,15 +162,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnSelectedPauseIndexChanged(int value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
-        UpdatePauseState(value);
-    }
-
-    private void UpdatePauseState(int index)
-    {
-        switch (index)
+        switch (value)
         {
             case 0: // Off
                 CurrentPauseMode = PauseMode.Off;
@@ -185,10 +184,11 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             case 7: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 480; SendPauseTimed(480); break;
             case 8: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
         }
-
+        // TODO: use Task.Run for SendPauseOff, SendPauseOnce, and SendPauseTimed to avoid blocking the UI thread
         UpdateInfoText();
     }
 
+    // TODO: create SendMessageAndGetReplyAsync with timeout/cancellation token in async, to avoid blocking the UI thread
     private void SendPauseOff()
     {
         MessageHandler.Client.SendMessageAndGetReply(Command.ClearPostponeQueue);
