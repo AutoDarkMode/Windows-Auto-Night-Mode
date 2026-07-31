@@ -5,117 +5,128 @@ namespace AutoDarkModeApp.ViewModels;
 // Pause and Postpone management
 public partial class AutoSwitchViewModel : ObservableRecipient
 {
+    private sealed class PauseStateResult
+    {
+        public PauseMode Mode { get; set; }
+        public int? Minutes { get; set; }
+        public string? InfoText { get; set; } = string.Empty;
+        public bool ResumeEnabled { get; set; }
+    }
+
     private void LoadPauseTimer(object? sender, EventArgs e)
     {
         _isInitializing = true;
 
-        ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
-
-        // Time-out
-        if (reply.StatusCode == StatusCode.Timeout)
+        // Run network / parsing code in a background thread to avoid blocking the UI
+        Task.Run(() =>
         {
-            CurrentPauseMode = PauseMode.Off;
-            CurrentPauseMinutes = null;
-            UpdateInfoText();
-            _isInitializing = false;
-            return;
-        }
+            PauseStateResult result = new PauseStateResult();
 
-        // Disabled
-        if (reply.StatusCode == StatusCode.Disabled)
-        {
-            CurrentPauseMode = PauseMode.Off;
-            CurrentPauseMinutes = null;
-            PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
-            UpdateInfoText();
-            _isInitializing = false;
-            return;
-        }
-
-        try
-        {
-            // reply.Message == "True" means: there are active delays
-            if (reply.Message == "True")
+            try
             {
-                bool anyNoExpiry = false;
-                bool canResume = false;
+                ApiResponse reply = ApiResponse.FromString(MessageHandler.Client.SendMessageAndGetReply(Command.GetPostponeStatus));
 
-                PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
-
-                // build list
-                List<string> localisedItems = dto.Items.Select(item =>
+                // Time-out
+                if (reply.StatusCode == StatusCode.Timeout)
                 {
-                    if (item.Expiry == null)
-                    {
-                        anyNoExpiry = true;
-                        //return "PauseMode_Once".GetLocalized();
-                    }
-                    if (item.IsUserClearable)
-                    {
-                        canResume = true;
-                    }
-
-                    item.SetCulture(new CultureInfo(
-                        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
-
-                    return item.GetLocalizationData().BuildLocalizedString();
-                }).ToList();
-
-                // UI update
-
-                _dispatcherQueue.TryEnqueue(() =>
+                    result.Mode = PauseMode.Off;
+                    result.Minutes= null;
+                    //UpdateInfoText();
+                    result.InfoText = "Statuscode: Timeout";
+                    _isInitializing = false;
+                    return;
+                }
+                // Disabled
+                else if (reply.StatusCode == StatusCode.Disabled)
                 {
-                    ResumeInfoBarEnabled = anyNoExpiry && !canResume;
+                    result.Mode = PauseMode.Off;
+                    result.Minutes = null;
+                    //PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
+                    result.InfoText = "Statuscode: Disabled";
+                    //UpdateInfoText();
+                    _isInitializing = false;
+                    return;
+                }
+                else
+                {
+                    if (reply.Message == "True")
+                    {
+                        bool anyNoExpiry = false;
+                        bool canResume = false;
 
-                    // Determine PauseMode based on the items in the queue
-                    if (dto.Items.Any(i => i.Expiry == null))
-                    {
-                        CurrentPauseMode = PauseMode.Once;
-                        CurrentPauseMinutes = null;
-                    }
-                    else if (dto.Items.Any(i => i.Expiry != null))
-                    {
-                        CurrentPauseMode = PauseMode.Timed;
-                        CurrentPauseMinutes = dto.Items
-                        .Where(i => i.Expiry != null)
-                        .Select(i => (int)(i.Expiry!.Value - DateTime.Now).TotalMinutes)
-                        .Where(minutes => minutes > 0)
-                        .FirstOrDefault();
+                        PostponeQueueDto dto = PostponeQueueDto.Deserialize(reply.Details);
+
+                        // build list
+                        List<string> localisedItems = dto.Items.Select(item =>
+                        {
+                            if (item.Expiry == null) anyNoExpiry = true;
+                            if (item.IsUserClearable) canResume = true;
+
+                            item.SetCulture(new CultureInfo(
+                                Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
+
+                            return item.GetLocalizationData().BuildLocalizedString();
+                        }).ToList();
+
+                        // Determine PauseMode based on the items in the queue
+                        if (dto.Items.Any(i => i.Expiry == null))
+                        {
+                            result.Mode = PauseMode.Once;
+                            result.Minutes = null;
+                        }
+                        else if (dto.Items.Any(i => i.Expiry != null))
+                        {
+                            result.Mode = PauseMode.Timed;
+                            result.Minutes = dto.Items
+                                .Where(i => i.Expiry != null)
+                                .Select(i => (int)(i.Expiry!.Value - DateTime.Now).TotalMinutes)
+                                .Where(minutes => minutes > 0)
+                                .FirstOrDefault();
+                        }
+                        else
+                        {
+                            result.Mode = PauseMode.Off;
+                            result.Minutes = null;
+                        }
+                            result.InfoText = "ActivePauses".GetLocalized() + ": " + string.Join(", ", localisedItems);
+                        result.ResumeEnabled = anyNoExpiry && !canResume;
                     }
                     else
                     {
-                        CurrentPauseMode = PauseMode.Off;
-                        CurrentPauseMinutes = null;
+                        // No active pauses
+                        result.Mode = PauseMode.Off;
+                        result.Minutes = null;
+                        result.InfoText = "Msg_AutoSwitchEnabled".GetLocalized();
+                        result.ResumeEnabled = false;
                     }
-
-                    // InfoText
-                    PauseInfoText = "ActivePauses".GetLocalized() + ": " + string.Join(", ", localisedItems);
-                });
+                }
             }
-            else
+            catch
             {
-                // no delays
-                _dispatcherQueue.TryEnqueue(() =>
-                {
-                    CurrentPauseMode = PauseMode.Off;
-                    CurrentPauseMinutes = null;
-                    PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
-                    ResumeInfoBarEnabled = false;
-                });
+                result.Mode = PauseMode.Off;
+                result.Minutes = null;
+                result.InfoText = "Msg_AutoSwitchEnabled".GetLocalized();
+                result.ResumeEnabled = false;
             }
-        }
-        catch
-        {
+
+            // Now marshal only the UI updates back to the UI thread
             _dispatcherQueue.TryEnqueue(() =>
             {
-                CurrentPauseMode = PauseMode.Off;
-                CurrentPauseMinutes = null;
-                PauseInfoText = "Msg_AutoSwitchEnabled".GetLocalized();
-                ResumeInfoBarEnabled = false;
-            });
-        }
+                try
+                {
+                    ResumeInfoBarEnabled = result.ResumeEnabled;
 
-        _isInitializing = false;
+                    CurrentPauseMode = result.Mode;
+                    CurrentPauseMinutes = result.Minutes;
+                    PauseInfoText = result.InfoText ?? "error @ TryEnqueue, LoadPauseTimer";
+                }
+                finally
+                {
+                    // End initialization on UI thread after all UI properties are set
+                    _isInitializing = false;
+                }
+            });
+        });
     }
 
     partial void OnSelectedPauseIndexChanged(int value)
@@ -159,11 +170,13 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void SendPauseOnce()
     {
+        SendPauseOff();
         MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
     }
 
     private void SendPauseTimed(int minutes)
     {
+        SendPauseOff();
         MessageHandler.Client.SendMessageAndGetReply($"{Command.DelayBy} {minutes}");
     }
 
