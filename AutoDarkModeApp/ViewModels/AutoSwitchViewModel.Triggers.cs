@@ -72,12 +72,14 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Location.UseGeolocatorService = false;
                 TimePickerVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                PauseOptionsOnceVisibility = Visibility.Collapsed;
 
                 if (SelectedPauseIndex == 1) // Once
                     SelectedPauseIndex = 0; // Off
                 break;
         }
+
+        PauseOptionsOnceVisibility = value == SwitchTriggerMode.AmbientLight
+            ? Visibility.Collapsed : Visibility.Visible;
 
         try
         {

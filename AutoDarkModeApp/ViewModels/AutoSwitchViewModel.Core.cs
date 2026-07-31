@@ -47,12 +47,16 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        Task.Run(() => LoadPauseTimer(null, new()));
+        //Task.Run(() => LoadPauseTimer(null, new()));
 
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
         StateUpdateHandler.StartConfigWatcher();
 
-        StateUpdateHandler.OnPostponeTimerTick += LoadPauseTimer;
+        // Don't call from background-thread, but via UI dispatcher
+        StateUpdateHandler.OnPostponeTimerTick += (s, e) =>
+        {
+            _dispatcherQueue.TryEnqueue(() => LoadPauseTimer(s, e));
+        };
         StateUpdateHandler.StartPostponeTimer();
 
         _debounceTimer = _dispatcherQueue.CreateTimer();
@@ -195,7 +199,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
-            //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
             return;
         }
@@ -205,7 +208,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
             TimePickerVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-            //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
             return;
         }
 
@@ -228,7 +230,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         OffsetTimesMinimum = -720;
         TimePickerVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
-        //PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
 
     private static async void SafeApplyTheme()

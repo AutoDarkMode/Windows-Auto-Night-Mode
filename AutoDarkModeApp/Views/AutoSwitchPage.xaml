@@ -653,17 +653,19 @@
                         </controls:SettingsCard>
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
-                        <InfoBar
-                            IsClosable="False"
-                            IsOpen="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
-                            Message="{x:Bind ViewModel.PauseInfoText, Mode=OneWay}" />
+                        <StackPanel>
+                            <InfoBar
+                                IsClosable="False"
+                                IsOpen="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
+                                Message="{x:Bind ViewModel.PauseInfoText, Mode=OneWay}" />
+                            <InfoBar
+                                Message="{helpers:ResourceString Name=ResumeInfo_Content}"
+                                IsClosable="False"
+                                IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
+                        </StackPanel>
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 
-                <InfoBar
-                    Content="{helpers:ResourceString Name=ResumeInfo_Content}"
-                    IsClosable="False"
-                    IsOpen="{x:Bind ViewModel.ResumeInfoBarEnabled, Mode=OneWay}" />
 
             </StackPanel>
         </Grid>
