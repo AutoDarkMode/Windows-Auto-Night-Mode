@@ -181,10 +181,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             case 7: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 480; SendPauseTimed(480); break;
             case 8: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
         }
-        // TODO: use Task.Run for SendPauseOff, SendPauseOnce, and SendPauseTimed to avoid blocking the UI thread
         UpdateInfoText();
     }
 
+    // TODO: use Task.Run for SendPauseOff, SendPauseOnce, and SendPauseTimed to avoid blocking the UI thread
     // TODO: create SendMessageAndGetReplyAsync with timeout/cancellation token in async, to avoid blocking the UI thread
     private void SendPauseOff()
     {

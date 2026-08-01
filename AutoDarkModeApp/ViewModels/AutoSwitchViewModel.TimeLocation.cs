@@ -61,7 +61,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 break;
             }
 
-            await Task.Delay(1000);
+            await Task.Delay(1);
         }
         _builder.LoadLocationData();
         try

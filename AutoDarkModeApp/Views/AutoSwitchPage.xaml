@@ -27,12 +27,11 @@
 
                 <!--  can't access location  -->
                 <InfoBar
-                    Title="{helpers:ResourceString Name=Info}"
                     IsOpen="{x:Bind ViewModel.IsNoLocationAccessInfoBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=Msg_LocPerm}"
                     Severity="Warning">
                     <InfoBar.ActionButton>
-                        <Button Click="NoLocationAccessInfoBar_ActionButtonClick" Content="{helpers:ResourceString Name=OpenWindowsSettings}" />
+                        <HyperlinkButton Click="NoLocationAccessInfoBar_ActionButtonClick" Content="{helpers:ResourceString Name=OpenWindowsSettings}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
 
