@@ -47,7 +47,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         LoadSettings();
-        //Task.Run(() => LoadPauseTimer(null, new()));
 
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(() => HandleConfigUpdate());
         StateUpdateHandler.StartConfigWatcher();
@@ -190,6 +189,49 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
+    partial void OnAutoThemeSwitchingEnabledChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        HandleAutoTheme(value);
+
+        _builder.Config.AutoThemeSwitchingEnabled = value;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+        }
+    }
+
+    partial void OnOffsetLightChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (_debounceTimer != null)
+        {
+            _debounceTimer.Stop();
+            _debounceTimer.Start();
+        }
+    }
+
+    partial void OnOffsetDarkChanged(int value)
+    {
+        if (_isInitializing)
+            return;
+
+        if (_debounceTimer != null)
+        {
+            _debounceTimer.Stop();
+            _debounceTimer.Start();
+        }
+    }
+}
+
     private void HandleAutoTheme(bool value)
     {
         AutoThemeSwitchingEnabled = value;
@@ -246,47 +288,5 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             LoadSettings();
         });
         StateUpdateHandler.StartConfigWatcher();
-    }
-
-    partial void OnAutoThemeSwitchingEnabledChanged(bool value)
-    {
-        if (_isInitializing)
-            return;
-
-        HandleAutoTheme(value);
-
-        _builder.Config.AutoThemeSwitchingEnabled = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
-        }
-    }
-
-    partial void OnOffsetLightChanged(int value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (_debounceTimer != null)
-        {
-            _debounceTimer.Stop();
-            _debounceTimer.Start();
-        }
-    }
-
-    partial void OnOffsetDarkChanged(int value)
-    {
-        if (_isInitializing)
-            return;
-
-        if (_debounceTimer != null)
-        {
-            _debounceTimer.Stop();
-            _debounceTimer.Start();
-        }
     }
 }

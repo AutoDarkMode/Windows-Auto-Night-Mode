@@ -309,7 +309,7 @@
                                         Orientation="Horizontal"
                                         Spacing="8">
                                         <Button
-                                            Command="{x:Bind ViewModel.AutoConfigureCommand}"
+                                            Command="{x:Bind ViewModel.AutoConfigureLightSensorValuesCommand}"
                                             Style="{StaticResource SubtleButtonStyle}"
                                             ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightAutoConfigure_ToolTip}">
                                             <StackPanel Orientation="Horizontal" Spacing="8">

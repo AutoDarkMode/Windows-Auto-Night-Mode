@@ -32,7 +32,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 {
                     result.Mode = PauseMode.Off;
                     result.Minutes = null;
-                    //UpdateInfoText();
                     result.InfoText = "Statuscode: Timeout";
                     _isInitializing = false;
                     return;
@@ -42,9 +41,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 {
                     result.Mode = PauseMode.Off;
                     result.Minutes = null;
-                    //PauseInfoText = "Msg_AutoSwitchDisabled".GetLocalized();
                     result.InfoText = "Statuscode: Disabled";
-                    //UpdateInfoText();
                     _isInitializing = false;
                     return;
                 }

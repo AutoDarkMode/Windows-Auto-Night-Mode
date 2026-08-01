@@ -63,7 +63,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 // This prevents overwriting user's custom settings when switching modes
                 if (_builder.Config.AmbientLight.DarkThreshold == 40 && _builder.Config.AmbientLight.LightThreshold == 80)
                 {
-                    AutoConfigureCommand.Execute(null);
+                    AutoConfigureLightSensorValuesCommand.Execute(null);
                 }
 
                 _builder.Config.Governor = Governor.AmbientLight;
