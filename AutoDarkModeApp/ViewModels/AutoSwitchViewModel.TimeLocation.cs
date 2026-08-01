@@ -47,7 +47,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        SafeApplyTheme();
+        _ = RequestThemeSwitchAsync();
     }
 
     private async Task LoadGeolocationData()
@@ -101,7 +101,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        SafeApplyTheme();
+        _ = RequestThemeSwitchAsync();
     }
 
     partial void OnTimeDarkStartChanged(TimeSpan value)
@@ -119,6 +119,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        SafeApplyTheme();
+        _ = RequestThemeSwitchAsync();
     }
 }

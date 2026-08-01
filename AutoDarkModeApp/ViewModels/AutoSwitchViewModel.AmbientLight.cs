@@ -184,7 +184,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             try
             {
                 _builder.Save();
-                SafeApplyTheme();
+                _ = RequestThemeSwitchAsync();
             }
             catch (Exception ex)
             {
