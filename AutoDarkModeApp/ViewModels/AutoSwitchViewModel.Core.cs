@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.Diagnostics;
+
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -74,7 +76,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             }
             _debounceTimer.Stop();
 
-            SafeApplyTheme();
+            _ = RequestThemeSwitchAsync();
         };
 
         _ambientLightDebounceTimer = _dispatcherQueue.CreateTimer();
@@ -94,7 +96,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _ambientLightDebounceTimer.Stop();
 
             // Trigger theme re-evaluation with new thresholds
-            SafeApplyTheme();
+            _ = RequestThemeSwitchAsync();
         };
     }
 
@@ -230,7 +232,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _debounceTimer.Start();
         }
     }
-}
 
     private void HandleAutoTheme(bool value)
     {
@@ -274,9 +275,22 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
     }
 
-    private static async void SafeApplyTheme()
+    private static async Task RequestThemeSwitchAsync()
     {
-        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+        try
+        {
+            await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 2);
+        }
+        catch (TimeoutException)
+        {
+            // Handle timeout if needed
+            Debug.WriteLine("Timeout while applying theme.");
+        }
+        catch (Exception ex)
+        {
+            // Log the error or handle it as needed
+            Debug.WriteLine($"Error applying theme: {ex.Message}");
+        }
     }
 
     private void HandleConfigUpdate()
