@@ -594,7 +594,7 @@
                 <!--  2. SWITCH BEHAVIOR GROUP  -->
                 <!--  =========================  -->
 
-                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=SwitchBehavior}" />
+                <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=ThemeSwitchingOptions}" />
 
                 <controls:SettingsExpander
                     Header="{helpers:ResourceString Name=SwitchBehavior}"

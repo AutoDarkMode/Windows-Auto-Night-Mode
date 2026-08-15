@@ -1141,4 +1141,8 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="PauseMode_Timed" xml:space="preserve">
     <value>Timed</value>
   </data>
+  <data name="ThemeSwitchingOptions" xml:space="preserve">
+    <value>Theme switching options</value>
+    <comment>group header</comment>
+  </data>
 </root>
