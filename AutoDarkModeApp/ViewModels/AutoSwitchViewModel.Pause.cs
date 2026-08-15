@@ -123,7 +123,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     int MapMinutesToIndex(int? minutes)
                     {
                         if (minutes == null) return 0; //fallback
-                        int[] options = { 15, 30, 60, 120, 240, 480, 720 };
+                        int[] options = { 30, 60, 120, 240, 480, 720 };
                         for (int i = 0; i < options.Length; i++)
                         {
                             if (minutes <= options[i]) return i + 2; // +2 because Off and Once are indices 0 and 1
@@ -173,13 +173,13 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 CurrentPauseMinutes = null;
                 SendPauseOnce();
                 break;
-            case 2: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 15; SendPauseTimed(15); break;
-            case 3: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 30; SendPauseTimed(30); break;
-            case 4: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 60; SendPauseTimed(60); break;
-            case 5: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 120; SendPauseTimed(120); break;
-            case 6: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 240; SendPauseTimed(240); break;
-            case 7: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 480; SendPauseTimed(480); break;
-            case 8: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
+            //case 2: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 15; SendPauseTimed(15); break;
+            case 2: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 30; SendPauseTimed(30); break;
+            case 3: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 60; SendPauseTimed(60); break;
+            case 4: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 120; SendPauseTimed(120); break;
+            case 5: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 240; SendPauseTimed(240); break;
+            case 6: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 480; SendPauseTimed(480); break;
+            case 7: CurrentPauseMode = PauseMode.Timed; CurrentPauseMinutes = 720; SendPauseTimed(720); break; // 12h
         }
         UpdateInfoText();
     }

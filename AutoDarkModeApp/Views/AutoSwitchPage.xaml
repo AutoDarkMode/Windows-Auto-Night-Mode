@@ -638,7 +638,7 @@
                                 <!--  once  -->
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_Once}" Visibility="{x:Bind ViewModel.PauseOptionsOnceVisibility, Mode=OneWay}" />
                                 <!--  timed  -->
-                                <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_15m}" />
+                                <!--<ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_15m}" />-->
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_30m}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_1h}" />
                                 <ComboBoxItem Content="{helpers:ResourceString Name=PauseMode_2h}" />

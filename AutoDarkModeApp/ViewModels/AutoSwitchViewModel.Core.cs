@@ -105,8 +105,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-
         // Check ambient light sensor availability and set up monitoring
         try
         {

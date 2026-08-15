@@ -1108,9 +1108,6 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="PauseAutoSwitch" xml:space="preserve">
     <value>Pause automatic switching</value>
   </data>
-  <data name="PauseMode_15m" xml:space="preserve">
-    <value>15 minutes</value>
-  </data>
   <data name="PauseMode_30m" xml:space="preserve">
     <value>30 minutes</value>
   </data>
