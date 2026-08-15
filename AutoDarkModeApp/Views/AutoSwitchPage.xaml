@@ -224,37 +224,34 @@
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
-                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled}"
-                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
-                            <StackPanel Orientation="Horizontal" Spacing="24">
-                                <TextBox
-                                    MinWidth="120"
-                                    BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                    Header="{helpers:ResourceString Name=Latitude}"
-                                    InputScope="Number"
-                                    Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
-                                <TextBox
-                                    MinWidth="120"
-                                    BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
-                                    Header="{helpers:ResourceString Name=Longitude}"
-                                    InputScope="Number"
-                                    Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
-                                <Button
-                                    VerticalAlignment="Bottom"
-                                    Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
-                                    Content="{helpers:ResourceString Name=ApplyGeo}" />
-                            </StackPanel>
-                        </controls:SettingsCard>
-
-                        <controls:SettingsCard
-                            HorizontalContentAlignment="Stretch"
-                            ContentAlignment="Vertical"
                             IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
                             Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
-                            <HyperlinkButton
-                                Content="{helpers:ResourceString Name=GetCoordinates}"
-                                NavigateUri="https://www.latlong.net/"
-                                ToolTipService.ToolTip="latlong.net" />
+                            <StackPanel Spacing="16">
+                                <StackPanel Orientation="Horizontal" Spacing="24">
+                                    <TextBox
+                                        MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                        Header="{helpers:ResourceString Name=Latitude}"
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                    <TextBox
+                                        MinWidth="120"
+                                        BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                        Header="{helpers:ResourceString Name=Longitude}"
+                                        InputScope="Number"
+                                        Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                    <Button
+                                        VerticalAlignment="Bottom"
+                                        Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
+                                        Content="{helpers:ResourceString Name=ApplyGeo}" />
+                                </StackPanel>
+
+                                <HyperlinkButton
+                                    Content="{helpers:ResourceString Name=GetCoordinates}"
+                                    NavigateUri="https://www.latlong.net/"
+                                    Style="{StaticResource InlineHyperlinkButtonStyle}"
+                                    ToolTipService.ToolTip="latlong.net" />
+                            </StackPanel>
                         </controls:SettingsCard>
 
                         <!--  Follow Windows Night Light  -->

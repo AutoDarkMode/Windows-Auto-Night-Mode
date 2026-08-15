@@ -47,6 +47,15 @@
         <Setter Property="Margin" Value="0,28,0,4" />
     </Style>
 
+    <Style x:Key="InlineHyperlinkButtonStyle"
+           TargetType="HyperlinkButton"
+           BasedOn="{StaticResource DefaultHyperlinkButtonStyle}">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    
+
     <!--  ThemeDictionaries  -->
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
