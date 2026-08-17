@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AutomaticThemeSwitch" xml:space="preserve">
-    <value>自動切換主題</value>
+    <value>自動主題切換</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>確認</value>
@@ -280,5 +280,8 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>正在更新至</value>
+  </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>1 小時</value>
   </data>
 </root>
