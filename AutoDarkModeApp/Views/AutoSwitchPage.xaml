@@ -81,7 +81,8 @@
                                         CommandParameter="AmbientLight"
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         GroupName="TriggerMode"
-                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"/>
+                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
+                                        IsEnabled="True" />
                                     <FontIcon
                                         Margin="0,4,0,0"
                                         FontSize="12"
@@ -125,47 +126,12 @@
                             </StackPanel>
                         </controls:SettingsCard>
 
-                        <!--  Geo Location  -->
-                        <controls:SettingsCard
-                            HorizontalContentAlignment="Stretch"
-                            ContentAlignment="Vertical"
-                            IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
-                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=CoordinateTimes, Mode=OneWay}">
-                            <Grid ColumnSpacing="8" RowSpacing="16">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.Resources>
-                                    <Style BasedOn="{StaticResource BodyTextBlockStyle}" TargetType="TextBlock" />
-                                    <Style TargetType="FontIcon">
-                                        <Setter Property="FontSize" Value="16" />
-                                    </Style>
-                                </Grid.Resources>
-
-                                <FontIcon Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" Glyph="&#xE707;" />
-                                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.LocationBlockText, Mode=OneWay}" />
-                                <FontIcon
-                                    Grid.Row="1"
-                                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"
-                                    Glyph="&#xE895;" />
-                                <TextBlock
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Text="{x:Bind ViewModel.LocationNextUpdateDateDescription, Mode=OneWay}" />
-                            </Grid>
-                        </controls:SettingsCard>
-
                         <!--  Location  -->
                         <controls:SettingsCard
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
                             IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
-                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=LocationTimes, Mode=OneWay}">
+                            Visibility="{x:Bind ViewModel.LocationOrCoordinateSettingsCardVisibility, Mode=OneWay}">
                             <Grid ColumnSpacing="8" RowSpacing="16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
