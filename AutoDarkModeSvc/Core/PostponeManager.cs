@@ -197,6 +197,26 @@ public class PostponeManager
         return true;
     }
 
+
+    public bool ToggleSkipOnce()
+    {
+        // find any postpone item that is a skip once (pause or delay)
+        var existing = PostponeQueue.FirstOrDefault(x => x.Reason == Helper.PostponeItemPauseAutoSwitch && x.Expiry == null);
+        if (existing != null)
+        {
+            Remove(existing.Reason);
+            return false;
+        }
+
+        PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, isUserClearable: true);
+
+        var (nextSwitchAdjusted, skipType) = GetSkipNextSwitchExpiryTime();
+        item.SkipType = skipType;
+
+        Add(item);
+        return true;
+    }
+
     /// <summary>
     /// Calculates when the nextswitch postpone should expire when the time module is used
     /// </summary>
@@ -256,22 +276,30 @@ public class PostponeManager
     public void AddSkipNextSwitch()
     {
         (DateTime nextSwitchAdjusted, SkipType skipType) = GetSkipNextSwitchExpiryTime();
-        if (builder.Config.Governor == Governor.Default)
+        switch (builder.Config.Governor)
         {
-            PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, nextSwitchAdjusted.AddSeconds(1), skipType);
-            Add(item);
-        }
-        else if (builder.Config.Governor == Governor.NightLight)
-        {
-            PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch);
-            item.SkipType = skipType;
-            Add(item);
-        }
-        else if (builder.Config.Governor == Governor.AmbientLight)
-        {
-            // Ambient light has no day/night concept, so pause for a fixed hour after a manual pause
-            PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified);
-            Add(item);
+            case Governor.Default:
+            {
+                PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, nextSwitchAdjusted.AddSeconds(1), skipType);
+                Add(item);
+                break;
+            }
+
+            case Governor.NightLight:
+            {
+                PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch);
+                item.SkipType = skipType;
+                Add(item);
+                break;
+            }
+
+            case Governor.AmbientLight:
+            {
+                // Ambient light has no day/night concept, so pause for a fixed hour after a manual pause
+                PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, DateTime.Now.AddHours(1), SkipType.Unspecified);
+                Add(item);
+                break;
+            }
         }
     }
 

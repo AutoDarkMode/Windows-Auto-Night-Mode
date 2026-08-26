@@ -324,11 +324,24 @@ static class MessageParser
                 #region ToggleSkipNext
                 case Command.ToggleSkipNext:
                     Logger.Info("signal received: toggle skip next switch");
-                    bool enabled = state.PostponeManager.ToggleSkipNextSwitch();
+                    bool enabledNext = state.PostponeManager.ToggleSkipNextSwitch();
                     SendResponse(new ApiResponse()
                     {
                         StatusCode = StatusCode.Ok,
-                        Message = enabled.ToString()
+                        Message = enabledNext.ToString()
+                    }.ToString());
+                    break;
+                #endregion
+
+                #region ToggleSkipOnce
+                case Command.ToggleSkipOnce:
+                    Logger.Info("signal received: toggle skip once switch");
+                    bool enabledOnce = state.PostponeManager.ToggleSkipOnce();
+                    SendResponse(new ApiResponse()
+                    {
+                        StatusCode = StatusCode.Ok,
+                        Message = enabledOnce.ToString(),
+                        Details = state.PostponeManager.MakeQueueDto().Serialize()
                     }.ToString());
                     break;
                 #endregion

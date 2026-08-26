@@ -60,10 +60,14 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                             if (item.Expiry == null) anyNoExpiry = true;
                             if (item.IsUserClearable) canResume = true;
 
-                            item.SetCulture(new CultureInfo(
-                                Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
+                            item.SetCulture(new CultureInfo(Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride));
 
-                            return item.GetLocalizationData().BuildLocalizedString();
+                            // base localized text
+                            string text = item.GetLocalizationData().BuildLocalizedString();
+
+                            // Append expiry info
+
+                            return text;
                         }).ToList();
 
                         // Determine PauseMode based on the items in the queue
@@ -194,7 +198,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private void SendPauseOnce()
     {
         SendPauseOff();
-        MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipNext);
+        MessageHandler.Client.SendMessageAndGetReply(Command.ToggleSkipOnce);
     }
 
     private void SendPauseTimed(int minutes)

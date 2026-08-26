@@ -88,6 +88,9 @@ public static class Command
     public const string ToggleSkipNext = "--toggle-skip-next";
 
     [Includable]
+    public const string ToggleSkipOnce = "--toggle-skip-once";
+
+    [Includable]
     public const string ClearPostponeQueue = "--clear-postpone-queue";
 
     [Includable]
