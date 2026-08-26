@@ -26,7 +26,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Visible;
+                CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 break;
 
@@ -34,7 +34,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = true;
-                TimePickerVisibility = Visibility.Visible;
+                CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
@@ -43,7 +43,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
                 _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Visible;
+                CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = -720;
                 break;
@@ -53,7 +53,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Collapsed;
+                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
                 break;
@@ -70,7 +70,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;
-                TimePickerVisibility = Visibility.Collapsed;
+                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
 
                 if (SelectedPauseIndex == 1) // Once

@@ -26,7 +26,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public partial string? TimePickHourClock { get; set; }
 
     [ObservableProperty]
-    public partial Visibility TimePickerVisibility { get; set; }
+    public partial Visibility CustomTimeSettingsCardVisibility { get; set; }
 
     [ObservableProperty]
     public partial TimeSpan TimeLightStart { get; set; }
@@ -54,7 +54,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? LonValue { get; set; }
 
-    public Visibility LocationOrCoordinateSettingsCardVisibility =>
+    public Visibility LocationSettingsCardVisibility =>
         SelectedTriggerMode is SwitchTriggerMode.LocationTimes or SwitchTriggerMode.CoordinateTimes
             ? Visibility.Visible
             : Visibility.Collapsed;

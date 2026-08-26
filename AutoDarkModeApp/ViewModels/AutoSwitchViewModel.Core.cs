@@ -239,7 +239,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         if (_builder.Config.Governor == Governor.NightLight)
         {
             SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
-            TimePickerVisibility = Visibility.Collapsed;
+            CustomTimeSettingsCardVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Visible;
             OffsetTimesMinimum = 0;
             return;
@@ -248,7 +248,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         if (_builder.Config.Governor == Governor.AmbientLight)
         {
             SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
-            TimePickerVisibility = Visibility.Collapsed;
+            CustomTimeSettingsCardVisibility = Visibility.Collapsed;
             OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
             return;
         }
@@ -256,7 +256,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         if (!_builder.Config.Location.Enabled)
         {
             SelectedTriggerMode = SwitchTriggerMode.CustomTimes;
-            TimePickerVisibility = Visibility.Visible;
+            CustomTimeSettingsCardVisibility = Visibility.Visible;
             return;
         }
 
@@ -270,7 +270,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         OffsetTimesMinimum = -720;
-        TimePickerVisibility = Visibility.Visible;
+        CustomTimeSettingsCardVisibility = Visibility.Visible;
         OffsetTimeSettingsCardVisibility = Visibility.Visible;
     }
 
