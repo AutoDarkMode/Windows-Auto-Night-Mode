@@ -54,10 +54,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? LonValue { get; set; }
 
-    public Visibility LocationSettingsCardVisibility =>
-        SelectedTriggerMode is SwitchTriggerMode.LocationTimes or SwitchTriggerMode.CoordinateTimes
-            ? Visibility.Visible
-            : Visibility.Collapsed;
+    [ObservableProperty]
+    public partial Visibility LocationSettingsCardVisibility { get; set; }
 
     // ===========================
     // TRIGGER MODE: AMBIENT LIGHT

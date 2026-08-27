@@ -78,8 +78,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 break;
         }
 
-        PauseOptionsOnceVisibility = value == SwitchTriggerMode.AmbientLight
-            ? Visibility.Collapsed : Visibility.Visible;
+        LocationSettingsCardVisibility = SelectedTriggerMode is SwitchTriggerMode.LocationTimes or SwitchTriggerMode.CoordinateTimes
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        PauseOptionsOnceVisibility = value == SwitchTriggerMode.AmbientLight ? Visibility.Collapsed : Visibility.Visible;
 
         try
         {
