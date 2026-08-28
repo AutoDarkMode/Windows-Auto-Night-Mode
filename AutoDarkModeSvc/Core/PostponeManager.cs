@@ -201,14 +201,14 @@ public class PostponeManager
     public bool ToggleSkipOnce()
     {
         // find any postpone item that is a skip once (pause or delay)
-        var existing = PostponeQueue.FirstOrDefault(x => x.Reason == Helper.PostponeItemPauseAutoSwitch && x.Expiry == null);
+        var existing = PostponeQueue.FirstOrDefault(x => x.Reason == Helper.PostponeItemPauseOnce && x.Expiry == null);
         if (existing != null)
         {
             Remove(existing.Reason);
             return false;
         }
 
-        PostponeItem item = new(Helper.PostponeItemPauseAutoSwitch, isUserClearable: true);
+        PostponeItem item = new(Helper.PostponeItemPauseOnce, isUserClearable: true);
 
         var (nextSwitchAdjusted, skipType) = GetSkipNextSwitchExpiryTime();
         item.SkipType = skipType;

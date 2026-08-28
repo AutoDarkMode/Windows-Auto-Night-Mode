@@ -30,6 +30,7 @@ public static class Helper
     public const string UpdaterExecutableName = "AutoDarkModeUpdater.exe";
     public const string UpdaterDirName = "adm-updater";
     public const string PostponeItemPauseAutoSwitch = "PauseAutoSwitch";
+    public const string PostponeItemPauseOnce = "PauseOnce";
     public const string PostponeItemDelayAutoSwitch = "DelayAutoSwitch";
     public const string PostponeItemDelayGracePeriod = "SwitchNotification";
     public const string PostponeItemSessionLock = "SessionLock";
