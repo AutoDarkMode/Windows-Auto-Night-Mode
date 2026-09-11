@@ -132,6 +132,11 @@ static class ThemeManager
                 e.OverrideTheme(state.AmbientLight.Requested, ThemeOverrideSource.AmbientLight);
                 UpdateTheme(e);
             }
+            else if (builder.Config.Governor == Governor.Power)
+            {
+                e.OverrideTheme(state.PowerState.Requested, ThemeOverrideSource.Power);
+                UpdateTheme(e);
+            }
         }
         else
         {

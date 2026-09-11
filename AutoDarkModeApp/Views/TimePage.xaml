@@ -85,6 +85,12 @@
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                         Glyph="&#xE946;" />
                                 </StackPanel>
+                                <RadioButton
+                                    Command="{x:Bind ViewModel.SetTriggerModeCommand}"
+                                    CommandParameter="EnergySaver"
+                                    Content="{helpers:ResourceString Name=FollowEnergySavingMode}"
+                                    GroupName="TriggerMode"
+                                    IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=EnergySaver, Mode=OneWay}" />
                             </StackPanel>
 
                             <Border Style="{StaticResource DividerBorderStyle}" />
@@ -241,6 +247,12 @@
                                 Click="WindowsNightLightHyperlinkButton_Click"
                                 Content="{helpers:ResourceString Name=OpenWindowsNightLight}"
                                 Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=WindowsNightLight, Mode=OneWay}" />
+
+                            <!--  Energy Saver  -->
+                            <HyperlinkButton
+                                Click="WindowsPowerSleepHyperlinkButton_Click"
+                                Content="{helpers:ResourceString Name=OpenWindowsPowerSleep}"
+                                Visibility="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=EnergySaver, Mode=OneWay}" />
 
                             <!--  Ambient Light Sensor  -->
                             <StackPanel

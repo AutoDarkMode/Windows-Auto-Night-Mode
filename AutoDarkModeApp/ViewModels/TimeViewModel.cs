@@ -20,6 +20,7 @@ public partial class TimeViewModel : ObservableRecipient
         CoordinateTimes,
         WindowsNightLight,
         AmbientLight,
+        EnergySaver
     }
 
     [ObservableProperty]
@@ -567,6 +568,16 @@ public partial class TimeViewModel : ObservableRecipient
             return;
         }
 
+        if(_builder.Config.Governor == Governor.Power)
+        {
+            SelectedTriggerMode = SwitchTriggerMode.EnergySaver;
+            TimePickerVisibility = Visibility.Collapsed;
+            DividerBorderVisibility = Visibility.Collapsed;
+            OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+            PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+            return;
+        }
+
         if (!_builder.Config.Location.Enabled)
         {
             SelectedTriggerMode = SwitchTriggerMode.CustomTimes;
@@ -739,6 +750,16 @@ public partial class TimeViewModel : ObservableRecipient
                     AutoConfigure();
                 }
                 _builder.Config.Governor = Governor.AmbientLight;
+                _builder.Config.AutoThemeSwitchingEnabled = true;
+                _builder.Config.Location.Enabled = false;
+                _builder.Config.Location.UseGeolocatorService = false;
+                TimePickerVisibility = Visibility.Collapsed;
+                DividerBorderVisibility = Visibility.Collapsed;
+                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                break;
+
+            case SwitchTriggerMode.EnergySaver:
+                _builder.Config.Governor = Governor.Power;
                 _builder.Config.AutoThemeSwitchingEnabled = true;
                 _builder.Config.Location.Enabled = false;
                 _builder.Config.Location.UseGeolocatorService = false;

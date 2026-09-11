@@ -70,6 +70,7 @@ public class GlobalState
     public PostponeManager PostponeManager { get; }
     public NightLight NightLight { get; } = new();
     public AmbientLightState AmbientLight { get; } = new();
+    public PowerState PowerState { get; } = new();
     public SystemIdleModuleState SystemIdleModuleState { get; } = new();
     public bool InitSyncSwitchPerformed { get; set; } = false;
     private NotifyIcon NotifyIcon { get; set; }
@@ -257,6 +258,12 @@ public class AmbientLightState
     /// Callback to trigger re-evaluation of lux against current thresholds
     /// </summary>
     public Action ReEvaluateCallback { get; set; } = () => { };
+}
+
+public class  PowerState
+{
+    public Theme Requested { get; set; } = Theme.Unknown;
+    public int EnergySaver { get; set; } = 0;
 }
 
 public class SystemIdleModuleState

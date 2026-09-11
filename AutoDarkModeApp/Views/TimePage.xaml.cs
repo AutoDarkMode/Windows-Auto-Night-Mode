@@ -106,6 +106,11 @@ public sealed partial class TimePage : Page
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
     }
 
+    private async void WindowsPowerSleepHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:powersleep"));
+    }
+
     private void AmbientLightRangeSelector_Loaded(object sender, RoutedEventArgs e)
     {
         try

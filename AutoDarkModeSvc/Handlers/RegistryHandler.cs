@@ -146,6 +146,15 @@ static class RegistryHandler
         return byteData.Length > 24 && byteData[23] == decimal.ToByte(0x10) && byteData[24] == decimal.ToByte(0x00);
     }
 
+    public static bool IsEnergySaverEnabled()
+    {
+        using RegistryKey key = GetPowerKey();
+        var enabled = key.GetValue("EnergySaverState").Equals(1);
+        if (enabled)
+            return true;
+        return false;
+    }
+
     public static string GetActiveThemePath()
     {
         // call first becaues it refreshes the regkey
@@ -278,6 +287,12 @@ static class RegistryHandler
     private static RegistryKey GetNightLightKey()
     {
         RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate");
+        return key;
+    }
+
+    private static RegistryKey GetPowerKey()
+    {
+        RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power");
         return key;
     }
 
