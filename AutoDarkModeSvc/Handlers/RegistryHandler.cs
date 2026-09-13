@@ -19,7 +19,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
@@ -30,6 +33,61 @@ namespace AutoDarkModeSvc.Handlers;
 static class RegistryHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private const uint RegNotifyChangeLastSet = 0x00000004;
+    private static readonly Lock EnergySaverWatcherLock = new();
+    private static EventHandler EnergySaverStatusChangedHandlers;
+    private static CancellationTokenSource EnergySaverWatcherCancellation;
+    private static Task EnergySaverWatcherTask;
+
+    [DllImport("advapi32.dll", SetLastError = true)]
+    private static extern int RegNotifyChangeKeyValue(IntPtr hKey, bool watchSubtree, uint notifyFilter, IntPtr hEvent, bool asynchronous);
+
+    public static event EventHandler EnergySaverStatusChanged
+    {
+        add
+        {
+            lock (EnergySaverWatcherLock)
+            {
+                EnergySaverStatusChangedHandlers += value;
+                if (EnergySaverWatcherTask is null)
+                {
+                    EnergySaverWatcherCancellation = new CancellationTokenSource();
+                    EnergySaverWatcherTask = Task.Run(() => MonitorEnergySaverRegistry(EnergySaverWatcherCancellation.Token));
+                }
+            }
+        }
+        remove
+        {
+            CancellationTokenSource cancellation = null;
+            Task watcherTask = null;
+
+            lock (EnergySaverWatcherLock)
+            {
+                EnergySaverStatusChangedHandlers -= value;
+                if (EnergySaverStatusChangedHandlers is null)
+                {
+                    cancellation = EnergySaverWatcherCancellation;
+                    watcherTask = EnergySaverWatcherTask;
+                    EnergySaverWatcherCancellation = null;
+                    EnergySaverWatcherTask = null;
+                }
+            }
+
+            try
+            {
+                cancellation?.Cancel();
+                watcherTask?.Wait();
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "failed to stop the energy saver registry monitor");
+            }
+            finally
+            {
+                cancellation?.Dispose();
+            }
+        }
+    }
 
     public static string GetUbr()
     {
@@ -43,6 +101,61 @@ static class RegistryHandler
             Logger.Error(ex, "error while retrieving ubr, assuming none present");
         }
         return "0";
+    }
+
+    public static bool IsEnergySaverEnabled()
+    {
+        using RegistryKey key = GetPowerKey();
+        var enabled = key.GetValue("EnergySaverState").Equals(1);
+        if (enabled)
+            return true;
+        return false;
+    }
+
+    private static void MonitorEnergySaverRegistry(CancellationToken cancellationToken)
+    {
+        try
+        {
+            using RegistryKey powerKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power");
+            if (powerKey is null)
+            {
+                Logger.Error("could not open the power registry key for energy saver notifications");
+                return;
+            }
+
+            using AutoResetEvent registryChanged = new(false);
+            WaitHandle[] waitHandles = [registryChanged, cancellationToken.WaitHandle];
+
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                int result = RegNotifyChangeKeyValue(
+                    powerKey.Handle.DangerousGetHandle(),
+                    true,
+                    RegNotifyChangeLastSet,
+                    registryChanged.SafeWaitHandle.DangerousGetHandle(),
+                    true);
+
+                if (result != 0)
+                {
+                    Logger.Error("failed to register the energy saver registry notification. Error code: {ErrorCode}", result);
+                    return;
+                }
+
+                if (WaitHandle.WaitAny(waitHandles) == 0)
+                {
+                    EventHandler handlers;
+                    lock (EnergySaverWatcherLock)
+                    {
+                        handlers = EnergySaverStatusChangedHandlers;
+                    }
+                    handlers?.Invoke(null, EventArgs.Empty);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "energy saver registry monitor stopped unexpectedly");
+        }
     }
 
     /// <summary>
@@ -284,6 +397,12 @@ static class RegistryHandler
     private static RegistryKey GetThemesKey()
     {
         RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes");
+        return key;
+    }
+
+    private static RegistryKey GetPowerKey()
+    {
+        RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power");
         return key;
     }
 

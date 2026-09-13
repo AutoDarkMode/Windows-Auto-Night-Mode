@@ -58,6 +58,7 @@ public enum SwitchSource
     NightLightTrackerModule,
     AmbientLightSensorModule,
     BatteryStatusChanged,
+    EnergySaverStatusChanged,
     SystemResume,
     Manual,
     ExternalThemeSwitch,
@@ -83,6 +84,7 @@ public enum ThemeOverrideSource
     AmbientLight,
     ForceFlag,
     BatteryStatus,
+    EnerySaverStatus,
     PostponeManager
 }
 
