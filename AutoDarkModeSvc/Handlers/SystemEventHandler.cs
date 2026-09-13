@@ -31,6 +31,7 @@ static class SystemEventHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static bool darkThemeOnBatteryEnabled;
+    private static bool darkThemeOnEnergySaverEnabled;
     private static bool resumeEventEnabled;
     private static DateTime lastSystemTimeChange;
     private static readonly GlobalState state = GlobalState.Instance();
@@ -121,16 +122,28 @@ static class SystemEventHandler
 
     public static void RegisterThemeEvent()
     {
-        if (PowerManager.BatteryStatus == BatteryStatus.NotPresent)
-        {
-            return;
-        }
-        if (!darkThemeOnBatteryEnabled)
+        if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.NotPresent && !darkThemeOnBatteryEnabled)
         {
             Logger.Info("enabling event handler for dark mode on battery state discharging");
             PowerManager.PowerSupplyStatusChanged += PowerManager_BatteryStatusChanged;
             darkThemeOnBatteryEnabled = true;
             PowerManager_BatteryStatusChanged(null, null);
+        }
+        else if (!builder.Config.Events.DarkThemeOnBattery && darkThemeOnBatteryEnabled)
+        {
+            DeregisterBatteryThemeEvent();
+        }
+
+        if (builder.Config.Events.DarkThemeOnEnergySaver && !darkThemeOnEnergySaverEnabled)
+        {
+            Logger.Info("enabling event handler for dark mode on energy saver enabled");
+            RegistryHandler.EnergySaverStatusChanged += EnergySaverRegistryChanged;
+            darkThemeOnEnergySaverEnabled = true;
+            EnergySaverRegistryChanged(null, null);
+        }
+        else if (!builder.Config.Events.DarkThemeOnEnergySaver && darkThemeOnEnergySaverEnabled)
+        {
+            DeregisterEnergySaverThemeEvent();
         }
     }
 
@@ -147,22 +160,46 @@ static class SystemEventHandler
         }
     }
 
-    public static void DeregisterThemeEvent()
+    private static void EnergySaverRegistryChanged(object sender, EventArgs e)
     {
         try
         {
-            if (darkThemeOnBatteryEnabled)
+            if (RegistryHandler.IsEnergySaverEnabled())
             {
-                Logger.Info("disabling event handler for dark mode on battery state discharging");
-                PowerManager.BatteryStatusChanged -= PowerManager_BatteryStatusChanged;
-                darkThemeOnBatteryEnabled = false;
-                ThemeManager.RequestSwitch(new(SwitchSource.BatteryStatusChanged));
+                Logger.Info("energy saver enabled, enabling dark mode");
+                ThemeManager.UpdateTheme(new(SwitchSource.EnergySaverStatusChanged, Theme.Dark));
+            }
+            else
+            {
+                ThemeManager.RequestSwitch(new(SwitchSource.EnergySaverStatusChanged));
             }
         }
-        catch (InvalidOperationException ex)
+        catch (Exception ex)
         {
-            Logger.Error(ex, "while deregistering SystemEvents_PowerModeChanged ");
+            Logger.Error(ex, "failed to apply the energy saver theme state");
         }
+    }
+
+    private static void DeregisterBatteryThemeEvent()
+    {
+        if (!darkThemeOnBatteryEnabled)
+            return;
+
+        Logger.Info("disabling event handler for dark mode on battery state discharging");
+        PowerManager.PowerSupplyStatusChanged -= PowerManager_BatteryStatusChanged;
+        darkThemeOnBatteryEnabled = false;
+        ThemeManager.RequestSwitch(new(SwitchSource.BatteryStatusChanged));
+    }
+
+    private static void DeregisterEnergySaverThemeEvent()
+    {
+        if (!darkThemeOnEnergySaverEnabled)
+            return;
+
+        Logger.Info("disabling event handler for dark mode on energy saver enabled");
+        RegistryHandler.EnergySaverStatusChanged -= EnergySaverRegistryChanged;
+        darkThemeOnEnergySaverEnabled = false;
+        ThemeManager.RequestSwitch(new(SwitchSource.EnergySaverStatusChanged));
     }
 
     public static void RegisterResumeEvent()

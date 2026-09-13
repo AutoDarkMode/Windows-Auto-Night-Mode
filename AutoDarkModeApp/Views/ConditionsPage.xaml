@@ -108,9 +108,9 @@
                     </controls:SettingsExpander.Items>
                     <controls:SettingsExpander.ItemsFooter>
                         <InfoBar
+                            Title="{helpers:ResourceString Name=AutoSwitchNotifyUnavailable_Title}"
                             BorderThickness="0,1,0,0"
                             CornerRadius="0"
-                            Title="{helpers:ResourceString Name=AutoSwitchNotifyUnavailable_Title}"
                             IsClosable="False"
                             IsOpen="{x:Bind ViewModel.IsAutoSwitchNotifyUnavailableInfoBarOpen, Mode=OneWay}"
                             Message="{helpers:ResourceString Name=AutoSwitchNotifyUnavailable_Content}"
@@ -118,16 +118,22 @@
                     </controls:SettingsExpander.ItemsFooter>
                 </controls:SettingsExpander>
 
+                <!--  Energy Saver  -->
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xEBBA;}">
+                    <controls:SettingsCard.Header>
+                        <CheckBox Content="{helpers:ResourceString Name=EnergySaverDarkMode}" IsChecked="{x:Bind ViewModel.EnergySaverDarkModeEnabled, Mode=TwoWay}" />
+                    </controls:SettingsCard.Header>
+                </controls:SettingsCard>
+
                 <!--  BatteryPowered  -->
                 <TextBlock
                     Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"
                     Text="{helpers:ResourceString Name=BatteryPowered}"
                     Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}" />
-                <controls:SettingsCard
-                    ContentAlignment="Left"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xE858;}"
-                    Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}">
-                    <CheckBox Content="{helpers:ResourceString Name=BatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xE858;}" Visibility="{x:Bind ViewModel.BatterySettingsCardVisibility, Mode=OneWay}">
+                    <controls:SettingsCard.Header>
+                        <CheckBox Content="{helpers:ResourceString Name=BatteryDarkMode}" IsChecked="{x:Bind ViewModel.BatteryDarkModeEnabled, Mode=TwoWay}" />
+                    </controls:SettingsCard.Header>
                 </controls:SettingsCard>
 
             </StackPanel>

@@ -63,6 +63,9 @@ public partial class ConditionsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool BatteryDarkModeEnabled { get; set; }
 
+    [ObservableProperty]
+    public partial bool EnergySaverDarkModeEnabled { get; set; }
+
     public ConditionsViewModel(IErrorService errorService)
     {
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
@@ -117,6 +120,7 @@ public partial class ConditionsViewModel : ObservableRecipient
         AutoSwitchNotifyGracePeriodAvailable = AutoSwitchNotifyAvailable && AutoSwitchNotifyEnabled;
         BatterySettingsCardVisibility = PowerManager.BatteryStatus != BatteryStatus.NotPresent;
         BatteryDarkModeEnabled = _builder.Config.Events.DarkThemeOnBattery;
+        EnergySaverDarkModeEnabled = _builder.Config.Events.DarkThemeOnEnergySaver;
 
         _isInitializing = false;
     }
@@ -255,6 +259,22 @@ public partial class ConditionsViewModel : ObservableRecipient
             return;
 
         _builder.Config.Events.DarkThemeOnBattery = value;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SwitchModesViewModel");
+        }
+    }
+
+    partial void OnEnergySaverDarkModeEnabledChanged(bool value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Events.DarkThemeOnEnergySaver = value;
         try
         {
             _builder.Save();
