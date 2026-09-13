@@ -133,6 +133,9 @@ csharp_style_expression_bodied_lambdas = true:silent
 csharp_style_expression_bodied_local_functions = false:silent
 csharp_preserve_single_line_properties = true
 
+#Warnning - For new dotnet
+dotnet_diagnostic.IDE0390.severity = warning
+
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4

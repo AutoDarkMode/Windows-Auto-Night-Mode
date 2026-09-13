@@ -1,5 +1,4 @@
-﻿using AutoDarkModeApp.Contracts.Services;
-using Microsoft.UI.Windowing;
+﻿using Microsoft.UI.Windowing;
 
 namespace AutoDarkModeApp.Services;
 
@@ -12,23 +11,17 @@ public class CloseService(ILocalSettingsService localSettingsService) : ICloseSe
             return;
         }
 
-        var values = new List<KeyValuePair<string, object>>
-        {
-            new("WindowState", (int)presenter.State),
-        };
+        localSettingsService.SetValue("IsMainWindowMaximized", presenter.State == OverlappedPresenterState.Maximized);
 
         if (presenter.State == OverlappedPresenterState.Restored)
         {
             var position = App.MainWindow.AppWindow.Position;
             var size = App.MainWindow.AppWindow.Size;
 
-            values.Add(new("X", position.X));
-            values.Add(new("Y", position.Y));
-            values.Add(new("Width", size.Width));
-            values.Add(new("Height", size.Height));
+            localSettingsService.SetValue("MainWindowPositionX", position.X);
+            localSettingsService.SetValue("MainWindowPositionY", position.Y);
+            localSettingsService.SetValue("MainWindowWidth", size.Width);
+            localSettingsService.SetValue("MainWindowHeight", size.Height);
         }
-
-        // One write for all five values instead of five full-file rewrites in sequence.
-        localSettingsService.SaveSettings(values);
     }
 }
