@@ -55,7 +55,7 @@ public sealed partial class MainWindow : Window
         _navigationService.InitializeBreadcrumbBar(BreadcrumBarControl);
     }
 
-    private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.FrameworkElement sender, object args)
+    private void NavViewTitleBar_BackRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
     {
         if (NavigationFrame.CanGoBack)
         {
@@ -63,7 +63,7 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void NavViewTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.FrameworkElement sender, object args)
+    private void NavViewTitleBar_PaneToggleRequested(Microsoft.UI.Xaml.Controls.TitleBar sender, object args)
     {
         NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
     }
