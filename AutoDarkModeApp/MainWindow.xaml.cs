@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.UI;
-using Microsoft.UI.System;
 using Microsoft.UI.Windowing;
 using Windows.UI.WindowManagement;
 
@@ -10,7 +9,6 @@ namespace AutoDarkModeApp;
 public sealed partial class MainWindow : Window
 {
     private readonly INavigationService _navigationService;
-    private readonly ThemeSettings themeSettings;
 
     [DllImport("user32.dll")]
     private static extern uint GetDpiForWindow(IntPtr hWnd);
@@ -27,12 +25,11 @@ public sealed partial class MainWindow : Window
         TitleBar.Subtitle = Debugger.IsAttached ? "Debug" : "";
 
         // Listen for theme changes on the title bar and clean up when window closes
-        themeSettings = ThemeSettings.CreateForWindowId(AppWindow.Id);
-        themeSettings.Changed += ApplySystemThemeToCaptionButtons;
-        Closed += (s, e) => themeSettings.Changed -= ApplySystemThemeToCaptionButtons;
+        TitleBar.ActualThemeChanged += ApplySystemThemeToCaptionButtons;
+        Closed += (s, e) => TitleBar.ActualThemeChanged -= ApplySystemThemeToCaptionButtons;
 
         // Initial apply
-        ApplySystemThemeToCaptionButtons(themeSettings, new object());
+        ApplySystemThemeToCaptionButtons(TitleBar, new object());
 
         // Set app icons only if present to avoid throwing on missing files
         var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "AutoDarkModeIcon.ico");
@@ -71,33 +68,17 @@ public sealed partial class MainWindow : Window
         NavigationViewControl.IsPaneOpen = !NavigationViewControl.IsPaneOpen;
     }
 
-    private void ApplySystemThemeToCaptionButtons(ThemeSettings sender, object args)
+    private void ApplySystemThemeToCaptionButtons(FrameworkElement sender, object args)
     {
         // Align title bar and caption button colors with WinUI / Windows 11 semantics
         // Follow issue https://github.com/microsoft/microsoft-ui-xaml/issues/9722
-        if (themeSettings.HighContrast)
-        {
-            AppWindow.TitleBar.ButtonBackgroundColor = null;
-            AppWindow.TitleBar.ButtonForegroundColor = null;
-            AppWindow.TitleBar.ButtonInactiveBackgroundColor = null;
-            AppWindow.TitleBar.ButtonInactiveForegroundColor = null;
-            AppWindow.TitleBar.ButtonHoverBackgroundColor = null;
-            AppWindow.TitleBar.ButtonHoverForegroundColor = null;
-            AppWindow.TitleBar.ButtonPressedBackgroundColor = null;
-            AppWindow.TitleBar.ButtonPressedForegroundColor = null;
-        }
-        else
-        {
-            AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
-            AppWindow.TitleBar.ButtonForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlPageTextBaseHighBrush");
-            AppWindow.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            AppWindow.TitleBar.ButtonInactiveForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundChromeDisabledLowBrush");
-            AppWindow.TitleBar.ButtonHoverBackgroundColor = ThemeColorHelper.GetThemeColor("SystemControlBackgroundListLowBrush");
-            AppWindow.TitleBar.ButtonHoverForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundBaseHighBrush");
-            AppWindow.TitleBar.ButtonPressedBackgroundColor = ThemeColorHelper.GetThemeColor("SystemControlBackgroundListMediumBrush");
-            AppWindow.TitleBar.ButtonPressedForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundBaseHighBrush");
-        }
-
+        AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
+        AppWindow.TitleBar.ButtonForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlPageTextBaseHighBrush");
+        AppWindow.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+        AppWindow.TitleBar.ButtonInactiveForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundChromeDisabledLowBrush");
+        AppWindow.TitleBar.ButtonHoverBackgroundColor = ThemeColorHelper.GetThemeColor("SystemControlBackgroundListLowBrush");
+        AppWindow.TitleBar.ButtonHoverForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundBaseHighBrush");
+        AppWindow.TitleBar.ButtonPressedBackgroundColor = ThemeColorHelper.GetThemeColor("SystemControlBackgroundListMediumBrush");
+        AppWindow.TitleBar.ButtonPressedForegroundColor = ThemeColorHelper.GetThemeColor("SystemControlForegroundBaseHighBrush");
     }
-
 }
