@@ -12,7 +12,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
     public async Task ActivateAsync(object activationArgs)
     {
         // Navigate to default page
-        navigationService.NavigateTo(typeof(TimeViewModel).FullName!);
+        navigationService.NavigateTo(typeof(AutoSwitchViewModel).FullName!);
 
         // Move window to config position
         await MoveWindowAsync();

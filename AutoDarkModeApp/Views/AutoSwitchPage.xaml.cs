@@ -5,13 +5,13 @@ using Microsoft.UI.Xaml.Media.Animation;
 
 namespace AutoDarkModeApp.Views;
 
-public sealed partial class TimePage : Page
+public sealed partial class AutoSwitchPage : Page
 {
-    public TimeViewModel ViewModel { get; }
+    public AutoSwitchViewModel ViewModel { get; }
 
-    public TimePage()
+    public AutoSwitchPage()
     {
-        ViewModel = App.GetService<TimeViewModel>();
+        ViewModel = App.GetService<AutoSwitchViewModel>();
         InitializeComponent();
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
         Unloaded += (s, e) => ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
@@ -62,7 +62,7 @@ public sealed partial class TimePage : Page
         storyboard.Begin();
     }
 
-    private async void NoLocationAccessInfoBar_ActionButtonClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void NoLocationAccessInfoBar_ActionButtonClick(object sender, RoutedEventArgs e)
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:privacy-location"));
     }
@@ -101,7 +101,7 @@ public sealed partial class TimePage : Page
         args.Cancel = hasInvalidChars || hasMultipleDots || hasMultipleSeparators || hasMultipleMinuses || hasInvalidMinus || hasInvalidSeparatorStart || exceedsPrecision;
     }
 
-    private async void WindowsNightLightHyperlinkButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private async void WindowsNightLightHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
         await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:nightlight"));
     }

@@ -1,4 +1,4 @@
-﻿using AutoDarkModeApp.Services;
+using AutoDarkModeApp.Services;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -178,7 +178,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
-    // TODO: Different processing methods from TimeViewModel
+    // TODO: Different processing methods from AutoSwitchViewModel
     private async void RequestThemeSwitch()
     {
         try

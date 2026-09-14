@@ -47,13 +47,14 @@
         <Setter Property="Margin" Value="0,28,0,4" />
     </Style>
 
-    <!--  Divider line in SettingsExpander  -->
-    <Style x:Key="DividerBorderStyle" TargetType="Border">
-        <Setter Property="BorderThickness" Value="0,1,0,0" />
-        <Setter Property="BorderBrush" Value="{ThemeResource DividerStrokeColorDefaultBrush}" />
-        <Setter Property="Margin" Value="-16,0,-40,0" />
+    <Style
+        x:Key="InlineHyperlinkButtonStyle"
+        BasedOn="{StaticResource DefaultHyperlinkButtonStyle}"
+        TargetType="HyperlinkButton">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
-
 
     <!--  ThemeDictionaries  -->
     <ResourceDictionary.ThemeDictionaries>
