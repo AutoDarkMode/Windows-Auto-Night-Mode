@@ -119,7 +119,7 @@
                 </controls:SettingsExpander>
 
                 <!--  Energy Saver  -->
-                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xEBBB;}">
+                <controls:SettingsCard HeaderIcon="{ui:FontIcon Glyph=&#xEBC0;}">
                     <controls:SettingsCard.Header>
                         <CheckBox Content="{helpers:ResourceString Name=EnergySaverDarkMode}" IsChecked="{x:Bind ViewModel.EnergySaverDarkModeEnabled, Mode=TwoWay}" />
                     </controls:SettingsCard.Header>
