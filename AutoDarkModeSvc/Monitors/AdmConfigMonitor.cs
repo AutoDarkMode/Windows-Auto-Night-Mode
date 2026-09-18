@@ -204,7 +204,7 @@ class AdmConfigMonitor
     /// </summary>
     public void UpdateEventStates()
     {
-        SystemEventHandler.RegisterThemeEvent();
+        SystemEventHandler.UpdateThemeEventRegistrations();
     }
 
 

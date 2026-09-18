@@ -120,7 +120,7 @@ static class SystemEventHandler
         }
     }
 
-    public static void RegisterThemeEvent()
+    public static void UpdateThemeEventRegistrations()
     {
         if (builder.Config.Events.DarkThemeOnBattery && PowerManager.BatteryStatus != BatteryStatus.NotPresent && !darkThemeOnBatteryEnabled)
         {
