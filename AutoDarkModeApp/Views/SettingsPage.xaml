@@ -21,11 +21,11 @@
 
                 <!--  Compatibility warnings  -->
                 <InfoBar
+                    Title="{helpers:ResourceString Name=PowerToysConflict_Title}"
                     IsClosable="False"
                     IsOpen="{x:Bind ViewModel.IsPowerToysConflictBarOpen, Mode=OneWay}"
                     Message="{helpers:ResourceString Name=PowerToysConflict_Content}"
-                    Severity="Warning"
-                    Title="{helpers:ResourceString Name=PowerToysConflict_Title}" />
+                    Severity="Warning" />
 
                 <!--  Some settings  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Settings}" />

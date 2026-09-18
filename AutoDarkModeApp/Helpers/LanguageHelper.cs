@@ -7,7 +7,7 @@ public static class LanguageHelper
 {
     // Must be a member of SupportedCultures, otherwise it is rejected on every launch and no entry
     // in the language dropdown can match it.
-    public static string SelectedLanguageCode { get; set; } = "en";
+    public static string? SelectedLanguageCode { get; set; } = "en";
 
     public static readonly string[] SupportedCultures =
     [
@@ -20,11 +20,12 @@ public static class LanguageHelper
         "ar", "fa", "he"
     ];
 
-    public static async Task<string> GetDefaultLanguageAsync()
+    public static string GetDefaultLanguage()
     {
-        var localSettingsService = App.GetService<ILocalSettingsService>();
-        var language = await localSettingsService.ReadSettingAsync<string>("SelectedLanguageCode");
-        if (!string.IsNullOrEmpty(language) && TryMatchSupportedCulture(language, out var saved))
+        var localSettings = App.GetService<ILocalSettingsService>();
+        var savedLanguage = localSettings.GetValue<string>("SelectedLanguageCode");
+
+        if (!string.IsNullOrEmpty(savedLanguage) && TryMatchSupportedCulture(savedLanguage, out var saved))
         {
             SelectedLanguageCode = saved;
             return SelectedLanguageCode;
@@ -41,7 +42,12 @@ public static class LanguageHelper
         }
         // else keep the default
 
-        await localSettingsService.SaveSettingAsync("SelectedLanguageCode", SelectedLanguageCode);
+        localSettings.SetValue("SelectedLanguageCode", SelectedLanguageCode);
+
+        if (SelectedLanguageCode is null)
+        {
+            return "en";
+        }
         return SelectedLanguageCode;
     }
 
@@ -52,7 +58,7 @@ public static class LanguageHelper
     /// </summary>
     private static bool TryMatchSupportedCulture(string languageTag, out string match)
     {
-        for (var candidate = languageTag; !string.IsNullOrEmpty(candidate); )
+        for (var candidate = languageTag; !string.IsNullOrEmpty(candidate);)
         {
             var supported = SupportedCultures.FirstOrDefault(c => string.Equals(c, candidate, StringComparison.OrdinalIgnoreCase));
             if (supported != null)

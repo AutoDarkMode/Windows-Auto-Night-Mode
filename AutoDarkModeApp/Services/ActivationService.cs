@@ -11,11 +11,13 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
 {
     public async Task ActivateAsync(object activationArgs)
     {
+        AdaptingToLegacyConfigHelper.MigrationSettings(localSettingsService);
+
         // Navigate to default page
         navigationService.NavigateTo(typeof(TimeViewModel).FullName!);
 
         // Move window to config position
-        await MoveWindowAsync();
+        MoveWindow();
 
         // Activate the MainWindow.
         App.MainWindow.Activate();
@@ -76,14 +78,12 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         }
 
         // Only run at first startup
-        if (!await localSettingsService.ReadSettingAsync<bool>("NotFirstRun"))
+        if (!localSettingsService.GetValue<bool>("NotFirstRun"))
         {
-            Debug.WriteLine("first-run");
-
             AutostartHandler.EnableAutoStart(App.MainWindow.Content.XamlRoot);
-            await SystemTimeFormatAsync();
+            SystemTimeFormat();
             await AddJumpListAsync();
-            await localSettingsService.SaveSettingAsync("NotFirstRun", true);
+            localSettingsService.SetValue("NotFirstRun", true);
         }
         else
         {
@@ -91,34 +91,30 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         }
 
         // If language changed, add jumplist in new language
-        if (await localSettingsService.ReadSettingAsync<bool>("LanguageChanged"))
+        if (localSettingsService.GetValue<bool>("LanguageChanged"))
         {
             await AddJumpListAsync();
-            await localSettingsService.SaveSettingAsync("LanguageChanged", false);
+            localSettingsService.SetValue("LanguageChanged", false);
         }
     }
 
-    private async Task MoveWindowAsync()
+    private void MoveWindow()
     {
-        var left = await localSettingsService.ReadSettingAsync<int?>("X");
-        var top = await localSettingsService.ReadSettingAsync<int?>("Y");
-        var width = await localSettingsService.ReadSettingAsync<int?>("Width");
-        var height = await localSettingsService.ReadSettingAsync<int?>("Height");
-
-        // OverlappedPresenterState.Maximized is 0, so reading a missing key as int makes "never
-        // saved" indistinguishable from "was maximized". Default to Restored instead.
-        var windowState = await localSettingsService.ReadSettingAsync<int?>("WindowState")
-            ?? (int)OverlappedPresenterState.Restored;
+        var isMainWindowMaximized = localSettingsService.GetValue<bool>("IsMainWindowMaximized");
+        var positionX = localSettingsService.GetValue<int>("MainWindowPositionX");
+        var positionY = localSettingsService.GetValue<int>("MainWindowPositionY");
+        var width = localSettingsService.GetValue<int>("MainWindowWidth");
+        var height = localSettingsService.GetValue<int>("MainWindowHeight");
 
         if (width is > 0 && height is > 0)
         {
-            App.MainWindow.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(left ?? 0, top ?? 0, width.Value, height.Value));
+            App.MainWindow.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(positionX, positionY, width, height));
         }
 
         var presenter = App.MainWindow.AppWindow.Presenter as OverlappedPresenter;
-        if (presenter != null)
+        if (presenter is not null)
         {
-            var state = (OverlappedPresenterState)windowState;
+            var state = isMainWindowMaximized ? OverlappedPresenterState.Maximized : OverlappedPresenterState.Restored;
             if (state == OverlappedPresenterState.Maximized)
             {
                 presenter.Maximize();
@@ -197,13 +193,13 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         }
     }
 
-    private async Task SystemTimeFormatAsync()
+    private void SystemTimeFormat()
     {
         string sysFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
         sysFormat = sysFormat[..sysFormat.IndexOf(':')];
         if (sysFormat.Equals("hh") | sysFormat.Equals("h"))
         {
-            await localSettingsService.SaveSettingAsync("TwelveHourClock", true);
+            localSettingsService.SetValue("TwelveHourClock", true);
         }
     }
 

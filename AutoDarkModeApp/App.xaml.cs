@@ -56,7 +56,6 @@ public partial class App : Application
                 {
                     // Services
                     services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-                    services.AddSingleton<IFileService, FileService>();
 
                     services.AddSingleton<IActivationService, ActivationService>();
                     services.AddSingleton<ICloseService, CloseService>();
@@ -153,37 +152,43 @@ public partial class App : Application
     {
         // TODO: Log and handle exceptions as appropriate.
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        Debug.WriteLine(e.Exception);
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        base.OnLaunched(args);
-
-        // Handle JumpListCommand. The restart handoff argument is ours, not a jumplist command.
-        var arguments = Environment.GetCommandLineArgs();
-        if (arguments.Length > 1 && arguments[1] != RestartArgument)
+        try
         {
-            new PipeClient().SendMessageAndGetReply(arguments[1]);
-            App.Current.Exit();
-            return;
-        }
+            base.OnLaunched(args);
 
-        // Set App and Svc language
-        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = await LanguageHelper.GetDefaultLanguageAsync();
-        await Task.Run(() =>
-        {
+            // Handle JumpListCommand. The restart handoff argument is ours, not a jumplist command.
+            var arguments = Environment.GetCommandLineArgs();
+            if (arguments.Length > 1 && arguments[1] != RestartArgument)
+            {
+                new PipeClient().SendMessageAndGetReply(arguments[1]);
+                App.Current.Exit();
+                return;
+            }
+
+            // Set App and Svc language
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = LanguageHelper.GetDefaultLanguage();
             var builder = AdmConfigBuilder.Instance();
             builder.Load();
             builder.Config.Tunable.UICulture = LanguageHelper.SelectedLanguageCode; // For Svc and other services that need to know the UI culture
             builder.Save();
-        });
 
-        // NOTE: Here we use the DI container to get the MainWindow and set it as a static property, which not only conforms to the standard, but also facilitates other places to access the MainWindow.
-        MainWindow = GetService<MainWindow>();
-        MainWindow.Closed += (s, e) => GetService<ICloseService>().Close();
+            // NOTE: Here we use the DI container to get the MainWindow and set it as a static property, which not only conforms to the standard, but also facilitates other places to access the MainWindow.
+            MainWindow = GetService<MainWindow>();
+            MainWindow.Closed += (s, e) => GetService<ICloseService>().Close();
 
-        await GetService<IActivationService>().ActivateAsync(args);
+            await GetService<IActivationService>().ActivateAsync(args);
 
-        // NOTE: The MainWindow must be activated (i.e. made visible) in the ActivationService, not here in App.xaml.cs, because there are navigation events and adjustment of window position and size.
+            // NOTE: The MainWindow must be activated (i.e. made visible) in the ActivationService, not here in App.xaml.cs, because there are navigation events and adjustment of window position and size.
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+        }
     }
 }
