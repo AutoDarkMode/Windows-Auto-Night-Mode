@@ -137,7 +137,14 @@ static class SystemEventHandler
         if (builder.Config.Events.DarkThemeOnEnergySaver && !darkThemeOnEnergySaverEnabled)
         {
             Logger.Info("enabling event handler for dark mode on energy saver enabled");
-            RegistryHandler.EnergySaverStatusChanged += EnergySaverRegistryChanged;
+            if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+            {
+                RegistryHandler.EnergySaverStatusChanged += EnergySaverRegistryChanged;
+            }
+            else
+            {
+                PowerManager.EnergySaverStatusChanged += EnergySaverRegistryChanged;
+            }
             darkThemeOnEnergySaverEnabled = true;
             EnergySaverRegistryChanged(null, null);
         }
@@ -160,7 +167,7 @@ static class SystemEventHandler
         }
     }
 
-    private static void EnergySaverRegistryChanged(object sender, EventArgs e)
+    private static void EnergySaverRegistryChanged(object sender, object e)
     {
         try
         {
@@ -197,7 +204,14 @@ static class SystemEventHandler
             return;
 
         Logger.Info("disabling event handler for dark mode on energy saver enabled");
-        RegistryHandler.EnergySaverStatusChanged -= EnergySaverRegistryChanged;
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+        {
+            RegistryHandler.EnergySaverStatusChanged -= EnergySaverRegistryChanged;
+        }
+        else
+        {
+            PowerManager.EnergySaverStatusChanged -= EnergySaverRegistryChanged;
+        }
         darkThemeOnEnergySaverEnabled = false;
         ThemeManager.RequestSwitch(new(SwitchSource.EnergySaverStatusChanged));
     }

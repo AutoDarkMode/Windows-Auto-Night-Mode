@@ -27,6 +27,7 @@ using AutoDarkModeLib;
 using AutoDarkModeSvc.Handlers.IThemeManager2;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
 using Microsoft.Win32;
+using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers;
 
@@ -105,11 +106,20 @@ static class RegistryHandler
 
     public static bool IsEnergySaverEnabled()
     {
-        using RegistryKey key = GetPowerKey();
-        var enabled = key.GetValue("EnergySaverState").Equals(1);
-        if (enabled)
-            return true;
-        return false;
+        if(Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+        {
+            using RegistryKey key = GetPowerKey();
+            var enabled = key.GetValue("EnergySaverState")?.Equals(1);
+            if (enabled is true)
+                return true;
+            return false;
+        }
+        else
+        {
+            if(PowerManager.EnergySaverStatus == EnergySaverStatus.On)
+                return true;
+            return false;
+        }
     }
 
     private static void MonitorEnergySaverRegistry(CancellationToken cancellationToken)
