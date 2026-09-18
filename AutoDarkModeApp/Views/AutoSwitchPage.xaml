@@ -576,7 +576,7 @@
 
                         <controls:SettingsCard Header="{helpers:ResourceString Name=PostponeControl}">
                             <controls:SettingsCard.Description>
-                                <Grid ColumnSpacing="8">
+                                <Grid Margin="0,6,0,0" ColumnSpacing="8">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="Auto" />
