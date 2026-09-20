@@ -204,14 +204,7 @@ class AdmConfigMonitor
     /// </summary>
     public void UpdateEventStates()
     {
-        if (builder.Config.Events.DarkThemeOnBattery)
-        {
-            SystemEventHandler.RegisterThemeEvent();
-        }
-        else
-        {
-            SystemEventHandler.DeregisterThemeEvent();
-        }
+        SystemEventHandler.UpdateThemeEventRegistrations();
     }
 
 

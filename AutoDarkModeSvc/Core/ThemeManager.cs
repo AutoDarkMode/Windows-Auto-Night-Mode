@@ -74,11 +74,13 @@ static class ThemeManager
         }
 
 
-        // the night light and ambient light governors report a concrete theme instead of Theme.Resolve,
-        // so they would pass the check below and never reach the battery check further down.
-        // while discharging, their requests are dropped the same way the time switch module's are
-        if (builder.Config.Events.DarkThemeOnBattery 
-            && PowerManager.PowerSupplyStatus == PowerSupplyStatus.NotPresent
+        // The night light and ambient light governors report a concrete theme instead of Theme.Resolve,
+        // so they would pass the event checks below. While the battery is discharging or energy saver is
+        // enabled, their requests are dropped the same way the time switch module's are.
+        if (((builder.Config.Events.DarkThemeOnBattery
+                && PowerManager.PowerSupplyStatus == PowerSupplyStatus.NotPresent)
+            || (builder.Config.Events.DarkThemeOnEnergySaver
+                && RegistryHandler.IsEnergySaverEnabled()))
             && (e.Source == SwitchSource.NightLightTrackerModule || e.Source == SwitchSource.AmbientLightSensorModule))
         {
             return;
@@ -105,6 +107,23 @@ static class ThemeManager
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
                 e.OverrideTheme(Theme.Light, ThemeOverrideSource.BatteryStatus);
+                UpdateTheme(e);
+                return;
+            }
+        }
+
+        if (builder.Config.Events.DarkThemeOnEnergySaver)
+        {
+            if (RegistryHandler.IsEnergySaverEnabled())
+            {
+                if (e.Source == SwitchSource.TimeSwitchModule) return;
+                e.OverrideTheme(Theme.Dark, ThemeOverrideSource.EnerySaverStatus);
+                UpdateTheme(e);
+                return;
+            }
+            if (!builder.Config.AutoThemeSwitchingEnabled)
+            {
+                e.OverrideTheme(Theme.Light, ThemeOverrideSource.EnerySaverStatus);
                 UpdateTheme(e);
                 return;
             }

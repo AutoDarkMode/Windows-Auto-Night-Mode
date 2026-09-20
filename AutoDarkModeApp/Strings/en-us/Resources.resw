@@ -1144,4 +1144,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="Contributors" xml:space="preserve">
     <value>Contributors</value>
   </data>
+  <data name="EnergySaverDarkMode" xml:space="preserve">
+    <value>Switch to dark mode when Energy Saver is enabled</value>
+  </data>
 </root>

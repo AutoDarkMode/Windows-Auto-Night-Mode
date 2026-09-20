@@ -156,6 +156,7 @@ public class WindowsThemeMode
 public class Events
 {
     public bool DarkThemeOnBattery { get; set; }
+    public bool DarkThemeOnEnergySaver { get; set; }
     public bool Win10AllowLockscreenSwitch { get; set; } = false;
 }
 
