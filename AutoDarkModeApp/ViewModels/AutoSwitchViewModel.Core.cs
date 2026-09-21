@@ -12,6 +12,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
     private bool _isInitializing;
     private bool _isUpdating;
+    private bool _locationDataInitialized;
 
     public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
@@ -34,6 +35,11 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
         StateUpdateHandler.StartConfigWatcher();
+
+        // Watches location_data.yaml directly so background service updates (hourly timer / 24h cooldown)
+        // are reflected on this page immediately, without requiring an unrelated config.yaml save. See #1078.
+        StateUpdateHandler.AddDebounceEventOnLocationDataUpdate(HandleLocationDataUpdate);
+        StateUpdateHandler.StartLocationDataWatcher();
 
         StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
         StateUpdateHandler.StartPostponeTimer();
@@ -122,7 +128,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
-        LocationBlockText = "Msg_SearchLoc".GetLocalized();
+        if (!_locationDataInitialized)
+        {
+            LocationBlockText = "Msg_SearchLoc".GetLocalized();
+        }
 
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
@@ -136,7 +145,15 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                         case SwitchTriggerMode.LocationTimes:
                         case SwitchTriggerMode.CoordinateTimes:
                         {
-                            await LoadGeolocationData();
+                            if (!_locationDataInitialized)
+                            {
+                                // Poll the service for geolocator/access status only on true first load
+                                // (app startup / initial page open). Later LoadSettings() calls are
+                                // triggered by unrelated config saves (trigger mode, offsets, ...) and must
+                                // not re-poll the location service every time - see #1078 investigation.
+                                _locationDataInitialized = true;
+                                await LoadGeolocationData();
+                            }
 
                             LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
                             TimeLightStart = SunriseWithOffset.TimeOfDay;
@@ -173,5 +190,20 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             LoadSettings();
         });
         StateUpdateHandler.StartConfigWatcher();
+    }
+
+    /// <summary>
+    /// Fired when the service writes new geoposition data in the background (location_data.yaml changed),
+    /// independently of any config.yaml save. Refreshes the cached location display so the AutoSwitch page
+    /// reflects background updates without requiring the user to trigger an unrelated config save. Fixes #1078.
+    /// </summary>
+    private void HandleLocationDataUpdate()
+    {
+        StateUpdateHandler.StopLocationDataWatcher();
+        _dispatcherQueue.TryEnqueue(async () =>
+        {
+            await RefreshLocationDisplay();
+        });
+        StateUpdateHandler.StartLocationDataWatcher();
     }
 }
