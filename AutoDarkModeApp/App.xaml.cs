@@ -94,8 +94,8 @@ public partial class App : Application
                     services.AddTransient<HotkeysPage>();
                     services.AddTransient<WallpaperPickerViewModel>();
                     services.AddTransient<WallpaperPickerPage>();
-                    services.AddTransient<TimeViewModel>();
-                    services.AddTransient<TimePage>();
+                    services.AddTransient<AutoSwitchViewModel>();
+                    services.AddTransient<AutoSwitchPage>();
 
                     // Configuration
                     services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));

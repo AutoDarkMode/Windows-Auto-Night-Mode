@@ -168,14 +168,6 @@
   <data name="AutoSwitchNotification" xml:space="preserve">
     <value>Notify before automatically switching themes</value>
   </data>
-  <data name="AutoSwitchNotifyUnavailable_Content" xml:space="preserve">
-    <value>The ambient light sensor switches as soon as the brightness passes a threshold, so there is no upcoming switch to announce in advance.</value>
-    <comment>Info bar explaining why the switch notification option is disabled</comment>
-  </data>
-  <data name="AutoSwitchNotifyUnavailable_Title" xml:space="preserve">
-    <value>Not available with the ambient light sensor</value>
-    <comment>Info bar title shown when the ambient light governor is active</comment>
-  </data>
   <data name="AutoThemeSwitchingResumed" xml:space="preserve">
     <value>Auto theme switching resumed</value>
   </data>
@@ -375,24 +367,8 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="Hex code" xml:space="preserve">
     <value>Hex code</value>
   </data>
-  <data name="HideTrayIconMsg_Content" xml:space="preserve">
-    <value>Hiding the icon isn't recommended.
-Do you really want to continue?</value>
-  </data>
-  <data name="HideTrayIconMsg_Title" xml:space="preserve">
-    <value>Hide Tray Icon</value>
-  </data>
   <data name="Hotkeys" xml:space="preserve">
     <value>Hotkeys</value>
-  </data>
-  <data name="HotkeyDuplicateErrorTitle" xml:space="preserve">
-    <value>Duplicate Hotkey</value>
-  </data>
-  <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
-    <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
-  </data>
-  <data name="HotkeyInvalidErrorMessage" xml:space="preserve">
-    <value>Invalid hotkey combination. Please include at least one non-modifier key (e.g., a letter, number, or function key).</value>
   </data>
   <data name="IdleTime" xml:space="preserve">
     <value>Time in minutes before the system is considered idle</value>
@@ -556,10 +532,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="NextUpdateAt" xml:space="preserve">
     <value>Next update</value>
   </data>
-  <data name="NextUpdateInProgress" xml:space="preserve">
-    <value>In progress</value>
-    <comment>Shown instead of a date when the location has not been retrieved yet</comment>
-  </data>
   <data name="None" xml:space="preserve">
     <value>None</value>
   </data>
@@ -690,12 +662,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="PostponeTime_SkipOnce" xml:space="preserve">
     <value>Skip auto switch once</value>
   </data>
-  <data name="PowerToysConflict_Content" xml:space="preserve">
-    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
-  </data>
-  <data name="PowerToysConflict_Title" xml:space="preserve">
-    <value>PowerToys Light Switch detected</value>
-  </data>
   <data name="ProcessBlockList" xml:space="preserve">
     <value>Don't switch while certain apps are running</value>
   </data>
@@ -820,9 +786,6 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Theme11_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
     <comment>Must match Win.11 theme name. File: themeC.theme</comment>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Time</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Toggle theme</value>
@@ -1060,6 +1023,49 @@ Please note: This may introduce slight to moderate lag on some systems during th
   <data name="AccentApplyTaskbar" xml:space="preserve">
     <value>Accent color for the taskbar</value>
   </data>
+  <data name="PowerToysConflict_Content" xml:space="preserve">
+    <value>PowerToys Light Switch is active and may conflict with Auto Dark Mode. Disable it in PowerToys settings to avoid unexpected theme switching.</value>
+  </data>
+  <data name="PowerToysConflict_Title" xml:space="preserve">
+    <value>PowerToys Light Switch detected</value>
+  </data>
+  <data name="HideTrayIconMsg_Content" xml:space="preserve">
+    <value>Hiding the icon isn't recommended.
+Do you really want to continue?</value>
+  </data>
+  <data name="HideTrayIconMsg_Title" xml:space="preserve">
+    <value>Hide Tray Icon</value>
+  </data>
+  <data name="AutoSwitchNotifyUnavailable_Content" xml:space="preserve">
+    <value>The ambient light sensor switches as soon as the brightness passes a threshold, so there is no upcoming switch to announce in advance.</value>
+    <comment>Info bar explaining why the switch notification option is disabled</comment>
+  </data>
+  <data name="AutoSwitchNotifyUnavailable_Title" xml:space="preserve">
+    <value>Not available with the ambient light sensor</value>
+    <comment>Info bar title shown when the ambient light governor is active</comment>
+  </data>
+  <data name="HotkeyDuplicateErrorTitle" xml:space="preserve">
+    <value>Duplicate Hotkey</value>
+  </data>
+  <data name="HotkeyDuplicateErrorMessage" xml:space="preserve">
+    <value>This hotkey is already used by "{0}". Please choose a different key combination.</value>
+  </data>
+  <data name="HotkeyInvalidErrorMessage" xml:space="preserve">
+    <value>Invalid hotkey combination. Please include at least one non-modifier key (e.g., a letter, number, or function key).</value>
+  </data>
+  <data name="NextUpdateInProgress" xml:space="preserve">
+    <value>In progress</value>
+    <comment>Shown instead of a date when the location has not been retrieved yet</comment>
+  </data>
+  <data name="AutoSwitch" xml:space="preserve">
+    <value>Auto Switch</value>
+  </data>
+  <data name="SwitchBehavior" xml:space="preserve">
+    <value>Switch behavior</value>
+  </data>
+  <data name="ThemeSwitchingOptions" xml:space="preserve">
+    <value>Theme switching options</value>
+  </data>
   <data name="ShowTrayIcon" xml:space="preserve">
     <value>Show tray icon (recommended)</value>
   </data>
@@ -1118,7 +1124,7 @@ Please note: This may introduce slight to moderate lag on some systems during th
     <value>No sensor detected</value>
   </data>
   <data name="AmbientLightAutoConfigure" xml:space="preserve">
-    <value>Calibrate</value>
+    <value>Auto-set thresholds</value>
   </data>
   <data name="AmbientLightAutoConfigure_ToolTip" xml:space="preserve">
     <value>Automatically set thresholds based on current light level (±15% smart gap)</value>

@@ -14,7 +14,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
         AdaptingToLegacyConfigHelper.MigrationSettings(localSettingsService);
 
         // Navigate to default page
-        navigationService.NavigateTo(typeof(TimeViewModel).FullName!);
+        navigationService.NavigateTo(typeof(AutoSwitchViewModel).FullName!);
 
         // Move window to config position
         MoveWindow();
