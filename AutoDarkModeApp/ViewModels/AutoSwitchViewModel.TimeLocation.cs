@@ -111,10 +111,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             }
             else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             {
+                IsNoLocationAccessInfoBarOpen = false;
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
             else if (!_builder.Config.Location.UseGeolocatorService)
             {
+                IsNoLocationAccessInfoBarOpen = false;
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
         }
@@ -122,6 +124,41 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             return;
         }
+    }
+
+    /// <summary>
+    /// Lightweight refresh used when the service has written new location data in the background
+    /// (e.g. via the LocationData.yaml file watcher), or when trigger mode / offsets change and the
+    /// display simply needs to reflect the already-cached data. Unlike <see cref="LoadGeolocationData"/>
+    /// this does not poll the service for update/access status, so it is safe to call frequently
+    /// without adding load on the geolocator/service.
+    /// </summary>
+    private async Task RefreshLocationDisplay()
+    {
+        _builder.LoadLocationData();
+
+        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes && SelectedTriggerMode != SwitchTriggerMode.CoordinateTimes)
+        {
+            return;
+        }
+
+        try
+        {
+            LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
+            // if we successfully refreshed location data, the service is no longer being blocked by
+            // permission issues - clear a previously shown "no access" state
+            IsNoLocationAccessInfoBarOpen = false;
+        }
+        catch
+        {
+            // keep whatever text was previously shown if the region lookup fails
+        }
+
+        LocationHandler.GetSunTimesWithOffset(_builder, out DateTime sunriseWithOffset, out DateTime sunsetWithOffset);
+        TimeLightStart = sunriseWithOffset.TimeOfDay;
+        TimeDarkStart = sunsetWithOffset.TimeOfDay;
+
+        UpdateLocationNextUpdateDescription();
     }
 
     partial void OnTimeLightStartChanged(TimeSpan value)
