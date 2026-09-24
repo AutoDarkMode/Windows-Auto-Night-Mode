@@ -38,14 +38,17 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    private void HandleAutoTheme(bool value)
+    private void HandleAutoTheme(bool value, bool persist = true)
     {
         AutoThemeSwitchingEnabled = value;
 
         var mode = DetermineModeFromBackend();
-        SelectedTriggerMode = mode;
+        if (SelectedTriggerMode != mode) SelectedTriggerMode = mode;
 
         ApplyTriggerModeState(mode);
+
+        if (!persist || _builder.Config.AutoThemeSwitchingEnabled == value)
+            return;
 
         try
         {
@@ -151,6 +154,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         if (_isInitializing)
             return;
+
+        // Prevent flickering
+        if (DetermineModeFromBackend() == value) return;
 
         ApplyTriggerModeState(value);
 
