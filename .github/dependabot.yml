@@ -1,0 +1,138 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    open-pull-requests-limit: 5
+    schedule:
+      day: saturday
+      interval: weekly
+
+  # AutoDarkModeApp
+  - package-ecosystem: nuget
+    directory: /AutoDarkModeApp
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    groups:
+      app-development-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      app-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+
+  # AutoDarkModeLib
+  - package-ecosystem: nuget
+    directory: /AutoDarkModeLib
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    groups:
+      lib-development-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      lib-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+
+    # AutoDarkModeShell
+  - package-ecosystem: nuget
+    directory: /AutoDarkModeShell
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    groups:
+      shell-development-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      app-shellroduction-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+
+    # AutoDarkModeSvc
+  - package-ecosystem: nuget
+    directory: /AutoDarkModeSvc
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    groups:
+      svc-development-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      svc-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
+
+    # AutoDarkModeUpdater
+  - package-ecosystem: nuget
+    directory: /AutoDarkModeUpdater
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    groups:
+      updater-development-dependencies:
+        dependency-type: development
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+      updater-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-major
