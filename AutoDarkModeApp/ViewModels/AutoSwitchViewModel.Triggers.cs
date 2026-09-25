@@ -83,18 +83,29 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void ApplyTriggerModeState(SwitchTriggerMode mode)
     {
+        // Base: reset all to default state
+        // UI will not flicker
+        _builder.Config.Location.Enabled = false;
+        _builder.Config.Location.UseGeolocatorService = false;
+
+        LocationSettingsCardVisibility = Visibility.Collapsed;
+        CustomTimeSettingsCardVisibility = Visibility.Collapsed;
+        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+        PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+        OffsetTimesMinimum = -720;
+
         switch (mode)
         {
             case SwitchTriggerMode.CustomTimes:
                 _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
+                //_builder.Config.Location.Enabled = false;
+                //_builder.Config.Location.UseGeolocatorService = false;
 
-                LocationSettingsCardVisibility = Visibility.Collapsed;
+                //LocationSettingsCardVisibility = Visibility.Collapsed;
                 CustomTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                OffsetTimesMinimum = -720;
-                PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+                //OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                //OffsetTimesMinimum = -720;
+                //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
                 break;
             case SwitchTriggerMode.LocationTimes:
                 _builder.Config.Governor = Governor.Default;
@@ -104,40 +115,41 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 LocationSettingsCardVisibility = Visibility.Visible;
                 CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
+                //OffsetTimesMinimum = -720;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
                 break;
             case SwitchTriggerMode.CoordinateTimes:
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = false;
+                //_builder.Config.Location.UseGeolocatorService = false;
 
                 LocationSettingsCardVisibility = Visibility.Visible;
                 CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
+                //OffsetTimesMinimum = -720;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
                 break;
             case SwitchTriggerMode.WindowsNightLight:
                 _builder.Config.Governor = Governor.NightLight;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
+                //_builder.Config.Location.Enabled = false;
+                //_builder.Config.Location.UseGeolocatorService = false;
 
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
+                //LocationSettingsCardVisibility = Visibility.Collapsed;
+                //CustomTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
                 break;
             case SwitchTriggerMode.AmbientLight:
                 _builder.Config.Governor = Governor.AmbientLight;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+                //_builder.Config.Location.Enabled = false;
+                //_builder.Config.Location.UseGeolocatorService = false;
+
+                //LocationSettingsCardVisibility = Visibility.Collapsed;
+                //CustomTimeSettingsCardVisibility = Visibility.Collapsed;
+                //OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimesMinimum = 0;
-                PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+                //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
                 break;
         }
     }
