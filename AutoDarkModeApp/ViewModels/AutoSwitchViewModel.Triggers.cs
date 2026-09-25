@@ -45,20 +45,18 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         var mode = DetermineModeFromBackend();
         if (SelectedTriggerMode != mode) SelectedTriggerMode = mode;
 
-        ApplyTriggerModeState(mode);
+        if (_isInitializing) ApplyTriggerModeState(mode);
 
-        if (!persist || _builder.Config.AutoThemeSwitchingEnabled == value)
-            return;
-
-        try
-        {
-            _builder.Config.AutoThemeSwitchingEnabled = value;
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
-        }
+        if (persist && _builder.Config.AutoThemeSwitchingEnabled != value)
+            try
+            {
+                _builder.Config.AutoThemeSwitchingEnabled = value;
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+            }
     }
 
     private SwitchTriggerMode DetermineModeFromBackend()
