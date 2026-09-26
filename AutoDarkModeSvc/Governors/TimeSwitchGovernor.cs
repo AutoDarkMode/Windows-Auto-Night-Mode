@@ -14,7 +14,7 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
     public Governor Type => Governor.Default;
     private AdmConfigBuilder Builder { get; }
     private GlobalState State { get; } = GlobalState.Instance();
-    bool init = true;
+    private bool init = true;
 
     /// <summary>
     /// Instantiates a new TimeSwitchModule.
@@ -28,12 +28,12 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
 
     public GovernorEventArgs Run()
     {
-        TimedThemeState ts = new();
+        TimedThemeState tts = new();
         if (Builder.Config.AutoSwitchNotify.Enabled)
         {
             if (State.PostponeManager.Get(Helper.PostponeItemSessionLock) == null)
             {
-                if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(ts.NextSwitchTime.TimeOfDay, ts.CurrentSwitchTime.AddMilliseconds(2 * TimerFrequency.Main).TimeOfDay))
+                if (!State.PostponeManager.IsGracePeriod && Helper.NowIsBetweenTimes(tts.NextSwitchTime.TimeOfDay, tts.CurrentSwitchTime.AddMilliseconds(2 * TimerFrequency.Main).TimeOfDay))
                 {
                     ToastHandler.InvokeDelayAutoSwitchNotifyToast();
                     return new(true);
@@ -46,8 +46,8 @@ internal class TimeSwitchGovernor : IAutoDarkModeGovernor
         // only do calculation when necessary
         if (isInSwitchWindow)
         {
-            TimeSpan windowStartSpan = ts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
-            TimeSpan windowEndSpan = ts.CurrentSwitchTime.TimeOfDay;
+            TimeSpan windowStartSpan = tts.NextSwitchTime.AddMilliseconds(-TimerFrequency.Main).TimeOfDay;
+            TimeSpan windowEndSpan = tts.CurrentSwitchTime.TimeOfDay;
             // if reporting is enabled and we are not in the switch window, we need to set the report variable back to false
             if (!Helper.NowIsBetweenTimes(windowStartSpan, windowEndSpan))
             {
