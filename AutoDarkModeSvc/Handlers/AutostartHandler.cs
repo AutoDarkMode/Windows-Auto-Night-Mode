@@ -25,87 +25,6 @@ public static class AutoStartHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-    public static ApiResponse AddAutostart(bool modified = false)
-    {
-        bool regOk = false;
-        bool taskOk;
-        if (builder.Config.Tunable.UseLogonTask)
-        {
-            Logger.Debug("logon task mode selected");
-            taskOk = TaskSchdHandler.CreateLogonTask();
-            if (taskOk) regOk = RegistryHandler.RemoveAutoStart();
-
-            if (regOk & taskOk)
-            {
-                return new ApiResponse()
-                {
-                    StatusCode = modified ? StatusCode.Modified : StatusCode.Ok,
-                    Message = "autostart entry set (logon task)",
-                    Details = $"registry removal success: {regOk}"
-                };
-            }
-            else
-            {
-                regOk = RegistryHandler.AddAutoStart();
-                return new ApiResponse()
-                {
-                    StatusCode = StatusCode.Err,
-                    Message = "failed setting logon task, trying to set autostart entry",
-                    Details = $"autostart entry set success: {regOk}"
-                };
-            }
-        }
-        else
-        {
-            Logger.Debug("autostart mode selected");
-            taskOk = TaskSchdHandler.RemoveLogonTask();
-            regOk = RegistryHandler.AddAutoStart();
-            if (regOk)
-            {
-                return new ApiResponse()
-                {
-                    StatusCode = modified ? StatusCode.Modified : StatusCode.Ok,
-                    Message = "added autostart task successfully",
-                    Details = $"task removal success: {taskOk}"
-                };
-            }
-        }
-        return new ApiResponse()
-        {
-            StatusCode = StatusCode.Err,
-            Message = "autostart error",
-            Details = $"regOk: {regOk}, taskOk: {taskOk}"
-        };
-    }
-
-    public static ApiResponse RemoveAutostart()
-    {
-        bool ok;
-        if (builder.Config.Tunable.UseLogonTask)
-        {
-            Logger.Debug("logon task mode selected");
-            ok = TaskSchdHandler.RemoveLogonTask();
-        }
-        else
-        {
-            Logger.Debug("autostart mode selected");
-            ok = RegistryHandler.RemoveAutoStart();
-        }
-        if (ok)
-        {
-            return new ApiResponse()
-            {
-                StatusCode = StatusCode.Ok
-            };
-        }
-        else
-        {
-            return new ApiResponse()
-            {
-                StatusCode = StatusCode.Err
-            };
-        }
-    }
 
     public static ApiResponse GetAutostartState()
     {
@@ -142,8 +61,7 @@ public static class AutoStartHandler
             string autostartPath = RegistryHandler.GetAutostartPath();
             if (autostartPath != null)
             {
-                bool approved = RegistryHandler.IsAutostartApproved();
-                if (approved)
+                if (RegistryHandler.IsAutostartApproved())
                 {
                     return new()
                     {
@@ -170,6 +88,90 @@ public static class AutoStartHandler
         };
     }
 
+    public static ApiResponse AddAutostart(bool modified = false)
+    {
+        bool regOk = false;
+        bool taskOk;
+        if (builder.Config.Tunable.UseLogonTask)
+        {
+            Logger.Debug("logon task mode selected");
+            taskOk = TaskSchdHandler.CreateLogonTask();
+            if (taskOk) regOk = RegistryHandler.RemoveAutoStart();
+
+            if (regOk && taskOk)
+            {
+                return new ApiResponse()
+                {
+                    StatusCode = modified ? StatusCode.Modified : StatusCode.Ok,
+                    Message = "autostart entry set (logon task)",
+                    Details = $"registry removal success: {regOk}"
+                };
+            }
+            else
+            {
+                regOk = RegistryHandler.AddAutoStart();
+                return new ApiResponse()
+                {
+                    StatusCode = StatusCode.Err,
+                    Message = "failed setting logon task, trying to set autostart entry",
+                    Details = $"autostart entry set success: {regOk}"
+                };
+            }
+        }
+        else
+        {
+            Logger.Debug("autostart mode selected");
+            taskOk = TaskSchdHandler.RemoveLogonTask();
+            regOk = RegistryHandler.AddAutoStart();
+            if (regOk)
+            {
+                return new ApiResponse()
+                {
+                    StatusCode = modified ? StatusCode.Modified : StatusCode.Ok,
+                    Message = "added autostart task successfully",
+                    Details = $"task removal success: {taskOk}"
+                };
+            }
+        }
+
+        return new ApiResponse()
+        {
+            StatusCode = StatusCode.Err,
+            Message = "autostart error",
+            Details = $"regOk: {regOk}, taskOk: {taskOk}"
+        };
+    }
+
+    public static ApiResponse RemoveAutostart()
+    {
+        bool ok;
+        if (builder.Config.Tunable.UseLogonTask)
+        {
+            Logger.Debug("logon task mode selected");
+            ok = TaskSchdHandler.RemoveLogonTask();
+        }
+        else
+        {
+            Logger.Debug("autostart mode selected");
+            ok = RegistryHandler.RemoveAutoStart();
+        }
+
+        if (ok)
+        {
+            return new ApiResponse()
+            {
+                StatusCode = StatusCode.Ok
+            };
+        }
+        else
+        {
+            return new ApiResponse()
+            {
+                StatusCode = StatusCode.Err
+            };
+        }
+    }
+
     /// <summary>
     /// Validates the Auto Dark Mode autostart entries for correctness
     /// </summary>
@@ -184,6 +186,7 @@ public static class AutoStartHandler
                 Message = "validation disabled"
             };
         }
+
         //check if a logon task if used, needs to be reset if the folder is empty or the path differs from the execution base directory
         if (builder.Config.Tunable.UseLogonTask)
         {
@@ -243,6 +246,7 @@ public static class AutoStartHandler
             {
                 Logger.Warn(ex, "could not determine task scheduler autostart state:");
             }
+
             if (!recreate)
             {
                 string autostartPath = RegistryHandler.GetAutostartPath();
@@ -254,7 +258,8 @@ public static class AutoStartHandler
                 else
                 {
                     autostartPath = autostartPath.Replace("\"", "");
-                    if (!autostartPath.Contains(Helper.ExecutionPath))
+                    // use string.Equals to compare paths, ignoring case and culture
+                    if (!string.Equals(autostartPath, Helper.ExecutionPath, StringComparison.OrdinalIgnoreCase))
                     {
                         reason = "wrong path";
                         recreate = true;

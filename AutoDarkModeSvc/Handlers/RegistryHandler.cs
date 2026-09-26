@@ -31,8 +31,10 @@ using Windows.System.Power;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class RegistryHandler
+internal static class RegistryHandler
 {
+    // ### Static state and native interop ###
+
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private const uint RegNotifyChangeLastSet = 0x00000004;
     private static readonly Lock EnergySaverWatcherLock = new();
@@ -40,8 +42,11 @@ static class RegistryHandler
     private static CancellationTokenSource EnergySaverWatcherCancellation;
     private static Task EnergySaverWatcherTask;
 
+    // suggested: SYSLIB1054
     [DllImport("advapi32.dll", SetLastError = true)]
     private static extern int RegNotifyChangeKeyValue(IntPtr hKey, bool watchSubtree, uint notifyFilter, IntPtr hEvent, bool asynchronous);
+
+    // ### Energy saver watcher ###
 
     public static event EventHandler EnergySaverStatusChanged
     {
@@ -106,19 +111,15 @@ static class RegistryHandler
 
     public static bool IsEnergySaverEnabled()
     {
-        if(Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
+        if (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2)
         {
             using RegistryKey key = GetPowerKey();
             var enabled = key.GetValue("EnergySaverState")?.Equals(1);
-            if (enabled is true)
-                return true;
-            return false;
+            return enabled is true;
         }
         else
         {
-            if(PowerManager.EnergySaverStatus == EnergySaverStatus.On)
-                return true;
-            return false;
+            return PowerManager.EnergySaverStatus == EnergySaverStatus.On;
         }
     }
 
@@ -167,6 +168,8 @@ static class RegistryHandler
             Logger.Error(ex, "energy saver registry monitor stopped unexpectedly");
         }
     }
+
+    // ### Theme and personalization ###
 
     /// <summary>
     /// Switches spotlight state
@@ -256,22 +259,22 @@ static class RegistryHandler
     }
 
     /// <summary>
-    /// Checks if the bluelight is enabled
+    /// Checks if the night light is enabled
     /// </summary>
     /// <returns>true if enabled; false otherwise</returns>
     public static bool IsNightLightEnabled()
     {
         using RegistryKey key = GetNightLightKey();
         var data = key.GetValue("Data");
-        if (data is null)
-            return false;
+        if (data is null) return false;
+
         var byteData = (byte[])data;
         return byteData.Length > 24 && byteData[23] == decimal.ToByte(0x10) && byteData[24] == decimal.ToByte(0x00);
     }
 
     public static string GetActiveThemePath()
     {
-        // call first becaues it refreshes the regkey
+        // call first because it refreshes the regkey
         (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
         using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
         string themePath = (string)key.GetValue("CurrentTheme") ?? new(Path.Combine(Helper.UserThemesFolderPath, "Custom.theme"));
@@ -308,6 +311,8 @@ static class RegistryHandler
         }
         return themePath;
     }
+
+    // ### Accent and colorization ###
 
     public static string GetColorizationColor()
     {
@@ -366,54 +371,9 @@ static class RegistryHandler
     /// Retrieves the operating system version
     /// </summary>
     /// <returns>operating system version string</returns>
-    public static string GetOSversion()
+    public static string GetOSVersion()
     {
-        var osVersion = Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
-        return osVersion;
-    }
-
-    /// <summary>
-    /// Gets the current user's personaliation registry key
-    /// </summary>
-    /// <returns>HKCU personalization RegistryKey</returns>
-    private static RegistryKey GetPersonalizeKey()
-    {
-        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
-        return registryKey;
-    }
-
-    private static RegistryKey GetSpotlightKey()
-    {
-        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\DesktopSpotlight\Settings", true);
-        return registryKey;
-    }
-
-    private static RegistryKey GetDWMKey()
-    {
-        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
-        return registryKey;
-    }
-
-    /// <summary>
-    /// Gets the current user's bluelight registry key value
-    /// </summary>
-    /// <returns>HKCU bluelight RegistryKey value</returns>
-    private static RegistryKey GetNightLightKey()
-    {
-        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate");
-        return key;
-    }
-
-    private static RegistryKey GetThemesKey()
-    {
-        RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes");
-        return key;
-    }
-
-    private static RegistryKey GetPowerKey()
-    {
-        RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power");
-        return key;
+        return Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", "").ToString();
     }
 
     /// <summary>
@@ -423,13 +383,16 @@ static class RegistryHandler
     public static bool EnableThemeChangesMousePointers()
     {
         using RegistryKey themesKey = GetThemesKey();
-        if (themesKey.GetValue("ThemeChangesMousePointers").Equals(0)) {
+        if (themesKey.GetValue("ThemeChangesMousePointers").Equals(0))
+        {
             themesKey.SetValue("ThemeChangesMousePointers", 1, RegistryValueKind.DWord);
             return true;
         }
         return false;
     }
 
+
+    // ### Autostart ###
 
     /// <summary>
     /// Adds the application to Windows autostart
@@ -453,7 +416,6 @@ static class RegistryHandler
             Logger.Error(ex, "could not add service to autostart");
             return false;
         }
-
     }
 
     public static string GetAutostartPath()
@@ -477,14 +439,8 @@ static class RegistryHandler
         {
             using RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run", true);
             byte[] admKey = (byte[])registryKey.GetValue("AutoDarkMode");
-            if (admKey == null)
-            {
-                return true;
-            }
-            if (admKey[0] == 2 || admKey[0] == 0)
-            {
-                return true;
-            }
+            if (admKey == null) return true;
+            if (admKey[0] == 2 || admKey[0] == 0) return true;
         }
         catch (Exception ex)
         {
@@ -512,6 +468,8 @@ static class RegistryHandler
         return false;
     }
 
+    // ### Wallpaper and color filters ###
+
     public static string GetCurrentWallpaperSource()
     {
         try
@@ -529,14 +487,8 @@ static class RegistryHandler
     public static bool IsColorFilterActive()
     {
         var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-        if (filterKey != null)
-        {
-            return filterKey.Equals(1);
-        }
-        else
-        {
-            return false;
-        }
+        if (filterKey != null) return filterKey.Equals(1);
+        else return false;
     }
     public static void ColorFilterSetup()
     {
@@ -549,12 +501,14 @@ static class RegistryHandler
         {
             Logger.Error(ex, "error instantiating color filtering key:");
         }
+
         //on clean installs this registry key doesn't exist, so we need to create it
         if (filterType == null)
         {
             Logger.Warn("color filter key does not exist, creating");
             filterType = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\ColorFiltering", true);
         }
+
         var currentValue = filterType.GetValue("Active", null);
         if (currentValue == null) filterType.SetValue("Active", 0, RegistryValueKind.DWord);
 
@@ -565,18 +519,14 @@ static class RegistryHandler
         filterType.Dispose();
     }
 
-    private static RegistryKey GetColorFilterKey()
-    {
-        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
-        return registryKey;
-    }
-
     public static void SetColorFilter(bool enabled)
     {
         using RegistryKey key = GetColorFilterKey();
         var value = enabled ? 1 : 0;
         key.SetValue("Active", value, RegistryValueKind.DWord);
     }
+
+    // ### Cursor schemes ###
 
     public static Cursors GetCursorScheme(string name)
     {
@@ -600,8 +550,8 @@ static class RegistryHandler
             cursorsSystem = cursorsSystemRaw.ToList();
         }
 
-        string userTheme = cursorsUser.Where(x => x == name).FirstOrDefault();
-        string systemTheme = cursorsSystem.Where(x => x == name).FirstOrDefault();
+        string userTheme = cursorsUser.FirstOrDefault(x => x == name);
+        string systemTheme = cursorsSystem.FirstOrDefault(x => x == name);
 
         if (userTheme != null)
         {
@@ -695,5 +645,51 @@ static class RegistryHandler
         defaultValue.Item1 = schemeName;
         cursors.DefaultValue = defaultValue;
         return cursors;
+    }
+
+    // ### Registry key factories ###
+
+    /// <summary>
+    /// Gets the current user's personalization registry key
+    /// </summary>
+    /// <returns>HKCU personalization RegistryKey</returns>
+    private static RegistryKey GetPersonalizeKey()
+    {
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", true);
+    }
+
+    private static RegistryKey GetSpotlightKey()
+    {
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\DesktopSpotlight\Settings", true);
+    }
+
+    private static RegistryKey GetDWMKey()
+    {
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM", true);
+    }
+
+    /// <summary>
+    /// Gets the current user's night light registry key value
+    /// </summary>
+    /// <returns>HKCU night light RegistryKey value</returns>
+    private static RegistryKey GetNightLightKey()
+    {
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate", true);
+    }
+
+    private static RegistryKey GetThemesKey()
+    {
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes", true);
+    }
+
+    private static RegistryKey GetPowerKey()
+    {
+        return Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power", true);
+    }
+
+    private static RegistryKey GetColorFilterKey()
+    {
+        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
+        return registryKey;
     }
 }

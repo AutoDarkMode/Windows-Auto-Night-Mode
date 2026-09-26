@@ -103,7 +103,7 @@ static class UpdateHandler
                 response.Details = info.Serialize();
                 UpstreamResponse = response;
                 UpstreamVersion = info;
-                Logger.Warn("custom update urls are set, update at your own risk!");
+                Logger.Warn("custom update URLs are set, update at your own risk!");
                 Logger.Warn("do not proceed this except if you know what you are doing!");
                 return response;
             }
@@ -112,10 +112,7 @@ static class UpdateHandler
             UpstreamVersion = UpdateInfo.Deserialize(data);
             Version newVersion = new(UpstreamVersion.Tag);
 
-            if (RuntimeInformation.OSArchitecture == Architecture.Arm64)
-            {
-                IsARMUpgrade = true;
-            }
+            if (RuntimeInformation.OSArchitecture == Architecture.Arm64) IsARMUpgrade = true;
             string archString = IsARMUpgrade ? " (ARM64)" : "";
 
             if (currentVersion.CompareTo(newVersion) < 0)
@@ -198,26 +195,10 @@ static class UpdateHandler
         };
     }
 
-    private static string FetchVersionYaml()
-    {
-        using HttpClient client = new();
-        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
-        {
-            NoCache = true,
-            MaxAge = TimeSpan.FromSeconds(1),
-            MaxStale = false,
-            NoStore = true,
-        };
-        client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
-        Task<string> downloadString = client.GetStringAsync(GetUpdateUrl());
-        downloadString.Wait();
-        return downloadString.Result;
-    }
-
     /// <summary>
     /// Checks if auto update is allowed <br/>
     /// If the service has been installed in all users mode, this is always disabled <br/>
-    /// If aute auto install functionality has been disabled in the config file, also disallow
+    /// If the auto install functionality has been disabled in the config file, also disallow
     /// </summary>
     /// <returns>An ApiResponse with UnsupportedOperation if auto install is unavailable. <br/>
     /// If auto install is available, the latest update check response will be returned instead</returns>
@@ -258,69 +239,6 @@ static class UpdateHandler
             }
         }
         return UpstreamResponse;
-    }
-
-    [MethodImpl(MethodImplOptions.Synchronized)]
-    public static bool Downgrade(bool overrideSilent = false)
-    {
-        if (UpstreamResponse.StatusCode != StatusCode.Downgrade)
-        {
-            Logger.Info("updater called, but no cached downgrade upstream version available");
-            return false;
-        }
-
-        if (!UpstreamVersion.AutoUpdateAvailable)
-        {
-            Logger.Info("auto update blocked by upstream, please update manually");
-            return false;
-        }
-
-        Updating = true;
-        bool success = GetPatchData(overrideSilent, out _, true);
-        if (!success)
-        {
-            ToastHandler.RemoveUpdaterToast();
-            ToastHandler.InvokeFailedUpdateToast();
-            Updating = false;
-            return false;
-        }
-        EndBlockingProcesses(out bool shellRestart, out bool appRestart);
-
-        /*
-        string futureUpdaterDir = Path.Combine(Helper.ExecutionDir, "UpdaterFuture");
-        string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Helper.UpdaterExecutableName);
-        try
-        {
-            if (Directory.Exists(futureUpdaterDir)) Directory.Delete(futureUpdaterDir, true);
-            Directory.Move(Helper.ExecutionDirUpdater, futureUpdaterDir);
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(ex, "couldn't rename updater directory for downgarde:");
-            ToastHandler.RemoveUpdaterToast();
-            ToastHandler.InvokeFailedUpdateToast();
-            Updating = false;
-            return false;
-        }
-        */
-
-        Logger.Info("downgrade preparation complete");
-
-        if (shellRestart || appRestart)
-        {
-            ProcessStartInfo startInfo = new();
-            startInfo.ArgumentList.Add("--notify");
-            startInfo.ArgumentList.Add(shellRestart.ToString());
-            startInfo.ArgumentList.Add(appRestart.ToString());
-            startInfo.FileName = Helper.ExecutionPathUpdater;
-            startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
-            Process.Start(startInfo);
-        }
-        else
-        {
-            Process.Start(Helper.ExecutionPathUpdater);
-        }
-        return false;
     }
 
     [MethodImpl(MethodImplOptions.Synchronized)]
@@ -375,11 +293,76 @@ static class UpdateHandler
         }
         else
         {
+            ProcessStartInfo startInfo = new()
+            {
+                FileName = Helper.ExecutionPathUpdater,
+                WorkingDirectory = Helper.ExecutionDirUpdater
+            };
+            Process.Start(startInfo);
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.Synchronized)]
+    public static bool Downgrade(bool overrideSilent = false)
+    {
+        if (UpstreamResponse.StatusCode != StatusCode.Downgrade)
+        {
+            Logger.Info("updater called, but no cached downgrade upstream version available");
+            return false;
+        }
+
+        if (!UpstreamVersion.AutoUpdateAvailable)
+        {
+            Logger.Info("auto update blocked by upstream, please update manually");
+            return false;
+        }
+
+        Updating = true;
+        bool success = GetPatchData(overrideSilent, out _, true);
+        if (!success)
+        {
+            ToastHandler.RemoveUpdaterToast();
+            ToastHandler.InvokeFailedUpdateToast();
+            Updating = false;
+            return false;
+        }
+        EndBlockingProcesses(out bool shellRestart, out bool appRestart);
+
+        /*
+        string futureUpdaterDir = Path.Combine(Helper.ExecutionDir, "UpdaterFuture");
+        string futureUpdaterExecutablePath = Path.Combine(futureUpdaterDir, Helper.UpdaterExecutableName);
+        try
+        {
+            if (Directory.Exists(futureUpdaterDir)) Directory.Delete(futureUpdaterDir, true);
+            Directory.Move(Helper.ExecutionDirUpdater, futureUpdaterDir);
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "couldn't rename updater directory for downgrade:");
+            ToastHandler.RemoveUpdaterToast();
+            ToastHandler.InvokeFailedUpdateToast();
+            Updating = false;
+            return false;
+        }
+        */
+
+        Logger.Info("downgrade preparation complete");
+
+        if (shellRestart || appRestart)
+        {
             ProcessStartInfo startInfo = new();
+            startInfo.ArgumentList.Add("--notify");
+            startInfo.ArgumentList.Add(shellRestart.ToString());
+            startInfo.ArgumentList.Add(appRestart.ToString());
             startInfo.FileName = Helper.ExecutionPathUpdater;
             startInfo.WorkingDirectory = Helper.ExecutionDirUpdater;
             Process.Start(startInfo);
         }
+        else
+        {
+            Process.Start(Helper.ExecutionPathUpdater);
+        }
+        return false;
     }
 
     /// <summary>
@@ -391,10 +374,8 @@ static class UpdateHandler
     private static (bool, bool, bool) PrepareUpdate(bool overrideSilent)
     {
         bool success = GetPatchData(overrideSilent, out string unpackDirectory, false);
-        if (!success)
-        {
-            return (false, false, false);
-        }
+        if (!success) return (false, false, false);
+
         EndBlockingProcesses(out bool shellRestart, out bool appRestart);
         try
         {
@@ -413,6 +394,22 @@ static class UpdateHandler
             Logger.Error(ex, "updater failed, rollback failed, the updater is now missing and needs to be restored on next update attempt:");
             return (false, false, false);
         }
+    }
+
+    private static string FetchVersionYaml()
+    {
+        using HttpClient client = new();
+        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+        {
+            NoCache = true,
+            MaxAge = TimeSpan.FromSeconds(1),
+            MaxStale = false,
+            NoStore = true,
+        };
+        client.DefaultRequestHeaders.Add("User-Agent", UserAgent);
+        Task<string> downloadString = client.GetStringAsync(GetUpdateUrl());
+        downloadString.Wait();
+        return downloadString.Result;
     }
 
     private static bool GetPatchData(bool overrideSilent, out string unpackDirectory, bool downgrade)
@@ -453,18 +450,14 @@ static class UpdateHandler
             hashDownloadTask.Wait();
             byte[] buffer = hashDownloadTask.Result;
 
-            string expectedHash = Encoding.ASCII.GetString(buffer);
+            string expectedHash = Encoding.ASCII.GetString(buffer).Trim();
 
-            if (!Directory.Exists(Helper.UpdateDataDir))
-            {
-                Directory.CreateDirectory(Helper.UpdateDataDir);
-            }
-            else
+            if (Directory.Exists(Helper.UpdateDataDir))
             {
                 Logger.Warn("found unclean update dir state, cleaning up first");
                 Directory.Delete(Helper.UpdateDataDir, true);
-                Directory.CreateDirectory(Helper.UpdateDataDir);
             }
+            Directory.CreateDirectory(Helper.UpdateDataDir);
 
             var progress = new Progress<(float, long, long)>();
             progress.ProgressChanged += DownloadProgress;
@@ -514,99 +507,12 @@ static class UpdateHandler
         return true;
     }
 
-    public static void EndBlockingProcesses(out bool shellRestart, out bool appRestart)
-    {
-        shellRestart = false;
-        appRestart = false;
-        Process[] pShell = Array.Empty<Process>();
-        Process[] pApp = Array.Empty<Process>();
-
-        // kill auto dark mode app and shell if they were running to avoid file move/delete issues
-        var currentSessionID = Process.GetCurrentProcess().SessionId;
-        try
-        {
-            pShell = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
-            pApp = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
-
-            if (pShell.Length != 0)
-            {
-                pShell[0].Kill();
-                shellRestart = true;
-            }
-            if (pApp.Length != 0)
-            {
-                pApp[0].Kill();
-                appRestart = true;
-            }
-
-            bool shellExited = false;
-            bool appExited = false;
-
-            for (int i = 0; i < 5; i++)
-            {
-                try
-                {
-                    Thread.Sleep(500);
-                    Process[] pShellConfirm = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
-                    Process[] pAppConfirm = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
-                    if (pShellConfirm.Length == 0 && pAppConfirm.Length == 0)
-                    {
-                        shellExited = true;
-                        appExited = true;
-                        if (shellRestart || appRestart) Logger.Debug("other auto dark mode components have been stopped");
-                        break;
-                    }
-                    if (pShellConfirm.Length == 0)
-                    {
-                        appExited = true;
-                    }
-                    if (pAppConfirm.Length == 0)
-                    {
-                        shellExited = true;
-                    }
-                    foreach (Process p in pShellConfirm)
-                    {
-                        p.Dispose();
-                    }
-                    foreach (Process p in pAppConfirm)
-                    {
-                        p.Dispose();
-                    }
-                    Logger.Debug($"end blocking processes attempt: {i + 1}/5");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex, "could not verify if other auto dark mode components have been stopped:");
-                }
-                if (!shellExited || !appExited)
-                {
-                    Logger.Warn("other auto dark mode components still running after grace period");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger.Warn(ex, "other auto dark mode components still running: ");
-        }
-        finally
-        {
-            foreach (Process p in pShell)
-            {
-                p.Dispose();
-            }
-            foreach (Process p in pApp)
-            {
-                p.Dispose();
-            }
-        }
-    }
-
     private static bool UpdateUpdater(string unpackDirectory)
     {
         string tempDir = Path.Combine(Helper.ExecutionDir, "Temp");
         if (Directory.Exists(tempDir))
         {
-            Logger.Warn($"emp directory {tempDir} already exists, cleaning");
+            Logger.Warn($"temp directory {tempDir} already exists, cleaning");
             try
             {
                 Directory.Delete(tempDir, true);
@@ -651,6 +557,93 @@ static class UpdateHandler
         return true;
     }
 
+    public static void EndBlockingProcesses(out bool shellRestart, out bool appRestart)
+    {
+        shellRestart = false;
+        appRestart = false;
+        Process[] pShell = Array.Empty<Process>();
+        Process[] pApp = Array.Empty<Process>();
+
+        // kill auto dark mode app and shell if they were running to avoid file move/delete issues
+        var currentSessionID = Process.GetCurrentProcess().SessionId;
+        try
+        {
+            pShell = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
+            pApp = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
+
+            if (pShell.Length != 0)
+            {
+                pShell[0].Kill(true);
+                shellRestart = true;
+            }
+            if (pApp.Length != 0)
+            {
+                pApp[0].Kill(true);
+                appRestart = true;
+            }
+
+            bool shellExited = false;
+            bool appExited = false;
+
+            for (int i = 0; i < 5; i++)
+            {
+                try
+                {
+                    Thread.Sleep(500);
+                    Process[] pShellConfirm = Process.GetProcessesByName("AutoDarkModeShell").Where(p => p.SessionId == currentSessionID).ToArray();
+                    Process[] pAppConfirm = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
+                    if (pShellConfirm.Length == 0 && pAppConfirm.Length == 0)
+                    {
+                        shellExited = true;
+                        appExited = true;
+                        if (shellRestart || appRestart) Logger.Debug("other auto dark mode components have been stopped");
+                        break;
+                    }
+                    if (pShellConfirm.Length == 0)
+                    {
+                        shellExited = true;
+                    }
+                    if (pAppConfirm.Length == 0)
+                    {
+                        appExited = true;
+                    }
+                    foreach (Process p in pShellConfirm)
+                    {
+                        p.Dispose();
+                    }
+                    foreach (Process p in pAppConfirm)
+                    {
+                        p.Dispose();
+                    }
+                    Logger.Debug($"end blocking processes attempt: {i + 1}/5");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, "could not verify if other auto dark mode components have been stopped:");
+                }
+                if (!shellExited || !appExited)
+                {
+                    Logger.Warn("other auto dark mode components still running after grace period");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn(ex, "other auto dark mode components still running: ");
+        }
+        finally
+        {
+            foreach (Process p in pShell)
+            {
+                p.Dispose();
+            }
+            foreach (Process p in pApp)
+            {
+                p.Dispose();
+            }
+        }
+    }
+
     private static void DownloadProgress(object sender, (float, long, long) progress)
     {
         int percent = (int)progress.Item1;
@@ -661,8 +654,8 @@ static class UpdateHandler
         {
             if (percent % 10 == 0)
             {
-                string mbReceived = (receivedBytes / 1000000).ToString();
-                string mbTotal = (totalBytes / 1000000).ToString();
+                string mbReceived = (receivedBytes / 1_000_000).ToString();
+                string mbTotal = (totalBytes / 1_000_000).ToString();
                 nfi.NumberDecimalSeparator = ".";
                 Progress = percent;
                 string progressString = (Progress / 100d).ToString(nfi);
@@ -685,14 +678,12 @@ static class UpdateHandler
         {
         };
         string current = builder.Config.Updater.VersionQueryUrl;
-        if (current == null)
-        {
-            return defaultVersionQueryUrl;
-        }
+        if (current == null) return defaultVersionQueryUrl;
+
         bool blacklisted = blacklistUrls.Contains(current);
         if (blacklisted)
         {
-            Logger.Warn($"outdated version query url provided, using recomended url {defaultDownloadBaseUrl}");
+            Logger.Warn($"outdated version query URL provided, using recommended URL {defaultDownloadBaseUrl}");
             try
             {
                 builder.Config.Updater.VersionQueryUrl = null;
@@ -716,14 +707,12 @@ static class UpdateHandler
         {
         };
         string current = builder.Config.Updater.DownloadBaseUrl;
-        if (current == null)
-        {
-            return defaultDownloadBaseUrl;
-        }
+        if (current == null) return defaultDownloadBaseUrl;
+
         bool blacklisted = blacklistUrls.Contains(current);
         if (blacklisted)
         {
-            Logger.Warn($"outdated update base url provided, using recomended url {defaultDownloadBaseUrl}");
+            Logger.Warn($"outdated update base URL provided, using recommended URL {defaultDownloadBaseUrl}");
             try
             {
                 builder.Config.Updater.DownloadBaseUrl = null;
@@ -731,7 +720,7 @@ static class UpdateHandler
             }
             catch (Exception ex)
             {
-                Logger.Error(ex, "error saving config file while updating base url:");
+                Logger.Error(ex, "error saving config file while updating base URL:");
             }
             return defaultDownloadBaseUrl;
         }

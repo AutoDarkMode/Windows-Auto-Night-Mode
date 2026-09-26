@@ -26,66 +26,45 @@ using AutoDarkModeLib.ComponentSettings.Base;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class WallpaperHandler
+internal static class WallpaperHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     public static void SetSolidColor(SolidColors colors, Theme newTheme)
     {
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-        if (newTheme == Theme.Dark)
+        string? targetColor = newTheme switch
         {
-            Color dark = HexToColor(colors.Dark);
-            int res = handler.SetBackgroundColor(ToUint(dark));
-            if (res != 0)
-            {
-                Logger.Warn($"set background color exit code was {res}");
-            }
-            //Thread.Sleep(500);
-            handler.Enable(false);
-        }
-        else if (newTheme == Theme.Light)
-        {
-            Color light = HexToColor(colors.Light);
-            int res = handler.SetBackgroundColor(ToUint(light));
-            if (res != 0)
-            {
-                Logger.Warn($"set background color exit code was {res}");
-            }
-            //Thread.Sleep(500);
-            handler.Enable(false);
-        }
+            Theme.Dark => colors.Dark,
+            Theme.Light => colors.Light,
+            _ => null,
+        };
+
+        if (targetColor is null) return;
+
+        var res = handler.SetBackgroundColor(ToUint(HexToColor(targetColor)));
+        if (res != 0) Logger.Warn($"set background color exit code was {res}");
+
+        handler.Enable(false);
     }
 
     public static string GetSolidColor()
     {
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         Color c = ToColor(handler.GetBackgroundColor());
-        return $"#{(c.ToArgb() & 0x00FFFFFF).ToString("X6")}";
+        return $"#{c.ToArgb() & 0x00FFFFFF:X6}";
 
     }
 
     private static Color HexToColor(string hexString)
     {
-        if (hexString.IndexOf('#') != -1)
-            hexString = hexString.Replace("#", "");
-
-        int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
-        int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
-        int b = int.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
-        return Color.FromArgb(0, (byte)r, (byte)g, (byte)b);
+        return ColorTranslator.FromHtml(hexString);
     }
 
     public static string HexToRgb(string hexString)
     {
-        if (hexString.IndexOf('#') != -1)
-            hexString = hexString.Replace("#", "");
-
-        int r = int.Parse(hexString[..2], System.Globalization.NumberStyles.AllowHexSpecifier);
-        int g = int.Parse(hexString.Substring(2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
-        int b = int.Parse(hexString.Substring(4, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
-
-        return $"{r} {g} {b}";
+        var c = ColorTranslator.FromHtml(hexString);
+        return $"{c.R} {c.G} {c.B}";
     }
 
     public static bool SetEnabled(bool state)
@@ -105,29 +84,30 @@ static class WallpaperHandler
             MonitorSettings monitorSetting = monitorSettings.Find(s => s.Id == monitor.DeviceId);
             if (monitorSetting != null)
             {
-                if (newTheme == Theme.Dark)
+                switch (newTheme)
                 {
-                    if (!File.Exists(monitorSetting.DarkThemeWallpaper))
-                    {
-                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
-                        handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
-                    }
-                    else
-                    {
-                        handler.SetWallpaper(monitor.DeviceId, monitorSetting.DarkThemeWallpaper);
-                    }
-                }
-                else
-                {
-                    if (!File.Exists(monitorSetting.LightThemeWallpaper))
-                    {
-                        Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.LightThemeWallpaper ?? "null"}, monitor ${monitor.DeviceId}");
-                        handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
-                    }
-                    else
-                    {
-                        handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
-                    }
+                    case Theme.Dark:
+                        if (!File.Exists(monitorSetting.DarkThemeWallpaper))
+                        {
+                            Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.DarkThemeWallpaper ?? "null"}, monitor {monitor.DeviceId}");
+                            handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
+                        }
+                        else
+                        {
+                            handler.SetWallpaper(monitor.DeviceId, monitorSetting.DarkThemeWallpaper);
+                        }
+                        break;
+                    default:
+                        if (!File.Exists(monitorSetting.LightThemeWallpaper))
+                        {
+                            Logger.Warn($"target {Enum.GetName(newTheme)} wallpaper does not exist path: {monitorSetting.LightThemeWallpaper ?? "null"}, monitor {monitor.DeviceId}");
+                            handler.SetWallpaper(monitor.DeviceId, Helper.GetMissingWallpaperPath());
+                        }
+                        else
+                        {
+                            handler.SetWallpaper(monitor.DeviceId, monitorSetting.LightThemeWallpaper);
+                        }
+                        break;
                 }
             }
             else if (monitor.DeviceId == "")
@@ -150,10 +130,7 @@ static class WallpaperHandler
         {
             string id = handler.GetMonitorDevicePathAt(i);
             string wallpaper = handler.GetWallpaper(id);
-            if (id.Length > 0)
-            {
-                wallpapers.Add(new Tuple<string, string>(id, wallpaper));
-            }
+            if (id.Length > 0) wallpapers.Add(new Tuple<string, string>(id, wallpaper));
         }
         return wallpapers;
     }
@@ -164,6 +141,75 @@ static class WallpaperHandler
         return handler.GetPosition();
     }
 
+
+    /// <summary>
+    /// Sets the first background in a wallpaper collection
+    /// </summary>
+    /// <param name="wallpaperCollection">List with wallpapers</param>
+    /// <return>true if wallpaper switch succeeded</return>
+    public static (bool, string) SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
+    {
+        switch (newTheme)
+        {
+            case Theme.Dark:
+            {
+                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
+                var currentWallpaper = GetGlobalWallpaper();
+                return (currentWallpaper == globalWallpaper.Dark, currentWallpaper);
+            }
+
+            case Theme.Light:
+            {
+                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
+                var currentWallpaper = GetGlobalWallpaper();
+                return (currentWallpaper == globalWallpaper.Light, currentWallpaper);
+            }
+        }
+        return (false, "");
+    }
+
+    /// <summary>
+    /// Gets the current wallpaper
+    /// </summary>
+    /// <returns>string with a path to the current wallpaper</returns>
+    public static string GetGlobalWallpaper()
+    {
+        string currentWallpaper = new('\0', 260);
+        _ = Win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);
+        return currentWallpaper[..currentWallpaper.IndexOf('\0')];
+    }
+
+    /// <summary>
+    /// Advances the slideshow of all monitors by the specified direction.
+    /// 
+    /// <param name="direction">The direction to advance the slideshow.</param>"
+    /// </summary>
+    public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
+    {
+        try
+        {
+            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
+            for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
+            {
+                handler.AdvanceSlideshow(null, direction);
+                Thread.Sleep(200);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Error("could not advance slideshow", ex);
+        }
+    }
+
+    private static uint ToUint(Color c)
+    {
+        return unchecked((uint)ColorTranslator.ToWin32(c));
+    }
+
+    private static Color ToColor(this uint value)
+    {
+        return ColorTranslator.FromWin32(unchecked((int)value));
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct Rect
@@ -182,7 +228,6 @@ static class WallpaperHandler
         ShuffleImages = 0x01,     // When set, indicates that the order in which images in the slideshow are displayed can be randomized.
     }
 
-
     /// <summary>
     /// This enumeration is used by GetStatus to indicate the current status of the slideshow.
     /// </summary>
@@ -192,7 +237,6 @@ static class WallpaperHandler
         Slideshow = 0x02,
         DisabledByRemoteSession = 0x04,
     }
-
 
     /// <summary>
     /// This enumeration is used by the AdvanceSlideshow method to indicate whether to advance the slideshow forward or backward.
@@ -257,82 +301,12 @@ static class WallpaperHandler
     {
     }
 
-    /// <summary>
-    /// Sets the first background in a wallpaper collection
-    /// </summary>
-    /// <param name="wallpaperCollection">List with wallpapers</param>
-    /// <return>true if wallpaper switch succeeded</return>
-    public static (bool, string) SetGlobalWallpaper(GlobalWallpaper globalWallpaper, Theme newTheme)
-    {
-        if (newTheme == Theme.Dark)
-        {
-            _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
-            string currentWallpaper = GetGlobalWallpaper();
-            return (currentWallpaper == globalWallpaper.Dark, currentWallpaper);
-        }
-        else if (newTheme == Theme.Light)
-        {
-            _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
-            string currentWallpaper = GetGlobalWallpaper();
-            return (currentWallpaper == globalWallpaper.Light, currentWallpaper);
-        }
-        return (false, "");
-    }
-
-
-    /// <summary>
-    /// Advances the slideshow of all monitors by the specified direction.
-    /// 
-    /// <param name="direction">The direction to advance the slideshow.</param>"
-    /// </summary>
-    public static void AdvanceSlideshow(DesktopSlideshowDirection direction)
-    {
-        try
-        {
-            IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
-            for (uint i = 0; i < EnumDisplayDevicesWrapper.ListDisplays().Count; i++)
-            {
-                handler.AdvanceSlideshow(null, direction);
-                Thread.Sleep(200);
-            }
-        }
-        catch (Exception ex)
-        {
-            Logger.Error("could not advance slideshow", ex);
-        }
-    }
-
-    /// <summary>
-    /// Gets the currenvt wallpaper
-    /// </summary>
-    /// <returns>string with a path to the current wallpapers</returns>
-    public static string GetGlobalWallpaper()
-    {
-        string currentWallpaper = new('\0', 260);
-        _ = Win32.SystemParametersInfo(0x0073, currentWallpaper.Length, currentWallpaper, 0);
-        return currentWallpaper[..currentWallpaper.IndexOf('\0')];
-    }
-
     internal sealed class Win32
     {
+        // suggested: SYSLIB1054
 #pragma warning disable CA2101
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
 #pragma warning restore CA2101
-        internal static extern int SystemParametersInfo(int uAction, int uParam, String lpvParam, int fuWinIni);
-    }
-
-    private static uint ToUint(Color c)
-    {
-        //return (uint)(((c.A << 24) | (c.R << 16) | (c.G << 8) | c.B) & 0xffffffffL);
-        //return (uint)(0xFFFF * c.R + 0xFF * c.G + c.B);
-        return (uint)((c.R << 0) | (c.G << 8) | (c.B << 16));
-    }
-
-    private static Color ToColor(this uint value)
-    {
-        return Color.FromArgb((byte)((value >> 24) & 0xFF),
-                   (byte)(value & 0xFF),
-                   (byte)((value >> 8) & 0xFF),
-                   (byte)((value >> 16) & 0xFF));
+        internal static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
     }
 }
