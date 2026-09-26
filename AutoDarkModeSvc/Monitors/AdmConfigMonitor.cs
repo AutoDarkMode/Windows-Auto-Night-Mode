@@ -27,7 +27,7 @@ using AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
 namespace AutoDarkModeSvc.Monitors;
 
-class AdmConfigMonitor
+internal class AdmConfigMonitor
 {
     private static AdmConfigMonitor instance;
     private FileSystemWatcher ConfigWatcher { get; }
@@ -44,10 +44,7 @@ class AdmConfigMonitor
 
     public static AdmConfigMonitor Instance()
     {
-        if (instance == null)
-        {
-            instance = new AdmConfigMonitor();
-        }
+        instance ??= new AdmConfigMonitor();
         return instance;
     }
 
@@ -178,10 +175,7 @@ class AdmConfigMonitor
             builder.OnConfigUpdated(oldConfig);
 
             // fire warden ro register/unregister enabled/disabled modules
-            if (warden != null)
-            {
-                warden.Fire();
-            }
+            warden?.Fire();
 
             state.UpdateNotifyIcon(builder);
 

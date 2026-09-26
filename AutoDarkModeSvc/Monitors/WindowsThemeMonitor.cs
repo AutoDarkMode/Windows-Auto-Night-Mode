@@ -70,10 +70,8 @@ public static class WindowsThemeMonitor
     {
         try
         {
-            if (globalThemeEventWatcher != null)
-            {
-                return;
-            }
+            if (globalThemeEventWatcher != null) return;
+
             globalThemeEventWatcher = WMIHandler.CreateHKCURegistryValueMonitor(HandleThemeMonitorEvent, "SOFTWARE\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Themes", "CurrentTheme");
             globalThemeEventWatcher.Start();
             Logger.Info("theme monitor enabled");
@@ -92,7 +90,7 @@ public static class WindowsThemeMonitor
             globalThemeEventWatcher.Stop();
             Task.Delay(timeSpan).ContinueWith(e =>
             {
-                if (globalThemeEventWatcher != null) globalThemeEventWatcher.Start();
+                globalThemeEventWatcher?.Start();
                 IsPaused = false;
             });
         }
