@@ -12,9 +12,9 @@ namespace AutoDarkModeSvc.Modules;
 internal class GovernorModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    GlobalState State { get; } = GlobalState.Instance();
-    AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-    DateTime LastSwitchWindow { get; set; }
+    private GlobalState State { get; } = GlobalState.Instance();
+    private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
+    private DateTime LastSwitchWindow { get; set; }
     private IAutoDarkModeGovernor ActiveGovernor { get; set; }
     public GovernorModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
     {
@@ -26,10 +26,8 @@ internal class GovernorModule : AutoDarkModeModule
 
     public async override Task Fire(object caller = null)
     {
-        if (ActiveGovernor == null)
-        {
-            AutoManageGovernors(Builder.Config.Governor);
-        }
+        if (ActiveGovernor == null) AutoManageGovernors(Builder.Config.Governor);
+
         GovernorEventArgs result = ActiveGovernor.Run();
         if (result.InSwitchWindow && !State.SwitchApproach.ThemeSwitchApproaching)
         {
@@ -71,20 +69,20 @@ internal class GovernorModule : AutoDarkModeModule
     {
         if (ActiveGovernor?.Type != newGovernor)
         {
-            // not sure about this yet, but the idea is to reset the theme switch approaching flat in case the user config changes
+            // not sure about this yet, but the idea is to reset the theme switch approaching flag in case the user config changes
             State.SwitchApproach.ThemeSwitchApproaching = false;
             ActiveGovernor?.DisableHook();
-            if (newGovernor == Governor.Default)
+            switch (newGovernor)
             {
-                ActiveGovernor = new TimeSwitchGovernor();
-            }
-            else if (newGovernor == Governor.NightLight)
-            {
-                ActiveGovernor = new NightLightGovernor(this);
-            }
-            else if (newGovernor == Governor.AmbientLight)
-            {
-                ActiveGovernor = new AmbientLightGovernor(this);
+                case Governor.Default:
+                    ActiveGovernor = new TimeSwitchGovernor();
+                    break;
+                case Governor.NightLight:
+                    ActiveGovernor = new NightLightGovernor(this);
+                    break;
+                case Governor.AmbientLight:
+                    ActiveGovernor = new AmbientLightGovernor(this);
+                    break;
             }
             ActiveGovernor.EnableHook();
         }

@@ -95,7 +95,7 @@ public class ProcessBlockListModule : AutoDarkModeModule
 
     public override void DisableHook()
     {
-        Logger.Info("Removing any leftover process block list postones");
+        Logger.Info("Removing any leftover process block list postpones");
         RemovePostpone();
         State.SwitchApproach.RemoveDependency(this);
         base.DisableHook();
