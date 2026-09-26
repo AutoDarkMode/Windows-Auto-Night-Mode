@@ -50,14 +50,15 @@ public class SwitchEventArgs : EventArgs
 
     public void OverrideTheme(Theme newTheme, ThemeOverrideSource overrideSource)
     {
-        if (Theme == Theme.Unknown)
+        switch (Theme)
         {
-            Theme = newTheme;
-        }
-        else
-        {
-            Theme = newTheme;
-            _themeOverrideSources.Add(overrideSource);
+            case Theme.Unknown:
+                Theme = newTheme;
+                break;
+            default:
+                Theme = newTheme;
+                _themeOverrideSources.Add(overrideSource);
+                break;
         }
     }
 
