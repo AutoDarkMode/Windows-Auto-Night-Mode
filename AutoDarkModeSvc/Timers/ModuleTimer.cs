@@ -22,7 +22,7 @@ using AutoDarkModeSvc.Modules;
 
 namespace AutoDarkModeSvc.Timers;
 
-public class ModuleTimer
+internal class ModuleTimer
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private List<IAutoDarkModeModule> Modules { get; set; }
@@ -30,7 +30,7 @@ public class ModuleTimer
     public string Name { get; }
     private bool TickOnStart { get; }
 
-    readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     /// <summary>
     /// A ModuleTimer runs with a preset interval and periodically call registered <see cref="IAutoDarkModeModule"/> modules
@@ -56,13 +56,10 @@ public class ModuleTimer
         List<IAutoDarkModeModule> ready = new(Modules);
         if (builder.Config.Tunable.DebugTimerMessage)
         {
-            Logger.Debug($"{Name}timer signal received");
+            Logger.Debug($"{Name} timer signal received");
         }
 
-        ready.ForEach(t =>
-        {
-            t.Fire();
-        });
+        ready.ForEach(t => t.Fire());
     }
 
     /// <summary>
@@ -111,10 +108,7 @@ public class ModuleTimer
     {
         Logger.Trace($"starting {Name} timer with {Timer.Interval} ms timer interval");
         Timer.Start();
-        if (TickOnStart)
-        {
-            OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
-        }
+        if (TickOnStart) OnTimedEvent(this, EventArgs.Empty as ElapsedEventArgs);
     }
 
     public void Stop()
