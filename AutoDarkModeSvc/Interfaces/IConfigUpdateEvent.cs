@@ -23,5 +23,5 @@ namespace AutoDarkModeSvc.Interfaces;
 /// <typeparam name="T"></typeparam>
 public interface IConfigUpdateEvent<T>
 {
-    public void OnConfigUpdate(object oldConfig, T newConfig);
+    void OnConfigUpdate(object oldConfig, T newConfig);
 }
