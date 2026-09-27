@@ -19,8 +19,9 @@ SettingsCard, section-heading, page-width, spacing, and theme resources.
   editing, point insertion/removal, named presets, and a current-lux marker. The
   axis stays at 0–10,000 lux with subdivisions inside each logarithmic decade.
   Control points above 10,000 lux are rejected; higher live readings stay at the
-  chart edge. Curve edits are drafts until **Apply and save**. The brightness switch immediately
-  persists enablement using the last saved curve. New installations default off.
+  chart edge. Valid edits automatically save within 250 ms; finishing a drag saves
+  immediately. No Apply button is required. The adjustment-speed card defaults to
+  4 percentage points per second and accepts 0.1–20. New installations default off.
 * **Pico firmware** bundles the RP2040 UF2 from
   `artifacts/AdaptiveBrightness-win-x64-switch-layout`. The button validates the
   image and RPI-RP2 bootloader identity, asks for confirmation in the app, then
@@ -32,10 +33,12 @@ SettingsCard, section-heading, page-width, spacing, and theme resources.
 service. Leaving the page or closing the settings window does not stop it.
 The UI does not open CDC or write DDC brightness. Configuration is stored separately
 in `%LOCALAPPDATA%\AutoDarkMode\ambient-brightness.json`; a nearby `.status` file
-provides the background controller's live status. Changes are read every two seconds.
+provides the background controller's live status. Changes are read every 250 ms.
+Curve and speed changes update the running controller without reconnecting CDC
+or restarting the brightness ramp. Invalid numeric edits retain the last valid settings.
 
-The controller retains the reference implementation's 2 percentage-point/second
-ramp, 500 ms minimum write interval, actual VCP maximum detection, reconnect logic,
+The controller uses the configured rate limit, a 500 ms minimum write interval,
+actual VCP maximum detection, reconnect logic,
 and controller ownership protection. Existing Adaptive Brightness controllers are
 reported as conflicts rather than taking their serial port. A serial/disconnect
 failure retains the display's last brightness.
@@ -58,7 +61,7 @@ automation; an already installed older service does not implement this feature.
 
 ## Verified on 2026-09-27
 
-* Settings app and tray service built successfully; 18 logic checks passed.
+* Settings app and tray service built successfully; 23 logic checks passed.
 * The service output now omits the runtime-ID subdirectory, matching the required
   `adm-app/core/AutoDarkModeSvc.exe` layout. The earlier preview had connected to
   the installed older service, which lacked the brightness module.

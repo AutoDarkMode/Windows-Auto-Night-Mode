@@ -63,6 +63,9 @@ class Service : Form
 
     private bool closeApp = true;
     private bool admReady = false;
+    private ContextMenuStrip legacyTrayMenu;
+    private WinUITrayMenuBridge trayMenuBridge;
+    private bool trayMenuOpen;
 
     public Service(int timerMillis)
     {
@@ -139,6 +142,9 @@ class Service : Form
             ThemeManager.RequestSwitch(new(SwitchSource.Startup));
         }
         admReady = true;
+        trayMenuBridge = new WinUITrayMenuBridge();
+        try { trayMenuBridge.WarmUp(); }
+        catch (Exception ex) { Logger.Warn(ex, "could not warm up WinUI tray menu"); }
     }
 
     protected override void SetVisibleCore(bool value)
@@ -163,25 +169,63 @@ class Service : Form
         NotifyIcon.Text = "Auto Dark Mode";
         state.UpdateNotifyIcon(builder);
         NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
-        NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
-        NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;
-        NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
-        NotifyIcon.ContextMenuStrip.Items.Add("-");
-        NotifyIcon.ContextMenuStrip.Items.Add(exitMenuItem);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, forceDarkMenuItem);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, forceLightMenuItem);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, new ToolStripSeparator());
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, tryFixTheme);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, toggleThemeItem);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, pauseThemeSwitchItem);
-        NotifyIcon.ContextMenuStrip.Items.Insert(0, autoThemeSwitchingItem);
+        NotifyIcon.MouseUp += ShowWinUITrayMenu;
+        legacyTrayMenu = new ContextMenuStrip();
+        legacyTrayMenu.Opened += UpdateContextMenu;
+        legacyTrayMenu.Items.Add(openConfigDirItem);
+        legacyTrayMenu.Items.Add("-");
+        legacyTrayMenu.Items.Add(exitMenuItem);
+        legacyTrayMenu.Items.Insert(0, forceDarkMenuItem);
+        legacyTrayMenu.Items.Insert(0, forceLightMenuItem);
+        legacyTrayMenu.Items.Insert(0, new ToolStripSeparator());
+        legacyTrayMenu.Items.Insert(0, tryFixTheme);
+        legacyTrayMenu.Items.Insert(0, toggleThemeItem);
+        legacyTrayMenu.Items.Insert(0, pauseThemeSwitchItem);
+        legacyTrayMenu.Items.Insert(0, autoThemeSwitchingItem);
 
-        //NotifyIcon.ContextMenuStrip.ForeColor = Color.FromArgb(232, 232, 232);
+        //legacyTrayMenu.ForeColor = Color.FromArgb(232, 232, 232);
 
         if (Builder.Config.Tunable.ShowTrayIcon)
         {
             NotifyIcon.Visible = true;
         }
+    }
+
+    private async void ShowWinUITrayMenu(object sender, MouseEventArgs e)
+    {
+        if (e.Button != MouseButtons.Right || trayMenuOpen) return;
+        trayMenuOpen = true;
+        try
+        {
+            UpdateContextMenu(this, EventArgs.Empty);
+            var point = Cursor.Position;
+            var model = new TrayMenuModel { X = point.X, Y = point.Y, Dark = state.InternalTheme == Theme.Dark };
+            for (var i = 0; i < legacyTrayMenu.Items.Count; i++)
+            {
+                var item = legacyTrayMenu.Items[i];
+                if (!item.Available) continue;
+                var action = item as ToolStripMenuItem;
+                model.Items.Add(new TrayMenuEntry
+                {
+                    Id = i, Text = item.Text?.Replace("&", "") ?? "", Separator = item is ToolStripSeparator,
+                    Enabled = item.Enabled, Checked = action?.Checked ?? false,
+                    Checkable = item == autoThemeSwitchingItem || item == pauseThemeSwitchItem || item == forceDarkMenuItem || item == forceLightMenuItem,
+                    Glyph = item == toggleThemeItem ? "\uE793" : item == tryFixTheme ? "\uE90F" : i == legacyTrayMenu.Items.Count - 1 ? "\uE8BB" : "\uE8B7"
+                });
+            }
+            var selected = await trayMenuBridge.ShowAsync(model);
+            if (selected >= 0 && selected < legacyTrayMenu.Items.Count && legacyTrayMenu.Items[selected] is ToolStripMenuItem command && command.Enabled)
+            {
+                UpdateContextMenu(this, EventArgs.Empty);
+                command.PerformClick();
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn(ex, "WinUI tray menu unavailable, using fallback menu");
+            if (!IsDisposed) legacyTrayMenu.Show(Cursor.Position);
+        }
+        finally { trayMenuOpen = false; }
     }
 
     private void TryFixTheme(object sender, EventArgs e)
@@ -193,11 +237,11 @@ class Service : Form
     {
         if (state.InternalTheme == Theme.Dark)
         {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
+            legacyTrayMenu.Renderer = toolStripDarkRenderer;
         }
         else
         {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDefaultRenderer;
+            legacyTrayMenu.Renderer = toolStripDefaultRenderer;
         }
 
         if (state.ForcedTheme == Theme.Light)
@@ -274,6 +318,7 @@ class Service : Form
     private void Exit(object sender, EventArgs e)
     {
         Logger.Info("exiting service");
+        trayMenuBridge?.Dispose();
 
         state.PostponeManager.FlushPostponesToDisk();
 
@@ -290,13 +335,11 @@ class Service : Form
             {
                 var currentSessionID = Process.GetCurrentProcess().SessionId;
                 Process[] pApp = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.SessionId == currentSessionID).ToArray();
-                if (pApp.Length != 0)
-                {
-                    pApp[0].Kill();
-                }
                 foreach (Process p in pApp)
                 {
-                    p.Dispose();
+                    try { if (!p.HasExited) p.Kill(); }
+                    catch (InvalidOperationException) { }
+                    finally { p.Dispose(); }
                 }
             }
         }
@@ -413,7 +456,7 @@ class Service : Form
         }
         else
         {
-            foreach (var item in NotifyIcon.ContextMenuStrip.Items)
+            foreach (var item in legacyTrayMenu.Items)
             {
                 if (item is ToolStripMenuItem)
                 {
@@ -469,7 +512,8 @@ class Service : Form
                     }
                     else
                     {
-                        List<Process> processes = new(Process.GetProcessesByName("AutoDarkModeApp"));
+                        List<Process> processes = new(Process.GetProcessesByName("AutoDarkModeApp").Where(p =>
+                            p.MainWindowHandle != IntPtr.Zero && p.MainWindowTitle != TrayMenuProtocol.WindowTitle));
                         if (processes.Count > 0)
                         {
                             WindowHelper.BringProcessToFront(processes[0]);

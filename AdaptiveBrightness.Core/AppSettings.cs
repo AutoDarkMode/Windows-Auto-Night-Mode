@@ -14,7 +14,7 @@ public sealed record AppSettings
     public int PollIntervalMilliseconds { get; init; } = 250;
     public int MinimumWriteIntervalMilliseconds { get; init; } = 500;
     public double ChangeDeadbandPercent { get; init; } = 0.25;
-    public double BrightnessRampPercentPerSecond { get; init; } = 2;
+    public double BrightnessRampPercentPerSecond { get; init; } = 4;
     public bool BrightnessAutomationEnabled { get; init; } = false;
     public List<CurvePoint> Curve { get; init; } =
     [
@@ -69,6 +69,8 @@ public static class AppSettingsValidation
 {
     public static bool TryValidate(AppSettings settings, out string error)
     {
+        if (!double.IsFinite(settings.BrightnessRampPercentPerSecond) || settings.BrightnessRampPercentPerSecond is < 0.1 or > 20)
+            return Fail("亮度变化速度必须在每秒 0.1 到 20 个百分点之间。", out error);
         if (!double.IsFinite(settings.DarkThemeBelowLux) || settings.DarkThemeBelowLux < 0)
             return Fail("深色阈值必须是非负有限数值。", out error);
         if (!double.IsFinite(settings.LightThemeAboveLux) || settings.LightThemeAboveLux <= settings.DarkThemeBelowLux)

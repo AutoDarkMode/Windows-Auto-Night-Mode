@@ -46,9 +46,10 @@ The actual native read-only call succeeded on Windows 26220.9568 and returned al
 three virtual desktops with their distinct wallpapers. The settings app and service
 compile successfully. The option remains off by default.
 
-**Native all-desktop writes and elimination of the visual flash are not yet
-verified.** The user requested an explicit option instead of an automatic overwrite.
-After choosing to enable it, validate light-to-dark and dark-to-light switches,
-read back all wallpaper paths, and switch desktops to check for a visible flash.
+After the user enabled the option, the service logged successful synchronization
+and readback verification on all three desktops for Dark at 23:27:56 on 2026-09-27.
+**Elimination of the visual flash still requires desktop-switch testing.**
+Validate both light-to-dark and dark-to-light switches and change desktops to
+check for a visible flash.
 The diagnostic `--apply <image-path>` argument deliberately modifies every desktop;
 it is an explicit manual test, not part of the default checks.

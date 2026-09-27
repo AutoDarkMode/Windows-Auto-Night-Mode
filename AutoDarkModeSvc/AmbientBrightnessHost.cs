@@ -7,9 +7,11 @@ namespace AutoDarkModeSvc;
 /// <summary>Owns CDC/DDC for the lifetime of the tray service, independently of the settings window.</summary>
 internal sealed class AmbientBrightnessHost : IDisposable
 {
-    private readonly System.Windows.Forms.Timer timer = new() { Interval = 2000 };
+    private readonly System.Windows.Forms.Timer timer = new() { Interval = 250 };
     private BrightnessController controller;
     private string lastConfiguration;
+    private string lastStatus;
+    private DateTime lastStatusWrite;
 
     public AmbientBrightnessHost()
     {
@@ -29,9 +31,12 @@ internal sealed class AmbientBrightnessHost : IDisposable
                 var settings = json.Length == 0 ? new AppSettings() : System.Text.Json.JsonSerializer.Deserialize<AppSettings>(json);
                 if (settings == null || !AppSettingsValidation.TryValidate(settings, out var error))
                     throw new InvalidDataException("Invalid ambient brightness configuration");
-                controller?.Dispose();
-                controller = new BrightnessController(settings);
-                controller.Start();
+                if (controller == null || !controller.TryUpdateSettings(settings))
+                {
+                    controller?.Dispose();
+                    controller = new BrightnessController(settings);
+                    controller.Start();
+                }
                 lastConfiguration = json;
             }
             WriteStatus(controller?.Status ?? "自动亮度调节已关闭");
@@ -44,12 +49,15 @@ internal sealed class AmbientBrightnessHost : IDisposable
         }
     }
 
-    private static void WriteStatus(string status)
+    private void WriteStatus(string status)
     {
+        if (status == lastStatus && DateTime.UtcNow - lastStatusWrite < TimeSpan.FromSeconds(2)) return;
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(ConfigurationStore.ConfigurationPath));
             File.WriteAllText(ConfigurationStore.ConfigurationPath + ".status", status);
+            lastStatus = status;
+            lastStatusWrite = DateTime.UtcNow;
         }
         catch (IOException) { }
         catch (UnauthorizedAccessException) { }

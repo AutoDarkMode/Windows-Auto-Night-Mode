@@ -6,7 +6,7 @@ namespace AdaptiveBrightness.Core;
 
 public sealed class BrightnessController : IDisposable
 {
-    private readonly AppSettings _settings;
+    private AppSettings _settings;
     private readonly MonitorController _monitors = new();
     private readonly SynchronizationContext? _uiContext;
     private readonly Timer _reconnectTimer;
@@ -81,6 +81,20 @@ public sealed class BrightnessController : IDisposable
             _reconnectTimer.Change(3000, 3000);
         }
         EnsureConnected();
+    }
+
+    /// <summary>Apply curve/rate changes without reopening CDC or resetting ramp progress.</summary>
+    public bool TryUpdateSettings(AppSettings settings)
+    {
+        if (!AppSettingsValidation.TryValidate(settings, out var error)) throw new ArgumentException(error, nameof(settings));
+        lock (_gate)
+        {
+            if (_disposed || settings.BrightnessAutomationEnabled != _settings.BrightnessAutomationEnabled
+                || settings.SerialPort != _settings.SerialPort || settings.BaudRate != _settings.BaudRate
+                || settings.DryRun != _settings.DryRun) return false;
+            _settings = settings;
+            return true;
+        }
     }
 
     private void EnsureConnected()

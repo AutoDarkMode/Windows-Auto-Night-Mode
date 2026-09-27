@@ -29,7 +29,12 @@ using (var controller = new BrightnessController(settings))
 {
     controller.Start();
     Check(controller.Status.Contains("已关闭"), "disabled controller does not open the serial port");
+    Check(controller.TryUpdateSettings(settings with { BrightnessRampPercentPerSecond = 6, Curve = [new(0, 10), new(10000, 90)] }), "curve and speed update in place without restarting the controller");
+    Check(!controller.TryUpdateSettings(settings with { SerialPort = "COM99" }), "serial routing changes require a fresh controller");
+    Check(!controller.TryUpdateSettings(settings with { BrightnessAutomationEnabled = true }), "enablement changes require ownership checks");
 }
+Check(!AppSettingsValidation.TryValidate(settings with { BrightnessRampPercentPerSecond = 0 }, out _), "zero ramp cannot silently stall brightness");
+Check(!AppSettingsValidation.TryValidate(settings with { BrightnessRampPercentPerSecond = double.NaN }, out _), "invalid ramp is rejected");
 Check(Math.Abs(BrightnessCurve.Interpolate(Math.Sqrt(11 * 101) - 1, settings.Curve) - 38) < 1e-8, "curve interpolates in log lux space");
 Check(BrightnessCurve.Interpolate(100000, settings.Curve) == 100, "curve saturates at its final point");
 Check(!AppSettingsValidation.TryValidate(settings with { Curve = [new(10, 20), new(10, 60)] }, out _), "duplicate lux values cannot be saved");
@@ -43,7 +48,7 @@ try
     ConfigurationStore.SaveTo(temp, saved);
     var loaded = ConfigurationStore.LoadFrom(temp);
     Check(loaded.BrightnessAutomationEnabled && loaded.ActiveCurvePreset == "Desk" && loaded.Curve.SequenceEqual(curve), "curve, preset and independent switch survive reload");
-    Check(loaded.MinimumWriteIntervalMilliseconds >= 500 && loaded.BrightnessRampPercentPerSecond == 2, "ramp and minimum write interval are preserved");
+    Check(loaded.MinimumWriteIntervalMilliseconds >= 500 && loaded.BrightnessRampPercentPerSecond == 4, "ramp and minimum write interval are preserved");
 }
 finally { if (File.Exists(temp)) File.Delete(temp); }
 var firmware = Path.Combine(AppContext.BaseDirectory, "firmware.uf2");

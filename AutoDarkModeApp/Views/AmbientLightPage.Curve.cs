@@ -154,6 +154,7 @@ public sealed partial class AmbientLightPage
         {
             _draggingPoint = false;
             CurveCanvas.ReleasePointerCapture(e.Pointer);
+            FlushCurveChanges();
             e.Handled = true;
         }
     }
@@ -164,6 +165,7 @@ public sealed partial class AmbientLightPage
         {
             _draggingPoint = false;
             CurveCanvas.ReleasePointerCapture(e.Pointer);
+            FlushCurveChanges();
         }
     }
 
@@ -224,14 +226,26 @@ public sealed partial class AmbientLightPage
     {
         if (_draftCurve.Count == 0 || SelectedLuxTextBox is null) return;
         var point = _draftCurve[Math.Clamp(_selectedPointIndex, 0, _draftCurve.Count - 1)];
-        SelectedLuxTextBox.Text = FormatNumber(point.Lux);
-        SelectedBrightnessTextBox.Text = FormatNumber(point.Brightness);
+        _syncingPointEditors = true;
+        try
+        {
+            SelectedLuxTextBox.Text = FormatNumber(point.Lux);
+            SelectedBrightnessTextBox.Text = FormatNumber(point.Brightness);
+        }
+        finally { _syncingPointEditors = false; }
+    }
+
+    private void SelectedPointEditor_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (_initializingUi || _syncingPointEditors) return;
+        if (TryCommitSelectedEditor(out var error)) MarkCurveDraftChanged();
+        else { _autoSaveTimer.Stop(); SaveStatusText.Text = error; }
     }
 
     private void SelectedPointEditor_LostFocus(object sender, RoutedEventArgs e)
     {
-        if (_initializingUi) return;
-        if (TryCommitSelectedEditor(out var error)) MarkCurveDraftChanged();
+        if (_initializingUi || _syncingPointEditors) return;
+        if (TryCommitSelectedEditor(out var error)) { MarkCurveDraftChanged(); FlushCurveChanges(); }
         else SaveStatusText.Text = error;
     }
 
@@ -261,7 +275,7 @@ public sealed partial class AmbientLightPage
     private void MarkCurveDraftChanged()
     {
         DrawCurve();
-        SaveStatusText.Text = T("CurvePendingStatus");
+        QueueCurveChanges();
     }
 
     private void UpdateLiveLuxPreview()
@@ -270,8 +284,8 @@ public sealed partial class AmbientLightPage
         var lux = _lastLux ?? _draftCurve[Math.Clamp(_selectedPointIndex, 0, _draftCurve.Count - 1)].Lux;
         var target = BrightnessCurve.Interpolate(lux, _draftCurve);
         CurvePreviewText.Text = _uiLanguage.StartsWith("en", StringComparison.OrdinalIgnoreCase)
-            ? $"Preview: {lux:F1} lux → {target:F1}% · monitor brightness is unchanged"
-            : $"预览：{lux:F1} lux → {target:F1}% · 不会更改当前显示器亮度";
+            ? $"Curve target: {lux:F1} lux → {target:F1}%"
+            : $"曲线目标：{lux:F1} lux → {target:F1}%";
     }
 
     private void AddPointButton_Click(object sender, RoutedEventArgs e)
@@ -303,17 +317,21 @@ public sealed partial class AmbientLightPage
 
     private void RebuildPresetSelector()
     {
+        var initializing = _initializingUi;
+        _initializingUi = true;
         CurvePresetComboBox.Items.Clear();
         foreach (var preset in _draftPresets.OrderBy(preset => preset.Name, StringComparer.CurrentCultureIgnoreCase))
             CurvePresetComboBox.Items.Add(new ComboBoxItem { Content = preset.Name, Tag = preset.Name });
         CurvePresetComboBox.SelectedItem = CurvePresetComboBox.Items.OfType<ComboBoxItem>().FirstOrDefault(item =>
             string.Equals(item.Tag as string, _selectedPresetName, StringComparison.OrdinalIgnoreCase));
-        DeletePresetButton.IsEnabled = !string.Equals(_selectedPresetName, _settings.ActiveCurvePreset, StringComparison.OrdinalIgnoreCase);
+        DeletePresetButton.IsEnabled = _draftPresets.Count > 1;
+        _initializingUi = initializing;
     }
 
     private void CurvePresetComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_initializingUi || CurvePresetComboBox.SelectedItem is not ComboBoxItem item || item.Tag is not string name) return;
+        if (!FlushCurveChanges()) return;
         var preset = _draftPresets.FirstOrDefault(entry => string.Equals(entry.Name, name, StringComparison.OrdinalIgnoreCase));
         if (preset is null) return;
         _selectedPresetName = preset.Name;
@@ -321,13 +339,16 @@ public sealed partial class AmbientLightPage
         _selectedPointIndex = Math.Clamp(_selectedPointIndex, 0, _draftCurve.Count - 1);
         SyncSelectedPointFields();
         DrawCurve();
-        DeletePresetButton.IsEnabled = !string.Equals(_selectedPresetName, _settings.ActiveCurvePreset, StringComparison.OrdinalIgnoreCase);
-        SaveStatusText.Text = T("PresetPreviewStatus");
+        DeletePresetButton.IsEnabled = _draftPresets.Count > 1;
+        QueueCurveChanges();
+        FlushCurveChanges();
     }
 
     private async void SavePresetButton_Click(object sender, RoutedEventArgs e)
     {
         if (!TryCommitSelectedEditor(out var error)) { SaveStatusText.Text = error; return; }
+        QueueCurveChanges();
+        if (!FlushCurveChanges()) return;
         var nameBox = new TextBox { PlaceholderText = T("PresetNamePlaceholder") };
         var content = new StackPanel { Spacing = 8 };
         content.Children.Add(new TextBlock { Text = T("PresetNamePrompt"), TextWrapping = TextWrapping.Wrap });
@@ -342,39 +363,24 @@ public sealed partial class AmbientLightPage
         if (string.IsNullOrWhiteSpace(name) || name.Length > 64) { SaveStatusText.Text = T("PresetNameInvalid"); return; }
         if (string.Equals(name, _settings.ActiveCurvePreset, StringComparison.OrdinalIgnoreCase))
         {
-            SaveStatusText.Text = T("ActivePresetSaveWithApply");
+            SaveStatusText.Text = T("PresetSavedStatus");
             return;
         }
         var index = _draftPresets.FindIndex(preset => string.Equals(preset.Name, name, StringComparison.OrdinalIgnoreCase));
         var preset = new NamedBrightnessCurve(name, _draftCurve.ToList());
         if (index >= 0) _draftPresets[index] = preset;
         else _draftPresets.Add(preset);
-        var updated = _settings with { CurvePresets = _draftPresets.ToList() };
-        if (!AppSettingsValidation.TryValidate(updated, out error)) { SaveStatusText.Text = LocalizeStatus(error); return; }
-        try { ConfigurationStore.Save(updated); }
-        catch (Exception ex) { SaveStatusText.Text = ex.Message; return; }
-        _settings = updated;
         _selectedPresetName = name;
         RebuildPresetSelector();
-        CurvePresetComboBox.SelectedItem = ItemByTag(CurvePresetComboBox, name);
-        SaveStatusText.Text = T("PresetSavedStatus");
+        QueueCurveChanges();
+        if (FlushCurveChanges()) SaveStatusText.Text = T("PresetSavedStatus");
     }
 
     private void DeletePresetButton_Click(object sender, RoutedEventArgs e)
     {
-        if (string.Equals(_selectedPresetName, _settings.ActiveCurvePreset, StringComparison.OrdinalIgnoreCase))
-        {
-            SaveStatusText.Text = T("ActivePresetDeleteError");
-            return;
-        }
         if (_draftPresets.Count <= 1) { SaveStatusText.Text = T("LastPresetDeleteError"); return; }
         var updatedPresets = _draftPresets.Where(preset => !string.Equals(preset.Name, _selectedPresetName, StringComparison.OrdinalIgnoreCase)).ToList();
         if (updatedPresets.Count == _draftPresets.Count) return;
-        var updated = _settings with { CurvePresets = updatedPresets };
-        if (!AppSettingsValidation.TryValidate(updated, out var error)) { SaveStatusText.Text = LocalizeStatus(error); return; }
-        try { ConfigurationStore.Save(updated); }
-        catch (Exception ex) { SaveStatusText.Text = ex.Message; return; }
-        _settings = updated;
         _draftPresets = updatedPresets;
         _selectedPresetName = updatedPresets[0].Name;
         _draftCurve = updatedPresets[0].Points.ToList();
@@ -382,6 +388,7 @@ public sealed partial class AmbientLightPage
         RebuildPresetSelector();
         SyncSelectedPointFields();
         DrawCurve();
-        SaveStatusText.Text = T("PresetDeletedStatus");
+        QueueCurveChanges();
+        if (FlushCurveChanges()) SaveStatusText.Text = T("PresetDeletedStatus");
     }
 }

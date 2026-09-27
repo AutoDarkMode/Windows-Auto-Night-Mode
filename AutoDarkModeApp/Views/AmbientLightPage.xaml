@@ -21,6 +21,10 @@
         <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
                                 <!--  Current Lux Reading and Reference Guide  -->
                                 <Grid HorizontalAlignment="Stretch" ColumnSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -44,6 +48,14 @@
                                         Style="{StaticResource BodyTextBlockStyle}"
                                         TextWrapping="Wrap"
                                         Text="{x:Bind ViewModel.CurrentLuxDescription, Mode=OneWay}" />
+                                    <TextBlock
+                                        x:Name="ControllerStatusText"
+                                        Grid.Row="1"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,8,0,0"
+                                        TextWrapping="Wrap"
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                                     <StackPanel
                                         Grid.Column="3"
                                         Orientation="Horizontal"
@@ -347,7 +359,7 @@
                                 <Grid ColumnSpacing="16"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                                     <StackPanel Spacing="4">
                                         <TextBlock x:Name="CurveTitleText" Text="lux → DDC/CI 亮度" Style="{ThemeResource SubtitleTextBlockStyle}" />
-                                        <TextBlock x:Name="CurveDescriptionText" Text="拖动控制点预览。横轴 log10(1 + lux)，纵轴 0–100%。" TextWrapping="Wrap" Opacity="0.68" />
+                                        <TextBlock x:Name="CurveDescriptionText" Text="拖动控制点立即调整。横轴 log10(1 + lux)，纵轴 0–100%。" TextWrapping="Wrap" Opacity="0.68" />
                                     </StackPanel>
                                     <TextBlock x:Name="CurvePointCountText" Grid.Column="1" VerticalAlignment="Center" Opacity="0.68" />
                                 </Grid>
@@ -359,8 +371,8 @@
                                             KeyDown="CurveCanvas_KeyDown" SizeChanged="CurveCanvas_SizeChanged" />
                                 </Border>
                                 <Grid ColumnSpacing="10"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                                    <StackPanel Spacing="5"><TextBlock x:Name="SelectedLuxLabelText" Text="选中点 · 环境光（lux）" Opacity="0.75"/><TextBox x:Name="SelectedLuxTextBox" PlaceholderText="lux" LostFocus="SelectedPointEditor_LostFocus" /></StackPanel>
-                                    <StackPanel Grid.Column="1" Spacing="5"><TextBlock x:Name="SelectedBrightnessLabelText" Text="显示器亮度（0–100%）" Opacity="0.75"/><TextBox x:Name="SelectedBrightnessTextBox" PlaceholderText="%" LostFocus="SelectedPointEditor_LostFocus" /></StackPanel>
+                                    <StackPanel Spacing="5"><TextBlock x:Name="SelectedLuxLabelText" Text="选中点 · 环境光（lux）" Opacity="0.75"/><TextBox x:Name="SelectedLuxTextBox" PlaceholderText="lux" TextChanged="SelectedPointEditor_TextChanged" LostFocus="SelectedPointEditor_LostFocus" /></StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="5"><TextBlock x:Name="SelectedBrightnessLabelText" Text="显示器亮度（0–100%）" Opacity="0.75"/><TextBox x:Name="SelectedBrightnessTextBox" PlaceholderText="%" TextChanged="SelectedPointEditor_TextChanged" LostFocus="SelectedPointEditor_LostFocus" /></StackPanel>
                                     <Button x:Name="RemoveCurvePointButton" Grid.Column="2" Content="删除选中点" VerticalAlignment="Bottom" Click="RemovePointButton_Click" />
                                 </Grid>
                                 <Grid ColumnSpacing="10"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
@@ -368,10 +380,11 @@
                                     <TextBox x:Name="NewBrightnessTextBox" Grid.Column="1" PlaceholderText="添加亮度 %" />
                                     <Button x:Name="AddCurvePointButton" Grid.Column="2" Content="添加控制点" Click="AddPointButton_Click" />
                                 </Grid>
-                                <StackPanel Spacing="4"><TextBlock x:Name="CurvePreviewText" Text="曲线预览：仅更新本地预览" FontWeight="SemiBold"/><TextBlock x:Name="CurveSafetyText" Text="拖动预览不写显示器；点击下方“应用并保存”后生效。" TextWrapping="Wrap" Opacity="0.68" /></StackPanel>
-            <Button x:Name="ApplyCurveButton" Content="应用并保存" Click="SaveButton_Click" Style="{StaticResource AccentButtonStyle}" />
+                                <StackPanel Spacing="4"><TextBlock x:Name="CurvePreviewText" FontWeight="SemiBold"/><TextBlock x:Name="CurveSafetyText" Text="修改自动保存；自动亮度开启时立即生效，并按下方速度平滑调节。" TextWrapping="Wrap" Opacity="0.68" /></StackPanel>
+            <controls:SettingsCard x:Name="RampSpeedCard" Header="亮度变化速度" Description="每秒变化的亮度百分点，数值越大调节越快。">
+                <NumberBox x:Name="RampSpeedNumberBox" Minimum="0.1" Maximum="20" SmallChange="0.5" LargeChange="1" SpinButtonPlacementMode="Inline" ValueChanged="RampSpeedNumberBox_ValueChanged" Width="150" AutomationProperties.Name="亮度变化速度（百分点/秒）" />
+            </controls:SettingsCard>
             <TextBlock x:Name="SaveStatusText" TextWrapping="Wrap" />
-            <TextBlock x:Name="ControllerStatusText" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
         </StackPanel></controls:SettingsCard>
         <TextBlock x:Name="FirmwareSectionTitle" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Pico 固件" />
         <controls:SettingsCard x:Name="FirmwareCard" Header="Pico 固件" Description="按住 BOOTSEL 并连接 Pico，再检测 RPI-RP2 启动盘。">

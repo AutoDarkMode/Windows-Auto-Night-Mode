@@ -11,6 +11,8 @@ namespace AutoDarkModeApp;
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
 public partial class App : Application
 {
+    private TrayMenuWindow? trayMenuWindow;
+    private static bool IsTrayMenuHost => Environment.GetCommandLineArgs().Contains(TrayMenuProtocol.Argument);
     public static Mutex Mutex { get; private set; } = new Mutex(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
 
     // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
@@ -116,6 +118,7 @@ public partial class App : Application
 
     public static void CheckAppMutex()
     {
+        if (IsTrayMenuHost) return;
         // On a self-restart the outgoing instance is still alive and still holds the mutex for a
         // moment. A 50 ms probe loses that race, so this instance would hand focus back to a
         // process that is already exiting and then quit, leaving nothing running.
@@ -142,7 +145,8 @@ public partial class App : Application
             return;
         }
 
-        var processes = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.Id != Environment.ProcessId).ToList();
+        var processes = Process.GetProcessesByName("AutoDarkModeApp").Where(p => p.Id != Environment.ProcessId
+            && p.MainWindowHandle != IntPtr.Zero && p.MainWindowTitle != TrayMenuProtocol.WindowTitle).ToList();
         if (processes.Count > 0)
         {
             Helpers.WindowHelper.BringProcessToFront(processes[0]);
@@ -162,6 +166,15 @@ public partial class App : Application
         try
         {
             base.OnLaunched(args);
+
+            if (IsTrayMenuHost)
+            {
+                var commandLine = Environment.GetCommandLineArgs();
+                var index = Array.IndexOf(commandLine, TrayMenuProtocol.Argument);
+                if (index + 1 >= commandLine.Length || !int.TryParse(commandLine[index + 1], out var ownerPid)) { Exit(); return; }
+                trayMenuWindow = new TrayMenuWindow(ownerPid);
+                return;
+            }
 
             // Handle JumpListCommand. The restart handoff argument is ours, not a jumplist command.
             var arguments = Environment.GetCommandLineArgs();
