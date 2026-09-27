@@ -160,7 +160,7 @@ public sealed partial class AmbientLightPage : Page
         BrightnessSwitchCard.Header = _uiLanguage.StartsWith("zh") ? "启用自动亮度调节" : "Enable automatic brightness";
         BrightnessSwitchCard.Description = _uiLanguage.StartsWith("zh") ? "通过 Pico USB CDC 调节外接显示器亮度，与主题切换独立。" : "Adjust external displays using Pico USB CDC, independently of theme switching.";
         FirmwareSectionTitle.Text = T("FirmwareTitle");
-        FirmwareCard.Header = T("FirmwareTitle");
+        FirmwareCard.Header = T("FirmwareHardware");
         FirmwareCard.Description = T("FirmwareInstructions");
         FlashFirmwareButton.Content = T("FirmwareButton");
         RampSpeedCard.Header = _uiLanguage.StartsWith("zh") ? "亮度变化速度（百分点/秒）" : "Brightness change speed (percentage points/s)";

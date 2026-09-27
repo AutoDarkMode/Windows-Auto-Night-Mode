@@ -394,7 +394,7 @@
             </controls:SettingsCard>
         </StackPanel></controls:SettingsCard>
         <TextBlock x:Name="FirmwareSectionTitle" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Pico 固件" />
-        <controls:SettingsCard x:Name="FirmwareCard" Header="Pico 固件" Description="按住 BOOTSEL 并连接 Pico，再检测 RPI-RP2 启动盘。">
+        <controls:SettingsCard x:Name="FirmwareCard" Header="RP2040 + BH1750" Description="按住 BOOTSEL 并连接 Pico，再检测 RPI-RP2 启动盘。">
             <Button x:Name="FlashFirmwareButton" Content="检测并准备固件" Click="FlashFirmwareButton_Click" />
         </controls:SettingsCard>
         <TextBlock x:Name="FirmwareStatusText" TextWrapping="Wrap" />

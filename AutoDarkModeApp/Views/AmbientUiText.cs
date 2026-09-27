@@ -19,7 +19,7 @@ internal static class UiText
         ["Back"] = ("返回个性化", "Back to Personalization"),
         ["SensorCardTitle"] = ("环境光传感器", "Ambient-light sensors"), ["SensorCardDescription"] = ("Pico USB CDC 与 Windows HID 光感分别检测，任一路径都可独立使用。", "Pico USB CDC and Windows HID are detected independently."),
         ["CdcLabel"] = ("Pico USB CDC", "Pico USB CDC"), ["HidLabel"] = ("Windows HID 光感", "Windows HID sensor"), ["LiveLuxLabel"] = ("实时环境光", "Current ambient light"),
-        ["LiveLuxWaiting"] = ("等待光感读数", "Waiting for sensor reading"), ["FirmwareTitle"] = ("Pico 固件", "Pico firmware"),
+        ["LiveLuxWaiting"] = ("等待光感读数", "Waiting for sensor reading"), ["FirmwareTitle"] = ("Pico 固件", "Pico firmware"), ["FirmwareHardware"] = ("RP2040 + BH1750", "RP2040 + BH1750"),
         ["FirmwareInstructions"] = ("按住 BOOTSEL 并连接 Pico USB，再检测 RPI-RP2 启动盘。仅在确认后复制固件。", "Hold BOOTSEL while connecting the Pico, then detect its RPI-RP2 boot drive. Firmware is copied only after confirmation."),
         ["FirmwareButton"] = ("检测并准备固件", "Detect and prepare firmware"), ["StartupExpander"] = ("登录启动", "Start at sign-in"),
         ["StartupSummary"] = ("在设置页面启用后，应用会在当前用户登录时启动。", "When enabled in Settings, the app starts when this Windows user signs in."),
