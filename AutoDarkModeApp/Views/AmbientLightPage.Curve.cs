@@ -91,7 +91,6 @@ public sealed partial class AmbientLightPage
             CurveCanvas.Children.Add(marker);
         }
         CurvePointCountText.Text = string.Format(CultureInfo.CurrentCulture, _uiLanguage.StartsWith("en", StringComparison.OrdinalIgnoreCase) ? "{0} points" : "{0} 个控制点", _draftCurve.Count);
-        UpdateLiveLuxPreview();
     }
 
     private Point CurveToCanvasPoint(CurvePoint point, double axisMaximum, double plotWidth, double plotHeight) =>
@@ -276,16 +275,6 @@ public sealed partial class AmbientLightPage
     {
         DrawCurve();
         QueueCurveChanges();
-    }
-
-    private void UpdateLiveLuxPreview()
-    {
-        if (CurvePreviewText is null || _draftCurve.Count == 0) return;
-        var lux = _lastLux ?? _draftCurve[Math.Clamp(_selectedPointIndex, 0, _draftCurve.Count - 1)].Lux;
-        var target = BrightnessCurve.Interpolate(lux, _draftCurve);
-        CurvePreviewText.Text = _uiLanguage.StartsWith("en", StringComparison.OrdinalIgnoreCase)
-            ? $"Curve target: {lux:F1} lux → {target:F1}%"
-            : $"曲线目标：{lux:F1} lux → {target:F1}%";
     }
 
     private void AddPointButton_Click(object sender, RoutedEventArgs e)

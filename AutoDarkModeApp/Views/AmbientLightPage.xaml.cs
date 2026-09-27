@@ -31,6 +31,8 @@ public sealed partial class AmbientLightPage : Page
         _draftPresets = _settings.CurvePresets.ToList();
         _selectedPresetName = _settings.ActiveCurvePreset;
         InitializeComponent();
+        SaveStatusText.RegisterPropertyChangedCallback(TextBlock.TextProperty, (_, _) =>
+            SaveStatusText.Visibility = string.IsNullOrWhiteSpace(SaveStatusText.Text) ? Visibility.Collapsed : Visibility.Visible);
         BrightnessAutomationSwitch.IsOn = _settings.BrightnessAutomationEnabled;
         RampSpeedNumberBox.Value = _settings.BrightnessRampPercentPerSecond;
         RebuildPresetSelector();
@@ -176,7 +178,6 @@ public sealed partial class AmbientLightPage : Page
             AddCurvePointButton.Content = "Add point";
             NewLuxTextBox.PlaceholderText = "New lux";
             NewBrightnessTextBox.PlaceholderText = "New brightness %";
-            CurveSafetyText.Text = "Changes save automatically. With automatic brightness on, the display follows the curve at the selected speed.";
         }
     }
 }

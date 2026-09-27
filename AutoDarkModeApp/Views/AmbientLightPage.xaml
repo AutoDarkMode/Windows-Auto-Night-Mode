@@ -24,6 +24,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
@@ -56,6 +57,14 @@
                                         Margin="0,8,0,0"
                                         TextWrapping="Wrap"
                                         Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    <TextBlock
+                                        x:Name="SaveStatusText"
+                                        Grid.Row="2"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="2"
+                                        Margin="0,4,0,0"
+                                        TextWrapping="Wrap"
+                                        Visibility="Collapsed" />
                                     <StackPanel
                                         Grid.Column="3"
                                         Orientation="Horizontal"
@@ -350,7 +359,7 @@
         <controls:SettingsCard x:Name="BrightnessSwitchCard" Header="启用自动亮度调节" Description="通过 Pico USB CDC 调节外接显示器亮度，与主题切换独立。">
             <ToggleSwitch x:Name="BrightnessAutomationSwitch" Toggled="BrightnessAutomationSwitch_Toggled" />
         </controls:SettingsCard>
-        <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical"><StackPanel Spacing="16">
+        <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical"><StackPanel Spacing="8">
                                 <Grid ColumnSpacing="10"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                                     <ComboBox x:Name="CurvePresetComboBox" Header="命名曲线预设" SelectionChanged="CurvePresetComboBox_SelectionChanged" />
                                     <Button x:Name="SavePresetButton" Grid.Column="1" Content="另存预设" VerticalAlignment="Bottom" Click="SavePresetButton_Click" />
@@ -380,11 +389,9 @@
                                     <TextBox x:Name="NewBrightnessTextBox" Grid.Column="1" PlaceholderText="添加亮度 %" />
                                     <Button x:Name="AddCurvePointButton" Grid.Column="2" Content="添加控制点" Click="AddPointButton_Click" />
                                 </Grid>
-                                <StackPanel Spacing="4"><TextBlock x:Name="CurvePreviewText" FontWeight="SemiBold"/><TextBlock x:Name="CurveSafetyText" Text="修改自动保存；自动亮度开启时立即生效，并按下方速度平滑调节。" TextWrapping="Wrap" Opacity="0.68" /></StackPanel>
             <controls:SettingsCard x:Name="RampSpeedCard" Header="亮度变化速度" Description="每秒变化的亮度百分点，数值越大调节越快。">
                 <NumberBox x:Name="RampSpeedNumberBox" Minimum="0.1" Maximum="20" SmallChange="0.5" LargeChange="1" SpinButtonPlacementMode="Inline" ValueChanged="RampSpeedNumberBox_ValueChanged" Width="150" AutomationProperties.Name="亮度变化速度（百分点/秒）" />
             </controls:SettingsCard>
-            <TextBlock x:Name="SaveStatusText" TextWrapping="Wrap" />
         </StackPanel></controls:SettingsCard>
         <TextBlock x:Name="FirmwareSectionTitle" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Pico 固件" />
         <controls:SettingsCard x:Name="FirmwareCard" Header="Pico 固件" Description="按住 BOOTSEL 并连接 Pico，再检测 RPI-RP2 启动盘。">
