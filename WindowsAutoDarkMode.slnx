@@ -4,6 +4,7 @@
     <Platform Name="ARM64" />
     <Platform Name="x64" />
   </Configurations>
+  <Project Path="AdaptiveBrightness.Core/AdaptiveBrightness.Core.csproj" />
   <Project Path="AutoDarkModeApp/AutoDarkModeApp.csproj">
     <BuildDependency Project="AutoDarkModeLib/AutoDarkModeLib.csproj" />
     <Platform Solution="*|Any CPU" Project="x64" />

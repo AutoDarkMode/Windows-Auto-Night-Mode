@@ -69,6 +69,7 @@
                     Content="{helpers:ResourceString Name=AutoSwitch}"
                     Icon="{ui:FontIcon Glyph=&#xE8AB;}"
                     Tag="AutoSwitch" />
+                <NavigationViewItem Content="{helpers:ResourceString Name=AmbientLightSensor}" Icon="{ui:FontIcon Glyph=&#xE706;}" Tag="AmbientLight" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=SystemAreas}"
                     Icon="{ui:FontIcon Glyph=&#xEC4E;}"

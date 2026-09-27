@@ -1153,4 +1153,7 @@ Do you really want to continue?</value>
   <data name="EnergySaverDarkMode" xml:space="preserve">
     <value>Switch to dark mode when Energy Saver is enabled</value>
   </data>
+  <data name="SwitchAllVirtualDesktops" xml:space="preserve"><value>Switch wallpaper on all virtual desktops</value></data>
+  <data name="SwitchAllVirtualDesktops_Description" xml:space="preserve"><value>In Picture mode, apply the light or dark wallpaper to every virtual desktop, replacing their individual choices. Off by default. Turning this off keeps the current wallpapers and stops synchronizing other desktops.</value></data>
+  <data name="SwitchAllVirtualDesktops_Unsupported" xml:space="preserve"><value>Wallpaper synchronization is not yet supported on this Windows version.</value></data>
 </root>

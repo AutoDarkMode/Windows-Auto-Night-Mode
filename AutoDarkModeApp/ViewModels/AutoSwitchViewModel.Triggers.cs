@@ -87,6 +87,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
+        NotifyAutomationSwitches();
         if (_isInitializing)
             return;
 
@@ -105,6 +106,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
+        NotifyAutomationSwitches();
         if (_isInitializing)
             return;
 
@@ -159,9 +161,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     AutoConfigure();
                 }
                 _builder.Config.Governor = Governor.AmbientLight;
-                _builder.Config.AutoThemeSwitchingEnabled = true;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
                 LocationSettingsCardVisibility = Visibility.Collapsed;
                 CustomTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Collapsed;

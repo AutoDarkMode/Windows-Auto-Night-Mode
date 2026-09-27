@@ -240,7 +240,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
             GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
         }
-        currentGlobalTheme = newTheme;
+        currentGlobalTheme = ok ? newTheme : Theme.Unknown;
         currentIndividualTheme = Theme.Unknown;
         currentSolidColorTheme = Theme.Unknown;
         spotlightEnabled = false;
@@ -322,6 +322,9 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         string globalLightAfter = Settings.Component.GlobalWallpaper.Light ?? "";
         string globalDarkAfter = Settings.Component.GlobalWallpaper.Dark ?? "";
 
+        if (Settings.Component.SwitchAllVirtualDesktops && !SettingsBefore.Component.SwitchAllVirtualDesktops)
+            currentGlobalTheme = Theme.Unknown;
+
         // check if the global wallpaper section has been modified.
         // Since we don't have target theme information here, if one value changes, we want a theme refresh
         if (!globalDarkBefore.Equals(globalDarkAfter))
@@ -375,6 +378,23 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         string globalWallpaper = WallpaperHandler.GetGlobalWallpaper().ToLower();
         if (globalWallpaper == Settings.Component.GlobalWallpaper.Light?.ToLower()) currentGlobalTheme = Theme.Light;
         else if (globalWallpaper == Settings.Component.GlobalWallpaper.Dark?.ToLower()) currentGlobalTheme = Theme.Dark;
+
+        // SPI_GETDESKWALLPAPER only tells us the global/current image. Other virtual
+        // desktops may still hold an older image even when this one matches.
+        if (currentGlobalTheme != Theme.Unknown && Settings.Component.SwitchAllVirtualDesktops
+            && VirtualDesktopWallpaper.IsSupportedBuild(Environment.OSVersion.Version.Build))
+        {
+            var type = currentGlobalTheme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+            if (type == WallpaperType.Global)
+            {
+                try
+                {
+                    if (!VirtualDesktopWallpaper.AllMatch(VirtualDesktopWallpaper.ReadWallpapers(), globalWallpaper))
+                        currentGlobalTheme = Theme.Unknown;
+                }
+                catch (Exception ex) { Logger.Warn(ex, "could not inspect virtual desktop wallpapers during initialization"); }
+            }
+        }
 
         // solid color enable state synchronization
         if (GlobalState.ManagedThemeFile.Desktop.Wallpaper.Length == 0 &&
@@ -455,6 +475,25 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     {
         if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
         WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        // Run after ApplyManagedTheme: theme application can restore Explorer's
+        // desktop-specific backgrounds, so synchronizing before it is insufficient.
+        if (currentGlobalTheme == e.Theme && WallpaperSynchronizationPolicy.ShouldSynchronize(
+            Settings.Component.SwitchAllVirtualDesktops, type == WallpaperType.Global, Environment.OSVersion.Version.Build))
+        {
+            try
+            {
+                var path = e.Theme == Theme.Dark ? Settings.Component.GlobalWallpaper.Dark : Settings.Component.GlobalWallpaper.Light;
+                var count = VirtualDesktopWallpaper.Synchronize(path);
+                Logger.Info($"synchronized and verified global wallpaper on {count} virtual desktops ({e.Theme})");
+            }
+            catch (Exception ex)
+            {
+                // Preserve the working current-desktop wallpaper if Explorer does
+                // not support the internal interface. Do not loop theme reapplication.
+                Logger.Warn(ex, "virtual desktop wallpaper synchronization failed; current-desktop wallpaper retained");
+            }
+        }
 
         if (type == WallpaperType.Spotlight)
         {

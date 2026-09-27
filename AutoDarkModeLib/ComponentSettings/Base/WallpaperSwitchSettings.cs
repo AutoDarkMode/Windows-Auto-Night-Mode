@@ -34,6 +34,7 @@ public class WallpaperSwitchSettings
     public WallpaperType TypeLight { get; set; } = WallpaperType.Individual;
     public WallpaperType TypeDark { get; set; } = WallpaperType.Individual;
     public WallpaperPosition Position { get; set; } = WallpaperPosition.Fill;
+    public bool SwitchAllVirtualDesktops { get; set; } = false;
     public GlobalWallpaper GlobalWallpaper { get; set; }
     public SolidColors SolidColors { get; set; }
     public List<MonitorSettings> Monitors { get; set; }

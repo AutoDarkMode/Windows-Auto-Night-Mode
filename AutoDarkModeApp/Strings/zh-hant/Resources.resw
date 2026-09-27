@@ -1140,4 +1140,7 @@
   <data name="Contributors" xml:space="preserve">
     <value>貢獻者</value>
   </data>
+  <data name="SwitchAllVirtualDesktops" xml:space="preserve"><value>切換所有虛擬桌面的桌布</value></data>
+  <data name="SwitchAllVirtualDesktops_Description" xml:space="preserve"><value>在「圖片」模式下，讓所有虛擬桌面統一跟隨淺色或深色桌布，取代各桌面獨立選擇的桌布。預設關閉。關閉後保留目前桌布，不再同步其他桌面。</value></data>
+  <data name="SwitchAllVirtualDesktops_Unsupported" xml:space="preserve"><value>目前 Windows 版本尚不支援虛擬桌面桌布同步。</value></data>
 </root>

@@ -43,7 +43,17 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial bool SpotlightEnabled { get; set; }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(CanSwitchAllVirtualDesktops))]
     public partial bool IsWallpaperSwitchEnabled { get; set; }
+
+    [ObservableProperty]
+    public partial bool SwitchAllVirtualDesktops { get; set; }
+
+    public bool CanSwitchAllVirtualDesktops => IsWallpaperSwitchEnabled && CurrentDisplayMode == WallpaperDisplayMode.Picture
+        && WallpaperSynchronizationPolicy.IsSupportedBuild(Environment.OSVersion.Version.Build);
+
+    public string SwitchAllVirtualDesktopsDescription => (WallpaperSynchronizationPolicy.IsSupportedBuild(Environment.OSVersion.Version.Build)
+        ? "SwitchAllVirtualDesktops_Description" : "SwitchAllVirtualDesktops_Unsupported").GetLocalized();
 
     [ObservableProperty]
     public partial ApplicationTheme SelectWallpaperThemeMode { get; set; }
@@ -52,6 +62,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial ElementTheme DesktopPreviewThemeMode { get; set; }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(CanSwitchAllVirtualDesktops))]
     public partial WallpaperDisplayMode CurrentDisplayMode { get; set; }
 
     [ObservableProperty]
@@ -201,6 +212,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
 
         IsWallpaperSwitchEnabled = _builder.Config.WallpaperSwitch.Enabled;
+        SwitchAllVirtualDesktops = _builder.Config.WallpaperSwitch.Component.SwitchAllVirtualDesktops;
 
         DesktopPreviewThemeMode = SelectWallpaperThemeMode == ApplicationTheme.Light ? ElementTheme.Light : ElementTheme.Dark;
 
@@ -341,6 +353,24 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         _builder.Config.WallpaperSwitch.Enabled = value;
 
         SafeSaveBuilder();
+    }
+
+    partial void OnSwitchAllVirtualDesktopsChanged(bool value)
+    {
+        if (_isInitializing) return;
+        var previous = _builder.Config.WallpaperSwitch.Component.SwitchAllVirtualDesktops;
+        _builder.Config.WallpaperSwitch.Component.SwitchAllVirtualDesktops = value;
+        try { _builder.Save(); }
+        catch (Exception ex)
+        {
+            _builder.Config.WallpaperSwitch.Component.SwitchAllVirtualDesktops = previous;
+            _isInitializing = true;
+            SwitchAllVirtualDesktops = previous;
+            _isInitializing = false;
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerViewModel");
+            return;
+        }
+        _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
     }
 
     partial void OnSelectWallpaperThemeModeChanged(ApplicationTheme value)

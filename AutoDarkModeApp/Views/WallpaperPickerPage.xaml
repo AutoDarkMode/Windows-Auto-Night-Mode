@@ -36,6 +36,14 @@
 
                 <!--  Wallpaper switch theme mode  -->
                 <controls:SettingsCard
+                    Header="{helpers:ResourceString Name=SwitchAllVirtualDesktops}"
+                    Description="{x:Bind ViewModel.SwitchAllVirtualDesktopsDescription}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xF5ED;}"
+                    IsEnabled="{x:Bind ViewModel.CanSwitchAllVirtualDesktops, Mode=OneWay}">
+                    <ToggleSwitch x:Name="SwitchAllVirtualDesktopsToggle" IsOn="{x:Bind ViewModel.SwitchAllVirtualDesktops, Mode=TwoWay}" />
+                </controls:SettingsCard>
+
+                <controls:SettingsCard
                     Header="{helpers:ResourceString Name=Theme}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
                     IsEnabled="{x:Bind ViewModel.IsWallpaperSwitchEnabled, Mode=OneWay}">
