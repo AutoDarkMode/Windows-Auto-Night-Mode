@@ -1,7 +1,7 @@
 #Requires -Version 7.0
 param(
     [string]$Wix = '',
-    [string]$Version = '11.1.1',
+    [string]$Version = '11.1.2',
     [switch]$SkipPublish
 )
 
@@ -13,8 +13,9 @@ if (-not $Wix) {
     else { $Wix = (Get-Command wix -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source) }
 }
 $stage = Join-Path $repo 'bin\MsiStage\adm-app'
-$output = Join-Path $repo 'bin\Msi\AutoDarkMode-Ambient-x64.msi'
+$output = Join-Path $repo "bin\Msi\AutoDarkMode-Ambient-x64-$Version.msi"
 $source = Join-Path $repo 'bin\Msi\obj\AutoDarkMode-Ambient.wxs'
+$licenseRtf = Join-Path $repo 'bin\Msi\obj\LICENSE.rtf'
 
 if (-not $Wix -or -not (Test-Path -LiteralPath $Wix)) { throw "WiX executable not found: $Wix" }
 if (-not $SkipPublish) {
@@ -73,14 +74,20 @@ foreach ($file in $files) {
 }
 
 New-Item -ItemType Directory -Force -Path (Split-Path $source), (Split-Path $output) | Out-Null
+$licenseText = Get-Content -LiteralPath (Join-Path $repo 'LICENSE') -Raw
+$licenseText = $licenseText.Replace('\', '\\').Replace('{', '\{').Replace('}', '\}')
+$licenseText = $licenseText.Replace("`r`n", "`n").Replace("`n", '\par' + "`n")
+[IO.File]::WriteAllText($licenseRtf, '{\rtf1\ansi\deff0{\fonttbl{\f0 Segoe UI;}}\f0\fs18 ' + $licenseText + '}', [Text.UTF8Encoding]::new($false))
 $settings = [Xml.XmlWriterSettings]::new()
 $settings.Indent = $true
 $settings.Encoding = [Text.UTF8Encoding]::new($false)
 $xml = [Xml.XmlWriter]::Create($source, $settings)
 try {
     $ns = 'http://wixtoolset.org/schemas/v4/wxs'
+    $uiNs = 'http://wixtoolset.org/schemas/v4/wxs/ui'
     $xml.WriteStartDocument()
     $xml.WriteStartElement('Wix', $ns)
+    $xml.WriteAttributeString('xmlns', 'ui', $null, $uiNs)
     $xml.WriteStartElement('Package', $ns)
     foreach ($pair in @{
         Name='Auto Dark Mode (Ambient Light)'; Manufacturer='NeuronCState'; Version=$Version;
@@ -91,6 +98,36 @@ try {
     $xml.WriteEndElement()
     $xml.WriteStartElement('MediaTemplate', $ns)
     $xml.WriteAttributeString('EmbedCab', 'yes')
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('WixVariable', $ns)
+    $xml.WriteAttributeString('Id', 'WixUILicenseRtf')
+    $xml.WriteAttributeString('Value', $licenseRtf)
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('Property', $ns)
+    $xml.WriteAttributeString('Id', 'WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT')
+    $xml.WriteAttributeString('Value', 'Launch Auto Dark Mode (Ambient Light)')
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('Property', $ns)
+    $xml.WriteAttributeString('Id', 'WIXUI_EXITDIALOGOPTIONALCHECKBOX')
+    $xml.WriteAttributeString('Value', '1')
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('CustomAction', $ns)
+    $xml.WriteAttributeString('Id', 'LaunchApplication')
+    $xml.WriteAttributeString('FileRef', "F_$(StableId 'file/ui\AutoDarkModeApp.exe')")
+    $xml.WriteAttributeString('ExeCommand', '')
+    $xml.WriteAttributeString('Return', 'asyncNoWait')
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('UI', $ns)
+    $xml.WriteStartElement('ui', 'WixUI', $uiNs)
+    $xml.WriteAttributeString('Id', 'WixUI_Minimal')
+    $xml.WriteEndElement()
+    $xml.WriteStartElement('Publish', $ns)
+    $xml.WriteAttributeString('Dialog', 'ExitDialog')
+    $xml.WriteAttributeString('Control', 'Finish')
+    $xml.WriteAttributeString('Event', 'DoAction')
+    $xml.WriteAttributeString('Value', 'LaunchApplication')
+    $xml.WriteAttributeString('Condition', 'WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed')
+    $xml.WriteEndElement()
     $xml.WriteEndElement()
 
     $xml.WriteStartElement('StandardDirectory', $ns)
@@ -185,7 +222,7 @@ try {
     $xml.WriteEndDocument()
 } finally { $xml.Dispose() }
 
-& $Wix build -arch x64 -out $output $source
+& $Wix build -arch x64 -ext WixToolset.UI.wixext -out $output $source
 if ($LASTEXITCODE) { throw 'WiX MSI build failed.' }
 Write-Output "MSI: $output"
 Write-Output "Payload files: $($files.Count)"
