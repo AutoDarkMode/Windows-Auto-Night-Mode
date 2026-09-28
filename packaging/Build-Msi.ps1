@@ -1,7 +1,7 @@
 #Requires -Version 7.0
 param(
     [string]$Wix = '',
-    [string]$Version = '11.1.2',
+    [string]$Version = '11.1.3',
     [switch]$SkipPublish
 )
 
@@ -222,7 +222,9 @@ try {
     $xml.WriteEndDocument()
 } finally { $xml.Dispose() }
 
-& $Wix build -arch x64 -ext WixToolset.UI.wixext -out $output $source
+$uiExtension = Join-Path $env:USERPROFILE '.wix\extensions\WixToolset.UI.wixext\4.0.6\wixext4\WixToolset.UI.wixext.dll'
+$uiExtensionArg = if (Test-Path -LiteralPath $uiExtension) { $uiExtension } else { 'WixToolset.UI.wixext' }
+& $Wix build -arch x64 -ext $uiExtensionArg -out $output $source
 if ($LASTEXITCODE) { throw 'WiX MSI build failed.' }
 Write-Output "MSI: $output"
 Write-Output "Payload files: $($files.Count)"
