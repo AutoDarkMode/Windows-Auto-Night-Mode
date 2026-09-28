@@ -86,53 +86,21 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        // Check ambient light sensor availability and set up monitoring
-        _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
-        AmbientLightSensorAvailable = _lightSensor != null;
-
-        if (AmbientLightSensorAvailable)
-        {
-            // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
-            _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
-            _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
-
-            // Get initial reading
-            var reading = _lightSensor.GetCurrentReading();
-            if (reading != null)
-            {
-                CurrentLuxReading = reading.IlluminanceInLux;
-                CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-                CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-                RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
-            }
-            else
-            {
-                CurrentLuxReading = 0;
-                CurrentLuxDescription = "AmbientLightNoReading".GetLocalized();
-                CurrentLuxSliderPercentage = 0;
-                RemainingLuxSliderPercentage = 1000;
-            }
-
-            // Load ambient light threshold settings
-            AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
-            AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
-        }
-        else
-        {
-            // No sensor available - show helpful text but continue initializing other settings
-            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
-        }
-
+        // Theme mode
         HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
 
+        // Coordinates
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
+        // Location UI
         if (!_locationDataInitialized) LocationBlockText = "Msg_SearchLoc".GetLocalized();
 
+        // Offsets
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
 
+        // Trigger mode
         _dispatcherQueue.TryEnqueue(async () =>
                 {
                     switch (SelectedTriggerMode)
@@ -167,7 +135,43 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     }
                 });
 
+        // Next update time
         UpdateLocationNextUpdateDescription();
+
+        // Ambient light sensor availability and monitoring
+        _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
+        AmbientLightSensorAvailable = _lightSensor != null;
+
+        if (AmbientLightSensorAvailable)
+        {
+            // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
+            _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
+            _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
+
+            var reading = _lightSensor.GetCurrentReading();
+            if (reading != null)
+            {
+                CurrentLuxReading = reading.IlluminanceInLux;
+                CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
+                CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+                RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
+            }
+            else
+            {
+                CurrentLuxReading = 0;
+                CurrentLuxDescription = "AmbientLightNoReading".GetLocalized();
+                CurrentLuxSliderPercentage = 0;
+                RemainingLuxSliderPercentage = 1000;
+            }
+
+            // Load ambient light threshold settings
+            AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
+            AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
+        }
+        else
+        {
+            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
+        }
 
         _isInitializing = false;
     }
