@@ -413,34 +413,38 @@ class Service : Form
 
     public void ToggleAutoThemeSwitching(object sender, EventArgs e)
     {
-        ToolStripMenuItem mi = sender as ToolStripMenuItem;
-        AdmConfig old = builder.Config;
-
-        if (mi.Checked)
-        {
-            Logger.Info("ui signal received: disabling auto theme switching");
-
-            state.SkipConfigFileReload = true;
-            builder.Config.AutoThemeSwitchingEnabled = false;
-            AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
-            mi.Checked = false;
-        }
-        else
-        {
-            Logger.Info("ui signal received: enabling auto theme switching");
-            state.SkipConfigFileReload = true;
-            builder.Config.AutoThemeSwitchingEnabled = true;
-            ThemeManager.RequestSwitch(new(SwitchSource.Manual));
-            mi.Checked = true;
-        }
-
+        // The WinUI flyout invokes this legacy command via PerformClick. Its
+        // checked flag is only a snapshot of the last menu opening, so the
+        // persisted configuration must be the source of truth for both paths.
+        bool wasEnabled = builder.Config.AutoThemeSwitchingEnabled;
+        bool enable = !wasEnabled;
+        Logger.Info($"ui signal received: {(enable ? "enabling" : "disabling")} auto theme switching");
+        state.SkipConfigFileReload = true;
+        builder.Config.AutoThemeSwitchingEnabled = enable;
         try
         {
             builder.Save();
         }
         catch (Exception ex)
         {
+            builder.Config.AutoThemeSwitchingEnabled = wasEnabled;
+            state.SkipConfigFileReload = false;
+            if (sender is ToolStripMenuItem item) item.Checked = wasEnabled;
             Logger.Error(ex, "could not save config: ");
+            return;
+        }
+        // Register or remove the governor on either transition. The old code
+        // updated modules only when disabling, leaving re-enable inert.
+        ConfigMonitor.PerformConfigUpdate(builder.Config, internalUpdate: true);
+        if (sender is ToolStripMenuItem menuItem) menuItem.Checked = enable;
+        if (enable)
+        {
+            try
+            {
+                ComponentManager.Instance().RunAllEnableHooks();
+                ThemeManager.RequestSwitch(new(SwitchSource.Manual));
+            }
+            catch (Exception ex) { Logger.Error(ex, "automatic theme switching was saved but could not start immediately"); }
         }
     }
 
