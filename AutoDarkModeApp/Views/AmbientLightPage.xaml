@@ -17,7 +17,9 @@
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
     </Page.Resources>
 
-    <ScrollViewer x:Name="PageScrollViewer"><StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
+    <ScrollViewer x:Name="PageScrollViewer">
+        <Grid x:Name="ContentArea">
+            <StackPanel Style="{StaticResource PageBaseStackPanelStyle}">
         <controls:SettingsCard HorizontalContentAlignment="Stretch" ContentAlignment="Vertical">
                                 <!--  Current Lux Reading and Reference Guide  -->
                                 <Grid HorizontalAlignment="Stretch" ColumnSpacing="8">
@@ -398,5 +400,7 @@
             <Button x:Name="FlashFirmwareButton" Content="检测并准备固件" Click="FlashFirmwareButton_Click" />
         </controls:SettingsCard>
         <TextBlock x:Name="FirmwareStatusText" TextWrapping="Wrap" />
-    </StackPanel></ScrollViewer>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>
