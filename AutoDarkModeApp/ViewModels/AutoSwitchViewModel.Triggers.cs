@@ -96,76 +96,46 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             case SwitchTriggerMode.CustomTimes:
                 _builder.Config.Governor = Governor.Default;
-                //_builder.Config.Location.Enabled = false;
-                //_builder.Config.Location.UseGeolocatorService = false;
 
-                //LocationSettingsCardVisibility = Visibility.Collapsed;
                 CustomTimeSettingsCardVisibility = Visibility.Visible;
-                //OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                //OffsetTimesMinimum = -720;
-                //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
                 break;
             case SwitchTriggerMode.LocationTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = true;
-
-                LocationSettingsCardVisibility = Visibility.Visible;
-                CustomTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                //OffsetTimesMinimum = -720;
-                PostponeOptionsSkipOnceVisibility = Visibility.Visible;
-                break;
             case SwitchTriggerMode.CoordinateTimes:
                 _builder.Config.Governor = Governor.Default;
                 _builder.Config.Location.Enabled = true;
-                //_builder.Config.Location.UseGeolocatorService = false;
+                if (mode == SwitchTriggerMode.LocationTimes) _builder.Config.Location.UseGeolocatorService = true;
 
                 LocationSettingsCardVisibility = Visibility.Visible;
                 CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                //OffsetTimesMinimum = -720;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
                 break;
             case SwitchTriggerMode.WindowsNightLight:
                 _builder.Config.Governor = Governor.NightLight;
-                //_builder.Config.Location.Enabled = false;
-                //_builder.Config.Location.UseGeolocatorService = false;
 
-                //LocationSettingsCardVisibility = Visibility.Collapsed;
-                //CustomTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
                 break;
             case SwitchTriggerMode.AmbientLight:
                 _builder.Config.Governor = Governor.AmbientLight;
-                //_builder.Config.Location.Enabled = false;
-                //_builder.Config.Location.UseGeolocatorService = false;
 
-                //LocationSettingsCardVisibility = Visibility.Collapsed;
-                //CustomTimeSettingsCardVisibility = Visibility.Collapsed;
-                //OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
                 OffsetTimesMinimum = 0;
-                //PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
                 break;
         }
     }
 
     partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         HandleAutoTheme(value);
     }
 
     partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
-        // Prevent flickering
         if (DetermineModeFromBackend() == value) return;
 
         ApplyTriggerModeState(value);
@@ -184,8 +154,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnOffsetLightChanged(int value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         if (_debounceTimer != null)
         {
@@ -196,8 +165,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnOffsetDarkChanged(int value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         if (_debounceTimer != null)
         {
