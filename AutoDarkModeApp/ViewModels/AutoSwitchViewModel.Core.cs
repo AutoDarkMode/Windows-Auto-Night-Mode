@@ -78,7 +78,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _ambientLightDebounceTimer.Stop();
 
             // Trigger theme re-evaluation with new thresholds
-            RequestThemeSwitch();
+            _ = RequestThemeSwitch();
         };
     }
 
@@ -128,10 +128,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
 
-        if (!_locationDataInitialized)
-        {
-            LocationBlockText = "Msg_SearchLoc".GetLocalized();
-        }
+        if (!_locationDataInitialized) LocationBlockText = "Msg_SearchLoc".GetLocalized();
 
         OffsetLight = _builder.Config.Location.SunriseOffsetMin;
         OffsetDark = _builder.Config.Location.SunsetOffsetMin;
@@ -151,7 +148,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                                 // (app startup / initial page open). Later LoadSettings() calls are
                                 // triggered by unrelated config saves (trigger mode, offsets, ...) and must
                                 // not re-poll the location service every time - see #1078 investigation.
-                                _locationDataInitialized = true;
                                 await LoadGeolocationData();
                             }
 
@@ -176,7 +172,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         _isInitializing = false;
     }
 
-    private static async void RequestThemeSwitch()
+    private static async Task RequestThemeSwitch()
     {
         await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
     }

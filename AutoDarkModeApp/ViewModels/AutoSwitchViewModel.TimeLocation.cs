@@ -70,7 +70,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = RequestThemeSwitch();
     }
 
     private void UpdateLocationNextUpdateDescription()
@@ -91,8 +91,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         var maxTries = 5;
         for (var i = 0; i < maxTries; i++)
         {
-            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
-            if (result.StatusCode == StatusCode.Ok)
+            if (ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating)).StatusCode == StatusCode.Ok)
             {
                 break;
             }
@@ -100,7 +99,16 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             await Task.Delay(1000);
         }
 
-        _builder.LoadLocationData();
+        try
+        {
+            _builder.LoadLocationData();
+        }
+        catch
+        {
+            // if the location data file is missing or corrupt, just return and keep whatever text was previously shown
+            return;
+        }
+
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
@@ -109,12 +117,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 IsNoLocationAccessInfoBarOpen = true;
                 LocationBlockText = "Msg_LocPerm".GetLocalized();
             }
-            else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
-            {
-                IsNoLocationAccessInfoBarOpen = false;
-                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
-            }
-            else if (!_builder.Config.Location.UseGeolocatorService)
+            //else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+            else
             {
                 IsNoLocationAccessInfoBarOpen = false;
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
@@ -122,9 +126,14 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
         catch
         {
+            // keep whatever text was previously shown if the region lookup fails
             return;
         }
+
+        // Only mark as initialized if we successfully loaded the location data and region name, otherwise the next refresh will try again
+        _locationDataInitialized = true;
     }
+
 
     /// <summary>
     /// Lightweight refresh used when the service has written new location data in the background
@@ -135,11 +144,32 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     /// </summary>
     private async Task RefreshLocationDisplay()
     {
-        _builder.LoadLocationData();
-
-        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes && SelectedTriggerMode != SwitchTriggerMode.CoordinateTimes)
+        try
         {
+            _builder.LoadLocationData();
+        }
+        catch
+        {
+            // if the location data file is missing or corrupt, just return and keep whatever text was previously shown
             return;
+        }
+
+        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes && SelectedTriggerMode != SwitchTriggerMode.CoordinateTimes) return;
+
+        bool hasAccess = true;
+
+        if (_builder.Config.Location.UseGeolocatorService)
+        {
+            try
+            {
+                var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                hasAccess = access.StatusCode == StatusCode.Ok;
+            }
+            catch
+            {
+                // if the service is unreachable, just keep whatever text was previously shown
+                hasAccess = false;
+            }
         }
 
         try
@@ -147,7 +177,15 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             // if we successfully refreshed location data, the service is no longer being blocked by
             // permission issues - clear a previously shown "no access" state
-            IsNoLocationAccessInfoBarOpen = false;
+            if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
+            {
+                IsNoLocationAccessInfoBarOpen = true;
+                LocationBlockText = "Msg_LocPerm".GetLocalized();
+            }
+            else
+            {
+                IsNoLocationAccessInfoBarOpen = false;
+            }
         }
         catch
         {
@@ -173,8 +211,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void UpdateCustomTime(TimeSpan value, Action<DateTime> setConfig)
     {
-        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes)
-            return;
+        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes) return;
 
         var now = DateTime.Now;
         var date = new DateTime(now.Year, now.Month, now.Day, value.Hours, value.Minutes, 0);
@@ -189,6 +226,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = RequestThemeSwitch();
     }
 }
