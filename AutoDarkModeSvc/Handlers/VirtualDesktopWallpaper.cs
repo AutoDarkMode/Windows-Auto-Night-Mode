@@ -14,9 +14,6 @@ internal static class VirtualDesktopWallpaper
 {
     internal sealed record DesktopWallpaper(Guid Id, string Path);
 
-    // This internal COM ABI is build-specific. Never guess vtable layouts on a new build.
-    internal static bool IsSupportedBuild(int build) => AutoDarkModeLib.WallpaperSynchronizationPolicy.IsSupportedBuild(build);
-
     internal static IReadOnlyList<DesktopWallpaper> ReadWallpapers() => InSta(() => WithManager(Read));
 
     internal static int Synchronize(string wallpaper)
@@ -81,8 +78,6 @@ internal static class VirtualDesktopWallpaper
 
     private static T WithManager<T>(Func<IVirtualDesktopManagerInternal, T> action)
     {
-        if (!IsSupportedBuild(Environment.OSVersion.Version.Build))
-            throw new PlatformNotSupportedException("The virtual desktop wallpaper ABI is not verified on this Windows build.");
         object shell = null;
         object manager = null;
         try

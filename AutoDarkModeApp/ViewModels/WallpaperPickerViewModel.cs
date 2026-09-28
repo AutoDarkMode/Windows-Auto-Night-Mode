@@ -49,11 +49,9 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool SwitchAllVirtualDesktops { get; set; }
 
-    public bool CanSwitchAllVirtualDesktops => IsWallpaperSwitchEnabled && CurrentDisplayMode == WallpaperDisplayMode.Picture
-        && WallpaperSynchronizationPolicy.IsSupportedBuild(Environment.OSVersion.Version.Build);
+    public bool CanSwitchAllVirtualDesktops => IsWallpaperSwitchEnabled && CurrentDisplayMode == WallpaperDisplayMode.Picture;
 
-    public string SwitchAllVirtualDesktopsDescription => (WallpaperSynchronizationPolicy.IsSupportedBuild(Environment.OSVersion.Version.Build)
-        ? "SwitchAllVirtualDesktops_Description" : "SwitchAllVirtualDesktops_Unsupported").GetLocalized();
+    public string SwitchAllVirtualDesktopsDescription => "SwitchAllVirtualDesktops_Description".GetLocalized();
 
     [ObservableProperty]
     public partial ApplicationTheme SelectWallpaperThemeMode { get; set; }

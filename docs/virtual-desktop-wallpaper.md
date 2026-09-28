@@ -22,10 +22,10 @@ success only when all paths match. Startup also checks inactive desktops when th
 option is enabled, so a matching current desktop does not hide stale backgrounds.
 Failed global wallpaper writes no longer advance the component's cached theme.
 
-The COM interface is internal and version-specific. It is currently gated to
-Windows build 26220, the build used for local inspection; other builds retain the
-existing behavior and show the option as unavailable. Interface exceptions are
-logged and preserve current-desktop behavior, without repeated theme applications.
+The COM interface is internal and may vary between Windows builds. The option is
+available on all builds when global Picture mode is active, with no build-number
+gate. Windows build 26220 is the only build verified so far. Interface exceptions
+are logged and preserve current-desktop behavior, without repeated theme applications.
 The adapter creates and releases COM objects on an STA thread and marshals HSTRING
 explicitly for modern .NET.
 
@@ -40,11 +40,14 @@ dotnet run --project tests/VirtualDesktop.Checks
 dotnet run --project tests/VirtualDesktop.Checks -- --read
 ```
 
-Seven logic checks pass, covering mismatched desktops, empty enumeration,
-case-insensitive paths, opt-in behavior, mode isolation and unsupported builds.
+Six logic checks pass, covering mismatched desktops, empty enumeration,
+case-insensitive paths, opt-in behavior and mode isolation.
 The actual native read-only call succeeded on Windows 26220.9568 and returned all
 three virtual desktops with their distinct wallpapers. The settings app and service
 compile successfully. The option remains off by default.
+
+Other Windows builds can now attempt synchronization when the user enables the
+option. Their COM compatibility and visual behavior have not been verified.
 
 After the user enabled the option, the service logged successful synchronization
 and readback verification on all three desktops for Dark at 23:27:56 on 2026-09-27.

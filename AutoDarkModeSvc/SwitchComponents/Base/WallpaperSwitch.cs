@@ -381,8 +381,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
         // SPI_GETDESKWALLPAPER only tells us the global/current image. Other virtual
         // desktops may still hold an older image even when this one matches.
-        if (currentGlobalTheme != Theme.Unknown && Settings.Component.SwitchAllVirtualDesktops
-            && VirtualDesktopWallpaper.IsSupportedBuild(Environment.OSVersion.Version.Build))
+        if (currentGlobalTheme != Theme.Unknown && Settings.Component.SwitchAllVirtualDesktops)
         {
             var type = currentGlobalTheme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
             if (type == WallpaperType.Global)
@@ -479,7 +478,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         // Run after ApplyManagedTheme: theme application can restore Explorer's
         // desktop-specific backgrounds, so synchronizing before it is insufficient.
         if (currentGlobalTheme == e.Theme && WallpaperSynchronizationPolicy.ShouldSynchronize(
-            Settings.Component.SwitchAllVirtualDesktops, type == WallpaperType.Global, Environment.OSVersion.Version.Build))
+            Settings.Component.SwitchAllVirtualDesktops, type == WallpaperType.Global))
         {
             try
             {

@@ -14,8 +14,7 @@ var desktops = new[] {
 if (VirtualDesktopWallpaper.AllMatch(desktops, @"C:\dark.png")) throw new Exception("One correct desktop must not mark all desktops synchronized");
 if (!VirtualDesktopWallpaper.AllMatch(desktops.Select(d => d with { Path = @"C:\DARK.PNG" }).ToArray(), @"C:\dark.png")) throw new Exception("Paths must compare case-insensitively");
 if (VirtualDesktopWallpaper.AllMatch([], @"C:\dark.png")) throw new Exception("An empty enumeration is not success");
-if (VirtualDesktopWallpaper.IsSupportedBuild(22621) || VirtualDesktopWallpaper.IsSupportedBuild(99999)) throw new Exception("Unknown ABI must be rejected");
-if (AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(false, true, 26220)) throw new Exception("Disabled option must never synchronize other desktops");
-if (AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(true, false, 26220)) throw new Exception("Independent monitor/Spotlight modes must remain unchanged");
-if (!AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(true, true, 26220)) throw new Exception("Opt-in global picture mode must synchronize");
-Console.WriteLine("7 checks passed; use --read for a read-only native check.");
+if (AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(false, true)) throw new Exception("Disabled option must never synchronize other desktops");
+if (AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(true, false)) throw new Exception("Independent monitor/Spotlight modes must remain unchanged");
+if (!AutoDarkModeLib.WallpaperSynchronizationPolicy.ShouldSynchronize(true, true)) throw new Exception("Opt-in global picture mode must synchronize");
+Console.WriteLine("6 checks passed; use --read for a read-only native check.");
