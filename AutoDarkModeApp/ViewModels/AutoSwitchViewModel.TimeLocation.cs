@@ -88,7 +88,28 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private async Task LoadGeolocationData()
     {
-        var maxTries = 5;
+        // 1. Check access FIRST, this is instant
+        bool hasAccess;
+        try
+        {
+            var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+            hasAccess = access.StatusCode == StatusCode.Ok;
+        }
+        catch
+        {
+            hasAccess = false;
+        }
+
+        // 2. If no access, show the info bar and don't try to load location data
+        if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
+        {
+            IsNoLocationAccessInfoBarOpen = true;
+            LocationBlockText = "Msg_LocPerm".GetLocalized();
+            return;
+        }
+
+        // 3. Only poll if access is granted
+        var maxTries = 4;
         for (var i = 0; i < maxTries; i++)
         {
             if (ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating)).StatusCode == StatusCode.Ok)
@@ -99,16 +120,18 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             await Task.Delay(1000);
         }
 
+        // 4. Load YAML
         try
         {
             _builder.LoadLocationData();
         }
         catch
         {
-            // if the location data file is missing or corrupt, just return and keep whatever text was previously shown
+            // if the location data file is missing or corrupt, just return
             return;
         }
 
+        // 5. Get region name from coordinates
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
@@ -126,7 +149,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
         catch
         {
-            // keep whatever text was previously shown if the region lookup fails
             return;
         }
 
