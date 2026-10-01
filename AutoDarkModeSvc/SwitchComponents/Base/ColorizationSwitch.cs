@@ -100,7 +100,7 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         var oldColor = GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#");
 
         string newHex;
-        Regex hexValidator = new(Helper.Hegex);
+        Regex hexValidator = new(Helper.HexColorRegex);
 
         if (e.Theme == Theme.Dark) newHex = Settings.Component.DarkHex;
         else newHex = Settings.Component.LightHex;
@@ -119,7 +119,7 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
 
     protected override void UpdateSettingsState()
     {
-        Regex hexValidator = new(Helper.Hegex);
+        Regex hexValidator = new(Helper.HexColorRegex);
         if (invalidHexFound && hexValidator.IsMatch(Settings.Component.LightHex) && hexValidator.IsMatch(Settings.Component.DarkHex))
         {
             Logger.Info("invalid hex color has been corrected, component will now function again");
