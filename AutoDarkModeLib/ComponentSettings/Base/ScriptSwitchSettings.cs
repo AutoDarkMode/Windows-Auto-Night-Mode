@@ -25,15 +25,17 @@ public class ScriptSwitchSettings
     public List<Script> Scripts { get; set; }
     public ScriptSwitchSettings()
     {
-        Scripts = new();
-        Scripts.Add(new()
-        {
-            Name = "cmd example",
-            Command = "cmd",
-            WorkingDirectory = AdmConfigBuilder.ConfigDir,
-            ArgsLight = new() { "/c", "echo I am a light command" },
-            ArgsDark = new() { "/c", "echo I am a dark command" },
-        });
+        Scripts =
+        [
+            new()
+            {
+                Name = "cmd example",
+                Command = "cmd",
+                WorkingDirectory = AdmConfigBuilder.ConfigDir,
+                ArgsLight = ["/c", "echo I am a light command"],
+                ArgsDark = ["/c", "echo I am a dark command"],
+            },
+        ];
     }
     public override bool Equals(object obj)
     {
