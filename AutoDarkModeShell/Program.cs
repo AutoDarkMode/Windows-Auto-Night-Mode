@@ -26,14 +26,14 @@ using Sharprompt;
 
 namespace AutoDarkModeComms;
 
-class Program
+internal class Program
 {
     private static Version Version { get; set; } = Assembly.GetExecutingAssembly().GetName().Version;
 
     public const string QuitShell = "QuitShell";
     public const string Custom = "CustomCommand";
 
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Console.WriteLine($"Auto Dark Mode Shell version {Version.Major}.{Version.Minor}");
         IMessageClient client = new PipeClient();
@@ -54,6 +54,7 @@ class Program
                 }
                 argsList.Remove("--and-launch-service");
             }
+
             int timeoutDefault = 10;
             Console.WriteLine(argsList[0]);
             if (argsList.Count == 2)
@@ -84,6 +85,7 @@ class Program
             }
             Environment.Exit(0);
         }
+
         var flags = BindingFlags.Static | BindingFlags.Public;
         List<string> fields = typeof(Command).GetFields(flags)
             .Where(p => p.IsDefined(typeof(IncludableAttribute)))
@@ -103,17 +105,23 @@ class Program
                 //do nothing, retry prompt select in the next loop
                 continue;
             }
-            if (selection == Custom)
+
+            switch (selection)
             {
-                selection = Prompt.Input<string>("Enter command");
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-            }
-            else if (selection != QuitShell)
-            {
-                selection = selection.Split("(")[0].Trim();
-                selection = (string)typeof(Command).GetField(selection).GetValue(null);
-                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                Console.WriteLine("Please check service.log for more details");
+                case Custom:
+                    selection = Prompt.Input<string>("Enter command");
+                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
+                    break;
+                default:
+                    if (selection != QuitShell)
+                    {
+                        selection = selection.Split("(")[0].Trim();
+                        selection = (string)typeof(Command).GetField(selection).GetValue(null);
+                        Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
+                        Console.WriteLine("Please check service.log for more details");
+                    }
+
+                    break;
             }
         }
         while (selection != QuitShell);
