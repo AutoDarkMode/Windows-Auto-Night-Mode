@@ -56,17 +56,12 @@ internal static class ThemeManager
         // apply last requested theme if switch is postponed.
         // resume and unlock events bypass the system idle postpone (without removing it, so the idle
         // module keeps managing its own state) to correct the theme immediately after waking (#1155)
-        bool postponed;
-        switch (e.Source)
+        var postponed = e.Source switch
         {
-            case SwitchSource.SystemResume:
-            case SwitchSource.SystemUnlock:
-                postponed = state.PostponeManager.IsPostponedExcept(Helper.PostponeItemSystemIdle);
-                break;
-            default:
-                postponed = state.PostponeManager.IsPostponed;
-                break;
-        }
+            SwitchSource.SystemResume or SwitchSource.SystemUnlock => state.PostponeManager.IsPostponedExcept(Helper.PostponeItemSystemIdle),
+            _ => state.PostponeManager.IsPostponed,
+        };
+
         if (postponed)
         {
             e.OverrideTheme(state.InternalTheme, ThemeOverrideSource.PostponeManager);
@@ -138,9 +133,9 @@ internal static class ThemeManager
             {
                 case Governor.Default:
                 {
-                    TimedThemeState ts = new();
-                    e.OverrideTheme(ts.TargetTheme, ThemeOverrideSource.TimedThemeState);
-                    e.UpdateSwitchTime(ts.CurrentSwitchTime);
+                    TimedThemeState tts = new();
+                    e.OverrideTheme(tts.TargetTheme, ThemeOverrideSource.TimedThemeState);
+                    e.UpdateSwitchTime(tts.CurrentSwitchTime);
                     UpdateTheme(e);
                     break;
                 }
@@ -181,19 +176,12 @@ internal static class ThemeManager
         Theme newTheme = PrepareSwitchAutoPause();
 
         ThemeHandler.EnforceNoMonitorUpdates(builder, state, newTheme);
-        if (builder.Config.AutoThemeSwitchingEnabled)
+        if (builder.Config.AutoThemeSwitchingEnabled && state.PostponeManager.IsSkipNextSwitch)
         {
-            if (state.PostponeManager.IsSkipNextSwitch)
-            {
-                ToastHandler.InvokePauseOnToggleThemeToast();
-                Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
-            }
-            RequestSwitch(new(SwitchSource.Manual, newTheme));
+            ToastHandler.InvokePauseOnToggleThemeToast();
+            Task.Run(async () => await Task.Delay(TimeSpan.FromSeconds(2))).Wait();
         }
-        else
-        {
-            RequestSwitch(new(SwitchSource.Manual, newTheme));
-        }
+        RequestSwitch(new(SwitchSource.Manual, newTheme));
         return newTheme;
     }
 
@@ -287,7 +275,7 @@ internal static class ThemeManager
             {
                 case SwitchSource.SystemUnlock:
                 case SwitchSource.SystemResume:
-                    // check for theem changes on system unlock or resume
+                    // check for theme changes on system unlock or resume
                     GlobalState.Instance().RefreshThemes(AdmConfigBuilder.Instance().Config);
                     themeModeNeedsUpdate = ThemeHandler.ThemeModeNeedsUpdate(newTheme);
                     break;
@@ -307,7 +295,7 @@ internal static class ThemeManager
         #endregion
 
         #region logic for adm startup
-        // when the app ist launched for the first time, ask for notification
+        // when the app is launched for the first time, ask for notification
         if (!state.InitSyncSwitchPerformed)
         {
             if ((componentsToUpdate.Count > 0 || themeModeNeedsUpdate) && builder.Config.AutoSwitchNotify.Enabled)
@@ -401,7 +389,7 @@ internal static class ThemeManager
                     }
                     if (!componentsToUpdate.Any(c => c is WallpaperSwitch) && !needsWallpaperRefresh)
                     {
-                        flagList = new() { ThemeApplyFlags.IgnoreBackground };
+                        flagList = [ThemeApplyFlags.IgnoreBackground];
                     }
 
                     ThemeHandler.ApplyManagedTheme(state.ManagedThemeFile, flagList);
@@ -422,7 +410,7 @@ internal static class ThemeManager
                 themeSwitched = true;
             }
 
-            //TODO: change to switcheventargs
+            //TODO: change to SwitchEventArgs
             cm.RunCallbacks(componentsToUpdate, newTheme, e);
 
             bool shuffleCondition = false;
@@ -430,6 +418,7 @@ internal static class ThemeManager
             {
                 shuffleCondition = state.ManagedThemeFile.Slideshow.Enabled && (state.ManagedThemeFile.Slideshow.Shuffle == 1);
             }
+
             if (shuffleCondition)
             {
                 Logger.Debug("advancing slideshow in shuffled mode");
@@ -463,7 +452,7 @@ internal static class ThemeManager
             // on managed mode if the dwm refresh is insufficient, queue a full refresh
             if (!builder.Config.WindowsThemeMode.Enabled && (providedDwmRefresh < neededDwmRefresh))
             {
-                Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficent, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
+                Logger.Info($"dwm management: provided refresh type {Enum.GetName(providedDwmRefresh).ToLower()} insufficient, minimum: {Enum.GetName(neededDwmRefresh).ToLower()}");
                 ThemeHandler.RefreshDwm(new(DwmRefreshSource.ThemeHandler, dwmRefreshDelay, neededDwmRefresh));
             }
             // on managed mode, if the dwm refresh is provided by the components, no refresh is required
@@ -555,7 +544,7 @@ public class TimedThemeState
     public DateTime CurrentSwitchTime { get; private set; }
 
     /// <summary>
-    /// Instantiates a new ThemeState class and automatically caluclates timed theme switching data
+    /// Instantiates a new ThemeState class and automatically calculates timed theme switching data
     /// </summary>
     public TimedThemeState() => Calculate();
 
@@ -570,7 +559,7 @@ public class TimedThemeState
         {
             LocationHandler.GetSunTimes(builder, out _adjustedSunrise, out _adjustedSunset);
         }
-        //the time bewteen sunrise and sunset, aka "day"
+        //the time between sunrise and sunset, aka "day"
         if (Helper.NowIsBetweenTimes(_adjustedSunrise.TimeOfDay, _adjustedSunset.TimeOfDay))
         {
             TargetTheme = Theme.Light;
