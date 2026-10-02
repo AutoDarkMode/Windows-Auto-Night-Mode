@@ -37,18 +37,17 @@ using static AutoDarkModeSvc.DarkColorTable;
 
 namespace AutoDarkModeSvc;
 
-class Service : Form
+internal class Service : Form
 {
-    private readonly bool allowshowdisplay = false;
+    private readonly bool allowShowDisplay = false;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
-    private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private NotifyIcon NotifyIcon { get; }
     private List<ModuleTimer> Timers { get; set; }
     private IMessageServer MessageServer { get; }
     private AdmConfigMonitor ConfigMonitor { get; }
     private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
-    GlobalState state = GlobalState.Instance();
+    private readonly GlobalState state = GlobalState.Instance();
 
 
     public readonly ToolStripMenuItem forceDarkMenuItem = new();
@@ -67,6 +66,7 @@ class Service : Form
     public Service(int timerMillis)
     {
         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(Builder.Config.Tunable.UICulture);
+
         // Tray Icon Initialization
         forceDarkMenuItem.Name = "forceDark";
         forceLightMenuItem.Name = "forceLight";
@@ -100,14 +100,14 @@ class Service : Form
         ModuleTimer GeoposTimer = new(TimerFrequency.Location, TimerName.Geopos);
         //ModuleTimer StateUpdateTimer = new(TimerFrequency.StateUpdate, TimerName.StateUpdate);
 
-        Timers = new List<ModuleTimer>()
-        {
+        Timers =
+        [
             MainTimer,
             //ShortTimer,
             IOTimer,
             GeoposTimer,
             //StateUpdateTimer
-        };
+        ];
 
         WardenModule warden = new("ModuleWarden", Timers, true);
         ConfigMonitor.RegisterWarden(warden);
@@ -143,7 +143,7 @@ class Service : Form
 
     protected override void SetVisibleCore(bool value)
     {
-        base.SetVisibleCore(allowshowdisplay ? value : allowshowdisplay);
+        base.SetVisibleCore(allowShowDisplay ? value : allowShowDisplay);
     }
 
     private void InitTray()
@@ -161,7 +161,7 @@ class Service : Form
         tryFixTheme.Click += new EventHandler(TryFixTheme);
 
         NotifyIcon.Text = "Auto Dark Mode";
-        state.UpdateNotifyIcon(builder);
+        state.UpdateNotifyIcon(Builder);
         NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
         NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
         NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;
@@ -191,42 +191,39 @@ class Service : Form
 
     private void UpdateContextMenu(object sender, EventArgs e)
     {
-        if (state.InternalTheme == Theme.Dark)
+        NotifyIcon.ContextMenuStrip.Renderer = state.InternalTheme switch
         {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDarkRenderer;
-        }
-        else
+            Theme.Dark => toolStripDarkRenderer,
+            _ => toolStripDefaultRenderer,
+        };
+
+        switch (state.ForcedTheme)
         {
-            NotifyIcon.ContextMenuStrip.Renderer = toolStripDefaultRenderer;
+            case Theme.Light:
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = true;
+                break;
+            case Theme.Dark:
+                forceDarkMenuItem.Checked = true;
+                forceLightMenuItem.Checked = false;
+                break;
+            default:
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = false;
+                break;
         }
 
-        if (state.ForcedTheme == Theme.Light)
-        {
-            forceDarkMenuItem.Checked = false;
-            forceLightMenuItem.Checked = true;
-        }
-        else if (state.ForcedTheme == Theme.Dark)
-        {
-            forceDarkMenuItem.Checked = true;
-            forceLightMenuItem.Checked = false;
-        }
-        else
-        {
-            forceDarkMenuItem.Checked = false;
-            forceLightMenuItem.Checked = false;
-        }
-        autoThemeSwitchingItem.Checked = builder.Config.AutoThemeSwitchingEnabled;
-
-        if (builder.Config.AutoThemeSwitchingEnabled) pauseThemeSwitchItem.Visible = true;
-        else pauseThemeSwitchItem.Visible = false;
+        autoThemeSwitchingItem.Checked = Builder.Config.AutoThemeSwitchingEnabled;
+        pauseThemeSwitchItem.Visible = Builder.Config.AutoThemeSwitchingEnabled;
 
         PostponeItem tempDelay = state.PostponeManager.Get(Helper.PostponeItemDelayAutoSwitch);
         if (tempDelay != null && !state.PostponeManager.IsSkipNextSwitch)
         {
             DateTime expiry = tempDelay.Expiry ?? new();
             pauseThemeSwitchItem.Checked = true;
-            if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-            else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
+            pauseThemeSwitchItem.Text = expiry.Day > DateTime.Now.Day
+                ? $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})"
+                : $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
         }
         else if (Builder.Config.Governor == Governor.AmbientLight)
         {
@@ -235,8 +232,9 @@ class Service : Form
             if (pauseItem != null && pauseItem.Expiry.HasValue)
             {
                 DateTime expiry = pauseItem.Expiry.Value;
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
+                pauseThemeSwitchItem.Text = expiry.Day > DateTime.Now.Day
+                    ? $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})"
+                    : $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
@@ -250,23 +248,18 @@ class Service : Form
             (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
             if (expiry.Year != 1)
             {
-                if (expiry.Day > DateTime.Now.Day) pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})";
-                else pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
+                pauseThemeSwitchItem.Text = expiry.Day > DateTime.Now.Day
+                    ? $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry.ToString("ddd HH:mm", new CultureInfo(Builder.Config.Tunable.UICulture))})"
+                    : $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.Until} {expiry:HH:mm})";
             }
             else
             {
-                if (skipType == SkipType.UntilSunset)
+                pauseThemeSwitchItem.Text = skipType switch
                 {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})";
-                }
-                else if (skipType == SkipType.UntilSunrise)
-                {
-                    pauseThemeSwitchItem.Text = $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunrise})";
-                }
-                else
-                {
-                    pauseThemeSwitchItem.Text = Strings.Resources.TrayMenuItem_ThemeSwitchPause;
-                }
+                    SkipType.UntilSunset => $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunset})",
+                    SkipType.UntilSunrise => $"{Strings.Resources.TrayMenuItem_ThemeSwitchPause} ({Strings.Resources.UntilSunrise})",
+                    _ => Strings.Resources.TrayMenuItem_ThemeSwitchPause,
+                };
             }
         }
     }
@@ -284,6 +277,7 @@ class Service : Form
         SystemEventHandler.ShutdownSwitchWorker();
         Timers.ForEach(t => t.Stop());
         Timers.ForEach(t => t.Dispose());
+
         try
         {
             if (closeApp)
@@ -314,10 +308,12 @@ class Service : Form
         {
             Logger.Warn("adm initialization in progress, waiting for completion before exiting service");
         }
+
         while (!admReady)
         {
             Thread.Sleep(200);
         }
+
         if (isInitializing)
         {
             Logger.Info("adm initialization complete");
@@ -327,10 +323,7 @@ class Service : Form
     public void RequestExit(object sender, EventArgs e)
     {
         CheckReadyStatus();
-        if (e is ExitEventArgs exe)
-        {
-            closeApp = exe.CloseApp;
-        }
+        if (e is ExitEventArgs exe) closeApp = exe.CloseApp;
         if (NotifyIcon != null) NotifyIcon.Dispose();
         else Exit(sender, e);
     }
@@ -342,6 +335,7 @@ class Service : Form
             UseShellExecute = false,
             Verb = "open"
         });
+
         if (e is ExitEventArgs exe)
         {
             closeApp = exe.CloseApp;
@@ -365,20 +359,20 @@ class Service : Form
     public void ToggleTheme(object sender, EventArgs e)
     {
         Theme newTheme = ThemeManager.SwitchThemeAutoPauseAndNotify();
-        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(typeof(Theme), newTheme).ToLower()} theme");
+        Logger.Info($"ui signal received: theme toggle: switching to {Enum.GetName(newTheme).ToLower()} theme");
     }
 
     public void ToggleAutoThemeSwitching(object sender, EventArgs e)
     {
         ToolStripMenuItem mi = sender as ToolStripMenuItem;
-        AdmConfig old = builder.Config;
+        AdmConfig old = Builder.Config;
 
         if (mi.Checked)
         {
             Logger.Info("ui signal received: disabling auto theme switching");
 
             state.SkipConfigFileReload = true;
-            builder.Config.AutoThemeSwitchingEnabled = false;
+            Builder.Config.AutoThemeSwitchingEnabled = false;
             AdmConfigMonitor.Instance().PerformConfigUpdate(old, internalUpdate: true);
             mi.Checked = false;
         }
@@ -386,14 +380,14 @@ class Service : Form
         {
             Logger.Info("ui signal received: enabling auto theme switching");
             state.SkipConfigFileReload = true;
-            builder.Config.AutoThemeSwitchingEnabled = true;
+            Builder.Config.AutoThemeSwitchingEnabled = true;
             ThemeManager.RequestSwitch(new(SwitchSource.Manual));
             mi.Checked = true;
         }
 
         try
         {
-            builder.Save();
+            Builder.Save();
         }
         catch (Exception ex)
         {
@@ -415,24 +409,22 @@ class Service : Form
         {
             foreach (var item in NotifyIcon.ContextMenuStrip.Items)
             {
-                if (item is ToolStripMenuItem)
-                {
-                    (item as ToolStripMenuItem).Checked = false;
-                }
+                if (item is ToolStripMenuItem) (item as ToolStripMenuItem).Checked = false;
             }
-            if (mi.Name == "forceLight")
+            switch (mi.Name)
             {
-                Logger.Info("ui signal received: forcing light theme");
-                state.ForcedTheme = Theme.Light;
-                ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
-                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
-            }
-            else if (mi.Name == "forceDark")
-            {
-                Logger.Info("ui signal received: forcing dark theme");
-                state.ForcedTheme = Theme.Dark;
-                ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
-                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
+                case "forceLight":
+                    Logger.Info("ui signal received: forcing light theme");
+                    state.ForcedTheme = Theme.Light;
+                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
+                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
+                    break;
+                case "forceDark":
+                    Logger.Info("ui signal received: forcing dark theme");
+                    state.ForcedTheme = Theme.Dark;
+                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
+                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
+                    break;
             }
             mi.Checked = true;
         }
@@ -487,7 +479,7 @@ class Service : Form
     public const int WM_HOTKEY = 0x312;
     protected override void WndProc(ref Message m)
     {
-        if (m.Msg == WM_HOTKEY && m.WParam == (IntPtr)0)
+        if (m.Msg == WM_HOTKEY && m.WParam == 0)
         {
             uint modifiers = (uint)((int)m.LParam & 0xFFFF);
             uint keyCode = (uint)(((int)m.LParam >> 16) & 0xFFFF);
@@ -515,16 +507,14 @@ public static class WindowHelper
     public static void BringProcessToFront(Process process)
     {
         IntPtr handle = process.MainWindowHandle;
-        if (IsIconic(handle))
-        {
-            ShowWindow(handle, SW_RESTORE);
-        }
+        if (IsIconic(handle)) ShowWindow(handle, SW_RESTORE);
 
         SetForegroundWindow(handle);
     }
 
-    const int SW_RESTORE = 9;
+    private const int SW_RESTORE = 9;
 
+    // suggested: SYSLIB1054
     [System.Runtime.InteropServices.DllImport("User32.dll")]
     private static extern bool SetForegroundWindow(IntPtr handle);
     [System.Runtime.InteropServices.DllImport("User32.dll")]
@@ -535,39 +525,14 @@ public static class WindowHelper
 
 public class DarkColorTable : ProfessionalColorTable
 {
-    public override Color MenuItemBorder
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color MenuItemSelected
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-
-    public override Color MenuItemSelectedGradientBegin
-    {
-        get { return Color.FromArgb(64, 64, 64); }
-    }
-    public override Color MenuItemSelectedGradientEnd
-    {
-        get { return Color.FromArgb(64, 64, 64); }
-    }
-    public override Color ToolStripDropDownBackground
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientBegin
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientMiddle
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
-    public override Color ImageMarginGradientEnd
-    {
-        get { return Color.FromArgb(32, 32, 32); }
-    }
+    public override Color MenuItemBorder => Color.FromArgb(32, 32, 32);
+    public override Color MenuItemSelected => Color.FromArgb(32, 32, 32);
+    public override Color MenuItemSelectedGradientBegin => Color.FromArgb(64, 64, 64);
+    public override Color MenuItemSelectedGradientEnd => Color.FromArgb(64, 64, 64);
+    public override Color ToolStripDropDownBackground => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientBegin => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientMiddle => Color.FromArgb(32, 32, 32);
+    public override Color ImageMarginGradientEnd => Color.FromArgb(32, 32, 32);
 
     public class DarkRenderer : ToolStripProfessionalRenderer
     {
@@ -575,6 +540,7 @@ public class DarkColorTable : ProfessionalColorTable
             : base(new DarkColorTable())
         {
         }
+
         protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
         {
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
