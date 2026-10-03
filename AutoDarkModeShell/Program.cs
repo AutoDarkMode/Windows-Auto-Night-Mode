@@ -106,22 +106,17 @@ internal class Program
                 continue;
             }
 
-            switch (selection)
+            if (selection == Custom)
             {
-                case Custom:
-                    selection = Prompt.Input<string>("Enter command");
-                    Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                    break;
-                default:
-                    if (selection != QuitShell)
-                    {
-                        selection = selection.Split("(")[0].Trim();
-                        selection = (string)typeof(Command).GetField(selection).GetValue(null);
-                        Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
-                        Console.WriteLine("Please check service.log for more details");
-                    }
-
-                    break;
+                selection = Prompt.Input<string>("Enter command");
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
+            }
+            else if (selection != QuitShell)
+            {
+                selection = selection.Split("(")[0].Trim();
+                selection = (string)typeof(Command).GetField(selection).GetValue(null);
+                Console.WriteLine($"Result: {client.SendMessageAndGetReply(selection, timeoutSeconds: 15)}");
+                Console.WriteLine("Please check service.log for more details");
             }
         }
         while (selection != QuitShell);
