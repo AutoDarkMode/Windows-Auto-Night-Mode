@@ -245,6 +245,7 @@ static class Program
                 Logger.Warn(ex, "could not set access key highlight flag");
             }
             */
+            using var ambientBrightness = new AmbientBrightnessHost();
             Application.Run(Service);
 
         }

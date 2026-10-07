@@ -10,6 +10,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _sensorTimer;
     private bool _isInitializing;
     private bool _isUpdating;
 
@@ -29,6 +30,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
+        _sensorTimer = _dispatcherQueue.CreateTimer();
+        _sensorTimer.Interval = TimeSpan.FromMilliseconds(500);
+        _sensorTimer.Tick += (_, _) => RefreshAmbientReading();
+        _sensorTimer.Start();
         LoadSettings();
         Task.Run(() => LoadPostponeTimer(null, new()));
 
@@ -80,42 +85,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        // Check ambient light sensor availability and set up monitoring
-        _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
-        AmbientLightSensorAvailable = _lightSensor != null;
-
-        if (AmbientLightSensorAvailable)
-        {
-            // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
-            _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
-            _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
-
-            // Get initial reading
-            var reading = _lightSensor.GetCurrentReading();
-            if (reading != null)
-            {
-                CurrentLuxReading = reading.IlluminanceInLux;
-                CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-                CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-                RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
-            }
-            else
-            {
-                CurrentLuxReading = 0;
-                CurrentLuxDescription = "AmbientLightNoReading".GetLocalized();
-                CurrentLuxSliderPercentage = 0;
-                RemainingLuxSliderPercentage = 1000;
-            }
-
-            // Load ambient light threshold settings
-            AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
-            AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
-        }
-        else
-        {
-            // No sensor available - show helpful text but continue initializing other settings
-            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
-        }
+        RefreshAmbientReading();
+        AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
+        AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
 
         HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
 
@@ -157,6 +129,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         UpdateLocationNextUpdateDescription();
 
         _isInitializing = false;
+        NotifyAutomationSwitches();
     }
 
     private static async void RequestThemeSwitch()

@@ -95,6 +95,8 @@ public class IdleChecker
 
 public class AmbientLight
 {
+    /// <summary>Time-page source to restore when leaving ambient theme switching.</summary>
+    public string PreviousTriggerMode { get; set; } = "";
     /// <summary>
     /// Lux threshold below which dark mode is activated (default: 40 lux)
     /// </summary>

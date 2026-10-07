@@ -13,6 +13,7 @@ public class PageService : IPageService
     public PageService()
     {
         Configure<AutoSwitchViewModel, AutoSwitchPage>();
+        Configure<AmbientLightViewModel, AmbientLightPage>();
         Configure<ConditionsViewModel, ConditionsPage>();
         Configure<HotkeysViewModel, HotkeysPage>();
         Configure<SystemAreasViewModel, SystemAreasPage>();

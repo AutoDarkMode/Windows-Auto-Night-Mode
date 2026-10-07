@@ -8,7 +8,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         get => _ambientLightDarkThreshold;
         set
         {
-            value = Math.Round(value);
+            if (!double.IsFinite(value)) return;
+            value = Math.Clamp(Math.Round(value), 0, 9999);
             if (SetProperty(ref _ambientLightDarkThreshold, value))
             {
                 if (!_isUpdating)
@@ -24,6 +25,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                         AmbientLightLightThreshold = Math.Min(10000, value + 1);
                     }
                     RangeStart = LuxToSlider(value);
+                    RangeEnd = LuxToSlider(_ambientLightLightThreshold);
                     _isUpdating = false;
                 }
                 RestartAmbientLightDebounce();
@@ -37,7 +39,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         get => _ambientLightLightThreshold;
         set
         {
-            value = Math.Round(value);
+            if (!double.IsFinite(value)) return;
+            value = Math.Clamp(Math.Round(value), 1, 10000);
             if (SetProperty(ref _ambientLightLightThreshold, value))
             {
                 if (!_isUpdating)
@@ -46,9 +49,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                     // Ensure Dark stays strictly below Light (see comment in AmbientLightDarkThreshold)
                     if (_ambientLightDarkThreshold >= value)
                     {
-                        AmbientLightDarkThreshold = Math.Max(1, value - 1);
+                        AmbientLightDarkThreshold = Math.Max(0, value - 1);
                     }
                     RangeEnd = LuxToSlider(value);
+                    RangeStart = LuxToSlider(_ambientLightDarkThreshold);
                     _isUpdating = false;
                 }
                 RestartAmbientLightDebounce();
@@ -58,7 +62,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void RestartAmbientLightDebounce()
     {
-        if (_ambientLightDebounceTimer != null)
+        if (!_isInitializing && _ambientLightDebounceTimer != null)
         {
             _ambientLightDebounceTimer.Stop();
             _ambientLightDebounceTimer.Start();
@@ -73,18 +77,16 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             if (SetProperty(ref _rangeStart, value) && !_isUpdating)
             {
-                _isUpdating = true;
                 double lux = SliderToLux(value);
                 AmbientLightDarkThreshold = lux;
 
                 // Snap slider to canonical position for rounded lux value
                 // This ensures the thumb position matches the displayed value
-                double canonicalSlider = LuxToSlider(lux);
+                double canonicalSlider = LuxToSlider(AmbientLightDarkThreshold);
                 if (Math.Abs(_rangeStart - canonicalSlider) > 0.5)
                 {
                     SetProperty(ref _rangeStart, canonicalSlider);
                 }
-                _isUpdating = false;
             }
         }
     }
@@ -97,18 +99,16 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             if (SetProperty(ref _rangeEnd, value) && !_isUpdating)
             {
-                _isUpdating = true;
                 double lux = SliderToLux(value);
                 AmbientLightLightThreshold = lux;
 
                 // Snap slider to canonical position for rounded lux value
                 // This ensures the thumb position matches the displayed value
-                double canonicalSlider = LuxToSlider(lux);
+                double canonicalSlider = LuxToSlider(AmbientLightLightThreshold);
                 if (Math.Abs(_rangeEnd - canonicalSlider) > 0.5)
                 {
                     SetProperty(ref _rangeEnd, canonicalSlider);
                 }
-                _isUpdating = false;
             }
         }
     }
@@ -160,12 +160,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     [ObservableProperty]
     public partial string? CurrentLuxDescription { get; set; }
 
-    private Windows.Devices.Sensors.LightSensor? _lightSensor;
+
 
     [RelayCommand]
     private void AutoConfigure()
     {
-        if (!AmbientLightSensorAvailable) return;
+        if (!HasCurrentLuxReading) return;
 
         double currentLux = CurrentLuxReading;
         double dark, light;
@@ -210,17 +210,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
             }
         }
-    }
-
-    private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
-    {
-        _dispatcherQueue.TryEnqueue(() =>
-        {
-            CurrentLuxReading = args.Reading.IlluminanceInLux;
-            CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-            CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-            RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
-        });
     }
 
     private static string GetLuxDescription(double lux)

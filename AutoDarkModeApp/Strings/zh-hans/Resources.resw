@@ -1130,4 +1130,6 @@
   <data name="Contributors" xml:space="preserve">
     <value>贡献者</value>
   </data>
+  <data name="SwitchAllVirtualDesktops" xml:space="preserve"><value>切换所有虚拟桌面的壁纸</value></data>
+  <data name="SwitchAllVirtualDesktops_Description" xml:space="preserve"><value>在“图片”模式下，让所有虚拟桌面统一跟随浅色或深色壁纸，覆盖各桌面单独选择的壁纸。默认关闭。关闭后保留当前壁纸，不再同步其他桌面。</value></data>
 </root>
