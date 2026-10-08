@@ -13,6 +13,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
     private bool _isInitializing;
 
     public enum WallpaperDisplayMode
@@ -114,14 +115,15 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             SafeSaveBuilder();
             LoadSettings();
             DisplayWallpaperPath = file.Path;
-            _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+            _dispatcherQueue.TryEnqueue(() => _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot));
         }
     }
 
-    public WallpaperPickerViewModel(IErrorService errorService)
+    public WallpaperPickerViewModel(IErrorService errorService, IThemeSwitchService themeSwitchService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        _themeSwitchService = themeSwitchService;
 
         SelectWallpaperThemeMode = Application.Current.RequestedTheme;
 
@@ -315,22 +317,6 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "WallpaperPickerViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerViewModel");
-        }
-    }
-
     partial void OnIsWallpaperSwitchEnabledChanged(bool value)
     {
         if (_isInitializing)
@@ -384,7 +370,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
         }
 
         SafeSaveBuilder();
-        _dispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+        _dispatcherQueue.TryEnqueue(() => _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot));
 
         // Here, respond and save the configuration file before refreshing the UI, in order to read the Spotlight wallpaper correctly
         LoadSettings();

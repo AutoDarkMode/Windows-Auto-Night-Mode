@@ -7,6 +7,7 @@ public partial class CursorsViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
     private bool _isInitializing;
 
     [ObservableProperty]
@@ -18,10 +19,11 @@ public partial class CursorsViewModel : ObservableRecipient
     [ObservableProperty]
     public partial object? SelectDarkCursor { get; set; }
 
-    public CursorsViewModel(IErrorService errorService)
+    public CursorsViewModel(IErrorService errorService, IThemeSwitchService themeSwitchService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        _themeSwitchService = themeSwitchService;
 
         try
         {
@@ -76,7 +78,7 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnSelectLightCursorChanged(object? value)
@@ -96,7 +98,7 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnSelectDarkCursorChanged(object? value)
@@ -116,24 +118,6 @@ public partial class CursorsViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsPage");
         }
-        RequestThemeSwitch();
-    }
-
-
-
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "CursorsViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "CursorsViewModel");
-        }
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 }
