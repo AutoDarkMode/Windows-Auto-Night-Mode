@@ -281,4 +281,7 @@
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>업데이트</value>
   </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>한 시간 동안</value>
+  </data>
 </root>
