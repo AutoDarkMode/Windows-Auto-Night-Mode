@@ -117,7 +117,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
         }
 
-        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
+        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled, persist: false);
+        ApplyTriggerModeState(SelectedTriggerMode);
 
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
         LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
