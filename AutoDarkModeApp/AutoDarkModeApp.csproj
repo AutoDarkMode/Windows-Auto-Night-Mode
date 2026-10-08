@@ -10,14 +10,13 @@
     <Platforms>x64;arm64</Platforms>
     <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>Properties\PublishProfiles\win-$(Platform).pubxml</PublishProfile>
-    <LangVersion>Preview</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefaultLanguage>en-us</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <PublishAot>false</PublishAot>
     <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
@@ -29,21 +28,10 @@
     <OutputPath>..\bin\Debug\adm-app\ui\</OutputPath>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release|x64'">
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Release|ARM64'">
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>..\bin\Release\adm-app\ui\</OutputPath>
-  </PropertyGroup>
-
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
@@ -61,10 +49,8 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="2.4.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
     <PackageReference Include="NetTopologySuite" Version="2.6.0" />
-    <PackageReference Include="NetTopologySuite.Features" Version="2.2.0" />
     <PackageReference Include="NetTopologySuite.IO.GeoJSON4STJ" Version="4.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="9.0.9" />
-    <PackageReference Include="System.Text.Json" Version="9.0.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,15 +63,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\DonationHeader.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\DonationLogo_GitHub.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\DonationLogo_GitHub_White.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Assets\DonationLogo_PayPal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\DonationLogo_GitHub.png">
