@@ -87,7 +87,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         _isInitializing = true;
 
         // Theme mode
-        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled);
+        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled, persist: false);
 
         // Coordinates
         LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
@@ -124,7 +124,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                             TimeDarkStart = SunsetWithOffset.TimeOfDay;
 
                             // location data has been reloaded from disk by now, so the next update time may have become available
-                            UpdateLocationNextUpdateDescription();
+                            // UpdateLocationNextUpdateDescription();
                             break;
                         }
 

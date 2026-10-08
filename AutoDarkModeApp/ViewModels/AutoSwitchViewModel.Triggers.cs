@@ -38,135 +38,107 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
     }
 
-    private void HandleAutoTheme(bool value)
+    private void HandleAutoTheme(bool value, bool persist = true)
     {
         AutoThemeSwitchingEnabled = value;
 
+        var mode = DetermineModeFromBackend();
+        if (SelectedTriggerMode != mode) SelectedTriggerMode = mode;
+
+        if (_isInitializing) ApplyTriggerModeState(mode);
+
+        if (persist && _builder.Config.AutoThemeSwitchingEnabled != value)
+            try
+            {
+                _builder.Config.AutoThemeSwitchingEnabled = value;
+                _builder.Save();
+            }
+            catch (Exception ex)
+            {
+                _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+            }
+    }
+
+    private SwitchTriggerMode DetermineModeFromBackend()
+    {
         switch (_builder.Config.Governor)
         {
             case Governor.NightLight:
-                SelectedTriggerMode = SwitchTriggerMode.WindowsNightLight;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
+                return SwitchTriggerMode.WindowsNightLight;
+            case Governor.AmbientLight:
+                return SwitchTriggerMode.AmbientLight;
+            default:
+                if (_builder.Config.Location.Enabled)
+                {
+                    return _builder.Config.Location.UseGeolocatorService ? SwitchTriggerMode.LocationTimes : SwitchTriggerMode.CoordinateTimes;
+                }
+                else
+                {
+                    return SwitchTriggerMode.CustomTimes;
+                }
+        }
+    }
+
+    private void ApplyTriggerModeState(SwitchTriggerMode mode)
+    {
+        // Base: reset all to default state
+        // UI will not flicker
+        _builder.Config.Location.Enabled = false;
+        _builder.Config.Location.UseGeolocatorService = false;
+
+        LocationSettingsCardVisibility = Visibility.Collapsed;
+        CustomTimeSettingsCardVisibility = Visibility.Collapsed;
+        OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
+        PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
+        OffsetTimesMinimum = -720;
+
+        switch (mode)
+        {
+            case SwitchTriggerMode.CustomTimes:
+                _builder.Config.Governor = Governor.Default;
+
+                CustomTimeSettingsCardVisibility = Visibility.Visible;
+                break;
+            case SwitchTriggerMode.LocationTimes:
+            case SwitchTriggerMode.CoordinateTimes:
+                _builder.Config.Governor = Governor.Default;
+                _builder.Config.Location.Enabled = true;
+                if (mode == SwitchTriggerMode.LocationTimes) _builder.Config.Location.UseGeolocatorService = true;
+
+                LocationSettingsCardVisibility = Visibility.Visible;
+                CustomTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 PostponeOptionsSkipOnceVisibility = Visibility.Visible;
+                break;
+            case SwitchTriggerMode.WindowsNightLight:
+                _builder.Config.Governor = Governor.NightLight;
+
+                OffsetTimeSettingsCardVisibility = Visibility.Visible;
                 OffsetTimesMinimum = 0;
-                return;
-            case Governor.AmbientLight:
-                SelectedTriggerMode = SwitchTriggerMode.AmbientLight;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                PostponeOptionsSkipOnceVisibility = Visibility.Collapsed;
-                return;
-        }
+                PostponeOptionsSkipOnceVisibility = Visibility.Visible;
+                break;
+            case SwitchTriggerMode.AmbientLight:
+                _builder.Config.Governor = Governor.AmbientLight;
 
-        if (!_builder.Config.Location.Enabled)
-        {
-            SelectedTriggerMode = SwitchTriggerMode.CustomTimes;
-            LocationSettingsCardVisibility = Visibility.Collapsed;
-            CustomTimeSettingsCardVisibility = Visibility.Visible;
-            return;
+                OffsetTimesMinimum = 0;
+                break;
         }
-
-        if (_builder.Config.Location.UseGeolocatorService)
-        {
-            SelectedTriggerMode = SwitchTriggerMode.LocationTimes;
-        }
-        else
-        {
-            SelectedTriggerMode = SwitchTriggerMode.CoordinateTimes;
-        }
-
-        LocationSettingsCardVisibility = Visibility.Visible;
-        OffsetTimesMinimum = -720;
-        CustomTimeSettingsCardVisibility = Visibility.Visible;
-        OffsetTimeSettingsCardVisibility = Visibility.Visible;
-        PostponeOptionsSkipOnceVisibility = Visibility.Visible;
     }
 
     partial void OnAutoThemeSwitchingEnabledChanged(bool value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         HandleAutoTheme(value);
-
-        _builder.Config.AutoThemeSwitchingEnabled = value;
-        try
-        {
-            _builder.Save();
-        }
-        catch (Exception ex)
-        {
-            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
-        }
     }
 
     partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
-        // Each case fully controls all visibility states to prevent flickering
-        switch (value)
-        {
-            case SwitchTriggerMode.CustomTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                break;
+        if (DetermineModeFromBackend() == value) return;
 
-            case SwitchTriggerMode.LocationTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = true;
-                LocationSettingsCardVisibility = Visibility.Visible;
-                CustomTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
-                break;
-
-            case SwitchTriggerMode.CoordinateTimes:
-                _builder.Config.Governor = Governor.Default;
-                _builder.Config.Location.Enabled = true;
-                _builder.Config.Location.UseGeolocatorService = false;
-                LocationSettingsCardVisibility = Visibility.Visible;
-                CustomTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = -720;
-                break;
-
-            case SwitchTriggerMode.WindowsNightLight:
-                _builder.Config.Governor = Governor.NightLight;
-                _builder.Config.AutoThemeSwitchingEnabled = true;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Visible;
-                OffsetTimesMinimum = 0;
-                break;
-
-            case SwitchTriggerMode.AmbientLight:
-                // Run auto-configure only if we are switching to Ambient Light and values are still defaults
-                // This prevents overwriting user's custom settings when switching modes
-                if (_builder.Config.AmbientLight.DarkThreshold == 40 && _builder.Config.AmbientLight.LightThreshold == 80)
-                {
-                    AutoConfigure();
-                }
-                _builder.Config.Governor = Governor.AmbientLight;
-                _builder.Config.AutoThemeSwitchingEnabled = true;
-                _builder.Config.Location.Enabled = false;
-                _builder.Config.Location.UseGeolocatorService = false;
-                LocationSettingsCardVisibility = Visibility.Collapsed;
-                CustomTimeSettingsCardVisibility = Visibility.Collapsed;
-                OffsetTimeSettingsCardVisibility = Visibility.Collapsed;
-                break;
-        }
+        ApplyTriggerModeState(value);
 
         try
         {
@@ -182,8 +154,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnOffsetLightChanged(int value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         if (_debounceTimer != null)
         {
@@ -194,8 +165,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnOffsetDarkChanged(int value)
     {
-        if (_isInitializing)
-            return;
+        if (_isInitializing) return;
 
         if (_debounceTimer != null)
         {
