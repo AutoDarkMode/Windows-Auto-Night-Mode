@@ -52,7 +52,7 @@ public static class Helper
     public static string UnmanagedLightThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedLightThemeName}.theme");
     public static string UnmanagedDarkThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedDarkThemeName}.theme");
     public static string WindowsThemesFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Resources", "Themes");
-    public static string Hegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
+    public static string HexColorRegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
 
     public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
     {
@@ -85,7 +85,7 @@ public static class Helper
         return false;
     }
 
-    public static bool TimeisBetweenTimes(TimeSpan time, TimeSpan start, TimeSpan end)
+    public static bool TimeIsBetweenTimes(TimeSpan time, TimeSpan start, TimeSpan end)
     {
         if (start == end)
         {
@@ -333,10 +333,7 @@ public static class HotkeyStringConverter
 
     public static bool IsWinFormsFormat(string hotkeyString)
     {
-        if (string.IsNullOrWhiteSpace(hotkeyString))
-        {
-            return false;
-        }
+        if (string.IsNullOrWhiteSpace(hotkeyString)) return false;
 
         var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
 
@@ -372,20 +369,14 @@ public static class HotkeyStringConverter
 
     public static string ToDisplayFormat(string hotkeyString)
     {
-        if (string.IsNullOrWhiteSpace(hotkeyString))
-        {
-            return null;
-        }
+        if (string.IsNullOrWhiteSpace(hotkeyString)) return null;
 
         try
         {
             var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
-            if (parts.Length == 0)
-            {
-                return null;
-            }
+            if (parts.Length == 0) return null;
 
-            List<string> displayParts = [];
+            List<string> displayParts = new();
             string mainKey = null;
 
             foreach (var part in parts)
@@ -402,10 +393,7 @@ public static class HotkeyStringConverter
                 }
             }
 
-            if (string.IsNullOrEmpty(mainKey))
-            {
-                return null;
-            }
+            if (string.IsNullOrEmpty(mainKey)) return null;
 
             var orderedModifiers = displayParts.Distinct().OrderBy(m => m switch
             {
@@ -427,18 +415,12 @@ public static class HotkeyStringConverter
 
     public static (uint modifiers, uint keyCode)? Parse(string hotkeyString)
     {
-        if (string.IsNullOrWhiteSpace(hotkeyString))
-        {
-            return null;
-        }
+        if (string.IsNullOrWhiteSpace(hotkeyString)) return null;
 
         try
         {
             var parts = hotkeyString.Split('+', StringSplitOptions.TrimEntries);
-            if (parts.Length == 0)
-            {
-                return null;
-            }
+            if (parts.Length == 0) return null;
 
             uint modifiers = 0;
             string mainKey = null;
@@ -457,16 +439,10 @@ public static class HotkeyStringConverter
                 }
             }
 
-            if (string.IsNullOrEmpty(mainKey))
-            {
-                return null;
-            }
+            if (string.IsNullOrEmpty(mainKey)) return null;
 
             uint keyCode = GetKeyCode(mainKey);
-            if (keyCode == 0)
-            {
-                return null;
-            }
+            if (keyCode == 0) return null;
 
             return (modifiers, keyCode);
         }
@@ -501,7 +477,7 @@ public static class HotkeyStringConverter
         if (keyName.Length == 1 && char.IsLetter(keyName[0]))
         {
             char upper = char.ToUpper(keyName[0]);
-            return (uint)upper;
+            return upper;
         }
 
         return 0;

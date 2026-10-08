@@ -252,10 +252,7 @@ public class AdmConfigBuilder
     {
         FileStream stream = null;
 
-        if (!File.Exists(file.FullName))
-        {
-            return false;
-        }
+        if (!File.Exists(file.FullName)) return false;
 
         try
         {
@@ -263,7 +260,6 @@ public class AdmConfigBuilder
         }
         catch (IOException)
         {
-
             return true;
         }
         finally
@@ -276,7 +272,7 @@ public class AdmConfigBuilder
     }
 }
 
-class FlowStyleStringListEmitter : ChainedEventEmitter
+internal class FlowStyleStringListEmitter : ChainedEventEmitter
 {
     public FlowStyleStringListEmitter(IEventEmitter nextEmitter)
         : base(nextEmitter) { }
