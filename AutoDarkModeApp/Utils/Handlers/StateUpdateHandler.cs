@@ -14,14 +14,19 @@ internal static class StateUpdateHandler
     private static readonly Lock _lock = new();
     private static FileSystemWatcher? _configWatcher;
     private static FileSystemWatcher? _scriptConfigWatcher;
+    private static FileSystemWatcher? _locationDataWatcher;
     private static readonly System.Timers.Timer _postponeRefreshTimer;
 
     private static readonly List<FileSystemEventHandler> _delegatesConfigWatcher = [];
     private static readonly List<FileSystemEventHandler> _delegatesScriptConfigWatcher = [];
+    private static readonly List<FileSystemEventHandler> _delegatesLocationDataWatcher = [];
     private static readonly List<ElapsedEventHandler> _delegatesTimer = [];
 
     private static readonly DispatcherQueueTimer? _debounceTimer;
     private static Action? _debounceAction;
+
+    private static readonly DispatcherQueueTimer? _locationDataDebounceTimer;
+    private static Action? _locationDataDebounceAction;
 
     public static SecurityIdentifier SID => WindowsIdentity.GetCurrent().User!;
 
@@ -37,6 +42,10 @@ internal static class StateUpdateHandler
                 _debounceTimer = queue.CreateTimer();
                 _debounceTimer.Interval = TimeSpan.FromMilliseconds(100);
                 _debounceTimer.Tick += OnDebounceTimerTick;
+
+                _locationDataDebounceTimer = queue.CreateTimer();
+                _locationDataDebounceTimer.Interval = TimeSpan.FromMilliseconds(100);
+                _locationDataDebounceTimer.Tick += OnLocationDataDebounceTimerTick;
             }
         }
         catch
@@ -49,6 +58,12 @@ internal static class StateUpdateHandler
     {
         _debounceAction?.Invoke();
         _debounceTimer?.Stop();
+    }
+
+    private static void OnLocationDataDebounceTimerTick(object? sender, object e)
+    {
+        _locationDataDebounceAction?.Invoke();
+        _locationDataDebounceTimer?.Stop();
     }
 
     private static FileSystemWatcher? GetConfigWatcher()
@@ -113,11 +128,43 @@ internal static class StateUpdateHandler
         return _scriptConfigWatcher;
     }
 
+    private static FileSystemWatcher? GetLocationDataWatcher()
+    {
+        if (_locationDataWatcher != null)
+            return _locationDataWatcher;
+
+        lock (_lock)
+        {
+            if (_locationDataWatcher != null)
+                return _locationDataWatcher;
+
+            if (!Directory.Exists(AdmConfigBuilder.ConfigDir))
+                return null;
+
+            try
+            {
+                _locationDataWatcher = new FileSystemWatcher
+                {
+                    Path = AdmConfigBuilder.ConfigDir,
+                    Filter = Path.GetFileName(AdmConfigBuilder.LocationDataPath),
+                    NotifyFilter = NotifyFilters.LastWrite,
+                };
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        return _locationDataWatcher;
+    }
+
     public static void ClearAllEvents()
     {
         ClearEventHandlers(_delegatesTimer, eh => _postponeRefreshTimer.Elapsed -= eh);
         ClearEventHandlers(_delegatesConfigWatcher, eh => GetConfigWatcher()?.Changed -= eh);
         ClearEventHandlers(_delegatesScriptConfigWatcher, eh => GetScriptConfigWatcher()?.Changed -= eh);
+        ClearEventHandlers(_delegatesLocationDataWatcher, eh => GetLocationDataWatcher()?.Changed -= eh);
     }
 
     private static void ClearEventHandlers<T>(List<T> handlers, Action<T> removeAction)
@@ -136,6 +183,10 @@ internal static class StateUpdateHandler
     public static void StartScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => GetScriptConfigWatcher()?.EnableRaisingEvents = true);
 
     public static void StopScriptWatcher() => SafetyExtensions.IgnoreExceptions(() => GetScriptConfigWatcher()?.EnableRaisingEvents = false);
+
+    public static void StartLocationDataWatcher() => SafetyExtensions.IgnoreExceptions(() => GetLocationDataWatcher()?.EnableRaisingEvents = true);
+
+    public static void StopLocationDataWatcher() => SafetyExtensions.IgnoreExceptions(() => GetLocationDataWatcher()?.EnableRaisingEvents = false);
 
     public static void StartPostponeTimer() => _postponeRefreshTimer.Start();
 
@@ -185,6 +236,20 @@ internal static class StateUpdateHandler
         }
     }
 
+    public static event FileSystemEventHandler OnLocationDataUpdate
+    {
+        add
+        {
+            GetLocationDataWatcher()?.Changed += value;
+            _delegatesLocationDataWatcher.Add(value);
+        }
+        remove
+        {
+            GetLocationDataWatcher()?.Changed -= value;
+            _delegatesLocationDataWatcher.Remove(value);
+        }
+    }
+
     public static event ElapsedEventHandler OnPostponeTimerTick
     {
         add
@@ -218,13 +283,34 @@ internal static class StateUpdateHandler
         }
     }
 
+    public static void AddDebounceEventOnLocationDataUpdate(Action action)
+    {
+        if (_locationDataDebounceTimer == null)
+        {
+            return;
+        }
+
+        _locationDataDebounceAction = action;
+        OnLocationDataUpdate += LocationDataDebounceAction;
+    }
+
+    private static void LocationDataDebounceAction(object sender, FileSystemEventArgs e)
+    {
+        if (_locationDataDebounceTimer?.IsRunning == false)
+        {
+            _locationDataDebounceTimer.Start();
+        }
+    }
+
     public static void Dispose()
     {
         ClearAllEvents();
 
         GetConfigWatcher()?.Dispose();
         GetScriptConfigWatcher()?.Dispose();
+        GetLocationDataWatcher()?.Dispose();
         _postponeRefreshTimer.Dispose();
         _debounceTimer?.Stop();
+        _locationDataDebounceTimer?.Stop();
     }
 }

@@ -194,7 +194,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         AmbientLightDarkThreshold = Math.Max(1, Math.Min(dark, 9998));
         AmbientLightLightThreshold = Math.Max(AmbientLightDarkThreshold + 1, Math.Min(light, 10000));
 
-        // Save immediately as this is a deliberate action or first-time setup
+        // Save immediately as this is a deliberate action
         if (_ambientLightDebounceTimer != null)
         {
             _ambientLightDebounceTimer.Stop();
@@ -203,7 +203,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             try
             {
                 _builder.Save();
-                RequestThemeSwitch();
+                _ = RequestThemeSwitch();
             }
             catch (Exception ex)
             {

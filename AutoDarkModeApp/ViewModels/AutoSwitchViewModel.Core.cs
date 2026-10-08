@@ -12,6 +12,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
     private bool _isInitializing;
     private bool _isUpdating;
+    private bool _locationDataInitialized;
 
     public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
     {
@@ -34,6 +35,11 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
         StateUpdateHandler.AddDebounceEventOnConfigUpdate(HandleConfigUpdate);
         StateUpdateHandler.StartConfigWatcher();
+
+        // Watches location_data.yaml directly so background service updates (hourly timer / 24h cooldown)
+        // are reflected on this page immediately, without requiring an unrelated config.yaml save. See #1078.
+        StateUpdateHandler.AddDebounceEventOnLocationDataUpdate(HandleLocationDataUpdate);
+        StateUpdateHandler.StartLocationDataWatcher();
 
         StateUpdateHandler.OnPostponeTimerTick += LoadPostponeTimer;
         StateUpdateHandler.StartPostponeTimer();
@@ -72,7 +78,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _ambientLightDebounceTimer.Stop();
 
             // Trigger theme re-evaluation with new thresholds
-            RequestThemeSwitch();
+            _ = RequestThemeSwitch();
         };
     }
 
@@ -80,7 +86,59 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         _isInitializing = true;
 
-        // Check ambient light sensor availability and set up monitoring
+        // Theme mode
+        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled, persist: false);
+
+        // Coordinates
+        LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
+        LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
+
+        // Location UI
+        if (!_locationDataInitialized) LocationBlockText = "Msg_SearchLoc".GetLocalized();
+
+        // Offsets
+        OffsetLight = _builder.Config.Location.SunriseOffsetMin;
+        OffsetDark = _builder.Config.Location.SunsetOffsetMin;
+
+        // Trigger mode
+        _dispatcherQueue.TryEnqueue(async () =>
+                {
+                    switch (SelectedTriggerMode)
+                    {
+                        // Only load geolocation data for location-based modes
+                        // AmbientLight and WindowsNightLight modes don't need time/location data
+                        case SwitchTriggerMode.LocationTimes:
+                        case SwitchTriggerMode.CoordinateTimes:
+                        {
+                            if (!_locationDataInitialized)
+                            {
+                                // Poll the service for geolocator/access status only on true first load
+                                // (app startup / initial page open). Later LoadSettings() calls are
+                                // triggered by unrelated config saves (trigger mode, offsets, ...) and must
+                                // not re-poll the location service every time - see #1078 investigation.
+                                await LoadGeolocationData();
+                            }
+
+                            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
+                            TimeLightStart = SunriseWithOffset.TimeOfDay;
+                            TimeDarkStart = SunsetWithOffset.TimeOfDay;
+
+                            // location data has been reloaded from disk by now, so the next update time may have become available
+                            // UpdateLocationNextUpdateDescription();
+                            break;
+                        }
+
+                        case SwitchTriggerMode.CustomTimes:
+                            TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
+                            TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
+                            break;
+                    }
+                });
+
+        // Next update time
+        UpdateLocationNextUpdateDescription();
+
+        // Ambient light sensor availability and monitoring
         _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
         AmbientLightSensorAvailable = _lightSensor != null;
 
@@ -90,7 +148,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
             _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
 
-            // Get initial reading
             var reading = _lightSensor.GetCurrentReading();
             if (reading != null)
             {
@@ -113,54 +170,13 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
         else
         {
-            // No sensor available - show helpful text but continue initializing other settings
             CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
         }
-
-        HandleAutoTheme(_builder.Config.AutoThemeSwitchingEnabled, persist: false);
-        ApplyTriggerModeState(SelectedTriggerMode);
-
-        LatValue = _builder.Config.Location.CustomLat.ToString(CultureInfo.InvariantCulture);
-        LonValue = _builder.Config.Location.CustomLon.ToString(CultureInfo.InvariantCulture);
-
-        LocationBlockText = "Msg_SearchLoc".GetLocalized();
-
-        OffsetLight = _builder.Config.Location.SunriseOffsetMin;
-        OffsetDark = _builder.Config.Location.SunsetOffsetMin;
-
-        _dispatcherQueue.TryEnqueue(async () =>
-                {
-                    switch (SelectedTriggerMode)
-                    {
-                        // Only load geolocation data for location-based modes
-                        // AmbientLight and WindowsNightLight modes don't need time/location data
-                        case SwitchTriggerMode.LocationTimes:
-                        case SwitchTriggerMode.CoordinateTimes:
-                        {
-                            await LoadGeolocationData();
-
-                            LocationHandler.GetSunTimesWithOffset(_builder, out DateTime SunriseWithOffset, out DateTime SunsetWithOffset);
-                            TimeLightStart = SunriseWithOffset.TimeOfDay;
-                            TimeDarkStart = SunsetWithOffset.TimeOfDay;
-
-                            // location data has been reloaded from disk by now, so the next update time may have become available
-                            UpdateLocationNextUpdateDescription();
-                            break;
-                        }
-
-                        case SwitchTriggerMode.CustomTimes:
-                            TimeLightStart = _builder.Config.Sunrise.TimeOfDay;
-                            TimeDarkStart = _builder.Config.Sunset.TimeOfDay;
-                            break;
-                    }
-                });
-
-        UpdateLocationNextUpdateDescription();
 
         _isInitializing = false;
     }
 
-    private static async void RequestThemeSwitch()
+    private static async Task RequestThemeSwitch()
     {
         await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
     }
@@ -174,5 +190,20 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             LoadSettings();
         });
         StateUpdateHandler.StartConfigWatcher();
+    }
+
+    /// <summary>
+    /// Fired when the service writes new geoposition data in the background (location_data.yaml changed),
+    /// independently of any config.yaml save. Refreshes the cached location display so the AutoSwitch page
+    /// reflects background updates without requiring the user to trigger an unrelated config save. Fixes #1078.
+    /// </summary>
+    private void HandleLocationDataUpdate()
+    {
+        StateUpdateHandler.StopLocationDataWatcher();
+        _dispatcherQueue.TryEnqueue(async () =>
+        {
+            await RefreshLocationDisplay();
+        });
+        StateUpdateHandler.StartLocationDataWatcher();
     }
 }

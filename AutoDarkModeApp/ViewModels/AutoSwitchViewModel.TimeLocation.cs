@@ -70,7 +70,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = RequestThemeSwitch();
     }
 
     private void UpdateLocationNextUpdateDescription()
@@ -88,11 +88,31 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private async Task LoadGeolocationData()
     {
-        var maxTries = 5;
+        // 1. Check access FIRST, this is instant
+        bool hasAccess;
+        try
+        {
+            var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+            hasAccess = access.StatusCode == StatusCode.Ok;
+        }
+        catch
+        {
+            hasAccess = false;
+        }
+
+        // 2. If no access, show the info bar and don't try to load location data
+        if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
+        {
+            IsNoLocationAccessInfoBarOpen = true;
+            LocationBlockText = "Msg_LocPerm".GetLocalized();
+            return;
+        }
+
+        // 3. Only poll if access is granted
+        var maxTries = 4;
         for (var i = 0; i < maxTries; i++)
         {
-            var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating));
-            if (result.StatusCode == StatusCode.Ok)
+            if (ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.GeolocatorIsUpdating)).StatusCode == StatusCode.Ok)
             {
                 break;
             }
@@ -100,7 +120,18 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             await Task.Delay(1000);
         }
 
-        _builder.LoadLocationData();
+        // 4. Load YAML
+        try
+        {
+            _builder.LoadLocationData();
+        }
+        catch
+        {
+            // if the location data file is missing or corrupt, just return
+            return;
+        }
+
+        // 5. Get region name from coordinates
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
@@ -109,12 +140,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
                 IsNoLocationAccessInfoBarOpen = true;
                 LocationBlockText = "Msg_LocPerm".GetLocalized();
             }
-            else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+            //else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
+            else
             {
-                LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
-            }
-            else if (!_builder.Config.Location.UseGeolocatorService)
-            {
+                IsNoLocationAccessInfoBarOpen = false;
                 LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
             }
         }
@@ -122,6 +151,74 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             return;
         }
+
+        // Only mark as initialized if we successfully loaded the location data and region name, otherwise the next refresh will try again
+        _locationDataInitialized = true;
+    }
+
+
+    /// <summary>
+    /// Lightweight refresh used when the service has written new location data in the background
+    /// (e.g. via the LocationData.yaml file watcher), or when trigger mode / offsets change and the
+    /// display simply needs to reflect the already-cached data. Unlike <see cref="LoadGeolocationData"/>
+    /// this does not poll the service for update/access status, so it is safe to call frequently
+    /// without adding load on the geolocator/service.
+    /// </summary>
+    private async Task RefreshLocationDisplay()
+    {
+        try
+        {
+            _builder.LoadLocationData();
+        }
+        catch
+        {
+            // if the location data file is missing or corrupt, just return and keep whatever text was previously shown
+            return;
+        }
+
+        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes && SelectedTriggerMode != SwitchTriggerMode.CoordinateTimes) return;
+
+        bool hasAccess = true;
+
+        if (_builder.Config.Location.UseGeolocatorService)
+        {
+            try
+            {
+                var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+                hasAccess = access.StatusCode == StatusCode.Ok;
+            }
+            catch
+            {
+                // if the service is unreachable, just keep whatever text was previously shown
+                hasAccess = false;
+            }
+        }
+
+        try
+        {
+            LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
+            // if we successfully refreshed location data, the service is no longer being blocked by
+            // permission issues - clear a previously shown "no access" state
+            if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
+            {
+                IsNoLocationAccessInfoBarOpen = true;
+                LocationBlockText = "Msg_LocPerm".GetLocalized();
+            }
+            else
+            {
+                IsNoLocationAccessInfoBarOpen = false;
+            }
+        }
+        catch
+        {
+            // keep whatever text was previously shown if the region lookup fails
+        }
+
+        LocationHandler.GetSunTimesWithOffset(_builder, out DateTime sunriseWithOffset, out DateTime sunsetWithOffset);
+        TimeLightStart = sunriseWithOffset.TimeOfDay;
+        TimeDarkStart = sunsetWithOffset.TimeOfDay;
+
+        UpdateLocationNextUpdateDescription();
     }
 
     partial void OnTimeLightStartChanged(TimeSpan value)
@@ -136,8 +233,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void UpdateCustomTime(TimeSpan value, Action<DateTime> setConfig)
     {
-        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes)
-            return;
+        if (_isInitializing || SelectedTriggerMode != SwitchTriggerMode.CustomTimes) return;
 
         var now = DateTime.Now;
         var date = new DateTime(now.Year, now.Month, now.Day, value.Hours, value.Minutes, 0);
@@ -152,6 +248,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = RequestThemeSwitch();
     }
 }
