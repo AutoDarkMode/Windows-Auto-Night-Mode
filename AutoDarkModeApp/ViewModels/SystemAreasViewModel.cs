@@ -7,6 +7,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
     private bool _isInitializing;
     //private readonly bool windowsBuildAllowsTaskbarAccentDuringLightMode = (Environment.OSVersion.Version.Build >= (int)WindowsBuilds.Win11_24H2) && false;
 
@@ -64,9 +65,10 @@ public partial class SystemAreasViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool IsColorFilterSwitch { get; set; }
 
-    public SystemAreasViewModel(IErrorService errorService)
+    public SystemAreasViewModel(IErrorService errorService, IThemeSwitchService themeSwitchService)
     {
         _errorService = errorService;
+        _themeSwitchService = themeSwitchService;
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
 
         try
@@ -178,23 +180,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         StateUpdateHandler.StartConfigWatcher();
     }
 
-    // TODO: Different processing methods from AutoSwitchViewModel
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "SystemAreasViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
-        }
-    }
-
     partial void OnAppsSwitchComponentModeChanged(AppSwitchMode value)
     {
         if (_isInitializing)
@@ -225,7 +210,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnSystemSwitchComponentModeChanged(SystemSwitchMode value)
@@ -259,7 +244,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnAllowTaskbarColorSwitchChanged(bool value)
@@ -286,7 +271,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnIsDWMPrevalenceSwitchChanged(bool value)
@@ -305,7 +290,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
 
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnTaskbarColorModeChanged(int value)
@@ -324,7 +309,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnDWMPrevalenceModeChanged(int value)
@@ -343,7 +328,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnIsTouchKeyboardSwitchChanged(bool value)
@@ -360,7 +345,7 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnIsColorFilterSwitchChanged(bool value)
@@ -377,6 +362,6 @@ public partial class SystemAreasViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SystemAreasViewModel");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 }

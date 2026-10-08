@@ -10,6 +10,7 @@ public partial class ColorizationViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
     private bool _isInitializing;
     private bool _skipConfigUpdate;
 
@@ -61,26 +62,11 @@ public partial class ColorizationViewModel : ObservableRecipient
         }
     }
 
-    public async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "ColorizationViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ColorizationViewModel");
-        }
-    }
-
-    public ColorizationViewModel(IErrorService errorService)
+    public ColorizationViewModel(IErrorService errorService, IThemeSwitchService themeSwitchService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        _themeSwitchService = themeSwitchService;
 
         try
         {
@@ -282,7 +268,7 @@ public partial class ColorizationViewModel : ObservableRecipient
 
         try
         {
-            RequestThemeSwitch();
+            _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
 
             if (isAutomatic)
             {
