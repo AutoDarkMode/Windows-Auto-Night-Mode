@@ -4,15 +4,21 @@ using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Index.Strtree;
 using NetTopologySuite.IO.Converters;
+using Windows.Devices.Geolocation;
 
 public class GeolocatorService : IGeolocatorService
 {
+    private readonly Geolocator _geolocator = new();
     private readonly STRtree<IFeature> _indexAdmin1 = new();
     private readonly STRtree<IFeature> _indexAdmin0 = new();
     private readonly string _langcode = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpperInvariant();
 
+    public event EventHandler? LocationStatusChanged;
+
     public GeolocatorService()
     {
+        _geolocator.StatusChanged += Geolocator_StatusChanged;
+
         LoadGeoJsonIntoIndex(
             Path.Combine(AppContext.BaseDirectory, "Assets", "Geo", "ne_10m_admin_1_states_provinces.geojson"),
             _indexAdmin1);
@@ -26,6 +32,11 @@ public class GeolocatorService : IGeolocatorService
 
         string language = LanguageHelper.GetDefaultLanguage();
         _langcode = CultureInfo.GetCultureInfo(language).TwoLetterISOLanguageName.ToUpperInvariant();
+    }
+
+    private void Geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
+    {
+        LocationStatusChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private void LoadGeoJsonIntoIndex(string jsonPath, STRtree<IFeature> index)
