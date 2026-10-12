@@ -75,6 +75,7 @@
 
                 <!--  Updates  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Updates}" />
+                
                 <!--  Check now  -->
                 <controls:SettingsCard Header="{x:Bind ViewModel.UpdatesDate, Mode=OneWay}">
                     <Button Command="{x:Bind ViewModel.CheckUpdateCommand}" Content="{helpers:ResourceString Name=CheckUpdate}" />
