@@ -130,7 +130,7 @@
     <value>Forsinkelse</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
-    <value>Disable automatic switch</value>
+    <value>Slå av automatisk bytte</value>
   </data>
   <data name="Disabled" xml:space="preserve">
     <value>Avslått</value>
@@ -142,22 +142,22 @@
     <value>Light</value>
   </data>
   <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>Would you like to disable auto switching instead?</value>
+    <value>Vil du heller slå av autobytting i stedet?</value>
   </data>
   <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>Automatic switching will also resume if you return to your previous theme.</value>
+    <value>Automatisk bytting vil også gjenopptas om du går tilbake til det forrige temaet ditt.</value>
   </data>
   <data name="Msg_PauseHeader" xml:space="preserve">
     <value>Temabytte satt på pause til</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>Theme switching is paused once!</value>
+    <value>Temabytting er satt på pause én gang!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
     <value>Vil du bytte nå eller utsette lenger?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>Auto theme switching resumed</value>
+    <value>Auto-temabytting fortsatt</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>Temabytte venter</value>
@@ -187,34 +187,34 @@
     <value>12 timer</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>Bekreft for å be om temabytte øyeblikkelig.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>Revert this action by clicking on the undo button below.</value>
+    <value>Tilbakestill denne handlingen ved å klikke på angreknappen under.</value>
   </data>
   <data name="SwitchNow" xml:space="preserve">
     <value>Bytt nå</value>
   </data>
   <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>Automatisk temabytte</value>
+    <value>&amp;Automatisk temabytte</value>
   </data>
   <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>&amp;lukk</value>
+    <value>&amp;Lukk</value>
   </data>
   <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>Tving mørkt tema</value>
+    <value>Tving &amp;Mørkt tema</value>
   </data>
   <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>Tving lyst tema</value>
+    <value>Tving &amp;Lyst tema</value>
   </data>
   <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
     <value>&amp;Åpne konfigureringsmappen</value>
   </data>
   <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>Pause auto switch</value>
+    <value>&amp;Sett autobytte på pause</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>Toggle theme</value>
+    <value>&amp;Bytt mellom tema</value>
   </data>
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
     <value>Prøv å fiks temaet</value>
@@ -238,7 +238,7 @@
     <value>Nedgrader</value>
   </data>
   <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>Åpne loggmappen</value>
   </data>
   <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
     <value>Utsett</value>
@@ -276,9 +276,12 @@
     <value>Lappetepping feilet</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>Please check service.log and updater.log for infos</value>
+    <value>Vennligst se service.log og updater.log for informasjon</value>
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>Oppdaterer til</value>
+  </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>i én time</value>
   </data>
 </root>
