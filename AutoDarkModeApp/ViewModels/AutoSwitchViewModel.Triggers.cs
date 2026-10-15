@@ -151,10 +151,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        if (value == SwitchTriggerMode.LocationTimes)
-        {
-            _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
-        }
+        if (value == SwitchTriggerMode.LocationTimes) QueueLocationAccessInfoBarRefresh();
 
         _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }

@@ -196,21 +196,37 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public void StartLocationStatusMonitoring()
     {
         _geolocatorService.LocationStatusChanged += GeolocatorService_LocationStatusChanged;
-        _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
+        QueueLocationAccessInfoBarRefresh();
     }
 
     public void StopLocationStatusMonitoring()
     {
         _geolocatorService.LocationStatusChanged -= GeolocatorService_LocationStatusChanged;
+        // invalidate refreshes that are still queued or waiting on the pipe so they don't touch the info bar after unload
+        Interlocked.Increment(ref _locationAccessRefreshVersion);
     }
 
     private void GeolocatorService_LocationStatusChanged(object? sender, EventArgs e)
     {
-        _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
+        QueueLocationAccessInfoBarRefresh();
     }
 
-    private async Task UpdateLocationAccessInfoBar()
+    /// <summary>
+    /// Queues an access check for the no-location-access info bar. Every call supersedes the previous one,
+    /// so a slow reply from an older request can't overwrite the result of a newer one.
+    /// </summary>
+    private void QueueLocationAccessInfoBarRefresh()
     {
+        var version = Interlocked.Increment(ref _locationAccessRefreshVersion);
+        _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar(version));
+    }
+
+    private bool IsLocationAccessRefreshCurrent(int version) => version == Volatile.Read(ref _locationAccessRefreshVersion);
+
+    private async Task UpdateLocationAccessInfoBar(int version)
+    {
+        if (!IsLocationAccessRefreshCurrent(version)) return;
+
         if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
         {
             IsNoLocationAccessInfoBarOpen = false;
@@ -220,6 +236,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         try
         {
             var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+            if (!IsLocationAccessRefreshCurrent(version)) return;
+
             if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
             {
                 IsNoLocationAccessInfoBarOpen = false;
@@ -230,6 +248,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
         catch (Exception ex)
         {
+            if (!IsLocationAccessRefreshCurrent(version)) return;
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
     }

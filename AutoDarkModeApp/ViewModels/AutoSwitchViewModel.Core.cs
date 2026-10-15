@@ -14,6 +14,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private bool _isInitializing;
     private bool _isUpdating;
     private bool _locationDataInitialized;
+    private int _locationAccessRefreshVersion;
 
     public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService, IThemeSwitchService themeSwitchService)
     {
@@ -176,6 +177,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         _isInitializing = false;
+
+        // OnSelectedTriggerModeChanged skips the access check while initializing, and LoadGeolocationData only
+        // runs on first load, so a config reload that switches into LocationTimes has to refresh the info bar here
+        if (SelectedTriggerMode == SwitchTriggerMode.LocationTimes && _locationDataInitialized) QueueLocationAccessInfoBarRefresh();
     }
 
     private void HandleConfigUpdate()
