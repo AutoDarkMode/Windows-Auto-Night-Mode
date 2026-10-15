@@ -56,7 +56,7 @@
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=IgnoreSettings}" />
 
                 <StackPanel Spacing="8" Orientation="Horizontal" Margin="0,8,0,0">
-                    <FontIcon Glyph="&#xF167;" FontSize="{StaticResource BodyTextBlockFontSize}" Foreground="{ThemeResource SystemFillColorAttentionBrush}" />
+                    <FontIcon Glyph="&#xF167;" FontSize="16" Foreground="{ThemeResource SystemFillColorAttentionBrush}" />
                     <TextBlock Text="{helpers:ResourceString Name=Msg_IgnoreDisabled}" />
                 </StackPanel>
 

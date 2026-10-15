@@ -109,8 +109,7 @@
                     <controls:SettingsExpander.ItemsFooter>
                         <InfoBar
                             Title="{helpers:ResourceString Name=AutoSwitchNotifyUnavailable_Title}"
-                            BorderThickness="0,1,0,0"
-                            CornerRadius="0"
+                            Style="{StaticResource InfoBarInFooterStyle}"
                             IsClosable="False"
                             IsOpen="{x:Bind ViewModel.IsAutoSwitchNotifyUnavailableInfoBarOpen, Mode=OneWay}"
                             Message="{helpers:ResourceString Name=AutoSwitchNotifyUnavailable_Content}"

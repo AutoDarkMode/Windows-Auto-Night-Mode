@@ -20,6 +20,32 @@
         <Setter Property="Spacing" Value="{StaticResource SettingsCardSpacing}" />
     </Style>
 
+    <!--  Style of a section header  -->
+    <Style
+        x:Key="SettingsSectionHeaderTextBlockStyle"
+        BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+        TargetType="TextBlock">
+        <Setter Property="Margin" Value="0,28,0,4" />
+    </Style>
+
+    <Style
+        x:Key="InlineHyperlinkButtonStyle"
+        BasedOn="{StaticResource DefaultHyperlinkButtonStyle}"
+        TargetType="HyperlinkButton">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <Style
+        x:Key="InfoBarInFooterStyle"
+        BasedOn="{StaticResource DefaultInfoBarStyle}"
+        TargetType="InfoBar">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="CornerRadius" Value="0" />
+    </Style>
+
     <!--  Styles for ambient light slider tick marks  -->
     <Style x:Key="TickMarkStackPanelStyle" TargetType="StackPanel">
         <Setter Property="HorizontalAlignment" Value="Right" />
@@ -37,23 +63,6 @@
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Foreground" Value="{ThemeResource TextFillColorTertiaryBrush}" />
         <Setter Property="HorizontalAlignment" Value="Center" />
-    </Style>
-
-    <!--  Style of a section header  -->
-    <Style
-        x:Key="SettingsSectionHeaderTextBlockStyle"
-        BasedOn="{StaticResource BodyStrongTextBlockStyle}"
-        TargetType="TextBlock">
-        <Setter Property="Margin" Value="0,28,0,4" />
-    </Style>
-
-    <Style
-        x:Key="InlineHyperlinkButtonStyle"
-        BasedOn="{StaticResource DefaultHyperlinkButtonStyle}"
-        TargetType="HyperlinkButton">
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Left" />
     </Style>
 
     <!--  ThemeDictionaries  -->
