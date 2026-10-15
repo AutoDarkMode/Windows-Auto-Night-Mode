@@ -13,8 +13,20 @@ public sealed partial class AutoSwitchPage : Page
     {
         ViewModel = App.GetService<AutoSwitchViewModel>();
         InitializeComponent();
+        Loaded += AutoSwitchPage_Loaded;
+        Unloaded += AutoSwitchPage_Unloaded;
+    }
+
+    private void AutoSwitchPage_Loaded(object sender, RoutedEventArgs e)
+    {
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
-        Unloaded += (s, e) => ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+        ViewModel.StartLocationStatusMonitoring();
+    }
+
+    private void AutoSwitchPage_Unloaded(object sender, RoutedEventArgs e)
+    {
+        ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+        ViewModel.StopLocationStatusMonitoring();
     }
 
     private void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
