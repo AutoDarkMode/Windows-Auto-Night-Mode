@@ -156,7 +156,6 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
         }
 
-        _ = RequestThemeSwitch();
         _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
