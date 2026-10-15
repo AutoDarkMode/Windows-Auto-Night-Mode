@@ -18,6 +18,6 @@ namespace AutoDarkModeLib.Interfaces;
 
 public interface ISwitchComponentSettings<T> where T : class
 {
-    public bool Enabled { get; set; }
-    public T Component { get; set; }
+    bool Enabled { get; set; }
+    T Component { get; set; }
 }
