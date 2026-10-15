@@ -52,7 +52,7 @@ public static class Helper
     public static string UnmanagedLightThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedLightThemeName}.theme");
     public static string UnmanagedDarkThemePath { get; } = Path.Combine(UserThemesFolderPath, $"{UnmanagedDarkThemeName}.theme");
     public static string WindowsThemesFolderPath { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Resources", "Themes");
-    public static string HexColorRegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
+    public static string Hegex { get; } = @"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$";
 
     public static bool NowIsBetweenTimes(TimeSpan start, TimeSpan end)
     {
