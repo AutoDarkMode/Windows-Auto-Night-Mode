@@ -39,7 +39,6 @@
 
     <Style
         x:Key="InfoBarInFooterStyle"
-        BasedOn="{StaticResource DefaultInfoBarStyle}"
         TargetType="InfoBar">
         <Setter Property="Margin" Value="0" />
         <Setter Property="BorderThickness" Value="0,1,0,0" />
