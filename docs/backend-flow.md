@@ -554,37 +554,79 @@ public interface IAutoDarkModeGovernor
 
 `RequestSwitch`, `PrepareSwitchAutoPause`, `AddSkipNextSwitch`, `NotifyAtResume` and `UpdateContextMenu` then call the active governor in place of their switch on config.Governor. TimeSwitchGovernor can return its concrete target in its request, so every governor request carries a concrete theme.
 
-### Step 2: make the precedence an explicit list
+### Step 2: treat overrides as prioritized items in the postpone queue
 
-Replace the early-return chain with an ordered list of rules. Each rule looks at the request and either decides the theme or passes. The list order is the precedence, written as one array that a reviewer can read top to bottom.
+PostponeManager already gives each postpone what an override needs: add and remove by reason, expiry timers, persistence across restarts, the IsUserClearable flag, the tray "paused" state, and the queue listing on the pipe API. The battery override has the same lifecycle as a postpone. It starts when the battery discharges, ends when it charges again, and must not survive a restart. So every override that `RequestSwitch` checks today becomes an item in the same queue, and two new fields on PostponeItem say what the item wants and how strong it is:
 
-```mermaid
-flowchart LR
-    REQ["SwitchRequest<br/>source, requested theme"] --> R1["ForceRule"]
-    R1 -->|pass| R2["PostponeRule<br/>bypass list per reason"]
-    R2 -->|pass| R3["PowerRule<br/>battery + energy saver"]
-    R3 -->|pass| R4["ManualRule<br/>concrete request from user"]
-    R4 -->|pass| R5["GovernorRule<br/>activeGovernor.CurrentTarget()"]
-    R5 -->|pass| R6["FallbackRule<br/>InternalTheme"]
-    R1 & R2 & R3 & R4 & R5 & R6 -->|decide| D["Decision<br/>theme, ThemeOverrideSource,<br/>or Drop"]
-    D --> UT["UpdateTheme"]
+```csharp
+public class PostponeItem
+{
+    public string Reason { get; }
+    public int Priority { get; }        // new
+    public Theme Theme { get; }         // new: Light or Dark = override, Unknown = keep the base theme
+    public bool IgnoredOnWake { get; }  // new: replaces IsPostponedExcept(SystemIdleCheckModule)
+    public bool IsUserClearable { get; }
+    public DateTime? Expiry { get; }
+    ...
+}
 ```
 
-With rules in a list, a rule matches on SwitchSource and the request kind; whether the request carries Resolve or a concrete theme stops deciding the precedence. The order of PowerRule and ManualRule is an open question: today a manual toggle beats the battery rule, and a manual Resolve request loses to it.
+`RequestSwitch` then resolves the queue. It sorts the items by priority, highest first, with a stable sort so equal priorities keep the order they were added in. The top item decides: an item with a theme applies that theme, and an item with Theme.Unknown keeps the base theme. With an empty queue, the active governor's target applies (step 1).
 
-### Step 3: route the bypass paths through `RequestSwitch`
+The base theme is a new GlobalState field: the last theme `RequestSwitch` applied while no override item (an item with a theme) was on top of the queue. A postpone then freezes what the governor or the user chose, and an override on top of it does not change what the postpone keeps. Today a postpone keeps InternalTheme, and the unplug handler writes dark into InternalTheme, so dark stays after plugging in.
 
-Have the battery, energy saver and force handlers call `RequestSwitch` with their source and let ForceRule and PowerRule decide. That removes the direct `UpdateTheme` calls behind behaviors 1 and 2 above, and leaves `UpdateTheme` with a single caller.
+```mermaid
+flowchart TD
+    REQ["RequestSwitch(source)"] --> Q{"queue has items?<br/>(unlock and resume skip<br/>IgnoredOnWake items)"}
+    Q -- no --> GOV["active governor's target"]
+    Q -- yes --> TOP["highest-priority item"]
+    TOP --> T{"item.Theme"}
+    T -- "Light or Dark" --> OV["apply item.Theme"]
+    T -- Unknown --> KEEP["keep the base theme"]
+    GOV & OV & KEEP --> UT["UpdateTheme"]
+```
 
-### Step 4: describe postpone reasons in one table
+The event handlers stop deciding themselves. Each one adds or removes its item and calls `RequestSwitch` to resolve the queue again:
 
-Give each reason a small policy record in place of string checks spread over the code: whether resume and unlock bypass it (today only SystemIdleCheckModule, through `IsPostponedExcept`), whether it is user clearable, whether it is written to disk, and whether clearing it should trigger a switch. Then either register GovernorModule with `RegisterCallbackModule`, so clearing the last item fires a switch at once, or remove the unused callback list.
+| Event | Queue change |
+| --- | --- |
+| Battery starts discharging (DarkThemeOnBattery on) | Add Battery item, Theme.Dark, not user clearable |
+| Battery charging again | Remove Battery item |
+| Energy saver on / off (DarkThemeOnEnergySaver on) | Add / remove EnergySaver item, Theme.Dark |
+| Force light or force dark | Add Force item with that theme, until the deprecated force flags are removed |
+| Manual toggle | Add PauseAutoSwitch with the toggled theme as Theme |
+| Tray "pause", toast delay, pipe API DelayBy | Add PauseAutoSwitch or DelayAutoSwitch with Theme.Unknown |
+| Dependency modules, idle checker, session lock, notify toast | Add their item with Theme.Unknown, as today |
+| Any item removed or expired | Resolve the queue again right away |
 
-### Step 5: keep config loading out of the governors
+Proposed default priorities:
+
+| Priority | Items |
+| --- | --- |
+| 100 | Force |
+| 80 | Battery, EnergySaver |
+| 70 | PauseAutoSwitch, DelayAutoSwitch |
+| 60 | SwitchNotification, SessionLock, SystemIdleCheckModule, ProcessBlockListModule, GPUMonitorModule |
+
+The order between the items is a decision we make once in this table. Today the check order in `RequestSwitch` decides it by accident: unplugging ignores every postpone, plugging in loses to every postpone, and a manual toggle beats the battery rule only because it carries a concrete theme. Whether Battery should outrank a manual toggle, and whether it should break through a GPU or process block list postpone, are the two open questions.
+
+#### What this changes
+
+- The battery, energy saver and force handlers lose their direct `UpdateTheme` calls, so `UpdateTheme` has `RequestSwitch` as its single caller. Behaviors 1 and 2 in the battery section go away.
+- The battery and energy saver checks, the governor power check for NightLight and AmbientLight, and the split between Theme.Resolve and concrete requests leave `RequestSwitch`. A request no longer needs to carry a theme.
+- A postpone keeps the base theme, so a Battery item that comes and goes while a postpone is queued no longer leaves dark behind. A manual toggle also stores its theme in its PauseAutoSwitch item, so the toggled theme returns once the Battery item is removed.
+- Removing an item resolves the queue at once. The unused CallbackModules list in PostponeManager goes away, and a switch held by a postpone no longer waits up to 60 s for the next tick.
+- `FlushPostponesToDisk` already saves only PauseAutoSwitch and DelayAutoSwitch items, and "clear postpones" already leaves items with IsUserClearable = false alone, so Battery, EnergySaver and Force items are neither persisted nor cleared by the user.
+
+#### What has to be split first
+
+Today any item in the queue means "postponed", and these callers read it that way: AmbientLightGovernor stops evaluating lux, the tray icon shows paused, unlock and resume skip their refresh, the notify toast stays away, and the pipe API reports IsPostponed. With override items in the queue, being on battery would show "paused" in the tray and freeze the light sensor. So IsPostponed has to count only items with Theme.Unknown, override items get their own query (for example `ActiveOverride`), and each current IsPostponed caller has to be checked against that split.
+
+### Step 3: keep config loading out of the governors
 
 Drop `builder.Load()` from `AmbientLightGovernor.Run` and the `ReEvaluateCallback` call from `RequestSwitch`. AdmConfigMonitor already reloads the config on file change; the governor can re-evaluate its thresholds from a config update event.
 
-### Step 6: sort the component list on every run
+### Step 4: sort the component list on every run
 
 `RunPreSync`, `RunPostSync`, `RunCallbacks` and `RunIntegrityChecks` sort the list they get only when the new theme differs from ComponentManager.lastSorting. `GetComponentsToUpdate` builds a new, unsorted list on every `UpdateTheme`, and ComponentManager is a singleton, so lastSorting survives from the previous switch. The first `UpdateTheme(Dark)` runs the components in priority order. A second `UpdateTheme(Dark)`, for example after a settings change in the app, finds lastSorting already at dark and runs them in the order of the Components list. ScriptSwitch (priority 30) then runs before TouchKeyboardSwitch, TaskbarColorSwitch, ColorizationSwitch and CursorSwitch, where it should run last. `List.Sort` is also unstable, so components with equal priority have no fixed order even when the sort runs.
 
@@ -599,7 +641,7 @@ return (shouldUpdate
 
 `OrderBy` keeps the order of the Components list for equal priorities, so the registration order becomes the tie-breaker.
 
-### Step 7: let each component name its config section
+### Step 5: let each component name its config section
 
 Adding a component today means editing ComponentManager in three places: a field, the Components list, and a line in `UpdateSettings` that passes its config section. AccentColorSwitch and TaskbarColorSwitch read the SystemSwitch section, and only `UpdateSettings` shows that.
 
@@ -621,7 +663,7 @@ public void UpdateSettings() => Components.ForEach(c => c.RunUpdateSettingsState
 
 ComponentManager then needs only the Components list, and a new component is its class plus one line in that list. `UpdateScriptSettings` can stay as a filtered call for ScriptSwitch, so a change to scripts.yaml does not run `UpdateSettingsState` on every other component.
 
-### Step 8: let components say what the theme apply needs
+### Step 6: let components say what the theme apply needs
 
 `UpdateTheme` checks `c is ColorizationSwitch` and `c is WallpaperSwitch` to decide whether `ApplyManagedTheme` gets the IgnoreBackground flag, and it reads ColorizationSwitch's LightAutoColorization and DarkAutoColorization settings to do so. Add a member to ISwitchComponent that each component answers for itself:
 
