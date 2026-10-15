@@ -203,7 +203,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             try
             {
                 _builder.Save();
-                _ = RequestThemeSwitch();
+                _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
             }
             catch (Exception ex)
             {

@@ -9,6 +9,7 @@ namespace AutoDarkModeApp.Views;
 public sealed partial class WallpaperPickerPage : Page
 {
     private readonly IErrorService _errorService = App.GetService<IErrorService>();
+    private readonly IThemeSwitchService _themeSwitchService = App.GetService<IThemeSwitchService>();
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
 
     public WallpaperPickerViewModel ViewModel { get; }
@@ -85,22 +86,6 @@ public sealed partial class WallpaperPickerPage : Page
         ViewModel.SelectMonitor = monitors.FirstOrDefault();
     }
 
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "WallpaperPickerPage");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
-        }
-    }
-
     private async void RemoveDisconnectedMonitorsHyperlinkButton_Click(object sender, RoutedEventArgs e)
     {
         try
@@ -168,7 +153,7 @@ public sealed partial class WallpaperPickerPage : Page
             await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "WallpaperPickerPage");
         }
 
-        DispatcherQueue.TryEnqueue(() => RequestThemeSwitch());
+        DispatcherQueue.TryEnqueue(() => _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot));
     }
 
     private async void WindowsSpotlightHyperlinkButton_Click(object sender, RoutedEventArgs e)

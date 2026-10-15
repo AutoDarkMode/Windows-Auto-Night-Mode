@@ -9,6 +9,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
 
     private bool _isInitializing;
 
@@ -40,10 +41,11 @@ public partial class ThemePickerViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool IgnoreDesktopIconsEnabled { get; set; }
 
-    public ThemePickerViewModel(IErrorService errorService)
+    public ThemePickerViewModel(IErrorService errorService, IThemeSwitchService themeSwitchService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
+        _themeSwitchService = themeSwitchService;
 
         try
         {
@@ -132,7 +134,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ThemePickerPage");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnThemeKeepActiveEnabledChanged(bool value)
@@ -174,7 +176,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnSelectedDarkThemeChanged(ThemeFile? value)
@@ -200,7 +202,7 @@ public partial class ThemePickerViewModel : ObservableRecipient
         {
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "SaveThemeSettings");
         }
-        RequestThemeSwitch();
+        _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 
     partial void OnIgnoreBackgroundEnabledChanged(bool value)
@@ -226,22 +228,6 @@ public partial class ThemePickerViewModel : ObservableRecipient
     partial void OnIgnoreColorEnabledChanged(bool value)
     {
         WriteSettings();
-    }
-
-    private async void RequestThemeSwitch()
-    {
-        try
-        {
-            var result = await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
-            if (result != StatusCode.Ok)
-            {
-                throw new SwitchThemeException(result, "ThemePickerViewModel");
-            }
-        }
-        catch (Exception ex)
-        {
-            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "ThemePickerViewModel");
-        }
     }
 
 }

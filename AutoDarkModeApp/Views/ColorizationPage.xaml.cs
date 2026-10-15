@@ -10,6 +10,7 @@ namespace AutoDarkModeApp.Views;
 
 public sealed partial class ColorizationPage : Page
 {
+    private readonly IThemeSwitchService _themeSwitchService = App.GetService<IThemeSwitchService>();
     public ColorizationViewModel ViewModel { get; }
 
     public ColorizationPage()
@@ -72,7 +73,7 @@ public sealed partial class ColorizationPage : Page
         ViewModel.SafeSaveBuilder();
         if (ViewModel.GetAdmConfig().ColorizationSwitch.Enabled)
         {
-            ViewModel.RequestThemeSwitch();
+            _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
         }
     }
 
@@ -116,7 +117,7 @@ public sealed partial class ColorizationPage : Page
             ViewModel.SafeSaveBuilder();
             if (ViewModel.GetAdmConfig().ColorizationSwitch.Enabled)
             {
-                ViewModel.RequestThemeSwitch();
+                _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
             }
         }
     }

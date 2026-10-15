@@ -7,18 +7,21 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private readonly AdmConfigBuilder _builder = AdmConfigBuilder.Instance();
     private readonly Microsoft.UI.Dispatching.DispatcherQueue _dispatcherQueue;
     private readonly IErrorService _errorService;
+    private readonly IThemeSwitchService _themeSwitchService;
     private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
     private bool _isInitializing;
     private bool _isUpdating;
     private bool _locationDataInitialized;
+    private int _locationAccessRefreshVersion;
 
-    public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService)
+    public AutoSwitchViewModel(IErrorService errorService, IGeolocatorService geolocatorService, IThemeSwitchService themeSwitchService)
     {
         _dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
         _errorService = errorService;
         _geolocatorService = geolocatorService;
+        _themeSwitchService = themeSwitchService;
 
         try
         {
@@ -78,7 +81,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _ambientLightDebounceTimer.Stop();
 
             // Trigger theme re-evaluation with new thresholds
-            _ = RequestThemeSwitch();
+            _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
         };
     }
 
@@ -174,11 +177,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         }
 
         _isInitializing = false;
-    }
 
-    private static async Task RequestThemeSwitch()
-    {
-        await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.RequestSwitch, 15);
+        // OnSelectedTriggerModeChanged skips the access check while initializing, and LoadGeolocationData only
+        // runs on first load, so a config reload that switches into LocationTimes has to refresh the info bar here
+        if (SelectedTriggerMode == SwitchTriggerMode.LocationTimes && _locationDataInitialized) QueueLocationAccessInfoBarRefresh();
     }
 
     private void HandleConfigUpdate()

@@ -63,6 +63,7 @@ public partial class App : Application
                     services.AddSingleton<INavigationService, NavigationService>();
 
                     services.AddSingleton<IErrorService, ErrorService>();
+                    services.AddSingleton<IThemeSwitchService, ThemeSwitchService>();
                     services.AddSingleton<IGeolocatorService, GeolocatorService>();
 
                     // Window
