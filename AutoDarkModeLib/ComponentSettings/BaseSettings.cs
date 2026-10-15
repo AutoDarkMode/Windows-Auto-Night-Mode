@@ -25,7 +25,6 @@ public class BaseSettings<T> : ISwitchComponentSettings<T> where T : class
     public T Component { get; set; }
     public BaseSettings()
     {
-        if (typeof(T) == typeof(object)) Component = null;
-        else Component = (T)Activator.CreateInstance(typeof(T));
+        Component = typeof(T) == typeof(object) ? null : Activator.CreateInstance<T>();
     }
 }

@@ -134,6 +134,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
+        if (value != SwitchTriggerMode.LocationTimes) IsNoLocationAccessInfoBarOpen = false;
+
         if (_isInitializing) return;
 
         if (DetermineModeFromBackend() == value) return;
@@ -149,6 +151,12 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
+        if (value == SwitchTriggerMode.LocationTimes)
+        {
+            _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
+        }
+
+        _ = RequestThemeSwitch();
         _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }
 

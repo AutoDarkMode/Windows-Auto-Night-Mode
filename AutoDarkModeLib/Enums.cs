@@ -31,7 +31,7 @@ public enum Theme
     Dark = 0,
     Light = 1,
     /// <summary>
-    /// If resovle is set, ADM needs to determine the theme that the EventArgs should propagate.
+    /// If resolve is set, ADM needs to determine the theme that the EventArgs should propagate.
     /// This is the case during overrides (postpone, dark on battery etc)
     /// </summary>
     Resolve = 2

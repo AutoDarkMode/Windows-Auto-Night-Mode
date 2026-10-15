@@ -107,7 +107,7 @@ public class AmbientLight
     /// Delay in milliseconds before applying a sensor-triggered theme change (default: 10000ms / 10 seconds).
     /// This prevents accidental switching when briefly covering the sensor.
     /// </summary>
-    public int DebounceDelayMs { get; set; } = 10000;
+    public int DebounceDelayMs { get; set; } = 10_000;
 }
 
 public class Hotkeys
@@ -177,22 +177,13 @@ public class Tunable
 
     public int BatterySliderDefaultValue
     {
-        get { return batterySliderDefaultValue; }
-        set
+        get => batterySliderDefaultValue;
+        set => batterySliderDefaultValue = value switch
         {
-            if (value < 0)
-            {
-                batterySliderDefaultValue = 0;
-            }
-            else if (value > 100)
-            {
-                batterySliderDefaultValue = 100;
-            }
-            else
-            {
-                batterySliderDefaultValue = value;
-            }
-        }
+            < 0 => 0,
+            > 100 => 100,
+            _ => value,
+        };
     }
     public bool DwmRefreshViaColorization { get; set; } = false;
     public int DwmRefreshViaColorizationDelay { get; set; } = 2500;
@@ -211,18 +202,8 @@ public class GPUMonitoring
     private int samples = 1;
     public int Samples
     {
-        get { return samples; }
-        set
-        {
-            if (value < 1)
-            {
-                samples = 1;
-            }
-            else
-            {
-                samples = value;
-            }
-        }
+        get => samples;
+        set => samples = value < 1 ? 1 : value;
     }
 }
 

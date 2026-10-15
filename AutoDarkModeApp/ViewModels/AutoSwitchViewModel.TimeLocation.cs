@@ -103,8 +103,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         // 2. If no access, show the info bar and don't try to load location data
         if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
         {
-            IsNoLocationAccessInfoBarOpen = true;
-            LocationBlockText = "Msg_LocPerm".GetLocalized();
+            IsNoLocationAccessInfoBarOpen = SelectedTriggerMode == SwitchTriggerMode.LocationTimes;
+            if (IsNoLocationAccessInfoBarOpen) LocationBlockText = "Msg_LocPerm".GetLocalized();
             return;
         }
 
@@ -135,12 +135,11 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         try
         {
             var result = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)
+            if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.NoLocAccess)  // identical to step 2, but not useless
             {
-                IsNoLocationAccessInfoBarOpen = true;
-                LocationBlockText = "Msg_LocPerm".GetLocalized();
+                IsNoLocationAccessInfoBarOpen = SelectedTriggerMode == SwitchTriggerMode.LocationTimes;
+                if (IsNoLocationAccessInfoBarOpen) LocationBlockText = "Msg_LocPerm".GetLocalized();
             }
-            //else if (_builder.Config.Location.UseGeolocatorService && result.StatusCode == StatusCode.Ok)
             else
             {
                 IsNoLocationAccessInfoBarOpen = false;
@@ -178,36 +177,9 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
         if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes && SelectedTriggerMode != SwitchTriggerMode.CoordinateTimes) return;
 
-        bool hasAccess = true;
-
-        if (_builder.Config.Location.UseGeolocatorService)
-        {
-            try
-            {
-                var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
-                hasAccess = access.StatusCode == StatusCode.Ok;
-            }
-            catch
-            {
-                // if the service is unreachable, just keep whatever text was previously shown
-                hasAccess = false;
-            }
-        }
-
         try
         {
             LocationBlockText = await _geolocatorService.GetRegionNameAsync(_builder.LocationData.Lon, _builder.LocationData.Lat);
-            // if we successfully refreshed location data, the service is no longer being blocked by
-            // permission issues - clear a previously shown "no access" state
-            if (!hasAccess && _builder.Config.Location.UseGeolocatorService)
-            {
-                IsNoLocationAccessInfoBarOpen = true;
-                LocationBlockText = "Msg_LocPerm".GetLocalized();
-            }
-            else
-            {
-                IsNoLocationAccessInfoBarOpen = false;
-            }
         }
         catch
         {
@@ -219,6 +191,47 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         TimeDarkStart = sunsetWithOffset.TimeOfDay;
 
         UpdateLocationNextUpdateDescription();
+    }
+
+    public void StartLocationStatusMonitoring()
+    {
+        _geolocatorService.LocationStatusChanged += GeolocatorService_LocationStatusChanged;
+        _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
+    }
+
+    public void StopLocationStatusMonitoring()
+    {
+        _geolocatorService.LocationStatusChanged -= GeolocatorService_LocationStatusChanged;
+    }
+
+    private void GeolocatorService_LocationStatusChanged(object? sender, EventArgs e)
+    {
+        _dispatcherQueue.TryEnqueue(async () => await UpdateLocationAccessInfoBar());
+    }
+
+    private async Task UpdateLocationAccessInfoBar()
+    {
+        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
+        {
+            IsNoLocationAccessInfoBarOpen = false;
+            return;
+        }
+
+        try
+        {
+            var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
+            if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
+            {
+                IsNoLocationAccessInfoBarOpen = false;
+                return;
+            }
+
+            IsNoLocationAccessInfoBarOpen = access.StatusCode == StatusCode.NoLocAccess;
+        }
+        catch (Exception ex)
+        {
+            await _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+        }
     }
 
     partial void OnTimeLightStartChanged(TimeSpan value)
