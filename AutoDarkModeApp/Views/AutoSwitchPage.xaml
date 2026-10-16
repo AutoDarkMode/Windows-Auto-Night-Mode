@@ -69,14 +69,13 @@
                                 <StackPanel
                                     Orientation="Horizontal"
                                     Spacing="8"
-                                    ToolTipService.ToolTip="{x:Bind ViewModel.AmbientLightSensorTooltip, Mode=OneWay}">
+                                    ToolTipService.ToolTip="{helpers:ResourceString Name=AmbientLightSensor_ToolTip}">
                                     <RadioButton
                                         Command="{x:Bind ViewModel.SetTriggerModeCommand}"
                                         CommandParameter="AmbientLight"
                                         Content="{helpers:ResourceString Name=AmbientLightSensor}"
                                         GroupName="TriggerMode"
-                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}"
-                                        IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                        IsChecked="{x:Bind ViewModel.SelectedTriggerMode, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=AmbientLight, Mode=OneWay}" />
                                     <FontIcon
                                         Margin="0,4,0,0"
                                         FontSize="{StaticResource CaptionTextBlockFontSize}"
@@ -174,6 +173,92 @@
                                     Style="{StaticResource BodyTextBlockStyle}"
                                     Text="{helpers:ResourceString Name=AmbientLightThresholds_Description}"
                                     TextWrapping="Wrap" />
+
+                                <!--  Light source  -->
+                                <ComboBox
+                                    MinWidth="{StaticResource ComboBoxThemeMinWidth}"
+                                    Header="{helpers:ResourceString Name=AmbientLightSource}"
+                                    SelectedIndex="{x:Bind ViewModel.SelectedAmbientLightSource, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=AmbientLightSource_Sensor}" IsEnabled="{x:Bind ViewModel.AmbientLightSensorAvailable, Mode=OneWay}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=AmbientLightSource_Webcam}" IsEnabled="{x:Bind ViewModel.WebcamAvailable, Mode=OneWay}" />
+                                    <ComboBoxItem Content="{helpers:ResourceString Name=AmbientLightSource_Weather}" />
+                                </ComboBox>
+
+                                <!--  Webcam  -->
+                                <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.SelectedAmbientLightSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Webcam, Mode=OneWay}">
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightSource_Webcam_Description}"
+                                        TextWrapping="Wrap" />
+                                    <StackPanel Orientation="Horizontal" Spacing="24">
+                                        <ComboBox
+                                            MinWidth="{StaticResource ComboBoxThemeMinWidth}"
+                                            DisplayMemberPath="DisplayName"
+                                            Header="{helpers:ResourceString Name=AmbientLightWebcam}"
+                                            ItemsSource="{x:Bind ViewModel.WebcamOptions}"
+                                            SelectedValue="{x:Bind ViewModel.SelectedWebcamId, Mode=TwoWay}"
+                                            SelectedValuePath="Id" />
+                                        <NumberBox
+                                            MinWidth="120"
+                                            Header="{helpers:ResourceString Name=AmbientLightWebcamInterval}"
+                                            LargeChange="60"
+                                            Maximum="3600"
+                                            Minimum="10"
+                                            SmallChange="10"
+                                            SpinButtonPlacementMode="Inline"
+                                            Value="{x:Bind ViewModel.WebcamInterval, Mode=TwoWay}" />
+                                    </StackPanel>
+                                    <ToggleSwitch
+                                        IsEnabled="{x:Bind ViewModel.WebcamAvailable, Mode=OneWay}"
+                                        IsOn="{x:Bind ViewModel.IsWebcamPreviewEnabled, Mode=TwoWay}"
+                                        OffContent="{helpers:ResourceString Name=AmbientLightWebcamPreview}"
+                                        OnContent="{helpers:ResourceString Name=AmbientLightWebcamPreview}" />
+                                </StackPanel>
+
+                                <!--  Weather  -->
+                                <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.SelectedAmbientLightSource, Converter={StaticResource EnumToVisibilityConverter}, ConverterParameter=Weather, Mode=OneWay}">
+                                    <TextBlock
+                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                        Style="{StaticResource CaptionTextBlockStyle}"
+                                        Text="{helpers:ResourceString Name=AmbientLightSource_Weather_Description}"
+                                        TextWrapping="Wrap" />
+                                    <NumberBox
+                                        MinWidth="120"
+                                        HorizontalAlignment="Left"
+                                        Header="{helpers:ResourceString Name=AmbientLightWeatherInterval}"
+                                        LargeChange="15"
+                                        Maximum="720"
+                                        Minimum="{x:Bind ViewModel.MinimumWeatherInterval}"
+                                        SmallChange="5"
+                                        SpinButtonPlacementMode="Inline"
+                                        Value="{x:Bind ViewModel.WeatherInterval, Mode=TwoWay}" />
+                                    <ToggleSwitch
+                                        IsOn="{x:Bind ViewModel.WeatherUseLocationService, Mode=TwoWay}"
+                                        OffContent="{helpers:ResourceString Name=UseLocationService}"
+                                        OnContent="{helpers:ResourceString Name=UseLocationService}" />
+                                    <StackPanel
+                                        Orientation="Horizontal"
+                                        Spacing="24"
+                                        Visibility="{x:Bind ViewModel.WeatherCoordinatesVisibility, Mode=OneWay}">
+                                        <TextBox
+                                            MinWidth="120"
+                                            BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                            Header="{helpers:ResourceString Name=Latitude}"
+                                            InputScope="Number"
+                                            Text="{x:Bind ViewModel.LatValue, Mode=TwoWay}" />
+                                        <TextBox
+                                            MinWidth="120"
+                                            BeforeTextChanging="CoordinatesTextBox_BeforeTextChanging"
+                                            Header="{helpers:ResourceString Name=Longitude}"
+                                            InputScope="Number"
+                                            Text="{x:Bind ViewModel.LonValue, Mode=TwoWay}" />
+                                        <Button
+                                            VerticalAlignment="Bottom"
+                                            Command="{x:Bind ViewModel.SaveCoordinatesCommand}"
+                                            Content="{helpers:ResourceString Name=ApplyGeo}" />
+                                    </StackPanel>
+                                </StackPanel>
 
                                 <!--  Current Lux Reading and Reference Guide  -->
                                 <Grid HorizontalAlignment="Stretch" ColumnSpacing="8">

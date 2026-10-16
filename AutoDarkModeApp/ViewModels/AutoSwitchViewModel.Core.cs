@@ -11,6 +11,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     private readonly IGeolocatorService _geolocatorService;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _debounceTimer;
     private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _ambientLightDebounceTimer;
+    private readonly Microsoft.UI.Dispatching.DispatcherQueueTimer _webcamPreviewTimer;
     private bool _isInitializing;
     private bool _isUpdating;
     private bool _locationDataInitialized;
@@ -70,6 +71,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         {
             _builder.Config.AmbientLight.DarkThreshold = AmbientLightDarkThreshold;
             _builder.Config.AmbientLight.LightThreshold = AmbientLightLightThreshold;
+            _builder.Config.AmbientLight.WebcamIntervalSec = WebcamInterval;
+            _builder.Config.AmbientLight.WeatherIntervalMin = WeatherInterval;
             try
             {
                 _builder.Save();
@@ -82,6 +85,25 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
             // Trigger theme re-evaluation with new thresholds
             _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
+        };
+
+        // Updates the current light level about once per second while the webcam preview is on
+        _webcamPreviewTimer = _dispatcherQueue.CreateTimer();
+        _webcamPreviewTimer.Interval = TimeSpan.FromSeconds(1);
+        _webcamPreviewTimer.Tick += (s, e) =>
+        {
+            if (_webcamPreview == null) return;
+            try
+            {
+                using var frame = _webcamPreview.Reader.TryAcquireLatestFrame();
+                double? lux = AmbientLightEstimator.EstimateWebcamLux(_webcamPreview, frame);
+                if (lux != null) SetCurrentLux(lux);
+            }
+            catch (Exception)
+            {
+                // e.g. the webcam was unplugged
+                StopWebcamPreviewWithError(AmbientLightMessage.WebcamUnavailable);
+            }
         };
     }
 
@@ -150,37 +172,26 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
             _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
             _lightSensor.ReadingChanged += OnLightSensorReadingChanged;
-
-            var reading = _lightSensor.GetCurrentReading();
-            if (reading != null)
-            {
-                CurrentLuxReading = reading.IlluminanceInLux;
-                CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-                CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-                RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
-            }
-            else
-            {
-                CurrentLuxReading = 0;
-                CurrentLuxDescription = "AmbientLightNoReading".GetLocalized();
-                CurrentLuxSliderPercentage = 0;
-                RemainingLuxSliderPercentage = 1000;
-            }
-
-            // Load ambient light threshold settings
-            AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
-            AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
         }
-        else
-        {
-            CurrentLuxDescription = "AmbientLightNoSensor".GetLocalized();
-        }
+
+        // Load ambient light settings
+        AmbientLightDarkThreshold = _builder.Config.AmbientLight.DarkThreshold;
+        AmbientLightLightThreshold = _builder.Config.AmbientLight.LightThreshold;
+        SelectedAmbientLightSource = _builder.Config.AmbientLight.Source;
+        WebcamInterval = _builder.Config.AmbientLight.WebcamIntervalSec;
+        WeatherInterval = _builder.Config.AmbientLight.WeatherIntervalMin;
+        WeatherUseLocationService = _builder.Config.Location.UseGeolocatorService;
+        _dispatcherQueue.TryEnqueue(async () => await LoadWebcamsAsync());
 
         _isInitializing = false;
 
+        ShowCurrentLux();
+
         // OnSelectedTriggerModeChanged skips the access check while initializing, and LoadGeolocationData only
-        // runs on first load, so a config reload that switches into LocationTimes has to refresh the info bar here
-        if (SelectedTriggerMode == SwitchTriggerMode.LocationTimes && _locationDataInitialized) QueueLocationAccessInfoBarRefresh();
+        // runs on first load, so a config reload into a mode using the location service has to refresh the info bar here
+        bool isAwaitingFirstLocationLoad = SelectedTriggerMode == SwitchTriggerMode.LocationTimes && !_locationDataInitialized;
+        bool needsLocationAccessCheck = UsesLocationService && !isAwaitingFirstLocationLoad;
+        if (needsLocationAccessCheck) QueueLocationAccessInfoBarRefresh();
     }
 
     private void HandleConfigUpdate()

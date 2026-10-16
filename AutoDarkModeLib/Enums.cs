@@ -95,6 +95,13 @@ public enum Governor
     AmbientLight
 }
 
+public enum AmbientLightSource
+{
+    Sensor,
+    Webcam,
+    Weather
+}
+
 public enum SkipType
 {
     Unspecified,

@@ -147,12 +147,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public partial double RemainingLuxSliderPercentage { get; set; } = 1000;
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(AmbientLightSensorTooltip))]
     public partial bool AmbientLightSensorAvailable { get; set; }
-
-    public string AmbientLightSensorTooltip => AmbientLightSensorAvailable
-        ? "AmbientLightSensor_ToolTip".GetLocalized()
-        : "AmbientLightSensor_Unavailable_ToolTip".GetLocalized();
 
     [ObservableProperty]
     public partial double CurrentLuxReading { get; set; }
@@ -162,10 +157,42 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private Windows.Devices.Sensors.LightSensor? _lightSensor;
 
+    private bool _hasCurrentLuxReading;
+
+    // Shown in place of the light level when there is no reading
+    public enum AmbientLightMessage
+    {
+        NoReading,
+        NoSensor,
+        WebcamAccessDenied,
+        WebcamUnavailable,
+        WeatherUnavailable,
+    }
+
+    private static string GetLocalizedMessage(AmbientLightMessage message) => message switch
+    {
+        AmbientLightMessage.NoReading => "AmbientLightNoReading".GetLocalized(),
+        AmbientLightMessage.NoSensor => "AmbientLightNoSensor".GetLocalized(),
+        AmbientLightMessage.WebcamAccessDenied => "AmbientLightWebcamAccessDenied".GetLocalized(),
+        AmbientLightMessage.WebcamUnavailable => "AmbientLightWebcamUnavailable".GetLocalized(),
+        AmbientLightMessage.WeatherUnavailable => "AmbientLightWeatherUnavailable".GetLocalized(),
+        _ => throw new ArgumentOutOfRangeException(nameof(message)),
+    };
+
+    private void SetCurrentLux(double? lux, AmbientLightMessage message = AmbientLightMessage.NoReading)
+    {
+        // NaN or negative readings count as no reading
+        _hasCurrentLuxReading = lux is double value && AmbientLightEstimator.IsValidLux(value);
+        CurrentLuxReading = _hasCurrentLuxReading ? lux!.Value : 0;
+        CurrentLuxDescription = _hasCurrentLuxReading ? GetLuxDescription(CurrentLuxReading) : GetLocalizedMessage(message);
+        CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
+        RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
+    }
+
     [RelayCommand]
     private void AutoConfigure()
     {
-        if (!AmbientLightSensorAvailable) return;
+        if (!_hasCurrentLuxReading) return;
 
         double currentLux = CurrentLuxReading;
         double dark, light;
@@ -214,12 +241,13 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     private void OnLightSensorReadingChanged(Windows.Devices.Sensors.LightSensor sender, Windows.Devices.Sensors.LightSensorReadingChangedEventArgs args)
     {
+        // Read the value on the sensor thread, the event args aren't meant to be kept until the dispatcher runs
+        double? lux = args.Reading?.IlluminanceInLux;
+        if (lux == null) return;
+
         _dispatcherQueue.TryEnqueue(() =>
         {
-            CurrentLuxReading = args.Reading.IlluminanceInLux;
-            CurrentLuxDescription = GetLuxDescription(CurrentLuxReading);
-            CurrentLuxSliderPercentage = LogarithmicLuxConverter.LuxToSlider(CurrentLuxReading);
-            RemainingLuxSliderPercentage = 1000 - CurrentLuxSliderPercentage;
+            if (SelectedAmbientLightSource == AmbientLightSource.Sensor) SetCurrentLux(lux);
         });
     }
 

@@ -23,13 +23,19 @@ GitHub may collect some personal data while communicating with its servers. Beca
 
 [Github Privacy Statement](https://docs.github.com/en/github/site-policy/github-privacy-statement)
 
+### Weather using Open-Meteo
+If you choose the weather as the light source for ambient light switching, the app sends your location (latitude and longitude) to Open-Meteo about every 15 minutes to retrieve the current solar radiation. Open-Meteo may collect some data while communicating with its servers. Because of this, the Open-Meteo terms apply:
+
+[Open-Meteo Terms & Privacy](https://open-meteo.com/en/terms)
+
 ### This App can access following user data:
 * Picture folder (for choosing a wallpaper that is saved locally)
 * File System (for choosing a Windows Theme that is saved locally)
 * Location service (for calculating sun times)
-* Internet connection (for update checking)
+* Internet connection (for update checking and weather based ambient light switching)
 * Running processes (if the theme switch should be paused while certain apps are running)
 * Ambient light Sensor (if Ambient Light Sensor switching is enabled)
+* Webcam (if the webcam is chosen as the light source for ambient light switching, single frames are only used to measure the brightness and are not stored)
 * Accent colors
 
 ### Changes to our Privacy Statement
