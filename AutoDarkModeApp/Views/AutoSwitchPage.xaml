@@ -418,7 +418,7 @@
                             HorizontalContentAlignment="Stretch"
                             ContentAlignment="Vertical"
                             IsEnabled="{x:Bind ViewModel.AutoThemeSwitchingEnabled, Mode=OneWay}"
-                            Visibility="{x:Bind ViewModel.AmbientLightThresholdsVisibility, Mode=OneWay}">
+                            Visibility="{x:Bind ViewModel.SelectedTriggerMode, ConverterParameter=AmbientLight, Converter={StaticResource EnumToVisibilityConverter}, Mode=OneWay}">
                             <Grid HorizontalAlignment="Stretch" ColumnSpacing="16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />

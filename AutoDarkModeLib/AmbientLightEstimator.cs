@@ -22,7 +22,6 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AutoDarkModeLib.Configs;
 using Windows.Graphics.Imaging;
 using Windows.Media.Capture;
 using Windows.Media.Capture.Frames;
@@ -68,8 +67,6 @@ public static class AmbientLightEstimator
     private const double CleanVisibilityKm = 25;
     // the aerosols sit in roughly the lowest 1.2 km
     private const double AerosolDepthPerKmExtinction = 1.2;
-    private const double AutomaticDarkOutdoorLux = 4000;
-    private const double AutomaticLightOutdoorLux = 6000;
     // the mean luminance needs no detail, a small frame keeps the per-frame conversion and copy cheap
     private static readonly BitmapSize WebcamFrameSize = new() { Width = 160, Height = 120 };
 
@@ -269,9 +266,9 @@ public static class AmbientLightEstimator
             double extraDepth = Math.Max(0, AerosolDepthPerKmExtinction * (3.912 / Math.Clamp(visibilityKm ?? CleanVisibilityKm, 0.05, CleanVisibilityKm) - 3.912 / CleanVisibilityKm));
             double hazeTransmission = Math.Exp(-0.5 * extraDepth * airMass);
 
-            // UV index of a clear sky: 12.5 * cos(zenith)^2.42, Bing rounds it, so it is only trusted when the clear sky value is large
+            // UV index of a clear sky: 12.5 * cos(zenith)^2.42, Bing rounds it, so it is only trusted when the clear sky value is not small
             double clearSkyUv = 12.5 * Math.Pow(sinHeight, 2.42);
-            bool isUvReadable = uvIndex.HasValue && clearSkyUv >= 6;
+            bool isUvReadable = uvIndex.HasValue && clearSkyUv >= 2.5;
             double blendedCloudTransmission = isUvReadable
                 ? 0.5 * cloudTransmission + 0.5 * Math.Clamp(uvIndex.Value / clearSkyUv, 0, 1)
                 : cloudTransmission;
@@ -307,24 +304,6 @@ public static class AmbientLightEstimator
         };
         // only the clouded part of the sky is darkened
         return 1 - (1 - transmission) * cloudFraction;
-    }
-
-    /// <summary>
-    /// Whether the switch points come from the light source itself instead of the user thresholds
-    /// </summary>
-    public static bool UsesAutomaticThresholds(AmbientLightSource source, WeatherProvider provider)
-        => source == AmbientLightSource.Weather && provider == WeatherProvider.Bing;
-
-    /// <summary>
-    /// Returns the lux values below which it is dark and above which it is light. The modelled weather light needs no tuning, so it
-    /// switches around the 5000 lux outdoor level of the standard overcast design sky, where a room with a 2% daylight factor drops to 100 lux
-    /// and needs artificial light. The gap between the two values keeps a drifting reading from flapping the theme.
-    /// </summary>
-    public static (double Dark, double Light) GetThresholds(AmbientLight config)
-    {
-        return UsesAutomaticThresholds(config.Source, config.WeatherProvider)
-            ? (AutomaticDarkOutdoorLux * WindowDaylightFactor, AutomaticLightOutdoorLux * WindowDaylightFactor)
-            : (config.DarkThreshold, config.LightThreshold);
     }
 
     /// <summary>
