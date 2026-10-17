@@ -235,8 +235,9 @@ public static class AmbientLightEstimator
 
         double? visibilityKm = TryGetNumber(current, "vis");
         double? uvIndex = TryGetNumber(current, "uv");
+        string weatherCode = current.TryGetProperty("wx", out JsonElement wx) && wx.ValueKind == JsonValueKind.String ? wx.GetString() : null;
         double sunHeight = GetSunHeightRad(lat, lon, DateTime.UtcNow);
-        return WindowDaylightFactor * EstimateOutdoorIlluminance(sunHeight, cloudCover.GetDouble() / 100, visibilityKm, uvIndex);
+        return WindowDaylightFactor * EstimateOutdoorIlluminance(sunHeight, cloudCover.GetDouble() / 100, visibilityKm, uvIndex, weatherCode);
     }
 
     private static double? TryGetNumber(JsonElement element, string name)
@@ -252,10 +253,10 @@ public static class AmbientLightEstimator
     /// Clouds: Kasten and Czeplak, G = Gclear * (1 - 0.75 * N^3.4), blended with the cloudiness the UV index implies once the sun is high enough to read it.
     /// Twilight: the sun below the horizon still lights the sky, interpolated in log steps between the known levels.
     /// </summary>
-    public static double EstimateOutdoorIlluminance(double sunHeightRad, double cloudFraction, double? visibilityKm, double? uvIndex)
+    public static double EstimateOutdoorIlluminance(double sunHeightRad, double cloudFraction, double? visibilityKm, double? uvIndex, string weatherCode)
     {
         double clouds = Math.Clamp(cloudFraction, 0, 1);
-        double cloudTransmission = 1 - 0.75 * Math.Pow(clouds, 3.4);
+        double cloudTransmission = (1 - 0.75 * Math.Pow(clouds, 3.4)) * GetPrecipitationTransmission(weatherCode, clouds);
 
         double sinHeight = Math.Sin(sunHeightRad);
         double sunlight = 0;
@@ -289,6 +290,23 @@ public static class AmbientLightEstimator
             _ => 0.0001
         };
         return Math.Max(sunlight, twilight * cloudTransmission);
+    }
+
+    // the cloud cover only tells how much sky is covered, rain clouds are thicker and darker than the average cloud of that cover
+    // (an estimate, thick storm clouds pass a few percent of the sun, thin drizzle clouds much more)
+    private static double GetPrecipitationTransmission(string weatherCode, double cloudFraction)
+    {
+        if (string.IsNullOrEmpty(weatherCode)) return 1;
+        double transmission = weatherCode switch
+        {
+            _ when weatherCode.Contains("TS") => 0.4,
+            _ when weatherCode.StartsWith('+') => 0.45,
+            _ when weatherCode.StartsWith('-') || weatherCode.Contains("DZ") => 0.85,
+            _ when weatherCode.Contains("RA") || weatherCode.Contains("SN") || weatherCode.Contains("SH") => 0.65,
+            _ => 1
+        };
+        // only the clouded part of the sky is darkened
+        return 1 - (1 - transmission) * cloudFraction;
     }
 
     /// <summary>
