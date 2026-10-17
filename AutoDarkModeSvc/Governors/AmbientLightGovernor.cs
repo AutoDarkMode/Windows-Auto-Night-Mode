@@ -386,7 +386,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
                 Logger.Warn("no location available for weather based ambient light");
                 return null;
             }
-            return await AmbientLightEstimator.FetchWeatherLuxAsync(builder.LocationData.Lat, builder.LocationData.Lon);
+            return await AmbientLightEstimator.FetchWeatherLuxAsync(builder.LocationData.Lat, builder.LocationData.Lon, builder.Config.AmbientLight.WeatherProvider);
         }
         catch (Exception ex)
         {

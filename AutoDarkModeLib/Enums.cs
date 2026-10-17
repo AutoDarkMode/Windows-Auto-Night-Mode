@@ -102,6 +102,12 @@ public enum AmbientLightSource
     Weather
 }
 
+public enum WeatherProvider
+{
+    OpenMeteo,
+    Bing
+}
+
 public enum SkipType
 {
     Unspecified,

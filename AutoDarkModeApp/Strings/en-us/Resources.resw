@@ -1157,7 +1157,16 @@ Do you really want to continue?</value>
     <value>Weather</value>
   </data>
   <data name="AmbientLightSource_Weather_Description" xml:space="preserve">
-    <value>Follows the daylight outside, including clouds. At each check, your location is sent to the Open-Meteo weather service to get the current solar radiation.</value>
+    <value>Follows the daylight outside, including clouds. At each check, your location is sent to the selected weather service to get the current sunshine and cloud cover.</value>
+  </data>
+  <data name="AmbientLightWeatherProvider" xml:space="preserve">
+    <value>Weather service</value>
+  </data>
+  <data name="AmbientLightWeatherProvider_OpenMeteo" xml:space="preserve">
+    <value>Open-Meteo</value>
+  </data>
+  <data name="AmbientLightWeatherProvider_Bing" xml:space="preserve">
+    <value>Bing Weather</value>
   </data>
   <data name="AmbientLightWebcam" xml:space="preserve">
     <value>Camera</value>

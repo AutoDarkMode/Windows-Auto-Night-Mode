@@ -180,6 +180,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         SelectedAmbientLightSource = _builder.Config.AmbientLight.Source;
         WebcamInterval = _builder.Config.AmbientLight.WebcamIntervalSec;
         WeatherInterval = _builder.Config.AmbientLight.WeatherIntervalMin;
+        SelectedWeatherProvider = _builder.Config.AmbientLight.WeatherProvider;
         WeatherUseLocationService = _builder.Config.Location.UseGeolocatorService;
         _dispatcherQueue.TryEnqueue(async () => await LoadWebcamsAsync());
 

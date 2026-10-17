@@ -223,6 +223,13 @@
                                         Style="{StaticResource CaptionTextBlockStyle}"
                                         Text="{helpers:ResourceString Name=AmbientLightSource_Weather_Description}"
                                         TextWrapping="Wrap" />
+                                    <ComboBox
+                                        MinWidth="200"
+                                        Header="{helpers:ResourceString Name=AmbientLightWeatherProvider}"
+                                        SelectedIndex="{x:Bind ViewModel.SelectedWeatherProvider, Mode=TwoWay, Converter={StaticResource EnumToIndexConverter}}">
+                                        <ComboBoxItem Content="{helpers:ResourceString Name=AmbientLightWeatherProvider_OpenMeteo}" />
+                                        <ComboBoxItem Content="{helpers:ResourceString Name=AmbientLightWeatherProvider_Bing}" />
+                                    </ComboBox>
                                     <NumberBox
                                         MinWidth="120"
                                         HorizontalAlignment="Left"

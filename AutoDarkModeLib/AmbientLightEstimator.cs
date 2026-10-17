@@ -62,10 +62,13 @@ public static class AmbientLightEstimator
     // the mean luminance needs no detail, a small frame keeps the per-frame conversion and copy cheap
     private static readonly BitmapSize WebcamFrameSize = new() { Width = 160, Height = 120 };
 
+    // the key and app id are the public ones of the Windows Weather app
+    private const string BingWeatherUrl = "https://api.msn.com/weather/current?locale=en-US&lat={0}&lon={1}&units=C&appId=9e21380c-ff19-4c78-b4ea-19558e93a5d3&apiKey=OkWqHMuutahBXs3dBoygqCjgXRt6CV4i5V7SRQURrT&ocid=weather-app-win&wrapOData=false";
+
     private static readonly HttpClient WeatherClient = new() { Timeout = TimeSpan.FromSeconds(15) };
     private static readonly object WeatherLock = new();
     private static DateTime _lastWeatherRequest;
-    private static (double Lat, double Lon) _lastWeatherLocation;
+    private static (double Lat, double Lon, WeatherProvider Provider) _lastWeatherRequestKey;
     private static double? _lastWeatherLux;
 
     /// <summary>
@@ -164,26 +167,41 @@ public static class AmbientLightEstimator
     }
 
     /// <summary>
-    /// Returns the light level from the current solar radiation at the location reported by Open-Meteo.
-    /// Open-Meteo is asked at most every <see cref="MinimumWeatherIntervalMin"/> minutes, failed requests included.
+    /// Returns the light level from the current sunshine at the location reported by the weather provider.
+    /// The provider is asked at most every <see cref="MinimumWeatherIntervalMin"/> minutes, failed requests included.
     /// </summary>
-    public static async Task<double> FetchWeatherLuxAsync(double lat, double lon)
+    public static async Task<double> FetchWeatherLuxAsync(double lat, double lon, WeatherProvider provider)
     {
         bool isValidLocation = Math.Abs(lat) <= 90 && Math.Abs(lon) <= 180;
         if (!isValidLocation) throw new ArgumentOutOfRangeException(nameof(lat), $"invalid location {lat}, {lon}");
 
         lock (WeatherLock)
         {
-            bool isRecentRequestForLocation = _lastWeatherLocation == (lat, lon) && DateTime.Now - _lastWeatherRequest < TimeSpan.FromMinutes(MinimumWeatherIntervalMin);
+            bool isRecentRequestForLocation = _lastWeatherRequestKey == (lat, lon, provider) && DateTime.Now - _lastWeatherRequest < TimeSpan.FromMinutes(MinimumWeatherIntervalMin);
             if (isRecentRequestForLocation)
             {
                 return _lastWeatherLux ?? throw new InvalidOperationException("last weather request failed");
             }
             _lastWeatherRequest = DateTime.Now;
-            _lastWeatherLocation = (lat, lon);
+            _lastWeatherRequestKey = (lat, lon, provider);
             _lastWeatherLux = null;
         }
 
+        double radiation = provider switch
+        {
+            WeatherProvider.Bing => await FetchBingRadiationAsync(lat, lon),
+            _ => await FetchOpenMeteoRadiationAsync(lat, lon)
+        };
+        double lux = WeatherLuxPerWattPerSquareMeter * Math.Max(0, radiation);
+        lock (WeatherLock)
+        {
+            _lastWeatherLux = lux;
+        }
+        return lux;
+    }
+
+    private static async Task<double> FetchOpenMeteoRadiationAsync(double lat, double lon)
+    {
         string url = string.Format(CultureInfo.InvariantCulture, "https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current=shortwave_radiation", lat, lon);
         string data = await WeatherClient.GetStringAsync(url);
         using JsonDocument json = JsonDocument.Parse(data);
@@ -192,11 +210,41 @@ public static class AmbientLightEstimator
             && current.TryGetProperty("shortwave_radiation", out JsonElement radiation)
             && radiation.ValueKind == JsonValueKind.Number;
         if (!hasRadiation) throw new InvalidDataException("weather response has no solar radiation");
-        double lux = WeatherLuxPerWattPerSquareMeter * Math.Max(0, current.GetProperty("shortwave_radiation").GetDouble());
-        lock (WeatherLock)
-        {
-            _lastWeatherLux = lux;
-        }
-        return lux;
+        return current.GetProperty("shortwave_radiation").GetDouble();
+    }
+
+    // Bing Weather reports no radiation, so it is derived from the sun height and the cloud cover
+    private static async Task<double> FetchBingRadiationAsync(double lat, double lon)
+    {
+        string url = string.Format(CultureInfo.InvariantCulture, BingWeatherUrl, lat, lon);
+        string data = await WeatherClient.GetStringAsync(url);
+        using JsonDocument json = JsonDocument.Parse(data);
+        JsonElement current = json.RootElement.GetProperty("responses")[0].GetProperty("weather")[0].GetProperty("current");
+        bool hasCloudCover = current.TryGetProperty("cloudCover", out JsonElement cloudCover) && cloudCover.ValueKind == JsonValueKind.Number;
+        if (!hasCloudCover) throw new InvalidDataException("weather response has no cloud cover");
+
+        double sunHeight = GetSunHeightRad(lat, lon, DateTime.UtcNow);
+        if (sunHeight <= 0) return 0;
+        double clearSky = Math.Max(0, 990 * Math.Sin(sunHeight) - 30);
+        double cloudFraction = Math.Clamp(cloudCover.GetDouble() / 100, 0, 1);
+        return clearSky * (1 - 0.75 * Math.Pow(cloudFraction, 3.4));
+    }
+
+    /// <summary>
+    /// Returns the height of the sun above the horizon in radians (approximate solar position algorithm)
+    /// </summary>
+    public static double GetSunHeightRad(double lat, double lon, DateTime utc)
+    {
+        double dayOfYear = utc.DayOfYear + (utc.Hour + utc.Minute / 60.0) / 24;
+        double gamma = 2 * Math.PI / 365 * (dayOfYear - 1);
+        double declination = 0.006918 - 0.399912 * Math.Cos(gamma) + 0.070257 * Math.Sin(gamma)
+            - 0.006758 * Math.Cos(2 * gamma) + 0.000907 * Math.Sin(2 * gamma);
+        double equationOfTimeMin = 229.18 * (0.000075 + 0.001868 * Math.Cos(gamma) - 0.032077 * Math.Sin(gamma)
+            - 0.014615 * Math.Cos(2 * gamma) - 0.040849 * Math.Sin(2 * gamma));
+        double solarTimeMin = utc.Hour * 60 + utc.Minute + utc.Second / 60.0 + equationOfTimeMin + 4 * lon;
+        double hourAngle = (solarTimeMin / 4 - 180) * Math.PI / 180;
+        double latRad = lat * Math.PI / 180;
+        double sinHeight = Math.Sin(latRad) * Math.Sin(declination) + Math.Cos(latRad) * Math.Cos(declination) * Math.Cos(hourAngle);
+        return Math.Asin(Math.Clamp(sinHeight, -1, 1));
     }
 }

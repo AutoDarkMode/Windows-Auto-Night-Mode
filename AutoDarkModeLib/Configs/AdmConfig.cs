@@ -124,6 +124,10 @@ public class AmbientLight
     /// Minutes between two weather samples (default and minimum: 15 minutes)
     /// </summary>
     public int WeatherIntervalMin { get; set; } = 15;
+    /// <summary>
+    /// Where the weather light level comes from (default: Open-Meteo)
+    /// </summary>
+    public WeatherProvider WeatherProvider { get; set; } = WeatherProvider.OpenMeteo;
 }
 
 public class Hotkeys

@@ -63,6 +63,25 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     }
 
     [ObservableProperty]
+    public partial WeatherProvider SelectedWeatherProvider { get; set; }
+
+    partial void OnSelectedWeatherProviderChanged(WeatherProvider value)
+    {
+        if (_isInitializing) return;
+
+        _builder.Config.AmbientLight.WeatherProvider = value;
+        try
+        {
+            _builder.Save();
+        }
+        catch (Exception ex)
+        {
+            _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
+        }
+        ShowCurrentLux();
+    }
+
+    [ObservableProperty]
     public partial int WebcamInterval { get; set; }
 
     partial void OnWebcamIntervalChanged(int value)
@@ -310,7 +329,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
         try
         {
-            double lux = await AmbientLightEstimator.FetchWeatherLuxAsync(_builder.LocationData.Lat, _builder.LocationData.Lon);
+            double lux = await AmbientLightEstimator.FetchWeatherLuxAsync(_builder.LocationData.Lat, _builder.LocationData.Lon, SelectedWeatherProvider);
             if (SelectedAmbientLightSource == AmbientLightSource.Weather) SetCurrentLux(lux);
         }
         catch (Exception)
