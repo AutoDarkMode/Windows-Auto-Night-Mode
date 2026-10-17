@@ -15,6 +15,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     public partial bool AutoThemeSwitchingEnabled { get; set; }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightThresholdsVisibility))]
     public partial SwitchTriggerMode SelectedTriggerMode { get; set; }
 
     [ObservableProperty]

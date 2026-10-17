@@ -1,4 +1,4 @@
-﻿#region copyright
+#region copyright
 //  Copyright (C) 2022 Auto Dark Mode
 //
 //  This program is free software: you can redistribute it and/or modify
@@ -22,6 +22,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.Json;
 using System.Threading.Tasks;
+using AutoDarkModeLib.Configs;
 using Windows.Graphics.Imaging;
 using Windows.Media.Capture;
 using Windows.Media.Capture.Frames;
@@ -59,6 +60,16 @@ public static class AmbientLightEstimator
     private const double WebcamDefaultExposureSeconds = 1.0 / 30;
     // about 120 lux per W/m^2 outdoors, and a room near a window gets about 1% of it
     private const double WeatherLuxPerWattPerSquareMeter = 1.2;
+    // lux per W/m^2 of global radiation, measurements range from 100 to 115
+    private const double LuminousEfficacyLmPerW = 110;
+    // what reaches the sensor of a room near a window compared to outdoors, the scale the thresholds are given in
+    private const double WindowDaylightFactor = 0.01;
+    // visibility of a clean atmosphere, beyond it the haze is not told apart
+    private const double CleanVisibilityKm = 25;
+    // the aerosols sit in roughly the lowest 1.2 km
+    private const double AerosolDepthPerKmExtinction = 1.2;
+    private const double AutomaticDarkOutdoorLux = 4000;
+    private const double AutomaticLightOutdoorLux = 6000;
     // the mean luminance needs no detail, a small frame keeps the per-frame conversion and copy cheap
     private static readonly BitmapSize WebcamFrameSize = new() { Width = 160, Height = 120 };
 
@@ -187,12 +198,11 @@ public static class AmbientLightEstimator
             _lastWeatherLux = null;
         }
 
-        double radiation = provider switch
+        double lux = provider switch
         {
-            WeatherProvider.Bing => await FetchBingRadiationAsync(lat, lon),
-            _ => await FetchOpenMeteoRadiationAsync(lat, lon)
+            WeatherProvider.Bing => await FetchBingLuxAsync(lat, lon),
+            _ => WeatherLuxPerWattPerSquareMeter * Math.Max(0, await FetchOpenMeteoRadiationAsync(lat, lon))
         };
-        double lux = WeatherLuxPerWattPerSquareMeter * Math.Max(0, radiation);
         lock (WeatherLock)
         {
             _lastWeatherLux = lux;
@@ -213,8 +223,8 @@ public static class AmbientLightEstimator
         return current.GetProperty("shortwave_radiation").GetDouble();
     }
 
-    // Bing Weather reports no radiation, so it is derived from the sun height and the cloud cover
-    private static async Task<double> FetchBingRadiationAsync(double lat, double lon)
+    // Bing Weather reports no radiation, so the light level is modelled from the sun height and its sky, haze and UV readings
+    private static async Task<double> FetchBingLuxAsync(double lat, double lon)
     {
         string url = string.Format(CultureInfo.InvariantCulture, BingWeatherUrl, lat, lon);
         string data = await WeatherClient.GetStringAsync(url);
@@ -223,11 +233,80 @@ public static class AmbientLightEstimator
         bool hasCloudCover = current.TryGetProperty("cloudCover", out JsonElement cloudCover) && cloudCover.ValueKind == JsonValueKind.Number;
         if (!hasCloudCover) throw new InvalidDataException("weather response has no cloud cover");
 
+        double? visibilityKm = TryGetNumber(current, "vis");
+        double? uvIndex = TryGetNumber(current, "uv");
         double sunHeight = GetSunHeightRad(lat, lon, DateTime.UtcNow);
-        if (sunHeight <= 0) return 0;
-        double clearSky = Math.Max(0, 990 * Math.Sin(sunHeight) - 30);
-        double cloudFraction = Math.Clamp(cloudCover.GetDouble() / 100, 0, 1);
-        return clearSky * (1 - 0.75 * Math.Pow(cloudFraction, 3.4));
+        return WindowDaylightFactor * EstimateOutdoorIlluminance(sunHeight, cloudCover.GetDouble() / 100, visibilityKm, uvIndex);
+    }
+
+    private static double? TryGetNumber(JsonElement element, string name)
+    {
+        bool hasNumber = element.TryGetProperty(name, out JsonElement value) && value.ValueKind == JsonValueKind.Number;
+        return hasNumber ? value.GetDouble() : null;
+    }
+
+    /// <summary>
+    /// Models the illuminance in lux on an unshaded horizontal surface outdoors.
+    /// Clear sky: Haurwitz global irradiance, which already includes the air mass.
+    /// Haze: the extinction of the visibility (Koschmieder) beyond a clean atmosphere weakens the sunshine.
+    /// Clouds: Kasten and Czeplak, G = Gclear * (1 - 0.75 * N^3.4), blended with the cloudiness the UV index implies once the sun is high enough to read it.
+    /// Twilight: the sun below the horizon still lights the sky, interpolated in log steps between the known levels.
+    /// </summary>
+    public static double EstimateOutdoorIlluminance(double sunHeightRad, double cloudFraction, double? visibilityKm, double? uvIndex)
+    {
+        double clouds = Math.Clamp(cloudFraction, 0, 1);
+        double cloudTransmission = 1 - 0.75 * Math.Pow(clouds, 3.4);
+
+        double sinHeight = Math.Sin(sunHeightRad);
+        double sunlight = 0;
+        if (sinHeight > 0)
+        {
+            double clearSky = 1098 * sinHeight * Math.Exp(-0.059 / sinHeight);
+
+            // aerosol optical depth is about the extinction coefficient times the aerosol layer height, the global radiation only loses about half of what the direct beam loses
+            double airMass = 1 / (sinHeight + 0.50572 * Math.Pow(6.07995 + sunHeightRad * 180 / Math.PI, -1.6364));
+            double extraDepth = Math.Max(0, AerosolDepthPerKmExtinction * (3.912 / Math.Clamp(visibilityKm ?? CleanVisibilityKm, 0.05, CleanVisibilityKm) - 3.912 / CleanVisibilityKm));
+            double hazeTransmission = Math.Exp(-0.5 * extraDepth * airMass);
+
+            // UV index of a clear sky: 12.5 * cos(zenith)^2.42, Bing rounds it, so it is only trusted when the clear sky value is large
+            double clearSkyUv = 12.5 * Math.Pow(sinHeight, 2.42);
+            bool isUvReadable = uvIndex.HasValue && clearSkyUv >= 6;
+            double blendedCloudTransmission = isUvReadable
+                ? 0.5 * cloudTransmission + 0.5 * Math.Clamp(uvIndex.Value / clearSkyUv, 0, 1)
+                : cloudTransmission;
+
+            sunlight = LuminousEfficacyLmPerW * clearSky * hazeTransmission * blendedCloudTransmission;
+        }
+
+        // sunrise and sunset 400 lux, end of civil twilight 3.4 lux, nautical 0.008 lux, astronomical 0.0001 lux
+        double sunHeightDeg = sunHeightRad * 180 / Math.PI;
+        double twilight = sunHeightDeg switch
+        {
+            >= 0 => 400,
+            >= -6 => Math.Pow(10, Math.Log10(3.4) + (Math.Log10(400) - Math.Log10(3.4)) * (sunHeightDeg + 6) / 6),
+            >= -12 => Math.Pow(10, Math.Log10(0.008) + (Math.Log10(3.4) - Math.Log10(0.008)) * (sunHeightDeg + 12) / 6),
+            >= -18 => Math.Pow(10, Math.Log10(0.0001) + (Math.Log10(0.008) - Math.Log10(0.0001)) * (sunHeightDeg + 18) / 6),
+            _ => 0.0001
+        };
+        return Math.Max(sunlight, twilight * cloudTransmission);
+    }
+
+    /// <summary>
+    /// Whether the switch points come from the light source itself instead of the user thresholds
+    /// </summary>
+    public static bool UsesAutomaticThresholds(AmbientLightSource source, WeatherProvider provider)
+        => source == AmbientLightSource.Weather && provider == WeatherProvider.Bing;
+
+    /// <summary>
+    /// Returns the lux values below which it is dark and above which it is light. The modelled weather light needs no tuning, so it
+    /// switches around the 5000 lux outdoor level of the standard overcast design sky, where a room with a 2% daylight factor drops to 100 lux
+    /// and needs artificial light. The gap between the two values keeps a drifting reading from flapping the theme.
+    /// </summary>
+    public static (double Dark, double Light) GetThresholds(AmbientLight config)
+    {
+        return UsesAutomaticThresholds(config.Source, config.WeatherProvider)
+            ? (AutomaticDarkOutdoorLux * WindowDaylightFactor, AutomaticLightOutdoorLux * WindowDaylightFactor)
+            : (config.DarkThreshold, config.LightThreshold);
     }
 
     /// <summary>

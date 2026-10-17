@@ -43,7 +43,14 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightThresholdsVisibility))]
     public partial AmbientLightSource SelectedAmbientLightSource { get; set; }
+
+    // the modelled weather light switches at fixed levels, so there is nothing to tune
+    public Visibility AmbientLightThresholdsVisibility
+        => SelectedTriggerMode == SwitchTriggerMode.AmbientLight && !AmbientLightEstimator.UsesAutomaticThresholds(SelectedAmbientLightSource, SelectedWeatherProvider)
+            ? Visibility.Visible
+            : Visibility.Collapsed;
 
     partial void OnSelectedAmbientLightSourceChanged(AmbientLightSource value)
     {
@@ -63,6 +70,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(AmbientLightThresholdsVisibility))]
     public partial WeatherProvider SelectedWeatherProvider { get; set; }
 
     partial void OnSelectedWeatherProviderChanged(WeatherProvider value)

@@ -165,8 +165,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
             return;
         }
 
-        double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
-        double lightThreshold = builder.Config.AmbientLight.LightThreshold;
+        (double darkThreshold, double lightThreshold) = AmbientLightEstimator.GetThresholds(builder.Config.AmbientLight);
 
         Theme newTheme = currentTheme;
 
@@ -289,8 +288,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
             CancelPendingThemeChange();
 
             double lux = state.AmbientLight.LastLuxReading;
-            double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
-            double lightThreshold = builder.Config.AmbientLight.LightThreshold;
+            (double darkThreshold, double lightThreshold) = AmbientLightEstimator.GetThresholds(builder.Config.AmbientLight);
 
             Theme newTheme = currentTheme;
             if (lux <= darkThreshold)
@@ -451,8 +449,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
                 {
                     double lux = reading.IlluminanceInLux;
                     state.AmbientLight.LastLuxReading = lux;
-                    double darkThreshold = builder.Config.AmbientLight.DarkThreshold;
-                    double lightThreshold = builder.Config.AmbientLight.LightThreshold;
+                    (double darkThreshold, double lightThreshold) = AmbientLightEstimator.GetThresholds(builder.Config.AmbientLight);
 
                     // Determine what theme the sensor suggests
                     Theme sensorSuggestedTheme;
