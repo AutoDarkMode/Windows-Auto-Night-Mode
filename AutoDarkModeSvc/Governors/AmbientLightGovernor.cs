@@ -18,6 +18,7 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using AutoDarkModeLib;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
@@ -25,6 +26,7 @@ using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
 using Windows.Devices.Sensors;
+using Windows.Media.Capture.Frames;
 
 namespace AutoDarkModeSvc.Governors;
 
@@ -41,6 +43,11 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     /// </summary>
     private const int DebounceToleranceMs = 1000;
 
+    /// <summary>
+    /// Each webcam sample turns the camera on for a few seconds, so it is not sampled more often.
+    /// </summary>
+    private const int MinimumWebcamIntervalSec = 10;
+
     public Governor Type => Governor.AmbientLight;
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private LightSensor _sensor;
@@ -52,6 +59,8 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private Theme _pendingTheme = Theme.Unknown;
     private int _debounceDelayMs;
     private readonly object _debounceLock = new();
+    private AmbientLightSource _source;
+    private System.Timers.Timer _sampleTimer;
 
     /// <summary>
     /// Set when the governor itself triggers a switch, consumed by the next <see cref="Run"/>.
@@ -69,6 +78,23 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     {
         // Reload config to pick up any changes made directly to the config file
         builder.Load();
+
+        // Re-hook if the user switched to another light source
+        if (builder.Config.AmbientLight.Source != _source)
+        {
+            DisableHook();
+            EnableHook();
+        }
+
+        // Setting the interval restarts the timer, so only set it when it was changed
+        // (local copy, DisableHook may clear the field meanwhile)
+        System.Timers.Timer sampleTimer = _sampleTimer;
+        double sampleInterval = GetSampleInterval();
+        bool sampleIntervalChanged = sampleTimer != null && sampleTimer.Interval != sampleInterval;
+        if (sampleIntervalChanged)
+        {
+            sampleTimer.Interval = sampleInterval;
+        }
 
         // Re-evaluate current lux against thresholds (handles config changes)
         if (_sensor != null)
@@ -288,6 +314,87 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         }
     }
 
+    // The webcam and the weather have no change events, so they are sampled in the configured interval instead
+    private double GetSampleInterval()
+    {
+        double interval = _source == AmbientLightSource.Webcam
+            ? TimeSpan.FromSeconds(Math.Max(MinimumWebcamIntervalSec, builder.Config.AmbientLight.WebcamIntervalSec)).TotalMilliseconds
+            : TimeSpan.FromMinutes(Math.Max(AmbientLightEstimator.MinimumWeatherIntervalMin, builder.Config.AmbientLight.WeatherIntervalMin)).TotalMilliseconds;
+        // the timer rejects intervals above int.MaxValue milliseconds, e.g. from a hand edited config
+        return Math.Min(interval, int.MaxValue);
+    }
+
+    private async void OnSampleTimer(object sender, ElapsedEventArgs e)
+    {
+        try
+        {
+            double? lux = _source == AmbientLightSource.Webcam ? await SampleWebcamAsync() : await SampleWeatherAsync();
+
+            // The governor may have been disabled while sampling
+            bool isCurrentSample = lux != null && sender == _sampleTimer;
+            if (!isCurrentSample) return;
+            if (!AmbientLightEstimator.IsValidLux(lux.Value))
+            {
+                Logger.Warn($"ignoring invalid {_source.ToString().ToLowerInvariant()} light level: {lux}");
+                return;
+            }
+            Logger.Debug($"{_source.ToString().ToLowerInvariant()} light level: {lux:F1} lux");
+            EvaluateLuxReading(lux.Value);
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "could not evaluate ambient light sample:");
+        }
+    }
+
+    private async Task<double?> SampleWebcamAsync()
+    {
+        try
+        {
+            var group = await AmbientLightEstimator.FindWebcamAsync(builder.Config.AmbientLight.WebcamId);
+            if (group == null)
+            {
+                Logger.Warn("no webcam available on this device");
+                return null;
+            }
+
+            // The camera is only turned on for this one frame
+            using var webcam = await AmbientLightEstimator.OpenWebcamAsync(group);
+            MediaFrameReaderStartStatus status = await webcam.Reader.StartAsync();
+            if (status != MediaFrameReaderStartStatus.Success)
+            {
+                Logger.Warn("could not start webcam: {0}", status);
+                return null;
+            }
+            await Task.Delay(AmbientLightEstimator.WebcamWarmupMs);
+            using var frame = webcam.Reader.TryAcquireLatestFrame();
+            return AmbientLightEstimator.EstimateWebcamLux(webcam, frame);
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn("could not sample light level from webcam: {0}", ex.Message);
+            return null;
+        }
+    }
+
+    private async Task<double?> SampleWeatherAsync()
+    {
+        try
+        {
+            if (builder.LocationData.LastUpdate == default)
+            {
+                Logger.Warn("no location available for weather based ambient light");
+                return null;
+            }
+            return await AmbientLightEstimator.FetchWeatherLuxAsync(builder.LocationData.Lat, builder.LocationData.Lon, builder.Config.AmbientLight.WeatherProvider);
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn("could not sample light level from weather: {0}", ex.Message);
+            return null;
+        }
+    }
+
     [MethodImpl(MethodImplOptions.Synchronized)]
     private void OnReadingChanged(LightSensor sender, LightSensorReadingChangedEventArgs args)
     {
@@ -300,6 +407,36 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
         // Register callback for config change re-evaluation
         state.AmbientLight.ReEvaluateCallback = ReEvaluateWithCurrentConfig;
+
+        _source = builder.Config.AmbientLight.Source;
+        if (_source != AmbientLightSource.Sensor)
+        {
+            try
+            {
+                // There is no reading until the first sample, so start from the current system theme
+                currentTheme = state.InternalTheme;
+                if (currentTheme == Theme.Unknown)
+                {
+                    currentTheme = RegistryHandler.AppsUseLightTheme() ? Theme.Light : Theme.Dark;
+                }
+                state.AmbientLight.Requested = currentTheme;
+                Logger.Info($"ambient light {_source.ToString().ToLowerInvariant()} sampling started, system theme: {currentTheme}");
+
+                _sampleTimer = new System.Timers.Timer
+                {
+                    Interval = GetSampleInterval(),
+                    AutoReset = true
+                };
+                _sampleTimer.Elapsed += OnSampleTimer;
+                _sampleTimer.Start();
+                OnSampleTimer(_sampleTimer, null);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, $"could not start ambient light {_source.ToString().ToLowerInvariant()} sampling:");
+            }
+            return;
+        }
 
         try
         {
@@ -375,6 +512,13 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
             _debounceCts?.Cancel();
             _debounceCts = null;
             _pendingTheme = Theme.Unknown;
+
+            if (_sampleTimer != null)
+            {
+                _sampleTimer.Elapsed -= OnSampleTimer;
+                _sampleTimer.Dispose();
+                _sampleTimer = null;
+            }
 
             if (_sensor != null)
             {

@@ -101,7 +101,7 @@ A governor answers "which theme should be active now". `GovernorModule.AutoManag
 | --- | --- | --- | --- |
 | TimeSwitchGovernor | config Sunrise and Sunset, or `LocationHandler.GetSunTimes` when Location.Enabled, plus offsets | Theme.Resolve, always | The tick that lands in the 60 s before the switch time |
 | NightLightGovernor | WMI watcher on the bluelightreductionstate registry value | state.NightLight.Requested (Light or Dark), with the offset-adjusted switch time | After the night light change: the tick that lands in the 60 s before change time + offset; instant when the offset is 0 |
-| AmbientLightGovernor | Windows.Devices.Sensors.LightSensor readings, DarkThreshold and LightThreshold with hysteresis, debounce of at least 1000 ms | state.AmbientLight.Requested (Light or Dark) | Always instant, on the fire the governor caused itself |
+| AmbientLightGovernor | Windows.Devices.Sensors.LightSensor readings, or webcam and weather samples (Open-Meteo or Bing Weather) on a timer, DarkThreshold and LightThreshold with hysteresis, debounce of at least 1000 ms | state.AmbientLight.Requested (Light or Dark) | Always instant, on the fire the governor caused itself |
 
 TimeSwitchGovernor is stateless and sends Theme.Resolve, so ThemeManager computes the theme. The other two compute the theme themselves, store it in GlobalState, and call `GovernorModule.Fire` from their own event handlers when it changes. Whether a request carries Theme.Resolve or a concrete theme decides which checks in `RequestSwitch` run on it (see the `RequestSwitch` section).
 

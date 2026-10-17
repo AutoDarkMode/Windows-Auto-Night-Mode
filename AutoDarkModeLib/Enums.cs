@@ -95,6 +95,19 @@ public enum Governor
     AmbientLight
 }
 
+public enum AmbientLightSource
+{
+    Sensor,
+    Webcam,
+    Weather
+}
+
+public enum WeatherProvider
+{
+    OpenMeteo,
+    Bing
+}
+
 public enum SkipType
 {
     Unspecified,
