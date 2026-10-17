@@ -255,15 +255,15 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         return lux switch
         {
-            < 1 => $"{lux:F0} lux — Moonlight",
-            < 10 => $"{lux:F0} lux — Very dark",
-            < 50 => $"{lux:F0} lux — Dimly lit room",
-            < 150 => $"{lux:F0} lux — Living room",
-            < 400 => $"{lux:F0} lux — Office lighting",
-            < 1000 => $"{lux:F0} lux — Overcast day",
-            < 10000 => $"{lux:F0} lux — Daylight (shade)",
-            < 30000 => $"{lux:F0} lux — Full daylight",
-            _ => $"{lux:F0} lux — Direct sunlight"
+            < 1 => $"{lux:F0} lux - Moonlight",
+            < 10 => $"{lux:F0} lux - Very dark",
+            < 50 => $"{lux:F0} lux - Dimly lit room",
+            < 150 => $"{lux:F0} lux - Living room",
+            < 400 => $"{lux:F0} lux - Office lighting",
+            < 1000 => $"{lux:F0} lux - Overcast day",
+            < 10000 => $"{lux:F0} lux - Daylight (shade)",
+            < 30000 => $"{lux:F0} lux - Full daylight",
+            _ => $"{lux:F0} lux - Direct sunlight"
         };
     }
 }
