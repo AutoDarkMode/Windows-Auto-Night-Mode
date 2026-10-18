@@ -169,13 +169,13 @@
     <value>שעתיים</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 דקות</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
     <value>3 שעות</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 דקות</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
     <value>6 שעות</value>
@@ -280,5 +280,8 @@
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
     <value>מעדכן ל</value>
+  </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>לשעה</value>
   </data>
 </root>
