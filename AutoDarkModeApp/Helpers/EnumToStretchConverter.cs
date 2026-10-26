@@ -14,6 +14,8 @@ public partial class EnumToStretchConverter : IValueConverter
             WallpaperFillingMode.Stretch => Stretch.Fill,
             WallpaperFillingMode.Fit => Stretch.Uniform,
             WallpaperFillingMode.Fill => Stretch.UniformToFill,
+            // shortcut: Tile previews one image, replace when preview tiling is implemented.
+            WallpaperFillingMode.Tile => Stretch.Uniform,
             _ => Stretch.None,
         };
     }
@@ -30,4 +32,5 @@ public enum WallpaperFillingMode
     Stretch,
     Fit,
     Fill,
+    Tile,
 }

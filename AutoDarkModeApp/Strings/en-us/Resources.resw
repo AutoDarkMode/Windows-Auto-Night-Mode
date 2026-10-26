@@ -334,6 +334,12 @@ Would you like to create an issue on the Auto Dark Mode repository?</value>
   <data name="FitMode_Stretch" xml:space="preserve">
     <value>Stretch</value>
   </data>
+  <data name="FitMode_Tile" xml:space="preserve">
+    <value>Tile</value>
+  </data>
+  <data name="FitMode_Tile_Description" xml:space="preserve">
+    <value>Tile is available for per-monitor pictures. The preview shows a single image.</value>
+  </data>
   <data name="FollowApp" xml:space="preserve">
     <value>Let the app decide</value>
   </data>
