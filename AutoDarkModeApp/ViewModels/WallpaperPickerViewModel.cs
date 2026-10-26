@@ -53,7 +53,10 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
     public partial ElementTheme DesktopPreviewThemeMode { get; set; }
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(CanUseTiledWallpaper))]
     public partial WallpaperDisplayMode CurrentDisplayMode { get; set; }
+
+    public bool CanUseTiledWallpaper => CurrentDisplayMode == WallpaperDisplayMode.PictureMM;
 
     [ObservableProperty]
     public partial WallpaperDisplayFlags CurrentDisplayFlags { get; set; }
@@ -212,6 +215,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperPosition.Fit => WallpaperFillingMode.Fit,
             WallpaperPosition.Stretch => WallpaperFillingMode.Stretch,
             WallpaperPosition.Center => WallpaperFillingMode.Center,
+            WallpaperPosition.Tile => WallpaperFillingMode.Tile,
             _ => WallpaperFillingMode.Fill,
         };
 
@@ -402,6 +406,7 @@ public partial class WallpaperPickerViewModel : ObservableRecipient
             WallpaperFillingMode.Fit => WallpaperPosition.Fit,
             WallpaperFillingMode.Stretch => WallpaperPosition.Stretch,
             WallpaperFillingMode.Center => WallpaperPosition.Center,
+            WallpaperFillingMode.Tile => WallpaperPosition.Tile,
             _ => WallpaperPosition.Fill,
         };
 
