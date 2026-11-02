@@ -33,6 +33,7 @@ internal class TmHandler
     }
     private static class NativeMethods
     {
+        // suggested: SYSLIB1054
         [DllImport("UxTheme.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool IsThemeActive();

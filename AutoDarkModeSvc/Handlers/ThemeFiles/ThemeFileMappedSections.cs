@@ -65,7 +65,7 @@ public class Colors
 {
     public (string, int) Section { get; } = (@"[Control Panel\Colors]", 0);
     public (string, int) Background { get; set; } = ("0 0 0", 1);
-    public (string, int) InfoText { get; set; } = ("0 0 0", 1);
+    public (string, int) InfoText { get; set; } = ("0 0 0", 2);
 }
 
 public class ServerIcon
@@ -101,8 +101,8 @@ public class Cursors
 {
     public (string, int) Section { get; } = (@"[Control Panel\Cursors]", 0);
     public (string, int) AppStarting { get; set; } = (@"%SystemRoot%\cursors\aero_working.ani", 3);
-    public (string, int) Crosshair { get; set; } = ("", 5);
     public (string, int) Arrow { get; set; } = (@"%SystemRoot%\cursors\aero_arrow.cur", 1);
+    public (string, int) Crosshair { get; set; } = ("", 5);
     public (string, int) Hand { get; set; } = (@"%SystemRoot%\cursors\aero_link.cur", 15);
     public (string, int) Help { get; set; } = (@"%SystemRoot%\cursors\aero_helpsel.cur", 2);
     public (string, int) IBeam { get; set; } = ("", 6);
