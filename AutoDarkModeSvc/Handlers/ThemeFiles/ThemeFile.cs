@@ -261,7 +261,7 @@ public partial class ThemeFile
         {
             string customPath = Path.Combine(Helper.UserThemesFolderPath, "Custom.theme");
 
-            // call first becaues it refreshes the regkey
+            // call first because it refreshes the regkey
             (bool isCustom, string activeThemeName) = Tm2Handler.GetActiveThemeName();
             using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes");
             string themePath = (string)key.GetValue("CurrentTheme") ?? customPath;
@@ -282,7 +282,7 @@ public partial class ThemeFile
 
             if (isCustom)
             {
-                if (logging) Logger.Info($"theme used for synching is custom theme, path: {themePath}");
+                if (logging) Logger.Info($"theme used for syncing is custom theme, path: {themePath}");
             }
             else if (newDisplayName != null && newDisplayName.StartsWith("@%SystemRoot%\\System32\\themeui.dll"))
             {
@@ -390,7 +390,7 @@ public partial class ThemeFile
         return props;
     }
 
-    private static (Encoding, List<string>) Read(string ThemeFilePath, int attempts = 5)
+    private static (Encoding, List<string>) Read(string ThemeFilePath)
     {
         List<string> themeFileContent = [];
         Encoding encoding = Encoding.Unicode;
@@ -411,7 +411,6 @@ public partial class ThemeFile
             {
                 encoding = Encoding.BigEndianUnicode;
             }
-
             else if (fileBytes.Length >= 4 && fileBytes[0] == 0xFF && fileBytes[1] == 0xFE && fileBytes[2] == 0x00 && fileBytes[3] == 0x00)
             {
                 encoding = Encoding.UTF32;
@@ -461,7 +460,7 @@ public partial class ThemeFile
                 bool success = int.TryParse(iter.Current.Split('=')[1].Trim(), out int num);
                 if (success) desktop.MultimonBackgrounds = num;
             }
-            else if (wallpaperRegex.Matches(iter.Current).Count > 0)
+            else if (wallpaperRegex.IsMatch(iter.Current))
             {
                 string[] split = iter.Current.Split('=');
                 desktop.MultimonWallpapers.Add((split[1], split[0].Replace("Wallpaper", "")));

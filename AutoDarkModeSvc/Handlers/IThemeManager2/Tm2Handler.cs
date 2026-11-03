@@ -49,7 +49,7 @@ namespace AutoDarkModeSvc.Handlers.IThemeManager2;
 public static class Tm2Handler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static GlobalState state = GlobalState.Instance();
+    private static readonly GlobalState state = GlobalState.Instance();
 
     [DllImport("ole32.dll", CallingConvention = CallingConvention.StdCall)]
     internal static extern int CoCreateInstance(
@@ -182,10 +182,7 @@ public static class Tm2Handler
         bool found = false;
         bool success = false;
 
-        if (displayName == null)
-        {
-            return (found, success);
-        }
+        if (displayName == null) return (found, success);
 
         ThemeApplyFlags flags = 0;
         if (flagList != null && flagList.Count > 0)
@@ -203,10 +200,10 @@ public static class Tm2Handler
             {
                 manager = InitManager();
 
-                if (state.LearnedThemeNames.ContainsKey(displayName))
+                if (state.LearnedThemeNames.TryGetValue(displayName, out var value))
                 {
-                    Logger.Debug($"using learned theme name: {displayName}={state.LearnedThemeNames[displayName]}");
-                    displayName = state.LearnedThemeNames[displayName];
+                    Logger.Debug($"using learned theme name: {displayName}={value}");
+                    displayName = value;
                 }
 
                 List<Theme2Wrapper> themes = GetThemeList(manager);
@@ -221,10 +218,8 @@ public static class Tm2Handler
                         // Using this enables setting themes without explicitly knowing the display name. May be useful for later
                         // success = SetThemeViaAddAndSelect(originalPath, manager, flags);
                         success = SetThemeViaIdx(targetTheme, manager, flags);
-                        if (success)
-                        {
-                            if (!suppressLogging) Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
-                        }
+                        if (success && !suppressLogging)
+                            Logger.Info($"applied theme {targetTheme.ThemeName}, from origin: {originalPath} directly via IThemeManager2");
                     }
                     else
                     {
