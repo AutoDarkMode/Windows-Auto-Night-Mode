@@ -26,40 +26,47 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 
 internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
 {
-    public override bool ThemeHandlerCompatibility => false;
+    // ### State ###
+
     private bool invalidHexFound = false;
+
+    // ### Component overrides ###
+
+    public override bool ThemeHandlerCompatibility => false;
+
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
         bool autoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
-        if (e.Theme == Theme.Dark)
+        switch (e.Theme)
         {
-            if (autoColorizationState != Settings.Component.DarkAutoColorization)
-            {
-                return true;
-            }
-            else if (invalidHexFound && (Settings.Component.DarkAutoColorization == false))
-            {
-                return false;
-            }
-            else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex)
-            {
-                return true;
-            }
-        }
-        else if (e.Theme == Theme.Light)
-        {
-            if (autoColorizationState != Settings.Component.LightAutoColorization)
-            {
-                return true;
-            }
-            else if (invalidHexFound && (Settings.Component.LightAutoColorization == false))
-            {
-                return false;
-            }
-            else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex)
-            {
-                return true;
-            }
+            case Theme.Light:
+                if (autoColorizationState != Settings.Component.LightAutoColorization)
+                {
+                    return true;
+                }
+                else if (invalidHexFound && Settings.Component.LightAutoColorization == false)
+                {
+                    return false;
+                }
+                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex)
+                {
+                    return true;
+                }
+                break;
+            case Theme.Dark:
+                if (autoColorizationState != Settings.Component.DarkAutoColorization)
+                {
+                    return true;
+                }
+                else if (invalidHexFound && Settings.Component.DarkAutoColorization == false)
+                {
+                    return false;
+                }
+                else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex)
+                {
+                    return true;
+                }
+                break;
         }
         return false;
     }
@@ -71,23 +78,23 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         bool prevAutoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
 
         bool newAutoColorizationState = false;
-        if (e.Theme == Theme.Dark)
+        switch (e.Theme)
         {
-            if (Settings.Component.DarkAutoColorization) newAutoColorizationState = true;
-            else newAutoColorizationState = false;
+            case Theme.Light:
+                newAutoColorizationState = Settings.Component.LightAutoColorization;
+                break;
+            case Theme.Dark:
+                newAutoColorizationState = Settings.Component.DarkAutoColorization;
+                break;
         }
-        else if (e.Theme == Theme.Light)
-        {
-            if (Settings.Component.LightAutoColorization) newAutoColorizationState = true;
-            else newAutoColorizationState = false;
-        }
+
         if (newAutoColorizationState) GlobalState.ManagedThemeFile.VisualStyles.AutoColorization = ("1", sortOrderAutoCol);
         else GlobalState.ManagedThemeFile.VisualStyles.AutoColorization = ("0", sortOrderAutoCol);
 
         if (prevAutoColorizationState != newAutoColorizationState)
         {
             Logger.Info($"update info - auto colorization - previous {(prevAutoColorizationState ? "enabled" : "disabled")}, " +
-                $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(typeof(Theme), e.Theme)})");
+                $"pending: {(newAutoColorizationState ? "enabled" : "disabled")} ({Enum.GetName(e.Theme)})");
         }
 
         // if auto colorization is enabled the hex value doesn't matter, so the rest can be skipped.
@@ -98,13 +105,12 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         }
 
         var oldColor = GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#");
-
-        string newHex;
         Regex hexValidator = new(Helper.Hegex);
-
-        if (e.Theme == Theme.Dark) newHex = Settings.Component.DarkHex;
-        else newHex = Settings.Component.LightHex;
-
+        var newHex = e.Theme switch
+        {
+            Theme.Dark => Settings.Component.DarkHex,
+            _ => Settings.Component.LightHex,
+        };
 
         if (!hexValidator.IsMatch(newHex))
         {
@@ -112,7 +118,8 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
             invalidHexFound = true;
             return;
         }
-        Logger.Info($"update info - color - previous: {NormalizeHex(oldColor)}, pending: {NormalizeHex(newHex)} ({Enum.GetName(typeof(Theme), e.Theme)})");
+
+        Logger.Info($"update info - color - previous: {NormalizeHex(oldColor)}, pending: {NormalizeHex(newHex)} ({Enum.GetName(e.Theme)})");
         newHex = newHex.Replace("#", "0X");
         GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor = (newHex, sortOrderColCol);
     }
@@ -147,16 +154,18 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         }
 
         bool save = false;
-        if (e.Theme == Theme.Dark && darkAutoCol)
+        switch (e.Theme)
         {
-            Settings.Component.DarkHex = accent;
-            save = true;
+            case Theme.Light when lightAutoCol:
+                Settings.Component.LightHex = accent;
+                save = true;
+                break;
+            case Theme.Dark when darkAutoCol:
+                Settings.Component.DarkHex = accent;
+                save = true;
+                break;
         }
-        else if (e.Theme == Theme.Light && lightAutoCol)
-        {
-            Settings.Component.LightHex = accent;
-            save = true;
-        }
+
         if (save)
         {
             try
@@ -171,9 +180,16 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         }
     }
 
+    // ### Helpers ###
 
-    private string NormalizeHex(string hex)
+    /*
+     * Converts #AARRGGBB to #RRGGBB for logging/display.
+     * Returns the original value for any other format.
+     */
+    private static string NormalizeHex(string hex)
     {
-        return hex != null && hex.StartsWith('#') && hex.Length == 9 ? string.Concat("#", hex.AsSpan(3)) : hex;
+        return hex != null && hex.StartsWith('#') && hex.Length == 9
+            ? string.Concat("#", hex.AsSpan(3))
+            : hex;
     }
 }

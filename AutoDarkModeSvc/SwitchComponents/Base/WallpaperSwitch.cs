@@ -33,6 +33,8 @@ namespace AutoDarkModeSvc.SwitchComponents.Base;
 
 internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 {
+    // ### Component metadata and state ###
+
     public override bool ThemeHandlerCompatibility => false;
     public override int PriorityToLight => 25;
     public override int PriorityToDark => 25;
@@ -76,52 +78,42 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         return true;
     }
 
+    // ### Switch decision and execution ###
+
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (currentWallpaperPosition != Settings.Component.Position)
-        {
-            return true;
-        }
+        if (currentWallpaperPosition != Settings.Component.Position) return true;
 
-        if (e.Theme == Theme.Dark)
+        return e.Theme switch
         {
-            return TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark);
-        }
-        else if (e.Theme == Theme.Light)
-        {
-            return TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light);
-        }
-
-        return false;
+            Theme.Light => TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light),
+            Theme.Dark => TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark),
+            _ => false,
+        };
     }
 
     protected bool TypeNeedsUpdate(WallpaperType type, Theme targetTheme)
     {
         // if all wallpaper mode is selected and one needs an update, component also does.
-        if (type == WallpaperType.Individual && currentIndividualTheme != targetTheme)
+        switch (type)
         {
-            HookPosition = HookPosition.PreSync;
-            return true;
-        }
-        else if (type == WallpaperType.SolidColor && currentSolidColorTheme != targetTheme)
-        {
-            HookPosition = HookPosition.PostSync;
-            return true;
-        }
-        else if (type == WallpaperType.Global && currentGlobalTheme != targetTheme)
-        {
-            HookPosition = HookPosition.PostSync;
-            return true;
-        }
-        else if (type == WallpaperType.Spotlight && IsSpotlightCompatible())
-        {
-            HookPosition = HookPosition.PostSync;
-            if (spotlightEnabled.HasValue && spotlightEnabled.Value)
-            {
-                return false;
-            }
+            case WallpaperType.Individual when currentIndividualTheme != targetTheme:
+                HookPosition = HookPosition.PreSync;
+                return true;
+            case WallpaperType.SolidColor when currentSolidColorTheme != targetTheme:
+                HookPosition = HookPosition.PostSync;
+                return true;
+            case WallpaperType.Global when currentGlobalTheme != targetTheme:
+                HookPosition = HookPosition.PostSync;
+                return true;
+            case WallpaperType.Spotlight when IsSpotlightCompatible():
+                HookPosition = HookPosition.PostSync;
+                if (spotlightEnabled.HasValue && spotlightEnabled.Value)
+                {
+                    return false;
+                }
 
-            return true;
+                return true;
         }
 
         return false;
@@ -130,22 +122,23 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     protected override void HandleSwitch(SwitchEventArgs e)
     {
         Theme newTheme = e.Theme;
-        // todo change behavior for win11 22H2, write and apply custom theme file. Use Winforms Screens to assing correct monitors.
-        string oldIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
-        string oldGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
-        string oldSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
+        // TODO: change behavior for win11 22H2, write and apply custom theme file. Use WinForms Screens to assign correct monitors.
+        string oldIndividual = Enum.GetName(currentIndividualTheme);
+        string oldGlobal = Enum.GetName(currentGlobalTheme);
+        string oldSolid = Enum.GetName(currentSolidColorTheme);
         string oldSpotlight = spotlightEnabled.HasValue ? spotlightEnabled.Value.ToString().ToLower() : "unknown";
 
-        string oldPos = Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition);
+        string oldPos = Enum.GetName(currentWallpaperPosition);
         try
         {
-            if (newTheme == Theme.Dark)
+            switch (newTheme)
             {
-                HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
-            }
-            else if (newTheme == Theme.Light)
-            {
-                HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
+                case Theme.Light:
+                    HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
+                    break;
+                case Theme.Dark:
+                    HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
+                    break;
             }
         }
         catch (Exception ex)
@@ -153,52 +146,61 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             Logger.Error(ex, "could not set wallpapers");
         }
 
-        if (newTheme == Theme.Dark)
+        switch (newTheme)
         {
-            LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
-        }
-        else if (newTheme == Theme.Light)
-        {
-            LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
+            case Theme.Light:
+                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
+                break;
+            case Theme.Dark:
+                LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
+                break;
         }
     }
 
     protected void LogHandleSwitch(WallpaperType type, string oldGlobal, string oldIndividual, string oldSolid,
         string oldPos, string oldSpotlight)
     {
-        if (type == WallpaperType.Individual)
+        switch (type)
         {
-            string currentIndividual = Enum.GetName(typeof(Theme), currentIndividualTheme);
-            Logger.Info($"update info - previous: {oldIndividual}/{oldPos}, " +
-                        $"now: {currentIndividual}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                        $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
-        }
-        else if (type == WallpaperType.Global)
-        {
-            string currentGlobal = Enum.GetName(typeof(Theme), currentGlobalTheme);
-            Logger.Info($"update info - previous: {oldGlobal}/{oldPos}, " +
-                        $"now: {currentGlobal}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                        $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
-        }
-        else if (type == WallpaperType.SolidColor)
-        {
-            string currentSolid = Enum.GetName(typeof(Theme), currentSolidColorTheme);
-            Logger.Info($"update info - previous: {oldSolid}/{oldPos}, " +
-                        $"now: {currentSolid}/{Enum.GetName(typeof(WallpaperPosition), currentWallpaperPosition)}, " +
-                        $"mode: {Enum.GetName(typeof(WallpaperPosition), Settings.Component.Position)}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
-        }
-        else if (type == WallpaperType.Spotlight)
-        {
-            Logger.Info($"update info - previous: {oldSpotlight}, " +
-                        $"now: {(spotlightEnabled.HasValue ? spotlightEnabled.Value.ToString().ToLower() : "unknown")}, " +
-                        $"type: {Enum.GetName(typeof(WallpaperType), type)}");
+            case WallpaperType.Individual:
+            {
+                var currentIndividual = Enum.GetName(currentIndividualTheme);
+                Logger.Info($"update info - previous: {oldIndividual}/{oldPos}, " +
+                            $"now: {currentIndividual}/{Enum.GetName(currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(Settings.Component.Position)}, " +
+                            $"type: {Enum.GetName(type)}");
+                break;
+            }
+
+            case WallpaperType.Global:
+            {
+                var currentGlobal = Enum.GetName(currentGlobalTheme);
+                Logger.Info($"update info - previous: {oldGlobal}/{oldPos}, " +
+                            $"now: {currentGlobal}/{Enum.GetName(currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(Settings.Component.Position)}, " +
+                            $"type: {Enum.GetName(type)}");
+                break;
+            }
+
+            case WallpaperType.SolidColor:
+            {
+                var currentSolid = Enum.GetName(currentSolidColorTheme);
+                Logger.Info($"update info - previous: {oldSolid}/{oldPos}, " +
+                            $"now: {currentSolid}/{Enum.GetName(currentWallpaperPosition)}, " +
+                            $"mode: {Enum.GetName(Settings.Component.Position)}, " +
+                            $"type: {Enum.GetName(type)}");
+                break;
+            }
+
+            case WallpaperType.Spotlight:
+                Logger.Info($"update info - previous: {oldSpotlight}, " +
+                                    $"now: {(spotlightEnabled.HasValue ? spotlightEnabled.Value.ToString().ToLower() : "unknown")}, " +
+                                    $"type: {Enum.GetName(type)}");
+                break;
         }
     }
 
-
+    // ### Wallpaper type handlers ###
 
     /// <summary>
     /// Handles the switch for each of the available wallpaper type modes.
@@ -207,27 +209,26 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     /// <param name="newTheme">The new theme that is targeted to be set</param>
     protected void HandleSwitchByType(WallpaperType type, Theme newTheme)
     {
-        if (type == WallpaperType.Individual)
+        switch (type)
         {
-            SwitchIndividual(newTheme);
-        }
-        else if (type == WallpaperType.Global)
-        {
-            SwitchGlobal(newTheme);
-        }
-        else if (type == WallpaperType.SolidColor)
-        {
-            SwitchSolidColor(newTheme);
-        }
-        else if (type == WallpaperType.Spotlight && IsSpotlightCompatible())
-        {
-            GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
-            GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 1;
-            GlobalState.ManagedThemeFile.Desktop.Wallpaper = @"%SystemRoot%\web\wallpaper\spotlight\img50.jpg";
-            currentSolidColorTheme = Theme.Unknown;
-            currentGlobalTheme = Theme.Unknown;
-            currentIndividualTheme = Theme.Unknown;
-            spotlightEnabled = true;
+            case WallpaperType.Individual:
+                SwitchIndividual(newTheme);
+                break;
+            case WallpaperType.Global:
+                SwitchGlobal(newTheme);
+                break;
+            case WallpaperType.SolidColor:
+                SwitchSolidColor(newTheme);
+                break;
+            case WallpaperType.Spotlight when IsSpotlightCompatible():
+                GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
+                GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 1;
+                GlobalState.ManagedThemeFile.Desktop.Wallpaper = @"%SystemRoot%\web\wallpaper\spotlight\img50.jpg";
+                currentSolidColorTheme = Theme.Unknown;
+                currentGlobalTheme = Theme.Unknown;
+                currentIndividualTheme = Theme.Unknown;
+                spotlightEnabled = true;
+                break;
         }
     }
 
@@ -240,6 +241,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
             GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
         }
+
         currentGlobalTheme = newTheme;
         currentIndividualTheme = Theme.Unknown;
         currentSolidColorTheme = Theme.Unknown;
@@ -255,6 +257,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             Logger.Debug("waiting for solid color to disable");
             Thread.Sleep(100);
         }
+
         currentIndividualTheme = newTheme;
         currentGlobalTheme = Theme.Unknown;
         currentSolidColorTheme = Theme.Unknown;
@@ -263,16 +266,12 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected void SwitchSolidColor(Theme newTheme)
     {
-        if (newTheme == Theme.Dark)
+        GlobalState.ManagedThemeFile.Colors.Background = newTheme switch
         {
-            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Dark),
-                GlobalState.ManagedThemeFile.Colors.Background.Item2);
-        }
-        else
-        {
-            GlobalState.ManagedThemeFile.Colors.Background = (WallpaperHandler.HexToRgb(Settings.Component.SolidColors.Light),
-                GlobalState.ManagedThemeFile.Colors.Background.Item2);
-        }
+            Theme.Dark => (HexToRgb(Settings.Component.SolidColors.Dark), GlobalState.ManagedThemeFile.Colors.Background.Item2),
+            _ => (HexToRgb(Settings.Component.SolidColors.Light), GlobalState.ManagedThemeFile.Colors.Background.Item2),
+        };
+
         GlobalState.ManagedThemeFile.Desktop.Wallpaper = "";
         GlobalState.ManagedThemeFile.Desktop.MultimonBackgrounds = 0;
         GlobalState.ManagedThemeFile.Desktop.WindowsSpotlight = 0;
@@ -286,8 +285,10 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     }
 
 
+    // ### State synchronization ###
+
     /// <summary>
-    /// This module needs its componentstate fetched from the win32 api to correctly function after a settings update
+    /// This module needs its component state fetched from the win32 api to correctly function after a settings update
     /// </summary>
     protected override void UpdateSettingsState()
     {
@@ -296,17 +297,17 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
     protected void StateUpdateOnTypeToggle(WallpaperType current)
     {
-        if (current == WallpaperType.Global)
+        switch (current)
         {
-            currentGlobalTheme = Theme.Unknown;
-        }
-        else if (current == WallpaperType.SolidColor)
-        {
-            currentSolidColorTheme = Theme.Unknown;
-        }
-        else if (spotlightEnabled.HasValue)
-        {
-            spotlightEnabled = null;
+            case WallpaperType.Global:
+                currentGlobalTheme = Theme.Unknown;
+                break;
+            case WallpaperType.SolidColor:
+                currentSolidColorTheme = Theme.Unknown;
+                break;
+            default:
+                if (spotlightEnabled.HasValue) spotlightEnabled = null;
+                break;
         }
     }
 
@@ -345,7 +346,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             currentSolidColorTheme = Theme.Unknown;
         }
 
-        // additinoally, if the user has changed the type dark before, an update is also required
+        // additionally, if the user has changed the type dark before, an update is also required
         if (SettingsBefore.Component.TypeDark != Settings.Component.TypeDark)
         {
             StateUpdateOnTypeToggle(Settings.Component.TypeDark);
@@ -393,12 +394,73 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         spotlightEnabled = null;
     }
 
+    // ### Verification and callbacks ###
+
+    protected override void Callback(SwitchEventArgs e)
+    {
+        if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
+        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        if (type == WallpaperType.Spotlight)
+        {
+            Logger.Debug("waiting 4 seconds for spotlight to apply");
+            Thread.Sleep(4000);
+        }
+    }
+
+    protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
+    {
+        var currentMonitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
+        int currentMonitorCount = currentMonitors.Count;
+
+        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
+
+        switch (type)
+        {
+            case WallpaperType.Individual:
+                List<string> wallpapersTarget =
+                [
+                    ..Settings.Component.Monitors
+                        .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
+                        .Where(m => currentMonitors.Select(c => c.DeviceId).ToList().Contains(m.Id))
+                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper)
+                        .ToLower())
+                ];
+
+                if (wallpapersTarget.Count == 0)
+                {
+                    Logger.Warn("wallpaper synchronization: no wallpapers selected");
+                    return true;
+                }
+
+                var themeFileMonitorCount = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Count;
+                if (themeFileMonitorCount > currentMonitorCount)
+                {
+                    // if the managed theme file has more multi monitor wallpapers, then we truncate those extra monitors
+                    // otherwise we will potentially lose synchronization state
+                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Sort((a, b) => a.Item2.CompareTo(b.Item2));
+                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers =
+                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Where((a, b) => b < currentMonitorCount).ToList();
+                    Logger.Warn($"managed theme file contained more wallpapers than there are monitors, pruned wallpaper list from {themeFileMonitorCount} to {currentMonitorCount}");
+                }
+
+                var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
+                    .Select(w => Path.GetFileName(w.Item1).ToLower())
+                    .ToList();
+
+                return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
+        }
+        return true;
+    }
+
+    // ### Runtime state detection ###
+
     protected Theme GetIndividualWallpapersState()
     {
         // We no longer use this because it returns disconnected displays
         // List<Tuple<string, string>> wallpapers = WallpaperHandler.GetWallpapers();
         var monitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
-        List<Theme> wallpaperStates = new();
+        List<Theme> wallpaperStates = [];
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         // collect the wallpaper states of all wallpapers in the system
         foreach (var monitor in monitors)
@@ -451,63 +513,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
     }
 
-    protected override void Callback(SwitchEventArgs e)
-    {
-        if (spotlightEnabled.GetValueOrDefault(false)) RegistryHandler.SetSpotlightState(true);
-        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
-
-        if (type == WallpaperType.Spotlight)
-        {
-            Logger.Debug("waiting 4s for spotlight to apply");
-            Thread.Sleep(4000);
-        }
-    }
-
-
-    protected override bool VerifyOperationIntegrity(SwitchEventArgs e)
-    {
-        var currentMonitors = Task.Run(DisplayHandler.GetMonitorInfosAsync).Result;
-        int currentMonitorCount = currentMonitors.Count;
-
-        WallpaperType type = e.Theme == Theme.Dark ? Settings.Component.TypeDark : Settings.Component.TypeLight;
-
-        switch (type)
-        {
-            case WallpaperType.Individual:
-                List<string> wallpapersTarget =
-                [
-                    ..Settings.Component.Monitors
-                        .Where(m => File.Exists(e.Theme == Theme.Dark ? m.DarkThemeWallpaper: m.LightThemeWallpaper))
-                        .Where(m => currentMonitors.Select(c => c.DeviceId).ToList().Contains(m.Id))
-                        .Select(m => Path.GetFileName(e.Theme == Theme.Dark ? m.DarkThemeWallpaper : m.LightThemeWallpaper)
-                        .ToLower())
-                ];
-
-                if (wallpapersTarget.Count == 0)
-                {
-                    Logger.Warn("wallpaper synchronization: no wallpapers selected");
-                    return true;
-                }
-
-                var themeFileMonitorCount = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Count;
-                if (themeFileMonitorCount > currentMonitorCount)
-                {
-                    // if the managed theme file has more multi monitor wallpapers, then we truncate those extra monitors
-                    // otherwise we will potentially lose synchronization state
-                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Sort((a, b) => a.Item2.CompareTo(b.Item2));
-                    GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers =
-                        GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers.Where((a, b) => b < currentMonitorCount).ToList();
-                    Logger.Warn($"managed theme file contained more wallpapers than there are monitors, pruned wallpaper list from {themeFileMonitorCount} to {currentMonitorCount}");
-                }
-
-                var wallpapersInThemeFile = GlobalState.ManagedThemeFile.Desktop.MultimonWallpapers
-                    .Select(w => Path.GetFileName(w.Item1).ToLower())
-                    .ToList();
-
-                return CheckAgreementIndividual(wallpapersInThemeFile, wallpapersTarget);
-        }
-        return true;
-    }
+    // ### Validation helpers ###
 
     private bool CheckAgreementIndividual(List<string> wallpapersInThemeFile, List<string> wallpapersTarget)
     {
@@ -518,6 +524,7 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             requiredCounts.TryGetValue(wallpaperName, out var count);
             requiredCounts[wallpaperName] = count + 1;
         }
+
         var availableCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
         foreach (var wallpaperName in wallpapersInThemeFile)
         {

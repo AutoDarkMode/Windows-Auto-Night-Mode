@@ -22,7 +22,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
+internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
 {
     public override bool ThemeHandlerCompatibility => true;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
@@ -46,27 +46,28 @@ class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Dark)
+        switch (e.Theme)
         {
-            if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && !currentDWMColorActive)
-            {
-                return true;
-            }
-            else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentDWMColorActive)
-            {
-                return true;
-            }
-        }
-        else if (e.Theme == Theme.Light)
-        {
-            if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
-            {
-                return true;
-            }
-            else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
-            {
-                return true;
-            }
+            case Theme.Light:
+                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
+                {
+                    return true;
+                }
+                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
+                {
+                    return true;
+                }
+                break;
+            case Theme.Dark:
+                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && !currentDWMColorActive)
+                {
+                    return true;
+                }
+                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentDWMColorActive)
+                {
+                    return true;
+                }
+                break;
         }
         return false;
     }
@@ -76,20 +77,20 @@ class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
         try
         {
             bool previousSetting = currentDWMColorActive;
-            if (e.Theme == Theme.Dark && Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark)
+            switch (e.Theme)
             {
-                RegistryHandler.SetDWMPrevalence(1);
-                currentDWMColorActive = true;
-            }
-            else if (e.Theme == Theme.Light && Settings.Component.DWMPrevalenceEnableTheme == Theme.Light)
-            {
-                RegistryHandler.SetDWMPrevalence(1);
-                currentDWMColorActive = true;
-            }
-            else
-            {
-                RegistryHandler.SetDWMPrevalence(0);
-                currentDWMColorActive = false;
+                case Theme.Dark when Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark:
+                    RegistryHandler.SetDWMPrevalence(1);
+                    currentDWMColorActive = true;
+                    break;
+                case Theme.Light when Settings.Component.DWMPrevalenceEnableTheme == Theme.Light:
+                    RegistryHandler.SetDWMPrevalence(1);
+                    currentDWMColorActive = true;
+                    break;
+                default:
+                    RegistryHandler.SetDWMPrevalence(0);
+                    currentDWMColorActive = false;
+                    break;
             }
             Logger.Info($"update info - previous: dwm prevalence {previousSetting.ToString().ToLower()}, now: {currentDWMColorActive.ToString().ToLower()}, mode: during {Enum.GetName(typeof(Theme), Settings.Component.DWMPrevalenceEnableTheme).ToString().ToLower()}");
         }

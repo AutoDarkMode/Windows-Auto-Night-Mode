@@ -20,7 +20,6 @@ using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
 using AutoDarkModeSvc.Handlers.ThemeFiles;
-using Microsoft.Win32;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
@@ -29,27 +28,21 @@ internal class CursorSwitch : BaseComponent<CursorSwitchSettings>
     private Theme currentTheme = Theme.Unknown;
     public override bool ThemeHandlerCompatibility => false;
 
-    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
-    {
-        if (currentTheme != e.Theme)
-        {
-            return true;
-        }
-        return false;
-    }
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e) => currentTheme != e.Theme;
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
         Theme oldTheme = currentTheme;
         currentTheme = e.Theme;
         string cursorSchemeNew = "";
-        if (e.Theme == Theme.Light)
+        switch (e.Theme)
         {
-            cursorSchemeNew = Settings.Component.CursorsLight;
-        }
-        else if (e.Theme == Theme.Dark)
-        {
-            cursorSchemeNew = Settings.Component.CursorsDark;
+            case Theme.Light:
+                cursorSchemeNew = Settings.Component.CursorsLight;
+                break;
+            case Theme.Dark:
+                cursorSchemeNew = Settings.Component.CursorsDark;
+                break;
         }
 
         if (RegistryHandler.EnableThemeChangesMousePointers())
