@@ -76,11 +76,11 @@ public class NightLightGovernor : IAutoDarkModeGovernor
             {
                 switch (nightLightState)
                 {
-                    case Theme.Light:
-                        state.NightLight.Requested = Theme.Dark;
-                        break;
                     case Theme.Dark:
                         state.NightLight.Requested = Theme.Light;
+                        break;
+                    case Theme.Light:
+                        state.NightLight.Requested = Theme.Dark;
                         break;
                 }
                 switchQueuedButNotRequested = true;
@@ -152,6 +152,7 @@ public class NightLightGovernor : IAutoDarkModeGovernor
         {
             Logger.Error(ex, "error retrieving night light enabled state:");
         }
+
         Theme newTheme = enabled ? Theme.Dark : Theme.Light;
         if (newTheme != nightLightState)
         {
