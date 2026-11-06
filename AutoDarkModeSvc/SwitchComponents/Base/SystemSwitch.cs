@@ -19,11 +19,10 @@ using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class SystemSwitch : BaseComponent<SystemSwitchSettings>
+internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
@@ -52,8 +51,8 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
     {
         return Settings.Component.Mode switch
         {
-            Mode.DarkOnly => currentComponentTheme != Theme.Dark,// Themes do not match
             Mode.LightOnly => currentComponentTheme != Theme.Light,
+            Mode.DarkOnly => currentComponentTheme != Theme.Dark,
             Mode.Switch => currentComponentTheme != e.Theme,
             _ => false,
         };
@@ -123,11 +122,9 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
 
     protected void SwitchLightOnly()
     {
-
         if (currentComponentTheme != Theme.Light)
         {
-            ThemeFile themeFile = GlobalState.ManagedThemeFile;
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
+            SetSystemMode(Theme.Light);
         }
         currentComponentTheme = Theme.Light;
     }
@@ -136,25 +133,35 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
     {
         if (currentComponentTheme != Theme.Dark)
         {
-            ThemeFile themeFile = GlobalState.ManagedThemeFile;
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
+            SetSystemMode(Theme.Dark);
         }
         currentComponentTheme = Theme.Dark;
     }
 
     protected void SwitchAdaptive(Theme newTheme)
     {
-        ThemeFile themeFile = GlobalState.ManagedThemeFile;
         switch (newTheme)
         {
             case Theme.Light:
-                themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
+                SetSystemMode(Theme.Light);
                 break;
             case Theme.Dark:
-                themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
+                SetSystemMode(Theme.Dark);
                 break;
         }
         currentComponentTheme = newTheme;
+    }
+
+    private void SetSystemMode(Theme theme)
+    {
+        var systemMode = theme switch
+        {
+            Theme.Light => nameof(Theme.Light),
+            Theme.Dark => nameof(Theme.Dark),
+            _ => nameof(Theme.Light),
+        };
+
+        GlobalState.ManagedThemeFile.VisualStyles.SystemMode = (systemMode, GlobalState.ManagedThemeFile.VisualStyles.SystemMode.Item2);
     }
 
     protected override void UpdateSettingsState()

@@ -79,11 +79,11 @@ internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
             bool previousSetting = currentDWMColorActive;
             switch (e.Theme)
             {
-                case Theme.Dark when Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark:
+                case Theme.Light when Settings.Component.DWMPrevalenceEnableTheme == Theme.Light:
                     RegistryHandler.SetDWMPrevalence(1);
                     currentDWMColorActive = true;
                     break;
-                case Theme.Light when Settings.Component.DWMPrevalenceEnableTheme == Theme.Light:
+                case Theme.Dark when Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark:
                     RegistryHandler.SetDWMPrevalence(1);
                     currentDWMColorActive = true;
                     break;
