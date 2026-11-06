@@ -36,7 +36,7 @@ using HttpClientProgress;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class UpdateHandler
+internal static class UpdateHandler
 {
     private const string defaultVersionQueryUrl = "https://raw.githubusercontent.com/AutoDarkMode/AutoDarkModeVersion/master/version.yaml";
     private const string defaultDownloadBaseUrl = "https://github.com";

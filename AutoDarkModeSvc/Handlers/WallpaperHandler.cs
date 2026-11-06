@@ -35,8 +35,8 @@ internal static class WallpaperHandler
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         string? targetColor = newTheme switch
         {
-            Theme.Light => colors.Light,
             Theme.Dark => colors.Dark,
+            Theme.Light => colors.Light,
             _ => null,
         };
 
@@ -151,17 +151,17 @@ internal static class WallpaperHandler
     {
         switch (newTheme)
         {
-            case Theme.Light:
-            {
-                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
-                var currentWallpaper = GetGlobalWallpaper();
-                return (currentWallpaper == globalWallpaper.Light, currentWallpaper);
-            }
             case Theme.Dark:
             {
                 _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Dark, 1 | 2);
                 var currentWallpaper = GetGlobalWallpaper();
                 return (currentWallpaper == globalWallpaper.Dark, currentWallpaper);
+            }
+            case Theme.Light:
+            {
+                _ = Win32.SystemParametersInfo(0x0014, 0, globalWallpaper.Light, 1 | 2);
+                var currentWallpaper = GetGlobalWallpaper();
+                return (currentWallpaper == globalWallpaper.Light, currentWallpaper);
             }
         }
         return (false, "");

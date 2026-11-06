@@ -65,8 +65,8 @@ internal static class DisplayHandler
                 Logger.Info($"missing monitor found, adding new default config for: {monitor.DeviceId}");
                 builder.Config.WallpaperSwitch.Component.Monitors.Add(new MonitorSettings()
                 {
-                    LightThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
                     DarkThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
+                    LightThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
                     Id = monitor.DeviceId
                 });
                 needsUpdate = true;
