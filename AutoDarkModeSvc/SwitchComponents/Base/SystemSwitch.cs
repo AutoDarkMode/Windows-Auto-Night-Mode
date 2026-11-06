@@ -19,11 +19,10 @@ using AutoDarkModeLib;
 using AutoDarkModeLib.ComponentSettings.Base;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class SystemSwitch : BaseComponent<SystemSwitchSettings>
+internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
 {
     protected Theme currentComponentTheme = Theme.Unknown;
     public override DwmRefreshType NeedsDwmRefresh => DwmRefreshType.Standard;
@@ -31,11 +30,11 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void EnableHook()
     {
-        RefreshRegkeys();
+        RefreshRegistryKeys();
     }
 
 
-    protected void RefreshRegkeys()
+    protected void RefreshRegistryKeys()
     {
         try
         {
@@ -50,34 +49,13 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (Settings.Component.Mode == Mode.DarkOnly)
+        return Settings.Component.Mode switch
         {
-            // Themes do not match
-            if (currentComponentTheme != Theme.Dark)
-            {
-                return true;
-            }
-            return false;
-
-        }
-        else if (Settings.Component.Mode == Mode.LightOnly)
-        {
-            if (currentComponentTheme != Theme.Light)
-            {
-                return true;
-            }
-            return false;
-        }
-        else if (Settings.Component.Mode == Mode.Switch)
-        {
-            // Themes do not match
-            if (currentComponentTheme != e.Theme)
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;
+            Mode.DarkOnly => currentComponentTheme != Theme.Dark,
+            Mode.LightOnly => currentComponentTheme != Theme.Light,
+            Mode.Switch => currentComponentTheme != e.Theme,
+            _ => false,
+        };
     }
 
     protected override void HandleSwitch(SwitchEventArgs e)
@@ -89,14 +67,10 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
     private void EnsureTaskbarColorDisabledInLight()
     {
         // when the taskbar color switch is enabled it manages color prevalence itself
-        if (Settings.Component.TaskbarColorSwitch)
-        {
-            return;
-        }
-        if (currentComponentTheme != Theme.Light)
-        {
-            return;
-        }
+        if (Settings.Component.TaskbarColorSwitch) return;
+
+        if (currentComponentTheme != Theme.Light) return;
+
         try
         {
             if (RegistryHandler.IsTaskbarColor())
@@ -113,80 +87,86 @@ class SystemSwitch : BaseComponent<SystemSwitchSettings>
 
     protected virtual void SwitchSystemTheme(Theme newTheme)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         try
         {
-            if (Settings.Component.Mode == Mode.LightOnly)
+            switch (Settings.Component.Mode)
             {
-                SwitchLightOnly();
-            }
-            else if (Settings.Component.Mode == Mode.DarkOnly)
-            {
-                SwitchDarkOnly();
-            }
-            else
-            {
-                SwitchAdaptive(newTheme);
+                case Mode.DarkOnly:
+                    SwitchDarkOnly();
+                    break;
+                case Mode.LightOnly:
+                    SwitchLightOnly();
+                    break;
+                default:
+                    SwitchAdaptive(newTheme);
+                    break;
             }
         }
         catch (Exception ex)
         {
             Logger.Error(ex, "could not set system theme");
         }
-        string accentInfo;
-        if (Settings.Component.Mode == Mode.AccentOnly)
+
+        var accentInfo = Settings.Component.Mode switch
         {
-            accentInfo = $"on {Enum.GetName(typeof(Theme), Settings.Component.TaskbarColorDuring).ToLower()}";
-        }
-        else
-        {
-            accentInfo = Settings.Component.TaskbarColorSwitch ? "yes" : "no";
-        }
+            Mode.AccentOnly => $"on {Enum.GetName(Settings.Component.TaskbarColorDuring).ToLower()}",
+            _ => Settings.Component.TaskbarColorSwitch ? "yes" : "no",
+        };
+
         Logger.Info($"update info - previous: {oldTheme}, " +
-            $"pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, " +
-            $"mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}, " +
+            $"pending: {Enum.GetName(currentComponentTheme)}, " +
+            $"mode: {Enum.GetName(Settings.Component.Mode)}, " +
             $"accent: {accentInfo}");
-    }
-
-    protected void SwitchLightOnly()
-    {
-
-        if (currentComponentTheme != Theme.Light)
-        {
-            ThemeFile themeFile = GlobalState.ManagedThemeFile;
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
-        }
-        currentComponentTheme = Theme.Light;
     }
 
     protected void SwitchDarkOnly()
     {
         if (currentComponentTheme != Theme.Dark)
         {
-            ThemeFile themeFile = GlobalState.ManagedThemeFile;
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
+            SetSystemMode(Theme.Dark);
         }
         currentComponentTheme = Theme.Dark;
     }
 
+    protected void SwitchLightOnly()
+    {
+        if (currentComponentTheme != Theme.Light)
+        {
+            SetSystemMode(Theme.Light);
+        }
+        currentComponentTheme = Theme.Light;
+    }
+
     protected void SwitchAdaptive(Theme newTheme)
     {
-        ThemeFile themeFile = GlobalState.ManagedThemeFile;
-        if (newTheme == Theme.Light)
+        switch (newTheme)
         {
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Light), themeFile.VisualStyles.SystemMode.Item2);
-        }
-        else if (newTheme == Theme.Dark)
-        {
-            themeFile.VisualStyles.SystemMode = (nameof(Theme.Dark), themeFile.VisualStyles.SystemMode.Item2);
+            case Theme.Dark:
+                SetSystemMode(Theme.Dark);
+                break;
+            case Theme.Light:
+                SetSystemMode(Theme.Light);
+                break;
         }
         currentComponentTheme = newTheme;
     }
 
-    protected override void UpdateSettingsState()
+    private void SetSystemMode(Theme theme)
     {
-        RefreshRegkeys();
+        var systemMode = theme switch
+        {
+            Theme.Dark => nameof(Theme.Dark),
+            Theme.Light => nameof(Theme.Light),
+            _ => nameof(Theme.Light),
+        };
+
+        GlobalState.ManagedThemeFile.VisualStyles.SystemMode = (systemMode, GlobalState.ManagedThemeFile.VisualStyles.SystemMode.Item2);
     }
 
+    protected override void UpdateSettingsState()
+    {
+        RefreshRegistryKeys();
+    }
 
 }

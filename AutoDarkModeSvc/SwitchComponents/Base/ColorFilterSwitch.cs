@@ -23,11 +23,12 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class ColorFilterSwitch : BaseComponent<object>
+internal class ColorFilterSwitch : BaseComponent<object>
 {
     private bool currentColorFilterActive;
     public ColorFilterSwitch() : base() { }
     public override bool ThemeHandlerCompatibility => true;
+
     protected override void EnableHook()
     {
         try
@@ -49,6 +50,7 @@ class ColorFilterSwitch : BaseComponent<object>
         }
 
     }
+
     protected override void DisableHook()
     {
         if (!Settings.Enabled && currentColorFilterActive)
@@ -58,6 +60,7 @@ class ColorFilterSwitch : BaseComponent<object>
             currentColorFilterActive = false;
         }
     }
+
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
         if (!currentColorFilterActive && e.Theme == Theme.Dark)
@@ -71,7 +74,7 @@ class ColorFilterSwitch : BaseComponent<object>
         return false;
     }
 
-    private void LaunchAtBroker()
+    private static void LaunchAtBroker()
     {
         using Process atBrokerColorFilter = new();
         atBrokerColorFilter.StartInfo.FileName = "atbroker.exe";
@@ -88,18 +91,18 @@ class ColorFilterSwitch : BaseComponent<object>
         try
         {
             RegistryHandler.ColorFilterSetup();
-            if (e.Theme == Theme.Dark)
+            switch (e.Theme)
             {
-                RegistryHandler.SetColorFilter(true);
-                LaunchAtBroker();
-                currentColorFilterActive = true;
-
-            }
-            else
-            {
-                RegistryHandler.SetColorFilter(false);
-                LaunchAtBroker();
-                currentColorFilterActive = false;
+                case Theme.Dark:
+                    RegistryHandler.SetColorFilter(true);
+                    LaunchAtBroker();
+                    currentColorFilterActive = true;
+                    break;
+                default:
+                    RegistryHandler.SetColorFilter(false);
+                    LaunchAtBroker();
+                    currentColorFilterActive = false;
+                    break;
             }
         }
         catch (Exception ex)
