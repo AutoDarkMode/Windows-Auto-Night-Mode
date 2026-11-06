@@ -25,7 +25,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Communication;
 
-static class MessageParser
+internal static class MessageParser
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
@@ -65,7 +65,7 @@ static class MessageParser
                     SendResponse(new ApiResponse()
                     {
                         StatusCode = StatusCode.Ok,
-                        Message = Enum.GetName(typeof(Theme), theme)
+                        Message = Enum.GetName(theme)
                     }.ToString());
                     break;
                 #endregion
@@ -381,7 +381,7 @@ static class MessageParser
                     SendResponse(new ApiResponse()
                     {
                         StatusCode = StatusCode.Ok,
-                        Message = Enum.GetName(typeof(Theme), state.InternalTheme)
+                        Message = Enum.GetName(state.InternalTheme)
                     }.ToString());
                     break;
                 #endregion

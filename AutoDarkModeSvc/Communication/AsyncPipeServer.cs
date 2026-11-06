@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace AutoDarkModeSvc.Communication;
 
-class AsyncPipeServer : IMessageServer
+internal class AsyncPipeServer : IMessageServer
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private CancellationTokenSource WorkerTokenSource { get; set; } = new();
@@ -50,7 +50,7 @@ class AsyncPipeServer : IMessageServer
         if (disposed)
         {
             Logger.Error("cannot start async pipe server as it has already been disposed");
-            throw (new ObjectDisposedException(GetType().Name));
+            throw new ObjectDisposedException(GetType().Name);
         }
         Loop();
     }
@@ -58,10 +58,7 @@ class AsyncPipeServer : IMessageServer
     {
         Workers.CompleteAdding();
         WorkerTokenSource.Cancel();
-        if (ConnectionHandler != null)
-        {
-            ConnectionHandler.Wait();
-        }
+        ConnectionHandler?.Wait();
         WorkerTokenSource.Dispose();
         Logger.Debug("npipe server stopped");
         disposed = true;
@@ -73,8 +70,7 @@ class AsyncPipeServer : IMessageServer
         {
             bool notify = false;
             bool allowNotify = false;
-            Logger.Info($"started npipe server with {WorkerCount} worker{(WorkerCount == 1 ? "" : "s")} (single in, multi out), " +
-                $"request: {Address.PipePrefix + Address.PipeRequest}");
+            Logger.Info($"started npipe server with {WorkerCount} worker{(WorkerCount == 1 ? "" : "s")} (single in, multi out), request: {Address.PipePrefix + Address.PipeRequest}");
             try
             {
                 for (int i = 0; i < WorkerCount; i++)
@@ -244,7 +240,7 @@ class AsyncPipeServer : IMessageServer
             string response = "";
 
             DateTime start = DateTime.Now;
-            MessageParser.Parse(new List<string>() { msg }, (message) =>
+            MessageParser.Parse([msg], (message) =>
             {
                 response = message;
             }, Service);
@@ -327,10 +323,7 @@ internal class TimeoutEventWrapper
         }
         catch (TaskCanceledException)
         {
-            if (stream.IsConnected)
-            {
-                stream.Disconnect();
-            }
+            if (stream.IsConnected) stream.Disconnect();
         }
         catch (Exception ex)
         {
