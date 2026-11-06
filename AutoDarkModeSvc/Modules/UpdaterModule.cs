@@ -29,7 +29,7 @@ internal class UpdaterModule : AutoDarkModeModule
     private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private bool firstRun = true;
     private bool checkFailed;
-    internal UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
+    public UpdaterModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration)
     {
         try
         {
