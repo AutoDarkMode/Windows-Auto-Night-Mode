@@ -29,13 +29,13 @@ public class WardenModule : AutoDarkModeModule
     private AdmConfigBuilder ConfigBuilder { get; }
     private GlobalState State { get; }
     private List<ModuleTimer> Timers { get; }
-    private GovernorModule governorModule;
+    private readonly GovernorModule governorModule;
 
     public override string TimerAffinity { get; } = TimerName.Main;
 
 
     /// <summary>
-    /// Instantiates a new ModuleWardenModule.
+    /// Instantiates a new WardenModule.
     /// This module registers and deregisters modules automatically based on the AutoDarkModeConfiguration
     /// </summary>
     /// <param name="name">unique name of the module</param>
@@ -72,24 +72,19 @@ public class WardenModule : AutoDarkModeModule
     /// <summary>
     /// Automatically manages the registration and deregistration of modules based on the current configuration state
     /// </summary>
-    /// <param name="moduleName">unique name of the module to be managed</param>
     /// <param name="moduleType">Type of a class implementing the <see cref="IAutoDarkModeModule"/> interface</param>
     /// <param name="fireOnRegistration">Determines whether a module should fire upon registration to a timer</param>
     /// <param name="condition">condition whether a module should be registered or deregistered</param>
     private void AutoManageModule(Type moduleType, bool fireOnRegistration, bool condition)
     {
-        // check if the type impplements the interface for compatibility with a ModuleTimer
+        // check if the type implements the interface for compatibility with a ModuleTimer
         if (typeof(IAutoDarkModeModule).IsAssignableFrom(moduleType))
         {
-            // register a module if the condition has been set to true (should be predetermined in Poll() before calling this method
+            // register a module if the condition has been set to true, should be predetermined in Poll() before calling this method
             if (condition)
             {
                 IAutoDarkModeModule module = Activator.CreateInstance(moduleType, moduleType.Name, fireOnRegistration) as IAutoDarkModeModule;
-                var timer = Timers.Find(t => t.Name == module.TimerAffinity);
-                if (timer != null)
-                {
-                    timer.RegisterModule(module);
-                }
+                Timers.Find(t => t.Name == module.TimerAffinity)?.RegisterModule(module);
             }
             else
             {
@@ -102,8 +97,7 @@ public class WardenModule : AutoDarkModeModule
     {
         if (condition)
         {
-            var timer = Timers.Find(t => t.Name == governorModule.TimerAffinity);
-            timer?.RegisterModule(governorModule);
+            Timers.Find(t => t.Name == governorModule.TimerAffinity)?.RegisterModule(governorModule);
         }
         else
         {
