@@ -114,13 +114,13 @@ internal static class ThemeManager
             if (RegistryHandler.IsEnergySaverEnabled())
             {
                 if (e.Source == SwitchSource.TimeSwitchModule) return;
-                e.OverrideTheme(Theme.Dark, ThemeOverrideSource.EnerySaverStatus);
+                e.OverrideTheme(Theme.Dark, ThemeOverrideSource.EnergySaverStatus);
                 UpdateTheme(e);
                 return;
             }
             if (!builder.Config.AutoThemeSwitchingEnabled)
             {
-                e.OverrideTheme(Theme.Light, ThemeOverrideSource.EnerySaverStatus);
+                e.OverrideTheme(Theme.Light, ThemeOverrideSource.EnergySaverStatus);
                 UpdateTheme(e);
                 return;
             }
