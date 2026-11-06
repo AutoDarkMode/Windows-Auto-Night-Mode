@@ -674,7 +674,7 @@ internal static class RegistryHandler
     /// <returns>HKCU night light RegistryKey value</returns>
     private static RegistryKey GetNightLightKey()
     {
-        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate", true);
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\DefaultAccount\Current\default$windows.data.bluelightreduction.bluelightreductionstate\windows.data.bluelightreduction.bluelightreductionstate", false);
     }
 
     private static RegistryKey GetThemesKey()
@@ -684,7 +684,7 @@ internal static class RegistryHandler
 
     private static RegistryKey GetPowerKey()
     {
-        return Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power", true);
+        return Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power", false);
     }
 
     private static RegistryKey GetColorFilterKey()
