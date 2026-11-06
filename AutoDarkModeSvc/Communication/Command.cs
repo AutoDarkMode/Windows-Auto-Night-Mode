@@ -53,17 +53,17 @@ public static class Command
     public const string RequestSwitch = "--switch";
 
     /// <summary>
+    /// Requests Auto Dark Mode to switch to the dark theme. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
+    /// </summary>
+    [Includable]
+    public const string Dark = "--dark";
+
+    /// <summary>
     /// Requests Auto Dark Mode to switch to the light theme and pauses 
     /// switching once. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
     /// </summary>
     [Includable]
     public const string Light = "--light";
-
-    /// <summary>
-    /// Requests Auto Dark Mode to switch to the dark theme. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
-    /// </summary>
-    [Includable]
-    public const string Dark = "--dark";
 
     /// <summary>
     /// Basically useless currently, needs rework
@@ -76,16 +76,16 @@ public static class Command
     #region Force Theme Commands
 
     /// <summary>
-    /// Forces light theme and sets the <see cref="GlobalState"/> force flag. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
-    /// </summary>
-    [Includable]
-    public const string ForceLight = "--force-light";
-
-    /// <summary>
     /// Forces dark theme and sets the <see cref="GlobalState"/> force flag. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
     /// </summary>
     [Includable]
     public const string ForceDark = "--force-dark";
+
+    /// <summary>
+    /// Forces light theme and sets the <see cref="GlobalState"/> force flag. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
+    /// </summary>
+    [Includable]
+    public const string ForceLight = "--force-light";
 
     /// <summary>
     /// Resets the <see cref="GlobalState"/> force theme flag. Only returns an <see cref="ApiResponse"/> with <see cref="StatusCode.Ok"/> or <see cref="StatusCode.Timeout"/>
