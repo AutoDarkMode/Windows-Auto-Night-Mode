@@ -22,13 +22,12 @@ namespace AutoDarkModeSvc.Handlers;
 
 internal class WMIHandler
 {
-    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    //private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     public static ManagementEventWatcher CreateHKCURegistryValueMonitor(Action callback, string keyPath, string key)
     {
         string sidString = SID.ToString();
-        string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = " +
-            $"'{sidString}\\\\{keyPath}' AND ValueName='{key}'";
+        string queryString = $"SELECT * FROM RegistryValueChangeEvent WHERE Hive = 'HKEY_USERS' AND KeyPath = '{sidString}\\\\{keyPath}' AND ValueName='{key}'";
         WqlEventQuery query = new WqlEventQuery(queryString);
         ManagementEventWatcher autostartWatcher = new(query);
         autostartWatcher.EventArrived += new EventArrivedEventHandler((s, e) => callback());

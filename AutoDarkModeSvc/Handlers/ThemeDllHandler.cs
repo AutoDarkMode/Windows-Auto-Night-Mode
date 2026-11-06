@@ -24,11 +24,11 @@ namespace AutoDarkModeSvc.Handlers;
 
 internal class ThemeDllHandler
 {
-    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+    private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
     /// <summary>
-    /// Sets a theme given a path via a bridging application
+    /// Sets a theme given a display name via a bridging application
     /// </summary>
-    /// <param name="path">the path of the theme file</param>
+    /// <param name="displayName">the display name of the theme file</param>
     /// <returns>the first tuple entry is true if the theme was found, the second is true if theme switching was successful</returns>
     public static (bool, bool) SetThemeViaBridge(string displayName)
     {
@@ -38,30 +38,32 @@ internal class ThemeDllHandler
         bridge.StartInfo.ArgumentList.Add(displayName);
         bridge.StartInfo.RedirectStandardOutput = true;
         bridge.Start();
+
         string line = "";
         while (!bridge.StandardOutput.EndOfStream)
         {
             line += bridge.StandardOutput.ReadLine();
         }
+
         bridge.WaitForExit();
-        int exitCode = bridge.ExitCode;
-        if (exitCode == 0)
+        if (bridge.ExitCode == 0)
         {
             ApiResponse response = ApiResponse.FromString(line);
             bool success = Enum.TryParse(response.StatusCode, out BridgeResponseCode statusCode);
             if (success)
             {
-                if (statusCode == BridgeResponseCode.Success)
+                switch (statusCode)
                 {
-                    Logger.Info($"applied theme {displayName} successfully via IThemeManager2");
-                    return (true, true);
+                    case BridgeResponseCode.Success:
+                        Logger.Info($"applied theme {displayName} successfully via IThemeManager2");
+                        return (true, true);
+                    case BridgeResponseCode.NotFound:
+                        return (false, true);
+                    case BridgeResponseCode.InvalidArguments:
+                        return (false, false);
+                    case BridgeResponseCode.Fail:
+                        return (false, false);
                 }
-                else if (statusCode == BridgeResponseCode.NotFound)
-                {
-                    return (false, true);
-                }
-                else if (statusCode == BridgeResponseCode.InvalidArguments) return (false, false);
-                else if (statusCode == BridgeResponseCode.Fail) return (false, false);
             }
             if (response.Message != null)
             {

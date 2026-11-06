@@ -30,12 +30,13 @@ namespace AutoDarkModeSvc.Handlers;
 internal static class DisplayHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     public static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
     {
         var deviceInfos = await DeviceInformation.FindAllAsync(DisplayMonitor.GetDeviceSelector());
         List<DisplayMonitor> monitors = [];
+
         foreach (var deviceInfo in deviceInfos)
         {
             DisplayMonitor monitor = await DisplayMonitor.FromInterfaceIdAsync(deviceInfo.Id);
@@ -55,6 +56,7 @@ internal static class DisplayHandler
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         List<string> monitorIds = new();
         bool needsUpdate = false;
+
         foreach (var monitor in monitors)
         {
             MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitor.DeviceId);
@@ -83,6 +85,7 @@ internal static class DisplayHandler
         var monitors = Task.Run(GetMonitorInfosAsync).Result;
         IDesktopWallpaper handler = (IDesktopWallpaper)new DesktopWallpaperClass();
         List<MonitorSettings> connectedSettings = new();
+
         foreach (var monitor in monitors)
         {
             MonitorSettings settings = builder.Config.WallpaperSwitch.Component.Monitors.Find(m => m.Id == monitor.DeviceId);
@@ -91,6 +94,7 @@ internal static class DisplayHandler
                 connectedSettings.Add(settings);
             }
         }
+
         int diff = builder.Config.WallpaperSwitch.Component.Monitors.Count - connectedSettings.Count;
         if (diff != 0)
         {
@@ -135,6 +139,7 @@ internal static class EnumDisplayDevicesWrapper
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+    // suggested: SYSLIB1054
     [DllImport("user32.dll")]
     private static extern bool EnumDisplayDevices(string lpDevice, uint iDevNum, ref DISPLAY_DEVICE lpDisplayDevice, uint dwFlags);
 
@@ -177,9 +182,9 @@ internal static class EnumDisplayDevicesWrapper
 
     public static List<DisplayInfo> ListDisplays()
     {
-        List<DisplayInfo> displayInfos = new();
         DISPLAY_DEVICE d = new();
         d.cb = Marshal.SizeOf(d);
+        List<DisplayInfo> displayInfos = new();
         try
         {
             for (uint id = 0; EnumDisplayDevices(null, id, ref d, 0); id++)

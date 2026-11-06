@@ -26,7 +26,7 @@ using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
 
 
-// https://docs.microsoft.com/en-us/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
+// https://learn.microsoft.com/windows/apps/design/shell/tiles-and-notifications/toast-progress-bar?tabs=builder-syntax
 
 namespace AutoDarkModeSvc.Handlers;
 
@@ -37,9 +37,11 @@ public static class ToastHandler
     private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
     private static readonly GlobalState state = GlobalState.Instance();
 
+    // 1. Theme switch toasts
+
     /// <summary>
-    /// Performs all logic related to showing the delay notifiction for auto-theme switching. <br/>
-    /// Will only show a toast and delay if another notficiation still has its grace period delay active, or if another theme switch pause is active. <br/>
+    /// Performs all logic related to showing the delay notification for auto-theme switching. <br/>
+    /// Will only show a toast and delay if another notification still has its grace period delay active, or if another theme switch pause is active. <br/>
     /// </summary>
     public static void InvokeDelayAutoSwitchNotifyToast()
     {
@@ -59,11 +61,11 @@ public static class ToastHandler
                 state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
                 return;
             }
-            Logger.Info($"requested theme at delay notification time: {Enum.GetName(typeof(Theme), state.InternalTheme).ToLower()}");
+            Logger.Info($"requested theme at delay notification time: {Enum.GetName(state.InternalTheme).ToLower()}");
 
             state.PostponeManager.Add(new(Helper.PostponeItemDelayGracePeriod, DateTime.Now.AddMinutes(builder.Config.AutoSwitchNotify.GracePeriodMinutes), SkipType.Unspecified));
 
-            // retrieve data on whether to show sunrise/sunset in the postpone combobox.
+            // retrieve data on whether to show sunrise/sunset in the postpone ComboBox.
             (DateTime expiry, SkipType skipType) = state.PostponeManager.GetSkipNextSwitchExpiryTime();
             string until = skipType == SkipType.UntilSunset ? Strings.Resources.UntilSunset : Strings.Resources.UntilSunrise;
 
@@ -138,40 +140,6 @@ public static class ToastHandler
         }
     }
 
-    public static void InvokeAutoSwitchToggleToast()
-    {
-        if (builder.Config.Notifications.OnAutoThemeSwitching)
-        {
-            Program.ActionQueue.Add(() =>
-            {
-                string currentAutoThemeSwitchState = builder.Config.AutoThemeSwitchingEnabled ? Strings.Resources.Enabled.ToLower() : Strings.Resources.Disabled.ToLower();
-                string autoThemeSwitchStateArgument = builder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
-                string toastText = $"{Strings.Resources.RevertAction}";
-
-                ToastContentBuilder tcb = new ToastContentBuilder()
-                    .AddText($"{Strings.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}");
-
-                if (builder.Config.AutoThemeSwitchingEnabled)
-                {
-                    tcb.AddText(toastText += $" {Strings.Resources.RequestSwitchAction}");
-                    tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Confirm).AddArgument("action", "request-switch"));
-                }
-                else
-                {
-                    tcb.AddText(toastText);
-                }
-
-                tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Undo).AddArgument("action-toggle-auto-theme-switch", autoThemeSwitchStateArgument));
-                tcb.Show(toast =>
-                {
-                    toast.Tag = "adm-auto-switch-disabled-notif";
-                    toast.ExpirationTime = DateTime.Now.AddHours(1);
-                });
-
-            });
-        }
-    }
-
     public static void InvokePauseAutoSwitchToast()
     {
         if (!builder.Config.Notifications.OnSkipNextSwitch) return;
@@ -215,99 +183,48 @@ public static class ToastHandler
 
     }
 
-    public static void InvokeFailedUpdateToast()
+    public static void InvokeAutoSwitchToggleToast()
     {
-        Program.ActionQueue.Add(() =>
+        if (builder.Config.Notifications.OnAutoThemeSwitching)
         {
-            string configPath = AdmConfigBuilder.ConfigDir;
-            new ToastContentBuilder()
-                .AddText($"{Strings.Resources.UpdateToast_PatchingFailed}")
-                .AddText($"{Strings.Resources.UpdateToast_AnErrorOccuredPatching}")
-                .AddText($"{Strings.Resources.UpdateToast_SeeLogs}")
-                 .AddButton(new ToastButton()
-                 .SetContent(Strings.Resources.UpdateToast_ButtonOpenLogDirectory)
-                 .SetProtocolActivation(new Uri(configPath)))
-                .SetProtocolActivation(new Uri(configPath))
-                .Show(toast =>
+            Program.ActionQueue.Add(() =>
+            {
+                string currentAutoThemeSwitchState = builder.Config.AutoThemeSwitchingEnabled ? Strings.Resources.Enabled.ToLower() : Strings.Resources.Disabled.ToLower();
+                string autoThemeSwitchStateArgument = builder.Config.AutoThemeSwitchingEnabled ? "enabled" : "disabled";
+                string toastText = $"{Strings.Resources.RevertAction}";
+
+                ToastContentBuilder tcb = new ToastContentBuilder()
+                    .AddText($"{Strings.Resources.AutomaticThemeSwitch} {currentAutoThemeSwitchState}");
+
+                if (builder.Config.AutoThemeSwitchingEnabled)
                 {
-                    toast.Tag = "adm_failed_update";
+                    tcb.AddText(toastText += $" {Strings.Resources.RequestSwitchAction}");
+                    tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Confirm).AddArgument("action", "request-switch"));
+                }
+                else
+                {
+                    tcb.AddText(toastText);
+                }
+
+                tcb.AddButton(new ToastButton().SetContent(Strings.Resources.Undo).AddArgument("action-toggle-auto-theme-switch", autoThemeSwitchStateArgument));
+                tcb.Show(toast =>
+                {
+                    toast.Tag = "adm-auto-switch-disabled-notif";
+                    toast.ExpirationTime = DateTime.Now.AddHours(1);
                 });
-        });
+
+            });
+        }
     }
 
-    public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
-    {
-        string typeVerb = downgrade ? Strings.Resources.UpdateToast_DowngradingTo : Strings.Resources.UpdateToast_UpgradingTo;
-        Program.ActionQueue.Add(() =>
-        {
-            // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
-            string tag = "adm_update_in_progress";
-            string group = "downloads";
-
-            // Construct the toast content with data bound fields
-            ToastContent content = new ToastContentBuilder()
-                .AddText($"{typeVerb} {version}")
-                .AddVisualChild(new AdaptiveProgressBar()
-                {
-                    Title = $"{Strings.Resources.UpdateToast_DownloadInProgress}",
-                    Value = new BindableProgressBarValue("progressValue"),
-                    ValueStringOverride = new BindableString("progressValueString"),
-                    Status = new BindableString("progressStatus")
-                })
-                .GetToastContent();
-
-            // Generate the toast notification
-            ToastNotification toast = new(content.GetXml());
-
-            // Assign the tag and group
-            toast.Tag = tag;
-            toast.Group = group;
-
-            // Assign initial NotificationData values
-            // Values must be of type string
-            toast.Data = new NotificationData();
-            toast.Data.Values["progressValue"] = "0.0";
-            toast.Data.Values["progressValueString"] = "0 MB";
-            toast.Data.Values["progressStatus"] = Strings.Resources.UpdateToast_Downloading;
-
-            // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
-            toast.Data.SequenceNumber = 0;
-            ToastNotificationManagerCompat.History.Remove("adm_update");
-            ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
-        });
-    }
-
-    public static void UpdateProgressToast(string progressValue, string progressValueString)
-    {
-        // INFO: Put in actionqueue if exception is thrown
-
-        // Construct a NotificationData object;
-        string tag = "adm_update_in_progress";
-        string group = "downloads";
-
-        NotificationData data = new();
-
-        // Assign new values
-        // Note that you only need to assign values that changed. In this example
-        // we don't assign progressStatus since we don't need to change it
-        data.Values["progressValue"] = progressValue;
-        data.Values["progressValueString"] = progressValueString;
-
-        // Update the existing notification's data by using tag/group
-        ToastNotificationManagerCompat.CreateToastNotifier().Update(data, tag, group);
-    }
+    // 2. Update toasts
 
     public static void InvokeUpdateToast(bool canUseUpdater = true, bool downgrade = false)
     {
-        if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
-        {
-            return;
-        }
+        if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated()) return;
+
         string versionTag = UpdateHandler.UpstreamVersion.Tag;
-        if (UpdateHandler.IsARMUpgrade)
-        {
-            versionTag += " (ARM64)";
-        }
+        if (UpdateHandler.IsARMUpgrade) versionTag += " (ARM64)";
 
         string updateString = downgrade ? string.Format(Strings.Resources.UpdateToast_DowngradeAvailable, versionTag) : string.Format(Strings.Resources.UpdateToast_NewVersionAvailable, versionTag);
         string updateAction = downgrade ? "downgrade" : "update";
@@ -355,6 +272,89 @@ public static class ToastHandler
         });
     }
 
+    public static void InvokeUpdateInProgressToast(string version, bool downgrade = false)
+    {
+        string typeVerb = downgrade ? Strings.Resources.UpdateToast_DowngradingTo : Strings.Resources.UpdateToast_UpgradingTo;
+        Program.ActionQueue.Add(() =>
+        {
+            // Define a tag (and optionally a group) to uniquely identify the notification, in order update the notification data later;
+            string tag = "adm_update_in_progress";
+            string group = "downloads";
+
+            // Construct the toast content with data bound fields
+            ToastContent content = new ToastContentBuilder()
+                .AddText($"{typeVerb} {version}")
+                .AddVisualChild(new AdaptiveProgressBar()
+                {
+                    Title = $"{Strings.Resources.UpdateToast_DownloadInProgress}",
+                    Value = new BindableProgressBarValue("progressValue"),
+                    ValueStringOverride = new BindableString("progressValueString"),
+                    Status = new BindableString("progressStatus")
+                })
+                .GetToastContent();
+
+            // Generate the toast notification
+            ToastNotification toast = new(content.GetXml())
+            {
+                // Assign the tag and group
+                Tag = tag,
+                Group = group,
+
+                // Assign initial NotificationData values
+                // Values must be of type string
+                Data = new NotificationData()
+            };
+            toast.Data.Values["progressValue"] = "0.0";
+            toast.Data.Values["progressValueString"] = "0 MB";
+            toast.Data.Values["progressStatus"] = Strings.Resources.UpdateToast_Downloading;
+
+            // Provide sequence number to prevent out-of-order updates, or assign 0 to indicate "always update"
+            toast.Data.SequenceNumber = 0;
+            ToastNotificationManagerCompat.History.Remove("adm_update");
+            ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
+        });
+    }
+
+    public static void UpdateProgressToast(string progressValue, string progressValueString)
+    {
+        // INFO: Put in action queue if exception is thrown
+
+        // Construct a NotificationData object;
+        string tag = "adm_update_in_progress";
+        string group = "downloads";
+
+        NotificationData data = new();
+
+        // Assign new values
+        // Note that you only need to assign values that changed. In this example
+        // we don't assign progressStatus since we don't need to change it
+        data.Values["progressValue"] = progressValue;
+        data.Values["progressValueString"] = progressValueString;
+
+        // Update the existing notification's data by using tag/group
+        ToastNotificationManagerCompat.CreateToastNotifier().Update(data, tag, group);
+    }
+
+    public static void InvokeFailedUpdateToast()
+    {
+        Program.ActionQueue.Add(() =>
+        {
+            string configPath = AdmConfigBuilder.ConfigDir;
+            new ToastContentBuilder()
+                .AddText($"{Strings.Resources.UpdateToast_PatchingFailed}")
+                .AddText($"{Strings.Resources.UpdateToast_AnErrorOccuredPatching}")
+                .AddText($"{Strings.Resources.UpdateToast_SeeLogs}")
+                 .AddButton(new ToastButton()
+                 .SetContent(Strings.Resources.UpdateToast_ButtonOpenLogDirectory)
+                 .SetProtocolActivation(new Uri(configPath)))
+                .SetProtocolActivation(new Uri(configPath))
+                .Show(toast =>
+                {
+                    toast.Tag = "adm_failed_update";
+                });
+        });
+    }
+
     public static void RemoveUpdaterToast()
     {
         //Program.ActionQueue.Add(() => ToastNotificationManagerCompat.History.Remove("adm_update_in_progress"));
@@ -363,122 +363,126 @@ public static class ToastHandler
         //Program.ActionQueue.Add(() => ToastNotificationManagerCompat.History.Clear());
     }
 
+    // 3. Toast action handling
+
     public static void HandleToastAction(ToastNotificationActivatedEventArgsCompat toastArgs)
     {
         try
         {
             // Obtain the arguments from the notification
-            ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
+            //ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
+
             // Obtain any user input (text boxes, menu selections) from the notification
             ValueSet userInput = toastArgs.UserInput;
-            if (toastArgs.Argument.Length == 0)
-            {
-                return;
-            }
+            if (toastArgs.Argument.Length == 0) return;
+
             Logger.Debug("toast called with args: " + toastArgs.Argument);
             string[] arguments = toastArgs.Argument.Split(";");
             foreach (string argumentString in arguments)
             {
                 string[] argument = argumentString.Split("=");
-                if (argument[0] == "action" && argument[1] == "update")
+                switch (argument[0])
                 {
-                    Logger.Info("updating app, caller toast");
-                    Task.Run(() => UpdateHandler.Update(overrideSilent: true)).Wait();
-                }
-                else if (argument[0] == "action" && argument[1] == "downgrade")
-                {
-                    Logger.Info("downgrading app, caller toast");
-                    Task.Run(() => _ = UpdateHandler.Downgrade(overrideSilent: true)).Wait();
-                }
-                else if (argument[0] == "action" && argument[1] == "postpone")
-                {
-                    Logger.Debug("update postponed");
-                    return;
-                }
-                else if (argument[0] == "action" && argument[1] == "request-switch")
-                {
-                    Logger.Info("request theme switch via toast");
-                    ThemeManager.RequestSwitch(new(SwitchSource.Manual));
-                }
-                else if (argument[0] == "action" && argument[1] == "remove-skip-next")
-                {
-                    state.PostponeManager.RemoveSkipNextSwitch();
-                }
-                else if (argument[0] == "action-toggle-auto-theme-switch")
-                {
+                    case "action" when argument[1] == "update":
+                        Logger.Info("updating app, caller toast");
+                        Task.Run(() => UpdateHandler.Update(overrideSilent: true)).Wait();
+                        break;
+                    case "action" when argument[1] == "downgrade":
+                        Logger.Info("downgrading app, caller toast");
+                        Task.Run(() => _ = UpdateHandler.Downgrade(overrideSilent: true)).Wait();
+                        break;
+                    case "action" when argument[1] == "postpone":
+                        Logger.Debug("update postponed");
+                        return;
+                    case "action" when argument[1] == "request-switch":
+                        Logger.Info("request theme switch via toast");
+                        ThemeManager.RequestSwitch(new(SwitchSource.Manual));
+                        break;
+                    case "action" when argument[1] == "remove-skip-next":
+                        state.PostponeManager.RemoveSkipNextSwitch();
+                        break;
+                    case "action-toggle-auto-theme-switch":
+                    {
+                        AdmConfig old = builder.Config;
+                        switch (argument[1])
+                        {
+                            case "enabled":
+                                Logger.Info("enable auto theme switch via toast");
+                                builder.Config.AutoThemeSwitchingEnabled = false;
+                                break;
+                            case "disabled":
+                                Logger.Info("disable auto theme switch via toast");
+                                builder.Config.AutoThemeSwitchingEnabled = true;
+                                break;
+                        }
+                        try
+                        {
+                            state.SkipConfigFileReload = true;
+                            builder.Save();
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Error(ex, "couldn't save config file: ");
+                        }
 
-                    AdmConfig old = builder.Config;
-                    if (argument[1] == "enabled")
-                    {
-                        Logger.Info("enable auto theme switch via toast");
-                        builder.Config.AutoThemeSwitchingEnabled = false;
+                        break;
                     }
-                    else if (argument[1] == "disabled")
-                    {
-                        Logger.Info("disable auto theme switch via toast");
-                        builder.Config.AutoThemeSwitchingEnabled = true;
-                    }
-                    try
-                    {
-                        state.SkipConfigFileReload = true;
-                        builder.Save();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex, "couldn't save config file: ");
-                    }
-                }
-                else if (argument[0] == "action-toggle-pause-theme-switch")
-                {
-                    if (argument[1] == "0")
-                    {
-                        Logger.Info("skip next switch via toast");
-                        state.PostponeManager.AddSkipNextSwitch();
-                    }
-                    else
-                    {
-                        Logger.Info("clear postpone queue via toast");
-                        state.PostponeManager.RemoveUserClearablePostpones();
-                    }
-                }
-                else if (arguments[0] == "delay")
-                {
-                    if (userInput.Keys.Count > 0 && userInput.Values.Count > 0)
-                    {
-                        List<string> keys = new(userInput.Keys);
-                        if (userInput.Values.Contains("15"))
+
+                    case "action-toggle-pause-theme-switch":
+                        switch (argument[1])
                         {
-                            Logger.Info("postpone auto switch for 15 minutes via toast");
-                            state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(15), SkipType.Unspecified));
+                            case "0":
+                                Logger.Info("skip next switch via toast");
+                                state.PostponeManager.AddSkipNextSwitch();
+                                break;
+                            default:
+                                Logger.Info("clear postpone queue via toast");
+                                state.PostponeManager.RemoveUserClearablePostpones();
+                                break;
                         }
-                        if (userInput.Values.Contains("30"))
+                        break;
+                    default:
+                        if (arguments[0] == "delay")
                         {
-                            Logger.Info("postpone auto switch for 30 minutes via toast");
-                            state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(30), SkipType.Unspecified));
+                            if (userInput.Keys.Count > 0 && userInput.Values.Count > 0)
+                            {
+                                List<string> keys = new(userInput.Keys);
+                                if (userInput.Values.Contains("15"))
+                                {
+                                    Logger.Info("postpone auto switch for 15 minutes via toast");
+                                    state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(15), SkipType.Unspecified));
+                                }
+                                if (userInput.Values.Contains("30"))
+                                {
+                                    Logger.Info("postpone auto switch for 30 minutes via toast");
+                                    state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(30), SkipType.Unspecified));
+                                }
+                                if (userInput.Values.Contains("60"))
+                                {
+                                    Logger.Info("postpone auto switch for 60 minutes via toast");
+                                    state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(60), SkipType.Unspecified));
+                                }
+                                if (userInput.Values.Contains("180"))
+                                {
+                                    Logger.Info("postpone auto switch for 180 minutes via toast");
+                                    state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(180), SkipType.Unspecified));
+                                }
+                                if (userInput.Values.Contains("next"))
+                                {
+                                    Logger.Info("postpone auto switch once via toast");
+                                    state.PostponeManager.AddSkipNextSwitch();
+                                }
+                                state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
+                            }
                         }
-                        if (userInput.Values.Contains("60"))
+                        else if (arguments[0] == "switch-now")
                         {
-                            Logger.Info("postpone auto switch for 60 minutes via toast");
-                            state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(60), SkipType.Unspecified));
+                            Logger.Debug("remove notification switch delay grace period delay via toast");
+                            state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
+                            ThemeManager.RequestSwitch(new(SwitchSource.Manual));
                         }
-                        if (userInput.Values.Contains("180"))
-                        {
-                            Logger.Info("postpone auto switch for 180 minutes via toast");
-                            state.PostponeManager.Add(new(Helper.PostponeItemDelayAutoSwitch, DateTime.Now.AddMinutes(180), SkipType.Unspecified));
-                        }
-                        if (userInput.Values.Contains("next"))
-                        {
-                            Logger.Info("postpone auto switch once via toast");
-                            state.PostponeManager.AddSkipNextSwitch();
-                        }
-                        state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
-                    }
-                }
-                else if (arguments[0] == "switch-now")
-                {
-                    Logger.Debug("remove notification switch delay grace period delay via toast");
-                    state.PostponeManager.Remove(Helper.PostponeItemDelayGracePeriod);
-                    ThemeManager.RequestSwitch(new(SwitchSource.Manual));
+
+                        break;
                 }
             }
         }

@@ -18,6 +18,7 @@ internal static class HotkeyHandler
 
     public static Service Service { get; set; }
 
+    // suggested: SYSLIB1054
     [DllImport("user32.dll")]
     private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 

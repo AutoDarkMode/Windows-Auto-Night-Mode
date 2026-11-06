@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Handlers;
 
 public static class ThemeHandler
 {
-    private static readonly object _syncRoot = new();
+    //private static readonly object _syncRoot = new();
 
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -57,52 +57,48 @@ public static class ThemeHandler
     /// Applies an unmanaged theme to AutoDarkMode depending on whether the target theme is light or dark <br/>
     /// Will copy the data from the source theme into the ADM unmanaged theme and patch colors if required.
     /// </summary>
-    /// <param name="newTheme"></param>
-    /// <returns>true if an update was performed; false otherwise</returns>
+    /// <param name="newTheme">the new theme to apply</param>
     public static void ApplyUnmanagedTheme(Theme newTheme)
     {
-        if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
+        if (builder.Config.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.PauseThemeMonitor();
+
+        switch (newTheme)
         {
-            WindowsThemeMonitor.PauseThemeMonitor();
+            case Theme.Dark:
+            {
+                var dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.UnmanagedDarkThemePath);
+                dark.UnmanagedOriginalName = dark.DisplayName;
+                dark.DisplayName = Helper.UnmanagedDarkThemeName;
+                if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                {
+                    ThemeFile.PatchColorsWin11AndSave(dark);
+                }
+                else
+                {
+                    dark.Save(managed: false);
+                }
+                Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
+                break;
+            }
+            case Theme.Light:
+            {
+                var light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.UnmanagedLightThemePath);
+                light.UnmanagedOriginalName = light.DisplayName;
+                light.DisplayName = Helper.UnmanagedLightThemeName;
+                if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
+                {
+                    ThemeFile.PatchColorsWin11AndSave(light);
+                }
+                else
+                {
+                    light.Save(managed: false);
+                }
+                Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
+                break;
+            }
         }
 
-        if (newTheme == Theme.Light)
-        {
-            ThemeFile light = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.LightThemePath, Helper.UnmanagedLightThemePath);
-            light.UnmanagedOriginalName = light.DisplayName;
-            light.DisplayName = Helper.UnmanagedLightThemeName;
-            if (light.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
-            {
-                ThemeFile.PatchColorsWin11AndSave(light);
-            }
-            else
-            {
-                light.Save(managed: false);
-            }
-            Apply(builder.Config.WindowsThemeMode.LightThemePath, unmanagedPatched: light);
-        }
-        else if (newTheme == Theme.Dark)
-        {
-            ThemeFile dark = ThemeFile.LoadUnmanagedTheme(builder.Config.WindowsThemeMode.DarkThemePath, Helper.UnmanagedDarkThemePath);
-            dark.UnmanagedOriginalName = dark.DisplayName;
-            dark.DisplayName = Helper.UnmanagedDarkThemeName;
-            if (dark.Colors.InfoText.Item1 == state.ManagedThemeFile.Colors.InfoText.Item1)
-            {
-                ThemeFile.PatchColorsWin11AndSave(dark);
-            }
-            else
-            {
-                dark.Save(managed: false);
-            }
-            Apply(builder.Config.WindowsThemeMode.DarkThemePath, unmanagedPatched: dark);
-        }
-
-
-
-        if (builder.Config.WindowsThemeMode.MonitorActiveTheme)
-        {
-            WindowsThemeMonitor.ResumeThemeMonitor();
-        }
+        if (builder.Config.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.ResumeThemeMonitor();
     }
 
     /// <summary>
@@ -116,14 +112,14 @@ public static class ThemeHandler
         string themePath = "";
         switch (theme)
         {
-            case Theme.Light:
-                themePath = Helper.UnmanagedLightThemePath;
-                break;
-
             case Theme.Dark:
                 themePath = Helper.UnmanagedDarkThemePath;
                 break;
+            case Theme.Light:
+                themePath = Helper.UnmanagedLightThemePath;
+                break;
         }
+
         if (builder.Config.WindowsThemeMode.Enabled
             && !builder.Config.WindowsThemeMode.MonitorActiveTheme
             && state.UnmanagedActiveThemePath == themePath)
@@ -153,6 +149,7 @@ public static class ThemeHandler
         };
         thread.SetApartmentState(ApartmentState.STA);
         thread.Start();
+
         try
         {
             thread.Join();
@@ -186,24 +183,19 @@ public static class ThemeHandler
             Logger.Error($"invalid light theme path: {builder.Config.WindowsThemeMode.LightThemePath}");
             return false;
         }
-        if (!builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme"))
+        if (!builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !builder.Config.WindowsThemeMode.LightThemePath.EndsWith(".theme"))
         {
             Logger.Error("both theme paths must have a .theme extension");
             return false;
         }
 
         // TODO: change tracking when having active theme monitor disabled
-        if (newTheme == Theme.Dark && (skipCheck ||
-            (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath))))
+        return newTheme switch
         {
-            return true;
-        }
-        else if (newTheme == Theme.Light && (skipCheck ||
-            (!state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath))))
-        {
-            return true;
-        }
-        return false;
+            Theme.Dark when skipCheck || !state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath) => true,
+            Theme.Light when skipCheck || !state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath) => true,
+            _ => false,
+        };
     }
 
     public static void RefreshDwm(DwmRefreshEventArgs d)

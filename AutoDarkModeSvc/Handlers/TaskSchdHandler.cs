@@ -24,11 +24,11 @@ namespace AutoDarkModeSvc.Handlers;
 public static class TaskSchdHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    static readonly string logon = "ADM Logon";
-    static readonly string folder = "ADM_" + Environment.UserName;
-    static readonly string author = "Armin Osaj";
-    static readonly string program = "Windows Auto Dark Mode";
-    static readonly string description = "Task of the program Windows Auto Dark Mode.";
+    private static readonly string logon = "ADM Logon";
+    private static readonly string folder = "ADM_" + Environment.UserName;
+    private static readonly string author = "Armin Osaj";
+    private static readonly string program = "Windows Auto Dark Mode";
+    private static readonly string description = "Task of the program Windows Auto Dark Mode.";
 
     public static bool CreateLogonTask()
     {
@@ -39,7 +39,7 @@ public static class TaskSchdHandler
 
             TaskDefinition tdLogon = taskService.NewTask();
 
-            tdLogon.RegistrationInfo.Description = "Switches theme at user logon, replaces old autostart entry. " + description;
+            tdLogon.RegistrationInfo.Description = $"Switches theme at user logon, replaces old autostart entry. {description}";
             tdLogon.RegistrationInfo.Author = author;
             tdLogon.RegistrationInfo.Source = program;
             tdLogon.Settings.DisallowStartIfOnBatteries = false;
@@ -49,7 +49,7 @@ public static class TaskSchdHandler
             tdLogon.Settings.StopIfGoingOnBatteries = false;
             tdLogon.Settings.IdleSettings.StopOnIdleEnd = false;
 
-            tdLogon.Triggers.Add(new LogonTrigger { UserId = Environment.UserDomainName + @"\" + Environment.UserName });
+            tdLogon.Triggers.Add(new LogonTrigger { UserId = $@"{Environment.UserDomainName}\{Environment.UserName}" });
             tdLogon.Actions.Add(new ExecAction(Helper.ExecutionPath));
 
             taskService.GetFolder(folder).RegisterTaskDefinition(logon, tdLogon);
@@ -72,6 +72,7 @@ public static class TaskSchdHandler
             Logger.Debug("logon task does not exist (no taskFolder)");
             return true;
         }
+
         try
         {
             taskFolder.DeleteTask(logon, false);
@@ -88,11 +89,8 @@ public static class TaskSchdHandler
     {
         using TaskService taskService = new();
         TaskFolder taskFolder = taskService.GetFolder(folder);
-        if (taskFolder == null)
-        {
-            Logger.Info("logon task folder does not exist");
-        }
-        Task logonTask = taskService.GetTask(Path.Combine(folder, logon));
-        return logonTask;
+        if (taskFolder == null) Logger.Info("logon task folder does not exist");
+
+        return taskService.GetTask(Path.Combine(folder, logon));
     }
 }

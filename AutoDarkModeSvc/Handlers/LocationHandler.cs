@@ -22,7 +22,7 @@ using Windows.Devices.Geolocation;
 
 namespace AutoDarkModeSvc.Handlers;
 
-static class LocationHandler
+internal static class LocationHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     /// <summary>
@@ -52,7 +52,7 @@ static class LocationHandler
     }
 
     /// <summary>
-    /// Updates the user's geoposition (latitude and longitude) and save to the config
+    /// Updates the user's geo position (latitude and longitude) and save to the config
     /// </summary>
     /// <param name="configBuilder">config builder for the AutoDarkModeConfig</param>
     /// <returns></returns>
@@ -61,6 +61,7 @@ static class LocationHandler
         GlobalState state = GlobalState.Instance();
         state.GeolocatorIsUpdating = true;
         bool success = false;
+
         if (configBuilder.Config.Location.UseGeolocatorService)
         {
             success = await UpdateWithGeolocator(configBuilder);
@@ -72,6 +73,7 @@ static class LocationHandler
             configBuilder.LocationData.LastUpdate = DateTime.Now;
             configBuilder.LocationData.DataSourceIsGeolocator = false;
         }
+
         try
         {
             UpdateSunTime(configBuilder);
@@ -79,8 +81,9 @@ static class LocationHandler
         }
         catch (Exception e)
         {
-            Logger.Error(e, $"could not update geoposition, source: {e.Source}, error:");
+            Logger.Error(e, $"could not update geo position, source: {e.Source}, error:");
         }
+
         //await Task.Delay(2500);
         state.GeolocatorIsUpdating = false;
         return success;
@@ -98,7 +101,7 @@ static class LocationHandler
             configBuilder.LocationData.LastUpdate = DateTime.Now;
             configBuilder.LocationData.DataSourceIsGeolocator = true;
             Logger.Debug($"retrieved latitude {position.Latitude} and longitude {position.Longitude}");
-            Logger.Info("updated geoposition via geolocator");
+            Logger.Info("updated geo position via geolocator");
             success = true;
         }
 
@@ -144,10 +147,10 @@ static class LocationHandler
     }
 
     /// <summary>
-    /// Calculate sundates based on a user configurable offset found in AutoDarkModeConfig.
+    /// Calculate sun dates based on a user configurable offset found in AutoDarkModeConfig.
     /// Call this method to generate the final sunrise and sunset times if location based switching is enabled
     /// </summary>
-    /// <param name="config">AutoDarkMoeConfig object</param>
+    /// <param name="builder">AdmConfigBuilder object</param>
     /// <param name="sunrise_out"></param>
     /// <param name="sunset_out"></param>
     public static void GetSunTimes(AdmConfigBuilder builder, out DateTime sunrise_out, out DateTime sunset_out)
