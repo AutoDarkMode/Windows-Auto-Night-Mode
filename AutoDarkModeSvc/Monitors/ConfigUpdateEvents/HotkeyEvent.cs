@@ -20,7 +20,7 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
-class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
+internal class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
 {
     protected override void ChangeEvent()
     {
@@ -40,6 +40,7 @@ class HotkeyEvent : ConfigUpdateEvent<AdmConfig>
             bool autoThemeSwitchHotkeyChanged = newConfig.Hotkeys.ToggleAutoThemeSwitch != oldConfig.Hotkeys.ToggleAutoThemeSwitch;
             bool toggleThemeHotkeyChanged = newConfig.Hotkeys.ToggleTheme != oldConfig.Hotkeys.ToggleTheme;
             bool togglePostponeHotkeyChanged = newConfig.Hotkeys.TogglePostpone != oldConfig.Hotkeys.TogglePostpone;
+
             if (darkHotkeyChanged || lightHotkeyChanged || noForceHotkeyChanged || autoThemeSwitchHotkeyChanged || toggleThemeHotkeyChanged || togglePostponeHotkeyChanged)
             {
                 HotkeyHandler.UnregisterAllHotkeys();

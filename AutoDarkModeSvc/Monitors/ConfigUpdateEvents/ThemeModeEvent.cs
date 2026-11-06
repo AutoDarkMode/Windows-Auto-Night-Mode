@@ -21,19 +21,16 @@ using AutoDarkModeSvc.Core;
 
 namespace AutoDarkModeSvc.Monitors.ConfigUpdateEvents;
 
-class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
+internal class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
 {
     private readonly ComponentManager cm;
     private readonly GlobalState state = GlobalState.Instance();
-    public ThemeModeEvent(ComponentManager cm)
-    {
-        this.cm = cm;
-    }
+    public ThemeModeEvent(ComponentManager cm) => this.cm = cm;
+
     protected override void ChangeEvent()
     {
-        bool themeModeToggled = newConfig.WindowsThemeMode.Enabled != oldConfig.WindowsThemeMode.Enabled;
         // if the theme mode is toggled to off, we need to reinitialize all components
-        if (themeModeToggled)
+        if (newConfig.WindowsThemeMode.Enabled != oldConfig.WindowsThemeMode.Enabled)
         {
             if (newConfig.WindowsThemeMode.Enabled)
             {
@@ -48,18 +45,16 @@ class ThemeModeEvent : ConfigUpdateEvent<AdmConfig>
         }
         else if (newConfig.WindowsThemeMode.Enabled)
         {
-
             bool darkThemeChanged = newConfig.WindowsThemeMode.DarkThemePath != oldConfig.WindowsThemeMode.DarkThemePath;
             bool lightThemeChanged = newConfig.WindowsThemeMode.LightThemePath != oldConfig.WindowsThemeMode.LightThemePath;
             bool flagsChanged = !newConfig.WindowsThemeMode.ApplyFlags.SequenceEqual(oldConfig.WindowsThemeMode.ApplyFlags);
+
             if (darkThemeChanged || lightThemeChanged || flagsChanged)
             {
                 state.RefreshThemes(newConfig);
             }
 
-
-            bool monitorThemeToggled = newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme;
-            if (monitorThemeToggled)
+            if (newConfig.WindowsThemeMode.MonitorActiveTheme != oldConfig.WindowsThemeMode.MonitorActiveTheme)
             {
                 if (newConfig.WindowsThemeMode.MonitorActiveTheme) WindowsThemeMonitor.StartThemeMonitor();
                 else WindowsThemeMonitor.StopThemeMonitor();

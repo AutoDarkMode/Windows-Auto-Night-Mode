@@ -29,7 +29,8 @@ public class GeolocatorEvent : ConfigUpdateEvent<AdmConfig>
         bool geolocatorToggled = newConfig.Location.UseGeolocatorService != oldConfig.Location.UseGeolocatorService;
         bool latChanged = newConfig.Location.CustomLat != oldConfig.Location.CustomLat;
         bool lonChanged = newConfig.Location.CustomLon != oldConfig.Location.CustomLon;
-        // If geolocator has been toggled, updat the geoposition. Only update for disabled mode when lat or lon has changed
+
+        // If geolocator has been toggled, update the geoposition. Only update for disabled mode when lat or lon has changed
         if (geolocatorToggled || (!geolocatorToggled && !newConfig.Location.UseGeolocatorService && (latChanged || lonChanged)))
         {
             try
