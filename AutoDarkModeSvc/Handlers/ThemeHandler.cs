@@ -175,14 +175,14 @@ public static class ThemeHandler
             Logger.Error("dark or light theme path empty");
             return false;
         }
-        if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath))
-        {
-            Logger.Error($"invalid dark theme path: {builder.Config.WindowsThemeMode.DarkThemePath}");
-            return false;
-        }
         if (!File.Exists(builder.Config.WindowsThemeMode.LightThemePath))
         {
             Logger.Error($"invalid light theme path: {builder.Config.WindowsThemeMode.LightThemePath}");
+            return false;
+        }
+        if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath))
+        {
+            Logger.Error($"invalid dark theme path: {builder.Config.WindowsThemeMode.DarkThemePath}");
             return false;
         }
         if (!builder.Config.WindowsThemeMode.DarkThemePath.EndsWith(".theme") || !builder.Config.WindowsThemeMode.LightThemePath.EndsWith(".theme"))
@@ -194,8 +194,8 @@ public static class ThemeHandler
         // TODO: change tracking when having active theme monitor disabled
         return newTheme switch
         {
-            Theme.Dark when skipCheck || !state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath) => true,
             Theme.Light when skipCheck || !state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedLightThemePath) => true,
+            Theme.Dark when skipCheck || !state.UnmanagedActiveThemePath.Equals(Helper.UnmanagedDarkThemePath) => true,
             _ => false,
         };
     }

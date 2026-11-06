@@ -316,7 +316,7 @@ internal static class RegistryHandler
 
     public static string GetColorizationColor()
     {
-        GetAccentColor();
+        //GetAccentColor();
         using RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM");
         int value = (int)key.GetValue("ColorizationColor");
         string hexString = value.ToString("X");
@@ -487,9 +487,9 @@ internal static class RegistryHandler
     public static bool IsColorFilterActive()
     {
         var filterKey = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering", "Active", null);
-        if (filterKey != null) return filterKey.Equals(1);
-        else return false;
+        return filterKey != null && filterKey.Equals(1);
     }
+
     public static void ColorFilterSetup()
     {
         RegistryKey filterType = null;
@@ -689,7 +689,6 @@ internal static class RegistryHandler
 
     private static RegistryKey GetColorFilterKey()
     {
-        RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
-        return registryKey;
+        return Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\ColorFiltering", true);
     }
 }

@@ -34,20 +34,20 @@ internal static class HotkeyHandler
         {
             GlobalState state = GlobalState.Instance();
 
-            if (builder.Config.Hotkeys.ForceDark != null) Register(builder.Config.Hotkeys.ForceDark, () =>
-            {
-                Logger.Info("hotkey signal received: forcing dark theme");
-                state.ForcedTheme = Theme.Dark;
-                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
-                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
-            });
-
             if (builder.Config.Hotkeys.ForceLight != null) Register(builder.Config.Hotkeys.ForceLight, () =>
             {
                 Logger.Info("hotkey signal received: forcing light theme");
                 state.ForcedTheme = Theme.Light;
                 ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Light);
                 ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
+            });
+
+            if (builder.Config.Hotkeys.ForceDark != null) Register(builder.Config.Hotkeys.ForceDark, () =>
+            {
+                Logger.Info("hotkey signal received: forcing dark theme");
+                state.ForcedTheme = Theme.Dark;
+                ThemeHandler.EnforceNoMonitorUpdates(builder, state, Theme.Dark);
+                ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
             });
 
             if (builder.Config.Hotkeys.NoForce != null) Register(builder.Config.Hotkeys.NoForce, () =>

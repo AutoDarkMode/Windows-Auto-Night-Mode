@@ -703,14 +703,13 @@ static class UpdateHandler
 
     private static string GetBaseUrl()
     {
-        List<string> blacklistUrls = new()
-        {
-        };
         string current = builder.Config.Updater.DownloadBaseUrl;
         if (current == null) return defaultDownloadBaseUrl;
 
-        bool blacklisted = blacklistUrls.Contains(current);
-        if (blacklisted)
+        // blocklist outdated URLs to avoid update issues
+        if (new List<string>()
+        {
+        }.Contains(current))
         {
             Logger.Warn($"outdated update base URL provided, using recommended URL {defaultDownloadBaseUrl}");
             try

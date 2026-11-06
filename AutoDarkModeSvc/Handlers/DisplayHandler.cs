@@ -30,7 +30,7 @@ namespace AutoDarkModeSvc.Handlers;
 internal static class DisplayHandler
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private static AdmConfigBuilder builder = AdmConfigBuilder.Instance();
+    private static readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
 
     public static async Task<List<DisplayMonitor>> GetMonitorInfosAsync()
     {
@@ -65,8 +65,8 @@ internal static class DisplayHandler
                 Logger.Info($"missing monitor found, adding new default config for: {monitor.DeviceId}");
                 builder.Config.WallpaperSwitch.Component.Monitors.Add(new MonitorSettings()
                 {
-                    DarkThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
                     LightThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
+                    DarkThemeWallpaper = handler.GetWallpaper(monitor.DeviceId),
                     Id = monitor.DeviceId
                 });
                 needsUpdate = true;
