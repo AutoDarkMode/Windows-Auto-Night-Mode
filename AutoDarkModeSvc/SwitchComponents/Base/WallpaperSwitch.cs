@@ -36,8 +36,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
     // ### Component metadata and state ###
 
     public override bool ThemeHandlerCompatibility => false;
-    public override int PriorityToLight => 25;
     public override int PriorityToDark => 25;
+    public override int PriorityToLight => 25;
     public override HookPosition HookPosition { get; protected set; } = HookPosition.PreSync;
     protected Theme currentIndividualTheme = Theme.Unknown;
     protected Theme currentGlobalTheme = Theme.Unknown;
@@ -86,8 +86,8 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
         return e.Theme switch
         {
-            Theme.Light => TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light),
             Theme.Dark => TypeNeedsUpdate(Settings.Component.TypeDark, Theme.Dark),
+            Theme.Light => TypeNeedsUpdate(Settings.Component.TypeLight, Theme.Light),
             _ => false,
         };
     }
@@ -133,11 +133,11 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         {
             switch (newTheme)
             {
-                case Theme.Light:
-                    HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
-                    break;
                 case Theme.Dark:
                     HandleSwitchByType(Settings.Component.TypeDark, Theme.Dark);
+                    break;
+                case Theme.Light:
+                    HandleSwitchByType(Settings.Component.TypeLight, Theme.Light);
                     break;
             }
         }
@@ -148,11 +148,11 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
 
         switch (newTheme)
         {
-            case Theme.Light:
-                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
-                break;
             case Theme.Dark:
                 LogHandleSwitch(Settings.Component.TypeDark, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
+                break;
+            case Theme.Light:
+                LogHandleSwitch(Settings.Component.TypeLight, oldGlobal, oldIndividual, oldSolid, oldPos, oldSpotlight);
                 break;
         }
     }
@@ -318,10 +318,10 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
             return;
         }
 
-        string globalLightBefore = SettingsBefore.Component.GlobalWallpaper.Light ?? "";
         string globalDarkBefore = SettingsBefore.Component.GlobalWallpaper.Dark ?? "";
-        string globalLightAfter = Settings.Component.GlobalWallpaper.Light ?? "";
+        string globalLightBefore = SettingsBefore.Component.GlobalWallpaper.Light ?? "";
         string globalDarkAfter = Settings.Component.GlobalWallpaper.Dark ?? "";
+        string globalLightAfter = Settings.Component.GlobalWallpaper.Light ?? "";
 
         // check if the global wallpaper section has been modified.
         // Since we don't have target theme information here, if one value changes, we want a theme refresh
@@ -336,12 +336,12 @@ internal class WallpaperSwitch : BaseComponent<WallpaperSwitchSettings>
         }
 
         // Same behavior with solid color
-        if (!SettingsBefore.Component.SolidColors.Light.Equals(Settings.Component.SolidColors.Light))
+        if (!SettingsBefore.Component.SolidColors.Dark.Equals(Settings.Component.SolidColors.Dark))
         {
             currentSolidColorTheme = Theme.Unknown;
         }
 
-        if (!SettingsBefore.Component.SolidColors.Dark.Equals(Settings.Component.SolidColors.Dark))
+        if (!SettingsBefore.Component.SolidColors.Light.Equals(Settings.Component.SolidColors.Light))
         {
             currentSolidColorTheme = Theme.Unknown;
         }

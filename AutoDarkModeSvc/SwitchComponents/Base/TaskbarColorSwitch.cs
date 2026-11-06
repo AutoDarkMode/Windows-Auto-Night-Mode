@@ -48,9 +48,9 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
         {
             switch (Settings.Component.TaskbarColorDuring)
             {
-                case Theme.Light when currentTaskbarColorActive:
-                    return true;
                 case Theme.Dark when !currentTaskbarColorActive:
+                    return true;
+                case Theme.Light when currentTaskbarColorActive:
                     return true;
             }
         }
@@ -59,9 +59,9 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
             // change to !currentTaskbarColorActive here in the future
             switch (Settings.Component.TaskbarColorDuring)
             {
-                case Theme.Light when currentTaskbarColorActive != CanApplyLightAccentColor():
-                    return true;
                 case Theme.Dark when currentTaskbarColorActive:
+                    return true;
+                case Theme.Light when currentTaskbarColorActive != CanApplyLightAccentColor():
                     return true;
             }
         }
@@ -70,22 +70,23 @@ internal class TaskbarColorSwitch : BaseComponent<SystemSwitchSettings>
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        if (e.Theme == Theme.Light)
+        switch (e.Theme)
         {
-            if (Settings.Component.TaskbarColorDuring == Theme.Light && CanApplyLightAccentColor())
-            {
-                RegistryHandler.SetTaskbarColorPrevalence(1);
-                currentTaskbarColorActive = true;
-            }
-            else
-            {
-                RegistryHandler.SetTaskbarColorPrevalence(0);
-                currentTaskbarColorActive = false;
-            }
-        }
-        else if (e.Theme == Theme.Dark && !useCallbackForDark)
-        {
-            SwitchDark();
+            case Theme.Dark when !useCallbackForDark:
+                SwitchDark();
+                break;
+            case Theme.Light:
+                if (Settings.Component.TaskbarColorDuring == Theme.Light && CanApplyLightAccentColor())
+                {
+                    RegistryHandler.SetTaskbarColorPrevalence(1);
+                    currentTaskbarColorActive = true;
+                }
+                else
+                {
+                    RegistryHandler.SetTaskbarColorPrevalence(0);
+                    currentTaskbarColorActive = false;
+                }
+                break;
         }
     }
 

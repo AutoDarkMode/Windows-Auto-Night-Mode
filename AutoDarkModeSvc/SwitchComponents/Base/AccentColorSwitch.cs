@@ -48,22 +48,22 @@ internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
     {
         switch (e.Theme)
         {
-            case Theme.Light:
-                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
-                {
-                    return true;
-                }
-                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
-                {
-                    return true;
-                }
-                break;
             case Theme.Dark:
                 if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && !currentDWMColorActive)
                 {
                     return true;
                 }
                 else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && currentDWMColorActive)
+                {
+                    return true;
+                }
+                break;
+            case Theme.Light:
+                if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Light && !currentDWMColorActive)
+                {
+                    return true;
+                }
+                else if (Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark && currentDWMColorActive)
                 {
                     return true;
                 }
@@ -79,11 +79,11 @@ internal class AccentColorSwitch : BaseComponent<SystemSwitchSettings>
             bool previousSetting = currentDWMColorActive;
             switch (e.Theme)
             {
-                case Theme.Light when Settings.Component.DWMPrevalenceEnableTheme == Theme.Light:
+                case Theme.Dark when Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark:
                     RegistryHandler.SetDWMPrevalence(1);
                     currentDWMColorActive = true;
                     break;
-                case Theme.Dark when Settings.Component.DWMPrevalenceEnableTheme == Theme.Dark:
+                case Theme.Light when Settings.Component.DWMPrevalenceEnableTheme == Theme.Light:
                     RegistryHandler.SetDWMPrevalence(1);
                     currentDWMColorActive = true;
                     break;

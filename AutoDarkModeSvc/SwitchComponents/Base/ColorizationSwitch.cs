@@ -39,20 +39,6 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         bool autoColorizationState = GlobalState.ManagedThemeFile.GetAutoColorizationState();
         switch (e.Theme)
         {
-            case Theme.Light:
-                if (autoColorizationState != Settings.Component.LightAutoColorization)
-                {
-                    return true;
-                }
-                else if (invalidHexFound && Settings.Component.LightAutoColorization == false)
-                {
-                    return false;
-                }
-                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex)
-                {
-                    return true;
-                }
-                break;
             case Theme.Dark:
                 if (autoColorizationState != Settings.Component.DarkAutoColorization)
                 {
@@ -63,6 +49,20 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
                     return false;
                 }
                 else if (!Settings.Component.DarkAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.DarkHex)
+                {
+                    return true;
+                }
+                break;
+            case Theme.Light:
+                if (autoColorizationState != Settings.Component.LightAutoColorization)
+                {
+                    return true;
+                }
+                else if (invalidHexFound && Settings.Component.LightAutoColorization == false)
+                {
+                    return false;
+                }
+                else if (!Settings.Component.LightAutoColorization && GlobalState.ManagedThemeFile.VisualStyles.ColorizationColor.Item1.Replace("0X", "#") != Settings.Component.LightHex)
                 {
                     return true;
                 }
@@ -80,11 +80,11 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         bool newAutoColorizationState = false;
         switch (e.Theme)
         {
-            case Theme.Light:
-                newAutoColorizationState = Settings.Component.LightAutoColorization;
-                break;
             case Theme.Dark:
                 newAutoColorizationState = Settings.Component.DarkAutoColorization;
+                break;
+            case Theme.Light:
+                newAutoColorizationState = Settings.Component.LightAutoColorization;
                 break;
         }
 
@@ -156,12 +156,12 @@ internal class ColorizationSwitch : BaseComponent<ColorizationSwitchSettings>
         bool save = false;
         switch (e.Theme)
         {
-            case Theme.Light when lightAutoCol:
-                Settings.Component.LightHex = accent;
-                save = true;
-                break;
             case Theme.Dark when darkAutoCol:
                 Settings.Component.DarkHex = accent;
+                save = true;
+                break;
+            case Theme.Light when lightAutoCol:
+                Settings.Component.LightHex = accent;
                 save = true;
                 break;
         }

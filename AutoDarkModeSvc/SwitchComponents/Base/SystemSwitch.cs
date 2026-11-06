@@ -51,8 +51,8 @@ internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
     {
         return Settings.Component.Mode switch
         {
-            Mode.LightOnly => currentComponentTheme != Theme.Light,
             Mode.DarkOnly => currentComponentTheme != Theme.Dark,
+            Mode.LightOnly => currentComponentTheme != Theme.Light,
             Mode.Switch => currentComponentTheme != e.Theme,
             _ => false,
         };
@@ -92,11 +92,11 @@ internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
         {
             switch (Settings.Component.Mode)
             {
-                case Mode.LightOnly:
-                    SwitchLightOnly();
-                    break;
                 case Mode.DarkOnly:
                     SwitchDarkOnly();
+                    break;
+                case Mode.LightOnly:
+                    SwitchLightOnly();
                     break;
                 default:
                     SwitchAdaptive(newTheme);
@@ -120,15 +120,6 @@ internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
             $"accent: {accentInfo}");
     }
 
-    protected void SwitchLightOnly()
-    {
-        if (currentComponentTheme != Theme.Light)
-        {
-            SetSystemMode(Theme.Light);
-        }
-        currentComponentTheme = Theme.Light;
-    }
-
     protected void SwitchDarkOnly()
     {
         if (currentComponentTheme != Theme.Dark)
@@ -138,15 +129,24 @@ internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
         currentComponentTheme = Theme.Dark;
     }
 
+    protected void SwitchLightOnly()
+    {
+        if (currentComponentTheme != Theme.Light)
+        {
+            SetSystemMode(Theme.Light);
+        }
+        currentComponentTheme = Theme.Light;
+    }
+
     protected void SwitchAdaptive(Theme newTheme)
     {
         switch (newTheme)
         {
-            case Theme.Light:
-                SetSystemMode(Theme.Light);
-                break;
             case Theme.Dark:
                 SetSystemMode(Theme.Dark);
+                break;
+            case Theme.Light:
+                SetSystemMode(Theme.Light);
                 break;
         }
         currentComponentTheme = newTheme;
@@ -156,8 +156,8 @@ internal class SystemSwitch : BaseComponent<SystemSwitchSettings>
     {
         var systemMode = theme switch
         {
-            Theme.Light => nameof(Theme.Light),
             Theme.Dark => nameof(Theme.Dark),
+            Theme.Light => nameof(Theme.Light),
             _ => nameof(Theme.Light),
         };
 

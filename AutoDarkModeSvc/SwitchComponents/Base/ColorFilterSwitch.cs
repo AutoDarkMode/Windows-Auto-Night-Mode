@@ -28,6 +28,7 @@ internal class ColorFilterSwitch : BaseComponent<object>
     private bool currentColorFilterActive;
     public ColorFilterSwitch() : base() { }
     public override bool ThemeHandlerCompatibility => true;
+
     protected override void EnableHook()
     {
         try
@@ -49,6 +50,7 @@ internal class ColorFilterSwitch : BaseComponent<object>
         }
 
     }
+
     protected override void DisableHook()
     {
         if (!Settings.Enabled && currentColorFilterActive)
@@ -58,6 +60,7 @@ internal class ColorFilterSwitch : BaseComponent<object>
             currentColorFilterActive = false;
         }
     }
+
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
         if (!currentColorFilterActive && e.Theme == Theme.Dark)

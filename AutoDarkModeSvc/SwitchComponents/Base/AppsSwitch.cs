@@ -30,10 +30,10 @@ internal class AppsSwitch : BaseComponent<AppsSwitchSettings>
 
     protected override void EnableHook()
     {
-        RefreshRegkeys();
+        RefreshRegistryKeys();
     }
 
-    protected void RefreshRegkeys()
+    protected void RefreshRegistryKeys()
     {
         try
         {
@@ -52,8 +52,8 @@ internal class AppsSwitch : BaseComponent<AppsSwitchSettings>
     {
         return Settings.Component.Mode switch
         {
-            Mode.LightOnly when currentComponentTheme != Theme.Light => true,
             Mode.DarkOnly when currentComponentTheme != Theme.Dark => true,
+            Mode.LightOnly when currentComponentTheme != Theme.Light => true,
             Mode.Switch when currentComponentTheme != e.Theme => true,
             _ => false,
         };
@@ -66,13 +66,13 @@ internal class AppsSwitch : BaseComponent<AppsSwitchSettings>
 
         switch (Settings.Component.Mode)
         {
-            case Mode.LightOnly:
-                themeFile.VisualStyles.AppMode = (nameof(Theme.Light), themeFile.VisualStyles.AppMode.Item2);
-                currentComponentTheme = Theme.Light;
-                break;
             case Mode.DarkOnly:
                 themeFile.VisualStyles.AppMode = (nameof(Theme.Dark), themeFile.VisualStyles.AppMode.Item2);
                 currentComponentTheme = Theme.Dark;
+                break;
+            case Mode.LightOnly:
+                themeFile.VisualStyles.AppMode = (nameof(Theme.Light), themeFile.VisualStyles.AppMode.Item2);
+                currentComponentTheme = Theme.Light;
                 break;
             default:
                 themeFile.VisualStyles.AppMode = (Enum.GetName(e.Theme), themeFile.VisualStyles.AppMode.Item2);
@@ -84,6 +84,6 @@ internal class AppsSwitch : BaseComponent<AppsSwitchSettings>
 
     protected override void UpdateSettingsState()
     {
-        RefreshRegkeys();
+        RefreshRegistryKeys();
     }
 }
