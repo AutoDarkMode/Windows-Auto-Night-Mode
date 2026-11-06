@@ -199,13 +199,13 @@ internal class Service : Form
 
         switch (state.ForcedTheme)
         {
-            case Theme.Light:
-                forceDarkMenuItem.Checked = false;
-                forceLightMenuItem.Checked = true;
-                break;
             case Theme.Dark:
                 forceDarkMenuItem.Checked = true;
                 forceLightMenuItem.Checked = false;
+                break;
+            case Theme.Light:
+                forceDarkMenuItem.Checked = false;
+                forceLightMenuItem.Checked = true;
                 break;
             default:
                 forceDarkMenuItem.Checked = false;
@@ -413,17 +413,17 @@ internal class Service : Form
             }
             switch (mi.Name)
             {
-                case "forceLight":
-                    Logger.Info("ui signal received: forcing light theme");
-                    state.ForcedTheme = Theme.Light;
-                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
-                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
-                    break;
                 case "forceDark":
                     Logger.Info("ui signal received: forcing dark theme");
                     state.ForcedTheme = Theme.Dark;
                     ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Dark);
                     ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Dark));
+                    break;
+                case "forceLight":
+                    Logger.Info("ui signal received: forcing light theme");
+                    state.ForcedTheme = Theme.Light;
+                    ThemeHandler.EnforceNoMonitorUpdates(Builder, state, Theme.Light);
+                    ThemeManager.UpdateTheme(new(SwitchSource.Manual, Theme.Light));
                     break;
             }
             mi.Checked = true;
