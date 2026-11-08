@@ -123,6 +123,7 @@ public sealed partial class WallpaperPickerPage : Page
                 : _builder.Config.WallpaperSwitch.Component.SolidColors.Dark.ToColor();
         var colorPickerDialog = new ContentDialog()
         {
+            FlowDirection = LanguageHelper.FlowDirection,
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = "SelectColor".GetLocalized(),

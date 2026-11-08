@@ -18,6 +18,11 @@ public sealed partial class MainWindow : Window
         _navigationService = navigationService;
         InitializeComponent();
 
+        if (Content is FrameworkElement rootElement)
+        {
+            rootElement.FlowDirection = LanguageHelper.FlowDirection;
+        }
+
         Title = Debugger.IsAttached ? "Auto Dark Mode Debug" : "Auto Dark Mode";
 
         ExtendsContentIntoTitleBar = true;

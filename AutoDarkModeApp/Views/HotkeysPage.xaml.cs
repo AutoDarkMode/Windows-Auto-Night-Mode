@@ -33,6 +33,7 @@ public sealed partial class HotkeysPage : Page
 
         var shortcutDialog = new ContentDialog()
         {
+            FlowDirection = LanguageHelper.FlowDirection,
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = "ActivationShortcut".GetLocalized() + " - " + hotkeyData.Tag,

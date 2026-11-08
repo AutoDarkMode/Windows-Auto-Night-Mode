@@ -91,6 +91,7 @@ public sealed partial class ColorizationPage : Page
         }
         var colorPickerDialog = new ContentDialog()
         {
+            FlowDirection = LanguageHelper.FlowDirection,
             XamlRoot = this.XamlRoot,
             Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
             Title = "SelectColor".GetLocalized(),
