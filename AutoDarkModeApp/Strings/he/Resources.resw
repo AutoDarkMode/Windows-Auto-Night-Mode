@@ -788,7 +788,7 @@
     <comment>Info for Translators: Use name from the Win11 settings (go to personalization -&gt; themes and hover over the theme name)</comment>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>زمان</value>
+    <value>זמן</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>החלף ערכת נושא</value>
