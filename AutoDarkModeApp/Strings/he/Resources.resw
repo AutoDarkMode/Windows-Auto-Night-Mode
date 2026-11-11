@@ -685,7 +685,7 @@
     <value>שחזר ערכות נושא כאשר הן משתנות מבחוץ</value>
   </data>
   <data name="Resume" xml:space="preserve">
-    <value>חדש</value>
+    <value>המשך</value>
   </data>
   <data name="ResumeInfo_Content" xml:space="preserve">
     <value>החידוש יפעל רק עבור דחיות שיש להן זמן תפוגה</value>
