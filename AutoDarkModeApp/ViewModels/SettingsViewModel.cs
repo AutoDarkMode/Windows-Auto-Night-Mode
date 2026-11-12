@@ -272,6 +272,7 @@ public partial class SettingsViewModel : ObservableRecipient
                 {
                     ContentDialog contentDialog = new()
                     {
+                        FlowDirection = LanguageHelper.FlowDirection,
                         Title = "StartWithWindows".GetLocalized(),
                         Content = "StartWithWindowsFailed_Content".GetLocalized(),
                         XamlRoot = App.MainWindow.Content.XamlRoot,
@@ -345,6 +346,7 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             ContentDialog contentDialog = new()
             {
+                FlowDirection = LanguageHelper.FlowDirection,
                 Title = "HideTrayIconMsg_Title".GetLocalized(),
                 Content = "HideTrayIconMsg_Content".GetLocalized(),
                 XamlRoot = App.MainWindow.Content.XamlRoot,
@@ -535,6 +537,7 @@ public partial class SettingsViewModel : ObservableRecipient
         {
             ContentDialog contentDialog = new()
             {
+                FlowDirection = LanguageHelper.FlowDirection,
                 Title = "AggressiveDwmRefreshMsg_Title".GetLocalized(),
                 Content = "AlwaysRefreshDwmMsg_Content".GetLocalized(),
                 XamlRoot = App.MainWindow.Content.XamlRoot,

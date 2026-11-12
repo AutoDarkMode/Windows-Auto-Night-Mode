@@ -20,6 +20,14 @@ public static class LanguageHelper
         "ar", "fa", "he"
     ];
 
+    private static readonly string[] RightToLeftCultures = ["ar", "fa", "he"];
+
+    public static bool IsRightToLeft =>
+        RightToLeftCultures.Any(c => string.Equals(c, SelectedLanguageCode, StringComparison.OrdinalIgnoreCase));
+
+    public static FlowDirection FlowDirection =>
+        IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
     public static string GetDefaultLanguage()
     {
         var localSettings = App.GetService<ILocalSettingsService>();
