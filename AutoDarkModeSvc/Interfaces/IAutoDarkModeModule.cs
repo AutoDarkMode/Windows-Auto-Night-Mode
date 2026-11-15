@@ -17,7 +17,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace AutoDarkModeSvc.Interfaces;
+namespace AutoDarkModeSvc.Modules;
 
 public interface IAutoDarkModeModule : IEquatable<IAutoDarkModeModule>, IComparable<IAutoDarkModeModule>
 {

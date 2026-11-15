@@ -29,7 +29,6 @@ using AutoDarkModeSvc.Communication;
 using AutoDarkModeSvc.Core;
 using AutoDarkModeSvc.Events;
 using AutoDarkModeSvc.Handlers;
-using AutoDarkModeSvc.Interfaces;
 using AutoDarkModeSvc.Modules;
 using AutoDarkModeSvc.Monitors;
 using AutoDarkModeSvc.Timers;
