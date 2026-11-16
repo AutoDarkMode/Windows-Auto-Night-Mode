@@ -61,10 +61,11 @@ public sealed partial class MainWindow : Window
             // Mirror the native window so the caption buttons (minimize, maximize, close) move to the left.
             var exStyle = GetWindowLongPtr(hwnd, GWL_EXSTYLE).ToInt64();
             SetWindowLongPtr(hwnd, GWL_EXSTYLE, new IntPtr(exStyle | WS_EX_LAYOUTRTL));
-
-            // The title bar's back arrow glyph is not mirrored automatically; flip it so it points right.
-            TitleBar.Loaded += (_, _) => MirrorTitleBarBackButton();
         }
+
+        // Set the missing property until https://github.com/microsoft/microsoft-ui-xaml/issues/12671 is fixed.
+        TitleBar.Loaded += (_, _) => MirrorTitleBarBackIcon();
+
         uint dpi = GetDpiForWindow(hwnd);
         double scaleFactor = dpi / 96.0;
 
@@ -79,16 +80,17 @@ public sealed partial class MainWindow : Window
         _navigationService.InitializeBreadcrumbBar(BreadcrumBarControl);
     }
 
-    private void MirrorTitleBarBackButton()
+    private void MirrorTitleBarBackIcon()
     {
         var backButton = FindDescendant<Button>(TitleBar, b => b.Name.Contains("Back", StringComparison.OrdinalIgnoreCase));
-        if (backButton is null)
+        var icon = backButton is null ? null : FindDescendant<AnimatedIcon>(backButton, _ => true);
+        if (icon is null)
         {
+            Debug.WriteLine("Could not find the title bar back button icon for the RTL workaround.");
             return;
         }
 
-        backButton.RenderTransformOrigin = new Windows.Foundation.Point(0.5, 0.5);
-        backButton.RenderTransform = new Microsoft.UI.Xaml.Media.ScaleTransform { ScaleX = -1 };
+        icon.MirroredWhenRightToLeft = true;
     }
 
     private static T? FindDescendant<T>(DependencyObject parent, Func<T, bool> predicate) where T : FrameworkElement
