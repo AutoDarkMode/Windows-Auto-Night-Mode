@@ -145,7 +145,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         _lightSensor = Windows.Devices.Sensors.LightSensor.GetDefault();
         AmbientLightSensorAvailable = _lightSensor != null;
 
-        if (AmbientLightSensorAvailable)
+        if (_lightSensor != null)
         {
             // Set report interval to ~100ms for smooth UI updates (or sensor min if slower)
             _lightSensor.ReportInterval = Math.Max(_lightSensor.MinimumReportInterval, 100);
