@@ -88,7 +88,7 @@ public static class ThemeCollectionHandler
                         lookupKey = "aero_Win10"; // rename for Windows 10
                     }
 
-                    if (string.IsNullOrEmpty(displayName) && WindowsThemeNameOverrides.TryGetValue(lookupKey, out string friendly))
+                    if (string.IsNullOrEmpty(displayName) && WindowsThemeNameOverrides.TryGetValue(lookupKey, out string? friendly))
                         displayName = friendly;
 
                     // fallback to filename if display name is empty

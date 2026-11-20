@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -36,7 +36,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharprompt" Version="3.0.0" />
+    <PackageReference Include="Sharprompt" Version="3.2.0" />
   </ItemGroup>
 
   <ItemGroup>
