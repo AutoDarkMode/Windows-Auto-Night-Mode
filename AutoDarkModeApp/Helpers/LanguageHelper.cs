@@ -7,7 +7,7 @@ public static class LanguageHelper
 {
     // Must be a member of SupportedCultures, otherwise it is rejected on every launch and no entry
     // in the language dropdown can match it.
-    public static string? SelectedLanguageCode { get; set; } = "en";
+    public static string SelectedLanguageCode { get; set; } = "en";
 
     public static readonly string[] SupportedCultures =
     [
@@ -25,7 +25,7 @@ public static class LanguageHelper
         var localSettings = App.GetService<ILocalSettingsService>();
         var savedLanguage = localSettings.GetValue<string>("SelectedLanguageCode");
 
-        if (!string.IsNullOrEmpty(savedLanguage) && TryMatchSupportedCulture(savedLanguage, out var saved))
+        if (!string.IsNullOrEmpty(savedLanguage) && TryMatchSupportedLanguage(savedLanguage, out var saved))
         {
             SelectedLanguageCode = saved;
             return SelectedLanguageCode;
@@ -36,18 +36,13 @@ public static class LanguageHelper
             ? preferredLanguages[0]
             : CultureInfo.CurrentUICulture.Name; // very unlikely, but just in case
 
-        if (TryMatchSupportedCulture(topLanguage, out var matched))
+        if (TryMatchSupportedLanguage(topLanguage, out var matched))
         {
             SelectedLanguageCode = matched;
         }
-        // else keep the default
+        // else keep the default "en"
 
         localSettings.SetValue("SelectedLanguageCode", SelectedLanguageCode);
-
-        if (SelectedLanguageCode is null)
-        {
-            return "en";
-        }
         return SelectedLanguageCode;
     }
 
@@ -56,23 +51,23 @@ public static class LanguageHelper
     /// time: "fr-FR" matches "fr", "zh-Hans-CN" matches "zh-Hans". Returns the canonically cased
     /// entry so it lines up with the codes bound to the language dropdown.
     /// </summary>
-    private static bool TryMatchSupportedCulture(string languageTag, out string match)
+    private static bool TryMatchSupportedLanguage(string languageTag, out string match)
     {
         for (var candidate = languageTag; !string.IsNullOrEmpty(candidate);)
         {
             var supported = SupportedCultures.FirstOrDefault(c => string.Equals(c, candidate, StringComparison.OrdinalIgnoreCase));
-            if (supported != null)
+            if (!string.IsNullOrEmpty(supported))
             {
                 match = supported;
                 return true;
             }
 
-            var lastSeparator = candidate.LastIndexOf('-');
-            if (lastSeparator < 0)
+            var lastSeparatorIndex = candidate.LastIndexOf('-');
+            if (lastSeparatorIndex < 0)
             {
                 break;
             }
-            candidate = candidate[..lastSeparator];
+            candidate = candidate[..lastSeparatorIndex];
         }
 
         match = string.Empty;
