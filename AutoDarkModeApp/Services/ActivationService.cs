@@ -32,6 +32,7 @@ public class ActivationService(ILocalSettingsService localSettingsService, INavi
 
             loadingDialog = new ContentDialog
             {
+                FlowDirection = LanguageHelper.FlowDirection,
                 Title = "LaunchingService".GetLocalized(),
                 Content = new StackPanel
                 {

@@ -79,6 +79,7 @@ public class ErrorService : IErrorService
 
             ContentDialog dialog = new()
             {
+                FlowDirection = LanguageHelper.FlowDirection,
                 Title = request.Title,
                 Content = request.Content,
                 DefaultButton = ContentDialogButton.Primary,

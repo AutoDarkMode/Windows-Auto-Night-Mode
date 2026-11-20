@@ -121,43 +121,43 @@
     <value>החלפה אוטומטית של ערכת נושא</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>לאשר</value>
+    <value>אישור</value>
   </data>
   <data name="Dark" xml:space="preserve">
-    <value>تاریک</value>
+    <value>כהה</value>
   </data>
   <data name="Delay" xml:space="preserve">
-    <value>לעכב</value>
+    <value>השהה</value>
   </data>
   <data name="DisableAutomaticSwitch" xml:space="preserve">
     <value>השבת החלפה אוטומטית</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>غیرفعال شده</value>
+    <value>מושבת</value>
   </data>
   <data name="Enabled" xml:space="preserve">
-    <value>فعال شده</value>
+    <value>מופעל</value>
   </data>
   <data name="Light" xml:space="preserve">
-    <value>روشن</value>
+    <value>בהיר</value>
   </data>
   <data name="Msg_PauseActionDisableQuestion" xml:space="preserve">
-    <value>האם ברצונך להשבית את ההחלפה האוטומטית?</value>
+    <value>האם ברצונך להשבית את ההחלפה האוטומטית במקום זאת?</value>
   </data>
   <data name="Msg_PauseActionNotification" xml:space="preserve">
-    <value>ההחלפה האוטומטית תופעל מחדש גם אם תחזור לערכת הנושא הקודמת שלך.</value>
+    <value>ההחלפה האוטומטית תתחדש גם אם תחזור לערכת הנושא הקודמת שלך.</value>
   </data>
   <data name="Msg_PauseHeader" xml:space="preserve">
-    <value>החלפת ערכות נושא הושהתה עד</value>
+    <value>החלפת ערכת הנושא מושהית עד</value>
   </data>
   <data name="Msg_PauseOnce" xml:space="preserve">
-    <value>החלפת ערכות נושא מושהית פעם אחת!</value>
+    <value>החלפת ערכת הנושא הושהתה פעם אחת!</value>
   </data>
   <data name="Msg_PendingQuestion" xml:space="preserve">
-    <value>האם להחליף עכשיו או מאוחר יותר?</value>
+    <value>האם ברצונך להחליף עכשיו או לדחות עוד?</value>
   </data>
   <data name="Msg_ResumeHeader" xml:space="preserve">
-    <value>ההחלפה האוטומטית בין ערכות הנושא חודשה</value>
+    <value>החלפת ערכת הנושא האוטומטית חודשה</value>
   </data>
   <data name="Msg_SwitchPending" xml:space="preserve">
     <value>החלפת ערכת נושא ממתינה</value>
@@ -169,58 +169,58 @@
     <value>שעתיים</value>
   </data>
   <data name="PostponeTime_15" xml:space="preserve">
-    <value>15 minutes</value>
+    <value>15 דקות</value>
   </data>
   <data name="PostponeTime_180" xml:space="preserve">
     <value>3 שעות</value>
   </data>
   <data name="PostponeTime_30" xml:space="preserve">
-    <value>30 minutes</value>
+    <value>30 דקות</value>
   </data>
   <data name="PostponeTime_360" xml:space="preserve">
     <value>6 שעות</value>
   </data>
   <data name="PostponeTime_60" xml:space="preserve">
-    <value>שעה אחת</value>
+    <value>שעה</value>
   </data>
   <data name="PostponeTime_720" xml:space="preserve">
     <value>12 שעות</value>
   </data>
   <data name="RequestSwitchAction" xml:space="preserve">
-    <value>Hit confirm to request a theme switch immediately.</value>
+    <value>אשר כדי לבקש החלפת ערכת נושא מיידית.</value>
   </data>
   <data name="RevertAction" xml:space="preserve">
-    <value>בטל פעולה זו על ידי לחיצה על כפתור הביטול למטה.</value>
+    <value>ניתן לבטל פעולה זו בלחיצה על כפתור הביטול למטה.</value>
   </data>
   <data name="SwitchNow" xml:space="preserve">
     <value>החלף עכשיו</value>
   </data>
   <data name="TrayMenuItem_AutomaticThemeSwitch" xml:space="preserve">
-    <value>&amp;החלפת ערכת נושא אוטומטית</value>
+    <value>החלפת ערכת נושא &amp;אוטומטית</value>
   </data>
   <data name="TrayMenuItem_Close" xml:space="preserve">
-    <value>و بستن</value>
+    <value>&amp;סגור</value>
   </data>
   <data name="TrayMenuItem_ForceDarkTheme" xml:space="preserve">
-    <value>כפה &amp;ערכת נושא כהה</value>
+    <value>כפה ערכת נושא &amp;כהה</value>
   </data>
   <data name="TrayMenuItem_ForceLightTheme" xml:space="preserve">
-    <value>כפה &amp;ערכת נושא בהירה</value>
+    <value>כפה ערכת נושא &amp;בהירה</value>
   </data>
   <data name="TrayMenuItem_OpenConfigDir" xml:space="preserve">
     <value>&amp;פתח את תיקיית התצורה</value>
   </data>
   <data name="TrayMenuItem_ThemeSwitchPause" xml:space="preserve">
-    <value>&amp;השהה את ההחלפה האוטומטית</value>
+    <value>&amp;השהה החלפה אוטומטית</value>
   </data>
   <data name="TrayMenuItem_ToggleTheme" xml:space="preserve">
-    <value>&amp;החלף בין ערכות הנושא</value>
+    <value>החלף &amp;ערכת נושא</value>
   </data>
   <data name="TrayMenuItem_TryFixTheme" xml:space="preserve">
     <value>נסה לתקן את ערכת הנושא</value>
   </data>
   <data name="Undo" xml:space="preserve">
-    <value>לבטל</value>
+    <value>בטל</value>
   </data>
   <data name="Until" xml:space="preserve">
     <value>עד</value>
@@ -232,53 +232,56 @@
     <value>עד השקיעה הבאה</value>
   </data>
   <data name="UpdateToast_AnErrorOccuredPatching" xml:space="preserve">
-    <value>אירעה שגיאה במהלך התיקון.</value>
+    <value>אירעה שגיאה במהלך ההתקנה.</value>
   </data>
   <data name="UpdateToast_ButtonDowngrade" xml:space="preserve">
-    <value>שדרוג לאחור</value>
+    <value>חזור לגרסה קודמת</value>
   </data>
   <data name="UpdateToast_ButtonOpenLogDirectory" xml:space="preserve">
-    <value>Open log directory</value>
+    <value>פתח את תיקיית היומנים</value>
   </data>
   <data name="UpdateToast_ButtonPostpone" xml:space="preserve">
     <value>דחה</value>
   </data>
   <data name="UpdateToast_ButtonUpdate" xml:space="preserve">
-    <value>Update</value>
+    <value>עדכן</value>
   </data>
   <data name="UpdateToast_CurrentVersion" xml:space="preserve">
     <value>הגרסה הנוכחית</value>
   </data>
   <data name="UpdateToast_DowngradeAvailable" xml:space="preserve">
-    <value>שדרוג לאחור של {0} זמין</value>
+    <value>זמינה חזרה לגרסה {0}</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_DowngradingTo" xml:space="preserve">
-    <value>שדרוג לאחור ל</value>
+    <value>חוזר לגרסה</value>
   </data>
   <data name="UpdateToast_Downloading" xml:space="preserve">
     <value>מוריד…</value>
   </data>
   <data name="UpdateToast_DownloadInProgress" xml:space="preserve">
-    <value>Download in progress</value>
+    <value>ההורדה מתבצעת</value>
   </data>
   <data name="UpdateToast_GoToDownloadPage" xml:space="preserve">
-    <value>Go to download page</value>
+    <value>עבור לדף ההורדה</value>
   </data>
   <data name="UpdateToast_Message" xml:space="preserve">
-    <value>Message</value>
+    <value>הודעה</value>
   </data>
   <data name="UpdateToast_NewVersionAvailable" xml:space="preserve">
     <value>גרסה חדשה {0} זמינה</value>
     <comment>MUST contain the placerholder string!! That's where the version number is injected.</comment>
   </data>
   <data name="UpdateToast_PatchingFailed" xml:space="preserve">
-    <value>התיקון נכשל</value>
+    <value>ההתקנה נכשלה</value>
   </data>
   <data name="UpdateToast_SeeLogs" xml:space="preserve">
-    <value>אנא בדקו את service.log ו-updater.log לקבלת מידע</value>
+    <value>לפרטים, בדוק את הקבצים service.log ו-updater.log</value>
   </data>
   <data name="UpdateToast_UpgradingTo" xml:space="preserve">
-    <value>מעדכן ל</value>
+    <value>מעדכן לגרסה</value>
+  </data>
+  <data name="ForOneHour" xml:space="preserve">
+    <value>לשעה אחת</value>
   </data>
 </root>
