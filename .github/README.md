@@ -24,7 +24,7 @@ Because a simple design change would be too boring, Auto Dark Mode is packed wit
 ![Screenshot showing the System areas page of Auto Dark Mode](./assets/screenshot_systemareas.png)
 - Compatible with Windows 10* and Windows 11.
 - Theme switch based on sunrise and sunset.
-- Theme switch based on ambient light sensor.
+- Theme switch based on ambient light, measured by the light sensor, webcam or local weather (Open-Meteo or Bing Weather).
 - Postpone or delay the next switch as you like.
 - Desktop wallpaper switch.
 - Mouse cursor switch.

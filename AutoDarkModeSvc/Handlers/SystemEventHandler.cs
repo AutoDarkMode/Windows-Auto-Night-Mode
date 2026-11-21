@@ -411,9 +411,16 @@ static class SystemEventHandler
                 $"to {newTz.ToUtcOffsetString()} dst={DateTime.Now.IsDaylightSavingTime().ToString().ToLower()} ");
 
             // geolocator needs to be updated in case it retrieves data from the windows location service as most likely the geolocation has changed as well
-            if (builder.LocationData.DataSourceIsGeolocator != builder.Config.Location.UseGeolocatorService)
+            if (builder.Config.Location.UseGeolocatorService)
             {
-                LocationHandler.UpdateGeoposition(builder).Wait();
+                try
+                {
+                    LocationHandler.UpdateGeoposition(builder).Wait();
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "could not update geoposition after time zone change:");
+                }
 
                 if (builder.Config.AutoThemeSwitchingEnabled) ThemeManager.RequestSwitch(new(SwitchSource.SystemTimeChanged));
             }

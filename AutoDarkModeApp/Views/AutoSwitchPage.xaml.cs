@@ -21,12 +21,15 @@ public sealed partial class AutoSwitchPage : Page
     {
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
         ViewModel.StartLocationStatusMonitoring();
+        ViewModel.StartWebcamMonitoring();
     }
 
     private void AutoSwitchPage_Unloaded(object sender, RoutedEventArgs e)
     {
         ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
         ViewModel.StopLocationStatusMonitoring();
+        ViewModel.StopWebcamMonitoring();
+        ViewModel.IsWebcamPreviewEnabled = false;
     }
 
     private void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)

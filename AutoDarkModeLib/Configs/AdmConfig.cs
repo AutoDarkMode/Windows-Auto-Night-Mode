@@ -108,6 +108,26 @@ public class AmbientLight
     /// This prevents accidental switching when briefly covering the sensor.
     /// </summary>
     public int DebounceDelayMs { get; set; } = 10_000;
+    /// <summary>
+    /// Where the lux reading comes from, the webcam and the weather stand in for devices without a light sensor
+    /// </summary>
+    public AmbientLightSource Source { get; set; } = AmbientLightSource.Sensor;
+    /// <summary>
+    /// Webcam to measure with, the first webcam is used if it is not set or not connected
+    /// </summary>
+    public string WebcamId { get; set; }
+    /// <summary>
+    /// Seconds between two webcam samples (default: 60 seconds, minimum: 10 seconds)
+    /// </summary>
+    public int WebcamIntervalSec { get; set; } = 60;
+    /// <summary>
+    /// Minutes between two weather samples (default and minimum: 15 minutes)
+    /// </summary>
+    public int WeatherIntervalMin { get; set; } = 15;
+    /// <summary>
+    /// Where the weather light level comes from (default: Open-Meteo)
+    /// </summary>
+    public WeatherProvider WeatherProvider { get; set; } = WeatherProvider.OpenMeteo;
 }
 
 public class Hotkeys

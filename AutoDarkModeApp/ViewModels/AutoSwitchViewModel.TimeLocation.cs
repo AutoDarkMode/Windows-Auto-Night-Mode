@@ -10,6 +10,10 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     [ObservableProperty]
     public partial bool IsNoLocationAccessInfoBarOpen { get; set; }
 
+    // Whether the selected mode gets the location from the Windows location service
+    private bool UsesLocationService => SelectedTriggerMode == SwitchTriggerMode.LocationTimes
+        || (SelectedTriggerMode == SwitchTriggerMode.AmbientLight && SelectedAmbientLightSource == AmbientLightSource.Weather && WeatherUseLocationService);
+
     [ObservableProperty]
     public partial string? LocationBlockText { get; set; }
 
@@ -227,7 +231,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
     {
         if (!IsLocationAccessRefreshCurrent(version)) return;
 
-        if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
+        if (!UsesLocationService)
         {
             IsNoLocationAccessInfoBarOpen = false;
             return;
@@ -238,7 +242,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             var access = ApiResponse.FromString(await MessageHandler.Client.SendMessageAndGetReplyAsync(Command.LocationAccess));
             if (!IsLocationAccessRefreshCurrent(version)) return;
 
-            if (SelectedTriggerMode != SwitchTriggerMode.LocationTimes)
+            if (!UsesLocationService)
             {
                 IsNoLocationAccessInfoBarOpen = false;
                 return;

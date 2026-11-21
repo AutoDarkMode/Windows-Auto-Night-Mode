@@ -84,7 +84,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
         // Base: reset all to default state
         // UI will not flicker
         _builder.Config.Location.Enabled = false;
-        _builder.Config.Location.UseGeolocatorService = false;
+        // The weather light source keeps using the location service setting
+        if (mode != SwitchTriggerMode.AmbientLight) _builder.Config.Location.UseGeolocatorService = false;
 
         LocationSettingsCardVisibility = Visibility.Collapsed;
         CustomTimeSettingsCardVisibility = Visibility.Collapsed;
@@ -134,7 +135,8 @@ public partial class AutoSwitchViewModel : ObservableRecipient
 
     partial void OnSelectedTriggerModeChanged(SwitchTriggerMode value)
     {
-        if (value != SwitchTriggerMode.LocationTimes) IsNoLocationAccessInfoBarOpen = false;
+        if (!UsesLocationService) IsNoLocationAccessInfoBarOpen = false;
+        ShowCurrentLux();
 
         if (_isInitializing) return;
 
@@ -151,7 +153,7 @@ public partial class AutoSwitchViewModel : ObservableRecipient
             _errorService.ShowErrorMessage(ex, App.MainWindow.Content.XamlRoot, "AutoSwitchViewModel");
         }
 
-        if (value == SwitchTriggerMode.LocationTimes) QueueLocationAccessInfoBarRefresh();
+        if (UsesLocationService) QueueLocationAccessInfoBarRefresh();
 
         _ = _themeSwitchService.RequestThemeSwitchAsync(GetType().Name, App.MainWindow.Content.XamlRoot);
     }

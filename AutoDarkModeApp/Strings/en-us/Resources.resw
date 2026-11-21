@@ -1138,6 +1138,57 @@ Do you really want to continue?</value>
   <data name="AmbientLightCurrent" xml:space="preserve">
     <value>Current:</value>
   </data>
+  <data name="AmbientLightNoReading" xml:space="preserve">
+    <value>No reading</value>
+  </data>
+  <data name="AmbientLightSource" xml:space="preserve">
+    <value>Light source</value>
+  </data>
+  <data name="AmbientLightSource_Sensor" xml:space="preserve">
+    <value>Built-in light sensor</value>
+  </data>
+  <data name="AmbientLightSource_Webcam" xml:space="preserve">
+    <value>Webcam</value>
+  </data>
+  <data name="AmbientLightSource_Webcam_Description" xml:space="preserve">
+    <value>For devices without a light sensor. At each check, the webcam is turned on for a few seconds to estimate the brightness of your environment. No images are stored.</value>
+  </data>
+  <data name="AmbientLightSource_Weather" xml:space="preserve">
+    <value>Weather</value>
+  </data>
+  <data name="AmbientLightSource_Weather_Description" xml:space="preserve">
+    <value>Follows the daylight outside, including clouds. At each check, your location is sent to the selected weather service to get the current sunshine and cloud cover.</value>
+  </data>
+  <data name="AmbientLightWeatherProvider" xml:space="preserve">
+    <value>Weather service</value>
+  </data>
+  <data name="AmbientLightWeatherProvider_OpenMeteo" xml:space="preserve">
+    <value>Open-Meteo</value>
+  </data>
+  <data name="AmbientLightWeatherProvider_Bing" xml:space="preserve">
+    <value>Bing Weather</value>
+  </data>
+  <data name="AmbientLightWebcam" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="AmbientLightWebcamInterval" xml:space="preserve">
+    <value>Check every (seconds)</value>
+  </data>
+  <data name="AmbientLightWeatherInterval" xml:space="preserve">
+    <value>Check every (minutes)</value>
+  </data>
+  <data name="AmbientLightWebcamPreview" xml:space="preserve">
+    <value>Live preview</value>
+  </data>
+  <data name="AmbientLightWebcamAccessDenied" xml:space="preserve">
+    <value>Couldn't open the webcam. Check camera access in the Windows privacy settings.</value>
+  </data>
+  <data name="AmbientLightWebcamUnavailable" xml:space="preserve">
+    <value>Couldn't read from the webcam. It may be in use by another app or disconnected.</value>
+  </data>
+  <data name="AmbientLightWeatherUnavailable" xml:space="preserve">
+    <value>Couldn't get the current weather. Check your internet connection.</value>
+  </data>
   <data name="DocumentationSocial" xml:space="preserve">
     <value>Documentation &amp; Social</value>
   </data>
