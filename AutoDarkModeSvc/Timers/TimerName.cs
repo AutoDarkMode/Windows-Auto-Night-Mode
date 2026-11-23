@@ -16,7 +16,7 @@
 #endregion
 namespace AutoDarkModeSvc.Timers;
 
-static class TimerName
+internal static class TimerName
 {
     public const string Main = "main";
     public const string Short = "short";
