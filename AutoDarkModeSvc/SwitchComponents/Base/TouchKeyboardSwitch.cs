@@ -14,14 +14,7 @@ internal class TouchKeyboardSwitch : BaseComponent<object>
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (currentComponentTheme != e.Theme)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return currentComponentTheme != e.Theme;
     }
 
     protected override void HandleSwitch(SwitchEventArgs e)

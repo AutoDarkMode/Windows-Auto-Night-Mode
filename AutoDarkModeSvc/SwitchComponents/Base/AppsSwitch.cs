@@ -23,17 +23,17 @@ using AutoDarkModeSvc.Handlers.ThemeFiles;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class AppsSwitch : BaseComponent<AppsSwitchSettings>
+internal class AppsSwitch : BaseComponent<AppsSwitchSettings>
 {
     protected Theme currentComponentTheme;
     public AppsSwitch() : base() { }
 
     protected override void EnableHook()
     {
-        RefreshRegkeys();
+        RefreshRegistryKeys();
     }
 
-    protected void RefreshRegkeys()
+    protected void RefreshRegistryKeys()
     {
         try
         {
@@ -50,46 +50,40 @@ class AppsSwitch : BaseComponent<AppsSwitchSettings>
 
     protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
     {
-        if (Settings.Component.Mode == Mode.DarkOnly && currentComponentTheme != Theme.Dark)
+        return Settings.Component.Mode switch
         {
-            return true;
-        }
-        else if (Settings.Component.Mode == Mode.LightOnly && currentComponentTheme != Theme.Light)
-        {
-            return true;
-        }
-        else if (Settings.Component.Mode == Mode.Switch && currentComponentTheme != e.Theme)
-        {
-            return true;
-        }
-        return false;
+            Mode.DarkOnly when currentComponentTheme != Theme.Dark => true,
+            Mode.LightOnly when currentComponentTheme != Theme.Light => true,
+            Mode.Switch when currentComponentTheme != e.Theme => true,
+            _ => false,
+        };
     }
 
     protected override void HandleSwitch(SwitchEventArgs e)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         ThemeFile themeFile = GlobalState.ManagedThemeFile;
 
-        if (Settings.Component.Mode == Mode.DarkOnly)
+        switch (Settings.Component.Mode)
         {
-            themeFile.VisualStyles.AppMode = (nameof(Theme.Dark), themeFile.VisualStyles.AppMode.Item2);
-            currentComponentTheme = Theme.Dark;
+            case Mode.DarkOnly:
+                themeFile.VisualStyles.AppMode = (nameof(Theme.Dark), themeFile.VisualStyles.AppMode.Item2);
+                currentComponentTheme = Theme.Dark;
+                break;
+            case Mode.LightOnly:
+                themeFile.VisualStyles.AppMode = (nameof(Theme.Light), themeFile.VisualStyles.AppMode.Item2);
+                currentComponentTheme = Theme.Light;
+                break;
+            default:
+                themeFile.VisualStyles.AppMode = (Enum.GetName(e.Theme), themeFile.VisualStyles.AppMode.Item2);
+                currentComponentTheme = e.Theme;
+                break;
         }
-        else if (Settings.Component.Mode == Mode.LightOnly)
-        {
-            themeFile.VisualStyles.AppMode = (nameof(Theme.Light), themeFile.VisualStyles.AppMode.Item2);
-            currentComponentTheme = Theme.Light;
-        }
-        else
-        {
-            themeFile.VisualStyles.AppMode = (Enum.GetName(typeof(Theme), e.Theme), themeFile.VisualStyles.AppMode.Item2);
-            currentComponentTheme = e.Theme;
-        }
-        Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(typeof(Theme), currentComponentTheme)}, mode: {Enum.GetName(typeof(Mode), Settings.Component.Mode)}");
+        Logger.Info($"update info - previous: {oldTheme}, pending: {Enum.GetName(currentComponentTheme)}, mode: {Enum.GetName(Settings.Component.Mode)}");
     }
 
     protected override void UpdateSettingsState()
     {
-        RefreshRegkeys();
+        RefreshRegistryKeys();
     }
 }

@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Interfaces;
 
 namespace AutoDarkModeSvc.SwitchComponents;
 
-abstract class BaseComponent<T> : ISwitchComponent where T : class
+internal abstract class BaseComponent<T> : ISwitchComponent where T : class
 {
     protected NLog.Logger Logger { get; private set; }
     protected GlobalState GlobalState { get; } = GlobalState.Instance();
@@ -37,8 +37,8 @@ abstract class BaseComponent<T> : ISwitchComponent where T : class
     public virtual DwmRefreshType TriggersDwmRefresh { get; protected set; } = DwmRefreshType.None;
     public virtual DwmRefreshType NeedsDwmRefresh { get; protected set; } = DwmRefreshType.None;
     public virtual int DwmRefreshDelay { get; protected set; } = 2500;
-    public virtual int PriorityToLight { get; }
     public virtual int PriorityToDark { get; }
+    public virtual int PriorityToLight { get; }
     public virtual HookPosition HookPosition { get; protected set; } = HookPosition.PostSync;
     public bool ForceSwitch { get; set; }
     public virtual bool Enabled { get => Settings.Enabled; }
@@ -96,7 +96,7 @@ abstract class BaseComponent<T> : ISwitchComponent where T : class
     public abstract bool ThemeHandlerCompatibility { get; }
 
     /// <summary>
-    /// Entrypoint, called when a component needs to be updated
+    /// Entry point, called when a component needs to be updated
     /// </summary>
     /// <param name="newTheme">the new theme to apply</param>
     /// <param name="e">the switch event args</param>

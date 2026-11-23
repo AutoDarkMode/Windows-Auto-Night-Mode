@@ -23,51 +23,48 @@ using AutoDarkModeSvc.Handlers;
 
 namespace AutoDarkModeSvc.SwitchComponents.Base;
 
-class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
+internal class ScriptSwitch : BaseComponent<ScriptSwitchSettings>
 {
     public override int PriorityToDark => 30;
     public override int PriorityToLight => 30;
     private Theme currentComponentTheme = Theme.Unknown;
     public override bool ThemeHandlerCompatibility { get; } = true;
-    Task switchTask;
+    private Task switchTask;
 
-    protected override bool ComponentNeedsUpdate(SwitchEventArgs e)
-    {
-        if (currentComponentTheme != e.Theme)
-        {
-            return true;
-        }
-        return false;
-    }
+    protected override bool ComponentNeedsUpdate(SwitchEventArgs e) => currentComponentTheme != e.Theme;
 
-    protected override async void HandleSwitch(SwitchEventArgs e)
+    protected async override void HandleSwitch(SwitchEventArgs e)
     {
-        string oldTheme = Enum.GetName(typeof(Theme), currentComponentTheme);
+        string oldTheme = Enum.GetName(currentComponentTheme);
         switchTask = Task.Run(() =>
         {
-            if (e.Theme == Theme.Light)
+            switch (e.Theme)
             {
-                currentComponentTheme = Theme.Light;
-                Settings.Component.Scripts.ForEach(s =>
+                case Theme.Light:
                 {
-                    if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                        ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
-                });
+                    currentComponentTheme = Theme.Light;
+                    Settings.Component.Scripts.ForEach(s =>
+                    {
+                        if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
+                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsLight, s.TimeoutMillis, s.WorkingDirectory);
+                    });
+                    break;
+                }
 
-            }
-            else
-            {
-                currentComponentTheme = Theme.Dark;
-                Settings.Component.Scripts.ForEach(s =>
+                default:
                 {
-                    if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
-                        ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
-                });
-
+                    currentComponentTheme = Theme.Dark;
+                    Settings.Component.Scripts.ForEach(s =>
+                    {
+                        if (s.AllowedSources.Contains(SwitchSource.Any) || s.AllowedSources.Contains(e.Source))
+                            ScriptHandler.Launch(s.Name, s.Command, s.ArgsDark, s.TimeoutMillis, s.WorkingDirectory);
+                    });
+                    break;
+                }
             }
         });
         await switchTask;
-        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(typeof(Theme), currentComponentTheme)}");
+        Logger.Info($"update info - previous: {oldTheme}, now: {Enum.GetName(currentComponentTheme)}");
     }
 
     protected override void EnableHook()
