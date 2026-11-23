@@ -23,7 +23,7 @@ using AutoDarkModeSvc.Timers;
 
 namespace AutoDarkModeSvc.Modules;
 
-class UpdaterModule : AutoDarkModeModule
+internal class UpdaterModule : AutoDarkModeModule
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private readonly AdmConfigBuilder builder = AdmConfigBuilder.Instance();
@@ -45,10 +45,7 @@ class UpdaterModule : AutoDarkModeModule
 
     public override Task Fire(object caller = null)
     {
-        return Task.Run(() =>
-        {
-            Check();
-        });
+        return Task.Run(Check);
         //Updater();
     }
 

@@ -95,25 +95,25 @@ public class ProcessBlockListModule : AutoDarkModeModule
 
     public override void DisableHook()
     {
-        Logger.Info("Removing any leftover process block list postones");
+        Logger.Info("Removing any leftover process block list postpone items");
         RemovePostpone();
         State.SwitchApproach.RemoveDependency(this);
         base.DisableHook();
     }
 
     /// <summary>
-    /// Add this module's postpone
+    /// Add this module's postpone item
     /// </summary>
-    /// <returns>True if a new postpone was added</returns>
+    /// <returns>True if a new postpone item was added</returns>
     private bool Postpone()
     {
         return State.PostponeManager.Add(new PostponeItem(Name, isUserClearable: true));
     }
 
     /// <summary>
-    /// Remove this module's postpone
+    /// Remove this module's postpone item
     /// </summary>
-    /// <returns>True if a postpone was removed </returns>
+    /// <returns>True if a postpone item was removed</returns>
     private bool RemovePostpone()
     {
         return State.PostponeManager.Remove(Name);

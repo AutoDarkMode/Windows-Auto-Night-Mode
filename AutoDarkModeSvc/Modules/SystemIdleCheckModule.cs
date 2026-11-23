@@ -28,7 +28,7 @@ public class SystemIdleCheckModule : AutoDarkModeModule
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     public override string TimerAffinity => TimerName.Main;
     private GlobalState State { get; } = GlobalState.Instance();
-    private AdmConfigBuilder builder { get; } = AdmConfigBuilder.Instance();
+    private AdmConfigBuilder Builder { get; } = AdmConfigBuilder.Instance();
 
     public SystemIdleCheckModule(string name, bool fireOnRegistration) : base(name, fireOnRegistration) { }
 
@@ -37,20 +37,17 @@ public class SystemIdleCheckModule : AutoDarkModeModule
         // Ignore the module on first startup such that themes are correctly applied at program startup
         // which should be expected because if the user launches Auto Dark Mode it would want it
         // to switch as it is a user-sanctioned operation
-        if (!State.InitSyncSwitchPerformed)
-        {
-            return Task.CompletedTask;
-        }
+        if (!State.InitSyncSwitchPerformed) return Task.CompletedTask;
 
         LASTINPUTINFO lastinputStruct = new();
         lastinputStruct.cbSize = (uint)Marshal.SizeOf(lastinputStruct);
         GetLastInputInfo(ref lastinputStruct);
 
         DateTime lastInputTime = DateTime.Now.AddMilliseconds(-(Environment.TickCount - lastinputStruct.dwTime));
-        if (lastInputTime <= DateTime.Now.AddMinutes(-builder.Config.IdleChecker.Threshold))
+        if (lastInputTime <= DateTime.Now.AddMinutes(-Builder.Config.IdleChecker.Threshold))
         {
             State.SystemIdleModuleState.SystemIsIdle = true;
-            Logger.Info($"allow theme switch, system idle since {lastInputTime}, which is longer than {builder.Config.IdleChecker.Threshold} minute(s)");
+            Logger.Info($"allow theme switch, system idle since {lastInputTime}, which is longer than {Builder.Config.IdleChecker.Threshold} minute(s)");
             State.PostponeManager.Remove(Helper.PostponeItemSystemIdle);
         }
         else if (State.PostponeManager.Add(new(Helper.PostponeItemSystemIdle, isUserClearable: false)))
@@ -68,6 +65,7 @@ public class SystemIdleCheckModule : AutoDarkModeModule
         State.PostponeManager.Remove(Helper.PostponeItemSystemIdle);
     }
 
+    // suggested: SYSLIB1054
     [DllImport("User32.dll")]
     private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
     internal struct LASTINPUTINFO

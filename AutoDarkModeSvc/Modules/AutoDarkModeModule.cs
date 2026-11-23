@@ -30,7 +30,7 @@ public abstract class AutoDarkModeModule : IAutoDarkModeModule
     /// </summary>
     /// <param name="name"></param>
     /// <param name="fireOnRegistration"></param>
-    public AutoDarkModeModule(string name, bool fireOnRegistration)
+    internal AutoDarkModeModule(string name, bool fireOnRegistration)
     {
         Name = name;
         Priority = 0;
@@ -39,46 +39,22 @@ public abstract class AutoDarkModeModule : IAutoDarkModeModule
 
     public bool Equals(IAutoDarkModeModule other)
     {
-        if (ReferenceEquals(this, other))
-            return true;
+        if (ReferenceEquals(this, other)) return true;
 
-        if (other is null)
-            return false;
+        if (other is null) return false;
 
-        if (other.Name == Name)
-        {
-            return true;
-        }
-        return false;
-    }
-    public override bool Equals(object obj)
-    {
-        return Equals(obj as IAutoDarkModeModule);
+        return other.Name == Name;
     }
 
-    public override int GetHashCode()
-    {
-        return Name.GetHashCode();
-    }
+    public override bool Equals(object obj) => Equals(obj as IAutoDarkModeModule);
 
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override int GetHashCode() => Name.GetHashCode();
 
-    public int CompareTo(int other)
-    {
-        return Priority.CompareTo(other);
-    }
+    public override string ToString() => Name;
 
-    public int CompareTo(IAutoDarkModeModule other)
-    {
-        if (other is null)
-        {
-            return 0;
-        }
-        return other.Priority.CompareTo(Priority);
-    }
+    public int CompareTo(int other) => Priority.CompareTo(other);
+
+    public int CompareTo(IAutoDarkModeModule other) => other is null ? 0 : other.Priority.CompareTo(Priority);
 
     public virtual void DisableHook()
     {
