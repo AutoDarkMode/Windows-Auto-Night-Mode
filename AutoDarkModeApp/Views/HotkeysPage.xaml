@@ -61,7 +61,7 @@
                                         Click="EditHotkeysButton_Click"
                                         CommandParameter="{x:Bind}">
                                         <Button.Content>
-                                            <FontIcon FontSize="16" Glyph="&#xE70F;" />
+                                            <FontIcon FontSize="16" Glyph="&#xE70F;" MirroredWhenRightToLeft="True" />
                                         </Button.Content>
                                     </Button>
                                 </StackPanel>

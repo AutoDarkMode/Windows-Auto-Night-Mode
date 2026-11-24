@@ -56,7 +56,7 @@
                 <!-- More info -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Links}" />
                 <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;, MirroredWhenRightToLeft=True}"
                     Click="WindowsMousePointerSettingHyperlinkButton_Click"
                     Description="{helpers:ResourceString Name=WindowsMousePointerSettingDescription}"
                     Header="{helpers:ResourceString Name=WindowsMousePointerSetting}"

@@ -34,7 +34,7 @@
                 <!--  Mode  -->
                 <controls:SettingsCard
                     Header="{helpers:ResourceString Name=Theme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xEA99;}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE771;, MirroredWhenRightToLeft=True}"
                     IsEnabled="{x:Bind ViewModel.IsColorizationEnabled, Mode=OneWay}">
                     <controls:Segmented SelectedIndex="{x:Bind ViewModel.SelectColorThemeMode, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}" SelectionChanged="SelectColorThemeModeSegmented_SelectionChanged">
                         <controls:SegmentedItem Content="{helpers:ResourceString Name=Light}" Icon="{ui:FontIcon Glyph=&#xE706;}" />

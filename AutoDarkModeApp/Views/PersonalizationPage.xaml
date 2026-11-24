@@ -59,7 +59,7 @@
                     Click="ThemePickerSettingsCard_Click"
                     Description="{helpers:ResourceString Name=PickTheme_Description}"
                     Header="{helpers:ResourceString Name=PickTheme}"
-                    HeaderIcon="{ui:FontIcon Glyph=&#xe771;}"
+                    HeaderIcon="{ui:FontIcon Glyph=&#xE771;, MirroredWhenRightToLeft=True}"
                     IsClickEnabled="True"
                     IsEnabled="{x:Bind ViewModel.UnmanagedModeSettingsCardEnabled, Mode=OneWay}" />
 

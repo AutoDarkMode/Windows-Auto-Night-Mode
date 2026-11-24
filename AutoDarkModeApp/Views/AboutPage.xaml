@@ -94,19 +94,19 @@
                 <!--  Diagnostics  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=Diagnostics}" />
                 <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;, MirroredWhenRightToLeft=True}"
                     Click="OpenLog_Click"
                     Header="{helpers:ResourceString Name=OpenLog}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;, MirroredWhenRightToLeft=True}"
                     Click="OpenUpdaterLog_Click"
                     Header="{helpers:ResourceString Name=OpenUpdaterLog}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE8A5;}"
                     IsClickEnabled="True" />
                 <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;, MirroredWhenRightToLeft=True}"
                     Click="OpenShell_Click"
                     Header="{helpers:ResourceString Name=OpenShell}"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE756;}"
@@ -116,7 +116,7 @@
                 <!--  Documentation & Social  -->
                 <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="{helpers:ResourceString Name=DocumentationSocial}" />
                 <controls:SettingsCard
-                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;, MirroredWhenRightToLeft=True}"
                     Click="GoToDocumentation_Click"
                     Header="Go to Auto Dark Mode Documentation"
                     HeaderIcon="{ui:FontIcon Glyph=&#xE82D;}"

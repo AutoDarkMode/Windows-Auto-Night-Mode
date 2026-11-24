@@ -164,6 +164,10 @@ class Service : Form
         state.UpdateNotifyIcon(builder);
         NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
         NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
+        if (new CultureInfo(Builder.Config.Tunable.UICulture).TextInfo.IsRightToLeft)
+        {
+            NotifyIcon.ContextMenuStrip.RightToLeft = RightToLeft.Yes;
+        }
         NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;
         NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
         NotifyIcon.ContextMenuStrip.Items.Add("-");

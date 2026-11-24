@@ -20,6 +20,12 @@ public static class LanguageHelper
         "ar", "fa", "he"
     ];
 
+    public static bool IsRightToLeft =>
+        SelectedLanguageCode is string code && CultureInfo.GetCultureInfo(code).TextInfo.IsRightToLeft;
+
+    public static FlowDirection FlowDirection =>
+        IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+
     public static string GetDefaultLanguage()
     {
         var localSettings = App.GetService<ILocalSettingsService>();
