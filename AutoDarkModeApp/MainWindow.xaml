@@ -67,7 +67,7 @@
                 -->
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=AutoSwitch}"
-                    Icon="{ui:FontIcon Glyph=&#xE8AB;}"
+                    Icon="{ui:FontIcon Glyph=&#xE8AB;, MirroredWhenRightToLeft=True}"
                     Tag="AutoSwitch" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=SystemAreas}"
@@ -75,7 +75,7 @@
                     Tag="SystemAreas" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=Personalization}"
-                    Icon="{ui:FontIcon Glyph=&#xE771;}"
+                    Icon="{ui:FontIcon Glyph=&#xE771;, MirroredWhenRightToLeft=True}"
                     Tag="Personalization" />
                 <NavigationViewItem
                     Content="{helpers:ResourceString Name=Conditions}"

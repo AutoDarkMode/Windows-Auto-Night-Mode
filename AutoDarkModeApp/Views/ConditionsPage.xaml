@@ -45,7 +45,7 @@
                 </controls:SettingsExpander>
 
                 <!--  ProcessBlockList  -->
-                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xECAA;}">
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xECAA;, MirroredWhenRightToLeft=True}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="BlockListCheckBox"
@@ -90,7 +90,7 @@
                 </controls:SettingsExpander>
 
                 <!--  AutoSwitchNotification  -->
-                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE7E7;}">
+                <controls:SettingsExpander HeaderIcon="{ui:FontIcon Glyph=&#xE7E7;, MirroredWhenRightToLeft=True}">
                     <controls:SettingsExpander.Header>
                         <CheckBox
                             x:Name="AutoSwitchNotifyCheckBox"
