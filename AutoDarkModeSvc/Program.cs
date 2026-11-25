@@ -30,18 +30,18 @@ using NLog;
 
 namespace AutoDarkModeSvc;
 
-static class Program
+internal static class Program
 {
-    private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
-    private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
-    private static Service Service { get; set; }
-
+    // suggested: SYSLIB1054
     [System.Runtime.InteropServices.DllImport("user32.dll")]
     private static extern int SystemParametersInfo(int uAction, int uParam, int lpvParam, int fuWinIni);
 
     private const int SPI_SETKEYBOARDCUES = 4107; //100B
     private const int SPIF_SENDWININICHANGE = 2;
 
+    private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+    private static readonly Mutex mutex = new(false, "330f929b-ac7a-4791-9958-f8b9268ca35d");
+    private static Service Service { get; set; }
     public static BlockingCollection<Action> ActionQueue = new();
     private static Thread queueThread;
 
@@ -53,13 +53,9 @@ static class Program
     {
         System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
         List<string> argsList = args.Length > 0 ? new List<string>(args) : new List<string>();
-        string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
 
         // Set up Logger based on command line arguments
         LoggerSetup.InitializeLogging(argsList);
-
-        try { _ = Directory.CreateDirectory(configDir); }
-        catch (Exception e) { Logger.Fatal(e, "could not create config directory"); }
 
         try
         {
@@ -80,6 +76,16 @@ static class Program
         {
             Logger.Error(ex, "failed getting mutex, " + ex.Message);
             return;
+        }
+
+        string configDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AutoDarkMode");
+        try
+        {
+            _ = Directory.CreateDirectory(configDir);
+        }
+        catch (Exception e)
+        {
+            Logger.Fatal(e, "could not create config directory");
         }
 
         try
@@ -132,7 +138,7 @@ static class Program
             }
             catch (Exception ex)
             {
-                Logger.Warn(ex, $"script configuration could not be loaded. All scripts inactive:");
+                Logger.Warn(ex, "script configuration could not be loaded. All scripts inactive:");
             }
 
             try
@@ -156,11 +162,10 @@ static class Program
             GlobalState state = GlobalState.Instance();
             state.RefreshThemes(builder.Config);
 
-
-            // if a path is set to null, set it to the currently actvie theme for convenience reasons
-            bool configUpdateNeeded = false;
             if (builder.Config.WindowsThemeMode.Enabled)
             {
+                // if a path is set to null, set it to the currently active theme for convenience reasons
+                bool configUpdateNeeded = false;
                 if (!File.Exists(builder.Config.WindowsThemeMode.DarkThemePath) || builder.Config.WindowsThemeMode.DarkThemePath == null)
                 {
                     builder.Config.WindowsThemeMode.DarkThemePath = state.UnmanagedActiveThemePath;
@@ -200,7 +205,7 @@ static class Program
                 {
                     try
                     {
-                        Logger.Debug($"action queue invoking ${a.Method.Name}");
+                        Logger.Debug($"action queue invoking {a.Method.Name}");
                         a.Invoke();
                     }
                     catch (Exception ex)
@@ -231,8 +236,10 @@ static class Program
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Service = new Service(timerMillis);
-            Service.Text = "Auto Dark Mode";
+            Service = new Service(timerMillis)
+            {
+                Text = "Auto Dark Mode"
+            };
 
             /* Disable for now.
             try
