@@ -171,6 +171,17 @@ public class Location
     public double CustomLon { get; set; }
 }
 
+/// <summary>
+/// Controls what happens when the tray icon is left-clicked.
+/// </summary>
+public enum TrayIconLeftClickAction
+{
+    /// <summary>Open the Auto Dark Mode app.</summary>
+    OpenApp,
+    /// <summary>Toggle between the light and dark theme.</summary>
+    ToggleTheme,
+}
+
 public class Tunable
 {
     private int batterySliderDefaultValue = 25;
@@ -192,6 +203,7 @@ public class Tunable
     public bool Trace { get; set; }
     public bool DebugTimerMessage { get; set; }
     public bool ShowTrayIcon { get; set; } = true;
+    public TrayIconLeftClickAction TrayIconLeftClickAction { get; set; } = TrayIconLeftClickAction.OpenApp;
     public string UICulture { get; set; } = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
 }
 

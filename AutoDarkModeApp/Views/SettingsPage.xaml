@@ -33,6 +33,16 @@
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsShowTrayIcon, Mode=TwoWay}" />
                 </controls:SettingsCard>
 
+                <controls:SettingsCard
+                    Description="{helpers:ResourceString Name=TrayIconLeftClickActionDescription}"
+                    Header="{helpers:ResourceString Name=TrayIconLeftClickAction}"
+                    IsEnabled="{x:Bind ViewModel.IsShowTrayIcon, Mode=OneWay}">
+                    <ComboBox SelectedIndex="{x:Bind ViewModel.SelectedTrayIconLeftClickAction, Converter={StaticResource EnumToIndexConverter}, Mode=TwoWay}">
+                        <ComboBoxItem Content="{helpers:ResourceString Name=TrayIconLeftClickAction_OpenApp}" />
+                        <ComboBoxItem Content="{helpers:ResourceString Name=TrayIconLeftClickAction_ToggleTheme}" />
+                    </ComboBox>
+                </controls:SettingsCard>
+
                 <controls:SettingsCard Description="{helpers:ResourceString Name=AggressiveDwmRefreshDescription}" Header="{helpers:ResourceString Name=AggressiveDwmRefresh}">
                     <ToggleSwitch IsOn="{x:Bind ViewModel.IsDwmRefreshViaColorization, Mode=TwoWay}" />
                 </controls:SettingsCard>
