@@ -384,9 +384,17 @@ internal static class ThemeManager
                     bool needsWallpaperRefresh = false;
                     if (componentsToUpdate.Any(c => c is ColorizationSwitch))
                     {
-                        if (newTheme == Theme.Light && builder.Config.ColorizationSwitch.Component.LightAutoColorization) needsWallpaperRefresh = true;
-                        else if (newTheme == Theme.Dark && builder.Config.ColorizationSwitch.Component.DarkAutoColorization) needsWallpaperRefresh = true;
+                        switch (newTheme)
+                        {
+                            case Theme.Dark when builder.Config.ColorizationSwitch.Component.DarkAutoColorization:
+                                needsWallpaperRefresh = true;
+                                break;
+                            case Theme.Light when builder.Config.ColorizationSwitch.Component.LightAutoColorization:
+                                needsWallpaperRefresh = true;
+                                break;
+                        }
                     }
+
                     if (!componentsToUpdate.Any(c => c is WallpaperSwitch) && !needsWallpaperRefresh)
                     {
                         flagList = [ThemeApplyFlags.IgnoreBackground];
