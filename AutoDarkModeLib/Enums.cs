@@ -84,7 +84,7 @@ public enum ThemeOverrideSource
     AmbientLight,
     ForceFlag,
     BatteryStatus,
-    EnerySaverStatus,
+    EnergySaverStatus,
     PostponeManager
 }
 
