@@ -20,7 +20,7 @@ public class NightLightGovernor : IAutoDarkModeGovernor
     private ManagementEventWatcher nightLightKeyWatcher;
     private GlobalState state = GlobalState.Instance();
     private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-    private bool init = true;
+    private bool init = true; // note: unused?
     private bool queuePostponeRemove = false;
     private bool switchQueuedButNotRequested = false;
     private IAutoDarkModeModule Master { get; }
@@ -52,18 +52,18 @@ public class NightLightGovernor : IAutoDarkModeGovernor
         DateTime adjustedSwitchWindowEnd;
 
         //apply offsets to the latest available switch times
-        if (nightLightState == Theme.Dark)
+        switch (nightLightState)
         {
-
-            adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
-            adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
-            adjustedSwitchWindowEnd = adjustedTime;
-        }
-        else
-        {
-            adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
-            adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
-            adjustedSwitchWindowEnd = adjustedTime;
+            case Theme.Dark:
+                adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunsetOffsetMin);
+                adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
+                adjustedSwitchWindowEnd = adjustedTime;
+                break;
+            default:
+                adjustedTime = lastNightLightQueryTime.AddMinutes(builder.Config.Location.SunriseOffsetMin);
+                adjustedSwitchWindowStart = adjustedTime.AddMilliseconds(-TimerFrequency.Main);
+                adjustedSwitchWindowEnd = adjustedTime;
+                break;
         }
 
         DateTime callTime = DateTime.Now;
@@ -74,8 +74,15 @@ public class NightLightGovernor : IAutoDarkModeGovernor
         {
             if (!switchQueuedButNotRequested)
             {
-                if (nightLightState == Theme.Light) state.NightLight.Requested = Theme.Dark;
-                else if (nightLightState == Theme.Dark) state.NightLight.Requested = Theme.Light;
+                switch (nightLightState)
+                {
+                    case Theme.Dark:
+                        state.NightLight.Requested = Theme.Light;
+                        break;
+                    case Theme.Light:
+                        state.NightLight.Requested = Theme.Dark;
+                        break;
+                }
                 switchQueuedButNotRequested = true;
             }
         }
@@ -145,6 +152,7 @@ public class NightLightGovernor : IAutoDarkModeGovernor
         {
             Logger.Error(ex, "error retrieving night light enabled state:");
         }
+
         Theme newTheme = enabled ? Theme.Dark : Theme.Light;
         if (newTheme != nightLightState)
         {
@@ -154,13 +162,12 @@ public class NightLightGovernor : IAutoDarkModeGovernor
 
             // instantSwitchWindow is used to prevent the timer from duplicating the switch window operations when the event
             // should be responsible for it
-            if (nightLightState == Theme.Dark && builder.Config.Location.SunsetOffsetMin == 0)
-                instantSwitchWindow = true;
-            else if (nightLightState == Theme.Light && builder.Config.Location.SunriseOffsetMin == 0)
-                instantSwitchWindow = true;
-            else
-                instantSwitchWindow = false;
-
+            instantSwitchWindow = nightLightState switch
+            {
+                Theme.Dark when builder.Config.Location.SunsetOffsetMin == 0 => true,
+                Theme.Light when builder.Config.Location.SunriseOffsetMin == 0 => true,
+                _ => false,
+            };
 
             Logger.Info($"night light status enabled changed to {enabled}");
             bool isSkipNext = state.PostponeManager.GetSkipNextSwitchItem() != null;

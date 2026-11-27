@@ -46,7 +46,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
     private LightSensor _sensor;
     private GlobalState state = GlobalState.Instance();
     private AdmConfigBuilder builder = AdmConfigBuilder.Instance();
-    private bool init = true;
+    private bool init = true; // note: unused?
     private Theme currentTheme = Theme.Unknown;
     private IAutoDarkModeModule Master { get; }
     private Theme _pendingTheme = Theme.Unknown;
@@ -76,10 +76,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
             try
             {
                 var reading = _sensor.GetCurrentReading();
-                if (reading != null)
-                {
-                    EvaluateLuxReading(reading.IlluminanceInLux);
-                }
+                if (reading != null) EvaluateLuxReading(reading.IlluminanceInLux);
             }
             catch (Exception ex)
             {
@@ -87,10 +84,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
             }
         }
 
-        if (init)
-        {
-            init = false;
-        }
+        if (init) init = false;
 
         // The governor caused this run, so the switch is imminent. Report a switch window with no duration,
         // which makes the governor module run the dependency modules (process block list, gpu monitor)
@@ -106,12 +100,9 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
 
         // If we're in a debounce period, don't trigger any switch from the timer
         // The actual switch will happen when ApplyThemeChange calls Master.Fire
-        if (_pendingTheme != Theme.Unknown)
-        {
-            return new(false, null);
-        }
-
-        return new(false, new(SwitchSource.AmbientLightSensorModule, state.AmbientLight.Requested));
+        return _pendingTheme != Theme.Unknown
+            ? new(false, null)
+            : new(false, new(SwitchSource.AmbientLightSensorModule, state.AmbientLight.Requested));
     }
 
     private void EvaluateLuxReading(double lux)
@@ -157,7 +148,7 @@ public class AmbientLightGovernor : IAutoDarkModeGovernor
         if (newTheme != currentTheme && newTheme != Theme.Unknown)
         {
             // Use configured delay with 1-second minimum floor for safety
-            _debounceDelayMs = Math.Max(1000, builder.Config.AmbientLight.DebounceDelayMs);
+            _debounceDelayMs = Math.Max(SensorDebounceDelayMs, builder.Config.AmbientLight.DebounceDelayMs);
             ScheduleThemeChange(newTheme, lux, darkThreshold, lightThreshold);
         }
         else if (newTheme == currentTheme)
