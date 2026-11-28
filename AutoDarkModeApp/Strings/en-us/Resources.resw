@@ -796,6 +796,18 @@ Currently installed version: {0}, new version: {1}</value>
   <data name="Translator" xml:space="preserve">
     <value>Translator: Armin Osaj &amp; Samuel Schiegg</value>
   </data>
+  <data name="TrayIconLeftClickAction" xml:space="preserve">
+    <value>Left-click action</value>
+  </data>
+  <data name="TrayIconLeftClickActionDescription" xml:space="preserve">
+    <value>Choose what a left click does</value>
+  </data>
+  <data name="TrayIconLeftClickAction_OpenApp" xml:space="preserve">
+    <value>Open app</value>
+  </data>
+  <data name="TrayIconLeftClickAction_ToggleTheme" xml:space="preserve">
+    <value>Toggle theme</value>
+  </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>

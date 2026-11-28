@@ -162,7 +162,7 @@ class Service : Form
 
         NotifyIcon.Text = "Auto Dark Mode";
         state.UpdateNotifyIcon(builder);
-        NotifyIcon.MouseDown += new MouseEventHandler(OpenApp);
+        NotifyIcon.MouseDown += new MouseEventHandler(HandleTrayIconClick);
         NotifyIcon.ContextMenuStrip = new ContextMenuStrip();
         NotifyIcon.ContextMenuStrip.Opened += UpdateContextMenu;
         NotifyIcon.ContextMenuStrip.Items.Add(openConfigDirItem);
@@ -447,6 +447,28 @@ class Service : Form
         };
 
         Process.Start(startInfo);
+    }
+
+    private void HandleTrayIconClick(object sender, MouseEventArgs e)
+    {
+        if (e.Button != MouseButtons.Left) return;
+
+        switch (Builder.Config.Tunable.TrayIconLeftClickAction)
+        {
+            case TrayIconLeftClickAction.ToggleTheme:
+                try
+                {
+                    ToggleTheme(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error while toggling theme from tray icon:");
+                }
+                break;
+            default:
+                OpenApp(sender, e);
+                break;
+        }
     }
 
     private void OpenApp(object sender, MouseEventArgs e)

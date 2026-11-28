@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using AutoDarkModeApp.Services;
 using Microsoft.Windows.AppLifecycle;
+using TrayIconLeftClickAction = AutoDarkModeLib.Configs.TrayIconLeftClickAction;
 
 namespace AutoDarkModeApp.ViewModels;
 
@@ -39,6 +40,9 @@ public partial class SettingsViewModel : ObservableRecipient
 
     [ObservableProperty]
     public partial bool IsShowTrayIcon { get; set; }
+
+    [ObservableProperty]
+    public partial TrayIconLeftClickAction SelectedTrayIconLeftClickAction { get; set; }
 
     [ObservableProperty]
     public partial bool IsTunableDebug { get; set; }
@@ -207,6 +211,7 @@ public partial class SettingsViewModel : ObservableRecipient
         _isInitializing = true;
 
         IsShowTrayIcon = _builder.Config.Tunable.ShowTrayIcon;
+        SelectedTrayIconLeftClickAction = _builder.Config.Tunable.TrayIconLeftClickAction;
         IsDwmRefreshViaColorization = _builder.Config.Tunable.DwmRefreshViaColorization;
         IsTunableDebug = _builder.Config.Tunable.Debug;
         IsTunableTrace = _builder.Config.Tunable.Trace;
@@ -378,6 +383,16 @@ public partial class SettingsViewModel : ObservableRecipient
 
         SafeSaveBuilder();
         Task.Run(() => MessageHandler.Client.SendMessageAndGetReply(Command.Restart));
+    }
+
+    partial void OnSelectedTrayIconLeftClickActionChanged(TrayIconLeftClickAction value)
+    {
+        if (_isInitializing)
+            return;
+
+        _builder.Config.Tunable.TrayIconLeftClickAction = value;
+
+        SafeSaveBuilder();
     }
 
     partial void OnIsTunableDebugChanged(bool value)
