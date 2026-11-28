@@ -453,43 +453,56 @@ class Service : Form
     {
         if (e.Button != MouseButtons.Left) return;
 
-        if (Builder.Config.Tunable.TrayIconLeftClickAction == TrayIconLeftClickAction.ToggleTheme)
+        switch (Builder.Config.Tunable.TrayIconLeftClickAction)
         {
+            case TrayIconLeftClickAction.ToggleTheme:
+                try
+                {
+                    ToggleTheme(sender, e);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex, "error while toggling theme from tray icon:");
+                }
+                break;
+            default:
+                OpenApp(sender, e);
+                break;
+        }
+    }
+
+    private void OpenApp(object sender, MouseEventArgs e)
+    {
+        if (e.Button == MouseButtons.Left)
+        {
+            using Mutex appMutex = new(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
             try
             {
-                ToggleTheme(sender, e);
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex, "error while toggling theme from tray icon:");
-            }
-            return;
-        }
-
-        using Mutex appMutex = new(false, "821abd85-51af-4379-826c-41fb68f0e5c5");
-        try
-        {
-            if (appMutex.WaitOne(TimeSpan.FromMilliseconds(50), false))
-            {
-                Console.WriteLine("Start App");
-                using Process app = new();
-                app.StartInfo.UseShellExecute = false;
-                app.StartInfo.FileName = Helper.ExecutionPathApp;
-                app.Start();
-                appMutex.ReleaseMutex();
-            }
-            else
-            {
-                List<Process> processes = new(Process.GetProcessesByName("AutoDarkModeApp"));
-                if (processes.Count > 0)
+                if (e.Button == MouseButtons.Left)
                 {
-                    WindowHelper.BringProcessToFront(processes[0]);
+                    if (appMutex.WaitOne(TimeSpan.FromMilliseconds(50), false))
+                    {
+                        Console.WriteLine("Start App");
+                        using Process app = new();
+                        app.StartInfo.UseShellExecute = false;
+                        app.StartInfo.FileName = Helper.ExecutionPathApp;
+                        app.Start();
+                        appMutex.ReleaseMutex();
+                    }
+                    else
+                    {
+                        List<Process> processes = new(Process.GetProcessesByName("AutoDarkModeApp"));
+                        if (processes.Count > 0)
+                        {
+                            WindowHelper.BringProcessToFront(processes[0]);
+                        }
+                    }
                 }
             }
-        }
-        catch (AbandonedMutexException ex)
-        {
-            Logger.Debug(ex, "mutex abandoned before wait");
+            catch (AbandonedMutexException ex)
+            {
+                Logger.Debug(ex, "mutex abandoned before wait");
+            }
         }
     }
 

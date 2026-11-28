@@ -800,7 +800,7 @@ Currently installed version: {0}, new version: {1}</value>
     <value>Left-click action</value>
   </data>
   <data name="TrayIconLeftClickActionDescription" xml:space="preserve">
-    <value>Choose what happens when you left-click the tray icon</value>
+    <value>Choose what a left click does</value>
   </data>
   <data name="TrayIconLeftClickAction_OpenApp" xml:space="preserve">
     <value>Open app</value>
